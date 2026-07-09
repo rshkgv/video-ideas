@@ -7,45 +7,33 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
+
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     body {
       font-family: 'Inter', system-ui, -apple-system, sans-serif;
-      background: #f4f4f5;
-      color: #111;
-      font-size: 14px;
-      line-height: 1.5;
+      background: #f4f4f5; color: #111; font-size: 14px; line-height: 1.5;
     }
     .page-header {
-      background: #fff;
-      border-bottom: 1px solid #e4e4e7;
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      box-shadow: 0 1px 8px rgba(0,0,0,.05);
+      background: #fff; border-bottom: 1px solid #e4e4e7; position: sticky;
+      top: 0; z-index: 100; box-shadow: 0 1px 8px rgba(0,0,0,.05);
     }
     .header-inner {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 14px 28px;
-      display: flex;
-      align-items: center;
-      gap: 20px;
+      max-width: 1100px; margin: 0 auto; padding: 14px 28px;
+      display: flex; align-items: center; gap: 20px;
     }
     .brand {
-      font-size: 18px;
-      font-weight: 800;
-      letter-spacing: -.5px;
-      color: #111;
-      white-space: nowrap;
-      user-select: none;
-      text-decoration: none;
+      font-size: 18px; font-weight: 800; letter-spacing: -.5px; color: #111;
+      white-space: nowrap; user-select: none; text-decoration: none;
     }
     .brand-tik { color: #fe2c55; }
     .brand-tok { color: #010101; }
     .brand-dot { color: #d1d1d1; margin: 0 6px; font-weight: 300; }
     .brand-cc  { color: #888; font-size: 12px; font-weight: 500; }
     .header-text { flex: 1; min-width: 0; }
-    .page-title { font-size: 15px; font-weight: 700; letter-spacing: -.2px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .page-title {
+      font-size: 15px; font-weight: 700; letter-spacing: -.2px;
+      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    }
     .page-sub { font-size: 11.5px; color: #999; margin-top: 2px; }
     .date-badge {
       background: #fe2c55; color: #fff; font-weight: 700; font-size: 12px;
@@ -89,43 +77,29 @@
       text-transform: uppercase; letter-spacing: .5px; color: #aaa;
       background: #f9f9f9; border-bottom: 1px solid #ebebeb;
     }
-    .ht-table tbody td {
-      padding: 0; border-bottom: 1px solid #f2f2f2; vertical-align: middle;
-    }
+    .ht-table tbody td { padding: 0; border-bottom: 1px solid #f2f2f2; vertical-align: middle; }
     .ht-table tbody tr:last-child td { border-bottom: none; }
     .ht-table tbody tr:hover td { background: #fafbff; }
     .td-inner { padding: 12px 16px; display: flex; align-items: center; }
-    .rank-num {
-      font-weight: 800; font-size: 14px; display: inline-block;
-      min-width: 24px; text-align: right; color: #ccc;
-    }
+    .rank-num { font-weight: 800; font-size: 14px; display: inline-block; min-width: 24px; text-align: right; color: #ccc; }
     .thumb-cell { padding: 8px 10px 8px 16px !important; }
-    .thumb-img {
-      width: 44px; height: 78px; object-fit: cover; border-radius: 6px;
-      display: block; background: #eee;
-    }
-    .htag-link {
-      font-weight: 700; font-size: 14px; color: #111; text-decoration: none;
-      display: inline-flex; align-items: center; gap: 1px;
-    }
+    .thumb-img { width: 44px; height: 78px; object-fit: cover; border-radius: 6px; display: block; background: #eee; }
+    .thumb-placeholder { width: 44px; height: 78px; border-radius: 6px; background: #eee; }
+    .htag-link { font-weight: 700; font-size: 14px; color: #111; text-decoration: none; display: inline-flex; align-items: center; gap: 1px; }
     .htag-link:hover { color: #fe2c55; }
     .htag-hash { color: #bbb; font-weight: 400; }
     .td-title { font-size: 13px; color: #555; padding-left: 12px; }
     .td-arrow { color: #ddd; font-size: 13px; padding: 12px 20px 12px 8px !important; text-align: right; }
     .ht-table tbody tr:hover .td-arrow { color: #fe2c55; }
-    @media (max-width: 520px) {
-      .td-title { display: none; }
-    }
-</style>
+    @media (max-width: 520px) { .td-title { display: none; } }
+  </style>
 </head>
 <body>
-
 <div class="page-header">
   <div class="header-inner">
     <a class="brand" href="../">
       <span class="brand-tik">Tik</span><span class="brand-tok">Tok</span>
-      <span class="brand-dot">·</span>
-      <span class="brand-cc">Video Ideas</span>
+      <span class="brand-dot">·</span><span class="brand-cc">Video Ideas</span>
     </a>
     <div class="header-text">
       <div class="page-title">Видео-идеи · 14 мая 2026</div>
@@ -138,23 +112,20 @@
     <a href="#ideas" class="nav-a active">Идеи</a>
   </nav>
 </div>
-
 <div class="content">
   <section id="ideas" class="section">
     <div class="section-header">
       <h2 class="section-title">Идеи</h2>
-      <span class="section-badge">8–14 мая · TikTok US</span>
+      <span class="section-badge">5 идей · 5 видео</span>
     </div>
     <div class="table-wrap">
       <table class="ht-table">
-        <thead>
-          <tr>
-            <th style="width:68px"></th>
-            <th>Хештег</th>
-            <th>Идея</th>
-            <th style="width:48px"></th>
-          </tr>
-        </thead>
+        <thead><tr>
+          <th style="width:68px"></th>
+          <th>Хештег</th>
+          <th>Идея</th>
+          <th style="width:48px"></th>
+        </tr></thead>
         <tbody>
       <tr>
         <td class="thumb-cell"><img class="thumb-img" src="https://temp-images.ws.pho.to/50e3b98fced7c9507e6bf1bbfba94fb304982c80.png" alt="#americanidol"></td>
@@ -211,6 +182,5 @@
     </div>
   </section>
 </div>
-
 </body>
 </html>

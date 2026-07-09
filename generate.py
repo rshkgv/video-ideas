@@ -1,112 +1,132 @@
 #!/usr/bin/env python3
-"""Generate static site for video ideas."""
-import re, pathlib, html
+"""
+Generate static site for video ideas.
+
+Usage:
+    python3 generate.py [--date 2026-05-14]   # rebuild one date
+    python3 generate.py                        # rebuild all dates
+"""
+import re, pathlib, html, json, sys, argparse
 
 ROOT      = pathlib.Path(__file__).parent.parent
 SITE      = pathlib.Path(__file__).parent
 IDEAS_DIR = ROOT / "ideas"
-RESULTS   = ROOT / "results"
 
-def extract_block(text, header):
-    m = re.search(rf'## {re.escape(header)}\s*```(.*?)```', text, re.DOTALL)
-    return m.group(1).strip() if m else None
+MONTH_FULL = {
+    "01":"января","02":"февраля","03":"марта","04":"апреля","05":"мая","06":"июня",
+    "07":"июля","08":"августа","09":"сентября","10":"октября","11":"ноября","12":"декабря",
+}
+MONTH_SHORT = {
+    "01":"янв","02":"фев","03":"мар","04":"апр","05":"мая","06":"июн",
+    "07":"июл","08":"авг","09":"сен","10":"окт","11":"ноя","12":"дек",
+}
 
-def extract_text_section(text, header):
-    m = re.search(rf'## {re.escape(header)}\s*\n(.*?)(?=\n## |\Z)', text, re.DOTALL)
-    return m.group(1).strip() if m else None
 
-def extract_first_frame(text):
-    for h in ["Промпт для генерации первого кадра (GPT Image 2)",
-              "Промпт для генерации первого кадра (NanoBanana2)"]:
-        r = extract_block(text, h)
-        if r: return r
-    return None
+# ── Parsing ───────────────────────────────────────────────────────────────────
 
-def parse_idea(path):
-    text = path.read_text()
-    title_m = re.match(r'# (.+)', text)
-    raw_title = title_m.group(1) if title_m else path.stem
-    parts = raw_title.split(' — ', 1)
-    hashtag = parts[0].lstrip('#').strip()
-    short_title = parts[1].strip() if len(parts) > 1 else hashtag
-    desc = extract_text_section(text, "Краткое описание идеи") or ""
-    video_prompt = extract_block(text, "Промпт для генерации видео") or ""
+def extract_section(text, pattern):
+    """Extract text block after a ## header matching pattern."""
+    m = re.search(r'## ' + pattern + r'.*?\n\n(.*?)(?=\n## |\Z)', text, re.DOTALL)
+    if not m:
+        return ''
+    raw = m.group(1).strip()
+    raw = re.sub(r'^```\n?', '', raw)
+    raw = re.sub(r'\n?```$', '', raw)
+    return raw
+
+def parse_idea(md_path):
+    text = md_path.read_text()
+    title_m = re.match(r'# .+? — (.+)', text)
+    title = title_m.group(1).strip() if title_m else md_path.stem
+    slug = md_path.stem
+    hashtag = re.match(r'# #?(\S+)', text)
+    hashtag = hashtag.group(1).lower() if hashtag else slug
+
     return {
-        "name": path.stem,
-        "hashtag": hashtag,
-        "title": short_title,
-        "desc": desc,
-        "video_prompt": video_prompt,
+        'slug': slug,
+        'hashtag': slug,
+        'title': title,
+        'desc': extract_section(text, r'Краткое описание идеи'),
+        'first_frame_prompt': extract_section(text, r'Промпт для генерации первого кадра.*?'),
+        'video_prompt': extract_section(text, r'Промпт для генерации видео'),
     }
 
-SHARED_CSS = """
+def get_media(slug, date):
+    """Get frame/video URLs from pipeline JSON runs[0]."""
+    p = IDEAS_DIR / date / f'{slug}_pipeline.json'
+    if not p.exists():
+        return None, None
+    try:
+        data = json.loads(p.read_text())
+        run = data.get('runs', [{}])[0]
+        return run.get('d167_image'), run.get('d156_video')
+    except Exception:
+        return None, None
+
+
+# ── Shared CSS ────────────────────────────────────────────────────────────────
+
+COMMON_CSS = """
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     body {
       font-family: 'Inter', system-ui, -apple-system, sans-serif;
-      background: #f4f4f5;
-      color: #111;
-      font-size: 14px;
-      line-height: 1.5;
+      background: #f4f4f5; color: #111; font-size: 14px; line-height: 1.5;
     }
     .page-header {
-      background: #fff;
-      border-bottom: 1px solid #e4e4e7;
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      box-shadow: 0 1px 8px rgba(0,0,0,.05);
+      background: #fff; border-bottom: 1px solid #e4e4e7; position: sticky;
+      top: 0; z-index: 100; box-shadow: 0 1px 8px rgba(0,0,0,.05);
     }
     .header-inner {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 14px 28px;
-      display: flex;
-      align-items: center;
-      gap: 20px;
+      max-width: 1100px; margin: 0 auto; padding: 14px 28px;
+      display: flex; align-items: center; gap: 20px;
     }
     .brand {
-      font-size: 18px;
-      font-weight: 800;
-      letter-spacing: -.5px;
-      color: #111;
-      white-space: nowrap;
-      user-select: none;
-      text-decoration: none;
+      font-size: 18px; font-weight: 800; letter-spacing: -.5px; color: #111;
+      white-space: nowrap; user-select: none; text-decoration: none;
     }
     .brand-tik { color: #fe2c55; }
     .brand-tok { color: #010101; }
     .brand-dot { color: #d1d1d1; margin: 0 6px; font-weight: 300; }
     .brand-cc  { color: #888; font-size: 12px; font-weight: 500; }
     .header-text { flex: 1; min-width: 0; }
-    .page-title { font-size: 15px; font-weight: 700; letter-spacing: -.2px; }
+    .page-title {
+      font-size: 15px; font-weight: 700; letter-spacing: -.2px;
+      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    }
     .page-sub { font-size: 11.5px; color: #999; margin-top: 2px; }
-    .content {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 40px 28px 80px;
+    .date-badge {
+      background: #fe2c55; color: #fff; font-weight: 700; font-size: 12px;
+      border-radius: 8px; padding: 6px 14px; line-height: 1.4;
+      text-align: center; white-space: nowrap; flex-shrink: 0;
     }
-    .section-header {
-      display: flex;
-      align-items: baseline;
-      gap: 10px;
-      margin-bottom: 24px;
+    .date-badge span { display: block; font-size: 10px; font-weight: 500; opacity: .8; }
+    .page-nav {
+      max-width: 1100px; margin: 0 auto; padding: 0 28px;
+      display: flex; gap: 2px; border-top: 1px solid #f0f0f0;
     }
+    .nav-a {
+      text-decoration: none; color: #999; font-size: 12.5px; font-weight: 500;
+      padding: 9px 14px; border-bottom: 2px solid transparent;
+      transition: color .15s, border-color .15s;
+    }
+    .nav-a:hover { color: #fe2c55; }
+    .nav-a.active { color: #fe2c55; border-bottom-color: #fe2c55; }
+    .content { max-width: 1100px; margin: 0 auto; padding: 36px 28px 80px; }
+    .section { margin-bottom: 52px; }
+    .section-header { display: flex; align-items: baseline; gap: 10px; margin-bottom: 16px; }
     .section-title { font-size: 19px; font-weight: 800; letter-spacing: -.4px; }
     .section-badge {
-      font-size: 10.5px;
-      font-weight: 600;
-      color: #999;
-      background: #ebebeb;
-      padding: 3px 8px;
-      border-radius: 20px;
-      text-transform: uppercase;
-      letter-spacing: .4px;
+      font-size: 10.5px; font-weight: 600; color: #999; background: #ebebeb;
+      padding: 3px 8px; border-radius: 20px; text-transform: uppercase; letter-spacing: .4px;
     }
     @media (max-width: 768px) {
-      .header-inner { padding: 12px 16px; }
+      .header-inner { gap: 12px; padding: 12px 16px; }
+      .date-badge { display: none; }
+      .page-nav { padding: 0 16px; }
       .content { padding: 24px 16px 60px; }
     }
 """
+
 
 def head(title):
     return f"""<!DOCTYPE html>
@@ -118,23 +138,22 @@ def head(title):
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">"""
 
-# ── INDEX ────────────────────────────────────────────────────────────────────
 
-def gen_index(dates):
-    cards_html = ""
-    for date, n_ideas, n_videos in dates:
-        dd, mm, yyyy = date.split("-")[2], date.split("-")[1], date.split("-")[0]
-        month_names = {"01":"янв","02":"фев","03":"мар","04":"апр","05":"мая",
-                       "06":"июн","07":"июл","08":"авг","09":"сен","10":"окт","11":"ноя","12":"дек"}
-        month = month_names[mm]
-        cards_html += f"""
+# ── site/index.html ────────────────────────────────────────────────────────────
+
+def gen_main_index(date_entries):
+    """date_entries: list of (date, n_ideas, n_videos)"""
+    cards = ''
+    for date, n_ideas, n_videos in sorted(date_entries, reverse=True):
+        yyyy, mm, dd = date.split('-')
+        cards += f"""
     <a class="report-card" href="./{date}/">
       <div class="card-top">
         <div class="card-flag">🎬</div>
         <div class="card-date-badge">{dd}.{mm}.{yyyy}<span>Дата отчёта</span></div>
       </div>
-      <div class="card-country">TikTok US · Видео-идеи</div>
-      <div class="card-period">8–14 мая 2026</div>
+      <div class="card-title-text">TikTok US · Видео-идеи</div>
+      <div class="card-period">{int(dd)} {MONTH_FULL[mm]} {yyyy}</div>
       <div class="card-stats">
         <div class="card-stat-item">
           <div class="card-stat-val">{n_ideas}</div>
@@ -148,22 +167,19 @@ def gen_index(dates):
       <div class="card-arrow">Смотреть идеи →</div>
     </a>"""
 
+    n = len(date_entries)
+    badge = f"{n} {'отчёт' if n==1 else 'отчёта' if n<5 else 'отчётов'}"
+
     return head("Video Ideas — Отчёты") + f"""
   <style>
-{SHARED_CSS}
+{COMMON_CSS}
     .report-grid {{
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-      gap: 16px;
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 16px;
     }}
     .report-card {{
-      background: #fff;
-      border-radius: 12px;
-      padding: 24px 28px;
+      background: #fff; border-radius: 12px; padding: 24px 28px;
       box-shadow: 0 1px 4px rgba(0,0,0,.07), 0 0 0 1px rgba(0,0,0,.05);
-      text-decoration: none;
-      color: inherit;
-      display: block;
+      text-decoration: none; color: inherit; display: block;
       transition: box-shadow .15s, transform .15s;
     }}
     .report-card:hover {{
@@ -171,48 +187,32 @@ def gen_index(dates):
       transform: translateY(-1px);
     }}
     .card-top {{
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-bottom: 16px;
+      display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px;
     }}
     .card-flag {{ font-size: 32px; line-height: 1; }}
     .card-date-badge {{
-      background: #fe2c55;
-      color: #fff;
-      font-weight: 700;
-      font-size: 11px;
-      border-radius: 7px;
-      padding: 4px 10px;
-      line-height: 1.5;
-      text-align: center;
+      background: #fe2c55; color: #fff; font-weight: 700; font-size: 11px;
+      border-radius: 7px; padding: 4px 10px; line-height: 1.5; text-align: center;
     }}
     .card-date-badge span {{ display: block; font-size: 9px; font-weight: 500; opacity: .8; }}
-    .card-country {{ font-size: 17px; font-weight: 800; letter-spacing: -.3px; margin-bottom: 4px; }}
+    .card-title-text {{ font-size: 17px; font-weight: 800; letter-spacing: -.3px; margin-bottom: 4px; }}
     .card-period {{ font-size: 12px; color: #888; font-weight: 500; margin-bottom: 16px; }}
     .card-stats {{
-      display: flex;
-      gap: 20px;
-      padding-top: 16px;
-      border-top: 1px solid #f2f2f2;
+      display: flex; gap: 20px; padding-top: 16px; border-top: 1px solid #f2f2f2;
     }}
     .card-stat-item {{ flex: 1; }}
     .card-stat-val {{ font-size: 16px; font-weight: 800; letter-spacing: -.3px; }}
     .card-stat-lbl {{ font-size: 10px; font-weight: 500; color: #aaa; text-transform: uppercase; letter-spacing: .3px; margin-top: 1px; }}
     .card-arrow {{ display: flex; align-items: center; justify-content: flex-end; gap: 5px; margin-top: 16px; font-size: 12px; font-weight: 600; color: #fe2c55; }}
-    @media (max-width: 768px) {{
-      .report-grid {{ grid-template-columns: 1fr; }}
-    }}
+    @media (max-width: 768px) {{ .report-grid {{ grid-template-columns: 1fr; }} }}
   </style>
 </head>
 <body>
-
 <div class="page-header">
   <div class="header-inner">
     <a class="brand" href="./">
       <span class="brand-tik">Tik</span><span class="brand-tok">Tok</span>
-      <span class="brand-dot">·</span>
-      <span class="brand-cc">Video Ideas</span>
+      <span class="brand-dot">·</span><span class="brand-cc">Video Ideas</span>
     </a>
     <div class="header-text">
       <div class="page-title">Архив видео-идей</div>
@@ -220,261 +220,285 @@ def gen_index(dates):
     </div>
   </div>
 </div>
-
 <div class="content">
   <div class="section-header">
     <h2 class="section-title">Отчёты</h2>
-    <span class="section-badge">{len(dates)} отчёт</span>
+    <span class="section-badge">{badge}</span>
   </div>
-  <div class="report-grid">
-{cards_html}
+  <div class="report-grid">{cards}
   </div>
 </div>
-
 </body>
 </html>"""
 
 
-# ── REPORT PAGE ───────────────────────────────────────────────────────────────
+# ── site/{date}/index.html ────────────────────────────────────────────────────
 
-def gen_report(date, ideas, results_base):
-    dd, mm, yyyy = date.split("-")[2], date.split("-")[1], date.split("-")[0]
-    month_names_full = {"01":"января","02":"февраля","03":"марта","04":"апреля","05":"мая",
-                        "06":"июня","07":"июля","08":"августа","09":"сентября","10":"октября","11":"ноября","12":"декабря"}
-    date_label = f"{int(dd)} {month_names_full[mm]} {yyyy}"
+def gen_date_index(date, ideas_with_media):
+    """ideas_with_media: list of (idea_dict, frame_url, video_url)"""
+    yyyy, mm, dd = date.split('-')
 
-    n_videos = sum(1 for idea in ideas if (ROOT / "results" / date / "01750ad3" / f"{idea['name']}_video.mp4").exists())
+    rows = ''
+    for i, (idea, frame_url, video_url) in enumerate(ideas_with_media, 1):
+        thumb = f'<img class="thumb-img" src="{frame_url}" alt="#{idea["hashtag"]}">' if frame_url else '<div class="thumb-placeholder"></div>'
+        rows += f"""
+      <tr>
+        <td class="thumb-cell">{thumb}</td>
+        <td><div class="td-inner">
+          <span class="rank-num">{i}</span>
+          <span style="width:16px"></span>
+          <a class="htag-link" href="./{idea['slug']}/"><span class="htag-hash">#</span>{html.escape(idea['slug'])}</a>
+        </div></td>
+        <td class="td-title">{html.escape(idea['title'])}</td>
+        <td class="td-arrow">→</td>
+      </tr>"""
 
-    cards_html = ""
-    for idea in ideas:
-        frame_rel = f"{results_base}/{idea['name']}_frame.png"
-        video_rel = f"{results_base}/{idea['name']}_video.mp4"
-        has_video = (ROOT / "results" / date / "01750ad3" / f"{idea['name']}_video.mp4").exists()
+    n = len(ideas_with_media)
+    n_videos = sum(1 for _, _, v in ideas_with_media if v)
 
-        video_block = ""
-        if has_video:
-            video_block = f"""
-        <div class="card-video-wrap">
-          <video controls muted loop playsinline
-                 poster="{frame_rel}"
-                 style="width:100%;aspect-ratio:9/16;object-fit:cover;border-radius:10px;display:block;">
-            <source src="{video_rel}" type="video/mp4">
-          </video>
-        </div>"""
-        else:
-            video_block = f"""
-        <div class="card-video-wrap">
-          <div class="card-no-video">
-            <img src="{frame_rel}" alt="First frame" style="width:100%;aspect-ratio:9/16;object-fit:cover;border-radius:10px;display:block;">
-            <div class="no-video-badge">Видео недоступно</div>
-          </div>
-        </div>"""
-
-        prompt_escaped = html.escape(idea['video_prompt'])
-        desc_escaped = html.escape(idea['desc'])
-
-        cards_html += f"""
-    <div class="idea-card">
-      {video_block}
-      <div class="card-body">
-        <div class="card-meta">
-          <span class="hashtag-pill">#{html.escape(idea['hashtag'])}</span>
-        </div>
-        <h3 class="card-title">{html.escape(idea['title'])}</h3>
-        <p class="card-desc">{desc_escaped}</p>
-        <details class="prompt-details">
-          <summary>Промпт для видео</summary>
-          <pre class="prompt-text">{prompt_escaped}</pre>
-        </details>
-      </div>
-    </div>"""
-
-    return head(f"Video Ideas — {date_label}") + f"""
+    return head(f"Video Ideas — {int(dd)} {MONTH_FULL[mm]} {yyyy}") + f"""
   <style>
-{SHARED_CSS}
-    .page-nav {{
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 10px 28px;
-      font-size: 12px;
-    }}
-    .page-nav a {{ color: #888; text-decoration: none; }}
-    .page-nav a:hover {{ color: #fe2c55; }}
-    .date-badge {{
-      background: #fe2c55;
-      color: #fff;
-      font-weight: 700;
-      font-size: 12px;
-      border-radius: 8px;
-      padding: 6px 14px;
-      line-height: 1.4;
-      text-align: center;
-      white-space: nowrap;
-      flex-shrink: 0;
-    }}
-    .date-badge span {{ display: block; font-size: 10px; font-weight: 500; opacity: .8; }}
-    .ideas-grid {{
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 24px;
-    }}
-    .idea-card {{
-      background: #fff;
-      border-radius: 14px;
+{COMMON_CSS}
+    .table-wrap {{
+      background: #fff; border-radius: 12px; overflow: hidden;
       box-shadow: 0 1px 4px rgba(0,0,0,.07), 0 0 0 1px rgba(0,0,0,.05);
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
     }}
-    .card-video-wrap {{
-      position: relative;
-      background: #000;
+    .ht-table {{ width: 100%; border-collapse: collapse; }}
+    .ht-table thead th {{
+      text-align: left; padding: 10px 16px; font-size: 10.5px; font-weight: 600;
+      text-transform: uppercase; letter-spacing: .5px; color: #aaa;
+      background: #f9f9f9; border-bottom: 1px solid #ebebeb;
     }}
-    .card-no-video {{ position: relative; }}
-    .no-video-badge {{
-      position: absolute;
-      bottom: 10px;
-      left: 50%;
-      transform: translateX(-50%);
-      background: rgba(0,0,0,.6);
-      color: #fff;
-      font-size: 11px;
-      font-weight: 600;
-      padding: 4px 10px;
-      border-radius: 20px;
-      white-space: nowrap;
-    }}
-    .card-body {{
-      padding: 18px 20px 20px;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      flex: 1;
-    }}
-    .card-meta {{ display: flex; align-items: center; gap: 8px; }}
-    .hashtag-pill {{
-      background: #fe2c55;
-      color: #fff;
-      font-size: 11px;
-      font-weight: 700;
-      padding: 3px 10px;
-      border-radius: 20px;
-      letter-spacing: .2px;
-    }}
-    .card-title {{
-      font-size: 16px;
-      font-weight: 800;
-      letter-spacing: -.3px;
-      line-height: 1.3;
-    }}
-    .card-desc {{
-      font-size: 13px;
-      color: #444;
-      line-height: 1.6;
-    }}
-    .prompt-details {{
-      margin-top: auto;
-      border-top: 1px solid #f0f0f0;
-      padding-top: 12px;
-    }}
-    .prompt-details summary {{
-      font-size: 12px;
-      font-weight: 600;
-      color: #888;
-      cursor: pointer;
-      user-select: none;
-      list-style: none;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }}
-    .prompt-details summary::-webkit-details-marker {{ display: none; }}
-    .prompt-details summary::before {{
-      content: '▶';
-      font-size: 9px;
-      transition: transform .15s;
-    }}
-    .prompt-details[open] summary::before {{ transform: rotate(90deg); }}
-    .prompt-details summary:hover {{ color: #fe2c55; }}
-    .prompt-text {{
-      margin-top: 10px;
-      font-family: 'SF Mono', 'Fira Code', monospace;
-      font-size: 11px;
-      line-height: 1.7;
-      color: #555;
-      background: #f8f8f8;
-      border: 1px solid #ebebeb;
-      border-radius: 8px;
-      padding: 12px 14px;
-      white-space: pre-wrap;
-      word-break: break-word;
-      max-height: 260px;
-      overflow-y: auto;
-    }}
-    @media (max-width: 768px) {{
-      .ideas-grid {{ grid-template-columns: 1fr; }}
-      .page-nav {{ padding: 10px 16px; }}
-    }}
+    .ht-table tbody td {{ padding: 0; border-bottom: 1px solid #f2f2f2; vertical-align: middle; }}
+    .ht-table tbody tr:last-child td {{ border-bottom: none; }}
+    .ht-table tbody tr:hover td {{ background: #fafbff; }}
+    .td-inner {{ padding: 12px 16px; display: flex; align-items: center; }}
+    .rank-num {{ font-weight: 800; font-size: 14px; display: inline-block; min-width: 24px; text-align: right; color: #ccc; }}
+    .thumb-cell {{ padding: 8px 10px 8px 16px !important; }}
+    .thumb-img {{ width: 44px; height: 78px; object-fit: cover; border-radius: 6px; display: block; background: #eee; }}
+    .thumb-placeholder {{ width: 44px; height: 78px; border-radius: 6px; background: #eee; }}
+    .htag-link {{ font-weight: 700; font-size: 14px; color: #111; text-decoration: none; display: inline-flex; align-items: center; gap: 1px; }}
+    .htag-link:hover {{ color: #fe2c55; }}
+    .htag-hash {{ color: #bbb; font-weight: 400; }}
+    .td-title {{ font-size: 13px; color: #555; padding-left: 12px; }}
+    .td-arrow {{ color: #ddd; font-size: 13px; padding: 12px 20px 12px 8px !important; text-align: right; }}
+    .ht-table tbody tr:hover .td-arrow {{ color: #fe2c55; }}
+    @media (max-width: 520px) {{ .td-title {{ display: none; }} }}
   </style>
 </head>
 <body>
-
 <div class="page-header">
   <div class="header-inner">
     <a class="brand" href="../">
       <span class="brand-tik">Tik</span><span class="brand-tok">Tok</span>
-      <span class="brand-dot">·</span>
-      <span class="brand-cc">Video Ideas</span>
+      <span class="brand-dot">·</span><span class="brand-cc">Video Ideas</span>
     </a>
     <div class="header-text">
-      <div class="page-title">Видео-идеи · {date_label}</div>
+      <div class="page-title">Видео-идеи · {int(dd)} {MONTH_FULL[mm]} {yyyy}</div>
       <div class="page-sub">AI-сгенерированные эффекты по трендовым хештегам TikTok US</div>
     </div>
     <div class="date-badge">{dd}.{mm}.{yyyy}<span>Дата отчёта</span></div>
   </div>
+  <nav class="page-nav">
+    <a href="../" class="nav-a">← Все отчёты</a>
+    <a href="#ideas" class="nav-a active">Идеи</a>
+  </nav>
 </div>
-<div class="page-nav"><a href="../">← Все отчёты</a></div>
-
 <div class="content">
-  <div class="section-header">
-    <h2 class="section-title">Идеи</h2>
-    <span class="section-badge">{len(ideas)} идей · {n_videos} видео</span>
-  </div>
-  <div class="ideas-grid">
-{cards_html}
-  </div>
+  <section id="ideas" class="section">
+    <div class="section-header">
+      <h2 class="section-title">Идеи</h2>
+      <span class="section-badge">{n} {'идея' if n==1 else 'идеи' if n<5 else 'идей'} · {n_videos} видео</span>
+    </div>
+    <div class="table-wrap">
+      <table class="ht-table">
+        <thead><tr>
+          <th style="width:68px"></th>
+          <th>Хештег</th>
+          <th>Идея</th>
+          <th style="width:48px"></th>
+        </tr></thead>
+        <tbody>{rows}
+        </tbody>
+      </table>
+    </div>
+  </section>
 </div>
-
 </body>
 </html>"""
 
 
-# ── MAIN ──────────────────────────────────────────────────────────────────────
+# ── site/{date}/{slug}/index.html ─────────────────────────────────────────────
 
-DATE = "2026-05-14"
-SKIP = {"lakers_nobrand"}
+IDEA_CSS = """
+    .idea-lead {{
+      background: #fff; border-radius: 12px; padding: 36px 40px 32px;
+      box-shadow: 0 1px 4px rgba(0,0,0,.07), 0 0 0 1px rgba(0,0,0,.05);
+      margin-bottom: 40px;
+    }}
+    .idea-hashtag {{ font-size: 13px; font-weight: 700; color: #fe2c55; margin-bottom: 8px; }}
+    .idea-title {{ font-size: 26px; font-weight: 800; letter-spacing: -.6px; line-height: 1.25; margin-bottom: 16px; }}
+    .idea-desc {{ font-size: 14px; color: #444; line-height: 1.75; max-width: 720px; }}
+    .media-grid {{
+      display: grid; grid-template-columns: 340px 1fr; gap: 28px; align-items: start;
+    }}
+    .video-player {{
+      width: 100%; aspect-ratio: 9/16; object-fit: cover; border-radius: 12px;
+      display: block; box-shadow: 0 2px 16px rgba(0,0,0,.14);
+    }}
+    .frame-img {{
+      width: 100%; aspect-ratio: 9/16; object-fit: cover; border-radius: 12px;
+      display: block; box-shadow: 0 2px 16px rgba(0,0,0,.14);
+    }}
+    .prompts-col {{ display: flex; flex-direction: column; gap: 12px; }}
+    .prompt-block {{
+      background: #fff; border-radius: 10px;
+      box-shadow: 0 1px 4px rgba(0,0,0,.07), 0 0 0 1px rgba(0,0,0,.05); overflow: hidden;
+    }}
+    .prompt-block summary {{
+      padding: 14px 18px; font-size: 13px; font-weight: 700; cursor: pointer;
+      user-select: none; list-style: none; display: flex; align-items: center; gap: 8px; color: #333;
+    }}
+    .prompt-block summary::-webkit-details-marker {{ display: none; }}
+    .prompt-block summary::before {{ content: '▶'; font-size: 8px; color: #bbb; transition: transform .15s; flex-shrink: 0; }}
+    .prompt-block[open] summary::before {{ transform: rotate(90deg); }}
+    .prompt-block summary:hover {{ color: #fe2c55; }}
+    .prompt-block summary:hover::before {{ color: #fe2c55; }}
+    .prompt-label {{ font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: .5px; color: #bbb; margin-left: auto; }}
+    .prompt-text {{
+      padding: 14px 18px 16px; font-family: 'SF Mono','Fira Code','Menlo',monospace;
+      font-size: 11.5px; line-height: 1.7; color: #555; background: #f9f9f9;
+      border-top: 1px solid #f0f0f0; white-space: pre-wrap; word-break: break-word;
+      max-height: 320px; overflow-y: auto;
+    }}
+    @media (max-width: 900px) {{
+      .media-grid {{ grid-template-columns: 1fr; }}
+      .video-col {{ max-width: 360px; margin: 0 auto; }}
+      .idea-lead {{ padding: 24px 22px 22px; }}
+    }}
+    @media (max-width: 520px) {{ .idea-title {{ font-size: 22px; }} }}
+"""
 
-ideas_dir = IDEAS_DIR / DATE
-results_base_rel = f"../../results/{DATE}/01750ad3"
+def gen_idea_page(date, idea, frame_url, video_url):
+    yyyy, mm, dd = date.split('-')
+    slug = idea['slug']
 
-idea_files = sorted(
-    f for f in ideas_dir.glob("*.md")
-    if f.stem not in SKIP and not f.stem.endswith("_pipeline")
-)
-ideas = [parse_idea(f) for f in idea_files]
+    if video_url and frame_url:
+        media_html = f'<video class="video-player" controls muted loop playsinline poster="{frame_url}"><source src="{video_url}" type="video/mp4"></video>'
+    elif frame_url:
+        media_html = f'<img class="frame-img" src="{frame_url}" alt="#{slug}">'
+    else:
+        media_html = '<div style="aspect-ratio:9/16;background:#eee;border-radius:12px;"></div>'
 
-results_dir = ROOT / "results" / DATE / "01750ad3"
-n_videos = sum(1 for idea in ideas if (results_dir / f"{idea['name']}_video.mp4").exists())
+    return head(f"#{slug} — {html.escape(idea['title'])} · Video Ideas") + f"""
+  <style>
+{COMMON_CSS}
+{IDEA_CSS}
+  </style>
+</head>
+<body>
+<div class="page-header">
+  <div class="header-inner">
+    <a class="brand" href="../../">
+      <span class="brand-tik">Tik</span><span class="brand-tok">Tok</span>
+      <span class="brand-dot">·</span><span class="brand-cc">Video Ideas</span>
+    </a>
+    <div class="header-text">
+      <div class="page-title">#{html.escape(slug)}</div>
+      <div class="page-sub">Видео-идея · {int(dd)} {MONTH_FULL[mm]} {yyyy}</div>
+    </div>
+    <div class="date-badge">{dd}.{mm}.{yyyy}<span>Дата</span></div>
+  </div>
+  <nav class="page-nav">
+    <a href="../../" class="nav-a">← Все отчёты</a>
+    <a href="../" class="nav-a">← {int(dd)} {MONTH_SHORT[mm]} {yyyy}</a>
+    <a href="#" class="nav-a active">#{html.escape(slug)}</a>
+  </nav>
+</div>
+<div class="content">
+  <div class="idea-lead">
+    <div class="idea-hashtag">#{html.escape(slug)}</div>
+    <h1 class="idea-title">{html.escape(idea['title'])}</h1>
+    <p class="idea-desc">{html.escape(idea['desc'])}</p>
+  </div>
+  <section class="section">
+    <div class="section-header">
+      <h2 class="section-title">Видео</h2>
+      <span class="section-badge">Пример генерации</span>
+    </div>
+    <div class="media-grid">
+      <div class="video-col">{media_html}</div>
+      <div class="prompts-col">
+        <details class="prompt-block">
+          <summary>Промпт для первого кадра <span class="prompt-label">GPT Image 2</span></summary>
+          <pre class="prompt-text">{html.escape(idea['first_frame_prompt'])}</pre>
+        </details>
+        <details class="prompt-block">
+          <summary>Промпт для видео <span class="prompt-label">Kling · Grok</span></summary>
+          <pre class="prompt-text">{html.escape(idea['video_prompt'])}</pre>
+        </details>
+      </div>
+    </div>
+  </section>
+</div>
+</body>
+</html>"""
 
-# Write index.html
-index_html = gen_index([(DATE, len(ideas), n_videos)])
-(SITE / "index.html").write_text(index_html)
-print(f"wrote site/index.html")
 
-# Write report page
-report_dir = SITE / DATE
-report_dir.mkdir(exist_ok=True)
-report_html = gen_report(DATE, ideas, results_base_rel)
-(report_dir / "index.html").write_text(report_html)
-print(f"wrote site/{DATE}/index.html")
-print(f"  {len(ideas)} ideas, {n_videos} videos")
+# ── Main ──────────────────────────────────────────────────────────────────────
+
+def build_date(date):
+    ideas_dir = IDEAS_DIR / date
+    skip = {'_pipeline', '_nobrand'}
+
+    md_files = sorted(
+        f for f in ideas_dir.glob('*.md')
+        if not any(s in f.stem for s in skip)
+    )
+    ideas = [parse_idea(f) for f in md_files]
+
+    ideas_with_media = []
+    for idea in ideas:
+        frame, video = get_media(idea['slug'], date)
+        ideas_with_media.append((idea, frame, video))
+
+    date_dir = SITE / date
+    date_dir.mkdir(exist_ok=True)
+
+    # Date index page
+    (date_dir / 'index.html').write_text(gen_date_index(date, ideas_with_media))
+    print(f'  wrote {date}/index.html  ({len(ideas)} ideas)')
+
+    # Individual idea pages
+    for idea, frame, video in ideas_with_media:
+        slug_dir = date_dir / idea['slug']
+        slug_dir.mkdir(exist_ok=True)
+        (slug_dir / 'index.html').write_text(gen_idea_page(date, idea, frame, video))
+        print(f'  wrote {date}/{idea["slug"]}/index.html')
+
+    return [(idea, frame, video) for idea, frame, video in ideas_with_media]
+
+
+def build_all():
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--date', help='Rebuild only this date (YYYY-MM-DD)')
+    args = parser.parse_args()
+
+    dates = [args.date] if args.date else sorted(
+        d.name for d in IDEAS_DIR.iterdir() if d.is_dir() and re.match(r'\d{4}-\d{2}-\d{2}', d.name)
+    )
+
+    all_entries = []
+    for date in dates:
+        print(f'\nBuilding {date}...')
+        result = build_date(date)
+        n_videos = sum(1 for _, _, v in result if v)
+        all_entries.append((date, len(result), n_videos))
+
+    # Main index
+    (SITE / 'index.html').write_text(gen_main_index(all_entries))
+    print(f'\nwrote index.html  ({len(all_entries)} dates)')
+
+
+if __name__ == '__main__':
+    build_all()
