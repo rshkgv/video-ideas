@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>#kevinhart — Тебя зажарили · Video Ideas</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      background: #f4f4f5;
+      color: #111;
+      font-size: 14px;
+      line-height: 1.5;
+    }
+    .page-header {
+      background: #fff;
+      border-bottom: 1px solid #e4e4e7;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 1px 8px rgba(0,0,0,.05);
+    }
+    .header-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 14px 28px;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+    .brand {
+      font-size: 18px;
+      font-weight: 800;
+      letter-spacing: -.5px;
+      color: #111;
+      white-space: nowrap;
+      user-select: none;
+      text-decoration: none;
+    }
+    .brand-tik { color: #fe2c55; }
+    .brand-tok { color: #010101; }
+    .brand-dot { color: #d1d1d1; margin: 0 6px; font-weight: 300; }
+    .brand-cc  { color: #888; font-size: 12px; font-weight: 500; }
+    .header-text { flex: 1; min-width: 0; }
+    .page-title { font-size: 15px; font-weight: 700; letter-spacing: -.2px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .page-sub { font-size: 11.5px; color: #999; margin-top: 2px; }
+    .date-badge {
+      background: #fe2c55; color: #fff; font-weight: 700; font-size: 12px;
+      border-radius: 8px; padding: 6px 14px; line-height: 1.4;
+      text-align: center; white-space: nowrap; flex-shrink: 0;
+    }
+    .date-badge span { display: block; font-size: 10px; font-weight: 500; opacity: .8; }
+    .page-nav {
+      max-width: 1100px; margin: 0 auto; padding: 0 28px;
+      display: flex; gap: 2px; border-top: 1px solid #f0f0f0;
+    }
+    .nav-a {
+      text-decoration: none; color: #999; font-size: 12.5px; font-weight: 500;
+      padding: 9px 14px; border-bottom: 2px solid transparent;
+      transition: color .15s, border-color .15s;
+    }
+    .nav-a:hover { color: #fe2c55; }
+    .nav-a.active { color: #fe2c55; border-bottom-color: #fe2c55; }
+    .content { max-width: 1100px; margin: 0 auto; padding: 36px 28px 80px; }
+    .section { margin-bottom: 52px; }
+    .section-header { display: flex; align-items: baseline; gap: 10px; margin-bottom: 16px; }
+    .section-title { font-size: 19px; font-weight: 800; letter-spacing: -.4px; }
+    .section-badge {
+      font-size: 10.5px; font-weight: 600; color: #999; background: #ebebeb;
+      padding: 3px 8px; border-radius: 20px; text-transform: uppercase; letter-spacing: .4px;
+    }
+    @media (max-width: 768px) {
+      .header-inner { gap: 12px; padding: 12px 16px; }
+      .date-badge { display: none; }
+      .page-nav { padding: 0 16px; }
+      .content { padding: 24px 16px 60px; }
+    }
+
+    .idea-lead {
+      background: #fff; border-radius: 12px; padding: 36px 40px 32px;
+      box-shadow: 0 1px 4px rgba(0,0,0,.07), 0 0 0 1px rgba(0,0,0,.05);
+      margin-bottom: 40px;
+    }
+    .idea-hashtag {
+      font-size: 13px; font-weight: 700; color: #fe2c55; margin-bottom: 8px;
+      letter-spacing: .2px;
+    }
+    .idea-title {
+      font-size: 26px; font-weight: 800; letter-spacing: -.6px;
+      line-height: 1.25; margin-bottom: 16px;
+    }
+    .idea-desc {
+      font-size: 14px; color: #444; line-height: 1.75; max-width: 720px;
+    }
+
+    .media-grid {
+      display: grid;
+      grid-template-columns: 340px 1fr;
+      gap: 28px;
+      align-items: start;
+    }
+    .video-col {}
+    .video-player {
+      width: 100%; aspect-ratio: 9/16; object-fit: cover;
+      border-radius: 12px; display: block;
+      box-shadow: 0 2px 16px rgba(0,0,0,.14);
+    }
+    .frame-img {
+      width: 100%; aspect-ratio: 9/16; object-fit: cover;
+      border-radius: 12px; display: block;
+      box-shadow: 0 2px 16px rgba(0,0,0,.14);
+    }
+    .prompts-col {
+      display: flex; flex-direction: column; gap: 12px;
+    }
+    .prompt-block {
+      background: #fff; border-radius: 10px;
+      box-shadow: 0 1px 4px rgba(0,0,0,.07), 0 0 0 1px rgba(0,0,0,.05);
+      overflow: hidden;
+    }
+    .prompt-block summary {
+      padding: 14px 18px; font-size: 13px; font-weight: 700; cursor: pointer;
+      user-select: none; list-style: none; display: flex; align-items: center;
+      gap: 8px; color: #333;
+    }
+    .prompt-block summary::-webkit-details-marker { display: none; }
+    .prompt-block summary::before {
+      content: '▶'; font-size: 8px; color: #bbb; transition: transform .15s;
+      flex-shrink: 0;
+    }
+    .prompt-block[open] summary::before { transform: rotate(90deg); }
+    .prompt-block summary:hover { color: #fe2c55; }
+    .prompt-block summary:hover::before { color: #fe2c55; }
+    .prompt-label {
+      font-size: 10px; font-weight: 600; text-transform: uppercase;
+      letter-spacing: .5px; color: #bbb; margin-left: auto;
+    }
+    .prompt-text {
+      padding: 0 18px 16px;
+      font-family: 'SF Mono', 'Fira Code', 'Menlo', monospace;
+      font-size: 11.5px; line-height: 1.7; color: #555;
+      background: #f9f9f9; border-top: 1px solid #f0f0f0;
+      white-space: pre-wrap; word-break: break-word;
+      max-height: 320px; overflow-y: auto;
+      padding-top: 14px;
+    }
+    @media (max-width: 900px) {
+      .media-grid { grid-template-columns: 1fr; }
+      .video-col { max-width: 360px; margin: 0 auto; }
+      .idea-lead { padding: 24px 22px 22px; }
+    }
+    @media (max-width: 520px) {
+      .idea-title { font-size: 22px; }
+    }
+</style>
+</head>
+<body>
+
+<div class="page-header">
+  <div class="header-inner">
+    <a class="brand" href="../../">
+      <span class="brand-tik">Tik</span><span class="brand-tok">Tok</span>
+      <span class="brand-dot">·</span>
+      <span class="brand-cc">Video Ideas</span>
+    </a>
+    <div class="header-text">
+      <div class="page-title">#kevinhart</div>
+      <div class="page-sub">Видео-идея · 14 мая 2026</div>
+    </div>
+    <div class="date-badge">14.05.2026<span>Дата</span></div>
+  </div>
+  <nav class="page-nav">
+    <a href="../../" class="nav-a">← Все отчёты</a>
+    <a href="../" class="nav-a">← 14 мая 2026</a>
+    <a href="#" class="nav-a active">#kevinhart</a>
+  </nav>
+</div>
+
+<div class="content">
+
+  <div class="idea-lead">
+    <div class="idea-hashtag">#kevinhart</div>
+    <h1 class="idea-title">Тебя зажарили</h1>
+    <p class="idea-desc">Зал ростера — красные бархатные кресла, звёздная аудитория, микрофоны на сцене. Пользователь сидит в кресле почётного «ростируемого» в центре сцены. Кевин Харт стоит сбоку с микрофоном, хохочет и указывает на пользователя. Камера стоит статично. Зал взрывается смехом, летят хлопушки. В финале на экране появляется оверлей в стиле шоу Comedy Central: «ROASTED 🔥» с огненным шрифтом и «#KevinHart Roast».</p>
+  </div>
+
+  <section class="section">
+    <div class="section-header">
+      <h2 class="section-title">Видео</h2>
+      <span class="section-badge">Пример генерации · фото 01750ad3</span>
+    </div>
+    <div class="media-grid">
+      <div class="video-col">
+          <video class="video-player" controls muted loop playsinline
+                 poster="https://temp-images.ws.pho.to/7e4a0eb0dfb015d969e5ec37d00cfd4ea3eba955.png">
+            <source src="https://temp-images.ws.pho.to/407f6daf1b544e7c9956224e98c36834d246e840.mp4" type="video/mp4">
+          </video>
+        </div>
+      <div class="prompts-col">
+        <details class="prompt-block">
+          <summary>Промпт для первого кадра <span class="prompt-label">GPT Image 2</span></summary>
+          <pre class="prompt-text">Using the uploaded photo as an exact face and identity reference.
+Generate a cinematic still frame: a medium shot of a comedy roast stage setup.
+The stage is dressed like a celebrity roast: a central red velvet throne-style chair in the spotlight, a long dais table with microphones to one side, deep red and gold curtains in the background, Comedy Central-style roast banners (flames motif, dark red and black palette).
+The person from the reference photo is seated in the throne chair center-stage — the roastee of honor. They wear a smart casual outfit (blazer or button-up). Their expression is a good-natured half-smile — mock-dignity, slightly nervous, playing along.
+To the side (partially in frame), a silhouette of a shorter figure holding a microphone stands laughing — implied to be Kevin Hart, but only partially visible, not dominating the frame.
+The person&#x27;s face, hair, skin tone, and identity must be preserved exactly from the reference photo.
+Lighting: dramatic theater spotlight on the throne chair; warm red-amber fill from stage lights; slight haze from atmospheric fog machines; blue rim-light from house lighting.
+Color grading: rich reds, deep blacks, warm golds — Comedy Central roast aesthetic.
+Style: photorealistic, live stand-up TV production, as if a broadcast camera caught the roastee in the hot seat.
+No overlay graphics in this frame — they will appear later.
+Aspect ratio: 9:16 vertical (TikTok format).</pre>
+        </details>
+        <details class="prompt-block">
+          <summary>Промпт для видео <span class="prompt-label">Kling / Grok</span></summary>
+          <pre class="prompt-text">Create a short cinematic video based on the uploaded image.
+The scene is a celebrity comedy roast stage. The person from the image sits in the roastee throne at center-stage while a comedian (implied Kevin Hart) works the microphone beside them.
+
+Camera and motion structure:
+The camera is static throughout — a locked broadcast-style medium shot:
+1. FRAMES 0–20%: The person sits in the throne with composed, mock-dignified expression. The implied comedian moves at the edge of frame, animated. The audience is a wall of laughter (implied through the person&#x27;s subtle reactions).
+2. FRAMES 20–55%: The comedian delivers the punchline. The person&#x27;s composure cracks — first a suppressed smile, then genuine uncontrollable laughter. They lean forward slightly, hand on their knee, shaking with laughter. Stage lights pulse once in a comedy-rimshot beat.
+3. FRAMES 55–80%: The audience reaction peaks. Colorful confetti and streamers fire from stage cannons. The person throws their head back in full laughter — arms up in theatrical surrender. The comedian points at them triumphantly.
+4. FRAMES 80–100%: The laughter continues. Two overlay graphics slam onto the screen with an impact effect:
+   — Center screen, bold: &quot;ROASTED 🔥&quot; in oversized fiery orange font with a flame particle animation around the letters
+   — Lower third: &quot;#KevinHart Roast · May 2026&quot; in clean broadcast sans-serif
+   Both overlays stay until the last frame.
+
+Character:
+Preserve the person&#x27;s face, hair, skin tone, and identity exactly from the source image throughout the entire video. Do not alter their appearance.
+Character motion arc: mock-dignified composure → suppressed smile → full laughter (the moment the composure breaks is the hero moment). The person never looks distressed — this is joyful, comedic, celebratory.
+
+Atmosphere and detail:
+- Stage haze throughout — atmospheric fog giving depth to the spotlight beams
+- Confetti and streamers: red, gold, and orange — firing at FRAME 55%
+- Audience visible in background blur — laughter motion implied by slight blur movement
+- Stage lights: a single rimshot-flash pulse at FRAME 20% (the punchline beat)
+- Roast banners visible in background: &quot;🔥 ROAST 🔥&quot; flame motif
+
+Style:
+Comedy Central roast television. Warm, theatrical, high-energy. The static camera creates the feeling of a broadcast close-up on the roastee. The color palette is deep red, amber, and black with punchy orange for the fire overlay. The tone is pure celebration — being roasted is an honor.
+
+Restrictions:
+- Do not change the person&#x27;s appearance, face, clothing, or identity at any point
+- The &quot;ROASTED 🔥&quot; graphic and subtitle appear only after FRAME 80% and must remain fully visible until the last frame
+- The overlay must slam in with an impact effect — not a slow fade
+- No mean-spirited, aggressive, or distressed expressions on the person — laughter only
+- No speech bubbles or captions quoting jokes
+- No social-media UI overlays
+- No text other than the specified overlay graphics
+- The person&#x27;s throne chair position must remain constant throughout — no camera movement
+- No actual fire, only the overlay flame particle graphics
+- Do not render the comedian as a clearly detailed face — they remain a silhouette or out-of-focus figure at the edge of frame</pre>
+        </details>
+      </div>
+    </div>
+  </section>
+
+</div>
+</body>
+</html>
