@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Video Ideas — 14 мая 2026</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      background: #f4f4f5;
+      color: #111;
+      font-size: 14px;
+      line-height: 1.5;
+    }
+    .page-header {
+      background: #fff;
+      border-bottom: 1px solid #e4e4e7;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 1px 8px rgba(0,0,0,.05);
+    }
+    .header-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 14px 28px;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+    .brand {
+      font-size: 18px;
+      font-weight: 800;
+      letter-spacing: -.5px;
+      color: #111;
+      white-space: nowrap;
+      user-select: none;
+      text-decoration: none;
+    }
+    .brand-tik { color: #fe2c55; }
+    .brand-tok { color: #010101; }
+    .brand-dot { color: #d1d1d1; margin: 0 6px; font-weight: 300; }
+    .brand-cc  { color: #888; font-size: 12px; font-weight: 500; }
+    .header-text { flex: 1; min-width: 0; }
+    .page-title { font-size: 15px; font-weight: 700; letter-spacing: -.2px; }
+    .page-sub { font-size: 11.5px; color: #999; margin-top: 2px; }
+    .content {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 40px 28px 80px;
+    }
+    .section-header {
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      margin-bottom: 24px;
+    }
+    .section-title { font-size: 19px; font-weight: 800; letter-spacing: -.4px; }
+    .section-badge {
+      font-size: 10.5px;
+      font-weight: 600;
+      color: #999;
+      background: #ebebeb;
+      padding: 3px 8px;
+      border-radius: 20px;
+      text-transform: uppercase;
+      letter-spacing: .4px;
+    }
+    @media (max-width: 768px) {
+      .header-inner { padding: 12px 16px; }
+      .content { padding: 24px 16px 60px; }
+    }
+
+    .page-nav {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 10px 28px;
+      font-size: 12px;
+    }
+    .page-nav a { color: #888; text-decoration: none; }
+    .page-nav a:hover { color: #fe2c55; }
+    .date-badge {
+      background: #fe2c55;
+      color: #fff;
+      font-weight: 700;
+      font-size: 12px;
+      border-radius: 8px;
+      padding: 6px 14px;
+      line-height: 1.4;
+      text-align: center;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+    .date-badge span { display: block; font-size: 10px; font-weight: 500; opacity: .8; }
+    .ideas-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+    }
+    .idea-card {
+      background: #fff;
+      border-radius: 14px;
+      box-shadow: 0 1px 4px rgba(0,0,0,.07), 0 0 0 1px rgba(0,0,0,.05);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+    .card-video-wrap {
+      position: relative;
+      background: #000;
+    }
+    .card-no-video { position: relative; }
+    .no-video-badge {
+      position: absolute;
+      bottom: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(0,0,0,.6);
+      color: #fff;
+      font-size: 11px;
+      font-weight: 600;
+      padding: 4px 10px;
+      border-radius: 20px;
+      white-space: nowrap;
+    }
+    .card-body {
+      padding: 18px 20px 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      flex: 1;
+    }
+    .card-meta { display: flex; align-items: center; gap: 8px; }
+    .hashtag-pill {
+      background: #fe2c55;
+      color: #fff;
+      font-size: 11px;
+      font-weight: 700;
+      padding: 3px 10px;
+      border-radius: 20px;
+      letter-spacing: .2px;
+    }
+    .card-title {
+      font-size: 16px;
+      font-weight: 800;
+      letter-spacing: -.3px;
+      line-height: 1.3;
+    }
+    .card-desc {
+      font-size: 13px;
+      color: #444;
+      line-height: 1.6;
+    }
+    .prompt-details {
+      margin-top: auto;
+      border-top: 1px solid #f0f0f0;
+      padding-top: 12px;
+    }
+    .prompt-details summary {
+      font-size: 12px;
+      font-weight: 600;
+      color: #888;
+      cursor: pointer;
+      user-select: none;
+      list-style: none;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .prompt-details summary::-webkit-details-marker { display: none; }
+    .prompt-details summary::before {
+      content: '▶';
+      font-size: 9px;
+      transition: transform .15s;
+    }
+    .prompt-details[open] summary::before { transform: rotate(90deg); }
+    .prompt-details summary:hover { color: #fe2c55; }
+    .prompt-text {
+      margin-top: 10px;
+      font-family: 'SF Mono', 'Fira Code', monospace;
+      font-size: 11px;
+      line-height: 1.7;
+      color: #555;
+      background: #f8f8f8;
+      border: 1px solid #ebebeb;
+      border-radius: 8px;
+      padding: 12px 14px;
+      white-space: pre-wrap;
+      word-break: break-word;
+      max-height: 260px;
+      overflow-y: auto;
+    }
+    @media (max-width: 768px) {
+      .ideas-grid { grid-template-columns: 1fr; }
+      .page-nav { padding: 10px 16px; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="page-header">
+  <div class="header-inner">
+    <a class="brand" href="../">
+      <span class="brand-tik">Tik</span><span class="brand-tok">Tok</span>
+      <span class="brand-dot">·</span>
+      <span class="brand-cc">Video Ideas</span>
+    </a>
+    <div class="header-text">
+      <div class="page-title">Видео-идеи · 14 мая 2026</div>
+      <div class="page-sub">AI-сгенерированные эффекты по трендовым хештегам TikTok US</div>
+    </div>
+    <div class="date-badge">14.05.2026<span>Дата отчёта</span></div>
+  </div>
+</div>
+<div class="page-nav"><a href="../">← Все отчёты</a></div>
+
+<div class="content">
+  <div class="section-header">
+    <h2 class="section-title">Идеи</h2>
+    <span class="section-badge">5 идей · 5 видео</span>
+  </div>
+  <div class="ideas-grid">
+
+    <div class="idea-card">
+      
+        <div class="card-video-wrap">
+          <video controls muted loop playsinline
+                 poster="https://temp-images.ws.pho.to/50e3b98fced7c9507e6bf1bbfba94fb304982c80.png"
+                 style="width:100%;aspect-ratio:9/16;object-fit:cover;border-radius:10px;display:block;">
+            <source src="https://temp-images.ws.pho.to/d1e31711a6300197fc5281609e7edf5aaa131eb0.mp4" type="video/mp4">
+          </video>
+        </div>
+      <div class="card-body">
+        <div class="card-meta">
+          <span class="hashtag-pill">#americanidol</span>
+        </div>
+        <h3 class="card-title">Финал на сцене</h3>
+        <p class="card-desc">Сцена финала American Idol 2026 — живой эфир ABC, зал Dolby Theatre в Голливуде. Пользователь стоит в центре сцены под единственным прожектором. Камера начинает с широкого плана зала и медленно наезжает на него сквозь тысячи зрителей. По мере приближения зал взрывается овациями, серпантин и конфетти летят с потолка. В финале — крупный план, и на экране появляется официальный оверлей American Idol: «WINNER» с золотым взрывом и логотипом шоу.</p>
+        <details class="prompt-details">
+          <summary>Промпт для видео</summary>
+          <pre class="prompt-text">Create a short cinematic video based on the uploaded image.
+The scene is the American Idol Season 2026 finale at the Dolby Theatre. The person from the image stands alone center-stage at the microphone, under a spotlight, as the audience waits for the winner announcement.
+
+Camera and motion structure:
+The video has a dramatic zoom-in arc — the camera closes in from the theater to the performer:
+1. FRAMES 0–20%: Wide shot of the theater. The person is small on the enormous stage. The audience is tense and quiet — thousands of phone lights glowing in the dark. The LED backdrop pulses gently with the American Idol logo. The camera begins a slow, majestic push-in toward the stage.
+2. FRAMES 20–50%: Medium shot. The camera is closing in on the stage, the person becoming more prominent. The announcer&#x27;s voice (implied by the person&#x27;s reaction) creates an invisible moment of anticipation — the person clasps their hands, eyes closed.
+3. FRAMES 50–75%: The winner moment. The person opens their eyes and the theater ERUPTS. Gold and white confetti cannons fire from the stage rigging. The audience leaps to their feet screaming. The LED backdrop switches to a massive &quot;WINNER&quot; graphic in gold and red. Pyrotechnic sparkle bursts at the stage edges. The person covers their mouth with both hands, then raises their arms.
+4. FRAMES 75–100%: Close-up on the person&#x27;s face — arms raised, tears of joy, confetti raining around them. Two broadcast overlay graphics lock onto screen:
+   — Upper center: the American Idol logo (red starburst wordmark)
+   — Lower third: a gold ribbon banner reading &quot;AMERICAN IDOL 2026 WINNER&quot;
+   Both overlays remain until the last frame.
+
+Character:
+Preserve the person&#x27;s face, hair, skin tone, and identity exactly from the source image throughout the entire video. Do not alter their appearance.
+Character motion arc: hands clasped and eyes closed (anticipation) → eyes open in shock → hands cover mouth → arms rise in celebration. This is the emotional spine of the video.
+
+Atmosphere and detail:
+- Confetti: gold and white metallic, dense burst starting at FRAME 50%, continuing through the end
+- Audience: leaping to their feet, phone lights waving, silhouetted energy
+- LED backdrop: transitions from American Idol logo pulsing → full-screen gold &quot;WINNER&quot; burst
+- Pyrotechnic sparkle at stage edges (non-fire — cold spark / waterfall effect)
+- Stage spotlight intensifies at the winner moment — brief lens flare
+
+Style:
+Live broadcast drama. The pace accelerates through the video — quiet tension in the wide shot becoming pure euphoria by the close-up. The confetti burst and LED switch are the twin hero moments. Cinematic but TV-broadcast warm: reds, golds, deep blacks.
+
+Restrictions:
+- Do not change the person&#x27;s appearance, face, clothing, or identity at any point
+- The American Idol logo and &quot;WINNER&quot; banner appear only after FRAME 75% and must remain fully visible until the last frame
+- No additional text, captions, or vote counts
+- No speech bubbles
+- No social-media UI overlays
+- Do not show a second person winning — the person from the reference is the sole winner on stage
+- Confetti and cold sparkle only — no fire or explosive pyrotechnics
+- The microphone stand remains visible at center-stage throughout the wide and medium shots
+- No jump cuts — the camera move must be a single continuous push-in</pre>
+        </details>
+      </div>
+    </div>
+    <div class="idea-card">
+      
+        <div class="card-video-wrap">
+          <video controls muted loop playsinline
+                 poster="https://temp-images.ws.pho.to/7863b55335326fc96f4edbe8eb28a092b43425ef.png"
+                 style="width:100%;aspect-ratio:9/16;object-fit:cover;border-radius:10px;display:block;">
+            <source src="https://temp-images.ws.pho.to/5099195f8222de364019c3d1a4345820060a7baa.mp4" type="video/mp4">
+          </video>
+        </div>
+      <div class="card-body">
+        <div class="card-meta">
+          <span class="hashtag-pill">#jamescharles</span>
+        </div>
+        <h3 class="card-title">Макияж материализуется</h3>
+        <p class="card-desc">Пользователь в кадре без макияжа — чистое лицо, нейтральный фон в стиле студийного бьюти-съёмки. Камера стоит статично, мягкий свет. Затем начинается трансформация: невидимые кисти наносят макияж прямо в кадре — тени материализуются на веках, хайлайтер вспыхивает на скулах, яркая помада проявляется на губах. Всё это происходит плавно и спектакулярно, как будто кто-то рисует шедевр. В финале — портретный крупный план с оверлеем «SERVING LOOKS ✦» и значком палитры в углу.</p>
+        <details class="prompt-details">
+          <summary>Промпт для видео</summary>
+          <pre class="prompt-text">Create a short cinematic video based on the uploaded image.
+The scene is a professional beauty studio. The person from the image faces the camera in a clean close-up portrait — bare face, no makeup.
+
+Camera and motion structure:
+The camera is completely static throughout — a locked beauty close-up:
+1. FRAMES 0–15%: Close-up portrait. The person&#x27;s face is clean and natural. Soft studio lighting. They hold a calm, neutral gaze into camera. A single slow blink — the only movement.
+2. FRAMES 15–45%: The makeup begins to materialize on its own — as if invisible professional brushes are at work. First: deep jewel-toned eyeshadow (purple-bronze gradient) builds up on the eyelids — appearing as soft brushstrokes of pigment forming from nothing. The person&#x27;s eyes stay partially closed during this phase, then open to reveal the color.
+3. FRAMES 45–70%: The transformation accelerates: warm golden highlighter blooms across the cheekbones with a prismatic light-scatter effect. Precise contour shadow defines the jawline. False eyelashes materialize lash by lash, extending and curling. The person&#x27;s expression shifts from neutral to quietly stunning.
+4. FRAMES 70–85%: Vivid cherry-red lipstick traces onto the lips in a single smooth stroke, as if a lip brush moved across them. The person&#x27;s lips press together once — sealing the color.
+5. FRAMES 85–100%: Full beat face. The person looks directly into camera with a powerful, polished expression. Two overlay graphics fade in as screen-locked elements:
+   — Center bottom: &quot;SERVING LOOKS ✦&quot; in clean bold sans-serif with a subtle shimmer animation
+   — Top corner: a small makeup palette icon with glowing pans
+   Both overlays remain until the last frame.
+
+Character:
+Preserve the person&#x27;s face, hair, skin tone, and identity exactly from the source image throughout the entire video. Do not alter their facial structure, bone structure, or identity.
+Allowed changes: makeup products applied (eyeshadow, highlighter, contour, lashes, lipstick) — these are additions, not changes to identity. Expression evolves from neutral to confident.
+Forbidden: any change to eye shape, nose, lips shape, or facial structure.
+
+Key visual events (in order):
+- Eyeshadow materializing stroke by stroke on the eyelids
+- Highlighter blooming on cheekbones (the prismatic light-scatter — the hero moment)
+- False lashes extending lash by lash
+- Lipstick tracing in one smooth stroke
+- Final reveal with overlays
+
+Style:
+Elevated beauty editorial. Everything is controlled, luxurious, slow-build satisfaction. The materialization of each product should feel tactile and real — not a morph or dissolve, but actual makeup visibly being applied by an unseen hand. Lavender-white tones dominate the background; the jewel makeup colors pop.
+
+Restrictions:
+- Do not change the person&#x27;s facial structure, bone structure, eye shape, nose, or lips shape
+- Do not morph or distort the face at any point
+- The &quot;SERVING LOOKS ✦&quot; overlay and palette icon appear only after FRAME 85% and must remain fully visible until the last frame
+- No speech bubbles
+- No social-media UI overlays (no TikTok hearts, comments, follower counts)
+- No text captions other than the specified overlay
+- No extra hands or visible makeup brushes in frame — the application is invisible/magical
+- No jump cuts between makeup states — all transitions must be smooth and continuous
+- No aggressive or violent actions
+- Background must remain the seamless studio backdrop throughout — no scene changes</pre>
+        </details>
+      </div>
+    </div>
+    <div class="idea-card">
+      
+        <div class="card-video-wrap">
+          <video controls muted loop playsinline
+                 poster="https://temp-images.ws.pho.to/7e4a0eb0dfb015d969e5ec37d00cfd4ea3eba955.png"
+                 style="width:100%;aspect-ratio:9/16;object-fit:cover;border-radius:10px;display:block;">
+            <source src="https://temp-images.ws.pho.to/407f6daf1b544e7c9956224e98c36834d246e840.mp4" type="video/mp4">
+          </video>
+        </div>
+      <div class="card-body">
+        <div class="card-meta">
+          <span class="hashtag-pill">#kevinhart</span>
+        </div>
+        <h3 class="card-title">Тебя зажарили</h3>
+        <p class="card-desc">Зал ростера — красные бархатные кресла, звёздная аудитория, микрофоны на сцене. Пользователь сидит в кресле почётного «ростируемого» в центре сцены. Кевин Харт стоит сбоку с микрофоном, хохочет и указывает на пользователя. Камера стоит статично. Зал взрывается смехом, летят хлопушки. В финале на экране появляется оверлей в стиле шоу Comedy Central: «ROASTED 🔥» с огненным шрифтом и «#KevinHart Roast».</p>
+        <details class="prompt-details">
+          <summary>Промпт для видео</summary>
+          <pre class="prompt-text">Create a short cinematic video based on the uploaded image.
+The scene is a celebrity comedy roast stage. The person from the image sits in the roastee throne at center-stage while a comedian (implied Kevin Hart) works the microphone beside them.
+
+Camera and motion structure:
+The camera is static throughout — a locked broadcast-style medium shot:
+1. FRAMES 0–20%: The person sits in the throne with composed, mock-dignified expression. The implied comedian moves at the edge of frame, animated. The audience is a wall of laughter (implied through the person&#x27;s subtle reactions).
+2. FRAMES 20–55%: The comedian delivers the punchline. The person&#x27;s composure cracks — first a suppressed smile, then genuine uncontrollable laughter. They lean forward slightly, hand on their knee, shaking with laughter. Stage lights pulse once in a comedy-rimshot beat.
+3. FRAMES 55–80%: The audience reaction peaks. Colorful confetti and streamers fire from stage cannons. The person throws their head back in full laughter — arms up in theatrical surrender. The comedian points at them triumphantly.
+4. FRAMES 80–100%: The laughter continues. Two overlay graphics slam onto the screen with an impact effect:
+   — Center screen, bold: &quot;ROASTED 🔥&quot; in oversized fiery orange font with a flame particle animation around the letters
+   — Lower third: &quot;#KevinHart Roast · May 2026&quot; in clean broadcast sans-serif
+   Both overlays stay until the last frame.
+
+Character:
+Preserve the person&#x27;s face, hair, skin tone, and identity exactly from the source image throughout the entire video. Do not alter their appearance.
+Character motion arc: mock-dignified composure → suppressed smile → full laughter (the moment the composure breaks is the hero moment). The person never looks distressed — this is joyful, comedic, celebratory.
+
+Atmosphere and detail:
+- Stage haze throughout — atmospheric fog giving depth to the spotlight beams
+- Confetti and streamers: red, gold, and orange — firing at FRAME 55%
+- Audience visible in background blur — laughter motion implied by slight blur movement
+- Stage lights: a single rimshot-flash pulse at FRAME 20% (the punchline beat)
+- Roast banners visible in background: &quot;🔥 ROAST 🔥&quot; flame motif
+
+Style:
+Comedy Central roast television. Warm, theatrical, high-energy. The static camera creates the feeling of a broadcast close-up on the roastee. The color palette is deep red, amber, and black with punchy orange for the fire overlay. The tone is pure celebration — being roasted is an honor.
+
+Restrictions:
+- Do not change the person&#x27;s appearance, face, clothing, or identity at any point
+- The &quot;ROASTED 🔥&quot; graphic and subtitle appear only after FRAME 80% and must remain fully visible until the last frame
+- The overlay must slam in with an impact effect — not a slow fade
+- No mean-spirited, aggressive, or distressed expressions on the person — laughter only
+- No speech bubbles or captions quoting jokes
+- No social-media UI overlays
+- No text other than the specified overlay graphics
+- The person&#x27;s throne chair position must remain constant throughout — no camera movement
+- No actual fire, only the overlay flame particle graphics
+- Do not render the comedian as a clearly detailed face — they remain a silhouette or out-of-focus figure at the edge of frame</pre>
+        </details>
+      </div>
+    </div>
+    <div class="idea-card">
+      
+        <div class="card-video-wrap">
+          <video controls muted loop playsinline
+                 poster="https://temp-images.ws.pho.to/a23e8da2641fcb57696a12b4786a0df7f9ce8708.png"
+                 style="width:100%;aspect-ratio:9/16;object-fit:cover;border-radius:10px;display:block;">
+            <source src="https://temp-images.ws.pho.to/08a645bda772cca551fc49d0e0d2f694784bd6ae.mp4" type="video/mp4">
+          </video>
+        </div>
+      <div class="card-body">
+        <div class="card-meta">
+          <span class="hashtag-pill">#lakers</span>
+        </div>
+        <h3 class="card-title">Тебя нашла камера</h3>
+        <p class="card-desc">Арена «Крипто Арена» во время матча плей-офф НБА — зал бурлит, баскетбольное кольцо светится в дальнем плане, фиолетово-золотые флаги Lakers реют повсюду. Камера ведёт себя как настоящий телетрансляционный оператор: медленно проезжает по трибунам и «находит» пользователя среди тысяч болельщиков. Он вскакивает с места — кричит, вскидывает руки — и в этот момент трансляция берёт его крупным планом. В финале на экране появляется табло-оверлей «FAN OF THE GAME» с логотипом Lakers и золотыми вспышками конфетти.</p>
+        <details class="prompt-details">
+          <summary>Промпт для видео</summary>
+          <pre class="prompt-text">Create a short cinematic video based on the uploaded image.
+The scene is a packed NBA arena during a Los Angeles Lakers playoff game. The person from the image is seated among thousands of purple-and-gold fans in the lower bowl.
+
+Camera and motion structure:
+The video has a dramatic arc built entirely on camera movement — a broadcast operator hunting for a fan:
+1. FRAMES 0–25%: Wide establishing shot. The arena roars. Flags wave, the scoreboard blazes. The person is barely visible among thousands of fans. The camera begins a slow, deliberate lateral pan and push-in along the lower bowl, hunting the crowd.
+2. FRAMES 25–55%: Medium shot. The camera locks onto the person&#x27;s section and begins a controlled zoom-in. The person starts to sense the camera finding them — their expression shifts from cheering to surprised recognition. They begin to rise from their seat.
+3. FRAMES 55–80%: Close-up. The person is now standing, arms exploding upward in a scream. Purple-and-gold confetti erupts from above. The camera holds tight on their face — pure playoff energy.
+4. FRAMES 80–100%: The close-up holds. A broadcast-style graphic smoothly slides up from the bottom: a purple-gold scoreboard bar reading &quot;FAN OF THE GAME 🏆&quot; with the Lakers shield logo on the left and a flashing gold star animation. The graphic stays until the last frame.
+
+Character:
+Preserve the person&#x27;s face, hair, skin tone, and identity exactly from the source image throughout the entire video. Do not alter their appearance.
+The person transitions from seated cheering → rising in excitement → arms-up screaming celebration. No other character movement.
+
+Atmosphere and detail:
+- Arena crowd alive throughout: waving flags, jumping, clapping
+- Purple-and-gold confetti drops from the rafters, increasing density at the close-up moment
+- Scoreboard visible in background during wide shot, switching to a &quot;LAKERS LEAD&quot; animation mid-video
+- Broadcast-style overlay banding and score ticker at the very bottom edge during wide shot (disappears when the &quot;FAN OF THE GAME&quot; bar appears)
+- Courtside LED boards pulsing gold during the climax
+- Lens flare from arena floodlights shifting as camera pans
+
+Style:
+Cinematic NBA broadcast. The camera move should feel exactly like a real ESPN floor-level operator catching a fan mid-celebration — motivated, smooth, broadcast-quality. Purple-gold color palette dominates. Epic, loud, celebratory.
+
+Restrictions:
+- Do not change the person&#x27;s appearance, face, clothing, or identity at any point
+- The &quot;FAN OF THE GAME&quot; broadcast graphic appears only after FRAME 80% and must remain fully visible until the last frame
+- Do not fade out or obscure the graphic once it appears
+- No speech bubbles or dialogue text
+- No social-media UI overlays
+- No text captions other than the &quot;FAN OF THE GAME&quot; bar and the background scoreboard
+- No extra characters added to the foreground
+- No violent or aggressive actions
+- Confetti and flags only — no pyrotechnics or fire
+- The basketball court must remain visible in the background during wide and medium shots</pre>
+        </details>
+      </div>
+    </div>
+    <div class="idea-card">
+      
+        <div class="card-video-wrap">
+          <video controls muted loop playsinline
+                 poster="https://temp-images.ws.pho.to/63f8eec4e9df49de7fca56146fc9f301cab08c96.png"
+                 style="width:100%;aspect-ratio:9/16;object-fit:cover;border-radius:10px;display:block;">
+            <source src="https://temp-images.ws.pho.to/722a3cd9dd4ba5e7a38e622b83d3740d9be1b121.mp4" type="video/mp4">
+          </video>
+        </div>
+      <div class="card-body">
+        <div class="card-meta">
+          <span class="hashtag-pill">#youngsheldon</span>
+        </div>
+        <h3 class="card-title">Ты в классе Шелдона</h3>
+        <p class="card-desc">1989-й год, Медфорд, Техас. Пользователь сидит за партой в классе восточно-техасской школы рядом с маленьким Шелдоном. Доска исписана формулами квантовой механики. Камера стоит статично, как в сцене из сериала. Вдруг мел сам начинает рисовать ещё одно уравнение — и стрелка указывает прямо на пользователя. В финале появляется оверлей в стиле титров CBS: «East Texas Tech · 1989» с иконкой лампочки.</p>
+        <details class="prompt-details">
+          <summary>Промпт для видео</summary>
+          <pre class="prompt-text">Create a short cinematic video based on the uploaded image.
+The scene is a 1989 Texas school classroom. The person from the image sits at a wooden desk facing a chalkboard covered in physics equations.
+
+Camera and motion structure:
+The camera remains essentially static throughout — as in a CBS sitcom single-camera setup:
+1. FRAMES 0–20%: Medium-wide shot of the classroom. The person sits at their desk. Chalk dust drifts in afternoon light shafts. The chalkboard equations are static. A faint creak of a wooden chair.
+2. FRAMES 20–55%: A piece of chalk lifts off the tray on its own — a subtle, surreal moment. It begins writing a new equation on the board: a clean formula followed by an arrow. The writing is slow, deliberate, purposeful — like an invisible hand.
+3. FRAMES 55–80%: The chalk arrow traces from the equation directly toward the person at their desk and draws a small circle around their name (written on a nameplate on the desk). The person looks up from their notebook, noticing. Their expression shifts to surprised delight — a small smile.
+4. FRAMES 80–100%: The camera holds. Two overlay graphics fade in as screen-locked title cards:
+   — Upper area: &quot;East Texas Tech&quot; in clean period-accurate CBS serif font
+   — Lower area: &quot;1989 · Medford, Texas&quot; in smaller italics, with a small glowing lightbulb icon
+   Both overlays remain until the last frame.
+
+Character:
+Preserve the person&#x27;s face, hair, skin tone, and identity exactly from the source image throughout the entire video. Do not alter their appearance.
+The person is seated for the entire video. Their only movement: looking up from their notebook toward the chalkboard at frame 55–80%, and a small smile of recognition. No other motion.
+
+Atmosphere and detail:
+- Chalk dust drifts slowly throughout in light shafts — a constant ambient particle effect
+- The chalkboard equations remain visible in the background; new writing adds to, does not erase, existing equations
+- Venetian blind shadow stripes subtly shift as if a gentle breeze outside
+- Ambient classroom sounds implied by visual: stillness, quiet, occasional desk creak
+- The lightbulb icon in the overlay pulses with a soft warm glow
+
+Style:
+Warm, nostalgic, sitcom-cinematic. The feel is a single-camera CBS comedy — steady, observational, slightly magical. The floating chalk is the one supernatural element in an otherwise grounded realistic setting. Color palette: warm ambers, faded yellows, dusty greens of the chalkboard.
+
+Restrictions:
+- Do not change the person&#x27;s appearance, face, clothing, or identity at any point
+- The &quot;East Texas Tech / 1989&quot; overlay graphics appear only after FRAME 80% and must remain fully visible until the last frame
+- Do not fade or remove the overlays once they appear
+- No speech bubbles or dialogue captions
+- No social-media UI overlays
+- No other characters rendered as distinct individuals — the classroom is implied populated but only the person from the reference is clearly depicted
+- No fast movements or jump cuts
+- The chalk must write continuously and smoothly — not appear as a jump cut or instant change
+- No modern elements: no smartphones, no digital screens, nothing post-1989
+- No aggressive or violent actions</pre>
+        </details>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
