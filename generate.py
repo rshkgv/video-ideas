@@ -21,6 +21,15 @@ MONTH_SHORT = {
     "07":"июл","08":"авг","09":"сен","10":"окт","11":"ноя","12":"дек",
 }
 
+def split_report_date(date):
+    """Split 'YYYY-MM-DD' or 'YYYY-MM-DD_N' (a re-run of the same report date)
+    into (yyyy, mm, dd, suffix_label), where suffix_label is '' or ' · Выпуск N'."""
+    yyyy, mm, dd_raw = date.split('-')
+    m = re.match(r'(\d+)(?:_(.+))?$', dd_raw)
+    dd, suffix = m.group(1), m.group(2)
+    suffix_label = f' · Выпуск {suffix}' if suffix else ''
+    return yyyy, mm, dd, suffix_label
+
 
 # ── Parsing ───────────────────────────────────────────────────────────────────
 
@@ -145,15 +154,15 @@ def gen_main_index(date_entries):
     """date_entries: list of (date, n_ideas, n_videos)"""
     cards = ''
     for date, n_ideas, n_videos in sorted(date_entries, reverse=True):
-        yyyy, mm, dd = date.split('-')
+        yyyy, mm, dd, suffix_label = split_report_date(date)
         cards += f"""
     <a class="report-card" href="./{date}/">
       <div class="card-top">
         <div class="card-flag">🎬</div>
-        <div class="card-date-badge">{dd}.{mm}.{yyyy}<span>Дата отчёта</span></div>
+        <div class="card-date-badge">{dd}.{mm}.{yyyy}<span>Дата отчёта{suffix_label}</span></div>
       </div>
       <div class="card-title-text">TikTok US · Видео-идеи</div>
-      <div class="card-period">{int(dd)} {MONTH_FULL[mm]} {yyyy}</div>
+      <div class="card-period">{int(dd)} {MONTH_FULL[mm]} {yyyy}{suffix_label}</div>
       <div class="card-stats">
         <div class="card-stat-item">
           <div class="card-stat-val">{n_ideas}</div>
@@ -236,7 +245,7 @@ def gen_main_index(date_entries):
 
 def gen_date_index(date, ideas_with_media):
     """ideas_with_media: list of (idea_dict, frame_url, video_url)"""
-    yyyy, mm, dd = date.split('-')
+    yyyy, mm, dd, suffix_label = split_report_date(date)
 
     rows = ''
     for i, (idea, frame_url, video_url) in enumerate(ideas_with_media, 1):
@@ -256,7 +265,7 @@ def gen_date_index(date, ideas_with_media):
     n = len(ideas_with_media)
     n_videos = sum(1 for _, _, v in ideas_with_media if v)
 
-    return head(f"Video Ideas — {int(dd)} {MONTH_FULL[mm]} {yyyy}") + f"""
+    return head(f"Video Ideas — {int(dd)} {MONTH_FULL[mm]} {yyyy}{suffix_label}") + f"""
   <style>
 {COMMON_CSS}
     .table-wrap {{
@@ -294,10 +303,10 @@ def gen_date_index(date, ideas_with_media):
       <span class="brand-dot">·</span><span class="brand-cc">Video Ideas</span>
     </a>
     <div class="header-text">
-      <div class="page-title">Видео-идеи · {int(dd)} {MONTH_FULL[mm]} {yyyy}</div>
+      <div class="page-title">Видео-идеи · {int(dd)} {MONTH_FULL[mm]} {yyyy}{suffix_label}</div>
       <div class="page-sub">AI-сгенерированные эффекты по трендовым хештегам TikTok US</div>
     </div>
-    <div class="date-badge">{dd}.{mm}.{yyyy}<span>Дата отчёта</span></div>
+    <div class="date-badge">{dd}.{mm}.{yyyy}<span>Дата отчёта{suffix_label}</span></div>
   </div>
   <nav class="page-nav">
     <a href="../" class="nav-a">← Все отчёты</a>
@@ -380,7 +389,7 @@ IDEA_CSS = """
 """
 
 def gen_idea_page(date, idea, frame_url, video_url):
-    yyyy, mm, dd = date.split('-')
+    yyyy, mm, dd, suffix_label = split_report_date(date)
     slug = idea['slug']
 
     if video_url and frame_url:
@@ -405,13 +414,13 @@ def gen_idea_page(date, idea, frame_url, video_url):
     </a>
     <div class="header-text">
       <div class="page-title">#{html.escape(slug)}</div>
-      <div class="page-sub">Видео-идея · {int(dd)} {MONTH_FULL[mm]} {yyyy}</div>
+      <div class="page-sub">Видео-идея · {int(dd)} {MONTH_FULL[mm]} {yyyy}{suffix_label}</div>
     </div>
-    <div class="date-badge">{dd}.{mm}.{yyyy}<span>Дата</span></div>
+    <div class="date-badge">{dd}.{mm}.{yyyy}<span>Дата{suffix_label}</span></div>
   </div>
   <nav class="page-nav">
     <a href="../../" class="nav-a">← Все отчёты</a>
-    <a href="../" class="nav-a">← {int(dd)} {MONTH_SHORT[mm]} {yyyy}</a>
+    <a href="../" class="nav-a">← {int(dd)} {MONTH_SHORT[mm]} {yyyy}{suffix_label}</a>
     <a href="#" class="nav-a active">#{html.escape(slug)}</a>
   </nav>
 </div>
@@ -447,7 +456,8 @@ def gen_idea_page(date, idea, frame_url, video_url):
 
 # ── Main ──────────────────────────────────────────────────────────────────────
 
-def build_date(date):
+def collect_date(date):
+    """Parse ideas + media for a date without writing any HTML."""
     ideas_dir = IDEAS_DIR / date
     skip = {'_pipeline', '_nobrand'}
 
@@ -462,12 +472,17 @@ def build_date(date):
         frame, video = get_media(idea['slug'], date)
         ideas_with_media.append((idea, frame, video))
 
+    return ideas_with_media
+
+
+def write_date(date, ideas_with_media):
+    """Write the date-index page and every idea page for one date."""
     date_dir = SITE / date
     date_dir.mkdir(exist_ok=True)
 
     # Date index page
     (date_dir / 'index.html').write_text(gen_date_index(date, ideas_with_media))
-    print(f'  wrote {date}/index.html  ({len(ideas)} ideas)')
+    print(f'  wrote {date}/index.html  ({len(ideas_with_media)} ideas)')
 
     # Individual idea pages
     for idea, frame, video in ideas_with_media:
@@ -476,26 +491,35 @@ def build_date(date):
         (slug_dir / 'index.html').write_text(gen_idea_page(date, idea, frame, video))
         print(f'  wrote {date}/{idea["slug"]}/index.html')
 
-    return [(idea, frame, video) for idea, frame, video in ideas_with_media]
+
+def build_date(date):
+    """Back-compat helper: collect + write a single date, return its ideas_with_media."""
+    ideas_with_media = collect_date(date)
+    write_date(date, ideas_with_media)
+    return ideas_with_media
 
 
 def build_all():
     parser = argparse.ArgumentParser()
-    parser.add_argument('--date', help='Rebuild only this date (YYYY-MM-DD)')
+    parser.add_argument('--date', help='Rebuild only this date (YYYY-MM-DD). The main index is always '
+                                        'regenerated from every date folder on disk, regardless of --date.')
     args = parser.parse_args()
 
-    dates = [args.date] if args.date else sorted(
+    all_dates = sorted(
         d.name for d in IDEAS_DIR.iterdir() if d.is_dir() and re.match(r'\d{4}-\d{2}-\d{2}', d.name)
     )
+    dates_to_write = {args.date} if args.date else set(all_dates)
 
     all_entries = []
-    for date in dates:
-        print(f'\nBuilding {date}...')
-        result = build_date(date)
-        n_videos = sum(1 for _, _, v in result if v)
-        all_entries.append((date, len(result), n_videos))
+    for date in all_dates:
+        print(f'\n{"Building" if date in dates_to_write else "Scanning"} {date}...')
+        ideas_with_media = collect_date(date)
+        if date in dates_to_write:
+            write_date(date, ideas_with_media)
+        n_videos = sum(1 for _, _, v in ideas_with_media if v)
+        all_entries.append((date, len(ideas_with_media), n_videos))
 
-    # Main index
+    # Main index — always reflects every date folder, even when only one was rebuilt
     (SITE / 'index.html').write_text(gen_main_index(all_entries))
     print(f'\nwrote index.html  ({len(all_entries)} dates)')
 

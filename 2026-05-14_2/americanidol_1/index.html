@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>#americanidol_1 — Тебя объявили победителем · Video Ideas</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      background: #f4f4f5; color: #111; font-size: 14px; line-height: 1.5;
+    }
+    .page-header {
+      background: #fff; border-bottom: 1px solid #e4e4e7; position: sticky;
+      top: 0; z-index: 100; box-shadow: 0 1px 8px rgba(0,0,0,.05);
+    }
+    .header-inner {
+      max-width: 1100px; margin: 0 auto; padding: 14px 28px;
+      display: flex; align-items: center; gap: 20px;
+    }
+    .brand {
+      font-size: 18px; font-weight: 800; letter-spacing: -.5px; color: #111;
+      white-space: nowrap; user-select: none; text-decoration: none;
+    }
+    .brand-tik { color: #fe2c55; }
+    .brand-tok { color: #010101; }
+    .brand-dot { color: #d1d1d1; margin: 0 6px; font-weight: 300; }
+    .brand-cc  { color: #888; font-size: 12px; font-weight: 500; }
+    .header-text { flex: 1; min-width: 0; }
+    .page-title {
+      font-size: 15px; font-weight: 700; letter-spacing: -.2px;
+      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    }
+    .page-sub { font-size: 11.5px; color: #999; margin-top: 2px; }
+    .date-badge {
+      background: #fe2c55; color: #fff; font-weight: 700; font-size: 12px;
+      border-radius: 8px; padding: 6px 14px; line-height: 1.4;
+      text-align: center; white-space: nowrap; flex-shrink: 0;
+    }
+    .date-badge span { display: block; font-size: 10px; font-weight: 500; opacity: .8; }
+    .page-nav {
+      max-width: 1100px; margin: 0 auto; padding: 0 28px;
+      display: flex; gap: 2px; border-top: 1px solid #f0f0f0;
+    }
+    .nav-a {
+      text-decoration: none; color: #999; font-size: 12.5px; font-weight: 500;
+      padding: 9px 14px; border-bottom: 2px solid transparent;
+      transition: color .15s, border-color .15s;
+    }
+    .nav-a:hover { color: #fe2c55; }
+    .nav-a.active { color: #fe2c55; border-bottom-color: #fe2c55; }
+    .content { max-width: 1100px; margin: 0 auto; padding: 36px 28px 80px; }
+    .section { margin-bottom: 52px; }
+    .section-header { display: flex; align-items: baseline; gap: 10px; margin-bottom: 16px; }
+    .section-title { font-size: 19px; font-weight: 800; letter-spacing: -.4px; }
+    .section-badge {
+      font-size: 10.5px; font-weight: 600; color: #999; background: #ebebeb;
+      padding: 3px 8px; border-radius: 20px; text-transform: uppercase; letter-spacing: .4px;
+    }
+    @media (max-width: 768px) {
+      .header-inner { gap: 12px; padding: 12px 16px; }
+      .date-badge { display: none; }
+      .page-nav { padding: 0 16px; }
+      .content { padding: 24px 16px 60px; }
+    }
+
+
+    .idea-lead {{
+      background: #fff; border-radius: 12px; padding: 36px 40px 32px;
+      box-shadow: 0 1px 4px rgba(0,0,0,.07), 0 0 0 1px rgba(0,0,0,.05);
+      margin-bottom: 40px;
+    }}
+    .idea-hashtag {{ font-size: 13px; font-weight: 700; color: #fe2c55; margin-bottom: 8px; }}
+    .idea-title {{ font-size: 26px; font-weight: 800; letter-spacing: -.6px; line-height: 1.25; margin-bottom: 16px; }}
+    .idea-desc {{ font-size: 14px; color: #444; line-height: 1.75; max-width: 720px; }}
+    .media-grid {{
+      display: grid; grid-template-columns: 340px 1fr; gap: 28px; align-items: start;
+    }}
+    .video-player {{
+      width: 100%; aspect-ratio: 9/16; object-fit: cover; border-radius: 12px;
+      display: block; box-shadow: 0 2px 16px rgba(0,0,0,.14);
+    }}
+    .frame-img {{
+      width: 100%; aspect-ratio: 9/16; object-fit: cover; border-radius: 12px;
+      display: block; box-shadow: 0 2px 16px rgba(0,0,0,.14);
+    }}
+    .prompts-col {{ display: flex; flex-direction: column; gap: 12px; }}
+    .prompt-block {{
+      background: #fff; border-radius: 10px;
+      box-shadow: 0 1px 4px rgba(0,0,0,.07), 0 0 0 1px rgba(0,0,0,.05); overflow: hidden;
+    }}
+    .prompt-block summary {{
+      padding: 14px 18px; font-size: 13px; font-weight: 700; cursor: pointer;
+      user-select: none; list-style: none; display: flex; align-items: center; gap: 8px; color: #333;
+    }}
+    .prompt-block summary::-webkit-details-marker {{ display: none; }}
+    .prompt-block summary::before {{ content: '▶'; font-size: 8px; color: #bbb; transition: transform .15s; flex-shrink: 0; }}
+    .prompt-block[open] summary::before {{ transform: rotate(90deg); }}
+    .prompt-block summary:hover {{ color: #fe2c55; }}
+    .prompt-block summary:hover::before {{ color: #fe2c55; }}
+    .prompt-label {{ font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: .5px; color: #bbb; margin-left: auto; }}
+    .prompt-text {{
+      padding: 14px 18px 16px; font-family: 'SF Mono','Fira Code','Menlo',monospace;
+      font-size: 11.5px; line-height: 1.7; color: #555; background: #f9f9f9;
+      border-top: 1px solid #f0f0f0; white-space: pre-wrap; word-break: break-word;
+      max-height: 320px; overflow-y: auto;
+    }}
+    @media (max-width: 900px) {{
+      .media-grid {{ grid-template-columns: 1fr; }}
+      .video-col {{ max-width: 360px; margin: 0 auto; }}
+      .idea-lead {{ padding: 24px 22px 22px; }}
+    }}
+    @media (max-width: 520px) {{ .idea-title {{ font-size: 22px; }} }}
+
+  </style>
+</head>
+<body>
+<div class="page-header">
+  <div class="header-inner">
+    <a class="brand" href="../../">
+      <span class="brand-tik">Tik</span><span class="brand-tok">Tok</span>
+      <span class="brand-dot">·</span><span class="brand-cc">Video Ideas</span>
+    </a>
+    <div class="header-text">
+      <div class="page-title">#americanidol_1</div>
+      <div class="page-sub">Видео-идея · 14 мая 2026 · Выпуск 2</div>
+    </div>
+    <div class="date-badge">14.05.2026<span>Дата · Выпуск 2</span></div>
+  </div>
+  <nav class="page-nav">
+    <a href="../../" class="nav-a">← Все отчёты</a>
+    <a href="../" class="nav-a">← 14 мая 2026 · Выпуск 2</a>
+    <a href="#" class="nav-a active">#americanidol_1</a>
+  </nav>
+</div>
+<div class="content">
+  <div class="idea-lead">
+    <div class="idea-hashtag">#americanidol_1</div>
+    <h1 class="idea-title">Тебя объявили победителем</h1>
+    <p class="idea-desc">Финал American Idol, воскресный вечер, прямой эфир ABC. Пользователь стоит в кулисах с микрофоном в руке, ждёт объявления победителя. Одним непрерывным кадром он выходит на свет, останавливается на отметке в центре сцены — и голос ведущего за кадром произносит его имя как победителя сезона. Зал взрывается, летит конфетти, вспыхивает свет. Никаких склеек — только одно чистое, растущее движение к триумфу.</p>
+  </div>
+  <section class="section">
+    <div class="section-header">
+      <h2 class="section-title">Видео</h2>
+      <span class="section-badge">Пример генерации</span>
+    </div>
+    <div class="media-grid">
+      <div class="video-col"><div style="aspect-ratio:9/16;background:#eee;border-radius:12px;"></div></div>
+      <div class="prompts-col">
+        <details class="prompt-block">
+          <summary>Промпт для первого кадра <span class="prompt-label">GPT Image 2</span></summary>
+          <pre class="prompt-text">Turn the photo of the person into a live TV singing competition finalist standing just offstage in the wings of a grand theater stage at night, holding a wireless microphone with both hands, half in shadow, a warm wash of spotlight spilling in from the stage just ahead of them, the American Idol logo glowing faintly on a nearby monitor screen, an anticipatory, hopeful expression on their face.</pre>
+        </details>
+        <details class="prompt-block">
+          <summary>Промпт для видео <span class="prompt-label">Kling · Grok</span></summary>
+          <pre class="prompt-text">Create a short cinematic video based on the uploaded image.
+The scene is the American Idol season finale, live on ABC. The person from the image stands in the wings of a grand theater stage, microphone in hand, waiting.
+
+CONTINUITY IS CRITICAL: the entire video plays as one continuous scene in real time. No cuts, no scene resets, no repeated actions, no duplicated moments, no jump cuts. Each timecode continues directly from the previous one. The person does each action only once: waits once, walks forward once, stops at the mark once, reacts once.
+
+AUDIO LOGIC IS CRITICAL: the video has live broadcast audio — an off-screen host&#x27;s voice announcing the result, plus a distant orchestral sting and crowd noise. The host is not the person in the video. The person has no microphone feed of their own being broadcast at this moment; they remain visually silent: closed mouth, natural breathing, a gasp, or a silent &quot;oh my god&quot; shape — no speaking, no lip-sync, no mouthing full words. Any voice heard belongs only to the off-screen host, never to the person on screen.
+
+Camera and motion structure:
+0:00–0:01 — The person stands just offstage in half-shadow, microphone held at chest height, breathing controlled, eyes fixed on the light ahead.
+0:01–0:03 — Continuing without a cut, they walk forward at a steady pace from the wings into the full stage spotlight, crossing from shadow into light in one unbroken motion.
+0:03–0:04 — They reach the center-stage mark and stop, facing forward, microphone raised slightly, chest rising with one breath.
+0:04–0:05 — The off-screen host&#x27;s voice delivers the winning name. The person&#x27;s expression breaks — eyes widen, hand flies to their mouth, microphone drops slightly in their grip — as gold and white confetti cannons fire from the rigging and the stage lights flare to full brightness. An overlay locks onto the screen: a gold ribbon banner reading &quot;AMERICAN IDOL 2026 WINNER&quot; with the show&#x27;s red starburst logo above it. Both remain visible until the last frame.
+
+Character:
+Preserve the person&#x27;s face, hair, skin tone, and identity exactly from the source image throughout the entire video. Do not alter their appearance.
+Motion arc: still and waiting → walking forward → stopping at the mark → visible shock and joy. This is the entire physical arc — no other movement.
+
+Key visual events (in order):
+- The single continuous walk from shadow into full stage light (the setup)
+- The host&#x27;s off-screen announcement landing on the person&#x27;s face (the hero moment)
+- Confetti and lighting flare firing exactly as the reaction lands
+- The &quot;AMERICAN IDOL 2026 WINNER&quot; overlay locking in during the final second
+
+Style:
+Live broadcast television drama — warm theatrical spotlight, rich reds and golds, a real ABC finale-night feel. The camera is a static, wide-to-medium broadcast lock-off; it does not move — the drama comes entirely from the person&#x27;s motion and the light change, not from camera movement.
+
+Restrictions:
+- Do not change the person&#x27;s appearance, face, clothing, or identity at any point
+- No cuts, resets, or duplicated actions — see the continuity rule above
+- The person never speaks or lip-syncs; the host&#x27;s voice is the only dialogue, and it comes from off-screen only
+- The &quot;AMERICAN IDOL 2026 WINNER&quot; overlay and logo appear only in the final second and must remain fully visible until the last frame
+- No additional text, captions, or vote tallies
+- No social-media UI overlays
+- Do not show a second person as a co-winner — the person from the reference is the sole winner
+- Confetti and stage lighting only — no fire or explosive pyrotechnics
+- The camera itself does not move, zoom, or pan — all motion comes from the person walking</pre>
+        </details>
+      </div>
+    </div>
+  </section>
+</div>
+</body>
+</html>
