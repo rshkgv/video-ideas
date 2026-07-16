@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>#kevinhart_3 — Замах на поле для гольфа · Video Ideas</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      background: #f4f4f5; color: #111; font-size: 14px; line-height: 1.5;
+    }
+    .page-header {
+      background: #fff; border-bottom: 1px solid #e4e4e7; position: sticky;
+      top: 0; z-index: 100; box-shadow: 0 1px 8px rgba(0,0,0,.05);
+    }
+    .header-inner {
+      max-width: 1100px; margin: 0 auto; padding: 14px 28px;
+      display: flex; align-items: center; gap: 20px;
+    }
+    .brand {
+      font-size: 18px; font-weight: 800; letter-spacing: -.5px; color: #111;
+      white-space: nowrap; user-select: none; text-decoration: none;
+    }
+    .brand-tik { color: #fe2c55; }
+    .brand-tok { color: #010101; }
+    .brand-dot { color: #d1d1d1; margin: 0 6px; font-weight: 300; }
+    .brand-cc  { color: #888; font-size: 12px; font-weight: 500; }
+    .header-text { flex: 1; min-width: 0; }
+    .page-title {
+      font-size: 15px; font-weight: 700; letter-spacing: -.2px;
+      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    }
+    .page-sub { font-size: 11.5px; color: #999; margin-top: 2px; }
+    .date-badge {
+      background: #fe2c55; color: #fff; font-weight: 700; font-size: 12px;
+      border-radius: 8px; padding: 6px 14px; line-height: 1.4;
+      text-align: center; white-space: nowrap; flex-shrink: 0;
+    }
+    .date-badge span { display: block; font-size: 10px; font-weight: 500; opacity: .8; }
+    .page-nav {
+      max-width: 1100px; margin: 0 auto; padding: 0 28px;
+      display: flex; gap: 2px; border-top: 1px solid #f0f0f0;
+    }
+    .nav-a {
+      text-decoration: none; color: #999; font-size: 12.5px; font-weight: 500;
+      padding: 9px 14px; border-bottom: 2px solid transparent;
+      transition: color .15s, border-color .15s;
+    }
+    .nav-a:hover { color: #fe2c55; }
+    .nav-a.active { color: #fe2c55; border-bottom-color: #fe2c55; }
+    .content { max-width: 1100px; margin: 0 auto; padding: 36px 28px 80px; }
+    .section { margin-bottom: 52px; }
+    .section-header { display: flex; align-items: baseline; gap: 10px; margin-bottom: 16px; }
+    .section-title { font-size: 19px; font-weight: 800; letter-spacing: -.4px; }
+    .section-badge {
+      font-size: 10.5px; font-weight: 600; color: #999; background: #ebebeb;
+      padding: 3px 8px; border-radius: 20px; text-transform: uppercase; letter-spacing: .4px;
+    }
+    @media (max-width: 768px) {
+      .header-inner { gap: 12px; padding: 12px 16px; }
+      .date-badge { display: none; }
+      .page-nav { padding: 0 16px; }
+      .content { padding: 24px 16px 60px; }
+    }
+
+
+    .idea-lead {{
+      background: #fff; border-radius: 12px; padding: 36px 40px 32px;
+      box-shadow: 0 1px 4px rgba(0,0,0,.07), 0 0 0 1px rgba(0,0,0,.05);
+      margin-bottom: 40px;
+    }}
+    .idea-hashtag {{ font-size: 13px; font-weight: 700; color: #fe2c55; margin-bottom: 8px; }}
+    .idea-title {{ font-size: 26px; font-weight: 800; letter-spacing: -.6px; line-height: 1.25; margin-bottom: 16px; }}
+    .idea-desc {{ font-size: 14px; color: #444; line-height: 1.75; max-width: 720px; }}
+    .media-grid {{
+      display: grid; grid-template-columns: 340px 1fr; gap: 28px; align-items: start;
+    }}
+    .video-player {{
+      width: 100%; aspect-ratio: 9/16; object-fit: cover; border-radius: 12px;
+      display: block; box-shadow: 0 2px 16px rgba(0,0,0,.14);
+    }}
+    .frame-img {{
+      width: 100%; aspect-ratio: 9/16; object-fit: cover; border-radius: 12px;
+      display: block; box-shadow: 0 2px 16px rgba(0,0,0,.14);
+    }}
+    .prompts-col {{ display: flex; flex-direction: column; gap: 12px; }}
+    .prompt-block {{
+      background: #fff; border-radius: 10px;
+      box-shadow: 0 1px 4px rgba(0,0,0,.07), 0 0 0 1px rgba(0,0,0,.05); overflow: hidden;
+    }}
+    .prompt-block summary {{
+      padding: 14px 18px; font-size: 13px; font-weight: 700; cursor: pointer;
+      user-select: none; list-style: none; display: flex; align-items: center; gap: 8px; color: #333;
+    }}
+    .prompt-block summary::-webkit-details-marker {{ display: none; }}
+    .prompt-block summary::before {{ content: '▶'; font-size: 8px; color: #bbb; transition: transform .15s; flex-shrink: 0; }}
+    .prompt-block[open] summary::before {{ transform: rotate(90deg); }}
+    .prompt-block summary:hover {{ color: #fe2c55; }}
+    .prompt-block summary:hover::before {{ color: #fe2c55; }}
+    .prompt-label {{ font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: .5px; color: #bbb; margin-left: auto; }}
+    .prompt-text {{
+      padding: 14px 18px 16px; font-family: 'SF Mono','Fira Code','Menlo',monospace;
+      font-size: 11.5px; line-height: 1.7; color: #555; background: #f9f9f9;
+      border-top: 1px solid #f0f0f0; white-space: pre-wrap; word-break: break-word;
+      max-height: 320px; overflow-y: auto;
+    }}
+    @media (max-width: 900px) {{
+      .media-grid {{ grid-template-columns: 1fr; }}
+      .video-col {{ max-width: 360px; margin: 0 auto; }}
+      .idea-lead {{ padding: 24px 22px 22px; }}
+    }}
+    @media (max-width: 520px) {{ .idea-title {{ font-size: 22px; }} }}
+
+  </style>
+</head>
+<body>
+<div class="page-header">
+  <div class="header-inner">
+    <a class="brand" href="../../">
+      <span class="brand-tik">Tik</span><span class="brand-tok">Tok</span>
+      <span class="brand-dot">·</span><span class="brand-cc">Video Ideas</span>
+    </a>
+    <div class="header-text">
+      <div class="page-title">#kevinhart_3</div>
+      <div class="page-sub">Видео-идея · 14 мая 2026 · Выпуск 3</div>
+    </div>
+    <div class="date-badge">14.05.2026<span>Дата · Выпуск 3</span></div>
+  </div>
+  <nav class="page-nav">
+    <a href="../../" class="nav-a">← Все отчёты</a>
+    <a href="../" class="nav-a">← 14 мая 2026 · Выпуск 3</a>
+    <a href="#" class="nav-a active">#kevinhart_3</a>
+  </nav>
+</div>
+<div class="content">
+  <div class="idea-lead">
+    <div class="idea-hashtag">#kevinhart_3</div>
+    <h1 class="idea-title">Замах на поле для гольфа</h1>
+    <p class="idea-desc">Солнечный день, поле для гольфа — та самая непринуждённая тусовка друзей, в которой любят проводить время звёзды вроде Кевина Харта (сами друзья лишь угадываются на периферии). Пользователь готовится к удару с ти — камера очень медленно и почти незаметно наезжает, пока нарастает комичное напряжение: капля пота, нервный смешок, слишком серьёзная сосредоточенность для обычного удара. Разворот — абсурдно несерьёзный: мяч улетает по нелепой, неожиданной траектории (например, с крутым виражом), и пользователь взрывается смехом над самим собой, не разочарованием. Лёгкая, тёплая комедийная зарисовка без сцены и зрителей.</p>
+  </div>
+  <section class="section">
+    <div class="section-header">
+      <h2 class="section-title">Видео</h2>
+      <span class="section-badge">Пример генерации</span>
+    </div>
+    <div class="media-grid">
+      <div class="video-col"><div style="aspect-ratio:9/16;background:#eee;border-radius:12px;"></div></div>
+      <div class="prompts-col">
+        <details class="prompt-block">
+          <summary>Промпт для первого кадра <span class="prompt-label">GPT Image 2</span></summary>
+          <pre class="prompt-text">Turn the photo of the person into a medium shot on a sunlit golf course, mid-stance over a tee, gripping a golf club, wearing casual golf attire, a bright green fairway and distant trees softly blurred behind them, warm midday light, an exaggeratedly serious focused expression.</pre>
+        </details>
+        <details class="prompt-block">
+          <summary>Промпт для видео <span class="prompt-label">Kling · Grok</span></summary>
+          <pre class="prompt-text">Create a short cinematic video based on the uploaded image.
+The scene is a sunny golf course tee box. The person stands in a medium shot, mid-stance over the ball, gripping a club with exaggerated seriousness.
+
+Camera and motion structure:
+The camera performs one extremely slow, barely perceptible continuous push-in for the entire video — the slowness itself builds comic tension:
+1. FRAMES 0–35%: The person is frozen in an overly serious golf stance, staring down at the ball as if it were a life-or-death moment. A single bead of sweat forms and slowly rolls down their temple. Their jaw is clenched with comic over-seriousness.
+2. FRAMES 35–60%: The tension keeps building — a nervous half-smile flickers, a quick anxious glance up and back down at the ball, shoulders tightening further. The slow push-in continues, tightening the frame around their face and the club.
+3. FRAMES 60–80%: The person finally swings — a single clean, committed motion. Immediately after, their face shifts to a comic wince of anticipation, eyes squeezed half-shut, waiting to see what happens.
+4. FRAMES 80–100%: Whatever happened is clearly absurd and harmless (implied by the person&#x27;s reaction, not shown as a separate shot) — the person&#x27;s face bursts into surprised, delighted laughter at their own results, shoulders shaking, completely undone by their own swing. No overlay graphics — the moment is carried entirely by the reaction.
+
+Character:
+Preserve the person&#x27;s face, hair, skin tone, and identity exactly from the source image throughout the entire video. Do not alter their appearance.
+Motion arc, happening only once: exaggerated serious stance → building nervous tension (sweat, glances) → the swing → comic wince → surprised self-directed laughter. No other movement or gestures.
+
+Key visual events (in order):
+- The single slow bead of sweat rolling down the temple during the tension build
+- The committed golf swing — one clean motion, no repeats
+- The comic wince immediately after impact
+- The burst of genuine self-directed laughter as the payoff
+
+Style:
+Warm, sunlit, observational comedy — think a dry mockumentary close-up on an ordinary moment played with theatrical over-seriousness, in the same laid-back celebrity-golf-day spirit associated with Kevin Hart&#x27;s off-stage persona. No music-video gloss; grounded, naturalistic golf-course lighting with a gently comic tone.
+
+Restrictions:
+- Do not change the person&#x27;s appearance, face, clothing, or identity at any point
+- Do not depict any real, identifiable celebrity as a separate character anywhere in the frame — this is the person&#x27;s own leisure moment, no one else clearly rendered
+- The swing must happen only once — no repeated or looping swing motion
+- No other people clearly visible or detailed in the frame — any implied friends must stay entirely out of frame or fully unrendered
+- No text overlays, captions, or graphics of any kind
+- The camera push-in must stay extremely slow and smooth throughout — no sudden zooms, no cuts
+- No violent, aggressive, or genuinely upset expressions — the tone stays warm and self-amused throughout
+- No sound-effect implications beyond what the person&#x27;s own reaction conveys</pre>
+        </details>
+      </div>
+    </div>
+  </section>
+</div>
+</body>
+</html>

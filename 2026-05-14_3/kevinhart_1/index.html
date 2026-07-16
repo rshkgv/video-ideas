@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>#kevinhart_1 — Вспышки на премьере · Video Ideas</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      background: #f4f4f5; color: #111; font-size: 14px; line-height: 1.5;
+    }
+    .page-header {
+      background: #fff; border-bottom: 1px solid #e4e4e7; position: sticky;
+      top: 0; z-index: 100; box-shadow: 0 1px 8px rgba(0,0,0,.05);
+    }
+    .header-inner {
+      max-width: 1100px; margin: 0 auto; padding: 14px 28px;
+      display: flex; align-items: center; gap: 20px;
+    }
+    .brand {
+      font-size: 18px; font-weight: 800; letter-spacing: -.5px; color: #111;
+      white-space: nowrap; user-select: none; text-decoration: none;
+    }
+    .brand-tik { color: #fe2c55; }
+    .brand-tok { color: #010101; }
+    .brand-dot { color: #d1d1d1; margin: 0 6px; font-weight: 300; }
+    .brand-cc  { color: #888; font-size: 12px; font-weight: 500; }
+    .header-text { flex: 1; min-width: 0; }
+    .page-title {
+      font-size: 15px; font-weight: 700; letter-spacing: -.2px;
+      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    }
+    .page-sub { font-size: 11.5px; color: #999; margin-top: 2px; }
+    .date-badge {
+      background: #fe2c55; color: #fff; font-weight: 700; font-size: 12px;
+      border-radius: 8px; padding: 6px 14px; line-height: 1.4;
+      text-align: center; white-space: nowrap; flex-shrink: 0;
+    }
+    .date-badge span { display: block; font-size: 10px; font-weight: 500; opacity: .8; }
+    .page-nav {
+      max-width: 1100px; margin: 0 auto; padding: 0 28px;
+      display: flex; gap: 2px; border-top: 1px solid #f0f0f0;
+    }
+    .nav-a {
+      text-decoration: none; color: #999; font-size: 12.5px; font-weight: 500;
+      padding: 9px 14px; border-bottom: 2px solid transparent;
+      transition: color .15s, border-color .15s;
+    }
+    .nav-a:hover { color: #fe2c55; }
+    .nav-a.active { color: #fe2c55; border-bottom-color: #fe2c55; }
+    .content { max-width: 1100px; margin: 0 auto; padding: 36px 28px 80px; }
+    .section { margin-bottom: 52px; }
+    .section-header { display: flex; align-items: baseline; gap: 10px; margin-bottom: 16px; }
+    .section-title { font-size: 19px; font-weight: 800; letter-spacing: -.4px; }
+    .section-badge {
+      font-size: 10.5px; font-weight: 600; color: #999; background: #ebebeb;
+      padding: 3px 8px; border-radius: 20px; text-transform: uppercase; letter-spacing: .4px;
+    }
+    @media (max-width: 768px) {
+      .header-inner { gap: 12px; padding: 12px 16px; }
+      .date-badge { display: none; }
+      .page-nav { padding: 0 16px; }
+      .content { padding: 24px 16px 60px; }
+    }
+
+
+    .idea-lead {{
+      background: #fff; border-radius: 12px; padding: 36px 40px 32px;
+      box-shadow: 0 1px 4px rgba(0,0,0,.07), 0 0 0 1px rgba(0,0,0,.05);
+      margin-bottom: 40px;
+    }}
+    .idea-hashtag {{ font-size: 13px; font-weight: 700; color: #fe2c55; margin-bottom: 8px; }}
+    .idea-title {{ font-size: 26px; font-weight: 800; letter-spacing: -.6px; line-height: 1.25; margin-bottom: 16px; }}
+    .idea-desc {{ font-size: 14px; color: #444; line-height: 1.75; max-width: 720px; }}
+    .media-grid {{
+      display: grid; grid-template-columns: 340px 1fr; gap: 28px; align-items: start;
+    }}
+    .video-player {{
+      width: 100%; aspect-ratio: 9/16; object-fit: cover; border-radius: 12px;
+      display: block; box-shadow: 0 2px 16px rgba(0,0,0,.14);
+    }}
+    .frame-img {{
+      width: 100%; aspect-ratio: 9/16; object-fit: cover; border-radius: 12px;
+      display: block; box-shadow: 0 2px 16px rgba(0,0,0,.14);
+    }}
+    .prompts-col {{ display: flex; flex-direction: column; gap: 12px; }}
+    .prompt-block {{
+      background: #fff; border-radius: 10px;
+      box-shadow: 0 1px 4px rgba(0,0,0,.07), 0 0 0 1px rgba(0,0,0,.05); overflow: hidden;
+    }}
+    .prompt-block summary {{
+      padding: 14px 18px; font-size: 13px; font-weight: 700; cursor: pointer;
+      user-select: none; list-style: none; display: flex; align-items: center; gap: 8px; color: #333;
+    }}
+    .prompt-block summary::-webkit-details-marker {{ display: none; }}
+    .prompt-block summary::before {{ content: '▶'; font-size: 8px; color: #bbb; transition: transform .15s; flex-shrink: 0; }}
+    .prompt-block[open] summary::before {{ transform: rotate(90deg); }}
+    .prompt-block summary:hover {{ color: #fe2c55; }}
+    .prompt-block summary:hover::before {{ color: #fe2c55; }}
+    .prompt-label {{ font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: .5px; color: #bbb; margin-left: auto; }}
+    .prompt-text {{
+      padding: 14px 18px 16px; font-family: 'SF Mono','Fira Code','Menlo',monospace;
+      font-size: 11.5px; line-height: 1.7; color: #555; background: #f9f9f9;
+      border-top: 1px solid #f0f0f0; white-space: pre-wrap; word-break: break-word;
+      max-height: 320px; overflow-y: auto;
+    }}
+    @media (max-width: 900px) {{
+      .media-grid {{ grid-template-columns: 1fr; }}
+      .video-col {{ max-width: 360px; margin: 0 auto; }}
+      .idea-lead {{ padding: 24px 22px 22px; }}
+    }}
+    @media (max-width: 520px) {{ .idea-title {{ font-size: 22px; }} }}
+
+  </style>
+</head>
+<body>
+<div class="page-header">
+  <div class="header-inner">
+    <a class="brand" href="../../">
+      <span class="brand-tik">Tik</span><span class="brand-tok">Tok</span>
+      <span class="brand-dot">·</span><span class="brand-cc">Video Ideas</span>
+    </a>
+    <div class="header-text">
+      <div class="page-title">#kevinhart_1</div>
+      <div class="page-sub">Видео-идея · 14 мая 2026 · Выпуск 3</div>
+    </div>
+    <div class="date-badge">14.05.2026<span>Дата · Выпуск 3</span></div>
+  </div>
+  <nav class="page-nav">
+    <a href="../../" class="nav-a">← Все отчёты</a>
+    <a href="../" class="nav-a">← 14 мая 2026 · Выпуск 3</a>
+    <a href="#" class="nav-a active">#kevinhart_1</a>
+  </nav>
+</div>
+<div class="content">
+  <div class="idea-lead">
+    <div class="idea-hashtag">#kevinhart_1</div>
+    <h1 class="idea-title">Вспышки на премьере</h1>
+    <p class="idea-desc">Красная дорожка кинопремьеры — пользователь останавливается перед стеной с логотипами, в кадр влетает микрофон репортёра (сам репортёр не виден). Пользователь выдаёт короткую уверенную шутку-однострочник, будто отвечая на подколку в духе Кевина Харта, и в этот же момент вокруг начинают часто вспыхивать фотовспышки папарацци. Никакого разворота сюжета — просто один заряженный момент уверенности и юмора, с эффектной световой пульсацией на пике. В финале — короткая, стильная плашка с названием вымышленного фильма.</p>
+  </div>
+  <section class="section">
+    <div class="section-header">
+      <h2 class="section-title">Видео</h2>
+      <span class="section-badge">Пример генерации</span>
+    </div>
+    <div class="media-grid">
+      <div class="video-col"><div style="aspect-ratio:9/16;background:#eee;border-radius:12px;"></div></div>
+      <div class="prompts-col">
+        <details class="prompt-block">
+          <summary>Промпт для первого кадра <span class="prompt-label">GPT Image 2</span></summary>
+          <pre class="prompt-text">Turn the photo of the person into a confident medium shot on a movie premiere red carpet, wearing a sharp blazer, a step-and-repeat backdrop with blurred logo patterns behind them, warm evening light, a hint of a microphone entering the frame from the bottom edge, no flashes yet.</pre>
+        </details>
+        <details class="prompt-block">
+          <summary>Промпт для видео <span class="prompt-label">Kling · Grok</span></summary>
+          <pre class="prompt-text">Create a short cinematic video based on the uploaded image.
+The scene is a movie premiere red carpet. The person stands in a confident medium shot in front of a blurred step-and-repeat backdrop, a reporter&#x27;s microphone entering from the bottom edge of frame.
+
+Camera and motion structure:
+The camera is completely static throughout — a locked red-carpet interview shot:
+1. FRAMES 0–30%: The person stands relaxed and confident, mid-conversation, listening with a slight amused smirk to an implied off-screen question. The microphone bobs very slightly at the bottom of frame, held by an unseen reporter.
+2. FRAMES 30–60%: The person delivers a punchy one-liner straight to camera — eyebrows raised, a sharp comic beat, hands gesturing once for emphasis. Their expression is pure confident comic timing.
+3. FRAMES 60–85%: The instant the line lands, camera flashbulbs begin popping rapidly all around the edges of frame — a dense, rhythmic flicker of white light bursts, like a wall of paparazzi firing at once. The person breaks into a wide, satisfied grin, leaning back slightly.
+4. FRAMES 85–100%: The flashes settle to an occasional pop. The person gives one confident nod to camera. A minimal title card fades in at the bottom: a stylized fictional movie title in clean bold serif with a small film-reel icon, remaining until the last frame.
+
+Character:
+Preserve the person&#x27;s face, hair, skin tone, and identity exactly from the source image throughout the entire video. Do not alter their appearance.
+Motion arc, happening only once: relaxed listening → sharp punchline delivery → satisfied grin under the flash barrage → confident nod. No other movement.
+
+Key visual events (in order):
+- The punchline delivery (small gesture, raised eyebrow) — the comic beat
+- The sudden dense flashbulb barrage synchronized to the punchline landing — the hero moment
+- The settle into a satisfied grin as flashes taper off
+- The title card fade-in at the very end
+
+Style:
+Glossy entertainment-news red carpet photography — warm evening light, shallow depth of field on the blurred backdrop, crisp high-contrast flash lighting during the burst. Confident, glamorous, quick-witted.
+
+Restrictions:
+- Do not change the person&#x27;s appearance, face, clothing, or identity at any point
+- The reporter must remain entirely off-screen — only the microphone tip is ever visible, no reporter body or face
+- Do not depict any real, identifiable celebrity as a separate character anywhere in the frame
+- The flashbulb barrage must read as camera flashes only — no lightning, no fire, no other lighting effect substituted
+- The title card appears only in the final 15% and must remain visible until the last frame
+- The film title on the card must be entirely fictional — no real movie titles, franchises, or studio logos
+- No speech bubbles or captions quoting the joke
+- No social-media UI overlays
+- No other people clearly visible in the frame
+- No jump cuts — each stage flows smoothly and happens only once</pre>
+        </details>
+      </div>
+    </div>
+  </section>
+</div>
+</body>
+</html>
