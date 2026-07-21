@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>#jamescharles_3 — Подиум на максимум · Video Ideas</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      background: #f4f4f5; color: #111; font-size: 14px; line-height: 1.5;
+    }
+    .page-header {
+      background: #fff; border-bottom: 1px solid #e4e4e7; position: sticky;
+      top: 0; z-index: 100; box-shadow: 0 1px 8px rgba(0,0,0,.05);
+    }
+    .header-inner {
+      max-width: 1100px; margin: 0 auto; padding: 14px 28px;
+      display: flex; align-items: center; gap: 20px;
+    }
+    .brand {
+      font-size: 18px; font-weight: 800; letter-spacing: -.5px; color: #111;
+      white-space: nowrap; user-select: none; text-decoration: none;
+    }
+    .brand-tik { color: #fe2c55; }
+    .brand-tok { color: #010101; }
+    .brand-dot { color: #d1d1d1; margin: 0 6px; font-weight: 300; }
+    .brand-cc  { color: #888; font-size: 12px; font-weight: 500; }
+    .header-text { flex: 1; min-width: 0; }
+    .page-title {
+      font-size: 15px; font-weight: 700; letter-spacing: -.2px;
+      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    }
+    .page-sub { font-size: 11.5px; color: #999; margin-top: 2px; }
+    .date-badge {
+      background: #fe2c55; color: #fff; font-weight: 700; font-size: 12px;
+      border-radius: 8px; padding: 6px 14px; line-height: 1.4;
+      text-align: center; white-space: nowrap; flex-shrink: 0;
+    }
+    .date-badge span { display: block; font-size: 10px; font-weight: 500; opacity: .8; }
+    .page-nav {
+      max-width: 1100px; margin: 0 auto; padding: 0 28px;
+      display: flex; gap: 2px; border-top: 1px solid #f0f0f0;
+    }
+    .nav-a {
+      text-decoration: none; color: #999; font-size: 12.5px; font-weight: 500;
+      padding: 9px 14px; border-bottom: 2px solid transparent;
+      transition: color .15s, border-color .15s;
+    }
+    .nav-a:hover { color: #fe2c55; }
+    .nav-a.active { color: #fe2c55; border-bottom-color: #fe2c55; }
+    .content { max-width: 1100px; margin: 0 auto; padding: 36px 28px 80px; }
+    .section { margin-bottom: 52px; }
+    .section-header { display: flex; align-items: baseline; gap: 10px; margin-bottom: 16px; }
+    .section-title { font-size: 19px; font-weight: 800; letter-spacing: -.4px; }
+    .section-badge {
+      font-size: 10.5px; font-weight: 600; color: #999; background: #ebebeb;
+      padding: 3px 8px; border-radius: 20px; text-transform: uppercase; letter-spacing: .4px;
+    }
+    @media (max-width: 768px) {
+      .header-inner { gap: 12px; padding: 12px 16px; }
+      .date-badge { display: none; }
+      .page-nav { padding: 0 16px; }
+      .content { padding: 24px 16px 60px; }
+    }
+
+
+    .idea-lead {{
+      background: #fff; border-radius: 12px; padding: 36px 40px 32px;
+      box-shadow: 0 1px 4px rgba(0,0,0,.07), 0 0 0 1px rgba(0,0,0,.05);
+      margin-bottom: 40px;
+    }}
+    .idea-hashtag {{ font-size: 13px; font-weight: 700; color: #fe2c55; margin-bottom: 8px; }}
+    .idea-title {{ font-size: 26px; font-weight: 800; letter-spacing: -.6px; line-height: 1.25; margin-bottom: 16px; }}
+    .idea-desc {{ font-size: 14px; color: #444; line-height: 1.75; max-width: 720px; }}
+    .media-grid {{
+      display: grid; grid-template-columns: 340px 1fr; gap: 28px; align-items: start;
+    }}
+    .video-player {{
+      width: 100%; aspect-ratio: 9/16; object-fit: cover; border-radius: 12px;
+      display: block; box-shadow: 0 2px 16px rgba(0,0,0,.14);
+    }}
+    .frame-img {{
+      width: 100%; aspect-ratio: 9/16; object-fit: cover; border-radius: 12px;
+      display: block; box-shadow: 0 2px 16px rgba(0,0,0,.14);
+    }}
+    .prompts-col {{ display: flex; flex-direction: column; gap: 12px; }}
+    .prompt-block {{
+      background: #fff; border-radius: 10px;
+      box-shadow: 0 1px 4px rgba(0,0,0,.07), 0 0 0 1px rgba(0,0,0,.05); overflow: hidden;
+    }}
+    .prompt-block summary {{
+      padding: 14px 18px; font-size: 13px; font-weight: 700; cursor: pointer;
+      user-select: none; list-style: none; display: flex; align-items: center; gap: 8px; color: #333;
+    }}
+    .prompt-block summary::-webkit-details-marker {{ display: none; }}
+    .prompt-block summary::before {{ content: '▶'; font-size: 8px; color: #bbb; transition: transform .15s; flex-shrink: 0; }}
+    .prompt-block[open] summary::before {{ transform: rotate(90deg); }}
+    .prompt-block summary:hover {{ color: #fe2c55; }}
+    .prompt-block summary:hover::before {{ color: #fe2c55; }}
+    .prompt-label {{ font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: .5px; color: #bbb; margin-left: auto; }}
+    .prompt-text {{
+      padding: 14px 18px 16px; font-family: 'SF Mono','Fira Code','Menlo',monospace;
+      font-size: 11.5px; line-height: 1.7; color: #555; background: #f9f9f9;
+      border-top: 1px solid #f0f0f0; white-space: pre-wrap; word-break: break-word;
+      max-height: 320px; overflow-y: auto;
+    }}
+    @media (max-width: 900px) {{
+      .media-grid {{ grid-template-columns: 1fr; }}
+      .video-col {{ max-width: 360px; margin: 0 auto; }}
+      .idea-lead {{ padding: 24px 22px 22px; }}
+    }}
+    @media (max-width: 520px) {{ .idea-title {{ font-size: 22px; }} }}
+
+  </style>
+</head>
+<body>
+<div class="page-header">
+  <div class="header-inner">
+    <a class="brand" href="../../">
+      <span class="brand-tik">Tik</span><span class="brand-tok">Tok</span>
+      <span class="brand-dot">·</span><span class="brand-cc">Video Ideas</span>
+    </a>
+    <div class="header-text">
+      <div class="page-title">#jamescharles_3</div>
+      <div class="page-sub">Видео-идея · 14 мая 2026 · Выпуск 5</div>
+    </div>
+    <div class="date-badge">14.05.2026<span>Дата · Выпуск 5</span></div>
+  </div>
+  <nav class="page-nav">
+    <a href="../../" class="nav-a">← Все отчёты</a>
+    <a href="../" class="nav-a">← 14 мая 2026 · Выпуск 5</a>
+    <a href="#" class="nav-a active">#jamescharles_3</a>
+  </nav>
+</div>
+<div class="content">
+  <div class="idea-lead">
+    <div class="idea-hashtag">#jamescharles_3</div>
+    <h1 class="idea-title">Подиум на максимум</h1>
+    <p class="idea-desc">Визуальный якорь — короткий подиум с огоньками вдоль краёв и драматичным верхним светом, плюс сам Джеймс Чарльз, стоящий в конце подиума и болеющий за пользователя. Пользователь идёт уверенным шагом прямо на камеру в смелом образе, будто на настоящем показе мод — он крупнее, ближе к камере и в фокусе на протяжении всего видео. Камера отступает синхронно с шагом, удерживая крупный план лица пользователя, пока в финале не срабатывает радужный световой луч (фирменная палитра Джеймса Чарльза), а сам Джеймс Чарльз, стоящий позади, восторженно аплодирует и произносит реплику в speech bubble, пока пользователь завершает кадр коронным жестом — подмигиванием и «сердечком» пальцами.</p>
+  </div>
+  <section class="section">
+    <div class="section-header">
+      <h2 class="section-title">Видео</h2>
+      <span class="section-badge">Пример генерации</span>
+    </div>
+    <div class="media-grid">
+      <div class="video-col"><video class="video-player" controls muted loop playsinline poster="https://temp-images.ws.pho.to/f8ecdb69da746ce56411317bb34ebba6dafd0922.png"><source src="https://temp-images.ws.pho.to/ce985999ce700b34de6b1ed884ae97cf1371d643.mp4" type="video/mp4"></video></div>
+      <div class="prompts-col">
+        <details class="prompt-block">
+          <summary>Промпт для первого кадра <span class="prompt-label">GPT Image 2</span></summary>
+          <pre class="prompt-text">Turn the photo of the person into a medium shot of them standing at the start of a short runway set, glowing floor-edge lights lining either side, dramatic overhead spotlights above, wearing a bold statement fashion look, chin lifted, confident stance, dark backdrop beyond the runway, runway end empty of other people.</pre>
+        </details>
+        <details class="prompt-block">
+          <summary>Промпт для видео <span class="prompt-label">Kling · Grok</span></summary>
+          <pre class="prompt-text">Create a short cinematic video based on the uploaded image.
+The scene is a short runway set with glowing floor-edge lights lining both sides and dramatic overhead spotlights. The person stands at the start of the runway in a bold fashion look, facing camera, closest to camera throughout.
+
+Camera and motion structure:
+The camera tracks backward at the same pace as the person&#x27;s forward stride, holding a consistent medium shot throughout, with the person always largest and closest to camera — a runway broadcast tracking shot:
+1. FRAMES 0–25%: The person begins a confident, deliberate strut down the runway. The camera retreats at matched pace, keeping them centered in a steady medium shot. The floor-edge lights glow rhythmically underfoot as they pass. The far end of the runway is still empty.
+2. FRAMES 25–60%: The stride continues, full of confidence — fabric and hair moving naturally with each step. The overhead spotlights track along with the movement, keeping the person lit. James Charles becomes visible, small and distant, standing at the far end of the runway behind the person, watching.
+3. FRAMES 60–85%: The person reaches a mark near the camera and comes to a sharp, decisive stop — one hand settling on the hip, chin tilted, a poised final stance. James Charles, still smaller and further back in the frame, claps and cheers.
+4. FRAMES 85–100%: The floor-edge lights ripple in a wave of rainbow gradient color (red-orange-yellow-green-blue-purple, in sequence) from the back of the runway toward the person, and the overhead spotlight narrows into a single tight beam isolating the person in the final pose. James Charles, still in the background, calls out — a small stylized speech bubble near him reads &quot;✨ ICONIC, SIS ✨&quot;. On the very last beat, the person gives one confident wink and a &quot;finger-heart&quot; gesture (thumb and index finger crossed into a small heart shape) toward the camera. A small text graphic, &quot;✨ JAMES CHARLES ICONIC ✨&quot;, fades in at the bottom corner and remains until the last frame.
+
+Character:
+Preserve the person&#x27;s (the uploaded user&#x27;s) face, hair, skin tone, and identity exactly from the source image throughout the entire video. Do not alter their appearance. The only motion is the confident walking stride transitioning into the final held pose plus the single wink/finger-heart gesture — no other gestures, no speaking. James Charles remains a distant, smaller background figure throughout — he never approaches the camera or becomes larger/closer than the user.
+
+Key visual events (in order):
+- The confident runway strut, camera retreating in perfect sync (the visual anchor and the main action)
+- The rhythmic glow of the floor-edge lights passing underfoot
+- James Charles appearing small and distant at the runway&#x27;s far end, watching, then cheering
+- The sharp stop into the final poised stance
+- The rainbow-gradient light ripple and narrowing spotlight beam (the hero moment)
+- James Charles&#x27;s cheer and speech bubble, and the user&#x27;s wink and finger-heart gesture — the signature beats that make the reference unmistakable
+- The &quot;✨ JAMES CHARLES ICONIC ✨&quot; graphic locking in at the very end
+
+Style:
+High-fashion runway broadcast realism — confident, dramatic, precisely lit. The synchronized backward tracking shot is the visual signature; the rainbow light ripple at the end is the singular spectacular beat, directly referencing James Charles&#x27;s signature rainbow aesthetic.
+
+Restrictions:
+- Do not change the user&#x27;s appearance, face, clothing, or identity at any point
+- The user&#x27;s face must remain clearly visible, forward-facing, and the largest/closest figure in a consistent medium shot for the entire video — the backward tracking camera must never lose the user&#x27;s face from frame, and James Charles must never become larger or closer to camera than the user
+- The user never speaks, sings, lip-syncs, or mouths words — the wink and finger-heart gesture is their only silent, wordless &quot;expression.&quot; James Charles may be shown cheering/talking, conveyed via the specified speech bubble, not lip-synced dialogue
+- The camera must track backward in sync with the stride — no static shot, no handheld shake
+- The floor-edge lights and overhead spotlight are the only lighting effects — no confetti, no pyrotechnics
+- The rainbow color sequence in the final light ripple must stay in the described order, not random flashing colors
+- James Charles appears only from frame 25% onward, always at the far end of the runway, small and distant — never in frames 0–25%, never approaching the camera
+- The &quot;✨ JAMES CHARLES ICONIC ✨&quot; graphic and the speech bubble each appear only in their specified beats and must remain visible until the last frame once shown
+- No extra people on the runway besides the user and James Charles
+- No jump cuts — the entire strut and stop must play as one continuous, unbroken shot</pre>
+        </details>
+      </div>
+    </div>
+  </section>
+</div>
+</body>
+</html>

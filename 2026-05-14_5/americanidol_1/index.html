@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>#americanidol_1 — Золотой билет · Video Ideas</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      background: #f4f4f5; color: #111; font-size: 14px; line-height: 1.5;
+    }
+    .page-header {
+      background: #fff; border-bottom: 1px solid #e4e4e7; position: sticky;
+      top: 0; z-index: 100; box-shadow: 0 1px 8px rgba(0,0,0,.05);
+    }
+    .header-inner {
+      max-width: 1100px; margin: 0 auto; padding: 14px 28px;
+      display: flex; align-items: center; gap: 20px;
+    }
+    .brand {
+      font-size: 18px; font-weight: 800; letter-spacing: -.5px; color: #111;
+      white-space: nowrap; user-select: none; text-decoration: none;
+    }
+    .brand-tik { color: #fe2c55; }
+    .brand-tok { color: #010101; }
+    .brand-dot { color: #d1d1d1; margin: 0 6px; font-weight: 300; }
+    .brand-cc  { color: #888; font-size: 12px; font-weight: 500; }
+    .header-text { flex: 1; min-width: 0; }
+    .page-title {
+      font-size: 15px; font-weight: 700; letter-spacing: -.2px;
+      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    }
+    .page-sub { font-size: 11.5px; color: #999; margin-top: 2px; }
+    .date-badge {
+      background: #fe2c55; color: #fff; font-weight: 700; font-size: 12px;
+      border-radius: 8px; padding: 6px 14px; line-height: 1.4;
+      text-align: center; white-space: nowrap; flex-shrink: 0;
+    }
+    .date-badge span { display: block; font-size: 10px; font-weight: 500; opacity: .8; }
+    .page-nav {
+      max-width: 1100px; margin: 0 auto; padding: 0 28px;
+      display: flex; gap: 2px; border-top: 1px solid #f0f0f0;
+    }
+    .nav-a {
+      text-decoration: none; color: #999; font-size: 12.5px; font-weight: 500;
+      padding: 9px 14px; border-bottom: 2px solid transparent;
+      transition: color .15s, border-color .15s;
+    }
+    .nav-a:hover { color: #fe2c55; }
+    .nav-a.active { color: #fe2c55; border-bottom-color: #fe2c55; }
+    .content { max-width: 1100px; margin: 0 auto; padding: 36px 28px 80px; }
+    .section { margin-bottom: 52px; }
+    .section-header { display: flex; align-items: baseline; gap: 10px; margin-bottom: 16px; }
+    .section-title { font-size: 19px; font-weight: 800; letter-spacing: -.4px; }
+    .section-badge {
+      font-size: 10.5px; font-weight: 600; color: #999; background: #ebebeb;
+      padding: 3px 8px; border-radius: 20px; text-transform: uppercase; letter-spacing: .4px;
+    }
+    @media (max-width: 768px) {
+      .header-inner { gap: 12px; padding: 12px 16px; }
+      .date-badge { display: none; }
+      .page-nav { padding: 0 16px; }
+      .content { padding: 24px 16px 60px; }
+    }
+
+
+    .idea-lead {{
+      background: #fff; border-radius: 12px; padding: 36px 40px 32px;
+      box-shadow: 0 1px 4px rgba(0,0,0,.07), 0 0 0 1px rgba(0,0,0,.05);
+      margin-bottom: 40px;
+    }}
+    .idea-hashtag {{ font-size: 13px; font-weight: 700; color: #fe2c55; margin-bottom: 8px; }}
+    .idea-title {{ font-size: 26px; font-weight: 800; letter-spacing: -.6px; line-height: 1.25; margin-bottom: 16px; }}
+    .idea-desc {{ font-size: 14px; color: #444; line-height: 1.75; max-width: 720px; }}
+    .media-grid {{
+      display: grid; grid-template-columns: 340px 1fr; gap: 28px; align-items: start;
+    }}
+    .video-player {{
+      width: 100%; aspect-ratio: 9/16; object-fit: cover; border-radius: 12px;
+      display: block; box-shadow: 0 2px 16px rgba(0,0,0,.14);
+    }}
+    .frame-img {{
+      width: 100%; aspect-ratio: 9/16; object-fit: cover; border-radius: 12px;
+      display: block; box-shadow: 0 2px 16px rgba(0,0,0,.14);
+    }}
+    .prompts-col {{ display: flex; flex-direction: column; gap: 12px; }}
+    .prompt-block {{
+      background: #fff; border-radius: 10px;
+      box-shadow: 0 1px 4px rgba(0,0,0,.07), 0 0 0 1px rgba(0,0,0,.05); overflow: hidden;
+    }}
+    .prompt-block summary {{
+      padding: 14px 18px; font-size: 13px; font-weight: 700; cursor: pointer;
+      user-select: none; list-style: none; display: flex; align-items: center; gap: 8px; color: #333;
+    }}
+    .prompt-block summary::-webkit-details-marker {{ display: none; }}
+    .prompt-block summary::before {{ content: '▶'; font-size: 8px; color: #bbb; transition: transform .15s; flex-shrink: 0; }}
+    .prompt-block[open] summary::before {{ transform: rotate(90deg); }}
+    .prompt-block summary:hover {{ color: #fe2c55; }}
+    .prompt-block summary:hover::before {{ color: #fe2c55; }}
+    .prompt-label {{ font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: .5px; color: #bbb; margin-left: auto; }}
+    .prompt-text {{
+      padding: 14px 18px 16px; font-family: 'SF Mono','Fira Code','Menlo',monospace;
+      font-size: 11.5px; line-height: 1.7; color: #555; background: #f9f9f9;
+      border-top: 1px solid #f0f0f0; white-space: pre-wrap; word-break: break-word;
+      max-height: 320px; overflow-y: auto;
+    }}
+    @media (max-width: 900px) {{
+      .media-grid {{ grid-template-columns: 1fr; }}
+      .video-col {{ max-width: 360px; margin: 0 auto; }}
+      .idea-lead {{ padding: 24px 22px 22px; }}
+    }}
+    @media (max-width: 520px) {{ .idea-title {{ font-size: 22px; }} }}
+
+  </style>
+</head>
+<body>
+<div class="page-header">
+  <div class="header-inner">
+    <a class="brand" href="../../">
+      <span class="brand-tik">Tik</span><span class="brand-tok">Tok</span>
+      <span class="brand-dot">·</span><span class="brand-cc">Video Ideas</span>
+    </a>
+    <div class="header-text">
+      <div class="page-title">#americanidol_1</div>
+      <div class="page-sub">Видео-идея · 14 мая 2026 · Выпуск 5</div>
+    </div>
+    <div class="date-badge">14.05.2026<span>Дата · Выпуск 5</span></div>
+  </div>
+  <nav class="page-nav">
+    <a href="../../" class="nav-a">← Все отчёты</a>
+    <a href="../" class="nav-a">← 14 мая 2026 · Выпуск 5</a>
+    <a href="#" class="nav-a active">#americanidol_1</a>
+  </nav>
+</div>
+<div class="content">
+  <div class="idea-lead">
+    <div class="idea-hashtag">#americanidol_1</div>
+    <h1 class="idea-title">Золотой билет</h1>
+    <p class="idea-desc">Визуальный якорь — судейский стол American Idol: три силуэта за подсвеченной стойкой с именными табличками, за спиной пользователя светится фирменный логотип шоу, единственный прожектор сверху, микрofон в руке. Пользователь стоит перед судьями в ожидании вердикта, камера медленно наезжает на его лицо. На резком акценте вперёд протягивается светящийся золотой билет — и в кадр взрывается золотое конфетти-ленты. Никакой сцены с толпой, никакого закулисья — именно момент вердикта перед судейским столом.</p>
+  </div>
+  <section class="section">
+    <div class="section-header">
+      <h2 class="section-title">Видео</h2>
+      <span class="section-badge">Пример генерации</span>
+    </div>
+    <div class="media-grid">
+      <div class="video-col"><video class="video-player" controls muted loop playsinline poster="https://temp-images.ws.pho.to/aa0c163a44a20897c0d966ad0eb71cd151ed4e1c.png"><source src="https://temp-images.ws.pho.to/546daa7670788017f4942c6404289ccae21dc499.mp4" type="video/mp4"></video></div>
+      <div class="prompts-col">
+        <details class="prompt-block">
+          <summary>Промпт для первого кадра <span class="prompt-label">GPT Image 2</span></summary>
+          <pre class="prompt-text">Turn the photo of the person into a medium shot standing on a spotlit audition stage, facing a raised judges&#x27; desk with three blurred/silhouetted judge figures behind glowing nameplate lighting, a large glowing red starburst &quot;IDOL&quot; logo backdrop behind the person, wireless microphone held at chest height, a single dramatic spotlight from above, tense hopeful expression.</pre>
+        </details>
+        <details class="prompt-block">
+          <summary>Промпт для видео <span class="prompt-label">Kling · Grok</span></summary>
+          <pre class="prompt-text">Create a short cinematic video based on the uploaded image.
+The scene is a televised singing-competition audition stage. The person from the image stands center-stage facing a raised judges&#x27; desk — three figures visible only as soft silhouettes behind bright nameplate-style desk lighting, never rendered as identifiable individuals. A glowing red starburst &quot;IDOL&quot; logo backdrop looms behind the person.
+
+Camera and motion structure:
+1. FRAMES 0–40%: Medium shot. The person stands still, microphone at chest height, eyes flicking toward the judges&#x27; desk. The camera begins a slow, deliberate push-in toward their face. The glowing logo backdrop pulses faintly behind them.
+2. FRAMES 40–65%: The push-in continues, tightening to a close-up. The person&#x27;s breathing is visibly held, jaw tight, eyes wide with anticipation. The silhouetted judges lean forward slightly at the desk (implied motion only, never detailed faces).
+3. FRAMES 65–80%: On a single sharp beat, an arm from the judges&#x27; desk extends a glowing golden ticket/paper into frame toward the person. The camera holds tight on the ticket catching the spotlight.
+4. FRAMES 80–100%: The person&#x27;s hand rises to take the ticket, eyes brimming, a huge smile breaking. Gold ribbon confetti bursts from above. The camera settles on a held close-up of the ticket in their hand against their chest.
+
+Character:
+Preserve the person&#x27;s face, hair, skin tone, and identity exactly from the source image throughout the entire video. Do not alter their appearance.
+Motion arc, each stage happening only once: held-breath stillness → tightening tension → receiving the ticket → open joyful reaction. No other people are ever clearly depicted — the judges remain silhouettes at the desk throughout.
+
+Key visual events (in order):
+- The glowing red starburst logo backdrop, visible throughout as the show&#x27;s signature visual identity
+- The silhouetted judges&#x27; desk with nameplate lighting
+- The golden ticket extended into frame on one sharp beat — the hero moment
+- Gold ribbon confetti bursting as the person takes the ticket
+
+Style:
+Live TV talent-show drama — warm spotlight, deep black stage surroundings, the glowing logo backdrop as the dominant color accent. Cinematic broadcast tension building to a bright, triumphant payoff.
+
+Restrictions:
+- Do not change the person&#x27;s appearance, face, clothing, or identity at any point
+- The judges must remain soft-focus silhouettes behind their desk lighting at all times — never clearly detailed faces or identifiable individuals
+- The glowing &quot;IDOL&quot; logo backdrop must remain visible behind the person for the entire video
+- No additional text, captions, or vote counts
+- No speech bubbles
+- No social-media UI overlays
+- Gold ribbon confetti only — no fire, no explosive pyrotechnics
+- No jump cuts — the entire sequence is one continuous push-in with a single sharp cut-in on the ticket extension
+- The microphone remains in the person&#x27;s other hand throughout</pre>
+        </details>
+      </div>
+    </div>
+  </section>
+</div>
+</body>
+</html>

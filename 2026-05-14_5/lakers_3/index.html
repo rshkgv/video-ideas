@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>#lakers_3 — Стена памяти · Video Ideas</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      background: #f4f4f5; color: #111; font-size: 14px; line-height: 1.5;
+    }
+    .page-header {
+      background: #fff; border-bottom: 1px solid #e4e4e7; position: sticky;
+      top: 0; z-index: 100; box-shadow: 0 1px 8px rgba(0,0,0,.05);
+    }
+    .header-inner {
+      max-width: 1100px; margin: 0 auto; padding: 14px 28px;
+      display: flex; align-items: center; gap: 20px;
+    }
+    .brand {
+      font-size: 18px; font-weight: 800; letter-spacing: -.5px; color: #111;
+      white-space: nowrap; user-select: none; text-decoration: none;
+    }
+    .brand-tik { color: #fe2c55; }
+    .brand-tok { color: #010101; }
+    .brand-dot { color: #d1d1d1; margin: 0 6px; font-weight: 300; }
+    .brand-cc  { color: #888; font-size: 12px; font-weight: 500; }
+    .header-text { flex: 1; min-width: 0; }
+    .page-title {
+      font-size: 15px; font-weight: 700; letter-spacing: -.2px;
+      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    }
+    .page-sub { font-size: 11.5px; color: #999; margin-top: 2px; }
+    .date-badge {
+      background: #fe2c55; color: #fff; font-weight: 700; font-size: 12px;
+      border-radius: 8px; padding: 6px 14px; line-height: 1.4;
+      text-align: center; white-space: nowrap; flex-shrink: 0;
+    }
+    .date-badge span { display: block; font-size: 10px; font-weight: 500; opacity: .8; }
+    .page-nav {
+      max-width: 1100px; margin: 0 auto; padding: 0 28px;
+      display: flex; gap: 2px; border-top: 1px solid #f0f0f0;
+    }
+    .nav-a {
+      text-decoration: none; color: #999; font-size: 12.5px; font-weight: 500;
+      padding: 9px 14px; border-bottom: 2px solid transparent;
+      transition: color .15s, border-color .15s;
+    }
+    .nav-a:hover { color: #fe2c55; }
+    .nav-a.active { color: #fe2c55; border-bottom-color: #fe2c55; }
+    .content { max-width: 1100px; margin: 0 auto; padding: 36px 28px 80px; }
+    .section { margin-bottom: 52px; }
+    .section-header { display: flex; align-items: baseline; gap: 10px; margin-bottom: 16px; }
+    .section-title { font-size: 19px; font-weight: 800; letter-spacing: -.4px; }
+    .section-badge {
+      font-size: 10.5px; font-weight: 600; color: #999; background: #ebebeb;
+      padding: 3px 8px; border-radius: 20px; text-transform: uppercase; letter-spacing: .4px;
+    }
+    @media (max-width: 768px) {
+      .header-inner { gap: 12px; padding: 12px 16px; }
+      .date-badge { display: none; }
+      .page-nav { padding: 0 16px; }
+      .content { padding: 24px 16px 60px; }
+    }
+
+
+    .idea-lead {{
+      background: #fff; border-radius: 12px; padding: 36px 40px 32px;
+      box-shadow: 0 1px 4px rgba(0,0,0,.07), 0 0 0 1px rgba(0,0,0,.05);
+      margin-bottom: 40px;
+    }}
+    .idea-hashtag {{ font-size: 13px; font-weight: 700; color: #fe2c55; margin-bottom: 8px; }}
+    .idea-title {{ font-size: 26px; font-weight: 800; letter-spacing: -.6px; line-height: 1.25; margin-bottom: 16px; }}
+    .idea-desc {{ font-size: 14px; color: #444; line-height: 1.75; max-width: 720px; }}
+    .media-grid {{
+      display: grid; grid-template-columns: 340px 1fr; gap: 28px; align-items: start;
+    }}
+    .video-player {{
+      width: 100%; aspect-ratio: 9/16; object-fit: cover; border-radius: 12px;
+      display: block; box-shadow: 0 2px 16px rgba(0,0,0,.14);
+    }}
+    .frame-img {{
+      width: 100%; aspect-ratio: 9/16; object-fit: cover; border-radius: 12px;
+      display: block; box-shadow: 0 2px 16px rgba(0,0,0,.14);
+    }}
+    .prompts-col {{ display: flex; flex-direction: column; gap: 12px; }}
+    .prompt-block {{
+      background: #fff; border-radius: 10px;
+      box-shadow: 0 1px 4px rgba(0,0,0,.07), 0 0 0 1px rgba(0,0,0,.05); overflow: hidden;
+    }}
+    .prompt-block summary {{
+      padding: 14px 18px; font-size: 13px; font-weight: 700; cursor: pointer;
+      user-select: none; list-style: none; display: flex; align-items: center; gap: 8px; color: #333;
+    }}
+    .prompt-block summary::-webkit-details-marker {{ display: none; }}
+    .prompt-block summary::before {{ content: '▶'; font-size: 8px; color: #bbb; transition: transform .15s; flex-shrink: 0; }}
+    .prompt-block[open] summary::before {{ transform: rotate(90deg); }}
+    .prompt-block summary:hover {{ color: #fe2c55; }}
+    .prompt-block summary:hover::before {{ color: #fe2c55; }}
+    .prompt-label {{ font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: .5px; color: #bbb; margin-left: auto; }}
+    .prompt-text {{
+      padding: 14px 18px 16px; font-family: 'SF Mono','Fira Code','Menlo',monospace;
+      font-size: 11.5px; line-height: 1.7; color: #555; background: #f9f9f9;
+      border-top: 1px solid #f0f0f0; white-space: pre-wrap; word-break: break-word;
+      max-height: 320px; overflow-y: auto;
+    }}
+    @media (max-width: 900px) {{
+      .media-grid {{ grid-template-columns: 1fr; }}
+      .video-col {{ max-width: 360px; margin: 0 auto; }}
+      .idea-lead {{ padding: 24px 22px 22px; }}
+    }}
+    @media (max-width: 520px) {{ .idea-title {{ font-size: 22px; }} }}
+
+  </style>
+</head>
+<body>
+<div class="page-header">
+  <div class="header-inner">
+    <a class="brand" href="../../">
+      <span class="brand-tik">Tik</span><span class="brand-tok">Tok</span>
+      <span class="brand-dot">·</span><span class="brand-cc">Video Ideas</span>
+    </a>
+    <div class="header-text">
+      <div class="page-title">#lakers_3</div>
+      <div class="page-sub">Видео-идея · 14 мая 2026 · Выпуск 5</div>
+    </div>
+    <div class="date-badge">14.05.2026<span>Дата · Выпуск 5</span></div>
+  </div>
+  <nav class="page-nav">
+    <a href="../../" class="nav-a">← Все отчёты</a>
+    <a href="../" class="nav-a">← 14 мая 2026 · Выпуск 5</a>
+    <a href="#" class="nav-a active">#lakers_3</a>
+  </nav>
+</div>
+<div class="content">
+  <div class="idea-lead">
+    <div class="idea-hashtag">#lakers_3</div>
+    <h1 class="idea-title">Стена памяти</h1>
+    <p class="idea-desc">Визуальный якорь: огромное фиолетово-золотое стрит-арт панно на стене городской улицы — абстрактные силуэты, лавровые венки, звёзды, надпись «LEGENDS» крупными буквами. Пользователь идёт вдоль стены, замедляет шаг, останавливается перед муралом и оборачивается лицом к камере, вставая прямо перед панно так, что фиолетово-золотые цвета обрамляют его силуэт. Тихая гордость без праздника и толпы.</p>
+  </div>
+  <section class="section">
+    <div class="section-header">
+      <h2 class="section-title">Видео</h2>
+      <span class="section-badge">Пример генерации</span>
+    </div>
+    <div class="media-grid">
+      <div class="video-col"><video class="video-player" controls muted loop playsinline poster="https://temp-images.ws.pho.to/383c795efb058c6203c6fd196b6b6ee2ad90a494.png"><source src="https://temp-images.ws.pho.to/a51fe57a08e63fc7aa1342512f38df3e3a7a8dfe.mp4" type="video/mp4"></video></div>
+      <div class="prompts-col">
+        <details class="prompt-block">
+          <summary>Промпт для первого кадра <span class="prompt-label">GPT Image 2</span></summary>
+          <pre class="prompt-text">Turn the photo of the person into a medium shot of them standing on a city sidewalk in front of a large purple-and-gold street mural covered in abstract star and laurel-wreath motifs and bold &quot;LEGENDS&quot; lettering, wearing a casual purple Lakers-colored jacket, warm late-afternoon light, calm proud expression looking at camera, mural filling the background behind them.</pre>
+        </details>
+        <details class="prompt-block">
+          <summary>Промпт для видео <span class="prompt-label">Kling · Grok</span></summary>
+          <pre class="prompt-text">Create a short cinematic video based on the uploaded image.
+The scene is a city sidewalk beside a large purple-and-gold mural covered in star and laurel-wreath motifs and &quot;LEGENDS&quot; lettering. The person walks along the wall, medium-wide shot.
+
+Camera and motion structure:
+A slow continuous push-in follows the person&#x27;s walk toward stillness:
+1. FRAMES 0–35%: Medium-wide shot, the person walks slowly along the sidewalk past the mural, glancing at it as they pass. The camera tracks alongside at the same slow pace, mural scrolling past in the background.
+2. FRAMES 35–60%: The person&#x27;s steps slow, then stop, directly in front of the boldest part of the mural — the &quot;LEGENDS&quot; lettering framing them from behind. The camera&#x27;s lateral tracking eases to a stop.
+3. FRAMES 60–85%: The person turns to face the camera fully, the purple-and-gold mural filling the frame behind them like a backdrop. The camera begins a slow, gentle push-in.
+4. FRAMES 85–100%: The push-in settles into a medium close-up, the person&#x27;s calm, proud expression steady, mural glowing warmly in late-afternoon light behind them. Hold to the last frame.
+
+Character:
+Preserve the person&#x27;s face, hair, skin tone, and identity exactly from the source image throughout the entire video. Do not alter their appearance.
+Motion arc, happening only once: walking past the mural → stopping → turning to face camera → holding a calm, proud pose. No other movement, no running, no talking.
+
+Key visual events (in order):
+- The purple-and-gold mural scrolling past during the walk, establishing the setting
+- The person stopping directly at the &quot;LEGENDS&quot; lettering
+- The turn to face camera with the full mural as backdrop (the hero moment)
+- The slow push-in settling on the person&#x27;s proud expression
+
+Style:
+Warm, nostalgic street-level realism — golden-hour light, muted urban tones with the mural&#x27;s purple-gold as the only saturated color. Understated pride, not a celebration; closer to a quiet homage than a party.
+
+Restrictions:
+- Do not change the person&#x27;s appearance, face, or identity at any point
+- Do not depict any specific real athlete&#x27;s face or likeness anywhere in the mural — it must show only abstract silhouettes, stars, and laurel-wreath shapes, no rendered human figures
+- Camera motion limited to lateral tracking during the walk and a single slow push-in at the end — no fast cuts, no shake
+- No crowd, no other pedestrians, no traffic in frame
+- No overlay graphics, no text captions other than what is painted on the mural itself
+- No speech bubbles
+- No social-media UI overlays
+- No violent or aggressive actions
+- No jump cuts — the walk, stop, and turn must play as one continuous shot</pre>
+        </details>
+      </div>
+    </div>
+  </section>
+</div>
+</body>
+</html>

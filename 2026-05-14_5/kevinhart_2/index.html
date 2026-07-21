@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>#kevinhart_2 — Гость ток-шоу Кевина Харта · Video Ideas</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      background: #f4f4f5; color: #111; font-size: 14px; line-height: 1.5;
+    }
+    .page-header {
+      background: #fff; border-bottom: 1px solid #e4e4e7; position: sticky;
+      top: 0; z-index: 100; box-shadow: 0 1px 8px rgba(0,0,0,.05);
+    }
+    .header-inner {
+      max-width: 1100px; margin: 0 auto; padding: 14px 28px;
+      display: flex; align-items: center; gap: 20px;
+    }
+    .brand {
+      font-size: 18px; font-weight: 800; letter-spacing: -.5px; color: #111;
+      white-space: nowrap; user-select: none; text-decoration: none;
+    }
+    .brand-tik { color: #fe2c55; }
+    .brand-tok { color: #010101; }
+    .brand-dot { color: #d1d1d1; margin: 0 6px; font-weight: 300; }
+    .brand-cc  { color: #888; font-size: 12px; font-weight: 500; }
+    .header-text { flex: 1; min-width: 0; }
+    .page-title {
+      font-size: 15px; font-weight: 700; letter-spacing: -.2px;
+      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    }
+    .page-sub { font-size: 11.5px; color: #999; margin-top: 2px; }
+    .date-badge {
+      background: #fe2c55; color: #fff; font-weight: 700; font-size: 12px;
+      border-radius: 8px; padding: 6px 14px; line-height: 1.4;
+      text-align: center; white-space: nowrap; flex-shrink: 0;
+    }
+    .date-badge span { display: block; font-size: 10px; font-weight: 500; opacity: .8; }
+    .page-nav {
+      max-width: 1100px; margin: 0 auto; padding: 0 28px;
+      display: flex; gap: 2px; border-top: 1px solid #f0f0f0;
+    }
+    .nav-a {
+      text-decoration: none; color: #999; font-size: 12.5px; font-weight: 500;
+      padding: 9px 14px; border-bottom: 2px solid transparent;
+      transition: color .15s, border-color .15s;
+    }
+    .nav-a:hover { color: #fe2c55; }
+    .nav-a.active { color: #fe2c55; border-bottom-color: #fe2c55; }
+    .content { max-width: 1100px; margin: 0 auto; padding: 36px 28px 80px; }
+    .section { margin-bottom: 52px; }
+    .section-header { display: flex; align-items: baseline; gap: 10px; margin-bottom: 16px; }
+    .section-title { font-size: 19px; font-weight: 800; letter-spacing: -.4px; }
+    .section-badge {
+      font-size: 10.5px; font-weight: 600; color: #999; background: #ebebeb;
+      padding: 3px 8px; border-radius: 20px; text-transform: uppercase; letter-spacing: .4px;
+    }
+    @media (max-width: 768px) {
+      .header-inner { gap: 12px; padding: 12px 16px; }
+      .date-badge { display: none; }
+      .page-nav { padding: 0 16px; }
+      .content { padding: 24px 16px 60px; }
+    }
+
+
+    .idea-lead {{
+      background: #fff; border-radius: 12px; padding: 36px 40px 32px;
+      box-shadow: 0 1px 4px rgba(0,0,0,.07), 0 0 0 1px rgba(0,0,0,.05);
+      margin-bottom: 40px;
+    }}
+    .idea-hashtag {{ font-size: 13px; font-weight: 700; color: #fe2c55; margin-bottom: 8px; }}
+    .idea-title {{ font-size: 26px; font-weight: 800; letter-spacing: -.6px; line-height: 1.25; margin-bottom: 16px; }}
+    .idea-desc {{ font-size: 14px; color: #444; line-height: 1.75; max-width: 720px; }}
+    .media-grid {{
+      display: grid; grid-template-columns: 340px 1fr; gap: 28px; align-items: start;
+    }}
+    .video-player {{
+      width: 100%; aspect-ratio: 9/16; object-fit: cover; border-radius: 12px;
+      display: block; box-shadow: 0 2px 16px rgba(0,0,0,.14);
+    }}
+    .frame-img {{
+      width: 100%; aspect-ratio: 9/16; object-fit: cover; border-radius: 12px;
+      display: block; box-shadow: 0 2px 16px rgba(0,0,0,.14);
+    }}
+    .prompts-col {{ display: flex; flex-direction: column; gap: 12px; }}
+    .prompt-block {{
+      background: #fff; border-radius: 10px;
+      box-shadow: 0 1px 4px rgba(0,0,0,.07), 0 0 0 1px rgba(0,0,0,.05); overflow: hidden;
+    }}
+    .prompt-block summary {{
+      padding: 14px 18px; font-size: 13px; font-weight: 700; cursor: pointer;
+      user-select: none; list-style: none; display: flex; align-items: center; gap: 8px; color: #333;
+    }}
+    .prompt-block summary::-webkit-details-marker {{ display: none; }}
+    .prompt-block summary::before {{ content: '▶'; font-size: 8px; color: #bbb; transition: transform .15s; flex-shrink: 0; }}
+    .prompt-block[open] summary::before {{ transform: rotate(90deg); }}
+    .prompt-block summary:hover {{ color: #fe2c55; }}
+    .prompt-block summary:hover::before {{ color: #fe2c55; }}
+    .prompt-label {{ font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: .5px; color: #bbb; margin-left: auto; }}
+    .prompt-text {{
+      padding: 14px 18px 16px; font-family: 'SF Mono','Fira Code','Menlo',monospace;
+      font-size: 11.5px; line-height: 1.7; color: #555; background: #f9f9f9;
+      border-top: 1px solid #f0f0f0; white-space: pre-wrap; word-break: break-word;
+      max-height: 320px; overflow-y: auto;
+    }}
+    @media (max-width: 900px) {{
+      .media-grid {{ grid-template-columns: 1fr; }}
+      .video-col {{ max-width: 360px; margin: 0 auto; }}
+      .idea-lead {{ padding: 24px 22px 22px; }}
+    }}
+    @media (max-width: 520px) {{ .idea-title {{ font-size: 22px; }} }}
+
+  </style>
+</head>
+<body>
+<div class="page-header">
+  <div class="header-inner">
+    <a class="brand" href="../../">
+      <span class="brand-tik">Tik</span><span class="brand-tok">Tok</span>
+      <span class="brand-dot">·</span><span class="brand-cc">Video Ideas</span>
+    </a>
+    <div class="header-text">
+      <div class="page-title">#kevinhart_2</div>
+      <div class="page-sub">Видео-идея · 14 мая 2026 · Выпуск 5</div>
+    </div>
+    <div class="date-badge">14.05.2026<span>Дата · Выпуск 5</span></div>
+  </div>
+  <nav class="page-nav">
+    <a href="../../" class="nav-a">← Все отчёты</a>
+    <a href="../" class="nav-a">← 14 мая 2026 · Выпуск 5</a>
+    <a href="#" class="nav-a active">#kevinhart_2</a>
+  </nav>
+</div>
+<div class="content">
+  <div class="idea-lead">
+    <div class="idea-hashtag">#kevinhart_2</div>
+    <h1 class="idea-title">Гость ток-шоу Кевина Харта</h1>
+    <p class="idea-desc">Визуальный якорь — вечернее ток-шоу: гостевой диван, за своим столом в кадре реально виден Кевин Харт-ведущий, за спиной — светящийся графический задник с силуэтом ночного города. Пользователь сидит на диване гостя в фокусе кадра, реагирует на реплику Кевина Харта (видна короткой репликой в стилизованном speech bubble рядом с ним) искренним, неудержимым смехом. Пользователь никогда не говорит — только слушает и смеётся; вся речь принадлежит ведущему.</p>
+  </div>
+  <section class="section">
+    <div class="section-header">
+      <h2 class="section-title">Видео</h2>
+      <span class="section-badge">Пример генерации</span>
+    </div>
+    <div class="media-grid">
+      <div class="video-col"><video class="video-player" controls muted loop playsinline poster="https://temp-images.ws.pho.to/bb92c364ae1f37c3f48c0407e4b568b4d58fd54d.png"><source src="https://temp-images.ws.pho.to/05657b0d9fa7d373be0a56d8099dfdd036bffb7e.mp4" type="video/mp4"></video></div>
+      <div class="prompts-col">
+        <details class="prompt-block">
+          <summary>Промпт для первого кадра <span class="prompt-label">GPT Image 2</span></summary>
+          <pre class="prompt-text">Turn the photo of the person into a medium shot, positioned closer to camera on a talk-show guest couch, relaxed posture, mouth closed, mid-conversation amused expression, with Kevin Hart clearly visible seated at his host&#x27;s desk slightly behind and to the side, mid-gesture, animated expression, a glowing city-skyline graphic backdrop typical of a late-night broadcast set behind them both, warm studio key light.</pre>
+        </details>
+        <details class="prompt-block">
+          <summary>Промпт для видео <span class="prompt-label">Kling · Grok</span></summary>
+          <pre class="prompt-text">Create a short cinematic video based on the uploaded image.
+The scene is a late-night talk-show set. The person from the image sits on the guest couch, closer to camera and largest in frame, mouth closed. Kevin Hart sits clearly visible at his host&#x27;s desk slightly behind and to the side, animated and talking, a glowing city-skyline backdrop behind them both.
+
+Camera and motion structure:
+The camera is completely static throughout — a locked talk-show medium shot favoring the person on the couch:
+1. FRAMES 0–30%: Kevin Hart, visible at his desk, delivers a remark with an animated gesture — a small stylized speech bubble beside him briefly shows a few words of the line. The person on the couch listens, mouth closed, a small amused smile building.
+2. FRAMES 30–60%: The remark lands and the person&#x27;s composure breaks into a genuine laugh — head tipping back against the couch, hand slapping their own knee once, shoulders shaking. Kevin Hart grins at his own joke, still visible at the desk.
+3. FRAMES 60–85%: The person&#x27;s laugh peaks — leaning forward slightly, wiping the corner of one eye, still catching their breath from laughing. The city-skyline backdrop glows steadily behind them throughout, unchanging.
+4. FRAMES 85–100%: The person&#x27;s laughter settles into a wide grin, leaning back into the couch, shaking their head slightly at the joke. Kevin Hart, still in frame, nods with satisfaction. Hold on this relaxed, warm moment to the last frame.
+
+Character:
+Preserve the person&#x27;s face, hair, skin tone, and identity exactly from the source image throughout the entire video. Do not alter their appearance. The person stays the largest, closest, most in-focus figure in every frame.
+Motion arc for the person, happening only once: relaxed listening → composure breaking into laughter → laughter peaking → settled grin. The person stays seated on the couch throughout — no standing, no walking. The person is never the source of any dialogue — only Kevin Hart speaks.
+
+Key visual events (in order):
+- Kevin Hart visibly delivering the remark, speech bubble briefly showing his line
+- The person&#x27;s amused smile building while listening
+- The genuine laugh breaking through — the hero moment
+- The glowing city-skyline backdrop, steady and unchanging, anchoring the talk-show setting throughout
+- Kevin Hart&#x27;s satisfied nod and the person&#x27;s settled, relaxed grin at the end
+
+Style:
+Warm, glossy late-night-broadcast realism — soft key light on the couch, the cool glow of the skyline backdrop as a color contrast, a relaxed and intimate one-on-one conversational feel rather than a stage performance.
+
+Restrictions:
+- Do not change the person&#x27;s appearance, face, clothing, or identity at any point
+- The person&#x27;s face must remain clearly visible and the most prominent, in-focus figure in every frame — Kevin Hart is secondary presence, never more prominent than the person
+- No speaking, no singing, no lip-sync, no mouthing words from the person — the person only listens and laughs; all dialogue belongs to Kevin Hart, who may be shown talking and gesturing freely
+- The speech bubble, if shown, must display only a short phrase attributed clearly to Kevin Hart, never to the person
+- The camera must remain completely static throughout — no pans, no zoom, no handheld motion
+- No social-media UI overlays
+- No jump cuts — the entire moment plays as one continuous, unhurried take
+- No aggressive, mean-spirited, or distressed expressions — genuine, warm laughter only</pre>
+        </details>
+      </div>
+    </div>
+  </section>
+</div>
+</body>
+</html>
