@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>#jamescharles_2 — Плойка творит локон · Video Ideas</title>
+  <title>#jamescharles_2 — Плойка и радужный локон · Video Ideas</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
@@ -68,52 +68,61 @@
     }
 
 
-    .idea-lead {{
+    .idea-lead {
       background: #fff; border-radius: 12px; padding: 36px 40px 32px;
       box-shadow: 0 1px 4px rgba(0,0,0,.07), 0 0 0 1px rgba(0,0,0,.05);
       margin-bottom: 40px;
-    }}
-    .idea-hashtag {{ font-size: 13px; font-weight: 700; color: #fe2c55; margin-bottom: 8px; }}
-    .idea-title {{ font-size: 26px; font-weight: 800; letter-spacing: -.6px; line-height: 1.25; margin-bottom: 16px; }}
-    .idea-desc {{ font-size: 14px; color: #444; line-height: 1.75; max-width: 720px; }}
-    .media-grid {{
-      display: grid; grid-template-columns: 340px 1fr; gap: 28px; align-items: start;
-    }}
-    .video-player {{
+    }
+    .idea-hashtag { font-size: 13px; font-weight: 700; color: #fe2c55; margin-bottom: 8px; }
+    .idea-title { font-size: 26px; font-weight: 800; letter-spacing: -.6px; line-height: 1.25; margin-bottom: 16px; }
+    .idea-desc { font-size: 14px; color: #444; line-height: 1.75; max-width: 720px; }
+    .media-grid {
+      display: grid; grid-template-columns: auto 1fr; gap: 28px; align-items: start;
+    }
+    .video-multi {
+      display: flex; gap: 16px; flex-wrap: wrap; align-items: flex-start;
+    }
+    .video-item {
+      width: 200px; display: flex; flex-direction: column; gap: 8px; flex-shrink: 0;
+    }
+    .video-caption {
+      font-size: 11px; color: #999; line-height: 1.4; padding: 0 2px;
+    }
+    .video-player {
       width: 100%; aspect-ratio: 9/16; object-fit: cover; border-radius: 12px;
       display: block; box-shadow: 0 2px 16px rgba(0,0,0,.14);
-    }}
-    .frame-img {{
+    }
+    .frame-img {
       width: 100%; aspect-ratio: 9/16; object-fit: cover; border-radius: 12px;
       display: block; box-shadow: 0 2px 16px rgba(0,0,0,.14);
-    }}
-    .prompts-col {{ display: flex; flex-direction: column; gap: 12px; }}
-    .prompt-block {{
+    }
+    .prompts-col { display: flex; flex-direction: column; gap: 12px; }
+    .prompt-block {
       background: #fff; border-radius: 10px;
       box-shadow: 0 1px 4px rgba(0,0,0,.07), 0 0 0 1px rgba(0,0,0,.05); overflow: hidden;
-    }}
-    .prompt-block summary {{
+    }
+    .prompt-block summary {
       padding: 14px 18px; font-size: 13px; font-weight: 700; cursor: pointer;
       user-select: none; list-style: none; display: flex; align-items: center; gap: 8px; color: #333;
-    }}
-    .prompt-block summary::-webkit-details-marker {{ display: none; }}
-    .prompt-block summary::before {{ content: '▶'; font-size: 8px; color: #bbb; transition: transform .15s; flex-shrink: 0; }}
-    .prompt-block[open] summary::before {{ transform: rotate(90deg); }}
-    .prompt-block summary:hover {{ color: #fe2c55; }}
-    .prompt-block summary:hover::before {{ color: #fe2c55; }}
-    .prompt-label {{ font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: .5px; color: #bbb; margin-left: auto; }}
-    .prompt-text {{
+    }
+    .prompt-block summary::-webkit-details-marker { display: none; }
+    .prompt-block summary::before { content: '▶'; font-size: 8px; color: #bbb; transition: transform .15s; flex-shrink: 0; }
+    .prompt-block[open] summary::before { transform: rotate(90deg); }
+    .prompt-block summary:hover { color: #fe2c55; }
+    .prompt-block summary:hover::before { color: #fe2c55; }
+    .prompt-label { font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: .5px; color: #bbb; margin-left: auto; }
+    .prompt-text {
       padding: 14px 18px 16px; font-family: 'SF Mono','Fira Code','Menlo',monospace;
       font-size: 11.5px; line-height: 1.7; color: #555; background: #f9f9f9;
       border-top: 1px solid #f0f0f0; white-space: pre-wrap; word-break: break-word;
       max-height: 320px; overflow-y: auto;
-    }}
-    @media (max-width: 900px) {{
-      .media-grid {{ grid-template-columns: 1fr; }}
-      .video-col {{ max-width: 360px; margin: 0 auto; }}
-      .idea-lead {{ padding: 24px 22px 22px; }}
-    }}
-    @media (max-width: 520px) {{ .idea-title {{ font-size: 22px; }} }}
+    }
+    @media (max-width: 900px) {
+      .media-grid { grid-template-columns: 1fr; }
+      .video-multi { justify-content: center; }
+      .idea-lead { padding: 24px 22px 22px; }
+    }
+    @media (max-width: 520px) { .idea-title { font-size: 22px; } }
 
   </style>
 </head>
@@ -139,8 +148,8 @@
 <div class="content">
   <div class="idea-lead">
     <div class="idea-hashtag">#jamescharles_2</div>
-    <h1 class="idea-title">Плойка творит локон</h1>
-    <p class="idea-desc">Визуальный якорь — раскалённая плойка для завивки волос в действии: экстремальный крупный план на одной пряди, наматывающейся на нагретый ствол, лёгкий пар, и в финале — упругий, идеально очерченный локон, ловящий свет студийных ламп. Это про волосы, не про лицо и не про макияж — тактильный, сенсорный, ASMR-бьюти момент в духе туториалов по укладке, ассоциирующихся с контентом Джеймса Чарльза.</p>
+    <h1 class="idea-title">Плойка и радужный локон</h1>
+    <p class="idea-desc">Визуальный якорь — крупный план лица и плеч: пользователь держит у виска раскалённую плойку с радужным (в стиле фирменной палитры Джеймса Чарльза) стволом, наматывая одну прядь волос. Лицо всё время чётко видно в кадре — плойка и локон в кадре рядом с лицом, а не вместо него. Прядь освобождается упругим, идеально очерченным локоном, ловящим свет студийных ламп, пользователь смотрит в камеру с довольной улыбкой и завершает кадр коронным жестом Джеймса Чарльза — подмигиванием и «сердечком» пальцами.</p>
   </div>
   <section class="section">
     <div class="section-header">
@@ -148,45 +157,53 @@
       <span class="section-badge">Пример генерации</span>
     </div>
     <div class="media-grid">
-      <div class="video-col"><video class="video-player" controls muted loop playsinline poster="https://temp-images.ws.pho.to/f7429bc0ee7004395deb45a5643012310ff59166.png"><source src="https://temp-images.ws.pho.to/25d8c00ec08b93cd6601d1b95d0aea89f6d0a32c.mp4" type="video/mp4"></video></div>
+      <div class="video-multi">
+        <div class="video-item"><video class="video-player" controls muted loop playsinline poster="https://temp-images.ws.pho.to/ce09da790401d8dfb3f2d58e68f7c6061a70d153.png"><source src="https://temp-images.ws.pho.to/1115ae8ab9811035669fee5a94eafbbf9ab12b82.mp4" type="video/mp4"></video>
+          <div class="video-caption"></div>
+        </div>
+      </div>
       <div class="prompts-col">
         <details class="prompt-block">
           <summary>Промпт для первого кадра <span class="prompt-label">GPT Image 2</span></summary>
-          <pre class="prompt-text">Turn the photo of the person into an extreme close-up of a single section of their hair wrapped snugly around a heated curling wand near their cheek, a faint wisp of steam rising from the strand, warm studio backlight catching the hair, content-creator studio softly blurred behind.</pre>
+          <pre class="prompt-text">Turn the photo of the person into a medium close-up, face clearly visible and forward-facing, holding a curling wand with a rainbow-colored barrel near their temple, one section of hair wrapped around it, warm studio backlight, content-creator studio softly blurred behind, calm anticipatory smile.</pre>
         </details>
         <details class="prompt-block">
           <summary>Промпт для видео <span class="prompt-label">Kling · Grok</span></summary>
           <pre class="prompt-text">Create a short cinematic video based on the uploaded image.
-The scene is an extreme close-up beauty studio shot focused entirely on one section of hair and a heated curling wand. The person&#x27;s face is only partially visible at the edge of frame; the hair strand and wand are the main subject.
+The scene is a beauty content-creator studio. The person holds a curling wand with a rainbow-colored barrel near their own temple, one section of hair wrapped around it — medium close-up, face clearly visible and forward-facing toward camera throughout.
 
 Camera and motion structure:
-The camera is completely locked off, tight and static throughout — a pure tactile macro shot:
-1. FRAMES 0–20%: The section of hair is wrapped snugly around the curling wand&#x27;s barrel, held steady near the cheek. A faint wisp of steam curls upward from the heated strand.
-2. FRAMES 20–55%: The wand holds its slow rotation, the strand tightening evenly around the barrel. Heat shimmer is faintly visible in the air; the steam wisp thickens slightly.
-3. FRAMES 55–80%: The wand smoothly pulls away and releases the strand, which springs instantly into a defined, bouncy curl, catching a bright highlight of studio light as it settles into shape.
-4. FRAMES 80–100%: The finished curl sways gently once and settles. A hand tucks it back near the ear in one smooth motion. A small text graphic, &quot;SNATCHED CURLS&quot;, fades in at the bottom corner and remains until the last frame.
+The camera is locked off, medium close-up, framed to always include the full face alongside the wand and hair:
+1. FRAMES 0–25%: The person holds the rainbow-barreled wand steady near their temple, hair section wrapped around it, a faint wisp of steam rising. Face relaxed, anticipatory smile, eyes on camera.
+2. FRAMES 25–55%: The wand holds its slow rotation. The person&#x27;s expression stays calm and pleased, occasionally glancing at the curl forming, then back to camera.
+3. FRAMES 55–80%: The wand pulls away and releases the strand, which springs instantly into a defined, bouncy curl catching a bright highlight of studio light. The person&#x27;s face breaks into a delighted, satisfied smile, still fully visible and forward-facing.
+4. FRAMES 80–100%: The person gives one confident wink and a &quot;finger-heart&quot; gesture (thumb and index finger crossed into a small heart shape) directly to camera, curl still visible resting near their face. A small text graphic, &quot;✨ JAMES CHARLES CURLS ✨&quot;, fades in at the bottom corner and remains until the last frame.
 
 Character:
-Preserve the person&#x27;s face, hair color, skin tone, and identity exactly from the source image throughout the entire video. Do not alter their facial features or identity. Only the styling/shape of the hair strand changes — from straight to curled — which is an allowed styling transformation, not an identity change.
+Preserve the person&#x27;s face, hair color, skin tone, and identity exactly from the source image throughout the entire video. Do not alter their facial features or identity. Only the styling/shape of the hair strand changes — from straight to curled — which is an allowed styling transformation, not an identity change. The face stays clearly visible and forward-facing in every frame.
 
 Key visual events (in order):
-- The hair wrapping snugly around the heated wand barrel
-- The wisp of steam and heat shimmer (the sensory &quot;ASMR&quot; detail)
-- The wand releasing the strand into a bouncy, defined curl (the hero moment)
-- The curl catching studio light as it settles, followed by the tuck-behind-ear gesture
+- The rainbow-barreled curling wand held near the temple, hair wrapped around it, face fully visible beside it
+- The wisp of steam (the sensory &quot;ASMR&quot; detail)
+- The wand releasing the strand into a bouncy, defined curl (the hero moment), face still in frame reacting
+- The wink and finger-heart gesture — the signature beat that makes the reference unmistakable
+- The &quot;✨ JAMES CHARLES CURLS ✨&quot; graphic locking in at the very end
 
 Style:
-Extreme macro beauty-content realism — tactile, sensory, ASMR-adjacent. Warm studio backlight, shallow depth of field keeping everything but the hair and wand slightly soft. Calm, satisfying pacing; no rush.
+Warm, glossy beauty-content realism — tactile and sensory, but always centered on the face, not just the detail. Warm studio backlight, shallow depth of field softening the background only, never the face or the wand. Calm, satisfying pacing.
 
 Restrictions:
 - Do not change the person&#x27;s facial features, skin tone, or identity at any point
-- Keep the shot an extreme close-up on the hair and wand throughout — no wide shots of the full face or body
+- The person&#x27;s face must remain clearly visible and forward-facing in every frame — never crop to an extreme close-up on only the hair/wand that excludes the face
+- No speaking, no singing, no lip-sync, no mouthing words — the wink and finger-heart gesture is the only silent, wordless &quot;expression&quot;
 - The curling wand and steam must look physically plausible — no exaggerated or unsafe heat effects
-- The &quot;SNATCHED CURLS&quot; graphic appears only in the final beat and must remain visible until the last frame
+- The rainbow barrel color must stay on the wand itself — no rainbow effects on the hair, skin, or elsewhere
+- The &quot;✨ JAMES CHARLES CURLS ✨&quot; graphic appears only in the final beat and must remain visible until the last frame
+- Do not render James Charles himself (or any other real person) as a separate character anywhere in frame — this is the user&#x27;s own moment
 - No speech bubbles
 - No social-media UI overlays
 - No text captions other than the specified graphic
-- No extra hands other than the one performing the curling and the final tuck
+- No extra hands other than the person&#x27;s own holding the wand
 - No jump cuts — the curling and release must read as one continuous, smooth motion</pre>
         </details>
       </div>

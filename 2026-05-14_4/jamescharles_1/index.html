@@ -68,52 +68,61 @@
     }
 
 
-    .idea-lead {{
+    .idea-lead {
       background: #fff; border-radius: 12px; padding: 36px 40px 32px;
       box-shadow: 0 1px 4px rgba(0,0,0,.07), 0 0 0 1px rgba(0,0,0,.05);
       margin-bottom: 40px;
-    }}
-    .idea-hashtag {{ font-size: 13px; font-weight: 700; color: #fe2c55; margin-bottom: 8px; }}
-    .idea-title {{ font-size: 26px; font-weight: 800; letter-spacing: -.6px; line-height: 1.25; margin-bottom: 16px; }}
-    .idea-desc {{ font-size: 14px; color: #444; line-height: 1.75; max-width: 720px; }}
-    .media-grid {{
-      display: grid; grid-template-columns: 340px 1fr; gap: 28px; align-items: start;
-    }}
-    .video-player {{
+    }
+    .idea-hashtag { font-size: 13px; font-weight: 700; color: #fe2c55; margin-bottom: 8px; }
+    .idea-title { font-size: 26px; font-weight: 800; letter-spacing: -.6px; line-height: 1.25; margin-bottom: 16px; }
+    .idea-desc { font-size: 14px; color: #444; line-height: 1.75; max-width: 720px; }
+    .media-grid {
+      display: grid; grid-template-columns: auto 1fr; gap: 28px; align-items: start;
+    }
+    .video-multi {
+      display: flex; gap: 16px; flex-wrap: wrap; align-items: flex-start;
+    }
+    .video-item {
+      width: 200px; display: flex; flex-direction: column; gap: 8px; flex-shrink: 0;
+    }
+    .video-caption {
+      font-size: 11px; color: #999; line-height: 1.4; padding: 0 2px;
+    }
+    .video-player {
       width: 100%; aspect-ratio: 9/16; object-fit: cover; border-radius: 12px;
       display: block; box-shadow: 0 2px 16px rgba(0,0,0,.14);
-    }}
-    .frame-img {{
+    }
+    .frame-img {
       width: 100%; aspect-ratio: 9/16; object-fit: cover; border-radius: 12px;
       display: block; box-shadow: 0 2px 16px rgba(0,0,0,.14);
-    }}
-    .prompts-col {{ display: flex; flex-direction: column; gap: 12px; }}
-    .prompt-block {{
+    }
+    .prompts-col { display: flex; flex-direction: column; gap: 12px; }
+    .prompt-block {
       background: #fff; border-radius: 10px;
       box-shadow: 0 1px 4px rgba(0,0,0,.07), 0 0 0 1px rgba(0,0,0,.05); overflow: hidden;
-    }}
-    .prompt-block summary {{
+    }
+    .prompt-block summary {
       padding: 14px 18px; font-size: 13px; font-weight: 700; cursor: pointer;
       user-select: none; list-style: none; display: flex; align-items: center; gap: 8px; color: #333;
-    }}
-    .prompt-block summary::-webkit-details-marker {{ display: none; }}
-    .prompt-block summary::before {{ content: '▶'; font-size: 8px; color: #bbb; transition: transform .15s; flex-shrink: 0; }}
-    .prompt-block[open] summary::before {{ transform: rotate(90deg); }}
-    .prompt-block summary:hover {{ color: #fe2c55; }}
-    .prompt-block summary:hover::before {{ color: #fe2c55; }}
-    .prompt-label {{ font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: .5px; color: #bbb; margin-left: auto; }}
-    .prompt-text {{
+    }
+    .prompt-block summary::-webkit-details-marker { display: none; }
+    .prompt-block summary::before { content: '▶'; font-size: 8px; color: #bbb; transition: transform .15s; flex-shrink: 0; }
+    .prompt-block[open] summary::before { transform: rotate(90deg); }
+    .prompt-block summary:hover { color: #fe2c55; }
+    .prompt-block summary:hover::before { color: #fe2c55; }
+    .prompt-label { font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: .5px; color: #bbb; margin-left: auto; }
+    .prompt-text {
       padding: 14px 18px 16px; font-family: 'SF Mono','Fira Code','Menlo',monospace;
       font-size: 11.5px; line-height: 1.7; color: #555; background: #f9f9f9;
       border-top: 1px solid #f0f0f0; white-space: pre-wrap; word-break: break-word;
       max-height: 320px; overflow-y: auto;
-    }}
-    @media (max-width: 900px) {{
-      .media-grid {{ grid-template-columns: 1fr; }}
-      .video-col {{ max-width: 360px; margin: 0 auto; }}
-      .idea-lead {{ padding: 24px 22px 22px; }}
-    }}
-    @media (max-width: 520px) {{ .idea-title {{ font-size: 22px; }} }}
+    }
+    @media (max-width: 900px) {
+      .media-grid { grid-template-columns: 1fr; }
+      .video-multi { justify-content: center; }
+      .idea-lead { padding: 24px 22px 22px; }
+    }
+    @media (max-width: 520px) { .idea-title { font-size: 22px; } }
 
   </style>
 </head>
@@ -140,7 +149,7 @@
   <div class="idea-lead">
     <div class="idea-hashtag">#jamescharles_1</div>
     <h1 class="idea-title">Разворот у зеркала</h1>
-    <p class="idea-desc">Визуальный якорь — классическое гримёрное зеркало, окружённое голыми лампочками (staple GRWM-контента). Пользователь сидит в свободной домашней одежде, спиной почти к камере, лицом в зеркало. Резкий взмах камеры — наезд на лампочки зеркала и мгновенный отъезд — и пользователь уже развёрнут к камере в полном образе: причёска, макияж и наряд собраны, будто трансформация произошла за кадром, в стиле GRWM-роликов Джеймса Чарльза. Сам процесс преображения никогда не показан — только &quot;до&quot; и внезапное &quot;после&quot;.</p>
+    <p class="idea-desc">Визуальный якорь — классическое гримёрное зеркало, окружённое голыми лампочками (staple GRWM-контента), плюс прямая отсылка к Джеймсу Чарльзу: в кадре виден его фирменный радужный оттеночный палитр-бокс, а в финале пользователь показывает его коронный жест — подмигивание и «сердечко» пальцами в камеру, знак его аудитории «Sisters». Пользователь сидит в свободной домашней одежде, спиной почти к камере, лицом в зеркало. Резкий взмах камеры — наезд на лампочки зеркала и мгновенный отъезд — и пользователь уже развёрнут к камере в полном образе: причёска, макияж и наряд собраны, палитра в кадре, подмигивание и сердечко-жест. Сам процесс преображения никогда не показан — только &quot;до&quot; и внезапное &quot;после&quot;.</p>
   </div>
   <section class="section">
     <div class="section-header">
@@ -148,7 +157,11 @@
       <span class="section-badge">Пример генерации</span>
     </div>
     <div class="media-grid">
-      <div class="video-col"><video class="video-player" controls muted loop playsinline poster="https://temp-images.ws.pho.to/495ae6b5fb946d1ff339aca7956dbf8903c5edb0.png"><source src="https://temp-images.ws.pho.to/216729e53b90876c3f6b67e6621b88303870be84.mp4" type="video/mp4"></video></div>
+      <div class="video-multi">
+        <div class="video-item"><video class="video-player" controls muted loop playsinline poster="https://temp-images.ws.pho.to/a8eabb39347998e4c56ffc29d1a20e6b912a22de.png"><source src="https://temp-images.ws.pho.to/d48e49dc099e1b3e123290ced12b44728729bfe5.mp4" type="video/mp4"></video>
+          <div class="video-caption"></div>
+        </div>
+      </div>
       <div class="prompts-col">
         <details class="prompt-block">
           <summary>Промпт для первого кадра <span class="prompt-label">GPT Image 2</span></summary>
@@ -162,25 +175,29 @@ The scene is a beauty content-creator studio built around a round vanity mirror 
 Camera and motion structure:
 0:00–0:02 — Static medium shot. The person sits calmly at the vanity, back mostly to camera, facing the glowing bulb-ringed mirror. The bulbs glow warm and steady.
 0:02–0:03 — A sudden camera whip: a fast push-in toward the glowing bulbs (motion-blurred), immediately followed by an equally fast pull-back.
-0:03–0:05 — The pull-back lands on the person now turned fully to face the camera, seated in the same chair, fully transformed: styled hair, complete glam makeup, and a distinct finished outfit. The vanity bulbs still glow steadily behind them. Confident, radiant expression. A small shimmering &quot;✨ READY&quot; graphic fades in at the bottom corner in the final beat and remains until the last frame.
+0:03–0:05 — The pull-back lands on the person now turned fully to face the camera, seated in the same chair, fully transformed: styled hair, complete glam makeup, and a distinct finished outfit. A round rainbow-gradient eyeshadow palette sits open on the vanity in clear view beside them. The vanity bulbs still glow steadily behind them. The person gives a single confident wink and a &quot;finger-heart&quot; gesture (thumb and index finger crossed into a small heart shape) toward the camera. A small shimmering &quot;✨ JAMES CHARLES GLAM ✨&quot; graphic fades in at the bottom corner in the final beat and remains until the last frame.
 
 Character:
-Preserve the person&#x27;s face, hair, skin tone, and identity exactly from the source image throughout the entire video. The &quot;before&quot; and &quot;after&quot; states show different hair styling, makeup, and outfit — these are allowed transformation states, not identity changes; facial structure, bone structure, and identity must remain exactly the same person throughout.
+Preserve the person&#x27;s face, hair, skin tone, and identity exactly from the source image throughout the entire video. The &quot;before&quot; and &quot;after&quot; states show different hair styling, makeup, and outfit — these are allowed transformation states, not identity changes; facial structure, bone structure, and identity must remain exactly the same person throughout. The person&#x27;s face remains clearly visible and forward-facing for the entire &quot;after&quot; half.
 
 Key visual events (in order):
 - The glowing bulb-ringed vanity mirror, present and unchanged in both the &quot;before&quot; and &quot;after&quot; halves — the visual anchor of the whole idea
 - The whip cut itself is the only transition — no visible application of any product, no morphing dissolve
-- The &quot;after&quot; reveal: complete hair, makeup, and outfit transformation, all already finished
-- The &quot;✨ READY&quot; graphic locking in at the very end
+- The &quot;after&quot; reveal: complete hair, makeup, and outfit transformation, all already finished, with the signature rainbow palette visible on the vanity
+- The wink and finger-heart gesture toward camera — the signature beat that makes the reference unmistakable
+- The &quot;✨ JAMES CHARLES GLAM ✨&quot; graphic locking in at the very end
 
 Style:
-Bright, warm, glossy beauty-vlog studio aesthetic — the kind of &quot;get ready with me&quot; energy popularized by creators like James Charles. Confident, polished, magazine-clean lighting. The bulb-ringed mirror is the visual signature of the whole shot.
+Bright, warm, glossy beauty-vlog studio aesthetic — the kind of &quot;get ready with me&quot; energy popularized by James Charles specifically. Confident, polished, magazine-clean lighting. The bulb-ringed mirror and rainbow palette are the visual signature of the whole shot.
 
 Restrictions:
 - Do not change the person&#x27;s facial structure, bone structure, or identity at any point — only hair styling, makeup, and outfit may differ between the &quot;before&quot; and &quot;after&quot; states
 - Do not depict any product, brush, or hand touching the face or hair at any point — the transformation must happen entirely off-screen, implied only by the whip cut, never shown as a materialization or morph
-- The bulb-ringed vanity mirror must remain visible and consistently lit in both halves of the video
-- The &quot;✨ READY&quot; graphic appears only in the final beat and must remain visible until the last frame
+- The bulb-ringed vanity mirror and the rainbow palette must remain visible and consistently lit in the &quot;after&quot; half
+- The person&#x27;s face must remain clearly visible and forward-facing throughout the entire &quot;after&quot; half — never obscure it with an object or crop it out of frame
+- No speaking, no singing, no lip-sync, no mouthing words — the wink and finger-heart gesture is the only &quot;expression,&quot; a silent, wordless beat
+- The &quot;✨ JAMES CHARLES GLAM ✨&quot; graphic appears only in the final beat and must remain visible until the last frame
+- Do not render any other real person (including James Charles himself) as a separate character anywhere in frame — this is the user&#x27;s own transformation only
 - No speech bubbles
 - No social-media UI overlays
 - No text captions other than the specified graphic

@@ -68,52 +68,61 @@
     }
 
 
-    .idea-lead {{
+    .idea-lead {
       background: #fff; border-radius: 12px; padding: 36px 40px 32px;
       box-shadow: 0 1px 4px rgba(0,0,0,.07), 0 0 0 1px rgba(0,0,0,.05);
       margin-bottom: 40px;
-    }}
-    .idea-hashtag {{ font-size: 13px; font-weight: 700; color: #fe2c55; margin-bottom: 8px; }}
-    .idea-title {{ font-size: 26px; font-weight: 800; letter-spacing: -.6px; line-height: 1.25; margin-bottom: 16px; }}
-    .idea-desc {{ font-size: 14px; color: #444; line-height: 1.75; max-width: 720px; }}
-    .media-grid {{
-      display: grid; grid-template-columns: 340px 1fr; gap: 28px; align-items: start;
-    }}
-    .video-player {{
+    }
+    .idea-hashtag { font-size: 13px; font-weight: 700; color: #fe2c55; margin-bottom: 8px; }
+    .idea-title { font-size: 26px; font-weight: 800; letter-spacing: -.6px; line-height: 1.25; margin-bottom: 16px; }
+    .idea-desc { font-size: 14px; color: #444; line-height: 1.75; max-width: 720px; }
+    .media-grid {
+      display: grid; grid-template-columns: auto 1fr; gap: 28px; align-items: start;
+    }
+    .video-multi {
+      display: flex; gap: 16px; flex-wrap: wrap; align-items: flex-start;
+    }
+    .video-item {
+      width: 200px; display: flex; flex-direction: column; gap: 8px; flex-shrink: 0;
+    }
+    .video-caption {
+      font-size: 11px; color: #999; line-height: 1.4; padding: 0 2px;
+    }
+    .video-player {
       width: 100%; aspect-ratio: 9/16; object-fit: cover; border-radius: 12px;
       display: block; box-shadow: 0 2px 16px rgba(0,0,0,.14);
-    }}
-    .frame-img {{
+    }
+    .frame-img {
       width: 100%; aspect-ratio: 9/16; object-fit: cover; border-radius: 12px;
       display: block; box-shadow: 0 2px 16px rgba(0,0,0,.14);
-    }}
-    .prompts-col {{ display: flex; flex-direction: column; gap: 12px; }}
-    .prompt-block {{
+    }
+    .prompts-col { display: flex; flex-direction: column; gap: 12px; }
+    .prompt-block {
       background: #fff; border-radius: 10px;
       box-shadow: 0 1px 4px rgba(0,0,0,.07), 0 0 0 1px rgba(0,0,0,.05); overflow: hidden;
-    }}
-    .prompt-block summary {{
+    }
+    .prompt-block summary {
       padding: 14px 18px; font-size: 13px; font-weight: 700; cursor: pointer;
       user-select: none; list-style: none; display: flex; align-items: center; gap: 8px; color: #333;
-    }}
-    .prompt-block summary::-webkit-details-marker {{ display: none; }}
-    .prompt-block summary::before {{ content: '▶'; font-size: 8px; color: #bbb; transition: transform .15s; flex-shrink: 0; }}
-    .prompt-block[open] summary::before {{ transform: rotate(90deg); }}
-    .prompt-block summary:hover {{ color: #fe2c55; }}
-    .prompt-block summary:hover::before {{ color: #fe2c55; }}
-    .prompt-label {{ font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: .5px; color: #bbb; margin-left: auto; }}
-    .prompt-text {{
+    }
+    .prompt-block summary::-webkit-details-marker { display: none; }
+    .prompt-block summary::before { content: '▶'; font-size: 8px; color: #bbb; transition: transform .15s; flex-shrink: 0; }
+    .prompt-block[open] summary::before { transform: rotate(90deg); }
+    .prompt-block summary:hover { color: #fe2c55; }
+    .prompt-block summary:hover::before { color: #fe2c55; }
+    .prompt-label { font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: .5px; color: #bbb; margin-left: auto; }
+    .prompt-text {
       padding: 14px 18px 16px; font-family: 'SF Mono','Fira Code','Menlo',monospace;
       font-size: 11.5px; line-height: 1.7; color: #555; background: #f9f9f9;
       border-top: 1px solid #f0f0f0; white-space: pre-wrap; word-break: break-word;
       max-height: 320px; overflow-y: auto;
-    }}
-    @media (max-width: 900px) {{
-      .media-grid {{ grid-template-columns: 1fr; }}
-      .video-col {{ max-width: 360px; margin: 0 auto; }}
-      .idea-lead {{ padding: 24px 22px 22px; }}
-    }}
-    @media (max-width: 520px) {{ .idea-title {{ font-size: 22px; }} }}
+    }
+    @media (max-width: 900px) {
+      .media-grid { grid-template-columns: 1fr; }
+      .video-multi { justify-content: center; }
+      .idea-lead { padding: 24px 22px 22px; }
+    }
+    @media (max-width: 520px) { .idea-title { font-size: 22px; } }
 
   </style>
 </head>
@@ -140,7 +149,7 @@
   <div class="idea-lead">
     <div class="idea-hashtag">#kevinhart_1</div>
     <h1 class="idea-title">В студии подкаста</h1>
-    <p class="idea-desc">Визуальный якорь — студия подкаста: акустические поролоновые панели на стенах, микрофон на подвижном журавле прямо перед лицом, крупные студийные наушники на голове, светящаяся вывеска «ON AIR» сбоку — та самая атмосфера, в которой звёзды вроде Кевина Харта записывают свои подкасты. Пользователь сидит перед микрофоном, рассказывает историю с нарастающим азартом и сам не выдерживает — срывается в заразительный хохот на середине фразы. Камера статична. В момент, когда смех пробивает, вывеска «ON AIR» на секунду мигает в такт — маленькая техническая деталь студии реагирует на живую энергию разговора. Никакого разворота сюжета, просто один настоящий, неотрежиссированный смешной момент в студии.</p>
+    <p class="idea-desc">Визуальный якорь — студия подкаста: акустические поролоновые панели на стенах, микрофон на подвижном журавле прямо перед лицом, крупные студийные наушники на голове, светящаяся вывеска «ON AIR» сбоку — та самая атмосфера, в которой звёзды вроде Кевина Харта записывают свои подкасты. Пользователь сидит перед микрофоном в наушниках, молча слушает нарастающую историю от собеседника за кадром (голос никогда не принадлежит пользователю) — и сам не выдерживает, срывается в заразительный, беззвучный для истории хохот. Камера статична. В момент, когда смех пробивает, вывеска «ON AIR» на секунду мигает в такт — маленькая техническая деталь студии реагирует на живую энергию разговора. Пользователь ни говорит, ни поёт — только слушает и реагирует эмоцией.</p>
   </div>
   <section class="section">
     <div class="section-header">
@@ -148,31 +157,35 @@
       <span class="section-badge">Пример генерации</span>
     </div>
     <div class="media-grid">
-      <div class="video-col"><video class="video-player" controls muted loop playsinline poster="https://temp-images.ws.pho.to/1e75e1dfd20aea2308ce6c7db54d059403a4cd76.png"><source src="https://temp-images.ws.pho.to/cd42b5a312c83dca52ca5aa03a670541e5edd76c.mp4" type="video/mp4"></video></div>
+      <div class="video-multi">
+        <div class="video-item"><video class="video-player" controls muted loop playsinline poster="https://temp-images.ws.pho.to/e8cf0df7fafc63c58ff767078a6b0cfa8ea1b77e.png"><source src="https://temp-images.ws.pho.to/6112431071f1422e29a96b6c37813299090376da.mp4" type="video/mp4"></video>
+          <div class="video-caption"></div>
+        </div>
+      </div>
       <div class="prompts-col">
         <details class="prompt-block">
           <summary>Промпт для первого кадра <span class="prompt-label">GPT Image 2</span></summary>
-          <pre class="prompt-text">Turn the photo of the person into a medium shot of them seated in front of a podcast microphone on a boom arm, wearing large studio headphones, acoustic foam panels covering the wall behind them, a glowing red &quot;ON AIR&quot; sign visible at the edge of frame, warm studio lighting, mid-sentence with an animated, about-to-laugh expression.</pre>
+          <pre class="prompt-text">Turn the photo of the person into a medium shot of them seated in front of a podcast microphone on a boom arm, wearing large studio headphones, acoustic foam panels covering the wall behind them, a glowing red &quot;ON AIR&quot; sign visible at the edge of frame, warm studio lighting, mouth closed, listening intently with an amused, about-to-laugh expression.</pre>
         </details>
         <details class="prompt-block">
           <summary>Промпт для видео <span class="prompt-label">Kling · Grok</span></summary>
           <pre class="prompt-text">Create a short cinematic video based on the uploaded image.
-The scene is a podcast recording studio. The person sits at a boom-mounted microphone wearing studio headphones, acoustic foam panels on the wall behind them, an &quot;ON AIR&quot; sign glowing at the frame edge.
+The scene is a podcast recording studio. The person sits at a boom-mounted microphone wearing studio headphones, acoustic foam panels on the wall behind them, an &quot;ON AIR&quot; sign glowing at the frame edge, mouth closed, listening.
 
 Camera and motion structure:
 The camera is completely static throughout — a locked podcast-studio medium shot:
-1. FRAMES 0–30%: The person leans toward the mic, mid-story, animated hand gesture, building energy in their own telling of the story. Headphones sit snug, foam panels steady in the background.
-2. FRAMES 30–60%: The story reaches its own punchline and the person can&#x27;t hold it together — a grin breaks first, then a genuine, unforced laugh takes over mid-sentence, head tipping back slightly, hand slapping the desk once.
-3. FRAMES 60–85%: The laugh peaks — person doubled slightly forward over the desk, headphones slipping a little off one ear from the motion, still laughing at their own story. The &quot;ON AIR&quot; sign flickers once, brighter, in sync with the laugh&#x27;s peak — a small studio-tech detail reacting to the moment.
+1. FRAMES 0–30%: The person leans toward the mic slightly, mouth closed, listening intently to an implied off-screen co-host/guest (never depicted, never lip-synced by the user) — building amusement visible only in their eyes and a growing smile. Headphones sit snug, foam panels steady in the background.
+2. FRAMES 30–60%: Whatever is being said off-screen reaches its punchline and the person can&#x27;t hold it together — a grin breaks first, then a genuine, unforced laugh takes over, head tipping back slightly, hand slapping the desk once. Mouth open only in laughter, never shaping words.
+3. FRAMES 60–85%: The laugh peaks — person doubled slightly forward over the desk, headphones slipping a little off one ear from the motion, still laughing. The &quot;ON AIR&quot; sign flickers once, brighter, in sync with the laugh&#x27;s peak — a small studio-tech detail reacting to the moment.
 4. FRAMES 85–100%: The laughter settles into a wide, satisfied grin, person leaning back in the chair, one hand still on the desk. Hold on this warm, unforced moment to the last frame — no overlay graphics, the studio setting and the &quot;ON AIR&quot; sign are the only visual signature needed.
 
 Character:
 Preserve the person&#x27;s face, hair, skin tone, and identity exactly from the source image throughout the entire video. Do not alter their appearance.
-Motion arc, happening only once: animated storytelling → punchline breaks composure → full unforced laughter → settled satisfied grin. No walking, no standing, no other movement.
+Motion arc, happening only once: listening with building amusement → punchline breaks composure → full unforced laughter → settled satisfied grin. No walking, no standing, no other movement. The user is never the source of any dialogue — they only listen and react.
 
 Key visual events (in order):
-- The animated hand gesture mid-story
-- The genuine laugh breaking through mid-sentence — the hero moment
+- The building amusement while listening, mouth closed
+- The genuine laugh breaking through — the hero moment
 - The &quot;ON AIR&quot; sign flickering once in sync with the laugh&#x27;s peak
 - The settled, satisfied grin at the end
 
@@ -181,6 +194,8 @@ Warm, intimate podcast-studio realism — soft key light, visible acoustic foam 
 
 Restrictions:
 - Do not change the person&#x27;s appearance, face, clothing, or identity at any point
+- The person&#x27;s face must remain clearly visible throughout — no zoom or crop away from it
+- No speaking, no singing, no lip-sync, no mouthing words — the person only listens and laughs; any implied dialogue belongs to an off-screen, undepicted co-host/guest
 - Do not depict any real, identifiable celebrity as a separate character anywhere in the frame — this is the person&#x27;s own studio moment, no one else in frame
 - The camera must remain completely static throughout — no pans, no zoom, no handheld motion
 - The &quot;ON AIR&quot; sign flicker happens only once, synced to the laugh&#x27;s peak — not a repeating or pulsing effect

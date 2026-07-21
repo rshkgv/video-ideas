@@ -68,52 +68,61 @@
     }
 
 
-    .idea-lead {{
+    .idea-lead {
       background: #fff; border-radius: 12px; padding: 36px 40px 32px;
       box-shadow: 0 1px 4px rgba(0,0,0,.07), 0 0 0 1px rgba(0,0,0,.05);
       margin-bottom: 40px;
-    }}
-    .idea-hashtag {{ font-size: 13px; font-weight: 700; color: #fe2c55; margin-bottom: 8px; }}
-    .idea-title {{ font-size: 26px; font-weight: 800; letter-spacing: -.6px; line-height: 1.25; margin-bottom: 16px; }}
-    .idea-desc {{ font-size: 14px; color: #444; line-height: 1.75; max-width: 720px; }}
-    .media-grid {{
-      display: grid; grid-template-columns: 340px 1fr; gap: 28px; align-items: start;
-    }}
-    .video-player {{
+    }
+    .idea-hashtag { font-size: 13px; font-weight: 700; color: #fe2c55; margin-bottom: 8px; }
+    .idea-title { font-size: 26px; font-weight: 800; letter-spacing: -.6px; line-height: 1.25; margin-bottom: 16px; }
+    .idea-desc { font-size: 14px; color: #444; line-height: 1.75; max-width: 720px; }
+    .media-grid {
+      display: grid; grid-template-columns: auto 1fr; gap: 28px; align-items: start;
+    }
+    .video-multi {
+      display: flex; gap: 16px; flex-wrap: wrap; align-items: flex-start;
+    }
+    .video-item {
+      width: 200px; display: flex; flex-direction: column; gap: 8px; flex-shrink: 0;
+    }
+    .video-caption {
+      font-size: 11px; color: #999; line-height: 1.4; padding: 0 2px;
+    }
+    .video-player {
       width: 100%; aspect-ratio: 9/16; object-fit: cover; border-radius: 12px;
       display: block; box-shadow: 0 2px 16px rgba(0,0,0,.14);
-    }}
-    .frame-img {{
+    }
+    .frame-img {
       width: 100%; aspect-ratio: 9/16; object-fit: cover; border-radius: 12px;
       display: block; box-shadow: 0 2px 16px rgba(0,0,0,.14);
-    }}
-    .prompts-col {{ display: flex; flex-direction: column; gap: 12px; }}
-    .prompt-block {{
+    }
+    .prompts-col { display: flex; flex-direction: column; gap: 12px; }
+    .prompt-block {
       background: #fff; border-radius: 10px;
       box-shadow: 0 1px 4px rgba(0,0,0,.07), 0 0 0 1px rgba(0,0,0,.05); overflow: hidden;
-    }}
-    .prompt-block summary {{
+    }
+    .prompt-block summary {
       padding: 14px 18px; font-size: 13px; font-weight: 700; cursor: pointer;
       user-select: none; list-style: none; display: flex; align-items: center; gap: 8px; color: #333;
-    }}
-    .prompt-block summary::-webkit-details-marker {{ display: none; }}
-    .prompt-block summary::before {{ content: '▶'; font-size: 8px; color: #bbb; transition: transform .15s; flex-shrink: 0; }}
-    .prompt-block[open] summary::before {{ transform: rotate(90deg); }}
-    .prompt-block summary:hover {{ color: #fe2c55; }}
-    .prompt-block summary:hover::before {{ color: #fe2c55; }}
-    .prompt-label {{ font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: .5px; color: #bbb; margin-left: auto; }}
-    .prompt-text {{
+    }
+    .prompt-block summary::-webkit-details-marker { display: none; }
+    .prompt-block summary::before { content: '▶'; font-size: 8px; color: #bbb; transition: transform .15s; flex-shrink: 0; }
+    .prompt-block[open] summary::before { transform: rotate(90deg); }
+    .prompt-block summary:hover { color: #fe2c55; }
+    .prompt-block summary:hover::before { color: #fe2c55; }
+    .prompt-label { font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: .5px; color: #bbb; margin-left: auto; }
+    .prompt-text {
       padding: 14px 18px 16px; font-family: 'SF Mono','Fira Code','Menlo',monospace;
       font-size: 11.5px; line-height: 1.7; color: #555; background: #f9f9f9;
       border-top: 1px solid #f0f0f0; white-space: pre-wrap; word-break: break-word;
       max-height: 320px; overflow-y: auto;
-    }}
-    @media (max-width: 900px) {{
-      .media-grid {{ grid-template-columns: 1fr; }}
-      .video-col {{ max-width: 360px; margin: 0 auto; }}
-      .idea-lead {{ padding: 24px 22px 22px; }}
-    }}
-    @media (max-width: 520px) {{ .idea-title {{ font-size: 22px; }} }}
+    }
+    @media (max-width: 900px) {
+      .media-grid { grid-template-columns: 1fr; }
+      .video-multi { justify-content: center; }
+      .idea-lead { padding: 24px 22px 22px; }
+    }
+    @media (max-width: 520px) { .idea-title { font-size: 22px; } }
 
   </style>
 </head>
@@ -148,7 +157,11 @@
       <span class="section-badge">Пример генерации</span>
     </div>
     <div class="media-grid">
-      <div class="video-col"><video class="video-player" controls muted loop playsinline poster="https://temp-images.ws.pho.to/921b9892685f1b8f0255715d90155c836960c735.png"><source src="https://temp-images.ws.pho.to/71c401c5d2dada0b5ff44361ba498753c1b30aa1.mp4" type="video/mp4"></video></div>
+      <div class="video-multi">
+        <div class="video-item"><video class="video-player" controls muted loop playsinline poster="https://temp-images.ws.pho.to/22ec441d8caa4063188a9e1ea47c7884bbc7a8bf.png"><source src="https://temp-images.ws.pho.to/e69a5ef0494cd203279011e4f07aff02e814ab31.mp4" type="video/mp4"></video>
+          <div class="video-caption"></div>
+        </div>
+      </div>
       <div class="prompts-col">
         <details class="prompt-block">
           <summary>Промпт для первого кадра <span class="prompt-label">GPT Image 2</span></summary>
@@ -164,7 +177,7 @@ The camera is locked off for almost the entire video, with a single slow, subtle
 1. FRAMES 0–35%: The person adjusts wires and small parts on the gadget with focused, careful hand movements, brow furrowed in concentration. The tabletop radio plays softly in the background. Nothing dramatic — just quiet, absorbed tinkering.
 2. FRAMES 35–60%: A very slow, barely perceptible push-in begins toward the workbench and the gadget. The person tries the gadget once — nothing happens. A brief flicker of frustration, then renewed focus as they adjust one more connection.
 3. FRAMES 60–80%: The person flips a small switch or makes a final connection. A beat of held breath and stillness.
-4. FRAMES 80–100%: Instantly, on that single beat, a small spark and a soft flicker of light bring the gadget to life — a tiny bulb glowing, a small fan spinning, or a similar modest but genuine &quot;it works&quot; moment. The person&#x27;s face breaks into a delighted, slightly astonished grin. A small, understated title card fades in at the bottom in a clean period CBS-style serif: &quot;East Texas Tech · Junior Inventor&quot; — and remains until the last frame.
+4. FRAMES 80–100%: Instantly, on that single beat, a small spark and a soft flicker of light bring the gadget to life — a tiny bulb glowing, a small fan spinning, or a similar modest but genuine &quot;it works&quot; moment. The person&#x27;s face breaks into a delighted, slightly astonished grin. A small, understated title card fades in at the bottom in a clean period CBS-style serif: &quot;YOUNG SHELDON · Junior Inventor&quot; — and remains until the last frame.
 
 Character:
 Preserve the person&#x27;s face, hair, skin tone, and identity exactly from the source image throughout the entire video. Do not alter their appearance.
@@ -182,12 +195,15 @@ Warm, tactile, handmade realism — closer to a quiet character-study scene in a
 
 Restrictions:
 - Do not change the person&#x27;s appearance, face, clothing, or identity at any point
+- The person&#x27;s face must remain clearly visible throughout, even while leaning over the workbench — never crop to hands/gadget only
+- No speaking, no singing, no lip-sync, no mouthing words — the delighted grin is a silent, wordless reaction
 - The spark/light effect must read as small, safe, and clearly non-hazardous — no real fire, no smoke, no sparks larger than a tiny flicker
-- The title card appears only in the final 20% and must remain fully visible until the last frame
+- The &quot;YOUNG SHELDON · Junior Inventor&quot; title card appears only in the final 20% and must remain fully visible until the last frame
+- No other text captions or overlay graphics besides the specified title card
 - No speech bubbles
 - No social-media UI overlays
-- No text captions other than the specified title card
 - No other people in frame
+- Do not render any actor or real/fictional character as a separate person anywhere in frame — this is the user&#x27;s own moment; the show reference is text-only
 - No violent or aggressive actions
 - No jump cuts — the tinkering-to-spark sequence plays as one continuous, unhurried take</pre>
         </details>
