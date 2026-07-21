@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>#youngsheldon_3 — Тихий вечер во дворе, с комиксом · Video Ideas</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      background: #f4f4f5; color: #111; font-size: 14px; line-height: 1.5;
+    }
+    .page-header {
+      background: #fff; border-bottom: 1px solid #e4e4e7; position: sticky;
+      top: 0; z-index: 100; box-shadow: 0 1px 8px rgba(0,0,0,.05);
+    }
+    .header-inner {
+      max-width: 1100px; margin: 0 auto; padding: 14px 28px;
+      display: flex; align-items: center; gap: 20px;
+    }
+    .brand {
+      font-size: 18px; font-weight: 800; letter-spacing: -.5px; color: #111;
+      white-space: nowrap; user-select: none; text-decoration: none;
+    }
+    .brand-tik { color: #fe2c55; }
+    .brand-tok { color: #010101; }
+    .brand-dot { color: #d1d1d1; margin: 0 6px; font-weight: 300; }
+    .brand-cc  { color: #888; font-size: 12px; font-weight: 500; }
+    .header-text { flex: 1; min-width: 0; }
+    .page-title {
+      font-size: 15px; font-weight: 700; letter-spacing: -.2px;
+      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    }
+    .page-sub { font-size: 11.5px; color: #999; margin-top: 2px; }
+    .date-badge {
+      background: #fe2c55; color: #fff; font-weight: 700; font-size: 12px;
+      border-radius: 8px; padding: 6px 14px; line-height: 1.4;
+      text-align: center; white-space: nowrap; flex-shrink: 0;
+    }
+    .date-badge span { display: block; font-size: 10px; font-weight: 500; opacity: .8; }
+    .page-nav {
+      max-width: 1100px; margin: 0 auto; padding: 0 28px;
+      display: flex; gap: 2px; border-top: 1px solid #f0f0f0;
+    }
+    .nav-a {
+      text-decoration: none; color: #999; font-size: 12.5px; font-weight: 500;
+      padding: 9px 14px; border-bottom: 2px solid transparent;
+      transition: color .15s, border-color .15s;
+    }
+    .nav-a:hover { color: #fe2c55; }
+    .nav-a.active { color: #fe2c55; border-bottom-color: #fe2c55; }
+    .content { max-width: 1100px; margin: 0 auto; padding: 36px 28px 80px; }
+    .section { margin-bottom: 52px; }
+    .section-header { display: flex; align-items: baseline; gap: 10px; margin-bottom: 16px; }
+    .section-title { font-size: 19px; font-weight: 800; letter-spacing: -.4px; }
+    .section-badge {
+      font-size: 10.5px; font-weight: 600; color: #999; background: #ebebeb;
+      padding: 3px 8px; border-radius: 20px; text-transform: uppercase; letter-spacing: .4px;
+    }
+    @media (max-width: 768px) {
+      .header-inner { gap: 12px; padding: 12px 16px; }
+      .date-badge { display: none; }
+      .page-nav { padding: 0 16px; }
+      .content { padding: 24px 16px 60px; }
+    }
+
+
+    .idea-lead {{
+      background: #fff; border-radius: 12px; padding: 36px 40px 32px;
+      box-shadow: 0 1px 4px rgba(0,0,0,.07), 0 0 0 1px rgba(0,0,0,.05);
+      margin-bottom: 40px;
+    }}
+    .idea-hashtag {{ font-size: 13px; font-weight: 700; color: #fe2c55; margin-bottom: 8px; }}
+    .idea-title {{ font-size: 26px; font-weight: 800; letter-spacing: -.6px; line-height: 1.25; margin-bottom: 16px; }}
+    .idea-desc {{ font-size: 14px; color: #444; line-height: 1.75; max-width: 720px; }}
+    .media-grid {{
+      display: grid; grid-template-columns: auto 1fr; gap: 28px; align-items: start;
+    }}
+    .video-multi {{
+      display: flex; gap: 16px; flex-wrap: wrap;
+    }}
+    .video-item {{
+      width: 200px; display: flex; flex-direction: column; gap: 8px; flex-shrink: 0;
+    }}
+    .video-caption {{
+      font-size: 11px; color: #999; line-height: 1.4; padding: 0 2px;
+    }}
+    .video-player {{
+      width: 100%; aspect-ratio: 9/16; object-fit: cover; border-radius: 12px;
+      display: block; box-shadow: 0 2px 16px rgba(0,0,0,.14);
+    }}
+    .frame-img {{
+      width: 100%; aspect-ratio: 9/16; object-fit: cover; border-radius: 12px;
+      display: block; box-shadow: 0 2px 16px rgba(0,0,0,.14);
+    }}
+    .prompts-col {{ display: flex; flex-direction: column; gap: 12px; }}
+    .prompt-block {{
+      background: #fff; border-radius: 10px;
+      box-shadow: 0 1px 4px rgba(0,0,0,.07), 0 0 0 1px rgba(0,0,0,.05); overflow: hidden;
+    }}
+    .prompt-block summary {{
+      padding: 14px 18px; font-size: 13px; font-weight: 700; cursor: pointer;
+      user-select: none; list-style: none; display: flex; align-items: center; gap: 8px; color: #333;
+    }}
+    .prompt-block summary::-webkit-details-marker {{ display: none; }}
+    .prompt-block summary::before {{ content: '▶'; font-size: 8px; color: #bbb; transition: transform .15s; flex-shrink: 0; }}
+    .prompt-block[open] summary::before {{ transform: rotate(90deg); }}
+    .prompt-block summary:hover {{ color: #fe2c55; }}
+    .prompt-block summary:hover::before {{ color: #fe2c55; }}
+    .prompt-label {{ font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: .5px; color: #bbb; margin-left: auto; }}
+    .prompt-text {{
+      padding: 14px 18px 16px; font-family: 'SF Mono','Fira Code','Menlo',monospace;
+      font-size: 11.5px; line-height: 1.7; color: #555; background: #f9f9f9;
+      border-top: 1px solid #f0f0f0; white-space: pre-wrap; word-break: break-word;
+      max-height: 320px; overflow-y: auto;
+    }}
+    @media (max-width: 900px) {{
+      .media-grid {{ grid-template-columns: 1fr; }}
+      .video-multi {{ justify-content: center; }}
+      .idea-lead {{ padding: 24px 22px 22px; }}
+    }}
+    @media (max-width: 520px) {{ .idea-title {{ font-size: 22px; }} }}
+
+  </style>
+</head>
+<body>
+<div class="page-header">
+  <div class="header-inner">
+    <a class="brand" href="../../">
+      <span class="brand-tik">Tik</span><span class="brand-tok">Tok</span>
+      <span class="brand-dot">·</span><span class="brand-cc">Video Ideas</span>
+    </a>
+    <div class="header-text">
+      <div class="page-title">#youngsheldon_3</div>
+      <div class="page-sub">Видео-идея · 14 мая 2026 · Выпуск 6</div>
+    </div>
+    <div class="date-badge">14.05.2026<span>Дата · Выпуск 6</span></div>
+  </div>
+  <nav class="page-nav">
+    <a href="../../" class="nav-a">← Все отчёты</a>
+    <a href="../" class="nav-a">← 14 мая 2026 · Выпуск 6</a>
+    <a href="#" class="nav-a active">#youngsheldon_3</a>
+  </nav>
+</div>
+<div class="content">
+  <div class="idea-lead">
+    <div class="idea-hashtag">#youngsheldon_3</div>
+    <h1 class="idea-title">Тихий вечер во дворе, с комиксом</h1>
+    <p class="idea-desc">Визуальный якорь — пригородная подъездная дорожка восточно-техасского дома конца 80-х в золотой час: расчерченные мелом «классики» на асфальте, велосипед у забора, скрипучая дверь-сетка на заднем плане. Пользователь тихо сидит на ступеньках крыльца, сосредоточенно дорисовывая мелом узор, пока на заднем плане другие дети шумно носятся в дворовой игре той эпохи — и среди них, чуть в стороне ото всех, узнаваемо сидит мальчик в духе Шелдона (очки, свитер-жилет), уткнувшись в выпуск комикса &quot;The Flash&quot;, полностью безучастный к общей беготне. Двойной контраст — тихий передний план и энергичный фон, а в этом фоне ещё и свой маленький остров спокойствия — весь эффект. В последнем кадре — титр с названием сериала «YOUNG SHELDON».</p>
+  </div>
+  <section class="section">
+    <div class="section-header">
+      <h2 class="section-title">Видео</h2>
+      <span class="section-badge">Пример генерации</span>
+    </div>
+    <div class="media-grid">
+      <div class="video-multi">
+        <div class="video-item"><video class="video-player" controls muted loop playsinline poster="https://temp-images.ws.pho.to/81ae72d2bc486bd8ae5917637be95625919d31a3.png"><source src="https://temp-images.ws.pho.to/ae61d564e4fc1105cd438574523ef5db8e0889a6.mp4" type="video/mp4"></video>
+          <div class="video-caption">woman in her late 30s with straight blonde shoulder-length hair and cat-eye glasses</div>
+        </div>
+        <div class="video-item"><video class="video-player" controls muted loop playsinline poster="https://temp-images.ws.pho.to/6c2eaea7d4a3211781962cf26895fee78d21e702.png"><source src="https://temp-images.ws.pho.to/e15f826ded8b37f9689e98ba4c4f5499176d4bec.mp4" type="video/mp4"></video>
+          <div class="video-caption">man in his early 30s with short brown hair, blue eyes, and a short beard</div>
+        </div>
+      </div>
+      <div class="prompts-col">
+        <details class="prompt-block">
+          <summary>Промпт для первого кадра <span class="prompt-label">GPT Image 2</span></summary>
+          <pre class="prompt-text">Turn the photo of the person into a medium shot of them sitting quietly on the front porch steps of a modest East Texas suburban house at golden hour, drawing with colored chalk on the driveway pavement in front of them (hopscotch squares visible), a bicycle leaning against a nearby fence, a screen door faintly visible behind them, warm late-afternoon sunlight, other children playing energetically in the background, and a distinct bespectacled boy in a sweater vest sitting apart from them on the curb reading a comic book, unbothered by the noise.</pre>
+        </details>
+        <details class="prompt-block">
+          <summary>Промпт для видео <span class="prompt-label">Kling · Grok</span></summary>
+          <pre class="prompt-text">Create a short cinematic video based on the uploaded image.
+The scene is a modest East Texas suburban front yard and driveway at golden hour, late 1980s. The person sits on the porch steps, medium shot, drawing with chalk on the pavement in front of them, a bicycle by the fence and a screen door visible behind them. In the background, other children play an energetic street game, and separately, a bespectacled boy in a sweater vest sits alone on the curb reading a comic book.
+
+Camera and motion structure:
+Keep the overall shot completely static. No zoom, no camera movement — the layered contrast between foreground stillness and background energy is the entire point.
+1. FRAMES 0–85%: The person remains in the foreground the whole time, calm and focused, carefully adding chalk lines to a hopscotch drawing on the driveway, occasionally glancing up with a small content smile. In the mid-background, other children run and play an energetic period street game, blurred and indistinct. Also visible in the background, sitting apart on the curb, the bespectacled boy in a sweater vest reads his comic book without looking up once, a second, smaller island of calm alongside the person&#x27;s own stillness.
+2. FRAMES 85–100%: The person looks up toward camera with a small, content smile, holding still. The boy in the background turns one page of his comic, still absorbed, still separate from the noise. A small, understated title card fades in at the bottom in a clean period CBS-style serif: &quot;YOUNG SHELDON&quot; — and remains until the last frame.
+
+Character:
+Preserve the person&#x27;s face, hair, skin tone, and identity exactly from the source image throughout the entire video. Do not alter their appearance. The person remains the clear visual focus in the foreground throughout — the boy is a secondary background detail, smaller and further from camera, never competing with the person for attention.
+The person&#x27;s only motion: small, repeated chalk-drawing hand movements and occasional calm glances up. No standing, no walking, no speaking, no singing, no joining the background activity.
+
+Key visual events (in order):
+- The unmistakable suburban driveway-at-golden-hour setting: chalk hopscotch, bicycle, screen door, warm period light
+- The steady, quiet rhythm of the person&#x27;s chalk drawing
+- The energetic background street game contrasted with the person&#x27;s calm
+- The bespectacled boy reading a comic book alone on the curb, his own separate pocket of stillness within the noisy background — the direct, unmistakable character reference
+- The &quot;YOUNG SHELDON&quot; title card locking in at the very end
+
+Style:
+Warm, nostalgic, observational realism — like a quiet establishing beat in a family sitcom&#x27;s closing act. Golden, slightly hazy period color grading, soft depth-of-field separating the calm foreground from the lively background. No music-video energy — this is a gentle, wistful slice of an ordinary evening.
+
+Restrictions:
+- Do not change the person&#x27;s appearance, face, clothing, or identity at any point
+- The person&#x27;s face must remain clearly visible throughout and remains the primary visual focus, larger and closer than any background element — no zoom or crop away from it
+- The person never speaks, sings, lip-syncs, or mouths words — the small smile is a silent, wordless beat
+- The camera must remain completely static throughout — no pans, no zoom, no handheld motion
+- The background children playing must stay softly out of focus and visually indistinct — no sharply rendered additional faces among them
+- The bespectacled boy on the curb may be more distinctly rendered than the other background children (he is the intentional character reference) but must remain visually smaller/further from camera than the person and never become the main subject
+- The boy never speaks aloud, never interacts with the person, and never looks at camera
+- The &quot;YOUNG SHELDON&quot; title card appears only in the final beat and must remain visible until the last frame
+- No other text captions or overlay graphics besides the specified title card
+- No social-media UI overlays
+- Do not depict a specific real actor&#x27;s likeness — the boy is a generic period character type (bespectacled, sweater vest), not an attempt to reproduce any specific real person&#x27;s face
+- The lighting must stay warm and constant throughout — no gradual sky/color shift
+- No violent or aggressive actions
+- No jump cuts — the entire video plays as one continuous, unhurried held shot</pre>
+        </details>
+      </div>
+    </div>
+  </section>
+</div>
+</body>
+</html>

@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>#lakers_2 — Кольцо чемпиона · Video Ideas</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      background: #f4f4f5; color: #111; font-size: 14px; line-height: 1.5;
+    }
+    .page-header {
+      background: #fff; border-bottom: 1px solid #e4e4e7; position: sticky;
+      top: 0; z-index: 100; box-shadow: 0 1px 8px rgba(0,0,0,.05);
+    }
+    .header-inner {
+      max-width: 1100px; margin: 0 auto; padding: 14px 28px;
+      display: flex; align-items: center; gap: 20px;
+    }
+    .brand {
+      font-size: 18px; font-weight: 800; letter-spacing: -.5px; color: #111;
+      white-space: nowrap; user-select: none; text-decoration: none;
+    }
+    .brand-tik { color: #fe2c55; }
+    .brand-tok { color: #010101; }
+    .brand-dot { color: #d1d1d1; margin: 0 6px; font-weight: 300; }
+    .brand-cc  { color: #888; font-size: 12px; font-weight: 500; }
+    .header-text { flex: 1; min-width: 0; }
+    .page-title {
+      font-size: 15px; font-weight: 700; letter-spacing: -.2px;
+      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    }
+    .page-sub { font-size: 11.5px; color: #999; margin-top: 2px; }
+    .date-badge {
+      background: #fe2c55; color: #fff; font-weight: 700; font-size: 12px;
+      border-radius: 8px; padding: 6px 14px; line-height: 1.4;
+      text-align: center; white-space: nowrap; flex-shrink: 0;
+    }
+    .date-badge span { display: block; font-size: 10px; font-weight: 500; opacity: .8; }
+    .page-nav {
+      max-width: 1100px; margin: 0 auto; padding: 0 28px;
+      display: flex; gap: 2px; border-top: 1px solid #f0f0f0;
+    }
+    .nav-a {
+      text-decoration: none; color: #999; font-size: 12.5px; font-weight: 500;
+      padding: 9px 14px; border-bottom: 2px solid transparent;
+      transition: color .15s, border-color .15s;
+    }
+    .nav-a:hover { color: #fe2c55; }
+    .nav-a.active { color: #fe2c55; border-bottom-color: #fe2c55; }
+    .content { max-width: 1100px; margin: 0 auto; padding: 36px 28px 80px; }
+    .section { margin-bottom: 52px; }
+    .section-header { display: flex; align-items: baseline; gap: 10px; margin-bottom: 16px; }
+    .section-title { font-size: 19px; font-weight: 800; letter-spacing: -.4px; }
+    .section-badge {
+      font-size: 10.5px; font-weight: 600; color: #999; background: #ebebeb;
+      padding: 3px 8px; border-radius: 20px; text-transform: uppercase; letter-spacing: .4px;
+    }
+    @media (max-width: 768px) {
+      .header-inner { gap: 12px; padding: 12px 16px; }
+      .date-badge { display: none; }
+      .page-nav { padding: 0 16px; }
+      .content { padding: 24px 16px 60px; }
+    }
+
+
+    .idea-lead {{
+      background: #fff; border-radius: 12px; padding: 36px 40px 32px;
+      box-shadow: 0 1px 4px rgba(0,0,0,.07), 0 0 0 1px rgba(0,0,0,.05);
+      margin-bottom: 40px;
+    }}
+    .idea-hashtag {{ font-size: 13px; font-weight: 700; color: #fe2c55; margin-bottom: 8px; }}
+    .idea-title {{ font-size: 26px; font-weight: 800; letter-spacing: -.6px; line-height: 1.25; margin-bottom: 16px; }}
+    .idea-desc {{ font-size: 14px; color: #444; line-height: 1.75; max-width: 720px; }}
+    .media-grid {{
+      display: grid; grid-template-columns: auto 1fr; gap: 28px; align-items: start;
+    }}
+    .video-multi {{
+      display: flex; gap: 16px; flex-wrap: wrap;
+    }}
+    .video-item {{
+      width: 200px; display: flex; flex-direction: column; gap: 8px; flex-shrink: 0;
+    }}
+    .video-caption {{
+      font-size: 11px; color: #999; line-height: 1.4; padding: 0 2px;
+    }}
+    .video-player {{
+      width: 100%; aspect-ratio: 9/16; object-fit: cover; border-radius: 12px;
+      display: block; box-shadow: 0 2px 16px rgba(0,0,0,.14);
+    }}
+    .frame-img {{
+      width: 100%; aspect-ratio: 9/16; object-fit: cover; border-radius: 12px;
+      display: block; box-shadow: 0 2px 16px rgba(0,0,0,.14);
+    }}
+    .prompts-col {{ display: flex; flex-direction: column; gap: 12px; }}
+    .prompt-block {{
+      background: #fff; border-radius: 10px;
+      box-shadow: 0 1px 4px rgba(0,0,0,.07), 0 0 0 1px rgba(0,0,0,.05); overflow: hidden;
+    }}
+    .prompt-block summary {{
+      padding: 14px 18px; font-size: 13px; font-weight: 700; cursor: pointer;
+      user-select: none; list-style: none; display: flex; align-items: center; gap: 8px; color: #333;
+    }}
+    .prompt-block summary::-webkit-details-marker {{ display: none; }}
+    .prompt-block summary::before {{ content: '▶'; font-size: 8px; color: #bbb; transition: transform .15s; flex-shrink: 0; }}
+    .prompt-block[open] summary::before {{ transform: rotate(90deg); }}
+    .prompt-block summary:hover {{ color: #fe2c55; }}
+    .prompt-block summary:hover::before {{ color: #fe2c55; }}
+    .prompt-label {{ font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: .5px; color: #bbb; margin-left: auto; }}
+    .prompt-text {{
+      padding: 14px 18px 16px; font-family: 'SF Mono','Fira Code','Menlo',monospace;
+      font-size: 11.5px; line-height: 1.7; color: #555; background: #f9f9f9;
+      border-top: 1px solid #f0f0f0; white-space: pre-wrap; word-break: break-word;
+      max-height: 320px; overflow-y: auto;
+    }}
+    @media (max-width: 900px) {{
+      .media-grid {{ grid-template-columns: 1fr; }}
+      .video-multi {{ justify-content: center; }}
+      .idea-lead {{ padding: 24px 22px 22px; }}
+    }}
+    @media (max-width: 520px) {{ .idea-title {{ font-size: 22px; }} }}
+
+  </style>
+</head>
+<body>
+<div class="page-header">
+  <div class="header-inner">
+    <a class="brand" href="../../">
+      <span class="brand-tik">Tik</span><span class="brand-tok">Tok</span>
+      <span class="brand-dot">·</span><span class="brand-cc">Video Ideas</span>
+    </a>
+    <div class="header-text">
+      <div class="page-title">#lakers_2</div>
+      <div class="page-sub">Видео-идея · 14 мая 2026 · Выпуск 6</div>
+    </div>
+    <div class="date-badge">14.05.2026<span>Дата · Выпуск 6</span></div>
+  </div>
+  <nav class="page-nav">
+    <a href="../../" class="nav-a">← Все отчёты</a>
+    <a href="../" class="nav-a">← 14 мая 2026 · Выпуск 6</a>
+    <a href="#" class="nav-a active">#lakers_2</a>
+  </nav>
+</div>
+<div class="content">
+  <div class="idea-lead">
+    <div class="idea-hashtag">#lakers_2</div>
+    <h1 class="idea-title">Кольцо чемпиона</h1>
+    <p class="idea-desc">Визуальный якорь: бархатная коробочка с чемпионским кольцом НБА в фиолетово-золотых камнях. Пользователь держит закрытую коробочку в ладонях крупным планом. Внезапный наезд камеры — крышка откидывается, и кольцо вспыхивает светом, отражая фиолетово-золотые блики. Пользователь медленно поднимает взгляд в камеру с выражением гордости и благоговения. Один резкий, эффектный жест — и всё.</p>
+  </div>
+  <section class="section">
+    <div class="section-header">
+      <h2 class="section-title">Видео</h2>
+      <span class="section-badge">Пример генерации</span>
+    </div>
+    <div class="media-grid">
+      <div class="video-multi">
+        <div class="video-item"><video class="video-player" controls muted loop playsinline poster="https://temp-images.ws.pho.to/b3077f4077ea9473b148769f541f658ab8dd4f64.png"><source src="https://temp-images.ws.pho.to/a6cd21393307483bfdfaa814881191e661820a62.mp4" type="video/mp4"></video>
+          <div class="video-caption">woman in her late 30s with straight blonde shoulder-length hair and cat-eye glasses</div>
+        </div>
+        <div class="video-item"><video class="video-player" controls muted loop playsinline poster="https://temp-images.ws.pho.to/22f394d2c51c8d6108d98e9ff930d44c4efa0857.png"><source src="https://temp-images.ws.pho.to/18907991aba66e523469ee48502aa8385bd4e907.mp4" type="video/mp4"></video>
+          <div class="video-caption">man in his early 30s with short brown hair, blue eyes, and a short beard</div>
+        </div>
+      </div>
+      <div class="prompts-col">
+        <details class="prompt-block">
+          <summary>Промпт для первого кадра <span class="prompt-label">GPT Image 2</span></summary>
+          <pre class="prompt-text">Turn the photo of the person into a close-up of them holding a closed velvet championship ring box in both hands at chest height, wearing a simple purple Lakers-colored team polo, soft dramatic side lighting, reverent focused expression looking down at the box, dark neutral background.</pre>
+        </details>
+        <details class="prompt-block">
+          <summary>Промпт для видео <span class="prompt-label">Kling · Grok</span></summary>
+          <pre class="prompt-text">Create a short cinematic video based on the uploaded image.
+The scene is a close-up on the person holding a closed velvet ring box in both hands, chest height, against a dark neutral background.
+
+Camera and motion structure:
+A single sudden camera whip drives the entire reveal:
+1. FRAMES 0–40%: Close-up, camera holds steady. The person looks down at the closed velvet box in their hands, thumbs resting on the lid, completely still except for slow breathing.
+2. FRAMES 40–55%: In one motion, the person&#x27;s thumbs flip the lid open. Exactly as the lid opens, the camera does a sudden, fast push-in toward the box.
+3. FRAMES 55–75%: Inside, a championship ring is revealed — a large purple-and-gold gemstone cluster catching the light, throwing sharp purple-gold reflections across the person&#x27;s face and hands.
+4. FRAMES 75–100%: The camera holds tight on the ring&#x27;s glow as the person slowly lifts their gaze from the ring to the camera, eyes shining, a small proud smile forming. Hold on this moment to the last frame.
+
+Character:
+Preserve the person&#x27;s face, hair, skin tone, and identity exactly from the source image throughout the entire video. Do not alter their appearance. The person stays the sole, most prominent figure in every frame.
+Motion arc, happening only once: stillness holding the closed box → thumbs flip the lid open → gaze lowers to the ring → gaze lifts to camera with pride. No other movement, no walking, no talking, no singing.
+
+Key visual events (in order):
+- The closed velvet box held reverently in both hands
+- The sudden lid-flip synchronized exactly with the camera&#x27;s push-in (the hero moment)
+- The purple-gold gemstone ring catching and throwing light
+- The slow, proud gaze lift to camera
+
+Style:
+Intimate, reverent, high-contrast product-reveal cinematography — think a jewelry macro shot crossed with a championship-moment close-up. Deep shadows, sharp purple-gold light reflections off the ring as the only bright accent. Emotionally weighty, not loud.
+
+Restrictions:
+- Do not change the person&#x27;s appearance, face, or identity at any point
+- The person&#x27;s face must remain clearly visible throughout — the ring&#x27;s glow must never obscure it
+- No speaking, no singing, no lip-sync, no mouthing words — the proud gaze is a silent, wordless beat
+- Do not engrave any specific real player&#x27;s name or a specific year on the ring — keep it a generic championship ring
+- The camera must stay locked in close-up throughout — the only camera motion is the single sudden push-in synchronized with the lid opening
+- No crowd, no other people, no arena background
+- No overlay graphics, no text, no captions of any kind
+- No social-media UI overlays
+- No violent or aggressive actions
+- No jump cuts — the lid-flip and camera push-in must be one continuous, perfectly synchronized motion
+- The ring must remain the single brightest, most detailed element in every frame after it&#x27;s revealed</pre>
+        </details>
+      </div>
+    </div>
+  </section>
+</div>
+</body>
+</html>

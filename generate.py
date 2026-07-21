@@ -60,17 +60,28 @@ def parse_idea(md_path):
         'video_prompt': extract_section(text, r'Промпт для генерации видео'),
     }
 
-def get_media(slug, date):
-    """Get frame/video URLs from pipeline JSON runs[0]."""
+def get_runs(slug, date):
+    """Get every completed run (one per photo profile) from the pipeline JSON,
+    in the order they appear in `runs`. Each dict has at least
+    frame/video/descriptor keys; failed runs are skipped."""
     p = IDEAS_DIR / date / f'{slug}_pipeline.json'
     if not p.exists():
-        return None, None
+        return []
     try:
         data = json.loads(p.read_text())
-        run = data.get('runs', [{}])[0]
-        return run.get('d167_image'), run.get('d156_video')
     except Exception:
-        return None, None
+        return []
+    out = []
+    for run in data.get('runs', []):
+        if run.get('status') != 'completed':
+            continue
+        out.append({
+            'frame': run.get('d167_image'),
+            'video': run.get('d156_video'),
+            'descriptor': run.get('photo_descriptor') or '',
+            'photo': run.get('photo') or '',
+        })
+    return out
 
 
 # ── Shared CSS ────────────────────────────────────────────────────────────────
@@ -244,11 +255,12 @@ def gen_main_index(date_entries):
 # ── site/{date}/index.html ────────────────────────────────────────────────────
 
 def gen_date_index(date, ideas_with_media):
-    """ideas_with_media: list of (idea_dict, frame_url, video_url)"""
+    """ideas_with_media: list of (idea_dict, runs) where runs is get_runs()'s list"""
     yyyy, mm, dd, suffix_label = split_report_date(date)
 
     rows = ''
-    for i, (idea, frame_url, video_url) in enumerate(ideas_with_media, 1):
+    for i, (idea, runs) in enumerate(ideas_with_media, 1):
+        frame_url = runs[0]['frame'] if runs else None
         thumb = f'<img class="thumb-img" src="{frame_url}" alt="#{idea["hashtag"]}">' if frame_url else '<div class="thumb-placeholder"></div>'
         rows += f"""
       <tr>
@@ -263,7 +275,7 @@ def gen_date_index(date, ideas_with_media):
       </tr>"""
 
     n = len(ideas_with_media)
-    n_videos = sum(1 for _, _, v in ideas_with_media if v)
+    n_videos = sum(1 for _, runs in ideas_with_media if any(r['video'] for r in runs))
 
     return head(f"Video Ideas — {int(dd)} {MONTH_FULL[mm]} {yyyy}{suffix_label}") + f"""
   <style>
@@ -349,7 +361,16 @@ IDEA_CSS = """
     .idea-title {{ font-size: 26px; font-weight: 800; letter-spacing: -.6px; line-height: 1.25; margin-bottom: 16px; }}
     .idea-desc {{ font-size: 14px; color: #444; line-height: 1.75; max-width: 720px; }}
     .media-grid {{
-      display: grid; grid-template-columns: 340px 1fr; gap: 28px; align-items: start;
+      display: grid; grid-template-columns: auto 1fr; gap: 28px; align-items: start;
+    }}
+    .video-multi {{
+      display: flex; gap: 16px; flex-wrap: wrap;
+    }}
+    .video-item {{
+      width: 200px; display: flex; flex-direction: column; gap: 8px; flex-shrink: 0;
+    }}
+    .video-caption {{
+      font-size: 11px; color: #999; line-height: 1.4; padding: 0 2px;
     }}
     .video-player {{
       width: 100%; aspect-ratio: 9/16; object-fit: cover; border-radius: 12px;
@@ -382,22 +403,34 @@ IDEA_CSS = """
     }}
     @media (max-width: 900px) {{
       .media-grid {{ grid-template-columns: 1fr; }}
-      .video-col {{ max-width: 360px; margin: 0 auto; }}
+      .video-multi {{ justify-content: center; }}
       .idea-lead {{ padding: 24px 22px 22px; }}
     }}
     @media (max-width: 520px) {{ .idea-title {{ font-size: 22px; }} }}
 """
 
-def gen_idea_page(date, idea, frame_url, video_url):
+def gen_idea_page(date, idea, runs):
     yyyy, mm, dd, suffix_label = split_report_date(date)
     slug = idea['slug']
 
-    if video_url and frame_url:
-        media_html = f'<video class="video-player" controls muted loop playsinline poster="{frame_url}"><source src="{video_url}" type="video/mp4"></video>'
-    elif frame_url:
-        media_html = f'<img class="frame-img" src="{frame_url}" alt="#{slug}">'
+    if runs:
+        items = ''
+        for run in runs:
+            frame_url, video_url = run['frame'], run['video']
+            if video_url and frame_url:
+                item_media = f'<video class="video-player" controls muted loop playsinline poster="{frame_url}"><source src="{video_url}" type="video/mp4"></video>'
+            elif frame_url:
+                item_media = f'<img class="frame-img" src="{frame_url}" alt="#{slug}">'
+            else:
+                item_media = '<div style="aspect-ratio:9/16;background:#eee;border-radius:12px;"></div>'
+            caption = html.escape(run['descriptor']) if run['descriptor'] else ''
+            items += f"""
+        <div class="video-item">{item_media}
+          <div class="video-caption">{caption}</div>
+        </div>"""
+        media_html = f'<div class="video-multi">{items}\n      </div>'
     else:
-        media_html = '<div style="aspect-ratio:9/16;background:#eee;border-radius:12px;"></div>'
+        media_html = '<div class="video-multi"><div class="video-item"><div style="aspect-ratio:9/16;background:#eee;border-radius:12px;"></div></div></div>'
 
     return head(f"#{slug} — {html.escape(idea['title'])} · Video Ideas") + f"""
   <style>
@@ -436,7 +469,7 @@ def gen_idea_page(date, idea, frame_url, video_url):
       <span class="section-badge">Пример генерации</span>
     </div>
     <div class="media-grid">
-      <div class="video-col">{media_html}</div>
+      {media_html}
       <div class="prompts-col">
         <details class="prompt-block">
           <summary>Промпт для первого кадра <span class="prompt-label">GPT Image 2</span></summary>
@@ -469,8 +502,8 @@ def collect_date(date):
 
     ideas_with_media = []
     for idea in ideas:
-        frame, video = get_media(idea['slug'], date)
-        ideas_with_media.append((idea, frame, video))
+        runs = get_runs(idea['slug'], date)
+        ideas_with_media.append((idea, runs))
 
     return ideas_with_media
 
@@ -485,10 +518,10 @@ def write_date(date, ideas_with_media):
     print(f'  wrote {date}/index.html  ({len(ideas_with_media)} ideas)')
 
     # Individual idea pages
-    for idea, frame, video in ideas_with_media:
+    for idea, runs in ideas_with_media:
         slug_dir = date_dir / idea['slug']
         slug_dir.mkdir(exist_ok=True)
-        (slug_dir / 'index.html').write_text(gen_idea_page(date, idea, frame, video))
+        (slug_dir / 'index.html').write_text(gen_idea_page(date, idea, runs))
         print(f'  wrote {date}/{idea["slug"]}/index.html')
 
 
@@ -516,7 +549,7 @@ def build_all():
         ideas_with_media = collect_date(date)
         if date in dates_to_write:
             write_date(date, ideas_with_media)
-        n_videos = sum(1 for _, _, v in ideas_with_media if v)
+        n_videos = sum(1 for _, runs in ideas_with_media if any(r['video'] for r in runs))
         all_entries.append((date, len(ideas_with_media), n_videos))
 
     # Main index — always reflects every date folder, even when only one was rebuilt

@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>#americanidol_3 — Список на стене с наставником · Video Ideas</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      background: #f4f4f5; color: #111; font-size: 14px; line-height: 1.5;
+    }
+    .page-header {
+      background: #fff; border-bottom: 1px solid #e4e4e7; position: sticky;
+      top: 0; z-index: 100; box-shadow: 0 1px 8px rgba(0,0,0,.05);
+    }
+    .header-inner {
+      max-width: 1100px; margin: 0 auto; padding: 14px 28px;
+      display: flex; align-items: center; gap: 20px;
+    }
+    .brand {
+      font-size: 18px; font-weight: 800; letter-spacing: -.5px; color: #111;
+      white-space: nowrap; user-select: none; text-decoration: none;
+    }
+    .brand-tik { color: #fe2c55; }
+    .brand-tok { color: #010101; }
+    .brand-dot { color: #d1d1d1; margin: 0 6px; font-weight: 300; }
+    .brand-cc  { color: #888; font-size: 12px; font-weight: 500; }
+    .header-text { flex: 1; min-width: 0; }
+    .page-title {
+      font-size: 15px; font-weight: 700; letter-spacing: -.2px;
+      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    }
+    .page-sub { font-size: 11.5px; color: #999; margin-top: 2px; }
+    .date-badge {
+      background: #fe2c55; color: #fff; font-weight: 700; font-size: 12px;
+      border-radius: 8px; padding: 6px 14px; line-height: 1.4;
+      text-align: center; white-space: nowrap; flex-shrink: 0;
+    }
+    .date-badge span { display: block; font-size: 10px; font-weight: 500; opacity: .8; }
+    .page-nav {
+      max-width: 1100px; margin: 0 auto; padding: 0 28px;
+      display: flex; gap: 2px; border-top: 1px solid #f0f0f0;
+    }
+    .nav-a {
+      text-decoration: none; color: #999; font-size: 12.5px; font-weight: 500;
+      padding: 9px 14px; border-bottom: 2px solid transparent;
+      transition: color .15s, border-color .15s;
+    }
+    .nav-a:hover { color: #fe2c55; }
+    .nav-a.active { color: #fe2c55; border-bottom-color: #fe2c55; }
+    .content { max-width: 1100px; margin: 0 auto; padding: 36px 28px 80px; }
+    .section { margin-bottom: 52px; }
+    .section-header { display: flex; align-items: baseline; gap: 10px; margin-bottom: 16px; }
+    .section-title { font-size: 19px; font-weight: 800; letter-spacing: -.4px; }
+    .section-badge {
+      font-size: 10.5px; font-weight: 600; color: #999; background: #ebebeb;
+      padding: 3px 8px; border-radius: 20px; text-transform: uppercase; letter-spacing: .4px;
+    }
+    @media (max-width: 768px) {
+      .header-inner { gap: 12px; padding: 12px 16px; }
+      .date-badge { display: none; }
+      .page-nav { padding: 0 16px; }
+      .content { padding: 24px 16px 60px; }
+    }
+
+
+    .idea-lead {{
+      background: #fff; border-radius: 12px; padding: 36px 40px 32px;
+      box-shadow: 0 1px 4px rgba(0,0,0,.07), 0 0 0 1px rgba(0,0,0,.05);
+      margin-bottom: 40px;
+    }}
+    .idea-hashtag {{ font-size: 13px; font-weight: 700; color: #fe2c55; margin-bottom: 8px; }}
+    .idea-title {{ font-size: 26px; font-weight: 800; letter-spacing: -.6px; line-height: 1.25; margin-bottom: 16px; }}
+    .idea-desc {{ font-size: 14px; color: #444; line-height: 1.75; max-width: 720px; }}
+    .media-grid {{
+      display: grid; grid-template-columns: auto 1fr; gap: 28px; align-items: start;
+    }}
+    .video-multi {{
+      display: flex; gap: 16px; flex-wrap: wrap;
+    }}
+    .video-item {{
+      width: 200px; display: flex; flex-direction: column; gap: 8px; flex-shrink: 0;
+    }}
+    .video-caption {{
+      font-size: 11px; color: #999; line-height: 1.4; padding: 0 2px;
+    }}
+    .video-player {{
+      width: 100%; aspect-ratio: 9/16; object-fit: cover; border-radius: 12px;
+      display: block; box-shadow: 0 2px 16px rgba(0,0,0,.14);
+    }}
+    .frame-img {{
+      width: 100%; aspect-ratio: 9/16; object-fit: cover; border-radius: 12px;
+      display: block; box-shadow: 0 2px 16px rgba(0,0,0,.14);
+    }}
+    .prompts-col {{ display: flex; flex-direction: column; gap: 12px; }}
+    .prompt-block {{
+      background: #fff; border-radius: 10px;
+      box-shadow: 0 1px 4px rgba(0,0,0,.07), 0 0 0 1px rgba(0,0,0,.05); overflow: hidden;
+    }}
+    .prompt-block summary {{
+      padding: 14px 18px; font-size: 13px; font-weight: 700; cursor: pointer;
+      user-select: none; list-style: none; display: flex; align-items: center; gap: 8px; color: #333;
+    }}
+    .prompt-block summary::-webkit-details-marker {{ display: none; }}
+    .prompt-block summary::before {{ content: '▶'; font-size: 8px; color: #bbb; transition: transform .15s; flex-shrink: 0; }}
+    .prompt-block[open] summary::before {{ transform: rotate(90deg); }}
+    .prompt-block summary:hover {{ color: #fe2c55; }}
+    .prompt-block summary:hover::before {{ color: #fe2c55; }}
+    .prompt-label {{ font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: .5px; color: #bbb; margin-left: auto; }}
+    .prompt-text {{
+      padding: 14px 18px 16px; font-family: 'SF Mono','Fira Code','Menlo',monospace;
+      font-size: 11.5px; line-height: 1.7; color: #555; background: #f9f9f9;
+      border-top: 1px solid #f0f0f0; white-space: pre-wrap; word-break: break-word;
+      max-height: 320px; overflow-y: auto;
+    }}
+    @media (max-width: 900px) {{
+      .media-grid {{ grid-template-columns: 1fr; }}
+      .video-multi {{ justify-content: center; }}
+      .idea-lead {{ padding: 24px 22px 22px; }}
+    }}
+    @media (max-width: 520px) {{ .idea-title {{ font-size: 22px; }} }}
+
+  </style>
+</head>
+<body>
+<div class="page-header">
+  <div class="header-inner">
+    <a class="brand" href="../../">
+      <span class="brand-tik">Tik</span><span class="brand-tok">Tok</span>
+      <span class="brand-dot">·</span><span class="brand-cc">Video Ideas</span>
+    </a>
+    <div class="header-text">
+      <div class="page-title">#americanidol_3</div>
+      <div class="page-sub">Видео-идея · 14 мая 2026 · Выпуск 6</div>
+    </div>
+    <div class="date-badge">14.05.2026<span>Дата · Выпуск 6</span></div>
+  </div>
+  <nav class="page-nav">
+    <a href="../../" class="nav-a">← Все отчёты</a>
+    <a href="../" class="nav-a">← 14 мая 2026 · Выпуск 6</a>
+    <a href="#" class="nav-a active">#americanidol_3</a>
+  </nav>
+</div>
+<div class="content">
+  <div class="idea-lead">
+    <div class="idea-hashtag">#americanidol_3</div>
+    <h1 class="idea-title">Список на стене с наставником</h1>
+    <p class="idea-desc">Не сцена, а закулисье: флуоресцентный коридор, доска с приколотым списком участников, прошедших в финал American Idol. Пользователь ведёт пальцем сверху вниз по списку — дыхание задержано. Рядом стоит наставник/вокальный коуч (виден в кадре целиком, не силуэт), с интересом наблюдая. Камера резко &quot;влетает&quot; крупным планом в момент, когда палец останавливается на имени, обведённом золотым маркером. Резкий отъезд — наставник расплывается в улыбке и произносит короткую фразу поддержки (в speech bubble), обнимает пользователя за плечи. Пользователь всё время крупнее и ближе к камере, не произносит ни слова — только тихая, сдержанная радость.</p>
+  </div>
+  <section class="section">
+    <div class="section-header">
+      <h2 class="section-title">Видео</h2>
+      <span class="section-badge">Пример генерации</span>
+    </div>
+    <div class="media-grid">
+      <div class="video-multi">
+        <div class="video-item"><video class="video-player" controls muted loop playsinline poster="https://temp-images.ws.pho.to/c518a8341ce09fb765512268c83aed77180fe6b0.png"><source src="https://temp-images.ws.pho.to/1cdedff14ac607df67a392b86028cc6854be40d3.mp4" type="video/mp4"></video>
+          <div class="video-caption">woman in her late 30s with straight blonde shoulder-length hair and cat-eye glasses</div>
+        </div>
+        <div class="video-item"><video class="video-player" controls muted loop playsinline poster="https://temp-images.ws.pho.to/265470b75795fcbd855071f3c0d070f11580e0cd.png"><source src="https://temp-images.ws.pho.to/c70807c04127d2b6c740c397d6c2dd644c8ca20c.mp4" type="video/mp4"></video>
+          <div class="video-caption">man in his early 30s with short brown hair, blue eyes, and a short beard</div>
+        </div>
+      </div>
+      <div class="prompts-col">
+        <details class="prompt-block">
+          <summary>Промпт для первого кадра <span class="prompt-label">GPT Image 2</span></summary>
+          <pre class="prompt-text">Turn the photo of the person into a medium shot standing in a fluorescent-lit backstage hallway of a TV studio, looking at a large printed cast list pinned to a corkboard, one finger raised and tracing down the rows of names, a laminated backstage badge on a lanyard around their neck, a vocal coach/mentor figure standing just behind and to the side (clearly visible, generic likeness, warm supportive expression), the person closer to camera and larger in frame, muted institutional greens and grays.</pre>
+        </details>
+        <details class="prompt-block">
+          <summary>Промпт для видео <span class="prompt-label">Kling · Grok</span></summary>
+          <pre class="prompt-text">Create a short cinematic video based on the uploaded image.
+The scene is a quiet backstage hallway on American Idol finale night. The person from the image stands close to a corkboard, scanning a printed callback list, closer to camera and the clear visual focus. A vocal coach/mentor figure stands just behind and to the side, fully visible (a generic likeness, not any specific real individual), watching with quiet interest.
+
+Camera and motion structure:
+1. FRAMES 0–40%: Medium shot, locked-off, favoring the person in the foreground. The person&#x27;s finger traces slowly down the list row by row. Their breathing is shallow, shoulders slightly tense. The mentor stands nearby, softer-focus, watching silently.
+2. FRAMES 40–65%: The finger nears the bottom of the list. The person leans in slightly, holding their breath. The mentor leans in too, curious.
+3. FRAMES 65–80%: A sudden, fast whip push-in snaps the camera to an extreme close-up on the paper exactly as the finger stops — landing on a name circled in gold marker, catching a glint of light. A beat of total stillness.
+4. FRAMES 80–100%: A sudden pull-back reveals the person&#x27;s face lifting from the page, eyes widening, a hand rising slowly to cover their mouth — quiet, contained joy. The mentor&#x27;s face breaks into a proud smile, they step in and put a hand on the person&#x27;s shoulder, delivering a short line of encouragement — a small stylized speech bubble beside them reads &quot;You earned this.&quot; A small gold ribbon graphic fades in at the bottom: &quot;AMERICAN IDOL 2026 · CALLBACK CONFIRMED.&quot; It remains until the last frame.
+
+Character:
+Preserve the person&#x27;s face, hair, skin tone, and identity exactly from the source image throughout the entire video. Do not alter their appearance. The person remains the largest, sharpest, most in-focus figure in every frame — the mentor is always secondary.
+Motion arc for the person, each stage happening only once: focused scanning → held breath → whip-in stillness → quiet, contained reaction. No screaming, no falling to their knees — this is a small, private victory. The person never speaks, sings, or mouths words — only the mentor delivers dialogue, conveyed via the specified speech bubble.
+
+Key visual events (in order):
+- The finger tracing down the list, unhurried and tense, mentor watching nearby
+- The gold-marker circle catching light at the whip-in — the hero moment
+- The quiet hand-to-mouth reaction at the pull-back
+- The mentor&#x27;s spoken encouragement and shoulder pat, with speech bubble
+- The &quot;CALLBACK CONFIRMED&quot; ribbon fading in at the very end
+
+Style:
+Intimate, observational, documentary-real — muted fluorescent hallway tones with a single warm gold highlight on the circled name. Grounded and understated, the opposite of a broadcast spectacle.
+
+Restrictions:
+- Do not change the person&#x27;s appearance, face, clothing, or identity at any point
+- The person must remain the largest, most in-focus, most prominent figure in every frame — the mentor is always secondary presence
+- No stage, no audience, no confetti, no pyrotechnics — backstage hallway only, throughout
+- Other names on the list must stay soft-focus/illegible — only the circled name is ever sharp and readable
+- No speaking, no singing, no lip-sync, no mouthing words from the person — only the mentor may be shown talking, conveyed via the specified speech bubble
+- The mentor is a generic likeness — do not render any particular real celebrity
+- The &quot;CALLBACK CONFIRMED&quot; graphic appears only in the final 20% and must remain visible until the last frame
+- The speech bubble appears only in the final beat and disappears with the rest of the overlay
+- No social-media UI overlays
+- Exactly two camera moves total — the whip push-in and the pull-back — no additional cuts or camera motion
+- The reaction must stay quiet and contained — no shouting, no big physical celebration
+- No other people visible in the hallway besides the mentor</pre>
+        </details>
+      </div>
+    </div>
+  </section>
+</div>
+</body>
+</html>
