@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Video Ideas — 14 мая 2026 · Выпуск 4</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      background: #f4f4f5; color: #111; font-size: 14px; line-height: 1.5;
+    }
+    .page-header {
+      background: #fff; border-bottom: 1px solid #e4e4e7; position: sticky;
+      top: 0; z-index: 100; box-shadow: 0 1px 8px rgba(0,0,0,.05);
+    }
+    .header-inner {
+      max-width: 1100px; margin: 0 auto; padding: 14px 28px;
+      display: flex; align-items: center; gap: 20px;
+    }
+    .brand {
+      font-size: 18px; font-weight: 800; letter-spacing: -.5px; color: #111;
+      white-space: nowrap; user-select: none; text-decoration: none;
+    }
+    .brand-tik { color: #fe2c55; }
+    .brand-tok { color: #010101; }
+    .brand-dot { color: #d1d1d1; margin: 0 6px; font-weight: 300; }
+    .brand-cc  { color: #888; font-size: 12px; font-weight: 500; }
+    .header-text { flex: 1; min-width: 0; }
+    .page-title {
+      font-size: 15px; font-weight: 700; letter-spacing: -.2px;
+      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    }
+    .page-sub { font-size: 11.5px; color: #999; margin-top: 2px; }
+    .date-badge {
+      background: #fe2c55; color: #fff; font-weight: 700; font-size: 12px;
+      border-radius: 8px; padding: 6px 14px; line-height: 1.4;
+      text-align: center; white-space: nowrap; flex-shrink: 0;
+    }
+    .date-badge span { display: block; font-size: 10px; font-weight: 500; opacity: .8; }
+    .page-nav {
+      max-width: 1100px; margin: 0 auto; padding: 0 28px;
+      display: flex; gap: 2px; border-top: 1px solid #f0f0f0;
+    }
+    .nav-a {
+      text-decoration: none; color: #999; font-size: 12.5px; font-weight: 500;
+      padding: 9px 14px; border-bottom: 2px solid transparent;
+      transition: color .15s, border-color .15s;
+    }
+    .nav-a:hover { color: #fe2c55; }
+    .nav-a.active { color: #fe2c55; border-bottom-color: #fe2c55; }
+    .content { max-width: 1100px; margin: 0 auto; padding: 36px 28px 80px; }
+    .section { margin-bottom: 52px; }
+    .section-header { display: flex; align-items: baseline; gap: 10px; margin-bottom: 16px; }
+    .section-title { font-size: 19px; font-weight: 800; letter-spacing: -.4px; }
+    .section-badge {
+      font-size: 10.5px; font-weight: 600; color: #999; background: #ebebeb;
+      padding: 3px 8px; border-radius: 20px; text-transform: uppercase; letter-spacing: .4px;
+    }
+    @media (max-width: 768px) {
+      .header-inner { gap: 12px; padding: 12px 16px; }
+      .date-badge { display: none; }
+      .page-nav { padding: 0 16px; }
+      .content { padding: 24px 16px 60px; }
+    }
+
+    .table-wrap {
+      background: #fff; border-radius: 12px; overflow: hidden;
+      box-shadow: 0 1px 4px rgba(0,0,0,.07), 0 0 0 1px rgba(0,0,0,.05);
+    }
+    .ht-table { width: 100%; border-collapse: collapse; }
+    .ht-table thead th {
+      text-align: left; padding: 10px 16px; font-size: 10.5px; font-weight: 600;
+      text-transform: uppercase; letter-spacing: .5px; color: #aaa;
+      background: #f9f9f9; border-bottom: 1px solid #ebebeb;
+    }
+    .ht-table tbody td { padding: 0; border-bottom: 1px solid #f2f2f2; vertical-align: middle; }
+    .ht-table tbody tr:last-child td { border-bottom: none; }
+    .ht-table tbody tr:hover td { background: #fafbff; }
+    .td-inner { padding: 12px 16px; display: flex; align-items: center; }
+    .rank-num { font-weight: 800; font-size: 14px; display: inline-block; min-width: 24px; text-align: right; color: #ccc; }
+    .thumb-cell { padding: 8px 10px 8px 16px !important; }
+    .thumb-img { width: 44px; height: 78px; object-fit: cover; border-radius: 6px; display: block; background: #eee; }
+    .thumb-placeholder { width: 44px; height: 78px; border-radius: 6px; background: #eee; }
+    .htag-link { font-weight: 700; font-size: 14px; color: #111; text-decoration: none; display: inline-flex; align-items: center; gap: 1px; }
+    .htag-link:hover { color: #fe2c55; }
+    .htag-hash { color: #bbb; font-weight: 400; }
+    .td-title { font-size: 13px; color: #555; padding-left: 12px; }
+    .td-arrow { color: #ddd; font-size: 13px; padding: 12px 20px 12px 8px !important; text-align: right; }
+    .ht-table tbody tr:hover .td-arrow { color: #fe2c55; }
+    @media (max-width: 520px) { .td-title { display: none; } }
+  </style>
+</head>
+<body>
+<div class="page-header">
+  <div class="header-inner">
+    <a class="brand" href="../">
+      <span class="brand-tik">Tik</span><span class="brand-tok">Tok</span>
+      <span class="brand-dot">·</span><span class="brand-cc">Video Ideas</span>
+    </a>
+    <div class="header-text">
+      <div class="page-title">Видео-идеи · 14 мая 2026 · Выпуск 4</div>
+      <div class="page-sub">AI-сгенерированные эффекты по трендовым хештегам TikTok US</div>
+    </div>
+    <div class="date-badge">14.05.2026<span>Дата отчёта · Выпуск 4</span></div>
+  </div>
+  <nav class="page-nav">
+    <a href="../" class="nav-a">← Все отчёты</a>
+    <a href="#ideas" class="nav-a active">Идеи</a>
+  </nav>
+</div>
+<div class="content">
+  <section id="ideas" class="section">
+    <div class="section-header">
+      <h2 class="section-title">Идеи</h2>
+      <span class="section-badge">15 идей · 0 видео</span>
+    </div>
+    <div class="table-wrap">
+      <table class="ht-table">
+        <thead><tr>
+          <th style="width:68px"></th>
+          <th>Хештег</th>
+          <th>Идея</th>
+          <th style="width:48px"></th>
+        </tr></thead>
+        <tbody>
+      <tr>
+        <td class="thumb-cell"><div class="thumb-placeholder"></div></td>
+        <td><div class="td-inner">
+          <span class="rank-num">1</span>
+          <span style="width:16px"></span>
+          <a class="htag-link" href="./americanidol_1/"><span class="htag-hash">#</span>americanidol_1</a>
+        </div></td>
+        <td class="td-title">Золотой билет</td>
+        <td class="td-arrow">→</td>
+      </tr>
+      <tr>
+        <td class="thumb-cell"><div class="thumb-placeholder"></div></td>
+        <td><div class="td-inner">
+          <span class="rank-num">2</span>
+          <span style="width:16px"></span>
+          <a class="htag-link" href="./americanidol_2/"><span class="htag-hash">#</span>americanidol_2</a>
+        </div></td>
+        <td class="td-title">Костюм для финала</td>
+        <td class="td-arrow">→</td>
+      </tr>
+      <tr>
+        <td class="thumb-cell"><div class="thumb-placeholder"></div></td>
+        <td><div class="td-inner">
+          <span class="rank-num">3</span>
+          <span style="width:16px"></span>
+          <a class="htag-link" href="./americanidol_3/"><span class="htag-hash">#</span>americanidol_3</a>
+        </div></td>
+        <td class="td-title">Саундчек перед эфиром</td>
+        <td class="td-arrow">→</td>
+      </tr>
+      <tr>
+        <td class="thumb-cell"><div class="thumb-placeholder"></div></td>
+        <td><div class="td-inner">
+          <span class="rank-num">4</span>
+          <span style="width:16px"></span>
+          <a class="htag-link" href="./jamescharles_1/"><span class="htag-hash">#</span>jamescharles_1</a>
+        </div></td>
+        <td class="td-title">Разворот у зеркала</td>
+        <td class="td-arrow">→</td>
+      </tr>
+      <tr>
+        <td class="thumb-cell"><div class="thumb-placeholder"></div></td>
+        <td><div class="td-inner">
+          <span class="rank-num">5</span>
+          <span style="width:16px"></span>
+          <a class="htag-link" href="./jamescharles_2/"><span class="htag-hash">#</span>jamescharles_2</a>
+        </div></td>
+        <td class="td-title">Плойка творит локон</td>
+        <td class="td-arrow">→</td>
+      </tr>
+      <tr>
+        <td class="thumb-cell"><div class="thumb-placeholder"></div></td>
+        <td><div class="td-inner">
+          <span class="rank-num">6</span>
+          <span style="width:16px"></span>
+          <a class="htag-link" href="./jamescharles_3/"><span class="htag-hash">#</span>jamescharles_3</a>
+        </div></td>
+        <td class="td-title">Подиум на максимум</td>
+        <td class="td-arrow">→</td>
+      </tr>
+      <tr>
+        <td class="thumb-cell"><div class="thumb-placeholder"></div></td>
+        <td><div class="td-inner">
+          <span class="rank-num">7</span>
+          <span style="width:16px"></span>
+          <a class="htag-link" href="./kevinhart_1/"><span class="htag-hash">#</span>kevinhart_1</a>
+        </div></td>
+        <td class="td-title">В студии подкаста</td>
+        <td class="td-arrow">→</td>
+      </tr>
+      <tr>
+        <td class="thumb-cell"><div class="thumb-placeholder"></div></td>
+        <td><div class="td-inner">
+          <span class="rank-num">8</span>
+          <span style="width:16px"></span>
+          <a class="htag-link" href="./kevinhart_2/"><span class="htag-hash">#</span>kevinhart_2</a>
+        </div></td>
+        <td class="td-title">Гость ток-шоу</td>
+        <td class="td-arrow">→</td>
+      </tr>
+      <tr>
+        <td class="thumb-cell"><div class="thumb-placeholder"></div></td>
+        <td><div class="td-inner">
+          <span class="rank-num">9</span>
+          <span style="width:16px"></span>
+          <a class="htag-link" href="./kevinhart_3/"><span class="htag-hash">#</span>kevinhart_3</a>
+        </div></td>
+        <td class="td-title">Хлопушка на площадке</td>
+        <td class="td-arrow">→</td>
+      </tr>
+      <tr>
+        <td class="thumb-cell"><div class="thumb-placeholder"></div></td>
+        <td><div class="td-inner">
+          <span class="rank-num">10</span>
+          <span style="width:16px"></span>
+          <a class="htag-link" href="./lakers_1/"><span class="htag-hash">#</span>lakers_1</a>
+        </div></td>
+        <td class="td-title">Ритуал в раздевалке</td>
+        <td class="td-arrow">→</td>
+      </tr>
+      <tr>
+        <td class="thumb-cell"><div class="thumb-placeholder"></div></td>
+        <td><div class="td-inner">
+          <span class="rank-num">11</span>
+          <span style="width:16px"></span>
+          <a class="htag-link" href="./lakers_2/"><span class="htag-hash">#</span>lakers_2</a>
+        </div></td>
+        <td class="td-title">Кольцо чемпиона</td>
+        <td class="td-arrow">→</td>
+      </tr>
+      <tr>
+        <td class="thumb-cell"><div class="thumb-placeholder"></div></td>
+        <td><div class="td-inner">
+          <span class="rank-num">12</span>
+          <span style="width:16px"></span>
+          <a class="htag-link" href="./lakers_3/"><span class="htag-hash">#</span>lakers_3</a>
+        </div></td>
+        <td class="td-title">Стена памяти</td>
+        <td class="td-arrow">→</td>
+      </tr>
+      <tr>
+        <td class="thumb-cell"><div class="thumb-placeholder"></div></td>
+        <td><div class="td-inner">
+          <span class="rank-num">13</span>
+          <span style="width:16px"></span>
+          <a class="htag-link" href="./youngsheldon_1/"><span class="htag-hash">#</span>youngsheldon_1</a>
+        </div></td>
+        <td class="td-title">Воскресная служба</td>
+        <td class="td-arrow">→</td>
+      </tr>
+      <tr>
+        <td class="thumb-cell"><div class="thumb-placeholder"></div></td>
+        <td><div class="td-inner">
+          <span class="rank-num">14</span>
+          <span style="width:16px"></span>
+          <a class="htag-link" href="./youngsheldon_2/"><span class="htag-hash">#</span>youngsheldon_2</a>
+        </div></td>
+        <td class="td-title">Гараж-мастерская</td>
+        <td class="td-arrow">→</td>
+      </tr>
+      <tr>
+        <td class="thumb-cell"><div class="thumb-placeholder"></div></td>
+        <td><div class="td-inner">
+          <span class="rank-num">15</span>
+          <span style="width:16px"></span>
+          <a class="htag-link" href="./youngsheldon_3/"><span class="htag-hash">#</span>youngsheldon_3</a>
+        </div></td>
+        <td class="td-title">Тихий вечер во дворе</td>
+        <td class="td-arrow">→</td>
+      </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+</div>
+</body>
+</html>
