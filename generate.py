@@ -557,7 +557,8 @@ IDEA_CSS = """
 
 def gen_idea_page(date, idea, runs):
     yyyy, mm, dd, suffix_label = split_report_date(date)
-    slug = idea['slug']
+    slug = idea['slug']            # used only for URLs/paths — the page's own folder name
+    hashtag = idea['hashtag']      # the clean hashtag (no "_N" suffix) — used for all displayed text
 
     if runs:
         items = ''
@@ -566,7 +567,7 @@ def gen_idea_page(date, idea, runs):
             if video_url and frame_url:
                 item_media = f'<video class="video-player" controls muted loop playsinline poster="{frame_url}"><source src="{video_url}" type="video/mp4"></video>'
             elif frame_url:
-                item_media = f'<img class="frame-img" src="{frame_url}" alt="#{slug}">'
+                item_media = f'<img class="frame-img" src="{frame_url}" alt="#{html.escape(hashtag)}">'
             else:
                 item_media = '<div style="aspect-ratio:9/16;background:#eee;border-radius:12px;"></div>'
             caption = html.escape(run['descriptor']) if run['descriptor'] else ''
@@ -578,7 +579,7 @@ def gen_idea_page(date, idea, runs):
     else:
         media_html = '<div class="video-multi"><div class="video-item"><div style="aspect-ratio:9/16;background:#eee;border-radius:12px;"></div></div></div>'
 
-    return head(f"#{slug} — {html.escape(idea['title'])} · Video Ideas") + f"""
+    return head(f"#{hashtag} — {html.escape(idea['title'])} · Video Ideas") + f"""
   <style>
 {COMMON_CSS}
 {IDEA_CSS}
@@ -592,7 +593,7 @@ def gen_idea_page(date, idea, runs):
       <span class="brand-dot">·</span><span class="brand-cc">Video Ideas</span>
     </a>
     <div class="header-text">
-      <div class="page-title">#{html.escape(slug)}</div>
+      <div class="page-title">#{html.escape(hashtag)}</div>
       <div class="page-sub">Видео-идея · {int(dd)} {MONTH_FULL[mm]} {yyyy}{suffix_label}</div>
     </div>
     <div class="date-badge">{dd}.{mm}.{yyyy}<span>Дата{suffix_label}</span></div>
@@ -600,12 +601,12 @@ def gen_idea_page(date, idea, runs):
   <nav class="page-nav">
     <a href="../../" class="nav-a">← Все отчёты</a>
     <a href="../" class="nav-a">← {int(dd)} {MONTH_SHORT[mm]} {yyyy}{suffix_label}</a>
-    <a href="#" class="nav-a active">#{html.escape(slug)}</a>
+    <a href="#" class="nav-a active">#{html.escape(hashtag)}</a>
   </nav>
 </div>
 <div class="content">
   <div class="idea-lead">
-    <div class="idea-hashtag">#{html.escape(slug)}</div>
+    <div class="idea-hashtag">#{html.escape(hashtag)}</div>
     <h1 class="idea-title">{html.escape(idea['title'])}</h1>
     <p class="idea-desc">{html.escape(idea['desc'])}</p>
   </div>
