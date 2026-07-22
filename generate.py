@@ -48,17 +48,52 @@ def parse_idea(md_path):
     title_m = re.match(r'# .+? — (.+)', text)
     title = title_m.group(1).strip() if title_m else md_path.stem
     slug = md_path.stem
-    hashtag = re.match(r'# #?(\S+)', text)
-    hashtag = hashtag.group(1).lower() if hashtag else slug
+
+    # {hashtag}_{N}.md convention (N = idea number) vs. a bare {hashtag}.md (single idea)
+    suffix_m = re.match(r'^(.+)_(\d+)$', slug)
+    base_from_slug, idea_num = (suffix_m.group(1), int(suffix_m.group(2))) if suffix_m else (slug, 1)
+
+    hashtag_m = re.match(r'# #?(\S+)', text)
+    hashtag = hashtag_m.group(1).lower() if hashtag_m else base_from_slug
 
     return {
         'slug': slug,
-        'hashtag': slug,
+        'base_hashtag': hashtag,  # canonical grouping key — from the file's own title line, not the filename
+        'idea_num': idea_num,
+        'hashtag': hashtag,
         'title': title,
         'desc': extract_section(text, r'Краткое описание идеи'),
         'first_frame_prompt': extract_section(text, r'Промпт для генерации первого кадра.*?'),
         'video_prompt': extract_section(text, r'Промпт для генерации видео'),
     }
+
+
+def load_hashtag_flags(date):
+    """Read ideas/{date}/_hashtag_flags.json (hashtag -> {"reason": "..."}), if present."""
+    p = IDEAS_DIR / date / '_hashtag_flags.json'
+    if not p.exists():
+        return {}
+    try:
+        return json.loads(p.read_text())
+    except Exception:
+        return {}
+
+
+def group_ideas(ideas_with_media):
+    """Group (idea, runs) pairs by base_hashtag, sorted by idea_num within each
+    group, preserving first-appearance order of hashtags. Returns a list of
+    (base_hashtag, [(idea, runs), ...]) tuples."""
+    groups = {}
+    order = []
+    for idea, runs in ideas_with_media:
+        key = idea['base_hashtag']
+        if key not in groups:
+            groups[key] = []
+            order.append(key)
+        groups[key].append((idea, runs))
+    for key in groups:
+        groups[key].sort(key=lambda pair: pair[0]['idea_num'])
+    return [(key, groups[key]) for key in order]
 
 def get_runs(slug, date):
     """Get every completed run (one per photo profile) from the pipeline JSON,
@@ -254,28 +289,108 @@ def gen_main_index(date_entries):
 
 # ── site/{date}/index.html ────────────────────────────────────────────────────
 
+def _idea_dropdown_html(base_hashtag, items):
+    """items: list of (idea, runs) sorted by idea_num, all for the same hashtag.
+    Returns the hashtag-cell HTML: a plain link if there's one idea, or a
+    <details> dropdown listing "Идея 1" / "Идея 2" / ... if there are several."""
+    if len(items) == 1:
+        idea = items[0][0]
+        return f'<a class="htag-link" href="./{idea["slug"]}/"><span class="htag-hash">#</span>{html.escape(base_hashtag)}</a>'
+    menu = ''.join(
+        f'<a href="./{idea["slug"]}/">Идея {idea["idea_num"]}</a>'
+        for idea, _ in items
+    )
+    return f"""<details class="idea-dropdown">
+            <summary><span class="htag-hash">#</span>{html.escape(base_hashtag)}<span class="idea-count-badge">{len(items)}</span></summary>
+            <div class="idea-dropdown-menu">{menu}</div>
+          </details>"""
+
+
 def gen_date_index(date, ideas_with_media):
     """ideas_with_media: list of (idea_dict, runs) where runs is get_runs()'s list"""
     yyyy, mm, dd, suffix_label = split_report_date(date)
+    flags = load_hashtag_flags(date)
+    grouped = group_ideas(ideas_with_media)
+
+    main_groups = [(bh, items) for bh, items in grouped if bh not in flags]
+    flagged_groups = [(bh, items) for bh, items in grouped if bh in flags]
+    flagged_with_ideas = {bh for bh, _ in flagged_groups}
+    # Flagged hashtags with no generated ideas at all (the disaster/health-crisis
+    # case per SKILL.md Step 2b) — reason-only rows, no dropdown/link.
+    idealess_flagged = [bh for bh in flags if bh not in flagged_with_ideas]
 
     rows = ''
-    for i, (idea, runs) in enumerate(ideas_with_media, 1):
-        frame_url = runs[0]['frame'] if runs else None
-        thumb = f'<img class="thumb-img" src="{frame_url}" alt="#{idea["hashtag"]}">' if frame_url else '<div class="thumb-placeholder"></div>'
+    for i, (base_hashtag, items) in enumerate(main_groups, 1):
+        frame_url = items[0][1][0]['frame'] if items[0][1] else None
+        thumb = f'<img class="thumb-img" src="{frame_url}" alt="#{html.escape(base_hashtag)}">' if frame_url else '<div class="thumb-placeholder"></div>'
         rows += f"""
       <tr>
         <td class="thumb-cell">{thumb}</td>
         <td><div class="td-inner">
           <span class="rank-num">{i}</span>
           <span style="width:16px"></span>
-          <a class="htag-link" href="./{idea['slug']}/"><span class="htag-hash">#</span>{html.escape(idea['slug'])}</a>
+          {_idea_dropdown_html(base_hashtag, items)}
         </div></td>
-        <td class="td-title">{html.escape(idea['title'])}</td>
         <td class="td-arrow">→</td>
       </tr>"""
 
+    not_touch_rows = ''
+    i = 1
+    for base_hashtag, items in flagged_groups:
+        frame_url = items[0][1][0]['frame'] if items[0][1] else None
+        thumb = f'<img class="thumb-img" src="{frame_url}" alt="#{html.escape(base_hashtag)}">' if frame_url else '<div class="thumb-placeholder"></div>'
+        not_touch_rows += f"""
+      <tr>
+        <td class="thumb-cell">{thumb}</td>
+        <td><div class="td-inner">
+          <span class="rank-num">{i}</span>
+          <span style="width:16px"></span>
+          {_idea_dropdown_html(base_hashtag, items)}
+        </div></td>
+        <td class="td-reason">{html.escape(flags[base_hashtag].get('reason', ''))}</td>
+        <td class="td-arrow">→</td>
+      </tr>"""
+        i += 1
+    for base_hashtag in idealess_flagged:
+        not_touch_rows += f"""
+      <tr class="no-ideas-row">
+        <td class="thumb-cell"><div class="thumb-placeholder"></div></td>
+        <td><div class="td-inner">
+          <span class="rank-num">{i}</span>
+          <span style="width:16px"></span>
+          <span class="htag-link htag-disabled"><span class="htag-hash">#</span>{html.escape(base_hashtag)}</span>
+        </div></td>
+        <td class="td-reason">{html.escape(flags[base_hashtag].get('reason', ''))}</td>
+        <td class="td-arrow">—</td>
+      </tr>"""
+        i += 1
+
     n = len(ideas_with_media)
     n_videos = sum(1 for _, runs in ideas_with_media if any(r['video'] for r in runs))
+    n_not_touch = len(flagged_groups) + len(idealess_flagged)
+
+    not_touch_section = ''
+    if n_not_touch:
+        not_touch_section = f"""
+  <section id="not-touch" class="section">
+    <div class="section-header">
+      <h2 class="section-title section-title-warn">Не трогать</h2>
+      <span class="section-badge section-badge-warn">{n_not_touch} {'хэштег' if n_not_touch==1 else 'хэштега' if n_not_touch<5 else 'хэштегов'}</span>
+    </div>
+    <p class="not-touch-note">Хэштеги, которые отчёт nnAgentsReports исключил из продуктовой воронки (бренд/IP, реальные люди, не-US аудитория и т.п.). Идеи для них всё равно сгенерированы, где это уместно, и показаны здесь отдельно от основного списка.</p>
+    <div class="table-wrap">
+      <table class="ht-table not-touch-table">
+        <thead><tr>
+          <th style="width:68px"></th>
+          <th>Хештег</th>
+          <th>Причина исключения</th>
+          <th style="width:48px"></th>
+        </tr></thead>
+        <tbody>{not_touch_rows}
+        </tbody>
+      </table>
+    </div>
+  </section>"""
 
     return head(f"Video Ideas — {int(dd)} {MONTH_FULL[mm]} {yyyy}{suffix_label}") + f"""
   <style>
@@ -293,7 +408,7 @@ def gen_date_index(date, ideas_with_media):
     .ht-table tbody td {{ padding: 0; border-bottom: 1px solid #f2f2f2; vertical-align: middle; }}
     .ht-table tbody tr:last-child td {{ border-bottom: none; }}
     .ht-table tbody tr:hover td {{ background: #fafbff; }}
-    .td-inner {{ padding: 12px 16px; display: flex; align-items: center; }}
+    .td-inner {{ padding: 12px 16px; display: flex; align-items: center; position: relative; }}
     .rank-num {{ font-weight: 800; font-size: 14px; display: inline-block; min-width: 24px; text-align: right; color: #ccc; }}
     .thumb-cell {{ padding: 8px 10px 8px 16px !important; }}
     .thumb-img {{ width: 44px; height: 78px; object-fit: cover; border-radius: 6px; display: block; background: #eee; }}
@@ -301,10 +416,42 @@ def gen_date_index(date, ideas_with_media):
     .htag-link {{ font-weight: 700; font-size: 14px; color: #111; text-decoration: none; display: inline-flex; align-items: center; gap: 1px; }}
     .htag-link:hover {{ color: #fe2c55; }}
     .htag-hash {{ color: #bbb; font-weight: 400; }}
+    .htag-disabled {{ color: #999; cursor: default; }}
+    .htag-disabled:hover {{ color: #999; }}
     .td-title {{ font-size: 13px; color: #555; padding-left: 12px; }}
+    .td-reason {{ font-size: 12.5px; color: #777; padding: 12px 16px 12px 12px; line-height: 1.5; max-width: 420px; }}
     .td-arrow {{ color: #ddd; font-size: 13px; padding: 12px 20px 12px 8px !important; text-align: right; }}
     .ht-table tbody tr:hover .td-arrow {{ color: #fe2c55; }}
-    @media (max-width: 520px) {{ .td-title {{ display: none; }} }}
+    .no-ideas-row {{ opacity: .7; }}
+    .no-ideas-row:hover td {{ background: transparent !important; }}
+    @media (max-width: 520px) {{ .td-title {{ display: none; }} .td-reason {{ display: none; }} }}
+    .idea-dropdown {{ position: relative; }}
+    .idea-dropdown summary {{
+      cursor: pointer; list-style: none; display: inline-flex; align-items: center; gap: 7px;
+      font-weight: 700; font-size: 14px; color: #111;
+    }}
+    .idea-dropdown summary::-webkit-details-marker {{ display: none; }}
+    .idea-dropdown summary::after {{ content: '▾'; font-size: 10px; color: #bbb; margin-left: 1px; }}
+    .idea-dropdown summary:hover {{ color: #fe2c55; }}
+    .idea-count-badge {{
+      font-size: 10px; font-weight: 700; color: #fff; background: #fe2c55;
+      border-radius: 20px; padding: 2px 7px; line-height: 1.4;
+    }}
+    .idea-dropdown-menu {{
+      position: absolute; top: 100%; left: 0; margin-top: 8px; z-index: 30;
+      background: #fff; border-radius: 8px; overflow: hidden; min-width: 130px;
+      box-shadow: 0 6px 20px rgba(0,0,0,.16), 0 0 0 1px rgba(0,0,0,.06);
+      display: flex; flex-direction: column;
+    }}
+    .idea-dropdown-menu a {{
+      padding: 9px 16px; font-size: 13px; font-weight: 600; color: #333;
+      text-decoration: none; white-space: nowrap;
+    }}
+    .idea-dropdown-menu a:hover {{ background: #fafbff; color: #fe2c55; }}
+    .section-title-warn {{ color: #92400e; }}
+    .section-badge-warn {{ background: #fef3c7; color: #92400e; }}
+    .not-touch-note {{ font-size: 12.5px; color: #999; margin: -8px 0 16px; max-width: 640px; line-height: 1.6; }}
+    .not-touch-table thead th {{ background: #fffbeb; }}
   </style>
 </head>
 <body>
@@ -336,14 +483,13 @@ def gen_date_index(date, ideas_with_media):
         <thead><tr>
           <th style="width:68px"></th>
           <th>Хештег</th>
-          <th>Идея</th>
           <th style="width:48px"></th>
         </tr></thead>
         <tbody>{rows}
         </tbody>
       </table>
     </div>
-  </section>
+  </section>{not_touch_section}
 </div>
 </body>
 </html>"""

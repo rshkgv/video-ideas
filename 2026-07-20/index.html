@@ -80,7 +80,7 @@
     .ht-table tbody td { padding: 0; border-bottom: 1px solid #f2f2f2; vertical-align: middle; }
     .ht-table tbody tr:last-child td { border-bottom: none; }
     .ht-table tbody tr:hover td { background: #fafbff; }
-    .td-inner { padding: 12px 16px; display: flex; align-items: center; }
+    .td-inner { padding: 12px 16px; display: flex; align-items: center; position: relative; }
     .rank-num { font-weight: 800; font-size: 14px; display: inline-block; min-width: 24px; text-align: right; color: #ccc; }
     .thumb-cell { padding: 8px 10px 8px 16px !important; }
     .thumb-img { width: 44px; height: 78px; object-fit: cover; border-radius: 6px; display: block; background: #eee; }
@@ -88,10 +88,42 @@
     .htag-link { font-weight: 700; font-size: 14px; color: #111; text-decoration: none; display: inline-flex; align-items: center; gap: 1px; }
     .htag-link:hover { color: #fe2c55; }
     .htag-hash { color: #bbb; font-weight: 400; }
+    .htag-disabled { color: #999; cursor: default; }
+    .htag-disabled:hover { color: #999; }
     .td-title { font-size: 13px; color: #555; padding-left: 12px; }
+    .td-reason { font-size: 12.5px; color: #777; padding: 12px 16px 12px 12px; line-height: 1.5; max-width: 420px; }
     .td-arrow { color: #ddd; font-size: 13px; padding: 12px 20px 12px 8px !important; text-align: right; }
     .ht-table tbody tr:hover .td-arrow { color: #fe2c55; }
-    @media (max-width: 520px) { .td-title { display: none; } }
+    .no-ideas-row { opacity: .7; }
+    .no-ideas-row:hover td { background: transparent !important; }
+    @media (max-width: 520px) { .td-title { display: none; } .td-reason { display: none; } }
+    .idea-dropdown { position: relative; }
+    .idea-dropdown summary {
+      cursor: pointer; list-style: none; display: inline-flex; align-items: center; gap: 7px;
+      font-weight: 700; font-size: 14px; color: #111;
+    }
+    .idea-dropdown summary::-webkit-details-marker { display: none; }
+    .idea-dropdown summary::after { content: '▾'; font-size: 10px; color: #bbb; margin-left: 1px; }
+    .idea-dropdown summary:hover { color: #fe2c55; }
+    .idea-count-badge {
+      font-size: 10px; font-weight: 700; color: #fff; background: #fe2c55;
+      border-radius: 20px; padding: 2px 7px; line-height: 1.4;
+    }
+    .idea-dropdown-menu {
+      position: absolute; top: 100%; left: 0; margin-top: 8px; z-index: 30;
+      background: #fff; border-radius: 8px; overflow: hidden; min-width: 130px;
+      box-shadow: 0 6px 20px rgba(0,0,0,.16), 0 0 0 1px rgba(0,0,0,.06);
+      display: flex; flex-direction: column;
+    }
+    .idea-dropdown-menu a {
+      padding: 9px 16px; font-size: 13px; font-weight: 600; color: #333;
+      text-decoration: none; white-space: nowrap;
+    }
+    .idea-dropdown-menu a:hover { background: #fafbff; color: #fe2c55; }
+    .section-title-warn { color: #92400e; }
+    .section-badge-warn { background: #fef3c7; color: #92400e; }
+    .not-touch-note { font-size: 12.5px; color: #999; margin: -8px 0 16px; max-width: 640px; line-height: 1.6; }
+    .not-touch-table thead th { background: #fffbeb; }
   </style>
 </head>
 <body>
@@ -123,609 +155,303 @@
         <thead><tr>
           <th style="width:68px"></th>
           <th>Хештег</th>
-          <th>Идея</th>
           <th style="width:48px"></th>
         </tr></thead>
         <tbody>
       <tr>
-        <td class="thumb-cell"><img class="thumb-img" src="https://temp-images.ws.pho.to/0d693dc9808f44c139826629bee6a2eba213d5a6.png" alt="#booyah_1"></td>
+        <td class="thumb-cell"><img class="thumb-img" src="https://temp-images.ws.pho.to/defee597efdfde37f0715c82185ed0e61675edbc.png" alt="#pitchblack"></td>
         <td><div class="td-inner">
           <span class="rank-num">1</span>
           <span style="width:16px"></span>
-          <a class="htag-link" href="./booyah_1/"><span class="htag-hash">#</span>booyah_1</a>
+          <details class="idea-dropdown">
+            <summary><span class="htag-hash">#</span>pitchblack<span class="idea-count-badge">3</span></summary>
+            <div class="idea-dropdown-menu"><a href="./pitchblack_1/">Идея 1</a><a href="./pitchblack_2/">Идея 2</a><a href="./pitchblack_3/">Идея 3</a></div>
+          </details>
         </div></td>
-        <td class="td-title">Победный экран</td>
         <td class="td-arrow">→</td>
       </tr>
       <tr>
-        <td class="thumb-cell"><img class="thumb-img" src="https://temp-images.ws.pho.to/bc27ca1cef33562993be18d11e62b88ae8f885ea.png" alt="#booyah_2"></td>
+        <td class="thumb-cell"><img class="thumb-img" src="https://temp-images.ws.pho.to/2028be432f47734d51b5972b81e53f6038e70011.png" alt="#qotc"></td>
         <td><div class="td-inner">
           <span class="rank-num">2</span>
           <span style="width:16px"></span>
-          <a class="htag-link" href="./booyah_2/"><span class="htag-hash">#</span>booyah_2</a>
+          <details class="idea-dropdown">
+            <summary><span class="htag-hash">#</span>qotc<span class="idea-count-badge">3</span></summary>
+            <div class="idea-dropdown-menu"><a href="./qotc_1/">Идея 1</a><a href="./qotc_2/">Идея 2</a><a href="./qotc_3/">Идея 3</a></div>
+          </details>
         </div></td>
-        <td class="td-title">Отряд побеждает вместе</td>
         <td class="td-arrow">→</td>
       </tr>
       <tr>
-        <td class="thumb-cell"><img class="thumb-img" src="https://temp-images.ws.pho.to/f744cee09259a42fd37df8a9412ca9457474c3b5.png" alt="#booyah_3"></td>
+        <td class="thumb-cell"><img class="thumb-img" src="https://temp-images.ws.pho.to/6c566d10f31ba6b8f1bbc2f4bdd6661303c3f96e.png" alt="#rainbowborder"></td>
         <td><div class="td-inner">
           <span class="rank-num">3</span>
           <span style="width:16px"></span>
-          <a class="htag-link" href="./booyah_3/"><span class="htag-hash">#</span>booyah_3</a>
+          <details class="idea-dropdown">
+            <summary><span class="htag-hash">#</span>rainbowborder<span class="idea-count-badge">3</span></summary>
+            <div class="idea-dropdown-menu"><a href="./rainbowborder_1/">Идея 1</a><a href="./rainbowborder_2/">Идея 2</a><a href="./rainbowborder_3/">Идея 3</a></div>
+          </details>
         </div></td>
-        <td class="td-title">Один против всех</td>
         <td class="td-arrow">→</td>
       </tr>
       <tr>
-        <td class="thumb-cell"><img class="thumb-img" src="https://temp-images.ws.pho.to/a15d499db1924ba88d4cdca092fa44d07f527ec5.png" alt="#bt21_1"></td>
+        <td class="thumb-cell"><img class="thumb-img" src="https://temp-images.ws.pho.to/dcc2421321847b57154349e6685a9f722c037ed8.png" alt="#rainbowpfp"></td>
         <td><div class="td-inner">
           <span class="rank-num">4</span>
           <span style="width:16px"></span>
-          <a class="htag-link" href="./bt21_1/"><span class="htag-hash">#</span>bt21_1</a>
+          <details class="idea-dropdown">
+            <summary><span class="htag-hash">#</span>rainbowpfp<span class="idea-count-badge">3</span></summary>
+            <div class="idea-dropdown-menu"><a href="./rainbowpfp_1/">Идея 1</a><a href="./rainbowpfp_2/">Идея 2</a><a href="./rainbowpfp_3/">Идея 3</a></div>
+          </details>
         </div></td>
-        <td class="td-title">Полка мягких игрушек-маскотов</td>
+        <td class="td-arrow">→</td>
+      </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+  <section id="not-touch" class="section">
+    <div class="section-header">
+      <h2 class="section-title section-title-warn">Не трогать</h2>
+      <span class="section-badge section-badge-warn">18 хэштегов</span>
+    </div>
+    <p class="not-touch-note">Хэштеги, которые отчёт nnAgentsReports исключил из продуктовой воронки (бренд/IP, реальные люди, не-US аудитория и т.п.). Идеи для них всё равно сгенерированы, где это уместно, и показаны здесь отдельно от основного списка.</p>
+    <div class="table-wrap">
+      <table class="ht-table not-touch-table">
+        <thead><tr>
+          <th style="width:68px"></th>
+          <th>Хештег</th>
+          <th>Причина исключения</th>
+          <th style="width:48px"></th>
+        </tr></thead>
+        <tbody>
+      <tr>
+        <td class="thumb-cell"><img class="thumb-img" src="https://temp-images.ws.pho.to/0d693dc9808f44c139826629bee6a2eba213d5a6.png" alt="#booyah"></td>
+        <td><div class="td-inner">
+          <span class="rank-num">1</span>
+          <span style="width:16px"></span>
+          <details class="idea-dropdown">
+            <summary><span class="htag-hash">#</span>booyah<span class="idea-count-badge">3</span></summary>
+            <div class="idea-dropdown-menu"><a href="./booyah_1/">Идея 1</a><a href="./booyah_2/">Идея 2</a><a href="./booyah_3/">Идея 3</a></div>
+          </details>
+        </div></td>
+        <td class="td-reason">Игровое IP — восклицание-логотип игры Free Fire (Garena)</td>
         <td class="td-arrow">→</td>
       </tr>
       <tr>
-        <td class="thumb-cell"><img class="thumb-img" src="https://temp-images.ws.pho.to/ecbb7c4b791a34c71c46f3316df42270386a9f15.png" alt="#bt21_2"></td>
+        <td class="thumb-cell"><img class="thumb-img" src="https://temp-images.ws.pho.to/a15d499db1924ba88d4cdca092fa44d07f527ec5.png" alt="#bt21"></td>
+        <td><div class="td-inner">
+          <span class="rank-num">2</span>
+          <span style="width:16px"></span>
+          <details class="idea-dropdown">
+            <summary><span class="htag-hash">#</span>bt21<span class="idea-count-badge">3</span></summary>
+            <div class="idea-dropdown-menu"><a href="./bt21_1/">Идея 1</a><a href="./bt21_2/">Идея 2</a><a href="./bt21_3/">Идея 3</a></div>
+          </details>
+        </div></td>
+        <td class="td-reason">Чужой бренд / IP — коллаборация LINE Friends × BTS</td>
+        <td class="td-arrow">→</td>
+      </tr>
+      <tr>
+        <td class="thumb-cell"><img class="thumb-img" src="https://temp-images.ws.pho.to/a8798b2f5931f9a825c184c0a248f38c52fbfe17.png" alt="#fanum"></td>
+        <td><div class="td-inner">
+          <span class="rank-num">3</span>
+          <span style="width:16px"></span>
+          <details class="idea-dropdown">
+            <summary><span class="htag-hash">#</span>fanum<span class="idea-count-badge">3</span></summary>
+            <div class="idea-dropdown-menu"><a href="./fanum_1/">Идея 1</a><a href="./fanum_2/">Идея 2</a><a href="./fanum_3/">Идея 3</a></div>
+          </details>
+        </div></td>
+        <td class="td-reason">Реальное лицо — стример / инфлюенсер (имя реального человека)</td>
+        <td class="td-arrow">→</td>
+      </tr>
+      <tr>
+        <td class="thumb-cell"><img class="thumb-img" src="https://temp-images.ws.pho.to/5fb7e9c8ca6f6c87c70bbc54eb84179bef47dd5c.png" alt="#hamburguesa"></td>
+        <td><div class="td-inner">
+          <span class="rank-num">4</span>
+          <span style="width:16px"></span>
+          <details class="idea-dropdown">
+            <summary><span class="htag-hash">#</span>hamburguesa<span class="idea-count-badge">3</span></summary>
+            <div class="idea-dropdown-menu"><a href="./hamburguesa_1/">Идея 1</a><a href="./hamburguesa_2/">Идея 2</a><a href="./hamburguesa_3/">Идея 3</a></div>
+          </details>
+        </div></td>
+        <td class="td-reason">Бренд / не US-рынок — испаноязычная аудитория CO/MX, бургерный бренд или трендовое меню</td>
+        <td class="td-arrow">→</td>
+      </tr>
+      <tr>
+        <td class="thumb-cell"><img class="thumb-img" src="https://temp-images.ws.pho.to/c17720628a50990ac41acf6e00eeb97dfb18f712.png" alt="#hamburguesatriple"></td>
         <td><div class="td-inner">
           <span class="rank-num">5</span>
           <span style="width:16px"></span>
-          <a class="htag-link" href="./bt21_2/"><span class="htag-hash">#</span>bt21_2</a>
+          <details class="idea-dropdown">
+            <summary><span class="htag-hash">#</span>hamburguesatriple<span class="idea-count-badge">3</span></summary>
+            <div class="idea-dropdown-menu"><a href="./hamburguesatriple_1/">Идея 1</a><a href="./hamburguesatriple_2/">Идея 2</a><a href="./hamburguesatriple_3/">Идея 3</a></div>
+          </details>
         </div></td>
-        <td class="td-title">Брелок покачивается на сумке</td>
+        <td class="td-reason">Бренд / не US-рынок — испаноязычная аудитория CO/MX, бургерный бренд или трендовое меню</td>
         <td class="td-arrow">→</td>
       </tr>
       <tr>
-        <td class="thumb-cell"><img class="thumb-img" src="https://temp-images.ws.pho.to/fa821a69032b5ba4f8cdea9dd9ab5ba24d189d4c.png" alt="#bt21_3"></td>
+        <td class="thumb-cell"><img class="thumb-img" src="https://temp-images.ws.pho.to/72d1d7e33584702ad85e13e5b4bc9da7186be07b.png" alt="#hauntingadeline"></td>
         <td><div class="td-inner">
           <span class="rank-num">6</span>
           <span style="width:16px"></span>
-          <a class="htag-link" href="./bt21_3/"><span class="htag-hash">#</span>bt21_3</a>
+          <details class="idea-dropdown">
+            <summary><span class="htag-hash">#</span>hauntingadeline<span class="idea-count-badge">3</span></summary>
+            <div class="idea-dropdown-menu"><a href="./hauntingadeline_1/">Идея 1</a><a href="./hauntingadeline_2/">Идея 2</a><a href="./hauntingadeline_3/">Идея 3</a></div>
+          </details>
         </div></td>
-        <td class="td-title">Пастельный talisman-компаньон</td>
+        <td class="td-reason">Чужое медиа — роман серии «Dark Romance» (H.D. Carlton)</td>
         <td class="td-arrow">→</td>
       </tr>
       <tr>
-        <td class="thumb-cell"><img class="thumb-img" src="https://temp-images.ws.pho.to/a8798b2f5931f9a825c184c0a248f38c52fbfe17.png" alt="#fanum_1"></td>
+        <td class="thumb-cell"><img class="thumb-img" src="https://temp-images.ws.pho.to/462fb55353df0f6403addc732000785dbf47518a.png" alt="#hussvalley"></td>
         <td><div class="td-inner">
           <span class="rank-num">7</span>
           <span style="width:16px"></span>
-          <a class="htag-link" href="./fanum_1/"><span class="htag-hash">#</span>fanum_1</a>
+          <details class="idea-dropdown">
+            <summary><span class="htag-hash">#</span>hussvalley<span class="idea-count-badge">3</span></summary>
+            <div class="idea-dropdown-menu"><a href="./hussvalley_1/">Идея 1</a><a href="./hussvalley_2/">Идея 2</a><a href="./hussvalley_3/">Идея 3</a></div>
+          </details>
         </div></td>
-        <td class="td-title">Штраф на еду</td>
+        <td class="td-reason">Реальные лица / персонажи — предположительно инфлюенсеры или персонажи; высокий vpp указывает на небольшую базу создателей</td>
         <td class="td-arrow">→</td>
       </tr>
       <tr>
-        <td class="thumb-cell"><img class="thumb-img" src="https://temp-images.ws.pho.to/95a32bfc05498f597a8904f550ef4020fd449eef.png" alt="#fanum_2"></td>
+        <td class="thumb-cell"><img class="thumb-img" src="https://temp-images.ws.pho.to/d9f544e566e7a07949aaa50eefba034c985a8c28.png" alt="#justgolive"></td>
         <td><div class="td-inner">
           <span class="rank-num">8</span>
           <span style="width:16px"></span>
-          <a class="htag-link" href="./fanum_2/"><span class="htag-hash">#</span>fanum_2</a>
+          <details class="idea-dropdown">
+            <summary><span class="htag-hash">#</span>justgolive<span class="idea-count-badge">3</span></summary>
+            <div class="idea-dropdown-menu"><a href="./justgolive_1/">Идея 1</a><a href="./justgolive_2/">Идея 2</a><a href="./justgolive_3/">Идея 3</a></div>
+          </details>
         </div></td>
-        <td class="td-title">Реакция на стриме</td>
+        <td class="td-reason">Платформенный контент TikTok — TikTok Live promotion; аудитория CO/VN/MX, не US</td>
         <td class="td-arrow">→</td>
       </tr>
       <tr>
-        <td class="thumb-cell"><img class="thumb-img" src="https://temp-images.ws.pho.to/5edf5fbf14769e5749b9e053e174a3fcae5e0c34.png" alt="#fanum_3"></td>
+        <td class="thumb-cell"><img class="thumb-img" src="https://temp-images.ws.pho.to/c9139f8eef7809cd61cde0ad16d2b5f7e3100999.png" alt="#khajiit"></td>
         <td><div class="td-inner">
           <span class="rank-num">9</span>
           <span style="width:16px"></span>
-          <a class="htag-link" href="./fanum_3/"><span class="htag-hash">#</span>fanum_3</a>
+          <details class="idea-dropdown">
+            <summary><span class="htag-hash">#</span>khajiit<span class="idea-count-badge">3</span></summary>
+            <div class="idea-dropdown-menu"><a href="./khajiit_1/">Идея 1</a><a href="./khajiit_2/">Идея 2</a><a href="./khajiit_3/">Идея 3</a></div>
+          </details>
         </div></td>
-        <td class="td-title">Groupchat на диване</td>
+        <td class="td-reason">Игровое IP — раса из The Elder Scrolls (Bethesda)</td>
         <td class="td-arrow">→</td>
       </tr>
       <tr>
-        <td class="thumb-cell"><img class="thumb-img" src="https://temp-images.ws.pho.to/5fb7e9c8ca6f6c87c70bbc54eb84179bef47dd5c.png" alt="#hamburguesa_1"></td>
+        <td class="thumb-cell"><img class="thumb-img" src="https://temp-images.ws.pho.to/d9b4b4f7e46ac5d3191e4eebff0af890c90f1a07.png" alt="#mylittlepony"></td>
         <td><div class="td-inner">
           <span class="rank-num">10</span>
           <span style="width:16px"></span>
-          <a class="htag-link" href="./hamburguesa_1/"><span class="htag-hash">#</span>hamburguesa_1</a>
+          <details class="idea-dropdown">
+            <summary><span class="htag-hash">#</span>mylittlepony<span class="idea-count-badge">3</span></summary>
+            <div class="idea-dropdown-menu"><a href="./mylittlepony_1/">Идея 1</a><a href="./mylittlepony_2/">Идея 2</a><a href="./mylittlepony_3/">Идея 3</a></div>
+          </details>
         </div></td>
-        <td class="td-title">Уличная тележка с бургерами</td>
+        <td class="td-reason">Игровое/анимационное IP — Hasbro</td>
         <td class="td-arrow">→</td>
       </tr>
       <tr>
-        <td class="thumb-cell"><img class="thumb-img" src="https://temp-images.ws.pho.to/1c20f3a01a6333d58b09bdad1fe7f19c0dd4d2da.png" alt="#hamburguesa_2"></td>
+        <td class="thumb-cell"><img class="thumb-img" src="https://temp-images.ws.pho.to/d653390e06e616498239610ff4f7215dd4ab5e9d.png" alt="#paparazzi"></td>
         <td><div class="td-inner">
           <span class="rank-num">11</span>
           <span style="width:16px"></span>
-          <a class="htag-link" href="./hamburguesa_2/"><span class="htag-hash">#</span>hamburguesa_2</a>
+          <details class="idea-dropdown">
+            <summary><span class="htag-hash">#</span>paparazzi<span class="idea-count-badge">3</span></summary>
+            <div class="idea-dropdown-menu"><a href="./paparazzi_1/">Идея 1</a><a href="./paparazzi_2/">Идея 2</a><a href="./paparazzi_3/">Идея 3</a></div>
+          </details>
         </div></td>
-        <td class="td-title">Домашний гриль во дворе</td>
+        <td class="td-reason">Реальные лица — контент о папарацци подразумевает фото реальных людей</td>
         <td class="td-arrow">→</td>
       </tr>
       <tr>
-        <td class="thumb-cell"><img class="thumb-img" src="https://temp-images.ws.pho.to/c1bc5697b747acfaf536401b37f4619c2924f52b.png" alt="#hamburguesa_3"></td>
+        <td class="thumb-cell"><img class="thumb-img" src="https://temp-images.ws.pho.to/7d2411ee7939d0789593e0286624a9f5c38ae44f.png" alt="#saintsatine"></td>
         <td><div class="td-inner">
           <span class="rank-num">12</span>
           <span style="width:16px"></span>
-          <a class="htag-link" href="./hamburguesa_3/"><span class="htag-hash">#</span>hamburguesa_3</a>
+          <details class="idea-dropdown">
+            <summary><span class="htag-hash">#</span>saintsatine<span class="idea-count-badge">3</span></summary>
+            <div class="idea-dropdown-menu"><a href="./saintsatine_1/">Идея 1</a><a href="./saintsatine_2/">Идея 2</a><a href="./saintsatine_3/">Идея 3</a></div>
+          </details>
         </div></td>
-        <td class="td-title">Полуночная слабость у холодильника</td>
+        <td class="td-reason">Реальные лица / персонажи — предположительно инфлюенсеры или персонажи; высокий vpp указывает на небольшую базу создателей</td>
         <td class="td-arrow">→</td>
       </tr>
       <tr>
-        <td class="thumb-cell"><img class="thumb-img" src="https://temp-images.ws.pho.to/c17720628a50990ac41acf6e00eeb97dfb18f712.png" alt="#hamburguesatriple_1"></td>
+        <td class="thumb-cell"><img class="thumb-img" src="https://temp-images.ws.pho.to/379b7040085f3208632b1054f4af8b520891c3d8.png" alt="#theodyssey"></td>
         <td><div class="td-inner">
           <span class="rank-num">13</span>
           <span style="width:16px"></span>
-          <a class="htag-link" href="./hamburguesatriple_1/"><span class="htag-hash">#</span>hamburguesatriple_1</a>
+          <details class="idea-dropdown">
+            <summary><span class="htag-hash">#</span>theodyssey<span class="idea-count-badge">3</span></summary>
+            <div class="idea-dropdown-menu"><a href="./theodyssey_1/">Идея 1</a><a href="./theodyssey_2/">Идея 2</a><a href="./theodyssey_3/">Идея 3</a></div>
+          </details>
         </div></td>
-        <td class="td-title">Три этажа, один укус</td>
+        <td class="td-reason">Чужое медиа — фильм или сериал (вероятно экранизация «Одиссеи»)</td>
         <td class="td-arrow">→</td>
       </tr>
       <tr>
-        <td class="thumb-cell"><img class="thumb-img" src="https://temp-images.ws.pho.to/aa9e1030c3ed5465fa0e4f8dd5e7019b11f23a45.png" alt="#hamburguesatriple_2"></td>
+        <td class="thumb-cell"><img class="thumb-img" src="https://temp-images.ws.pho.to/75814572fb0e0bca9f34e2550fe2f618bee84a47.png" alt="#thingsworthbuying"></td>
         <td><div class="td-inner">
           <span class="rank-num">14</span>
           <span style="width:16px"></span>
-          <a class="htag-link" href="./hamburguesatriple_2/"><span class="htag-hash">#</span>hamburguesatriple_2</a>
+          <details class="idea-dropdown">
+            <summary><span class="htag-hash">#</span>thingsworthbuying<span class="idea-count-badge">3</span></summary>
+            <div class="idea-dropdown-menu"><a href="./thingsworthbuying_1/">Идея 1</a><a href="./thingsworthbuying_2/">Идея 2</a><a href="./thingsworthbuying_3/">Идея 3</a></div>
+          </details>
         </div></td>
-        <td class="td-title">Собирается на глазах</td>
+        <td class="td-reason">Только смотрят — жанр product review без продуктовой ценности для редактора</td>
         <td class="td-arrow">→</td>
       </tr>
       <tr>
-        <td class="thumb-cell"><img class="thumb-img" src="https://temp-images.ws.pho.to/c131ef6825151b04ca1309c04324cd7b8255ed5d.png" alt="#hamburguesatriple_3"></td>
+        <td class="thumb-cell"><img class="thumb-img" src="https://temp-images.ws.pho.to/407e3651fe4089883d95de5e9afdb28d90ada463.png" alt="#worldcupfinal"></td>
         <td><div class="td-inner">
           <span class="rank-num">15</span>
           <span style="width:16px"></span>
-          <a class="htag-link" href="./hamburguesatriple_3/"><span class="htag-hash">#</span>hamburguesatriple_3</a>
+          <details class="idea-dropdown">
+            <summary><span class="htag-hash">#</span>worldcupfinal<span class="idea-count-badge">3</span></summary>
+            <div class="idea-dropdown-menu"><a href="./worldcupfinal_1/">Идея 1</a><a href="./worldcupfinal_2/">Идея 2</a><a href="./worldcupfinal_3/">Идея 3</a></div>
+          </details>
         </div></td>
-        <td class="td-title">Пар, кивок и жест шеф-повара</td>
+        <td class="td-reason">Спорт — только смотрят / IP FIFA — реальные спортсмены, защищённые права FIFA</td>
         <td class="td-arrow">→</td>
       </tr>
       <tr>
-        <td class="thumb-cell"><img class="thumb-img" src="https://temp-images.ws.pho.to/72d1d7e33584702ad85e13e5b4bc9da7186be07b.png" alt="#hauntingadeline_1"></td>
+        <td class="thumb-cell"><img class="thumb-img" src="https://temp-images.ws.pho.to/d5fe7f19e72c7731a4502109e5ea1fd4bdafd5d9.png" alt="#worththemoney"></td>
         <td><div class="td-inner">
           <span class="rank-num">16</span>
           <span style="width:16px"></span>
-          <a class="htag-link" href="./hauntingadeline_1/"><span class="htag-hash">#</span>hauntingadeline_1</a>
+          <details class="idea-dropdown">
+            <summary><span class="htag-hash">#</span>worththemoney<span class="idea-count-badge">3</span></summary>
+            <div class="idea-dropdown-menu"><a href="./worththemoney_1/">Идея 1</a><a href="./worththemoney_2/">Идея 2</a><a href="./worththemoney_3/">Идея 3</a></div>
+          </details>
         </div></td>
-        <td class="td-title">Тень в готической библиотеке</td>
+        <td class="td-reason">Только смотрят — жанр product review без продуктовой ценности для редактора</td>
         <td class="td-arrow">→</td>
       </tr>
-      <tr>
-        <td class="thumb-cell"><img class="thumb-img" src="https://temp-images.ws.pho.to/dc0214715da4e4a859c6bf4b414660e365403346.png" alt="#hauntingadeline_2"></td>
+      <tr class="no-ideas-row">
+        <td class="thumb-cell"><div class="thumb-placeholder"></div></td>
         <td><div class="td-inner">
           <span class="rank-num">17</span>
           <span style="width:16px"></span>
-          <a class="htag-link" href="./hauntingadeline_2/"><span class="htag-hash">#</span>hauntingadeline_2</a>
+          <span class="htag-link htag-disabled"><span class="htag-hash">#</span>wildfires</span>
         </div></td>
-        <td class="td-title">Мгновенное превращение у двери особняка</td>
-        <td class="td-arrow">→</td>
+        <td class="td-reason">Нет продуктовой ценности — стихийное бедствие: люди снимают и потребляют новостной контент (реальная трагедия — идеи намеренно не сгенерированы)</td>
+        <td class="td-arrow">—</td>
       </tr>
-      <tr>
-        <td class="thumb-cell"><img class="thumb-img" src="https://temp-images.ws.pho.to/6682ce1e77c11e8030e06a8a4af5f063eb2be3fe.png" alt="#hauntingadeline_3"></td>
+      <tr class="no-ideas-row">
+        <td class="thumb-cell"><div class="thumb-placeholder"></div></td>
         <td><div class="td-inner">
           <span class="rank-num">18</span>
           <span style="width:16px"></span>
-          <a class="htag-link" href="./hauntingadeline_3/"><span class="htag-hash">#</span>hauntingadeline_3</a>
+          <span class="htag-link htag-disabled"><span class="htag-hash">#</span>cyclosporiasis</span>
         </div></td>
-        <td class="td-title">Отражение живёт своей жизнью</td>
-        <td class="td-arrow">→</td>
-      </tr>
-      <tr>
-        <td class="thumb-cell"><img class="thumb-img" src="https://temp-images.ws.pho.to/462fb55353df0f6403addc732000785dbf47518a.png" alt="#hussvalley_1"></td>
-        <td><div class="td-inner">
-          <span class="rank-num">19</span>
-          <span style="width:16px"></span>
-          <a class="htag-link" href="./hussvalley_1/"><span class="htag-hash">#</span>hussvalley_1</a>
-        </div></td>
-        <td class="td-title">Золотой час над долиной</td>
-        <td class="td-arrow">→</td>
-      </tr>
-      <tr>
-        <td class="thumb-cell"><img class="thumb-img" src="https://temp-images.ws.pho.to/f4ca27912a81ecf70daf322f701dd7991986fea6.png" alt="#hussvalley_2"></td>
-        <td><div class="td-inner">
-          <span class="rank-num">20</span>
-          <span style="width:16px"></span>
-          <a class="htag-link" href="./hussvalley_2/"><span class="htag-hash">#</span>hussvalley_2</a>
-        </div></td>
-        <td class="td-title">Мурал местной гордости</td>
-        <td class="td-arrow">→</td>
-      </tr>
-      <tr>
-        <td class="thumb-cell"><img class="thumb-img" src="https://temp-images.ws.pho.to/d4170e45f5f8dc653c48fe592cd052e430666254.png" alt="#hussvalley_3"></td>
-        <td><div class="td-inner">
-          <span class="rank-num">21</span>
-          <span style="width:16px"></span>
-          <a class="htag-link" href="./hussvalley_3/"><span class="htag-hash">#</span>hussvalley_3</a>
-        </div></td>
-        <td class="td-title">Туман над долиной рассеивается</td>
-        <td class="td-arrow">→</td>
-      </tr>
-      <tr>
-        <td class="thumb-cell"><img class="thumb-img" src="https://temp-images.ws.pho.to/d9f544e566e7a07949aaa50eefba034c985a8c28.png" alt="#justgolive_1"></td>
-        <td><div class="td-inner">
-          <span class="rank-num">22</span>
-          <span style="width:16px"></span>
-          <a class="htag-link" href="./justgolive_1/"><span class="htag-hash">#</span>justgolive_1</a>
-        </div></td>
-        <td class="td-title">Эфир из машины</td>
-        <td class="td-arrow">→</td>
-      </tr>
-      <tr>
-        <td class="thumb-cell"><img class="thumb-img" src="https://temp-images.ws.pho.to/40948c4d9075d423087bd165429f512bbdc04636.png" alt="#justgolive_2"></td>
-        <td><div class="td-inner">
-          <span class="rank-num">23</span>
-          <span style="width:16px"></span>
-          <a class="htag-link" href="./justgolive_2/"><span class="htag-hash">#</span>justgolive_2</a>
-        </div></td>
-        <td class="td-title">Счётчик заработка растёт</td>
-        <td class="td-arrow">→</td>
-      </tr>
-      <tr>
-        <td class="thumb-cell"><img class="thumb-img" src="https://temp-images.ws.pho.to/9606e3b9837361860691b6aa43fe38edca31ae70.png" alt="#justgolive_3"></td>
-        <td><div class="td-inner">
-          <span class="rank-num">24</span>
-          <span style="width:16px"></span>
-          <a class="htag-link" href="./justgolive_3/"><span class="htag-hash">#</span>justgolive_3</a>
-        </div></td>
-        <td class="td-title">Ночной эфир под гирляндой</td>
-        <td class="td-arrow">→</td>
-      </tr>
-      <tr>
-        <td class="thumb-cell"><img class="thumb-img" src="https://temp-images.ws.pho.to/c9139f8eef7809cd61cde0ad16d2b5f7e3100999.png" alt="#khajiit_1"></td>
-        <td><div class="td-inner">
-          <span class="rank-num">25</span>
-          <span style="width:16px"></span>
-          <a class="htag-link" href="./khajiit_1/"><span class="htag-hash">#</span>khajiit_1</a>
-        </div></td>
-        <td class="td-title">Пробуждение зверя</td>
-        <td class="td-arrow">→</td>
-      </tr>
-      <tr>
-        <td class="thumb-cell"><img class="thumb-img" src="https://temp-images.ws.pho.to/f390b47649ed1e378344b935bfa752abd1cc228b.png" alt="#khajiit_2"></td>
-        <td><div class="td-inner">
-          <span class="rank-num">26</span>
-          <span style="width:16px"></span>
-          <a class="htag-link" href="./khajiit_2/"><span class="htag-hash">#</span>khajiit_2</a>
-        </div></td>
-        <td class="td-title">Мгновенное превращение</td>
-        <td class="td-arrow">→</td>
-      </tr>
-      <tr>
-        <td class="thumb-cell"><img class="thumb-img" src="https://temp-images.ws.pho.to/f9b74f80426449bdbbb76680bef5536a71eede68.png" alt="#khajiit_3"></td>
-        <td><div class="td-inner">
-          <span class="rank-num">27</span>
-          <span style="width:16px"></span>
-          <a class="htag-link" href="./khajiit_3/"><span class="htag-hash">#</span>khajiit_3</a>
-        </div></td>
-        <td class="td-title">Кошка узнаёт своего</td>
-        <td class="td-arrow">→</td>
-      </tr>
-      <tr>
-        <td class="thumb-cell"><img class="thumb-img" src="https://temp-images.ws.pho.to/d9b4b4f7e46ac5d3191e4eebff0af890c90f1a07.png" alt="#mylittlepony_1"></td>
-        <td><div class="td-inner">
-          <span class="rank-num">28</span>
-          <span style="width:16px"></span>
-          <a class="htag-link" href="./mylittlepony_1/"><span class="htag-hash">#</span>mylittlepony_1</a>
-        </div></td>
-        <td class="td-title">Радужная грива</td>
-        <td class="td-arrow">→</td>
-      </tr>
-      <tr>
-        <td class="thumb-cell"><img class="thumb-img" src="https://temp-images.ws.pho.to/0dad66a4516f06940bc89d383de8fdee49664fc5.png" alt="#mylittlepony_2"></td>
-        <td><div class="td-inner">
-          <span class="rank-num">29</span>
-          <span style="width:16px"></span>
-          <a class="htag-link" href="./mylittlepony_2/"><span class="htag-hash">#</span>mylittlepony_2</a>
-        </div></td>
-        <td class="td-title">Мгновенное превращение</td>
-        <td class="td-arrow">→</td>
-      </tr>
-      <tr>
-        <td class="thumb-cell"><img class="thumb-img" src="https://temp-images.ws.pho.to/2c770d8de9d8eb65bd0017605f1fdae66bab94cf.png" alt="#mylittlepony_3"></td>
-        <td><div class="td-inner">
-          <span class="rank-num">30</span>
-          <span style="width:16px"></span>
-          <a class="htag-link" href="./mylittlepony_3/"><span class="htag-hash">#</span>mylittlepony_3</a>
-        </div></td>
-        <td class="td-title">Пастельная пыль наступает</td>
-        <td class="td-arrow">→</td>
-      </tr>
-      <tr>
-        <td class="thumb-cell"><img class="thumb-img" src="https://temp-images.ws.pho.to/d653390e06e616498239610ff4f7215dd4ab5e9d.png" alt="#paparazzi_1"></td>
-        <td><div class="td-inner">
-          <span class="rank-num">31</span>
-          <span style="width:16px"></span>
-          <a class="htag-link" href="./paparazzi_1/"><span class="htag-hash">#</span>paparazzi_1</a>
-        </div></td>
-        <td class="td-title">Стена вспышек на улице</td>
-        <td class="td-arrow">→</td>
-      </tr>
-      <tr>
-        <td class="thumb-cell"><img class="thumb-img" src="https://temp-images.ws.pho.to/30fb024298c45076b975162e7fe72a922fc7a3f4.png" alt="#paparazzi_2"></td>
-        <td><div class="td-inner">
-          <span class="rank-num">32</span>
-          <span style="width:16px"></span>
-          <a class="htag-link" href="./paparazzi_2/"><span class="htag-hash">#</span>paparazzi_2</a>
-        </div></td>
-        <td class="td-title">Выход из машины на красную дорожку</td>
-        <td class="td-arrow">→</td>
-      </tr>
-      <tr>
-        <td class="thumb-cell"><img class="thumb-img" src="https://temp-images.ws.pho.to/80cfad2b91523b63a9605f3901e6a60e8310f63b.png" alt="#paparazzi_3"></td>
-        <td><div class="td-inner">
-          <span class="rank-num">33</span>
-          <span style="width:16px"></span>
-          <a class="htag-link" href="./paparazzi_3/"><span class="htag-hash">#</span>paparazzi_3</a>
-        </div></td>
-        <td class="td-title">Невозмутимый в буре вспышек</td>
-        <td class="td-arrow">→</td>
-      </tr>
-      <tr>
-        <td class="thumb-cell"><img class="thumb-img" src="https://temp-images.ws.pho.to/defee597efdfde37f0715c82185ed0e61675edbc.png" alt="#pitchblack_1"></td>
-        <td><div class="td-inner">
-          <span class="rank-num">34</span>
-          <span style="width:16px"></span>
-          <a class="htag-link" href="./pitchblack_1/"><span class="htag-hash">#</span>pitchblack_1</a>
-        </div></td>
-        <td class="td-title">Один луч в темноте</td>
-        <td class="td-arrow">→</td>
-      </tr>
-      <tr>
-        <td class="thumb-cell"><img class="thumb-img" src="https://temp-images.ws.pho.to/d799fba65b8d2f3d338d7af7d3290f1a6bc5539f.png" alt="#pitchblack_2"></td>
-        <td><div class="td-inner">
-          <span class="rank-num">35</span>
-          <span style="width:16px"></span>
-          <a class="htag-link" href="./pitchblack_2/"><span class="htag-hash">#</span>pitchblack_2</a>
-        </div></td>
-        <td class="td-title">Растворение в черноте</td>
-        <td class="td-arrow">→</td>
-      </tr>
-      <tr>
-        <td class="thumb-cell"><img class="thumb-img" src="https://temp-images.ws.pho.to/c887a630255e71ff658d5fc4ab237c44eb70c2fb.png" alt="#pitchblack_3"></td>
-        <td><div class="td-inner">
-          <span class="rank-num">36</span>
-          <span style="width:16px"></span>
-          <a class="htag-link" href="./pitchblack_3/"><span class="htag-hash">#</span>pitchblack_3</a>
-        </div></td>
-        <td class="td-title">Чёрный образ вспыхивает</td>
-        <td class="td-arrow">→</td>
-      </tr>
-      <tr>
-        <td class="thumb-cell"><img class="thumb-img" src="https://temp-images.ws.pho.to/2028be432f47734d51b5972b81e53f6038e70011.png" alt="#qotc_1"></td>
-        <td><div class="td-inner">
-          <span class="rank-num">37</span>
-          <span style="width:16px"></span>
-          <a class="htag-link" href="./qotc_1/"><span class="htag-hash">#</span>qotc_1</a>
-        </div></td>
-        <td class="td-title">Цитата проступает</td>
-        <td class="td-arrow">→</td>
-      </tr>
-      <tr>
-        <td class="thumb-cell"><img class="thumb-img" src="https://temp-images.ws.pho.to/04d2d37b1a32bccab5efc268cca2fd374f8a2f7c.png" alt="#qotc_2"></td>
-        <td><div class="td-inner">
-          <span class="rank-num">38</span>
-          <span style="width:16px"></span>
-          <a class="htag-link" href="./qotc_2/"><span class="htag-hash">#</span>qotc_2</a>
-        </div></td>
-        <td class="td-title">Карточка цитаты влетает</td>
-        <td class="td-arrow">→</td>
-      </tr>
-      <tr>
-        <td class="thumb-cell"><img class="thumb-img" src="https://temp-images.ws.pho.to/efaadda365e183cddd55706ea0ae9b0c611e37bc.png" alt="#qotc_3"></td>
-        <td><div class="td-inner">
-          <span class="rank-num">39</span>
-          <span style="width:16px"></span>
-          <a class="htag-link" href="./qotc_3/"><span class="htag-hash">#</span>qotc_3</a>
-        </div></td>
-        <td class="td-title">Цитата печатается по буквам</td>
-        <td class="td-arrow">→</td>
-      </tr>
-      <tr>
-        <td class="thumb-cell"><img class="thumb-img" src="https://temp-images.ws.pho.to/6c566d10f31ba6b8f1bbc2f4bdd6661303c3f96e.png" alt="#rainbowborder_1"></td>
-        <td><div class="td-inner">
-          <span class="rank-num">40</span>
-          <span style="width:16px"></span>
-          <a class="htag-link" href="./rainbowborder_1/"><span class="htag-hash">#</span>rainbowborder_1</a>
-        </div></td>
-        <td class="td-title">Диафрагма радуги</td>
-        <td class="td-arrow">→</td>
-      </tr>
-      <tr>
-        <td class="thumb-cell"><img class="thumb-img" src="https://temp-images.ws.pho.to/81878d09c468d3a3de56846e7ff129cdf2479b1a.png" alt="#rainbowborder_2"></td>
-        <td><div class="td-inner">
-          <span class="rank-num">41</span>
-          <span style="width:16px"></span>
-          <a class="htag-link" href="./rainbowborder_2/"><span class="htag-hash">#</span>rainbowborder_2</a>
-        </div></td>
-        <td class="td-title">Вспышка-полароид</td>
-        <td class="td-arrow">→</td>
-      </tr>
-      <tr>
-        <td class="thumb-cell"><img class="thumb-img" src="https://temp-images.ws.pho.to/10375310646a0d09b2b64903e314d383124596a1.png" alt="#rainbowborder_3"></td>
-        <td><div class="td-inner">
-          <span class="rank-num">42</span>
-          <span style="width:16px"></span>
-          <a class="htag-link" href="./rainbowborder_3/"><span class="htag-hash">#</span>rainbowborder_3</a>
-        </div></td>
-        <td class="td-title">Рамка в рамке</td>
-        <td class="td-arrow">→</td>
-      </tr>
-      <tr>
-        <td class="thumb-cell"><img class="thumb-img" src="https://temp-images.ws.pho.to/dcc2421321847b57154349e6685a9f722c037ed8.png" alt="#rainbowpfp_1"></td>
-        <td><div class="td-inner">
-          <span class="rank-num">43</span>
-          <span style="width:16px"></span>
-          <a class="htag-link" href="./rainbowpfp_1/"><span class="htag-hash">#</span>rainbowpfp_1</a>
-        </div></td>
-        <td class="td-title">Мгновенная рамка</td>
-        <td class="td-arrow">→</td>
-      </tr>
-      <tr>
-        <td class="thumb-cell"><img class="thumb-img" src="https://temp-images.ws.pho.to/81e437b7c9253e778ea9fa3ee6e7e47009c55666.png" alt="#rainbowpfp_2"></td>
-        <td><div class="td-inner">
-          <span class="rank-num">44</span>
-          <span style="width:16px"></span>
-          <a class="htag-link" href="./rainbowpfp_2/"><span class="htag-hash">#</span>rainbowpfp_2</a>
-        </div></td>
-        <td class="td-title">Кольцо собирается из частиц</td>
-        <td class="td-arrow">→</td>
-      </tr>
-      <tr>
-        <td class="thumb-cell"><img class="thumb-img" src="https://temp-images.ws.pho.to/307cf47e88d74d57639a5278dc5bfc9982fddd29.png" alt="#rainbowpfp_3"></td>
-        <td><div class="td-inner">
-          <span class="rank-num">45</span>
-          <span style="width:16px"></span>
-          <a class="htag-link" href="./rainbowpfp_3/"><span class="htag-hash">#</span>rainbowpfp_3</a>
-        </div></td>
-        <td class="td-title">Живой пульсирующий ореол</td>
-        <td class="td-arrow">→</td>
-      </tr>
-      <tr>
-        <td class="thumb-cell"><img class="thumb-img" src="https://temp-images.ws.pho.to/7d2411ee7939d0789593e0286624a9f5c38ae44f.png" alt="#saintsatine_1"></td>
-        <td><div class="td-inner">
-          <span class="rank-num">46</span>
-          <span style="width:16px"></span>
-          <a class="htag-link" href="./saintsatine_1/"><span class="htag-hash">#</span>saintsatine_1</a>
-        </div></td>
-        <td class="td-title">Свеча и нимб</td>
-        <td class="td-arrow">→</td>
-      </tr>
-      <tr>
-        <td class="thumb-cell"><img class="thumb-img" src="https://temp-images.ws.pho.to/6c2c58c702400ad4abac4315b24ea3a15259315b.png" alt="#saintsatine_2"></td>
-        <td><div class="td-inner">
-          <span class="rank-num">47</span>
-          <span style="width:16px"></span>
-          <a class="htag-link" href="./saintsatine_2/"><span class="htag-hash">#</span>saintsatine_2</a>
-        </div></td>
-        <td class="td-title">Вспышка софита</td>
-        <td class="td-arrow">→</td>
-      </tr>
-      <tr>
-        <td class="thumb-cell"><img class="thumb-img" src="https://temp-images.ws.pho.to/6c1b78c3db58f18d5acbe8fe76ea7a48cc9f9e2a.png" alt="#saintsatine_3"></td>
-        <td><div class="td-inner">
-          <span class="rank-num">48</span>
-          <span style="width:16px"></span>
-          <a class="htag-link" href="./saintsatine_3/"><span class="htag-hash">#</span>saintsatine_3</a>
-        </div></td>
-        <td class="td-title">Витражный свет</td>
-        <td class="td-arrow">→</td>
-      </tr>
-      <tr>
-        <td class="thumb-cell"><img class="thumb-img" src="https://temp-images.ws.pho.to/379b7040085f3208632b1054f4af8b520891c3d8.png" alt="#theodyssey_1"></td>
-        <td><div class="td-inner">
-          <span class="rank-num">49</span>
-          <span style="width:16px"></span>
-          <a class="htag-link" href="./theodyssey_1/"><span class="htag-hash">#</span>theodyssey_1</a>
-        </div></td>
-        <td class="td-title">Доспехи героя materialize</td>
-        <td class="td-arrow">→</td>
-      </tr>
-      <tr>
-        <td class="thumb-cell"><img class="thumb-img" src="https://temp-images.ws.pho.to/9a0e162e12952bd7ae92a5597ce3f2e36f9469c0.png" alt="#theodyssey_2"></td>
-        <td><div class="td-inner">
-          <span class="rank-num">50</span>
-          <span style="width:16px"></span>
-          <a class="htag-link" href="./theodyssey_2/"><span class="htag-hash">#</span>theodyssey_2</a>
-        </div></td>
-        <td class="td-title">Шторм у мачты</td>
-        <td class="td-arrow">→</td>
-      </tr>
-      <tr>
-        <td class="thumb-cell"><img class="thumb-img" src="https://temp-images.ws.pho.to/c6365e13f930ed6506a1183dcc343d61dbbba3ec.png" alt="#theodyssey_3"></td>
-        <td><div class="td-inner">
-          <span class="rank-num">51</span>
-          <span style="width:16px"></span>
-          <a class="htag-link" href="./theodyssey_3/"><span class="htag-hash">#</span>theodyssey_3</a>
-        </div></td>
-        <td class="td-title">Взгляд на далёкий берег</td>
-        <td class="td-arrow">→</td>
-      </tr>
-      <tr>
-        <td class="thumb-cell"><img class="thumb-img" src="https://temp-images.ws.pho.to/75814572fb0e0bca9f34e2550fe2f618bee84a47.png" alt="#thingsworthbuying_1"></td>
-        <td><div class="td-inner">
-          <span class="rank-num">52</span>
-          <span style="width:16px"></span>
-          <a class="htag-link" href="./thingsworthbuying_1/"><span class="htag-hash">#</span>thingsworthbuying_1</a>
-        </div></td>
-        <td class="td-title">Мини-холодильник для косметики</td>
-        <td class="td-arrow">→</td>
-      </tr>
-      <tr>
-        <td class="thumb-cell"><img class="thumb-img" src="https://temp-images.ws.pho.to/7ea59dcbd2ba2186eb74a80719834cfa499d1b8d.png" alt="#thingsworthbuying_2"></td>
-        <td><div class="td-inner">
-          <span class="rank-num">53</span>
-          <span style="width:16px"></span>
-          <a class="htag-link" href="./thingsworthbuying_2/"><span class="htag-hash">#</span>thingsworthbuying_2</a>
-        </div></td>
-        <td class="td-title">Компактная пудра и мгновенное сияние</td>
-        <td class="td-arrow">→</td>
-      </tr>
-      <tr>
-        <td class="thumb-cell"><img class="thumb-img" src="https://temp-images.ws.pho.to/b10fa2b5823fdf664614aa334e85256930aa4f02.png" alt="#thingsworthbuying_3"></td>
-        <td><div class="td-inner">
-          <span class="rank-num">54</span>
-          <span style="width:16px"></span>
-          <a class="htag-link" href="./thingsworthbuying_3/"><span class="htag-hash">#</span>thingsworthbuying_3</a>
-        </div></td>
-        <td class="td-title">Три претендента, один фаворит</td>
-        <td class="td-arrow">→</td>
-      </tr>
-      <tr>
-        <td class="thumb-cell"><img class="thumb-img" src="https://temp-images.ws.pho.to/407e3651fe4089883d95de5e9afdb28d90ada463.png" alt="#worldcupfinal_1"></td>
-        <td><div class="td-inner">
-          <span class="rank-num">55</span>
-          <span style="width:16px"></span>
-          <a class="htag-link" href="./worldcupfinal_1/"><span class="htag-hash">#</span>worldcupfinal_1</a>
-        </div></td>
-        <td class="td-title">Путь на поле в финале</td>
-        <td class="td-arrow">→</td>
-      </tr>
-      <tr>
-        <td class="thumb-cell"><img class="thumb-img" src="https://temp-images.ws.pho.to/61e317343d4ecd8876403e3f1516a3db0e75b73f.png" alt="#worldcupfinal_2"></td>
-        <td><div class="td-inner">
-          <span class="rank-num">56</span>
-          <span style="width:16px"></span>
-          <a class="htag-link" href="./worldcupfinal_2/"><span class="htag-hash">#</span>worldcupfinal_2</a>
-        </div></td>
-        <td class="td-title">Гигантский экран в фан-зоне</td>
-        <td class="td-arrow">→</td>
-      </tr>
-      <tr>
-        <td class="thumb-cell"><img class="thumb-img" src="https://temp-images.ws.pho.to/1759ad5a5e6676657c6d9a95c889bbabbd3a2989.png" alt="#worldcupfinal_3"></td>
-        <td><div class="td-inner">
-          <span class="rank-num">57</span>
-          <span style="width:16px"></span>
-          <a class="htag-link" href="./worldcupfinal_3/"><span class="htag-hash">#</span>worldcupfinal_3</a>
-        </div></td>
-        <td class="td-title">Ритуал перед матчем: раскраска лица</td>
-        <td class="td-arrow">→</td>
-      </tr>
-      <tr>
-        <td class="thumb-cell"><img class="thumb-img" src="https://temp-images.ws.pho.to/d5fe7f19e72c7731a4502109e5ea1fd4bdafd5d9.png" alt="#worththemoney_1"></td>
-        <td><div class="td-inner">
-          <span class="rank-num">58</span>
-          <span style="width:16px"></span>
-          <a class="htag-link" href="./worththemoney_1/"><span class="htag-hash">#</span>worththemoney_1</a>
-        </div></td>
-        <td class="td-title">Чек крупным планом</td>
-        <td class="td-arrow">→</td>
-      </tr>
-      <tr>
-        <td class="thumb-cell"><img class="thumb-img" src="https://temp-images.ws.pho.to/ef573e5ed983a766176baf1eb5c691683a0160d7.png" alt="#worththemoney_2"></td>
-        <td><div class="td-inner">
-          <span class="rank-num">59</span>
-          <span style="width:16px"></span>
-          <a class="htag-link" href="./worththemoney_2/"><span class="htag-hash">#</span>worththemoney_2</a>
-        </div></td>
-        <td class="td-title">Гаджет собирает себя</td>
-        <td class="td-arrow">→</td>
-      </tr>
-      <tr>
-        <td class="thumb-cell"><img class="thumb-img" src="https://temp-images.ws.pho.to/986700384f68b995515df368a615791dac8e21ec.png" alt="#worththemoney_3"></td>
-        <td><div class="td-inner">
-          <span class="rank-num">60</span>
-          <span style="width:16px"></span>
-          <a class="htag-link" href="./worththemoney_3/"><span class="htag-hash">#</span>worththemoney_3</a>
-        </div></td>
-        <td class="td-title">Почти вернул(а) в магазин</td>
-        <td class="td-arrow">→</td>
+        <td class="td-reason">Нет продуктовой ценности — вспышка паразитарной инфекции, медицинская тема (реальная угроза здоровью — идеи намеренно не сгенерированы)</td>
+        <td class="td-arrow">—</td>
       </tr>
         </tbody>
       </table>
