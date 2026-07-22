@@ -317,6 +317,14 @@ def gen_date_index(date, ideas_with_media):
     # case per SKILL.md Step 2b) — reason-only rows, no dropdown/link.
     idealess_flagged = [bh for bh in flags if bh not in flagged_with_ideas]
 
+    def category_of(bh):
+        return flags[bh].get('category', 'not_touch')
+
+    brand_groups = [(bh, items) for bh, items in flagged_groups if category_of(bh) == 'brand']
+    nt_groups = [(bh, items) for bh, items in flagged_groups if category_of(bh) != 'brand']
+    brand_idealess = [bh for bh in idealess_flagged if category_of(bh) == 'brand']
+    nt_idealess = [bh for bh in idealess_flagged if category_of(bh) != 'brand']
+
     rows = ''
     for i, (base_hashtag, items) in enumerate(main_groups, 1):
         frame_url = items[0][1][0]['frame'] if items[0][1] else None
@@ -332,12 +340,13 @@ def gen_date_index(date, ideas_with_media):
         <td class="td-arrow">→</td>
       </tr>"""
 
-    not_touch_rows = ''
-    i = 1
-    for base_hashtag, items in flagged_groups:
-        frame_url = items[0][1][0]['frame'] if items[0][1] else None
-        thumb = f'<img class="thumb-img" src="{frame_url}" alt="#{html.escape(base_hashtag)}">' if frame_url else '<div class="thumb-placeholder"></div>'
-        not_touch_rows += f"""
+    def flagged_rows_html(groups, idealess):
+        out = ''
+        i = 1
+        for base_hashtag, items in groups:
+            frame_url = items[0][1][0]['frame'] if items[0][1] else None
+            thumb = f'<img class="thumb-img" src="{frame_url}" alt="#{html.escape(base_hashtag)}">' if frame_url else '<div class="thumb-placeholder"></div>'
+            out += f"""
       <tr>
         <td class="thumb-cell">{thumb}</td>
         <td><div class="td-inner">
@@ -348,9 +357,9 @@ def gen_date_index(date, ideas_with_media):
         <td class="td-reason">{html.escape(flags[base_hashtag].get('reason', ''))}</td>
         <td class="td-arrow">→</td>
       </tr>"""
-        i += 1
-    for base_hashtag in idealess_flagged:
-        not_touch_rows += f"""
+            i += 1
+        for base_hashtag in idealess:
+            out += f"""
       <tr class="no-ideas-row">
         <td class="thumb-cell"><div class="thumb-placeholder"></div></td>
         <td><div class="td-inner">
@@ -361,34 +370,49 @@ def gen_date_index(date, ideas_with_media):
         <td class="td-reason">{html.escape(flags[base_hashtag].get('reason', ''))}</td>
         <td class="td-arrow">—</td>
       </tr>"""
-        i += 1
+            i += 1
+        return out
 
-    n = len(ideas_with_media)
-    n_videos = sum(1 for _, runs in ideas_with_media if any(r['video'] for r in runs))
-    n_not_touch = len(flagged_groups) + len(idealess_flagged)
-
-    not_touch_section = ''
-    if n_not_touch:
-        not_touch_section = f"""
-  <section id="not-touch" class="section">
+    def flagged_section_html(section_id, title, note, title_class, badge_class, table_class, groups, idealess):
+        n_section = len(groups) + len(idealess)
+        if not n_section:
+            return ''
+        return f"""
+  <section id="{section_id}" class="section">
     <div class="section-header">
-      <h2 class="section-title section-title-warn">Не трогать</h2>
-      <span class="section-badge section-badge-warn">{n_not_touch} {'хэштег' if n_not_touch==1 else 'хэштега' if n_not_touch<5 else 'хэштегов'}</span>
+      <h2 class="section-title {title_class}">{title}</h2>
+      <span class="section-badge {badge_class}">{n_section} {'хэштег' if n_section==1 else 'хэштега' if n_section<5 else 'хэштегов'}</span>
     </div>
-    <p class="not-touch-note">Хэштеги, которые отчёт nnAgentsReports исключил из продуктовой воронки (бренд/IP, реальные люди, не-US аудитория и т.п.). Идеи для них всё равно сгенерированы, где это уместно, и показаны здесь отдельно от основного списка.</p>
+    <p class="not-touch-note">{note}</p>
     <div class="table-wrap">
-      <table class="ht-table not-touch-table">
+      <table class="ht-table {table_class}">
         <thead><tr>
           <th style="width:68px"></th>
           <th>Хештег</th>
           <th>Причина исключения</th>
           <th style="width:48px"></th>
         </tr></thead>
-        <tbody>{not_touch_rows}
+        <tbody>{flagged_rows_html(groups, idealess)}
         </tbody>
       </table>
     </div>
   </section>"""
+
+    brand_section = flagged_section_html(
+        'brand-media', 'Реальные лица, бренды, чужое медиа',
+        'Хэштеги, исключённые отчётом nnAgentsReports из-за бренда/IP, реальных людей или стороннего медиа. Идеи для них всё равно сгенерированы и показаны здесь отдельно от основного списка.',
+        'section-title-brand', 'section-badge-brand', 'brand-media-table',
+        brand_groups, brand_idealess,
+    )
+    not_touch_section = flagged_section_html(
+        'not-touch', 'Не трогать',
+        'Хэштеги, связанные со стихийными бедствиями, вспышками заболеваний и т.п. — реальные трагедии/угрозы, для которых идеи намеренно не генерируются без отдельного явного запроса.',
+        'section-title-warn', 'section-badge-warn', 'not-touch-table',
+        nt_groups, nt_idealess,
+    )
+
+    n = len(ideas_with_media)
+    n_videos = sum(1 for _, runs in ideas_with_media if any(r['video'] for r in runs))
 
     return head(f"Video Ideas — {int(dd)} {MONTH_FULL[mm]} {yyyy}{suffix_label}") + f"""
   <style>
@@ -435,8 +459,11 @@ def gen_date_index(date, ideas_with_media):
     .idea-links a:hover {{ background: #fe2c55; color: #fff; }}
     .section-title-warn {{ color: #92400e; }}
     .section-badge-warn {{ background: #fef3c7; color: #92400e; }}
+    .section-title-brand {{ color: #3730a3; }}
+    .section-badge-brand {{ background: #e0e7ff; color: #3730a3; }}
     .not-touch-note {{ font-size: 12.5px; color: #999; margin: -8px 0 16px; max-width: 640px; line-height: 1.6; }}
     .not-touch-table thead th {{ background: #fffbeb; }}
+    .brand-media-table thead th {{ background: #eef2ff; }}
   </style>
 </head>
 <body>
@@ -474,7 +501,7 @@ def gen_date_index(date, ideas_with_media):
         </tbody>
       </table>
     </div>
-  </section>{not_touch_section}
+  </section>{brand_section}{not_touch_section}
 </div>
 </body>
 </html>"""
