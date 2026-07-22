@@ -291,19 +291,17 @@ def gen_main_index(date_entries):
 
 def _idea_dropdown_html(base_hashtag, items):
     """items: list of (idea, runs) sorted by idea_num, all for the same hashtag.
-    Returns the hashtag-cell HTML: a plain link if there's one idea, or a
-    <details> dropdown listing "Идея 1" / "Идея 2" / ... if there are several."""
+    Returns the hashtag-cell HTML: a plain link if there's one idea, or the
+    hashtag as plain text followed by "Идея 1" / "Идея 2" / ... links laid
+    out inline to its right if there are several."""
     if len(items) == 1:
         idea = items[0][0]
         return f'<a class="htag-link" href="./{idea["slug"]}/"><span class="htag-hash">#</span>{html.escape(base_hashtag)}</a>'
-    menu = ''.join(
+    links = ''.join(
         f'<a href="./{idea["slug"]}/">Идея {idea["idea_num"]}</a>'
         for idea, _ in items
     )
-    return f"""<details class="idea-dropdown">
-            <summary><span class="htag-hash">#</span>{html.escape(base_hashtag)}<span class="idea-count-badge">{len(items)}</span></summary>
-            <div class="idea-dropdown-menu">{menu}</div>
-          </details>"""
+    return f"""<span class="htag-label"><span class="htag-hash">#</span>{html.escape(base_hashtag)}</span><span class="idea-links">{links}</span>"""
 
 
 def gen_date_index(date, ideas_with_media):
@@ -425,29 +423,16 @@ def gen_date_index(date, ideas_with_media):
     .no-ideas-row {{ opacity: .7; }}
     .no-ideas-row:hover td {{ background: transparent !important; }}
     @media (max-width: 520px) {{ .td-title {{ display: none; }} .td-reason {{ display: none; }} }}
-    .idea-dropdown {{ position: relative; }}
-    .idea-dropdown summary {{
-      cursor: pointer; list-style: none; display: inline-flex; align-items: center; gap: 7px;
-      font-weight: 700; font-size: 14px; color: #111;
+    .htag-label {{
+      font-weight: 700; font-size: 14px; color: #111; display: inline-flex; align-items: center; gap: 1px;
     }}
-    .idea-dropdown summary::-webkit-details-marker {{ display: none; }}
-    .idea-dropdown summary::after {{ content: '▾'; font-size: 10px; color: #bbb; margin-left: 1px; }}
-    .idea-dropdown summary:hover {{ color: #fe2c55; }}
-    .idea-count-badge {{
-      font-size: 10px; font-weight: 700; color: #fff; background: #fe2c55;
-      border-radius: 20px; padding: 2px 7px; line-height: 1.4;
+    .idea-links {{ display: inline-flex; align-items: center; gap: 6px; margin-left: 12px; flex-wrap: wrap; }}
+    .idea-links a {{
+      font-size: 12px; font-weight: 600; color: #666; text-decoration: none;
+      background: #f2f2f2; border-radius: 20px; padding: 4px 11px; white-space: nowrap;
+      transition: background .15s, color .15s;
     }}
-    .idea-dropdown-menu {{
-      position: absolute; top: 100%; left: 0; margin-top: 8px; z-index: 30;
-      background: #fff; border-radius: 8px; overflow: hidden; min-width: 130px;
-      box-shadow: 0 6px 20px rgba(0,0,0,.16), 0 0 0 1px rgba(0,0,0,.06);
-      display: flex; flex-direction: column;
-    }}
-    .idea-dropdown-menu a {{
-      padding: 9px 16px; font-size: 13px; font-weight: 600; color: #333;
-      text-decoration: none; white-space: nowrap;
-    }}
-    .idea-dropdown-menu a:hover {{ background: #fafbff; color: #fe2c55; }}
+    .idea-links a:hover {{ background: #fe2c55; color: #fff; }}
     .section-title-warn {{ color: #92400e; }}
     .section-badge-warn {{ background: #fef3c7; color: #92400e; }}
     .not-touch-note {{ font-size: 12.5px; color: #999; margin: -8px 0 16px; max-width: 640px; line-height: 1.6; }}

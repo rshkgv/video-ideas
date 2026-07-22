@@ -97,29 +97,16 @@
     .no-ideas-row { opacity: .7; }
     .no-ideas-row:hover td { background: transparent !important; }
     @media (max-width: 520px) { .td-title { display: none; } .td-reason { display: none; } }
-    .idea-dropdown { position: relative; }
-    .idea-dropdown summary {
-      cursor: pointer; list-style: none; display: inline-flex; align-items: center; gap: 7px;
-      font-weight: 700; font-size: 14px; color: #111;
+    .htag-label {
+      font-weight: 700; font-size: 14px; color: #111; display: inline-flex; align-items: center; gap: 1px;
     }
-    .idea-dropdown summary::-webkit-details-marker { display: none; }
-    .idea-dropdown summary::after { content: '▾'; font-size: 10px; color: #bbb; margin-left: 1px; }
-    .idea-dropdown summary:hover { color: #fe2c55; }
-    .idea-count-badge {
-      font-size: 10px; font-weight: 700; color: #fff; background: #fe2c55;
-      border-radius: 20px; padding: 2px 7px; line-height: 1.4;
+    .idea-links { display: inline-flex; align-items: center; gap: 6px; margin-left: 12px; flex-wrap: wrap; }
+    .idea-links a {
+      font-size: 12px; font-weight: 600; color: #666; text-decoration: none;
+      background: #f2f2f2; border-radius: 20px; padding: 4px 11px; white-space: nowrap;
+      transition: background .15s, color .15s;
     }
-    .idea-dropdown-menu {
-      position: absolute; top: 100%; left: 0; margin-top: 8px; z-index: 30;
-      background: #fff; border-radius: 8px; overflow: hidden; min-width: 130px;
-      box-shadow: 0 6px 20px rgba(0,0,0,.16), 0 0 0 1px rgba(0,0,0,.06);
-      display: flex; flex-direction: column;
-    }
-    .idea-dropdown-menu a {
-      padding: 9px 16px; font-size: 13px; font-weight: 600; color: #333;
-      text-decoration: none; white-space: nowrap;
-    }
-    .idea-dropdown-menu a:hover { background: #fafbff; color: #fe2c55; }
+    .idea-links a:hover { background: #fe2c55; color: #fff; }
     .section-title-warn { color: #92400e; }
     .section-badge-warn { background: #fef3c7; color: #92400e; }
     .not-touch-note { font-size: 12.5px; color: #999; margin: -8px 0 16px; max-width: 640px; line-height: 1.6; }
@@ -163,10 +150,7 @@
         <td><div class="td-inner">
           <span class="rank-num">1</span>
           <span style="width:16px"></span>
-          <details class="idea-dropdown">
-            <summary><span class="htag-hash">#</span>pitchblack<span class="idea-count-badge">3</span></summary>
-            <div class="idea-dropdown-menu"><a href="./pitchblack_1/">Идея 1</a><a href="./pitchblack_2/">Идея 2</a><a href="./pitchblack_3/">Идея 3</a></div>
-          </details>
+          <span class="htag-label"><span class="htag-hash">#</span>pitchblack</span><span class="idea-links"><a href="./pitchblack_1/">Идея 1</a><a href="./pitchblack_2/">Идея 2</a><a href="./pitchblack_3/">Идея 3</a></span>
         </div></td>
         <td class="td-arrow">→</td>
       </tr>
@@ -175,10 +159,7 @@
         <td><div class="td-inner">
           <span class="rank-num">2</span>
           <span style="width:16px"></span>
-          <details class="idea-dropdown">
-            <summary><span class="htag-hash">#</span>qotc<span class="idea-count-badge">3</span></summary>
-            <div class="idea-dropdown-menu"><a href="./qotc_1/">Идея 1</a><a href="./qotc_2/">Идея 2</a><a href="./qotc_3/">Идея 3</a></div>
-          </details>
+          <span class="htag-label"><span class="htag-hash">#</span>qotc</span><span class="idea-links"><a href="./qotc_1/">Идея 1</a><a href="./qotc_2/">Идея 2</a><a href="./qotc_3/">Идея 3</a></span>
         </div></td>
         <td class="td-arrow">→</td>
       </tr>
@@ -187,10 +168,7 @@
         <td><div class="td-inner">
           <span class="rank-num">3</span>
           <span style="width:16px"></span>
-          <details class="idea-dropdown">
-            <summary><span class="htag-hash">#</span>rainbowborder<span class="idea-count-badge">3</span></summary>
-            <div class="idea-dropdown-menu"><a href="./rainbowborder_1/">Идея 1</a><a href="./rainbowborder_2/">Идея 2</a><a href="./rainbowborder_3/">Идея 3</a></div>
-          </details>
+          <span class="htag-label"><span class="htag-hash">#</span>rainbowborder</span><span class="idea-links"><a href="./rainbowborder_1/">Идея 1</a><a href="./rainbowborder_2/">Идея 2</a><a href="./rainbowborder_3/">Идея 3</a></span>
         </div></td>
         <td class="td-arrow">→</td>
       </tr>
@@ -199,10 +177,7 @@
         <td><div class="td-inner">
           <span class="rank-num">4</span>
           <span style="width:16px"></span>
-          <details class="idea-dropdown">
-            <summary><span class="htag-hash">#</span>rainbowpfp<span class="idea-count-badge">3</span></summary>
-            <div class="idea-dropdown-menu"><a href="./rainbowpfp_1/">Идея 1</a><a href="./rainbowpfp_2/">Идея 2</a><a href="./rainbowpfp_3/">Идея 3</a></div>
-          </details>
+          <span class="htag-label"><span class="htag-hash">#</span>rainbowpfp</span><span class="idea-links"><a href="./rainbowpfp_1/">Идея 1</a><a href="./rainbowpfp_2/">Идея 2</a><a href="./rainbowpfp_3/">Идея 3</a></span>
         </div></td>
         <td class="td-arrow">→</td>
       </tr>
@@ -230,10 +205,7 @@
         <td><div class="td-inner">
           <span class="rank-num">1</span>
           <span style="width:16px"></span>
-          <details class="idea-dropdown">
-            <summary><span class="htag-hash">#</span>booyah<span class="idea-count-badge">3</span></summary>
-            <div class="idea-dropdown-menu"><a href="./booyah_1/">Идея 1</a><a href="./booyah_2/">Идея 2</a><a href="./booyah_3/">Идея 3</a></div>
-          </details>
+          <span class="htag-label"><span class="htag-hash">#</span>booyah</span><span class="idea-links"><a href="./booyah_1/">Идея 1</a><a href="./booyah_2/">Идея 2</a><a href="./booyah_3/">Идея 3</a></span>
         </div></td>
         <td class="td-reason">Игровое IP — восклицание-логотип игры Free Fire (Garena)</td>
         <td class="td-arrow">→</td>
@@ -243,10 +215,7 @@
         <td><div class="td-inner">
           <span class="rank-num">2</span>
           <span style="width:16px"></span>
-          <details class="idea-dropdown">
-            <summary><span class="htag-hash">#</span>bt21<span class="idea-count-badge">3</span></summary>
-            <div class="idea-dropdown-menu"><a href="./bt21_1/">Идея 1</a><a href="./bt21_2/">Идея 2</a><a href="./bt21_3/">Идея 3</a></div>
-          </details>
+          <span class="htag-label"><span class="htag-hash">#</span>bt21</span><span class="idea-links"><a href="./bt21_1/">Идея 1</a><a href="./bt21_2/">Идея 2</a><a href="./bt21_3/">Идея 3</a></span>
         </div></td>
         <td class="td-reason">Чужой бренд / IP — коллаборация LINE Friends × BTS</td>
         <td class="td-arrow">→</td>
@@ -256,10 +225,7 @@
         <td><div class="td-inner">
           <span class="rank-num">3</span>
           <span style="width:16px"></span>
-          <details class="idea-dropdown">
-            <summary><span class="htag-hash">#</span>fanum<span class="idea-count-badge">3</span></summary>
-            <div class="idea-dropdown-menu"><a href="./fanum_1/">Идея 1</a><a href="./fanum_2/">Идея 2</a><a href="./fanum_3/">Идея 3</a></div>
-          </details>
+          <span class="htag-label"><span class="htag-hash">#</span>fanum</span><span class="idea-links"><a href="./fanum_1/">Идея 1</a><a href="./fanum_2/">Идея 2</a><a href="./fanum_3/">Идея 3</a></span>
         </div></td>
         <td class="td-reason">Реальное лицо — стример / инфлюенсер (имя реального человека)</td>
         <td class="td-arrow">→</td>
@@ -269,10 +235,7 @@
         <td><div class="td-inner">
           <span class="rank-num">4</span>
           <span style="width:16px"></span>
-          <details class="idea-dropdown">
-            <summary><span class="htag-hash">#</span>hamburguesa<span class="idea-count-badge">3</span></summary>
-            <div class="idea-dropdown-menu"><a href="./hamburguesa_1/">Идея 1</a><a href="./hamburguesa_2/">Идея 2</a><a href="./hamburguesa_3/">Идея 3</a></div>
-          </details>
+          <span class="htag-label"><span class="htag-hash">#</span>hamburguesa</span><span class="idea-links"><a href="./hamburguesa_1/">Идея 1</a><a href="./hamburguesa_2/">Идея 2</a><a href="./hamburguesa_3/">Идея 3</a></span>
         </div></td>
         <td class="td-reason">Бренд / не US-рынок — испаноязычная аудитория CO/MX, бургерный бренд или трендовое меню</td>
         <td class="td-arrow">→</td>
@@ -282,10 +245,7 @@
         <td><div class="td-inner">
           <span class="rank-num">5</span>
           <span style="width:16px"></span>
-          <details class="idea-dropdown">
-            <summary><span class="htag-hash">#</span>hamburguesatriple<span class="idea-count-badge">3</span></summary>
-            <div class="idea-dropdown-menu"><a href="./hamburguesatriple_1/">Идея 1</a><a href="./hamburguesatriple_2/">Идея 2</a><a href="./hamburguesatriple_3/">Идея 3</a></div>
-          </details>
+          <span class="htag-label"><span class="htag-hash">#</span>hamburguesatriple</span><span class="idea-links"><a href="./hamburguesatriple_1/">Идея 1</a><a href="./hamburguesatriple_2/">Идея 2</a><a href="./hamburguesatriple_3/">Идея 3</a></span>
         </div></td>
         <td class="td-reason">Бренд / не US-рынок — испаноязычная аудитория CO/MX, бургерный бренд или трендовое меню</td>
         <td class="td-arrow">→</td>
@@ -295,10 +255,7 @@
         <td><div class="td-inner">
           <span class="rank-num">6</span>
           <span style="width:16px"></span>
-          <details class="idea-dropdown">
-            <summary><span class="htag-hash">#</span>hauntingadeline<span class="idea-count-badge">3</span></summary>
-            <div class="idea-dropdown-menu"><a href="./hauntingadeline_1/">Идея 1</a><a href="./hauntingadeline_2/">Идея 2</a><a href="./hauntingadeline_3/">Идея 3</a></div>
-          </details>
+          <span class="htag-label"><span class="htag-hash">#</span>hauntingadeline</span><span class="idea-links"><a href="./hauntingadeline_1/">Идея 1</a><a href="./hauntingadeline_2/">Идея 2</a><a href="./hauntingadeline_3/">Идея 3</a></span>
         </div></td>
         <td class="td-reason">Чужое медиа — роман серии «Dark Romance» (H.D. Carlton)</td>
         <td class="td-arrow">→</td>
@@ -308,10 +265,7 @@
         <td><div class="td-inner">
           <span class="rank-num">7</span>
           <span style="width:16px"></span>
-          <details class="idea-dropdown">
-            <summary><span class="htag-hash">#</span>hussvalley<span class="idea-count-badge">3</span></summary>
-            <div class="idea-dropdown-menu"><a href="./hussvalley_1/">Идея 1</a><a href="./hussvalley_2/">Идея 2</a><a href="./hussvalley_3/">Идея 3</a></div>
-          </details>
+          <span class="htag-label"><span class="htag-hash">#</span>hussvalley</span><span class="idea-links"><a href="./hussvalley_1/">Идея 1</a><a href="./hussvalley_2/">Идея 2</a><a href="./hussvalley_3/">Идея 3</a></span>
         </div></td>
         <td class="td-reason">Реальные лица / персонажи — предположительно инфлюенсеры или персонажи; высокий vpp указывает на небольшую базу создателей</td>
         <td class="td-arrow">→</td>
@@ -321,10 +275,7 @@
         <td><div class="td-inner">
           <span class="rank-num">8</span>
           <span style="width:16px"></span>
-          <details class="idea-dropdown">
-            <summary><span class="htag-hash">#</span>justgolive<span class="idea-count-badge">3</span></summary>
-            <div class="idea-dropdown-menu"><a href="./justgolive_1/">Идея 1</a><a href="./justgolive_2/">Идея 2</a><a href="./justgolive_3/">Идея 3</a></div>
-          </details>
+          <span class="htag-label"><span class="htag-hash">#</span>justgolive</span><span class="idea-links"><a href="./justgolive_1/">Идея 1</a><a href="./justgolive_2/">Идея 2</a><a href="./justgolive_3/">Идея 3</a></span>
         </div></td>
         <td class="td-reason">Платформенный контент TikTok — TikTok Live promotion; аудитория CO/VN/MX, не US</td>
         <td class="td-arrow">→</td>
@@ -334,10 +285,7 @@
         <td><div class="td-inner">
           <span class="rank-num">9</span>
           <span style="width:16px"></span>
-          <details class="idea-dropdown">
-            <summary><span class="htag-hash">#</span>khajiit<span class="idea-count-badge">3</span></summary>
-            <div class="idea-dropdown-menu"><a href="./khajiit_1/">Идея 1</a><a href="./khajiit_2/">Идея 2</a><a href="./khajiit_3/">Идея 3</a></div>
-          </details>
+          <span class="htag-label"><span class="htag-hash">#</span>khajiit</span><span class="idea-links"><a href="./khajiit_1/">Идея 1</a><a href="./khajiit_2/">Идея 2</a><a href="./khajiit_3/">Идея 3</a></span>
         </div></td>
         <td class="td-reason">Игровое IP — раса из The Elder Scrolls (Bethesda)</td>
         <td class="td-arrow">→</td>
@@ -347,10 +295,7 @@
         <td><div class="td-inner">
           <span class="rank-num">10</span>
           <span style="width:16px"></span>
-          <details class="idea-dropdown">
-            <summary><span class="htag-hash">#</span>mylittlepony<span class="idea-count-badge">3</span></summary>
-            <div class="idea-dropdown-menu"><a href="./mylittlepony_1/">Идея 1</a><a href="./mylittlepony_2/">Идея 2</a><a href="./mylittlepony_3/">Идея 3</a></div>
-          </details>
+          <span class="htag-label"><span class="htag-hash">#</span>mylittlepony</span><span class="idea-links"><a href="./mylittlepony_1/">Идея 1</a><a href="./mylittlepony_2/">Идея 2</a><a href="./mylittlepony_3/">Идея 3</a></span>
         </div></td>
         <td class="td-reason">Игровое/анимационное IP — Hasbro</td>
         <td class="td-arrow">→</td>
@@ -360,10 +305,7 @@
         <td><div class="td-inner">
           <span class="rank-num">11</span>
           <span style="width:16px"></span>
-          <details class="idea-dropdown">
-            <summary><span class="htag-hash">#</span>paparazzi<span class="idea-count-badge">3</span></summary>
-            <div class="idea-dropdown-menu"><a href="./paparazzi_1/">Идея 1</a><a href="./paparazzi_2/">Идея 2</a><a href="./paparazzi_3/">Идея 3</a></div>
-          </details>
+          <span class="htag-label"><span class="htag-hash">#</span>paparazzi</span><span class="idea-links"><a href="./paparazzi_1/">Идея 1</a><a href="./paparazzi_2/">Идея 2</a><a href="./paparazzi_3/">Идея 3</a></span>
         </div></td>
         <td class="td-reason">Реальные лица — контент о папарацци подразумевает фото реальных людей</td>
         <td class="td-arrow">→</td>
@@ -373,10 +315,7 @@
         <td><div class="td-inner">
           <span class="rank-num">12</span>
           <span style="width:16px"></span>
-          <details class="idea-dropdown">
-            <summary><span class="htag-hash">#</span>saintsatine<span class="idea-count-badge">3</span></summary>
-            <div class="idea-dropdown-menu"><a href="./saintsatine_1/">Идея 1</a><a href="./saintsatine_2/">Идея 2</a><a href="./saintsatine_3/">Идея 3</a></div>
-          </details>
+          <span class="htag-label"><span class="htag-hash">#</span>saintsatine</span><span class="idea-links"><a href="./saintsatine_1/">Идея 1</a><a href="./saintsatine_2/">Идея 2</a><a href="./saintsatine_3/">Идея 3</a></span>
         </div></td>
         <td class="td-reason">Реальные лица / персонажи — предположительно инфлюенсеры или персонажи; высокий vpp указывает на небольшую базу создателей</td>
         <td class="td-arrow">→</td>
@@ -386,10 +325,7 @@
         <td><div class="td-inner">
           <span class="rank-num">13</span>
           <span style="width:16px"></span>
-          <details class="idea-dropdown">
-            <summary><span class="htag-hash">#</span>theodyssey<span class="idea-count-badge">3</span></summary>
-            <div class="idea-dropdown-menu"><a href="./theodyssey_1/">Идея 1</a><a href="./theodyssey_2/">Идея 2</a><a href="./theodyssey_3/">Идея 3</a></div>
-          </details>
+          <span class="htag-label"><span class="htag-hash">#</span>theodyssey</span><span class="idea-links"><a href="./theodyssey_1/">Идея 1</a><a href="./theodyssey_2/">Идея 2</a><a href="./theodyssey_3/">Идея 3</a></span>
         </div></td>
         <td class="td-reason">Чужое медиа — фильм или сериал (вероятно экранизация «Одиссеи»)</td>
         <td class="td-arrow">→</td>
@@ -399,10 +335,7 @@
         <td><div class="td-inner">
           <span class="rank-num">14</span>
           <span style="width:16px"></span>
-          <details class="idea-dropdown">
-            <summary><span class="htag-hash">#</span>thingsworthbuying<span class="idea-count-badge">3</span></summary>
-            <div class="idea-dropdown-menu"><a href="./thingsworthbuying_1/">Идея 1</a><a href="./thingsworthbuying_2/">Идея 2</a><a href="./thingsworthbuying_3/">Идея 3</a></div>
-          </details>
+          <span class="htag-label"><span class="htag-hash">#</span>thingsworthbuying</span><span class="idea-links"><a href="./thingsworthbuying_1/">Идея 1</a><a href="./thingsworthbuying_2/">Идея 2</a><a href="./thingsworthbuying_3/">Идея 3</a></span>
         </div></td>
         <td class="td-reason">Только смотрят — жанр product review без продуктовой ценности для редактора</td>
         <td class="td-arrow">→</td>
@@ -412,10 +345,7 @@
         <td><div class="td-inner">
           <span class="rank-num">15</span>
           <span style="width:16px"></span>
-          <details class="idea-dropdown">
-            <summary><span class="htag-hash">#</span>worldcupfinal<span class="idea-count-badge">3</span></summary>
-            <div class="idea-dropdown-menu"><a href="./worldcupfinal_1/">Идея 1</a><a href="./worldcupfinal_2/">Идея 2</a><a href="./worldcupfinal_3/">Идея 3</a></div>
-          </details>
+          <span class="htag-label"><span class="htag-hash">#</span>worldcupfinal</span><span class="idea-links"><a href="./worldcupfinal_1/">Идея 1</a><a href="./worldcupfinal_2/">Идея 2</a><a href="./worldcupfinal_3/">Идея 3</a></span>
         </div></td>
         <td class="td-reason">Спорт — только смотрят / IP FIFA — реальные спортсмены, защищённые права FIFA</td>
         <td class="td-arrow">→</td>
@@ -425,10 +355,7 @@
         <td><div class="td-inner">
           <span class="rank-num">16</span>
           <span style="width:16px"></span>
-          <details class="idea-dropdown">
-            <summary><span class="htag-hash">#</span>worththemoney<span class="idea-count-badge">3</span></summary>
-            <div class="idea-dropdown-menu"><a href="./worththemoney_1/">Идея 1</a><a href="./worththemoney_2/">Идея 2</a><a href="./worththemoney_3/">Идея 3</a></div>
-          </details>
+          <span class="htag-label"><span class="htag-hash">#</span>worththemoney</span><span class="idea-links"><a href="./worththemoney_1/">Идея 1</a><a href="./worththemoney_2/">Идея 2</a><a href="./worththemoney_3/">Идея 3</a></span>
         </div></td>
         <td class="td-reason">Только смотрят — жанр product review без продуктовой ценности для редактора</td>
         <td class="td-arrow">→</td>
