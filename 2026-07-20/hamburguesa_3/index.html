@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>#hamburguesa_3 — Полуночная слабость у холодильника · Video Ideas</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      background: #f4f4f5; color: #111; font-size: 14px; line-height: 1.5;
+    }
+    .page-header {
+      background: #fff; border-bottom: 1px solid #e4e4e7; position: sticky;
+      top: 0; z-index: 100; box-shadow: 0 1px 8px rgba(0,0,0,.05);
+    }
+    .header-inner {
+      max-width: 1100px; margin: 0 auto; padding: 14px 28px;
+      display: flex; align-items: center; gap: 20px;
+    }
+    .brand {
+      font-size: 18px; font-weight: 800; letter-spacing: -.5px; color: #111;
+      white-space: nowrap; user-select: none; text-decoration: none;
+    }
+    .brand-tik { color: #fe2c55; }
+    .brand-tok { color: #010101; }
+    .brand-dot { color: #d1d1d1; margin: 0 6px; font-weight: 300; }
+    .brand-cc  { color: #888; font-size: 12px; font-weight: 500; }
+    .header-text { flex: 1; min-width: 0; }
+    .page-title {
+      font-size: 15px; font-weight: 700; letter-spacing: -.2px;
+      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    }
+    .page-sub { font-size: 11.5px; color: #999; margin-top: 2px; }
+    .date-badge {
+      background: #fe2c55; color: #fff; font-weight: 700; font-size: 12px;
+      border-radius: 8px; padding: 6px 14px; line-height: 1.4;
+      text-align: center; white-space: nowrap; flex-shrink: 0;
+    }
+    .date-badge span { display: block; font-size: 10px; font-weight: 500; opacity: .8; }
+    .page-nav {
+      max-width: 1100px; margin: 0 auto; padding: 0 28px;
+      display: flex; gap: 2px; border-top: 1px solid #f0f0f0;
+    }
+    .nav-a {
+      text-decoration: none; color: #999; font-size: 12.5px; font-weight: 500;
+      padding: 9px 14px; border-bottom: 2px solid transparent;
+      transition: color .15s, border-color .15s;
+    }
+    .nav-a:hover { color: #fe2c55; }
+    .nav-a.active { color: #fe2c55; border-bottom-color: #fe2c55; }
+    .content { max-width: 1100px; margin: 0 auto; padding: 36px 28px 80px; }
+    .section { margin-bottom: 52px; }
+    .section-header { display: flex; align-items: baseline; gap: 10px; margin-bottom: 16px; }
+    .section-title { font-size: 19px; font-weight: 800; letter-spacing: -.4px; }
+    .section-badge {
+      font-size: 10.5px; font-weight: 600; color: #999; background: #ebebeb;
+      padding: 3px 8px; border-radius: 20px; text-transform: uppercase; letter-spacing: .4px;
+    }
+    @media (max-width: 768px) {
+      .header-inner { gap: 12px; padding: 12px 16px; }
+      .date-badge { display: none; }
+      .page-nav { padding: 0 16px; }
+      .content { padding: 24px 16px 60px; }
+    }
+
+
+    .idea-lead {
+      background: #fff; border-radius: 12px; padding: 36px 40px 32px;
+      box-shadow: 0 1px 4px rgba(0,0,0,.07), 0 0 0 1px rgba(0,0,0,.05);
+      margin-bottom: 40px;
+    }
+    .idea-hashtag { font-size: 13px; font-weight: 700; color: #fe2c55; margin-bottom: 8px; }
+    .idea-title { font-size: 26px; font-weight: 800; letter-spacing: -.6px; line-height: 1.25; margin-bottom: 16px; }
+    .idea-desc { font-size: 14px; color: #444; line-height: 1.75; max-width: 720px; }
+    .media-grid {
+      display: grid; grid-template-columns: auto 1fr; gap: 28px; align-items: start;
+    }
+    .video-multi {
+      display: flex; gap: 16px; flex-wrap: wrap; align-items: flex-start;
+    }
+    .video-item {
+      width: 200px; display: flex; flex-direction: column; gap: 8px; flex-shrink: 0;
+    }
+    .video-caption {
+      font-size: 11px; color: #999; line-height: 1.4; padding: 0 2px;
+    }
+    .video-player {
+      width: 100%; aspect-ratio: 9/16; object-fit: cover; border-radius: 12px;
+      display: block; box-shadow: 0 2px 16px rgba(0,0,0,.14);
+    }
+    .frame-img {
+      width: 100%; aspect-ratio: 9/16; object-fit: cover; border-radius: 12px;
+      display: block; box-shadow: 0 2px 16px rgba(0,0,0,.14);
+    }
+    .prompts-col { display: flex; flex-direction: column; gap: 12px; }
+    .prompt-block {
+      background: #fff; border-radius: 10px;
+      box-shadow: 0 1px 4px rgba(0,0,0,.07), 0 0 0 1px rgba(0,0,0,.05); overflow: hidden;
+    }
+    .prompt-block summary {
+      padding: 14px 18px; font-size: 13px; font-weight: 700; cursor: pointer;
+      user-select: none; list-style: none; display: flex; align-items: center; gap: 8px; color: #333;
+    }
+    .prompt-block summary::-webkit-details-marker { display: none; }
+    .prompt-block summary::before { content: '▶'; font-size: 8px; color: #bbb; transition: transform .15s; flex-shrink: 0; }
+    .prompt-block[open] summary::before { transform: rotate(90deg); }
+    .prompt-block summary:hover { color: #fe2c55; }
+    .prompt-block summary:hover::before { color: #fe2c55; }
+    .prompt-label { font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: .5px; color: #bbb; margin-left: auto; }
+    .prompt-text {
+      padding: 14px 18px 16px; font-family: 'SF Mono','Fira Code','Menlo',monospace;
+      font-size: 11.5px; line-height: 1.7; color: #555; background: #f9f9f9;
+      border-top: 1px solid #f0f0f0; white-space: pre-wrap; word-break: break-word;
+      max-height: 320px; overflow-y: auto;
+    }
+    @media (max-width: 900px) {
+      .media-grid { grid-template-columns: 1fr; }
+      .video-multi { justify-content: center; }
+      .idea-lead { padding: 24px 22px 22px; }
+    }
+    @media (max-width: 520px) { .idea-title { font-size: 22px; } }
+
+  </style>
+</head>
+<body>
+<div class="page-header">
+  <div class="header-inner">
+    <a class="brand" href="../../">
+      <span class="brand-tik">Tik</span><span class="brand-tok">Tok</span>
+      <span class="brand-dot">·</span><span class="brand-cc">Video Ideas</span>
+    </a>
+    <div class="header-text">
+      <div class="page-title">#hamburguesa_3</div>
+      <div class="page-sub">Видео-идея · 20 июля 2026</div>
+    </div>
+    <div class="date-badge">20.07.2026<span>Дата</span></div>
+  </div>
+  <nav class="page-nav">
+    <a href="../../" class="nav-a">← Все отчёты</a>
+    <a href="../" class="nav-a">← 20 июл 2026</a>
+    <a href="#" class="nav-a active">#hamburguesa_3</a>
+  </nav>
+</div>
+<div class="content">
+  <div class="idea-lead">
+    <div class="idea-hashtag">#hamburguesa_3</div>
+    <h1 class="idea-title">Полуночная слабость у холодильника</h1>
+    <p class="idea-desc">Визуальный якорь — тёмная кухня ночью, единственный источник света — тёплое сияние открытого холодильника. Пользователь в пижаме или домашней одежде тайком достаёт оттуда завёрнутый гамбургер, оглядывается с лукавой улыбкой, будто застигнутый врасплох, и делает один тихий, довольный укус в свете холодильника. Атмосфера уютного &quot;запретного перекуса&quot; поздней ночью — без единого слова.</p>
+  </div>
+  <section class="section">
+    <div class="section-header">
+      <h2 class="section-title">Видео</h2>
+      <span class="section-badge">Пример генерации</span>
+    </div>
+    <div class="media-grid">
+      <div class="video-multi">
+        <div class="video-item"><video class="video-player" controls muted loop playsinline poster="https://temp-images.ws.pho.to/c1bc5697b747acfaf536401b37f4619c2924f52b.png"><source src="https://temp-images.ws.pho.to/7904a39e6f08bcc79b8a5781097dac2183c2ee78.mp4" type="video/mp4"></video>
+          <div class="video-caption">woman in her late 30s with straight blonde shoulder-length hair and cat-eye glasses</div>
+        </div>
+        <div class="video-item"><video class="video-player" controls muted loop playsinline poster="https://temp-images.ws.pho.to/9380fb7320d11a88a22f08468f96494071176a05.png"><source src="https://temp-images.ws.pho.to/26725a767b14022252388c9860a8dd660c31764a.mp4" type="video/mp4"></video>
+          <div class="video-caption">man in his early 30s with short brown hair, blue eyes, and a short beard</div>
+        </div>
+      </div>
+      <div class="prompts-col">
+        <details class="prompt-block">
+          <summary>Промпт для первого кадра <span class="prompt-label">GPT Image 2</span></summary>
+          <pre class="prompt-text">Turn the photo of the person into a medium shot, face clearly visible, standing in a dark kitchen at night lit only by the warm glow of an open refrigerator, wearing cozy loungewear, holding a wrapped hamburger, a playful mischievous half-smile, rest of the kitchen in soft shadow.</pre>
+        </details>
+        <details class="prompt-block">
+          <summary>Промпт для видео <span class="prompt-label">Kling · Grok</span></summary>
+          <pre class="prompt-text">Create a short cinematic video based on the uploaded image.
+The scene is a dark home kitchen at night, lit only by the warm glow from an open refrigerator. The person stands facing the camera, medium shot, face clearly visible in the fridge light, holding a wrapped hamburger.
+
+Camera and motion structure:
+The camera is locked off, static, throughout — a single continuous take:
+1. FRAMES 0–25%: The person stands in the fridge glow, glancing over their shoulder as if checking no one is watching, playful mischievous expression.
+2. FRAMES 25–55%: They unwrap the hamburger partway, the warm fridge light catching the melted cheese and fresh bun, a small excited smile growing.
+3. FRAMES 55–80%: The person takes one quiet, satisfied bite, eyes closing briefly in guilty-pleasure enjoyment, shoulders relaxing.
+4. FRAMES 80–100%: They open their eyes, give a small conspiratorial smile directly to camera, as if sharing a secret — no words. Hold on this cozy, mischievous beat to the last frame.
+
+Character:
+Preserve the person&#x27;s face, hair, skin tone, and identity exactly from the source image throughout the entire video. Do not alter their appearance. The person&#x27;s face remains clearly visible in the fridge light alongside the food in every frame.
+
+Key visual events (in order):
+- The furtive glance over the shoulder in the fridge glow (establishing the &quot;caught in the act&quot; mood)
+- The partial unwrapping revealing the burger in warm light
+- The quiet, satisfied bite (the hero moment)
+- The small conspiratorial smile to camera at the end
+
+Style:
+Cozy, low-key nighttime realism — warm amber fridge glow against deep shadow, intimate and a little playful. A &quot;midnight snack&quot; mood, not a bright appetizing food-ad look.
+
+Restrictions:
+- Do not change the person&#x27;s face, hair, skin tone, or identity at any point
+- The person&#x27;s face must remain clearly visible in the fridge light in every frame, alongside the food — never crop to the food alone
+- No speaking, no singing, no lip-sync, no mouthing words — the mischievous smile is the only silent reaction
+- No speech bubbles
+- The camera must remain completely static throughout — no zoom, no pan, no handheld motion
+- The lighting must stay a warm, soft fridge-glow contrast against dark surroundings — no sudden overhead lights turning on
+- No jump cuts — the entire sequence plays as one continuous, unhurried take
+- No other people in frame
+- No text captions or overlay graphics
+- No social-media UI overlays</pre>
+        </details>
+      </div>
+    </div>
+  </section>
+</div>
+</body>
+</html>
