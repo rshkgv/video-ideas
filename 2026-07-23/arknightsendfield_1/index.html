@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>#arknightsendfield — Оперативник на аванпосте · Video Ideas</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      background: #f4f4f5; color: #111; font-size: 14px; line-height: 1.5;
+    }
+    .page-header {
+      background: #fff; border-bottom: 1px solid #e4e4e7; position: sticky;
+      top: 0; z-index: 100; box-shadow: 0 1px 8px rgba(0,0,0,.05);
+    }
+    .header-inner {
+      max-width: 1100px; margin: 0 auto; padding: 14px 28px;
+      display: flex; align-items: center; gap: 20px;
+    }
+    .brand {
+      font-size: 18px; font-weight: 800; letter-spacing: -.5px; color: #111;
+      white-space: nowrap; user-select: none; text-decoration: none;
+    }
+    .brand-tik { color: #fe2c55; }
+    .brand-tok { color: #010101; }
+    .brand-dot { color: #d1d1d1; margin: 0 6px; font-weight: 300; }
+    .brand-cc  { color: #888; font-size: 12px; font-weight: 500; }
+    .header-text { flex: 1; min-width: 0; }
+    .page-title {
+      font-size: 15px; font-weight: 700; letter-spacing: -.2px;
+      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    }
+    .page-sub { font-size: 11.5px; color: #999; margin-top: 2px; }
+    .date-badge {
+      background: #fe2c55; color: #fff; font-weight: 700; font-size: 12px;
+      border-radius: 8px; padding: 6px 14px; line-height: 1.4;
+      text-align: center; white-space: nowrap; flex-shrink: 0;
+    }
+    .date-badge span { display: block; font-size: 10px; font-weight: 500; opacity: .8; }
+    .page-nav {
+      max-width: 1100px; margin: 0 auto; padding: 0 28px;
+      display: flex; gap: 2px; border-top: 1px solid #f0f0f0;
+    }
+    .nav-a {
+      text-decoration: none; color: #999; font-size: 12.5px; font-weight: 500;
+      padding: 9px 14px; border-bottom: 2px solid transparent;
+      transition: color .15s, border-color .15s;
+    }
+    .nav-a:hover { color: #fe2c55; }
+    .nav-a.active { color: #fe2c55; border-bottom-color: #fe2c55; }
+    .content { max-width: 1100px; margin: 0 auto; padding: 36px 28px 80px; }
+    .section { margin-bottom: 52px; }
+    .section-header { display: flex; align-items: baseline; gap: 10px; margin-bottom: 16px; }
+    .section-title { font-size: 19px; font-weight: 800; letter-spacing: -.4px; }
+    .section-badge {
+      font-size: 10.5px; font-weight: 600; color: #999; background: #ebebeb;
+      padding: 3px 8px; border-radius: 20px; text-transform: uppercase; letter-spacing: .4px;
+    }
+    @media (max-width: 768px) {
+      .header-inner { gap: 12px; padding: 12px 16px; }
+      .date-badge { display: none; }
+      .page-nav { padding: 0 16px; }
+      .content { padding: 24px 16px 60px; }
+    }
+
+
+    .idea-lead {
+      background: #fff; border-radius: 12px; padding: 36px 40px 32px;
+      box-shadow: 0 1px 4px rgba(0,0,0,.07), 0 0 0 1px rgba(0,0,0,.05);
+      margin-bottom: 40px;
+    }
+    .idea-hashtag { font-size: 13px; font-weight: 700; color: #fe2c55; margin-bottom: 8px; }
+    .idea-title { font-size: 26px; font-weight: 800; letter-spacing: -.6px; line-height: 1.25; margin-bottom: 16px; }
+    .idea-desc { font-size: 14px; color: #444; line-height: 1.75; max-width: 720px; }
+    .media-grid {
+      display: grid; grid-template-columns: auto 1fr; gap: 28px; align-items: start;
+    }
+    .video-multi {
+      display: flex; gap: 16px; flex-wrap: wrap; align-items: flex-start;
+    }
+    .video-item {
+      width: 200px; display: flex; flex-direction: column; gap: 8px; flex-shrink: 0;
+    }
+    .video-caption {
+      font-size: 11px; color: #999; line-height: 1.4; padding: 0 2px;
+    }
+    .video-player {
+      width: 100%; aspect-ratio: 9/16; object-fit: cover; border-radius: 12px;
+      display: block; box-shadow: 0 2px 16px rgba(0,0,0,.14);
+    }
+    .frame-img {
+      width: 100%; aspect-ratio: 9/16; object-fit: cover; border-radius: 12px;
+      display: block; box-shadow: 0 2px 16px rgba(0,0,0,.14);
+    }
+    .prompts-col { display: flex; flex-direction: column; gap: 12px; }
+    .prompt-block {
+      background: #fff; border-radius: 10px;
+      box-shadow: 0 1px 4px rgba(0,0,0,.07), 0 0 0 1px rgba(0,0,0,.05); overflow: hidden;
+    }
+    .prompt-block summary {
+      padding: 14px 18px; font-size: 13px; font-weight: 700; cursor: pointer;
+      user-select: none; list-style: none; display: flex; align-items: center; gap: 8px; color: #333;
+    }
+    .prompt-block summary::-webkit-details-marker { display: none; }
+    .prompt-block summary::before { content: '▶'; font-size: 8px; color: #bbb; transition: transform .15s; flex-shrink: 0; }
+    .prompt-block[open] summary::before { transform: rotate(90deg); }
+    .prompt-block summary:hover { color: #fe2c55; }
+    .prompt-block summary:hover::before { color: #fe2c55; }
+    .prompt-label { font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: .5px; color: #bbb; margin-left: auto; }
+    .prompt-text {
+      padding: 14px 18px 16px; font-family: 'SF Mono','Fira Code','Menlo',monospace;
+      font-size: 11.5px; line-height: 1.7; color: #555; background: #f9f9f9;
+      border-top: 1px solid #f0f0f0; white-space: pre-wrap; word-break: break-word;
+      max-height: 320px; overflow-y: auto;
+    }
+    @media (max-width: 900px) {
+      .media-grid { grid-template-columns: 1fr; }
+      .video-multi { justify-content: center; }
+      .idea-lead { padding: 24px 22px 22px; }
+    }
+    @media (max-width: 520px) { .idea-title { font-size: 22px; } }
+
+  </style>
+</head>
+<body>
+<div class="page-header">
+  <div class="header-inner">
+    <a class="brand" href="../../">
+      <span class="brand-tik">Tik</span><span class="brand-tok">Tok</span>
+      <span class="brand-dot">·</span><span class="brand-cc">Video Ideas</span>
+    </a>
+    <div class="header-text">
+      <div class="page-title">#arknightsendfield</div>
+      <div class="page-sub">Видео-идея · 23 июля 2026</div>
+    </div>
+    <div class="date-badge">23.07.2026<span>Дата</span></div>
+  </div>
+  <nav class="page-nav">
+    <a href="../../" class="nav-a">← Все отчёты</a>
+    <a href="../" class="nav-a">← 23 июл 2026</a>
+    <a href="#" class="nav-a active">#arknightsendfield</a>
+  </nav>
+</div>
+<div class="content">
+  <div class="idea-lead">
+    <div class="idea-hashtag">#arknightsendfield</div>
+    <h1 class="idea-title">Оперативник на аванпосте</h1>
+    <p class="idea-desc">Визуальный якорь — индустриальный научно-фантастический аванпост в стиле Arknights: Endfield: экспонированные технотрубы, приглушённый холодный свет, характерная для игры дрейповая техническая форма «оператора». Пользователь стоит неподвижно в интерьере аванпоста, и вокруг него постепенно, деталь за деталью, материализуется голографический тактический HUD — рамка сканирования лица, полоска состояния, эмблема фракции — как настоящий игровой интерфейс, обрамляющий его. В финале — логотип «ARKNIGHTS: ENDFIELD» проступает в углу.</p>
+  </div>
+  <section class="section">
+    <div class="section-header">
+      <h2 class="section-title">Видео</h2>
+      <span class="section-badge">Пример генерации</span>
+    </div>
+    <div class="media-grid">
+      <div class="video-multi">
+        <div class="video-item"><video class="video-player" controls muted loop playsinline poster="https://temp-images.ws.pho.to/4e419e8ca1d27eed69c56f662cabeefabb5f68f8.png"><source src="https://temp-images.ws.pho.to/80d3a0825acb03ef629c680b2f75dc43f1726fd5.mp4" type="video/mp4"></video>
+          <div class="video-caption">man in his early 30s with short brown hair, blue eyes, and a short beard</div>
+        </div>
+        <div class="video-item"><video class="video-player" controls muted loop playsinline poster="https://temp-images.ws.pho.to/74a2235855820d986e1cdf3b71203acb8e06a3eb.png"><source src="https://temp-images.ws.pho.to/e29f21a062603033bf5593c2932695bf28e626f0.mp4" type="video/mp4"></video>
+          <div class="video-caption">woman in her late 30s with straight blonde shoulder-length hair and cat-eye glasses</div>
+        </div>
+      </div>
+      <div class="prompts-col">
+        <details class="prompt-block">
+          <summary>Промпт для первого кадра <span class="prompt-label">GPT Image 2</span></summary>
+          <pre class="prompt-text">Turn the photo of the person into a medium shot (waist-up), standing inside a cold industrial sci-fi outpost interior — exposed metal piping, muted blue-grey ambient light, distant humming machinery blurred behind. Dress them in a draped, techwear-style tactical operator uniform with subtle glowing circuitry-pattern seams, inspired by the Arknights: Endfield aesthetic, fabric layered with utility straps and a stand collar. Preserve the person&#x27;s exact facial identity: same age, face shape, skin tone, eye shape and color, exact hairstyle and hair color/texture, jawline, and any distinctive features (freckles, moles, facial hair, glasses) exactly as in the source photo — the human stays fully photorealistic even though the outfit and environment are stylized sci-fi. Calm, focused, determined expression, no HUD graphics visible yet. Vertical 9:16 framing.</pre>
+        </details>
+        <details class="prompt-block">
+          <summary>Промпт для видео <span class="prompt-label">Kling · Grok</span></summary>
+          <pre class="prompt-text">Create a short cinematic video based on the uploaded image.
+The scene is a cold industrial sci-fi outpost, exposed piping and distant machinery blurred behind. The person stands still in a draped techwear operator uniform, medium shot, face clearly visible throughout.
+
+Camera and motion structure:
+Keep the overall shot completely static. No zoom, no camera movement — the HUD elements are the only moving/materializing element:
+1. FRAMES 0–25%: The person stands calm and still, no HUD graphics visible yet, ambient outpost light and distant machinery hum.
+2. FRAMES 25–55%: A thin holographic scan-frame begins tracing around the person&#x27;s face and shoulders, glowing pale blue, drawing itself in one continuous line — the first HUD element to materialize.
+3. FRAMES 55–80%: A vertical status bar and a small faction emblem icon fade in beside the scan-frame, piece by piece, glowing with the same pale blue light — building up like a real tactical HUD locking onto its subject.
+4. FRAMES 80–100%: The final HUD element, a small &quot;ARKNIGHTS: ENDFIELD&quot; logo mark, settles into the lower corner of the frame. The person&#x27;s expression sharpens into calm, focused resolve, looking directly at camera. Hold on this completed HUD composition to the last frame.
+
+Character:
+Preserve the person&#x27;s face, hair, skin tone, and identity exactly from the source image throughout the entire video. Do not alter their appearance — the human remains completely photorealistic and anatomically accurate throughout; only the HUD graphics and environment are stylized sci-fi elements layered over the scene, never altering the person&#x27;s real proportions or features.
+
+Key visual events (in order):
+- The calm &quot;before&quot; moment, no HUD yet
+- The scan-frame tracing around the face and shoulders (the hero moment&#x27;s start)
+- The status bar and faction emblem building in piece by piece
+- The &quot;ARKNIGHTS: ENDFIELD&quot; logo settling into the corner as the person&#x27;s expression sharpens
+
+Style:
+Cold, industrial, tactical sci-fi aesthetic — muted blues, glowing HUD lines, a real tactical-game interface materializing over a photorealistic human subject. Confident, adventurous, mission-ready mood.
+
+Restrictions:
+- Do not change the person&#x27;s face, hair, skin tone, or identity at any point
+- The person&#x27;s face must remain clearly visible throughout, even as the scan-frame traces around it — the frame outlines the face, it never obscures it
+- No speaking, no singing, no lip-sync, no mouthing words — the shift into calm, focused resolve is the only reaction
+- No speech bubbles
+- The camera must remain completely static throughout — no pans, no zoom, no handheld motion
+- The HUD elements (scan-frame, status bar, emblem, logo) must each appear only once, building up in the order described, with no flickering, resetting, or duplicating
+- The &quot;ARKNIGHTS: ENDFIELD&quot; logo appears only in the final beat and must remain visible until the last frame
+- The person must remain fully photorealistic and anatomically correct throughout — do not stylize, cartoonify, or convert them into a game-rendered character; only the HUD graphics and environment are stylized
+- No jump cuts — the HUD build-up plays as one continuous, unhurried take
+- No other people in frame</pre>
+        </details>
+      </div>
+    </div>
+  </section>
+</div>
+</body>
+</html>

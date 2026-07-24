@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Video Ideas — 23 июля 2026</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      background: #f4f4f5; color: #111; font-size: 14px; line-height: 1.5;
+    }
+    .page-header {
+      background: #fff; border-bottom: 1px solid #e4e4e7; position: sticky;
+      top: 0; z-index: 100; box-shadow: 0 1px 8px rgba(0,0,0,.05);
+    }
+    .header-inner {
+      max-width: 1100px; margin: 0 auto; padding: 14px 28px;
+      display: flex; align-items: center; gap: 20px;
+    }
+    .brand {
+      font-size: 18px; font-weight: 800; letter-spacing: -.5px; color: #111;
+      white-space: nowrap; user-select: none; text-decoration: none;
+    }
+    .brand-tik { color: #fe2c55; }
+    .brand-tok { color: #010101; }
+    .brand-dot { color: #d1d1d1; margin: 0 6px; font-weight: 300; }
+    .brand-cc  { color: #888; font-size: 12px; font-weight: 500; }
+    .header-text { flex: 1; min-width: 0; }
+    .page-title {
+      font-size: 15px; font-weight: 700; letter-spacing: -.2px;
+      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    }
+    .page-sub { font-size: 11.5px; color: #999; margin-top: 2px; }
+    .date-badge {
+      background: #fe2c55; color: #fff; font-weight: 700; font-size: 12px;
+      border-radius: 8px; padding: 6px 14px; line-height: 1.4;
+      text-align: center; white-space: nowrap; flex-shrink: 0;
+    }
+    .date-badge span { display: block; font-size: 10px; font-weight: 500; opacity: .8; }
+    .page-nav {
+      max-width: 1100px; margin: 0 auto; padding: 0 28px;
+      display: flex; gap: 2px; border-top: 1px solid #f0f0f0;
+    }
+    .nav-a {
+      text-decoration: none; color: #999; font-size: 12.5px; font-weight: 500;
+      padding: 9px 14px; border-bottom: 2px solid transparent;
+      transition: color .15s, border-color .15s;
+    }
+    .nav-a:hover { color: #fe2c55; }
+    .nav-a.active { color: #fe2c55; border-bottom-color: #fe2c55; }
+    .content { max-width: 1100px; margin: 0 auto; padding: 36px 28px 80px; }
+    .section { margin-bottom: 52px; }
+    .section-header { display: flex; align-items: baseline; gap: 10px; margin-bottom: 16px; }
+    .section-title { font-size: 19px; font-weight: 800; letter-spacing: -.4px; }
+    .section-badge {
+      font-size: 10.5px; font-weight: 600; color: #999; background: #ebebeb;
+      padding: 3px 8px; border-radius: 20px; text-transform: uppercase; letter-spacing: .4px;
+    }
+    @media (max-width: 768px) {
+      .header-inner { gap: 12px; padding: 12px 16px; }
+      .date-badge { display: none; }
+      .page-nav { padding: 0 16px; }
+      .content { padding: 24px 16px 60px; }
+    }
+
+    .table-wrap {
+      background: #fff; border-radius: 12px; overflow: hidden;
+      box-shadow: 0 1px 4px rgba(0,0,0,.07), 0 0 0 1px rgba(0,0,0,.05);
+    }
+    .ht-table { width: 100%; border-collapse: collapse; }
+    .ht-table thead th {
+      text-align: left; padding: 10px 16px; font-size: 10.5px; font-weight: 600;
+      text-transform: uppercase; letter-spacing: .5px; color: #aaa;
+      background: #f9f9f9; border-bottom: 1px solid #ebebeb;
+    }
+    .ht-table tbody td { padding: 0; border-bottom: 1px solid #f2f2f2; vertical-align: middle; }
+    .ht-table tbody tr:last-child td { border-bottom: none; }
+    .ht-table tbody tr:hover td { background: #fafbff; }
+    .td-inner { padding: 12px 16px; display: flex; align-items: center; position: relative; }
+    .rank-num { font-weight: 800; font-size: 14px; display: inline-block; min-width: 24px; text-align: right; color: #ccc; }
+    .thumb-cell { padding: 8px 10px 8px 16px !important; }
+    .thumb-img { width: 44px; height: 78px; object-fit: cover; border-radius: 6px; display: block; background: #eee; }
+    .thumb-placeholder { width: 44px; height: 78px; border-radius: 6px; background: #eee; }
+    .htag-link { font-weight: 700; font-size: 14px; color: #111; text-decoration: none; display: inline-flex; align-items: center; gap: 1px; }
+    .htag-link:hover { color: #fe2c55; }
+    .htag-hash { color: #bbb; font-weight: 400; }
+    .htag-disabled { color: #999; cursor: default; }
+    .htag-disabled:hover { color: #999; }
+    .td-title { font-size: 13px; color: #555; padding-left: 12px; }
+    .td-reason { font-size: 12.5px; color: #777; padding: 12px 16px 12px 12px; line-height: 1.5; max-width: 420px; }
+    .td-arrow { color: #ddd; font-size: 13px; padding: 12px 20px 12px 8px !important; text-align: right; }
+    .ht-table tbody tr:hover .td-arrow { color: #fe2c55; }
+    .no-ideas-row { opacity: .7; }
+    .no-ideas-row:hover td { background: transparent !important; }
+    @media (max-width: 520px) { .td-title { display: none; } .td-reason { display: none; } }
+    .htag-label {
+      font-weight: 700; font-size: 14px; color: #111; display: inline-flex; align-items: center; gap: 1px;
+    }
+    .idea-links { display: inline-flex; align-items: center; gap: 6px; margin-left: 12px; flex-wrap: wrap; }
+    .idea-links a {
+      font-size: 12px; font-weight: 600; color: #666; text-decoration: none;
+      background: #f2f2f2; border-radius: 20px; padding: 4px 11px; white-space: nowrap;
+      transition: background .15s, color .15s;
+    }
+    .idea-links a:hover { background: #fe2c55; color: #fff; }
+    .section-title-warn { color: #92400e; }
+    .section-badge-warn { background: #fef3c7; color: #92400e; }
+    .section-title-brand { color: #3730a3; }
+    .section-badge-brand { background: #e0e7ff; color: #3730a3; }
+    .not-touch-note { font-size: 12.5px; color: #999; margin: -8px 0 16px; max-width: 640px; line-height: 1.6; }
+    .not-touch-table thead th { background: #fffbeb; }
+    .brand-media-table thead th { background: #eef2ff; }
+  </style>
+</head>
+<body>
+<div class="page-header">
+  <div class="header-inner">
+    <a class="brand" href="../">
+      <span class="brand-tik">Tik</span><span class="brand-tok">Tok</span>
+      <span class="brand-dot">·</span><span class="brand-cc">Video Ideas</span>
+    </a>
+    <div class="header-text">
+      <div class="page-title">Видео-идеи · 23 июля 2026</div>
+      <div class="page-sub">AI-сгенерированные эффекты по трендовым хештегам TikTok US</div>
+    </div>
+    <div class="date-badge">23.07.2026<span>Дата отчёта</span></div>
+  </div>
+  <nav class="page-nav">
+    <a href="../" class="nav-a">← Все отчёты</a>
+    <a href="#ideas" class="nav-a active">Идеи</a>
+  </nav>
+</div>
+<div class="content">
+  <section id="ideas" class="section">
+    <div class="section-header">
+      <h2 class="section-title">Идеи</h2>
+      <span class="section-badge">42 идей · 42 видео</span>
+    </div>
+    <div class="table-wrap">
+      <table class="ht-table">
+        <thead><tr>
+          <th style="width:68px"></th>
+          <th>Хештег</th>
+          <th style="width:48px"></th>
+        </tr></thead>
+        <tbody>
+      <tr>
+        <td class="thumb-cell"><img class="thumb-img" src="https://temp-images.ws.pho.to/d235aa30377423377798324553159e0b4bf442e2.png" alt="#homecoming"></td>
+        <td><div class="td-inner">
+          <span class="rank-num">1</span>
+          <span style="width:16px"></span>
+          <span class="htag-label"><span class="htag-hash">#</span>homecoming</span><span class="idea-links"><a href="./homecoming_1/">Идея 1</a><a href="./homecoming_2/">Идея 2</a><a href="./homecoming_3/">Идея 3</a></span>
+        </div></td>
+        <td class="td-arrow">→</td>
+      </tr>
+      <tr>
+        <td class="thumb-cell"><img class="thumb-img" src="https://temp-images.ws.pho.to/c21635adc88753fa9ed04b6992013862c2b881ef.png" alt="#lettuce"></td>
+        <td><div class="td-inner">
+          <span class="rank-num">2</span>
+          <span style="width:16px"></span>
+          <span class="htag-label"><span class="htag-hash">#</span>lettuce</span><span class="idea-links"><a href="./lettuce_1/">Идея 1</a><a href="./lettuce_2/">Идея 2</a><a href="./lettuce_3/">Идея 3</a></span>
+        </div></td>
+        <td class="td-arrow">→</td>
+      </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+  <section id="brand-media" class="section">
+    <div class="section-header">
+      <h2 class="section-title section-title-brand">Реальные лица, бренды, чужое медиа</h2>
+      <span class="section-badge section-badge-brand">12 хэштегов</span>
+    </div>
+    <p class="not-touch-note">Хэштеги, исключённые отчётом nnAgentsReports из-за бренда/IP, реальных людей или стороннего медиа. Идеи для них всё равно сгенерированы и показаны здесь отдельно от основного списка.</p>
+    <div class="table-wrap">
+      <table class="ht-table brand-media-table">
+        <thead><tr>
+          <th style="width:68px"></th>
+          <th>Хештег</th>
+          <th>Причина исключения</th>
+          <th style="width:48px"></th>
+        </tr></thead>
+        <tbody>
+      <tr>
+        <td class="thumb-cell"><img class="thumb-img" src="https://temp-images.ws.pho.to/4e419e8ca1d27eed69c56f662cabeefabb5f68f8.png" alt="#arknightsendfield"></td>
+        <td><div class="td-inner">
+          <span class="rank-num">1</span>
+          <span style="width:16px"></span>
+          <span class="htag-label"><span class="htag-hash">#</span>arknightsendfield</span><span class="idea-links"><a href="./arknightsendfield_1/">Идея 1</a><a href="./arknightsendfield_2/">Идея 2</a><a href="./arknightsendfield_3/">Идея 3</a></span>
+        </div></td>
+        <td class="td-reason">Игровое IP (Arknights: Endfield) — аудитория не US (Индонезия/Вьетнам/Бразилия)</td>
+        <td class="td-arrow">→</td>
+      </tr>
+      <tr>
+        <td class="thumb-cell"><img class="thumb-img" src="https://temp-images.ws.pho.to/11a8feb73b5625d8c7dbf975ab311a88a6c3eb42.png" alt="#avengersdoomsday"></td>
+        <td><div class="td-inner">
+          <span class="rank-num">2</span>
+          <span style="width:16px"></span>
+          <span class="htag-label"><span class="htag-hash">#</span>avengersdoomsday</span><span class="idea-links"><a href="./avengersdoomsday_1/">Идея 1</a><a href="./avengersdoomsday_2/">Идея 2</a><a href="./avengersdoomsday_3/">Идея 3</a></span>
+        </div></td>
+        <td class="td-reason">Чужое медиа — Marvel/Disney IP</td>
+        <td class="td-arrow">→</td>
+      </tr>
+      <tr>
+        <td class="thumb-cell"><img class="thumb-img" src="https://temp-images.ws.pho.to/ccdfc38b2f34d235ca2207b01344f2cc2ef54978.png" alt="#fanum"></td>
+        <td><div class="td-inner">
+          <span class="rank-num">3</span>
+          <span style="width:16px"></span>
+          <span class="htag-label"><span class="htag-hash">#</span>fanum</span><span class="idea-links"><a href="./fanum_1/">Идея 1</a><a href="./fanum_2/">Идея 2</a><a href="./fanum_3/">Идея 3</a></span>
+        </div></td>
+        <td class="td-reason">Реальное лицо — стример, участник StreamerUniversity</td>
+        <td class="td-arrow">→</td>
+      </tr>
+      <tr>
+        <td class="thumb-cell"><img class="thumb-img" src="https://temp-images.ws.pho.to/422e3d480a9015d1d1f3da8e5338d1d46a66532d.png" alt="#halftimeshow"></td>
+        <td><div class="td-inner">
+          <span class="rank-num">4</span>
+          <span style="width:16px"></span>
+          <span class="htag-label"><span class="htag-hash">#</span>halftimeshow</span><span class="idea-links"><a href="./halftimeshow_1/">Идея 1</a><a href="./halftimeshow_2/">Идея 2</a><a href="./halftimeshow_3/">Идея 3</a></span>
+        </div></td>
+        <td class="td-reason">Спортивное событие — шоу в перерыве финала ЧМ, выступление артиста (предположительно Lady Gaga)</td>
+        <td class="td-arrow">→</td>
+      </tr>
+      <tr>
+        <td class="thumb-cell"><img class="thumb-img" src="https://temp-images.ws.pho.to/7de3931abf0311a53c9d664cd0d35db3c1f2fc33.png" alt="#haskell"></td>
+        <td><div class="td-inner">
+          <span class="rank-num">5</span>
+          <span style="width:16px"></span>
+          <span class="htag-label"><span class="htag-hash">#</span>haskell</span><span class="idea-links"><a href="./haskell_1/">Идея 1</a><a href="./haskell_2/">Идея 2</a><a href="./haskell_3/">Идея 3</a></span>
+        </div></td>
+        <td class="td-reason">Реальное лицо — участник ивента StreamerUniversity</td>
+        <td class="td-arrow">→</td>
+      </tr>
+      <tr>
+        <td class="thumb-cell"><img class="thumb-img" src="https://temp-images.ws.pho.to/2ade468297880d00d662947eb4a47c9850cf4069.png" alt="#hauntingadeline"></td>
+        <td><div class="td-inner">
+          <span class="rank-num">6</span>
+          <span style="width:16px"></span>
+          <span class="htag-label"><span class="htag-hash">#</span>hauntingadeline</span><span class="idea-links"><a href="./hauntingadeline_1/">Идея 1</a><a href="./hauntingadeline_2/">Идея 2</a><a href="./hauntingadeline_3/">Идея 3</a></span>
+        </div></td>
+        <td class="td-reason">Чужое медиа — экранизация романа, угасающий тренд</td>
+        <td class="td-arrow">→</td>
+      </tr>
+      <tr>
+        <td class="thumb-cell"><img class="thumb-img" src="https://temp-images.ws.pho.to/1f2736fb6fa52470bccdaba729ec4b98210172b6.png" alt="#paparazzi"></td>
+        <td><div class="td-inner">
+          <span class="rank-num">7</span>
+          <span style="width:16px"></span>
+          <span class="htag-label"><span class="htag-hash">#</span>paparazzi</span><span class="idea-links"><a href="./paparazzi_1/">Идея 1</a><a href="./paparazzi_2/">Идея 2</a><a href="./paparazzi_3/">Идея 3</a></span>
+        </div></td>
+        <td class="td-reason">Реальные лица / чужое медиа — связано с публичными фигурами фильма Odyssey</td>
+        <td class="td-arrow">→</td>
+      </tr>
+      <tr>
+        <td class="thumb-cell"><img class="thumb-img" src="https://temp-images.ws.pho.to/4ca6a0bec552e926d2b19c717e91adf1ccbb4f36.png" alt="#plaqueboymax"></td>
+        <td><div class="td-inner">
+          <span class="rank-num">8</span>
+          <span style="width:16px"></span>
+          <span class="htag-label"><span class="htag-hash">#</span>plaqueboymax</span><span class="idea-links"><a href="./plaqueboymax_1/">Идея 1</a><a href="./plaqueboymax_2/">Идея 2</a><a href="./plaqueboymax_3/">Идея 3</a></span>
+        </div></td>
+        <td class="td-reason">Реальное лицо — участник ивента StreamerUniversity</td>
+        <td class="td-arrow">→</td>
+      </tr>
+      <tr>
+        <td class="thumb-cell"><img class="thumb-img" src="https://temp-images.ws.pho.to/e2f181c4cf99c5140ad98934c359449d1d218728.png" alt="#quietonthecreek"></td>
+        <td><div class="td-inner">
+          <span class="rank-num">9</span>
+          <span style="width:16px"></span>
+          <span class="htag-label"><span class="htag-hash">#</span>quietonthecreek</span><span class="idea-links"><a href="./quietonthecreek_1/">Идея 1</a><a href="./quietonthecreek_2/">Идея 2</a><a href="./quietonthecreek_3/">Идея 3</a></span>
+        </div></td>
+        <td class="td-reason">Чужое медиа — вирусный саунд/липсинк (возможно из телесериала); пять вариантов написания одного тега</td>
+        <td class="td-arrow">→</td>
+      </tr>
+      <tr>
+        <td class="thumb-cell"><img class="thumb-img" src="https://temp-images.ws.pho.to/7be6e2ca4fa94ee2b9afe9c5b26627c7a08f929f.png" alt="#suburbbaby"></td>
+        <td><div class="td-inner">
+          <span class="rank-num">10</span>
+          <span style="width:16px"></span>
+          <span class="htag-label"><span class="htag-hash">#</span>suburbbaby</span><span class="idea-links"><a href="./suburbbaby_1/">Идея 1</a><a href="./suburbbaby_2/">Идея 2</a><a href="./suburbbaby_3/">Идея 3</a></span>
+        </div></td>
+        <td class="td-reason">Реальные лица / чужое медиа — тег кластера StreamerUniversity</td>
+        <td class="td-arrow">→</td>
+      </tr>
+      <tr>
+        <td class="thumb-cell"><img class="thumb-img" src="https://temp-images.ws.pho.to/cf867b637196ded1939187f89b900b4cd00fbba9.png" alt="#theodyssey"></td>
+        <td><div class="td-inner">
+          <span class="rank-num">11</span>
+          <span style="width:16px"></span>
+          <span class="htag-label"><span class="htag-hash">#</span>theodyssey</span><span class="idea-links"><a href="./theodyssey_1/">Идея 1</a><a href="./theodyssey_2/">Идея 2</a><a href="./theodyssey_3/">Идея 3</a></span>
+        </div></td>
+        <td class="td-reason">Чужое медиа — фильм (Nolan/Damon), публичные фигуры</td>
+        <td class="td-arrow">→</td>
+      </tr>
+      <tr>
+        <td class="thumb-cell"><img class="thumb-img" src="https://temp-images.ws.pho.to/e7be7b940f1510488763f4ee277ef4a2981ddd96.png" alt="#worldcupfinal"></td>
+        <td><div class="td-inner">
+          <span class="rank-num">12</span>
+          <span style="width:16px"></span>
+          <span class="htag-label"><span class="htag-hash">#</span>worldcupfinal</span><span class="idea-links"><a href="./worldcupfinal_1/">Идея 1</a><a href="./worldcupfinal_2/">Идея 2</a><a href="./worldcupfinal_3/">Идея 3</a></span>
+        </div></td>
+        <td class="td-reason">Спорт — финал ЧМ Испания vs Аргентина, реальные игроки/тренеры, IP артистов</td>
+        <td class="td-arrow">→</td>
+      </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+</div>
+</body>
+</html>

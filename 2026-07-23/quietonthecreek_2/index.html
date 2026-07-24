@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>#quietonthecreek — Титры без слов · Video Ideas</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      background: #f4f4f5; color: #111; font-size: 14px; line-height: 1.5;
+    }
+    .page-header {
+      background: #fff; border-bottom: 1px solid #e4e4e7; position: sticky;
+      top: 0; z-index: 100; box-shadow: 0 1px 8px rgba(0,0,0,.05);
+    }
+    .header-inner {
+      max-width: 1100px; margin: 0 auto; padding: 14px 28px;
+      display: flex; align-items: center; gap: 20px;
+    }
+    .brand {
+      font-size: 18px; font-weight: 800; letter-spacing: -.5px; color: #111;
+      white-space: nowrap; user-select: none; text-decoration: none;
+    }
+    .brand-tik { color: #fe2c55; }
+    .brand-tok { color: #010101; }
+    .brand-dot { color: #d1d1d1; margin: 0 6px; font-weight: 300; }
+    .brand-cc  { color: #888; font-size: 12px; font-weight: 500; }
+    .header-text { flex: 1; min-width: 0; }
+    .page-title {
+      font-size: 15px; font-weight: 700; letter-spacing: -.2px;
+      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    }
+    .page-sub { font-size: 11.5px; color: #999; margin-top: 2px; }
+    .date-badge {
+      background: #fe2c55; color: #fff; font-weight: 700; font-size: 12px;
+      border-radius: 8px; padding: 6px 14px; line-height: 1.4;
+      text-align: center; white-space: nowrap; flex-shrink: 0;
+    }
+    .date-badge span { display: block; font-size: 10px; font-weight: 500; opacity: .8; }
+    .page-nav {
+      max-width: 1100px; margin: 0 auto; padding: 0 28px;
+      display: flex; gap: 2px; border-top: 1px solid #f0f0f0;
+    }
+    .nav-a {
+      text-decoration: none; color: #999; font-size: 12.5px; font-weight: 500;
+      padding: 9px 14px; border-bottom: 2px solid transparent;
+      transition: color .15s, border-color .15s;
+    }
+    .nav-a:hover { color: #fe2c55; }
+    .nav-a.active { color: #fe2c55; border-bottom-color: #fe2c55; }
+    .content { max-width: 1100px; margin: 0 auto; padding: 36px 28px 80px; }
+    .section { margin-bottom: 52px; }
+    .section-header { display: flex; align-items: baseline; gap: 10px; margin-bottom: 16px; }
+    .section-title { font-size: 19px; font-weight: 800; letter-spacing: -.4px; }
+    .section-badge {
+      font-size: 10.5px; font-weight: 600; color: #999; background: #ebebeb;
+      padding: 3px 8px; border-radius: 20px; text-transform: uppercase; letter-spacing: .4px;
+    }
+    @media (max-width: 768px) {
+      .header-inner { gap: 12px; padding: 12px 16px; }
+      .date-badge { display: none; }
+      .page-nav { padding: 0 16px; }
+      .content { padding: 24px 16px 60px; }
+    }
+
+
+    .idea-lead {
+      background: #fff; border-radius: 12px; padding: 36px 40px 32px;
+      box-shadow: 0 1px 4px rgba(0,0,0,.07), 0 0 0 1px rgba(0,0,0,.05);
+      margin-bottom: 40px;
+    }
+    .idea-hashtag { font-size: 13px; font-weight: 700; color: #fe2c55; margin-bottom: 8px; }
+    .idea-title { font-size: 26px; font-weight: 800; letter-spacing: -.6px; line-height: 1.25; margin-bottom: 16px; }
+    .idea-desc { font-size: 14px; color: #444; line-height: 1.75; max-width: 720px; }
+    .media-grid {
+      display: grid; grid-template-columns: auto 1fr; gap: 28px; align-items: start;
+    }
+    .video-multi {
+      display: flex; gap: 16px; flex-wrap: wrap; align-items: flex-start;
+    }
+    .video-item {
+      width: 200px; display: flex; flex-direction: column; gap: 8px; flex-shrink: 0;
+    }
+    .video-caption {
+      font-size: 11px; color: #999; line-height: 1.4; padding: 0 2px;
+    }
+    .video-player {
+      width: 100%; aspect-ratio: 9/16; object-fit: cover; border-radius: 12px;
+      display: block; box-shadow: 0 2px 16px rgba(0,0,0,.14);
+    }
+    .frame-img {
+      width: 100%; aspect-ratio: 9/16; object-fit: cover; border-radius: 12px;
+      display: block; box-shadow: 0 2px 16px rgba(0,0,0,.14);
+    }
+    .prompts-col { display: flex; flex-direction: column; gap: 12px; }
+    .prompt-block {
+      background: #fff; border-radius: 10px;
+      box-shadow: 0 1px 4px rgba(0,0,0,.07), 0 0 0 1px rgba(0,0,0,.05); overflow: hidden;
+    }
+    .prompt-block summary {
+      padding: 14px 18px; font-size: 13px; font-weight: 700; cursor: pointer;
+      user-select: none; list-style: none; display: flex; align-items: center; gap: 8px; color: #333;
+    }
+    .prompt-block summary::-webkit-details-marker { display: none; }
+    .prompt-block summary::before { content: '▶'; font-size: 8px; color: #bbb; transition: transform .15s; flex-shrink: 0; }
+    .prompt-block[open] summary::before { transform: rotate(90deg); }
+    .prompt-block summary:hover { color: #fe2c55; }
+    .prompt-block summary:hover::before { color: #fe2c55; }
+    .prompt-label { font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: .5px; color: #bbb; margin-left: auto; }
+    .prompt-text {
+      padding: 14px 18px 16px; font-family: 'SF Mono','Fira Code','Menlo',monospace;
+      font-size: 11.5px; line-height: 1.7; color: #555; background: #f9f9f9;
+      border-top: 1px solid #f0f0f0; white-space: pre-wrap; word-break: break-word;
+      max-height: 320px; overflow-y: auto;
+    }
+    @media (max-width: 900px) {
+      .media-grid { grid-template-columns: 1fr; }
+      .video-multi { justify-content: center; }
+      .idea-lead { padding: 24px 22px 22px; }
+    }
+    @media (max-width: 520px) { .idea-title { font-size: 22px; } }
+
+  </style>
+</head>
+<body>
+<div class="page-header">
+  <div class="header-inner">
+    <a class="brand" href="../../">
+      <span class="brand-tik">Tik</span><span class="brand-tok">Tok</span>
+      <span class="brand-dot">·</span><span class="brand-cc">Video Ideas</span>
+    </a>
+    <div class="header-text">
+      <div class="page-title">#quietonthecreek</div>
+      <div class="page-sub">Видео-идея · 23 июля 2026</div>
+    </div>
+    <div class="date-badge">23.07.2026<span>Дата</span></div>
+  </div>
+  <nav class="page-nav">
+    <a href="../../" class="nav-a">← Все отчёты</a>
+    <a href="../" class="nav-a">← 23 июл 2026</a>
+    <a href="#" class="nav-a active">#quietonthecreek</a>
+  </nav>
+</div>
+<div class="content">
+  <div class="idea-lead">
+    <div class="idea-hashtag">#quietonthecreek</div>
+    <h1 class="idea-title">Титры без слов</h1>
+    <p class="idea-desc">Примечание: как и в идее 1, отчёт описывает #quietonthecreek как вирусный звук, а не как конкретный сюжет шоу — идея не выдумывает сюжет, а честно визуализирует формат «реакция на звук через субтитры». Визуальный якорь — прогулка вдоль ручья на закате, пользователь идёт с телефоном, снимая горизонт. Рядом с кадром медленно, слово за словом, материализуется полупрозрачная субтитр-строка (как подписи к вирусному аудио) — но не изо рта пользователя, а как отдельный экранный элемент, будто титры самого клипа. Пользователь просто идёт и слушает в наушниках, спокойно, без единого слова. В конце — надпись «QUIET ON THE CREEK».</p>
+  </div>
+  <section class="section">
+    <div class="section-header">
+      <h2 class="section-title">Видео</h2>
+      <span class="section-badge">Пример генерации</span>
+    </div>
+    <div class="media-grid">
+      <div class="video-multi">
+        <div class="video-item"><video class="video-player" controls muted loop playsinline poster="https://temp-images.ws.pho.to/57e4bfc0520157a89dc0991f506a0766a5e50070.png"><source src="https://temp-images.ws.pho.to/709c89d58842f8a3cdad9dd15281b02b40a9c400.mp4" type="video/mp4"></video>
+          <div class="video-caption">woman in her late 30s with straight blonde shoulder-length hair and cat-eye glasses</div>
+        </div>
+        <div class="video-item"><video class="video-player" controls muted loop playsinline poster="https://temp-images.ws.pho.to/f2160f52cdbf6524082f58e0e8925a3f3723f9da.png"><source src="https://temp-images.ws.pho.to/588bf5e0b0002a7cc12b2c1c1d6ce13c3a35bf9d.mp4" type="video/mp4"></video>
+          <div class="video-caption">man in his early 30s with short brown hair, blue eyes, and a short beard</div>
+        </div>
+      </div>
+      <div class="prompts-col">
+        <details class="prompt-block">
+          <summary>Промпт для первого кадра <span class="prompt-label">GPT Image 2</span></summary>
+          <pre class="prompt-text">Turn the photo of the person into a medium shot (waist-up), walking along a golden-hour creek trail holding a phone up at chest height as if filming the water, wearing wireless earbuds, calm neutral expression, lips closed. Preserve the person&#x27;s exact facial identity: same age, face shape, skin tone, eye shape and color, exact hairstyle and hair color/texture, jawline, and any distinctive features (freckles, moles, facial hair, glasses) exactly as in the source photo. Warm low golden-hour sunlight, soft-focus creek and trees blurred behind, no caption text visible yet. Vertical 9:16 framing.</pre>
+        </details>
+        <details class="prompt-block">
+          <summary>Промпт для видео <span class="prompt-label">Kling · Grok</span></summary>
+          <pre class="prompt-text">Create a short cinematic video based on the uploaded image.
+The scene is a golden-hour creek trail. The person walks slowly along the bank holding a phone up at chest height, wearing earbuds, medium shot, face clearly visible throughout.
+
+Camera and motion structure:
+A single slow handheld tracking shot, moving alongside the person at a steady, gentle walking pace — no whip, no cuts:
+1. FRAMES 0–30%: The person walks calmly, phone raised, listening, no caption text visible yet.
+2. FRAMES 30–75%: A translucent, glowing subtitle-style caption line begins materializing word by word in the lower third of the frame — clearly a screen graphic representing the sound clip&#x27;s own caption track, not text coming from the person&#x27;s mouth. The person&#x27;s lips remain closed throughout; they simply keep walking and listening.
+3. FRAMES 75–100%: The caption line completes and holds. A small pale title card, &quot;QUIET ON THE CREEK&quot;, fades in just above it and remains until the last frame.
+
+Character:
+Preserve the person&#x27;s face, hair, skin tone, and identity exactly from the source image throughout the entire video. Do not alter their appearance. The person&#x27;s face remains clearly visible and the dominant subject throughout; their only motion is the steady, unhurried walk.
+
+Key visual events (in order):
+- The calm walk along the creek trail, phone raised, no captions yet
+- The subtitle-style caption line materializing word by word (the hero moment)
+- The completed caption holding in place
+- The &quot;QUIET ON THE CREEK&quot; title card locking in at the end
+
+Style:
+Warm, nostalgic golden-hour atmosphere — soft light, gentle handheld motion, intimate walking-video feel. The materializing caption is a screen graphic, styled like closed captions, not a speech bubble.
+
+Restrictions:
+- Do not change the person&#x27;s face, hair, skin tone, or identity at any point
+- The person&#x27;s face must remain clearly visible throughout the walk
+- No speaking, no singing, no lip-sync, no mouthing words at any point — the person&#x27;s lips remain closed the entire video
+- No speech bubbles — the caption line is a flat screen-locked graphic, never a bubble or shape pointing to the person&#x27;s mouth
+- The handheld tracking motion must stay smooth and steady — no whip cuts, no sudden movements
+- The caption line materializes only once, word by word, with no repeats or resets
+- The &quot;QUIET ON THE CREEK&quot; title card appears only in the final beat and must remain visible until the last frame
+- No jump cuts — the walk plays as one continuous, unhurried take
+- No other people in frame</pre>
+        </details>
+      </div>
+    </div>
+  </section>
+</div>
+</body>
+</html>
