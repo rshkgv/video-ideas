@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>#rainbowborder — Крутящийся волчок-цветокруг · Video Ideas</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      background: #f4f4f5; color: #111; font-size: 14px; line-height: 1.5;
+    }
+    .page-header {
+      background: #fff; border-bottom: 1px solid #e4e4e7; position: sticky;
+      top: 0; z-index: 100; box-shadow: 0 1px 8px rgba(0,0,0,.05);
+    }
+    .header-inner {
+      max-width: 1100px; margin: 0 auto; padding: 14px 28px;
+      display: flex; align-items: center; gap: 20px;
+    }
+    .brand {
+      font-size: 18px; font-weight: 800; letter-spacing: -.5px; color: #111;
+      white-space: nowrap; user-select: none; text-decoration: none;
+    }
+    .brand-tik { color: #fe2c55; }
+    .brand-tok { color: #010101; }
+    .brand-dot { color: #d1d1d1; margin: 0 6px; font-weight: 300; }
+    .brand-cc  { color: #888; font-size: 12px; font-weight: 500; }
+    .header-text { flex: 1; min-width: 0; }
+    .page-title {
+      font-size: 15px; font-weight: 700; letter-spacing: -.2px;
+      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    }
+    .page-sub { font-size: 11.5px; color: #999; margin-top: 2px; }
+    .date-badge {
+      background: #fe2c55; color: #fff; font-weight: 700; font-size: 12px;
+      border-radius: 8px; padding: 6px 14px; line-height: 1.4;
+      text-align: center; white-space: nowrap; flex-shrink: 0;
+    }
+    .date-badge span { display: block; font-size: 10px; font-weight: 500; opacity: .8; }
+    .page-nav {
+      max-width: 1100px; margin: 0 auto; padding: 0 28px;
+      display: flex; gap: 2px; border-top: 1px solid #f0f0f0;
+    }
+    .nav-a {
+      text-decoration: none; color: #999; font-size: 12.5px; font-weight: 500;
+      padding: 9px 14px; border-bottom: 2px solid transparent;
+      transition: color .15s, border-color .15s;
+    }
+    .nav-a:hover { color: #fe2c55; }
+    .nav-a.active { color: #fe2c55; border-bottom-color: #fe2c55; }
+    .content { max-width: 1100px; margin: 0 auto; padding: 36px 28px 80px; }
+    .section { margin-bottom: 52px; }
+    .section-header { display: flex; align-items: baseline; gap: 10px; margin-bottom: 16px; }
+    .section-title { font-size: 19px; font-weight: 800; letter-spacing: -.4px; }
+    .section-badge {
+      font-size: 10.5px; font-weight: 600; color: #999; background: #ebebeb;
+      padding: 3px 8px; border-radius: 20px; text-transform: uppercase; letter-spacing: .4px;
+    }
+    @media (max-width: 768px) {
+      .header-inner { gap: 12px; padding: 12px 16px; }
+      .date-badge { display: none; }
+      .page-nav { padding: 0 16px; }
+      .content { padding: 24px 16px 60px; }
+    }
+
+
+    .idea-lead {
+      background: #fff; border-radius: 12px; padding: 36px 40px 32px;
+      box-shadow: 0 1px 4px rgba(0,0,0,.07), 0 0 0 1px rgba(0,0,0,.05);
+      margin-bottom: 40px;
+    }
+    .idea-hashtag { font-size: 13px; font-weight: 700; color: #fe2c55; margin-bottom: 8px; }
+    .idea-title { font-size: 26px; font-weight: 800; letter-spacing: -.6px; line-height: 1.25; margin-bottom: 16px; }
+    .idea-desc { font-size: 14px; color: #444; line-height: 1.75; max-width: 720px; }
+    .media-grid {
+      display: grid; grid-template-columns: auto 1fr; gap: 28px; align-items: start;
+    }
+    .video-multi {
+      display: flex; gap: 16px; flex-wrap: wrap; align-items: flex-start;
+    }
+    .video-item {
+      width: 200px; display: flex; flex-direction: column; gap: 8px; flex-shrink: 0;
+    }
+    .video-caption {
+      font-size: 11px; color: #999; line-height: 1.4; padding: 0 2px;
+    }
+    .video-player {
+      width: 100%; aspect-ratio: 9/16; object-fit: cover; border-radius: 12px;
+      display: block; box-shadow: 0 2px 16px rgba(0,0,0,.14);
+    }
+    .frame-img {
+      width: 100%; aspect-ratio: 9/16; object-fit: cover; border-radius: 12px;
+      display: block; box-shadow: 0 2px 16px rgba(0,0,0,.14);
+    }
+    .prompts-col { display: flex; flex-direction: column; gap: 12px; }
+    .prompt-block {
+      background: #fff; border-radius: 10px;
+      box-shadow: 0 1px 4px rgba(0,0,0,.07), 0 0 0 1px rgba(0,0,0,.05); overflow: hidden;
+    }
+    .prompt-block summary {
+      padding: 14px 18px; font-size: 13px; font-weight: 700; cursor: pointer;
+      user-select: none; list-style: none; display: flex; align-items: center; gap: 8px; color: #333;
+    }
+    .prompt-block summary::-webkit-details-marker { display: none; }
+    .prompt-block summary::before { content: '▶'; font-size: 8px; color: #bbb; transition: transform .15s; flex-shrink: 0; }
+    .prompt-block[open] summary::before { transform: rotate(90deg); }
+    .prompt-block summary:hover { color: #fe2c55; }
+    .prompt-block summary:hover::before { color: #fe2c55; }
+    .prompt-label { font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: .5px; color: #bbb; margin-left: auto; }
+    .prompt-text {
+      padding: 14px 18px 16px; font-family: 'SF Mono','Fira Code','Menlo',monospace;
+      font-size: 11.5px; line-height: 1.7; color: #555; background: #f9f9f9;
+      border-top: 1px solid #f0f0f0; white-space: pre-wrap; word-break: break-word;
+      max-height: 320px; overflow-y: auto;
+    }
+    @media (max-width: 900px) {
+      .media-grid { grid-template-columns: 1fr; }
+      .video-multi { justify-content: center; }
+      .idea-lead { padding: 24px 22px 22px; }
+    }
+    @media (max-width: 520px) { .idea-title { font-size: 22px; } }
+
+  </style>
+</head>
+<body>
+<div class="page-header">
+  <div class="header-inner">
+    <a class="brand" href="../../">
+      <span class="brand-tik">Tik</span><span class="brand-tok">Tok</span>
+      <span class="brand-dot">·</span><span class="brand-cc">Video Ideas</span>
+    </a>
+    <div class="header-text">
+      <div class="page-title">#rainbowborder</div>
+      <div class="page-sub">Видео-идея · 20 июля 2026 · Выпуск 5</div>
+    </div>
+    <div class="date-badge">20.07.2026<span>Дата · Выпуск 5</span></div>
+  </div>
+  <nav class="page-nav">
+    <a href="../../" class="nav-a">← Все отчёты</a>
+    <a href="../" class="nav-a">← 20 июл 2026 · Выпуск 5</a>
+    <a href="#" class="nav-a active">#rainbowborder</a>
+  </nav>
+</div>
+<div class="content">
+  <div class="idea-lead">
+    <div class="idea-hashtag">#rainbowborder</div>
+    <h1 class="idea-title">Крутящийся волчок-цветокруг</h1>
+    <p class="idea-desc">Визуальный якорь — небольшой пластиковый волчок-цветовой круг (детская игрушка с секторами всех цветов радуги), который пользователь раскручивает пальцами прямо перед своим лицом. Пока волчок крутится, его отдельные цветные секторы сливаются в размытое, идеально ровное радужное кольцо — оптическая иллюзия, окружающая лицо пользователя тонким сплошным радужным ободком, пока волчок не начинает замедляться и снова показывать отдельные цвета. Пользователь наблюдает за этим с тихим, почти гипнотическим удовольствием.</p>
+  </div>
+  <section class="section">
+    <div class="section-header">
+      <h2 class="section-title">Видео</h2>
+      <span class="section-badge">Пример генерации</span>
+    </div>
+    <div class="media-grid">
+      <div class="video-multi">
+        <div class="video-item"><video class="video-player" controls muted loop playsinline poster="https://temp-images.ws.pho.to/108ad8d0f006602ef698c6e09bd517d0daaf6326.png"><source src="https://temp-images.ws.pho.to/db2614bf672dc8632ed639c9043bac7145552cdf.mp4" type="video/mp4"></video>
+          <div class="video-caption">woman in her late 30s with straight blonde shoulder-length hair and cat-eye glasses</div>
+        </div>
+        <div class="video-item"><video class="video-player" controls muted loop playsinline poster="https://temp-images.ws.pho.to/869f94878ec12ca00066b29ad6b8d4b7da793c15.png"><source src="https://temp-images.ws.pho.to/9a56a4b56472776779028c2a7e52d05e4f3da8e7.mp4" type="video/mp4"></video>
+          <div class="video-caption">man in his early 30s with short brown hair, blue eyes, and a short beard</div>
+        </div>
+      </div>
+      <div class="prompts-col">
+        <details class="prompt-block">
+          <summary>Промпт для первого кадра <span class="prompt-label">GPT Image 2</span></summary>
+          <pre class="prompt-text">Turn the photo of the person into a medium close-up, face clearly visible, holding a small rainbow-sectioned spinning top toy at chest height in front of them, about to spin it with two fingers, calm curious expression, neutral soft background, top not yet spinning.
+
+Setting &amp; Background: A plain, softly lit neutral background, keeping full attention on the toy and the face.
+
+Materials &amp; surface quality: The spinning top has distinct matte-colored plastic sections in rainbow order, a small metal spindle tip.
+
+Identity preservation (critical): preserve this exact person&#x27;s face shape, exact age, skin tone, eye shape and color, exact hairstyle, hair color and texture, jawline, and any distinctive features (freckles, moles, facial hair, glasses) precisely as shown in the source photo — no idealization, no bone-structure changes.
+
+Skin texture: Natural, photorealistic skin under soft neutral lighting, visible fine pores, no plastic smoothing.</pre>
+        </details>
+        <details class="prompt-block">
+          <summary>Промпт для видео <span class="prompt-label">Kling · Grok</span></summary>
+          <pre class="prompt-text">Create a short cinematic video based on the uploaded image.
+The scene is a plain neutral setting. The person holds a small rainbow-sectioned spinning top near their face, medium close-up, face clearly visible throughout.
+
+Camera and motion structure:
+Keep the overall shot completely static. No zoom, no camera movement — the toy&#x27;s spin is the only motion:
+1. FRAMES 0–20%: The person holds the top steady, distinct rainbow sections visible, about to spin it.
+2. FRAMES 20–55%: They give it a sharp twist, and the top begins spinning rapidly — the distinct color sections blur together into a smooth, continuous rainbow ring shape as the spin speeds up, appearing to gently ring the lower part of the person&#x27;s face.
+3. FRAMES 55–80%: The top holds a steady fast spin, the rainbow ring illusion fully formed and stable, the person watching with quiet, almost hypnotic pleasure.
+4. FRAMES 80–100%: The spin gradually slows, the individual colors becoming distinguishable again, and the person smiles softly at the toy as it winds down. Hold on this final gentle beat to the last frame.
+
+Character:
+Preserve the person&#x27;s face, hair, skin tone, and identity exactly from the source image throughout the entire video. Do not alter their appearance. The person&#x27;s face remains clearly visible beside the spinning toy throughout — the ring illusion forms near the toy, never obscuring the face itself.
+
+Key visual events (in order):
+- The still top with distinct rainbow sections
+- The sharp twist and the blur into a solid rainbow ring illusion (the hero moment)
+- The steady hypnotic spin
+- The gradual slowing and soft smile at the end
+
+Style:
+Calm, meditative, tactile-toy realism — the optical illusion of the spinning colors is the entire visual anchor, gentle and quiet rather than flashy.
+
+Restrictions:
+- Do not change the person&#x27;s face, hair, skin tone, or identity at any point
+- The person&#x27;s face must remain clearly visible beside the toy throughout — the ring illusion forms around the toy, never covering the face
+- No speaking, no singing, no lip-sync, no mouthing words — quiet, hypnotic pleasure and a soft smile are the only reactions
+- No speech bubbles
+- The top spins only once, accelerating then decelerating naturally — no resets or repeated spins
+- No jump cuts — the entire spin-up-to-wind-down sequence plays as one continuous, unhurried take
+- No other people in frame
+- No social-media UI overlays</pre>
+        </details>
+      </div>
+    </div>
+  </section>
+</div>
+</body>
+</html>
