@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>#brandnewday — POV: снова тот момент · Video Ideas</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      background: #f4f4f5; color: #111; font-size: 14px; line-height: 1.5;
+    }
+    .page-header {
+      background: #fff; border-bottom: 1px solid #e4e4e7; position: sticky;
+      top: 0; z-index: 100; box-shadow: 0 1px 8px rgba(0,0,0,.05);
+    }
+    .header-inner {
+      max-width: 1100px; margin: 0 auto; padding: 14px 28px;
+      display: flex; align-items: center; gap: 20px;
+    }
+    .brand {
+      font-size: 18px; font-weight: 800; letter-spacing: -.5px; color: #111;
+      white-space: nowrap; user-select: none; text-decoration: none;
+    }
+    .brand-tik { color: #fe2c55; }
+    .brand-tok { color: #010101; }
+    .brand-dot { color: #d1d1d1; margin: 0 6px; font-weight: 300; }
+    .brand-cc  { color: #888; font-size: 12px; font-weight: 500; }
+    .header-text { flex: 1; min-width: 0; }
+    .page-title {
+      font-size: 15px; font-weight: 700; letter-spacing: -.2px;
+      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    }
+    .page-sub { font-size: 11.5px; color: #999; margin-top: 2px; }
+    .date-badge {
+      background: #fe2c55; color: #fff; font-weight: 700; font-size: 12px;
+      border-radius: 8px; padding: 6px 14px; line-height: 1.4;
+      text-align: center; white-space: nowrap; flex-shrink: 0;
+    }
+    .date-badge span { display: block; font-size: 10px; font-weight: 500; opacity: .8; }
+    .page-nav {
+      max-width: 1100px; margin: 0 auto; padding: 0 28px;
+      display: flex; gap: 2px; border-top: 1px solid #f0f0f0;
+    }
+    .nav-a {
+      text-decoration: none; color: #999; font-size: 12.5px; font-weight: 500;
+      padding: 9px 14px; border-bottom: 2px solid transparent;
+      transition: color .15s, border-color .15s;
+    }
+    .nav-a:hover { color: #fe2c55; }
+    .nav-a.active { color: #fe2c55; border-bottom-color: #fe2c55; }
+    .content { max-width: 1100px; margin: 0 auto; padding: 36px 28px 80px; }
+    .section { margin-bottom: 52px; }
+    .section-header { display: flex; align-items: baseline; gap: 10px; margin-bottom: 16px; }
+    .section-title { font-size: 19px; font-weight: 800; letter-spacing: -.4px; }
+    .section-badge {
+      font-size: 10.5px; font-weight: 600; color: #999; background: #ebebeb;
+      padding: 3px 8px; border-radius: 20px; text-transform: uppercase; letter-spacing: .4px;
+    }
+    @media (max-width: 768px) {
+      .header-inner { gap: 12px; padding: 12px 16px; }
+      .date-badge { display: none; }
+      .page-nav { padding: 0 16px; }
+      .content { padding: 24px 16px 60px; }
+    }
+
+
+    .idea-lead {
+      background: #fff; border-radius: 12px; padding: 36px 40px 32px;
+      box-shadow: 0 1px 4px rgba(0,0,0,.07), 0 0 0 1px rgba(0,0,0,.05);
+      margin-bottom: 40px;
+    }
+    .idea-hashtag { font-size: 13px; font-weight: 700; color: #fe2c55; margin-bottom: 8px; }
+    .idea-title { font-size: 26px; font-weight: 800; letter-spacing: -.6px; line-height: 1.25; margin-bottom: 16px; }
+    .idea-desc { font-size: 14px; color: #444; line-height: 1.75; max-width: 720px; }
+    .media-grid {
+      display: grid; grid-template-columns: auto 1fr; gap: 28px; align-items: start;
+    }
+    .video-multi {
+      display: flex; gap: 16px; flex-wrap: wrap; align-items: flex-start;
+    }
+    .video-item {
+      width: 200px; display: flex; flex-direction: column; gap: 8px; flex-shrink: 0;
+    }
+    .video-caption {
+      font-size: 11px; color: #999; line-height: 1.4; padding: 0 2px;
+    }
+    .video-player {
+      width: 100%; aspect-ratio: 9/16; object-fit: cover; border-radius: 12px;
+      display: block; box-shadow: 0 2px 16px rgba(0,0,0,.14);
+    }
+    .frame-img {
+      width: 100%; aspect-ratio: 9/16; object-fit: cover; border-radius: 12px;
+      display: block; box-shadow: 0 2px 16px rgba(0,0,0,.14);
+    }
+    .prompts-col { display: flex; flex-direction: column; gap: 12px; }
+    .prompt-block {
+      background: #fff; border-radius: 10px;
+      box-shadow: 0 1px 4px rgba(0,0,0,.07), 0 0 0 1px rgba(0,0,0,.05); overflow: hidden;
+    }
+    .prompt-block summary {
+      padding: 14px 18px; font-size: 13px; font-weight: 700; cursor: pointer;
+      user-select: none; list-style: none; display: flex; align-items: center; gap: 8px; color: #333;
+    }
+    .prompt-block summary::-webkit-details-marker { display: none; }
+    .prompt-block summary::before { content: '▶'; font-size: 8px; color: #bbb; transition: transform .15s; flex-shrink: 0; }
+    .prompt-block[open] summary::before { transform: rotate(90deg); }
+    .prompt-block summary:hover { color: #fe2c55; }
+    .prompt-block summary:hover::before { color: #fe2c55; }
+    .prompt-label { font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: .5px; color: #bbb; margin-left: auto; }
+    .prompt-text {
+      padding: 14px 18px 16px; font-family: 'SF Mono','Fira Code','Menlo',monospace;
+      font-size: 11.5px; line-height: 1.7; color: #555; background: #f9f9f9;
+      border-top: 1px solid #f0f0f0; white-space: pre-wrap; word-break: break-word;
+      max-height: 320px; overflow-y: auto;
+    }
+    @media (max-width: 900px) {
+      .media-grid { grid-template-columns: 1fr; }
+      .video-multi { justify-content: center; }
+      .idea-lead { padding: 24px 22px 22px; }
+    }
+    @media (max-width: 520px) { .idea-title { font-size: 22px; } }
+
+  </style>
+</head>
+<body>
+<div class="page-header">
+  <div class="header-inner">
+    <a class="brand" href="../../../">
+      <span class="brand-tik">Tik</span><span class="brand-tok">Tok</span>
+      <span class="brand-dot">·</span><span class="brand-cc">Video Ideas</span>
+    </a>
+    <div class="header-text">
+      <div class="page-title">#brandnewday</div>
+      <div class="page-sub">Видео-идея · 8 августа 2026</div>
+    </div>
+    <div class="date-badge">08.08.2026<span>Дата</span></div>
+  </div>
+  <nav class="page-nav">
+    <a href="../../../" class="nav-a">← Все отчёты</a>
+    <a href="../../#za" class="nav-a">← 8 авг 2026</a>
+    <a href="#" class="nav-a active">#brandnewday</a>
+  </nav>
+</div>
+<div class="content">
+  <div class="idea-lead">
+    <div class="idea-hashtag">#brandnewday</div>
+    <h1 class="idea-title">POV: снова тот момент</h1>
+    <p class="idea-desc">Пользователь лежит на кровати с ноутбуком, вид от третьего лица с фиксированной, слегка приближённой камерой — классический «POV» формат хэштега. Над кадром плавает текстовая надпись с забавным личным наблюдением. Пользователь закрывает ноутбук, откидывает голову на подушку с закрытыми глазами — и когда открывает их снова, комната вокруг уже залита совсем другим, ярким утренним светом, будто прошла ночь за долю секунды, а текстовый оверлей плавно сменяется новой фразой. Пользователь резко садится, удивлённо оглядываясь, затем расплывается в улыбке, осознав: это буквально «совершенно новый день». Идея 1 напрямую использует формат «POV + текст-наблюдение» из реальных видео хэштега, добавляя единственный визуальный твист — мгновенную смену ночи на утро.</p>
+  </div>
+  <section class="section">
+    <div class="section-header">
+      <h2 class="section-title">Видео</h2>
+      <span class="section-badge">Пример генерации</span>
+    </div>
+    <div class="media-grid">
+      <div class="video-multi">
+        <div class="video-item"><video class="video-player" controls muted loop playsinline poster="https://temp-images.ws.pho.to/24667b53886328c2f1abfd0f7b815f8c36eb9552.png"><source src="https://temp-images.ws.pho.to/2ac5ddf15d33a7bdd014cd7ef8d006b0a6a52f3f.mp4" type="video/mp4"></video>
+          <div class="video-caption">man in his early 30s with short brown hair, blue eyes, and a short beard</div>
+        </div>
+        <div class="video-item"><video class="video-player" controls muted loop playsinline poster="https://temp-images.ws.pho.to/01f5a3bd3cae014fc5fbbd623bdea0c8819e6bf5.png"><source src="https://temp-images.ws.pho.to/5351d21be54f48b238e0de726a304724df697d5b.mp4" type="video/mp4"></video>
+          <div class="video-caption">woman in her late 30s with straight blonde shoulder-length hair and cat-eye glasses</div>
+        </div>
+      </div>
+      <div class="prompts-col">
+        <details class="prompt-block">
+          <summary>Промпт для первого кадра <span class="prompt-label">GPT Image 2</span></summary>
+          <pre class="prompt-text">Turn the photo of the person into a natural, medium-close shot (chest-up), lying on a bed propped up on one elbow, head resting on their hand, looking down at a laptop open in front of them on the bed, in a plain bedroom lit with a warm indoor lamp glow suggesting nighttime. Expression: mildly amused, relaxed, unremarkable — the &quot;before&quot; mood typical of a casual POV clip.
+
+Setting &amp; Background: an ordinary bedroom at night — a plain wall, a bit of a pillow and blanket texture, the room lit only by a warm lamp, consistent with a late-evening laptop moment; window (if visible) shows darkness outside.
+
+Attire: comfortable loungewear/sleepwear, consistent with a relaxed evening-in-bed moment.
+
+Lighting: warm, dim, low-key lamp lighting typical of a nighttime bedroom scene, casting soft shadows.
+
+On-screen text/graphics: none in the image itself — the floating text overlay described in the video prompt appears only once the video begins, not baked into this still frame.
+
+Camera specs: a fixed, slightly elevated medium-close framing typical of a phone propped nearby for a POV-style clip, natural and unpolished rather than cinematic.
+
+Identity preservation (critical): preserve this exact person&#x27;s face shape, exact age, skin tone, eye shape and color, exact hairstyle, hair color and texture, jawline, and any distinctive features (freckles, moles, facial hair, glasses) precisely as shown in the source photo — no idealization, no bone-structure changes.
+
+Realism/authenticity artifacts: natural skin texture, no over-smoothing, no logos or text visible anywhere in the frame at this stage.</pre>
+        </details>
+        <details class="prompt-block">
+          <summary>Промпт для видео <span class="prompt-label">Kling · Grok</span></summary>
+          <pre class="prompt-text">Create a short cinematic video based on the uploaded image. The scene is a dim, warmly lit bedroom at night; the person lies propped on one elbow looking at an open laptop.
+
+Camera and motion structure:
+FRAMES 0–20%: Keep the camera fixed at the established angle. A floating text overlay fades in near the top of the frame with a light, relatable personal observation about the day (kept short and generic in tone, not naming any real brand, show, or person). The person continues looking at the laptop, unremarkable and relaxed.
+FRAMES 20–40%: The person closes the laptop, sets it aside, and leans back onto the pillow, closing their eyes, settling in as if drifting to sleep.
+FRAMES 40–55%: Instantly, in a single frame, the entire room&#x27;s lighting transforms from the warm, dim night tone to bright, soft morning daylight streaming in — as though no time has passed for the person but the room itself has jumped straight to morning. The original text overlay simultaneously swaps to a new short phrase marking the fresh start of the day.
+FRAMES 55–80%: The person&#x27;s eyes snap open at the sudden brightness, and they sit up abruptly, looking around the now sunlit room with wide-eyed surprise.
+FRAMES 80–100%: Realization dawns and the person&#x27;s expression shifts into a warm, amused smile directly at the camera, settling into the bright new morning atmosphere.
+
+Character: Preserve the person&#x27;s face, hair, skin tone, and identity exactly from the source image throughout the entire video. Movement progresses from lying and reading, to closing the laptop and lying back, to sitting up abruptly at the light change, to a settled smile — no other movement.
+
+Key visual events (in order):
+1. The floating text overlay&#x27;s first phrase fading in over the laptop scene (frames 0–20%)
+2. The instantaneous flip of the entire room from night lighting to bright morning daylight, paired with the text overlay changing to its second phrase (frames 40–55%) — this is the hero moment
+3. The person sitting up in surprise and then smiling at the sudden new morning (frames 55–100%)
+
+Style: Casual, authentic phone-POV aesthetic for the setup, with one instantaneous, dramatic lighting-flip as the sole visual effect. The mood shifts from sleepy amusement to bright, comedic surprise and warmth.
+
+Restrictions:
+- Do not change the person&#x27;s face, hair, skin tone, or identity at any point
+- No speaking, no singing, no lip-sync, no mouthing words — silent reactions only; the floating text overlays convey the &quot;voice&quot; of the moment, not the person speaking
+- The person must remain in frame, recognizable, and the visual focus for the entire video
+- No speech bubbles — the floating text overlays are plain on-screen caption text, not speech/dialogue bubbles, and must not be styled to look like a chat bubble
+- The instantaneous night-to-morning lighting flip across the whole room is the hero moment and must be a single, unmistakable, complete transformation — not a gradual fade or partial change — happening within one clear beat around the 40–55% mark
+- The text overlay must change exactly twice — once near the start, once at the moment of the lighting flip — no additional text changes
+- No additional gestures, actions, or beats beyond looking at the laptop, closing it, lying back, the lighting flip, sitting up, and the final smile — no extra props, no other people entering frame
+- The person&#x27;s abrupt sit-up must read as a natural startled reaction, not exaggerated or played as distress
+- No aggressive or violent movements
+- No brand names, logos, app names, or real company/show references in the text overlay content</pre>
+        </details>
+      </div>
+    </div>
+  </section>
+</div>
+</body>
+</html>

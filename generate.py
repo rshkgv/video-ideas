@@ -68,9 +68,12 @@ def parse_idea(md_path):
     }
 
 
-def load_hashtag_flags(date):
-    """Read ideas/{date}/_hashtag_flags.json (hashtag -> {"reason": "..."}), if present."""
-    p = IDEAS_DIR / date / '_hashtag_flags.json'
+def load_hashtag_flags(ideas_dir):
+    """Read {ideas_dir}/_hashtag_flags.json (hashtag -> {"reason": "..."}), if present.
+    ideas_dir is the actual folder holding the .md files — IDEAS_DIR/date for a
+    flat/legacy date, or IDEAS_DIR/date/{country} for one country of a
+    multi-country date."""
+    p = ideas_dir / '_hashtag_flags.json'
     if not p.exists():
         return {}
     try:
@@ -95,11 +98,12 @@ def group_ideas(ideas_with_media):
         groups[key].sort(key=lambda pair: pair[0]['idea_num'])
     return [(key, groups[key]) for key in order]
 
-def get_runs(slug, date):
+def get_runs(ideas_dir, slug):
     """Get every completed run (one per photo profile) from the pipeline JSON,
     in the order they appear in `runs`. Each dict has at least
-    frame/video/descriptor keys; failed runs are skipped."""
-    p = IDEAS_DIR / date / f'{slug}_pipeline.json'
+    frame/video/descriptor keys; failed runs are skipped. ideas_dir is the same
+    folder the idea .md/{slug}_pipeline.json live in (see load_hashtag_flags)."""
+    p = ideas_dir / f'{slug}_pipeline.json'
     if not p.exists():
         return []
     try:
@@ -289,25 +293,126 @@ def gen_main_index(date_entries):
 
 # ── site/{date}/index.html ────────────────────────────────────────────────────
 
-def _idea_dropdown_html(base_hashtag, items):
+DATE_INDEX_CSS = """
+    .table-wrap {
+      background: #fff; border-radius: 12px; overflow: hidden;
+      box-shadow: 0 1px 4px rgba(0,0,0,.07), 0 0 0 1px rgba(0,0,0,.05);
+    }
+    .ht-table { width: 100%; border-collapse: collapse; }
+    .ht-table thead th {
+      text-align: left; padding: 10px 16px; font-size: 10.5px; font-weight: 600;
+      text-transform: uppercase; letter-spacing: .5px; color: #aaa;
+      background: #f9f9f9; border-bottom: 1px solid #ebebeb;
+    }
+    .ht-table tbody td { padding: 0; border-bottom: 1px solid #f2f2f2; vertical-align: middle; }
+    .ht-table tbody tr:last-child td { border-bottom: none; }
+    .ht-table tbody tr:hover td { background: #fafbff; }
+    .td-inner { padding: 12px 16px; display: flex; align-items: center; position: relative; }
+    .rank-num { font-weight: 800; font-size: 14px; display: inline-block; min-width: 24px; text-align: right; color: #ccc; }
+    .thumb-cell { padding: 8px 10px 8px 16px !important; }
+    .thumb-img { width: 44px; height: 78px; object-fit: cover; border-radius: 6px; display: block; background: #eee; }
+    .thumb-placeholder { width: 44px; height: 78px; border-radius: 6px; background: #eee; }
+    .htag-link { font-weight: 700; font-size: 14px; color: #111; text-decoration: none; display: inline-flex; align-items: center; gap: 1px; }
+    .htag-link:hover { color: #fe2c55; }
+    .htag-hash { color: #bbb; font-weight: 400; }
+    .htag-disabled { color: #999; cursor: default; }
+    .htag-disabled:hover { color: #999; }
+    .td-title { font-size: 13px; color: #555; padding-left: 12px; }
+    .td-reason { font-size: 12.5px; color: #777; padding: 12px 16px 12px 12px; line-height: 1.5; max-width: 420px; }
+    .td-arrow { color: #ddd; font-size: 13px; padding: 12px 20px 12px 8px !important; text-align: right; }
+    .ht-table tbody tr:hover .td-arrow { color: #fe2c55; }
+    .no-ideas-row { opacity: .7; }
+    .no-ideas-row:hover td { background: transparent !important; }
+    @media (max-width: 520px) { .td-title { display: none; } .td-reason { display: none; } }
+    .htag-label {
+      font-weight: 700; font-size: 14px; color: #111; display: inline-flex; align-items: center; gap: 1px;
+    }
+    .idea-links { display: inline-flex; align-items: center; gap: 6px; margin-left: 12px; flex-wrap: wrap; }
+    .idea-links a {
+      font-size: 12px; font-weight: 600; color: #666; text-decoration: none;
+      background: #f2f2f2; border-radius: 20px; padding: 4px 11px; white-space: nowrap;
+      transition: background .15s, color .15s;
+    }
+    .idea-links a:hover { background: #fe2c55; color: #fff; }
+    .section-title-warn { color: #92400e; }
+    .section-badge-warn { background: #fef3c7; color: #92400e; }
+    .section-title-brand { color: #3730a3; }
+    .section-badge-brand { background: #e0e7ff; color: #3730a3; }
+    .not-touch-note { font-size: 12.5px; color: #999; margin: -8px 0 16px; max-width: 640px; line-height: 1.6; }
+    .not-touch-table thead th { background: #fffbeb; }
+    .brand-media-table thead th { background: #eef2ff; }
+"""
+
+# Country tabs — only rendered when a report date has more than one country
+# (ideas/{date}/{country}/ subfolders). Mirrors the tab pattern used by the
+# report site itself (nnAgentsReports/{date}/index.html), adapted to this
+# site's own palette instead of copying its CSS.
+TABS_CSS = """
+    .tabs-bar { background: #fff; border-bottom: 1px solid #e4e4e7; position: sticky; top: 93px; z-index: 99; }
+    .tabs-inner { max-width: 1100px; margin: 0 auto; padding: 0 28px; display: flex; gap: 4px; overflow-x: auto; }
+    .tab-btn {
+      background: none; border: none; border-bottom: 2px solid transparent;
+      padding: 12px 16px; cursor: pointer; font-family: inherit; font-size: 13px;
+      font-weight: 600; color: #999; white-space: nowrap; display: flex;
+      align-items: center; gap: 7px; transition: color .15s, border-color .15s;
+    }
+    .tab-btn:hover { color: #111; }
+    .tab-btn.active { color: #fe2c55; border-bottom-color: #fe2c55; }
+    .tab-flag { font-size: 16px; }
+    .tab-count { font-size: 10.5px; font-weight: 700; background: #ebebeb; color: #999; padding: 1px 7px; border-radius: 20px; }
+    .tab-btn.active .tab-count { background: #fff0f3; color: #fe2c55; }
+    .tab-panel { display: none; }
+    .tab-panel.active { display: block; }
+    @media (max-width: 768px) { .tabs-inner { padding: 0 16px; } }
+"""
+
+TABS_JS = """
+<script>
+  function showTab(cc) {
+    document.querySelectorAll('.tab-panel').forEach(function(p) { p.classList.remove('active'); });
+    document.querySelectorAll('.tab-btn').forEach(function(b) { b.classList.remove('active'); });
+    document.getElementById('panel-' + cc).classList.add('active');
+    document.querySelector('.tab-btn[data-tab="' + cc + '"]').classList.add('active');
+    if (history.replaceState) history.replaceState(null, '', '#' + cc);
+  }
+  var initialTab = (location.hash || '').slice(1);
+  if (initialTab && document.getElementById('panel-' + initialTab)) showTab(initialTab);
+</script>"""
+
+
+def country_flag_emoji(country_code):
+    """Regional-indicator flag emoji from a 2-letter country code, e.g. 'us' -> 🇺🇸.
+    Falls back to the bare code for anything that isn't exactly 2 letters
+    (e.g. the legacy single-market case never reaches here, but a malformed
+    or 3-letter country folder name degrades gracefully instead of crashing)."""
+    code = country_code.strip().upper()
+    if len(code) != 2 or not code.isalpha():
+        return ''
+    return ''.join(chr(0x1F1E6 + (ord(c) - ord('A'))) for c in code)
+
+
+def _idea_dropdown_html(base_hashtag, items, link_prefix=''):
     """items: list of (idea, runs) sorted by idea_num, all for the same hashtag.
     Returns the hashtag-cell HTML: a plain link if there's one idea, or the
     hashtag as plain text followed by "Идея 1" / "Идея 2" / ... links laid
     out inline to its right if there are several."""
     if len(items) == 1:
         idea = items[0][0]
-        return f'<a class="htag-link" href="./{idea["slug"]}/"><span class="htag-hash">#</span>{html.escape(base_hashtag)}</a>'
+        return f'<a class="htag-link" href="./{link_prefix}{idea["slug"]}/"><span class="htag-hash">#</span>{html.escape(base_hashtag)}</a>'
     links = ''.join(
-        f'<a href="./{idea["slug"]}/">Идея {idea["idea_num"]}</a>'
+        f'<a href="./{link_prefix}{idea["slug"]}/">Идея {idea["idea_num"]}</a>'
         for idea, _ in items
     )
     return f"""<span class="htag-label"><span class="htag-hash">#</span>{html.escape(base_hashtag)}</span><span class="idea-links">{links}</span>"""
 
 
-def gen_date_index(date, ideas_with_media):
-    """ideas_with_media: list of (idea_dict, runs) where runs is get_runs()'s list"""
-    yyyy, mm, dd, suffix_label = split_report_date(date)
-    flags = load_hashtag_flags(date)
+def _render_ideas_sections(ideas_with_media, flags, link_prefix=''):
+    """Builds the main/brand/not-touch <section> HTML for one batch of ideas
+    (one country, or the whole flat/legacy date). link_prefix is prepended to
+    every idea href — '' for flat mode, '{country}/' for a tab panel, so links
+    still resolve correctly from the single date-index page they're both
+    embedded in. Returns (ideas_section_html, brand_section_html,
+    not_touch_section_html, n_ideas, n_videos)."""
     grouped = group_ideas(ideas_with_media)
 
     main_groups = [(bh, items) for bh, items in grouped if bh not in flags]
@@ -335,7 +440,7 @@ def gen_date_index(date, ideas_with_media):
         <td><div class="td-inner">
           <span class="rank-num">{i}</span>
           <span style="width:16px"></span>
-          {_idea_dropdown_html(base_hashtag, items)}
+          {_idea_dropdown_html(base_hashtag, items, link_prefix)}
         </div></td>
         <td class="td-arrow">→</td>
       </tr>"""
@@ -352,7 +457,7 @@ def gen_date_index(date, ideas_with_media):
         <td><div class="td-inner">
           <span class="rank-num">{i}</span>
           <span style="width:16px"></span>
-          {_idea_dropdown_html(base_hashtag, items)}
+          {_idea_dropdown_html(base_hashtag, items, link_prefix)}
         </div></td>
         <td class="td-reason">{html.escape(flags[base_hashtag].get('reason', ''))}</td>
         <td class="td-arrow">→</td>
@@ -414,77 +519,7 @@ def gen_date_index(date, ideas_with_media):
     n = len(ideas_with_media)
     n_videos = sum(1 for _, runs in ideas_with_media if any(r['video'] for r in runs))
 
-    return head(f"Video Ideas — {int(dd)} {MONTH_FULL[mm]} {yyyy}{suffix_label}") + f"""
-  <style>
-{COMMON_CSS}
-    .table-wrap {{
-      background: #fff; border-radius: 12px; overflow: hidden;
-      box-shadow: 0 1px 4px rgba(0,0,0,.07), 0 0 0 1px rgba(0,0,0,.05);
-    }}
-    .ht-table {{ width: 100%; border-collapse: collapse; }}
-    .ht-table thead th {{
-      text-align: left; padding: 10px 16px; font-size: 10.5px; font-weight: 600;
-      text-transform: uppercase; letter-spacing: .5px; color: #aaa;
-      background: #f9f9f9; border-bottom: 1px solid #ebebeb;
-    }}
-    .ht-table tbody td {{ padding: 0; border-bottom: 1px solid #f2f2f2; vertical-align: middle; }}
-    .ht-table tbody tr:last-child td {{ border-bottom: none; }}
-    .ht-table tbody tr:hover td {{ background: #fafbff; }}
-    .td-inner {{ padding: 12px 16px; display: flex; align-items: center; position: relative; }}
-    .rank-num {{ font-weight: 800; font-size: 14px; display: inline-block; min-width: 24px; text-align: right; color: #ccc; }}
-    .thumb-cell {{ padding: 8px 10px 8px 16px !important; }}
-    .thumb-img {{ width: 44px; height: 78px; object-fit: cover; border-radius: 6px; display: block; background: #eee; }}
-    .thumb-placeholder {{ width: 44px; height: 78px; border-radius: 6px; background: #eee; }}
-    .htag-link {{ font-weight: 700; font-size: 14px; color: #111; text-decoration: none; display: inline-flex; align-items: center; gap: 1px; }}
-    .htag-link:hover {{ color: #fe2c55; }}
-    .htag-hash {{ color: #bbb; font-weight: 400; }}
-    .htag-disabled {{ color: #999; cursor: default; }}
-    .htag-disabled:hover {{ color: #999; }}
-    .td-title {{ font-size: 13px; color: #555; padding-left: 12px; }}
-    .td-reason {{ font-size: 12.5px; color: #777; padding: 12px 16px 12px 12px; line-height: 1.5; max-width: 420px; }}
-    .td-arrow {{ color: #ddd; font-size: 13px; padding: 12px 20px 12px 8px !important; text-align: right; }}
-    .ht-table tbody tr:hover .td-arrow {{ color: #fe2c55; }}
-    .no-ideas-row {{ opacity: .7; }}
-    .no-ideas-row:hover td {{ background: transparent !important; }}
-    @media (max-width: 520px) {{ .td-title {{ display: none; }} .td-reason {{ display: none; }} }}
-    .htag-label {{
-      font-weight: 700; font-size: 14px; color: #111; display: inline-flex; align-items: center; gap: 1px;
-    }}
-    .idea-links {{ display: inline-flex; align-items: center; gap: 6px; margin-left: 12px; flex-wrap: wrap; }}
-    .idea-links a {{
-      font-size: 12px; font-weight: 600; color: #666; text-decoration: none;
-      background: #f2f2f2; border-radius: 20px; padding: 4px 11px; white-space: nowrap;
-      transition: background .15s, color .15s;
-    }}
-    .idea-links a:hover {{ background: #fe2c55; color: #fff; }}
-    .section-title-warn {{ color: #92400e; }}
-    .section-badge-warn {{ background: #fef3c7; color: #92400e; }}
-    .section-title-brand {{ color: #3730a3; }}
-    .section-badge-brand {{ background: #e0e7ff; color: #3730a3; }}
-    .not-touch-note {{ font-size: 12.5px; color: #999; margin: -8px 0 16px; max-width: 640px; line-height: 1.6; }}
-    .not-touch-table thead th {{ background: #fffbeb; }}
-    .brand-media-table thead th {{ background: #eef2ff; }}
-  </style>
-</head>
-<body>
-<div class="page-header">
-  <div class="header-inner">
-    <a class="brand" href="../">
-      <span class="brand-tik">Tik</span><span class="brand-tok">Tok</span>
-      <span class="brand-dot">·</span><span class="brand-cc">Video Ideas</span>
-    </a>
-    <div class="header-text">
-      <div class="page-title">Видео-идеи · {int(dd)} {MONTH_FULL[mm]} {yyyy}{suffix_label}</div>
-      <div class="page-sub">AI-сгенерированные эффекты по трендовым хештегам TikTok US</div>
-    </div>
-    <div class="date-badge">{dd}.{mm}.{yyyy}<span>Дата отчёта{suffix_label}</span></div>
-  </div>
-  <nav class="page-nav">
-    <a href="../" class="nav-a">← Все отчёты</a>
-    <a href="#ideas" class="nav-a active">Идеи</a>
-  </nav>
-</div>
-<div class="content">
+    ideas_section = f"""
   <section id="ideas" class="section">
     <div class="section-header">
       <h2 class="section-title">Идеи</h2>
@@ -501,8 +536,81 @@ def gen_date_index(date, ideas_with_media):
         </tbody>
       </table>
     </div>
-  </section>{brand_section}{not_touch_section}
-</div>
+  </section>"""
+
+    return ideas_section, brand_section, not_touch_section, n, n_videos
+
+
+def gen_date_index(date, mode, data):
+    """mode == 'flat': data is a list of (idea_dict, runs) — legacy/single-market
+    date, or a multi-country date collapsed to one country (no tabs either way).
+    mode == 'countries': data is {country_code: [(idea_dict, runs), ...]} with
+    2+ countries — renders a tab per country, mirroring the report site's own
+    country-tab pattern (see TABS_CSS/TABS_JS)."""
+    yyyy, mm, dd, suffix_label = split_report_date(date)
+
+    if mode == 'flat':
+        flags = load_hashtag_flags(IDEAS_DIR / date)
+        ideas_section, brand_section, not_touch_section, n, n_videos = _render_ideas_sections(data, flags)
+        tabs_bar = ''
+        body = f'{ideas_section}{brand_section}{not_touch_section}'.lstrip('\n')
+        tabs_css = ''
+        tabs_js = ''
+    else:
+        countries = sorted(data.keys())
+        tab_buttons, tab_panels = '', ''
+        n = n_videos = 0
+        for i, country in enumerate(countries):
+            flags = load_hashtag_flags(IDEAS_DIR / date / country)
+            ideas_section, brand_section, not_touch_section, c_n, c_n_videos = _render_ideas_sections(
+                data[country], flags, link_prefix=f'{country}/')
+            n += c_n
+            n_videos += c_n_videos
+            active = ' active' if i == 0 else ''
+            flag = country_flag_emoji(country)
+            tab_buttons += f"""<button class="tab-btn{active}" data-tab="{country}" onclick="showTab('{country}')"><span class="tab-flag">{flag}</span> {html.escape(country.upper())}<span class="tab-count">{c_n}</span></button>"""
+            tab_panels += f"""
+<div class="tab-panel{active}" id="panel-{country}">{ideas_section}{brand_section}{not_touch_section}
+</div>"""
+        tabs_bar = f"""
+<div class="tabs-bar">
+  <div class="tabs-inner">{tab_buttons}
+  </div>
+</div>"""
+        body = tab_panels
+        tabs_css = '\n' + TABS_CSS
+        tabs_js = TABS_JS
+
+    page_sub = 'AI-сгенерированные эффекты по трендовым хештегам TikTok' if mode == 'countries' \
+        else 'AI-сгенерированные эффекты по трендовым хештегам TikTok US'
+
+    return head(f"Video Ideas — {int(dd)} {MONTH_FULL[mm]} {yyyy}{suffix_label}") + f"""
+  <style>
+{COMMON_CSS}
+{DATE_INDEX_CSS}{tabs_css}
+  </style>
+</head>
+<body>
+<div class="page-header">
+  <div class="header-inner">
+    <a class="brand" href="../">
+      <span class="brand-tik">Tik</span><span class="brand-tok">Tok</span>
+      <span class="brand-dot">·</span><span class="brand-cc">Video Ideas</span>
+    </a>
+    <div class="header-text">
+      <div class="page-title">Видео-идеи · {int(dd)} {MONTH_FULL[mm]} {yyyy}{suffix_label}</div>
+      <div class="page-sub">{page_sub}</div>
+    </div>
+    <div class="date-badge">{dd}.{mm}.{yyyy}<span>Дата отчёта{suffix_label}</span></div>
+  </div>
+  <nav class="page-nav">
+    <a href="../" class="nav-a">← Все отчёты</a>
+    <a href="#ideas" class="nav-a active">Идеи</a>
+  </nav>
+</div>{tabs_bar}
+<div class="content">
+{body}
+</div>{tabs_js}
 </body>
 </html>"""
 
@@ -567,10 +675,16 @@ IDEA_CSS = """
     @media (max-width: 520px) { .idea-title { font-size: 22px; } }
 """
 
-def gen_idea_page(date, idea, runs):
+def gen_idea_page(date, idea, runs, country=None):
+    """country is set only for a multi-country date (2+ countries) — the idea
+    page then lives one level deeper (site/{date}/{country}/{slug}/), and
+    "back to date" jumps straight to that country's tab via the URL fragment
+    the TABS_JS on the date-index page reads on load."""
     yyyy, mm, dd, suffix_label = split_report_date(date)
     slug = idea['slug']            # used only for URLs/paths — the page's own folder name
     hashtag = idea['hashtag']      # the clean hashtag (no "_N" suffix) — used for all displayed text
+    root_href = '../../../' if country else '../../'
+    date_href = f'../../#{country}' if country else '../'
 
     if runs:
         items = ''
@@ -600,7 +714,7 @@ def gen_idea_page(date, idea, runs):
 <body>
 <div class="page-header">
   <div class="header-inner">
-    <a class="brand" href="../../">
+    <a class="brand" href="{root_href}">
       <span class="brand-tik">Tik</span><span class="brand-tok">Tok</span>
       <span class="brand-dot">·</span><span class="brand-cc">Video Ideas</span>
     </a>
@@ -611,8 +725,8 @@ def gen_idea_page(date, idea, runs):
     <div class="date-badge">{dd}.{mm}.{yyyy}<span>Дата{suffix_label}</span></div>
   </div>
   <nav class="page-nav">
-    <a href="../../" class="nav-a">← Все отчёты</a>
-    <a href="../" class="nav-a">← {int(dd)} {MONTH_SHORT[mm]} {yyyy}{suffix_label}</a>
+    <a href="{root_href}" class="nav-a">← Все отчёты</a>
+    <a href="{date_href}" class="nav-a">← {int(dd)} {MONTH_SHORT[mm]} {yyyy}{suffix_label}</a>
     <a href="#" class="nav-a active">#{html.escape(hashtag)}</a>
   </nav>
 </div>
@@ -648,47 +762,83 @@ def gen_idea_page(date, idea, runs):
 
 # ── Main ──────────────────────────────────────────────────────────────────────
 
-def collect_date(date):
-    """Parse ideas + media for a date without writing any HTML."""
+def discover_countries(date):
+    """Country subfolder names under ideas/{date}/ that contain at least one
+    idea .md file, e.g. ['br', 'us']. Empty list means this date is flat/legacy
+    (ideas live directly in ideas/{date}/, no country split) — see video-idea-gen
+    SKILL.md Step 4, which only creates country subfolders when the report
+    actually has more than one country."""
     ideas_dir = IDEAS_DIR / date
-    skip = {'_pipeline', '_nobrand'}
+    return sorted(
+        d.name for d in ideas_dir.iterdir()
+        if d.is_dir() and not d.name.startswith('_') and any(d.glob('*.md'))
+    )
 
+
+def collect_ideas_in(ideas_dir):
+    """Parse ideas + media from one folder of .md files (either a flat/legacy
+    date folder, or one country subfolder of a multi-country date)."""
+    skip = {'_pipeline', '_nobrand'}
     md_files = sorted(
         f for f in ideas_dir.glob('*.md')
         if not any(s in f.stem for s in skip)
     )
     ideas = [parse_idea(f) for f in md_files]
-
-    ideas_with_media = []
-    for idea in ideas:
-        runs = get_runs(idea['slug'], date)
-        ideas_with_media.append((idea, runs))
-
-    return ideas_with_media
+    return [(idea, get_runs(ideas_dir, idea['slug'])) for idea in ideas]
 
 
-def write_date(date, ideas_with_media):
+def collect_date(date):
+    """Parse ideas + media for a date without writing any HTML. Returns
+    ('flat', ideas_with_media) for a legacy/single-market date (or a
+    multi-country date that happens to have only one country folder — same
+    "no tabs" treatment as a legacy date), or
+    ('countries', {country: ideas_with_media, ...}) when 2+ country folders
+    exist."""
+    countries = discover_countries(date)
+    if not countries:
+        return 'flat', collect_ideas_in(IDEAS_DIR / date)
+    per_country = {c: collect_ideas_in(IDEAS_DIR / date / c) for c in countries}
+    if len(per_country) == 1:
+        return 'flat', next(iter(per_country.values()))
+    return 'countries', per_country
+
+
+def _flatten(mode, data):
+    """All (idea, runs) pairs across every country, for main-index counts."""
+    return data if mode == 'flat' else [pair for ideas in data.values() for pair in ideas]
+
+
+def write_date(date, mode, data):
     """Write the date-index page and every idea page for one date."""
     date_dir = SITE / date
     date_dir.mkdir(exist_ok=True)
 
-    # Date index page
-    (date_dir / 'index.html').write_text(gen_date_index(date, ideas_with_media))
-    print(f'  wrote {date}/index.html  ({len(ideas_with_media)} ideas)')
+    (date_dir / 'index.html').write_text(gen_date_index(date, mode, data))
+    n = len(_flatten(mode, data))
+    print(f'  wrote {date}/index.html  ({n} ideas{", " + str(len(data)) + " countries" if mode == "countries" else ""})')
 
-    # Individual idea pages
-    for idea, runs in ideas_with_media:
-        slug_dir = date_dir / idea['slug']
-        slug_dir.mkdir(exist_ok=True)
-        (slug_dir / 'index.html').write_text(gen_idea_page(date, idea, runs))
-        print(f'  wrote {date}/{idea["slug"]}/index.html')
+    if mode == 'flat':
+        for idea, runs in data:
+            slug_dir = date_dir / idea['slug']
+            slug_dir.mkdir(exist_ok=True)
+            (slug_dir / 'index.html').write_text(gen_idea_page(date, idea, runs))
+            print(f'  wrote {date}/{idea["slug"]}/index.html')
+    else:
+        for country, ideas_with_media in data.items():
+            country_dir = date_dir / country
+            country_dir.mkdir(exist_ok=True)
+            for idea, runs in ideas_with_media:
+                slug_dir = country_dir / idea['slug']
+                slug_dir.mkdir(exist_ok=True)
+                (slug_dir / 'index.html').write_text(gen_idea_page(date, idea, runs, country=country))
+                print(f'  wrote {date}/{country}/{idea["slug"]}/index.html')
 
 
 def build_date(date):
-    """Back-compat helper: collect + write a single date, return its ideas_with_media."""
-    ideas_with_media = collect_date(date)
-    write_date(date, ideas_with_media)
-    return ideas_with_media
+    """Back-compat helper: collect + write a single date, return its flattened ideas_with_media."""
+    mode, data = collect_date(date)
+    write_date(date, mode, data)
+    return _flatten(mode, data)
 
 
 def build_all():
@@ -705,9 +855,10 @@ def build_all():
     all_entries = []
     for date in all_dates:
         print(f'\n{"Building" if date in dates_to_write else "Scanning"} {date}...')
-        ideas_with_media = collect_date(date)
+        mode, data = collect_date(date)
         if date in dates_to_write:
-            write_date(date, ideas_with_media)
+            write_date(date, mode, data)
+        ideas_with_media = _flatten(mode, data)
         n_videos = sum(1 for _, runs in ideas_with_media if any(r['video'] for r in runs))
         all_entries.append((date, len(ideas_with_media), n_videos))
 

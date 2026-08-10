@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>#brandnewday — Дверь наружу · Video Ideas</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      background: #f4f4f5; color: #111; font-size: 14px; line-height: 1.5;
+    }
+    .page-header {
+      background: #fff; border-bottom: 1px solid #e4e4e7; position: sticky;
+      top: 0; z-index: 100; box-shadow: 0 1px 8px rgba(0,0,0,.05);
+    }
+    .header-inner {
+      max-width: 1100px; margin: 0 auto; padding: 14px 28px;
+      display: flex; align-items: center; gap: 20px;
+    }
+    .brand {
+      font-size: 18px; font-weight: 800; letter-spacing: -.5px; color: #111;
+      white-space: nowrap; user-select: none; text-decoration: none;
+    }
+    .brand-tik { color: #fe2c55; }
+    .brand-tok { color: #010101; }
+    .brand-dot { color: #d1d1d1; margin: 0 6px; font-weight: 300; }
+    .brand-cc  { color: #888; font-size: 12px; font-weight: 500; }
+    .header-text { flex: 1; min-width: 0; }
+    .page-title {
+      font-size: 15px; font-weight: 700; letter-spacing: -.2px;
+      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    }
+    .page-sub { font-size: 11.5px; color: #999; margin-top: 2px; }
+    .date-badge {
+      background: #fe2c55; color: #fff; font-weight: 700; font-size: 12px;
+      border-radius: 8px; padding: 6px 14px; line-height: 1.4;
+      text-align: center; white-space: nowrap; flex-shrink: 0;
+    }
+    .date-badge span { display: block; font-size: 10px; font-weight: 500; opacity: .8; }
+    .page-nav {
+      max-width: 1100px; margin: 0 auto; padding: 0 28px;
+      display: flex; gap: 2px; border-top: 1px solid #f0f0f0;
+    }
+    .nav-a {
+      text-decoration: none; color: #999; font-size: 12.5px; font-weight: 500;
+      padding: 9px 14px; border-bottom: 2px solid transparent;
+      transition: color .15s, border-color .15s;
+    }
+    .nav-a:hover { color: #fe2c55; }
+    .nav-a.active { color: #fe2c55; border-bottom-color: #fe2c55; }
+    .content { max-width: 1100px; margin: 0 auto; padding: 36px 28px 80px; }
+    .section { margin-bottom: 52px; }
+    .section-header { display: flex; align-items: baseline; gap: 10px; margin-bottom: 16px; }
+    .section-title { font-size: 19px; font-weight: 800; letter-spacing: -.4px; }
+    .section-badge {
+      font-size: 10.5px; font-weight: 600; color: #999; background: #ebebeb;
+      padding: 3px 8px; border-radius: 20px; text-transform: uppercase; letter-spacing: .4px;
+    }
+    @media (max-width: 768px) {
+      .header-inner { gap: 12px; padding: 12px 16px; }
+      .date-badge { display: none; }
+      .page-nav { padding: 0 16px; }
+      .content { padding: 24px 16px 60px; }
+    }
+
+
+    .idea-lead {
+      background: #fff; border-radius: 12px; padding: 36px 40px 32px;
+      box-shadow: 0 1px 4px rgba(0,0,0,.07), 0 0 0 1px rgba(0,0,0,.05);
+      margin-bottom: 40px;
+    }
+    .idea-hashtag { font-size: 13px; font-weight: 700; color: #fe2c55; margin-bottom: 8px; }
+    .idea-title { font-size: 26px; font-weight: 800; letter-spacing: -.6px; line-height: 1.25; margin-bottom: 16px; }
+    .idea-desc { font-size: 14px; color: #444; line-height: 1.75; max-width: 720px; }
+    .media-grid {
+      display: grid; grid-template-columns: auto 1fr; gap: 28px; align-items: start;
+    }
+    .video-multi {
+      display: flex; gap: 16px; flex-wrap: wrap; align-items: flex-start;
+    }
+    .video-item {
+      width: 200px; display: flex; flex-direction: column; gap: 8px; flex-shrink: 0;
+    }
+    .video-caption {
+      font-size: 11px; color: #999; line-height: 1.4; padding: 0 2px;
+    }
+    .video-player {
+      width: 100%; aspect-ratio: 9/16; object-fit: cover; border-radius: 12px;
+      display: block; box-shadow: 0 2px 16px rgba(0,0,0,.14);
+    }
+    .frame-img {
+      width: 100%; aspect-ratio: 9/16; object-fit: cover; border-radius: 12px;
+      display: block; box-shadow: 0 2px 16px rgba(0,0,0,.14);
+    }
+    .prompts-col { display: flex; flex-direction: column; gap: 12px; }
+    .prompt-block {
+      background: #fff; border-radius: 10px;
+      box-shadow: 0 1px 4px rgba(0,0,0,.07), 0 0 0 1px rgba(0,0,0,.05); overflow: hidden;
+    }
+    .prompt-block summary {
+      padding: 14px 18px; font-size: 13px; font-weight: 700; cursor: pointer;
+      user-select: none; list-style: none; display: flex; align-items: center; gap: 8px; color: #333;
+    }
+    .prompt-block summary::-webkit-details-marker { display: none; }
+    .prompt-block summary::before { content: '▶'; font-size: 8px; color: #bbb; transition: transform .15s; flex-shrink: 0; }
+    .prompt-block[open] summary::before { transform: rotate(90deg); }
+    .prompt-block summary:hover { color: #fe2c55; }
+    .prompt-block summary:hover::before { color: #fe2c55; }
+    .prompt-label { font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: .5px; color: #bbb; margin-left: auto; }
+    .prompt-text {
+      padding: 14px 18px 16px; font-family: 'SF Mono','Fira Code','Menlo',monospace;
+      font-size: 11.5px; line-height: 1.7; color: #555; background: #f9f9f9;
+      border-top: 1px solid #f0f0f0; white-space: pre-wrap; word-break: break-word;
+      max-height: 320px; overflow-y: auto;
+    }
+    @media (max-width: 900px) {
+      .media-grid { grid-template-columns: 1fr; }
+      .video-multi { justify-content: center; }
+      .idea-lead { padding: 24px 22px 22px; }
+    }
+    @media (max-width: 520px) { .idea-title { font-size: 22px; } }
+
+  </style>
+</head>
+<body>
+<div class="page-header">
+  <div class="header-inner">
+    <a class="brand" href="../../../">
+      <span class="brand-tik">Tik</span><span class="brand-tok">Tok</span>
+      <span class="brand-dot">·</span><span class="brand-cc">Video Ideas</span>
+    </a>
+    <div class="header-text">
+      <div class="page-title">#brandnewday</div>
+      <div class="page-sub">Видео-идея · 8 августа 2026</div>
+    </div>
+    <div class="date-badge">08.08.2026<span>Дата</span></div>
+  </div>
+  <nav class="page-nav">
+    <a href="../../../" class="nav-a">← Все отчёты</a>
+    <a href="../../#za" class="nav-a">← 8 авг 2026</a>
+    <a href="#" class="nav-a active">#brandnewday</a>
+  </nav>
+</div>
+<div class="content">
+  <div class="idea-lead">
+    <div class="idea-hashtag">#brandnewday</div>
+    <h1 class="idea-title">Дверь наружу</h1>
+    <p class="idea-desc">Пользователь стоит в прихожей перед обычной входной дверью, рука на ручке, взгляд усталый — очередное утро. Плавающая текстовая подпись над кадром отражает это будничное настроение. Он открывает дверь — и за порогом не привычная улица, а ослепительный поток тёплого золотого света, будто дверь ведёт не наружу, а прямо в новый день. Пользователь на секунду щурится, потом делает решительный шаг вперёд в этот свет, и в момент, когда он полностью в него входит, его поза распрямляется, а лицо освещается искренней уверенной улыбкой — тот же текстовый оверлей сменяется на короткую утвердительную фразу. Сохраняем структурный приём «POV + текст-наблюдение», но переносим кульминацию с ночной спальни (идея 1) на порог входной двери — другой конкретный сценарий с тем же духом «буквально новый день».</p>
+  </div>
+  <section class="section">
+    <div class="section-header">
+      <h2 class="section-title">Видео</h2>
+      <span class="section-badge">Пример генерации</span>
+    </div>
+    <div class="media-grid">
+      <div class="video-multi">
+        <div class="video-item"><video class="video-player" controls muted loop playsinline poster="https://temp-images.ws.pho.to/8cb57088c71d2b793332f5de28e3a30b62c80b7c.png"><source src="https://temp-images.ws.pho.to/b63ecb52da8424509d4ab97c9420e71ff61a0366.mp4" type="video/mp4"></video>
+          <div class="video-caption">woman in her late 30s with straight blonde shoulder-length hair and cat-eye glasses</div>
+        </div>
+        <div class="video-item"><video class="video-player" controls muted loop playsinline poster="https://temp-images.ws.pho.to/30e03fae2aee0312d465d0113cedf4e25ac2e266.png"><source src="https://temp-images.ws.pho.to/ff489d08f129cc80ae193c6a01403d074c74e264.mp4" type="video/mp4"></video>
+          <div class="video-caption">man in his early 30s with short brown hair, blue eyes, and a short beard</div>
+        </div>
+      </div>
+      <div class="prompts-col">
+        <details class="prompt-block">
+          <summary>Промпт для первого кадра <span class="prompt-label">GPT Image 2</span></summary>
+          <pre class="prompt-text">Turn the photo of the person into a natural medium shot (waist-up), standing in a plain home entryway/hallway facing a closed front door, one hand resting on the door handle, shoulders slightly slumped, expression tired and unenthusiastic — the ordinary &quot;before&quot; mood of just another routine morning.
+
+Setting &amp; Background: a simple home entryway — a plain door, maybe a coat hook or a pair of shoes visible nearby, dim-ish interior lighting typical of an entryway, nothing dramatic yet on the other side of the door since it&#x27;s still closed.
+
+Attire: casual everyday outerwear appropriate for stepping outside — a light jacket or hoodie, nothing elaborate.
+
+Lighting: flat, slightly cool, unremarkable interior entryway lighting, deliberately plain so the golden light on the other side of the door reads as a dramatic contrast once revealed.
+
+On-screen text/graphics: none baked into this still frame — the floating text overlay appears only once the video begins.
+
+Camera specs: a straightforward, slightly elevated medium-shot framing typical of a phone propped in the entryway for a POV-style clip, natural and unpolished.
+
+Identity preservation (critical): preserve this exact person&#x27;s face shape, exact age, skin tone, eye shape and color, exact hairstyle, hair color and texture, jawline, and any distinctive features (freckles, moles, facial hair, glasses) precisely as shown in the source photo — no idealization, no bone-structure changes. The hand on the door handle must have realistic proportions and natural finger positioning.
+
+Realism/authenticity artifacts: natural skin texture, no over-smoothing, no logos or text visible anywhere in the frame at this stage, the door fully closed.</pre>
+        </details>
+        <details class="prompt-block">
+          <summary>Промпт для видео <span class="prompt-label">Kling · Grok</span></summary>
+          <pre class="prompt-text">Create a short cinematic video based on the uploaded image. The scene is a plain home entryway; the person stands facing a closed front door, tired and unenthusiastic.
+
+Camera and motion structure:
+FRAMES 0–20%: Keep the camera fixed at the established angle. A floating text overlay fades in near the top of the frame with a short, relatable, slightly weary personal observation about starting the day (kept generic, not naming any real brand or show). The person sighs, shoulders still slumped, hand still resting on the door handle.
+FRAMES 20–40%: The person turns the handle and begins pulling the door open. As it swings open, instead of an ordinary street or hallway beyond it, a bright, warm golden light pours through the opening doorway, flooding into the entryway.
+FRAMES 40–65%: The door finishes opening fully, revealing the doorway completely filled with soft, glowing golden light — no visible street or scenery beyond it, just pure warm light, like a literal threshold into a new day. The person pauses at the threshold, squinting slightly against the brightness, silhouetted at the doorway&#x27;s edge.
+FRAMES 65–100%: The person steps forward through the doorway into the golden light. Exactly as they fully cross the threshold, their posture visibly straightens, their tired expression shifts into a bright, confident, genuine smile, and the light around them settles to a warm, natural-looking glow rather than a blinding one. Simultaneously, the floating text overlay changes to a short, confident new phrase.
+
+Character: Preserve the person&#x27;s face, hair, skin tone, and identity exactly from the source image throughout the entire video. Movement progresses from tired stillness, to opening the door, to a brief pause at the threshold, to stepping through and straightening into a confident posture — no other movement.
+
+Key visual events (in order):
+1. The floating text overlay&#x27;s first, weary phrase fading in (frames 0–20%)
+2. The door opening to reveal the doorway completely filled with warm golden light instead of an ordinary view (frames 20–65%) — this is the hero moment
+3. The person stepping through the light, their posture and expression transforming from tired to confident, with the text overlay changing to its second, upbeat phrase (frames 65–100%)
+
+Style: Grounded, everyday entryway realism giving way to one dramatic, warm-light doorway effect. The mood shifts from weary routine to genuine, quiet confidence and renewal.
+
+Restrictions:
+- Do not change the person&#x27;s face, hair, skin tone, or identity at any point
+- No speaking, no singing, no lip-sync, no mouthing words — silent reactions only; the floating text overlays convey the &quot;voice&quot; of the moment, not the person speaking
+- The person must remain in frame, recognizable, and the visual focus for the entire video, including while silhouetted at the bright threshold — their identifiable silhouette/face must still read clearly, not fully washed out to pure white
+- No speech bubbles — the floating text overlays are plain on-screen caption text, not styled as chat bubbles
+- The doorway filling entirely with warm golden light in place of an ordinary view, and the person&#x27;s posture/expression transformation as they step through it, are the hero moments and must be clearly and completely visible — the light must fully fill the doorway before the person steps through, and their transformation must complete by the 100% mark
+- The text overlay must change exactly twice — once near the start, once as the person crosses the threshold — no additional text changes
+- No additional gestures, actions, or beats beyond turning the handle, opening the door, pausing at the threshold, and stepping through — no extra props, no other people entering frame
+- The bright light at the doorway must read as warm and inviting, never harsh, blinding to the point of losing the person&#x27;s visibility, or suggestive of fire/danger
+- No aggressive or violent movements
+- No brand names, logos, or real company/show references in the text overlay content</pre>
+        </details>
+      </div>
+    </div>
+  </section>
+</div>
+</body>
+</html>

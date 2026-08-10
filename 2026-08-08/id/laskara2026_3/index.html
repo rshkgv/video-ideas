@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>#laskara2026 — Соло-прорыв из построения · Video Ideas</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      background: #f4f4f5; color: #111; font-size: 14px; line-height: 1.5;
+    }
+    .page-header {
+      background: #fff; border-bottom: 1px solid #e4e4e7; position: sticky;
+      top: 0; z-index: 100; box-shadow: 0 1px 8px rgba(0,0,0,.05);
+    }
+    .header-inner {
+      max-width: 1100px; margin: 0 auto; padding: 14px 28px;
+      display: flex; align-items: center; gap: 20px;
+    }
+    .brand {
+      font-size: 18px; font-weight: 800; letter-spacing: -.5px; color: #111;
+      white-space: nowrap; user-select: none; text-decoration: none;
+    }
+    .brand-tik { color: #fe2c55; }
+    .brand-tok { color: #010101; }
+    .brand-dot { color: #d1d1d1; margin: 0 6px; font-weight: 300; }
+    .brand-cc  { color: #888; font-size: 12px; font-weight: 500; }
+    .header-text { flex: 1; min-width: 0; }
+    .page-title {
+      font-size: 15px; font-weight: 700; letter-spacing: -.2px;
+      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    }
+    .page-sub { font-size: 11.5px; color: #999; margin-top: 2px; }
+    .date-badge {
+      background: #fe2c55; color: #fff; font-weight: 700; font-size: 12px;
+      border-radius: 8px; padding: 6px 14px; line-height: 1.4;
+      text-align: center; white-space: nowrap; flex-shrink: 0;
+    }
+    .date-badge span { display: block; font-size: 10px; font-weight: 500; opacity: .8; }
+    .page-nav {
+      max-width: 1100px; margin: 0 auto; padding: 0 28px;
+      display: flex; gap: 2px; border-top: 1px solid #f0f0f0;
+    }
+    .nav-a {
+      text-decoration: none; color: #999; font-size: 12.5px; font-weight: 500;
+      padding: 9px 14px; border-bottom: 2px solid transparent;
+      transition: color .15s, border-color .15s;
+    }
+    .nav-a:hover { color: #fe2c55; }
+    .nav-a.active { color: #fe2c55; border-bottom-color: #fe2c55; }
+    .content { max-width: 1100px; margin: 0 auto; padding: 36px 28px 80px; }
+    .section { margin-bottom: 52px; }
+    .section-header { display: flex; align-items: baseline; gap: 10px; margin-bottom: 16px; }
+    .section-title { font-size: 19px; font-weight: 800; letter-spacing: -.4px; }
+    .section-badge {
+      font-size: 10.5px; font-weight: 600; color: #999; background: #ebebeb;
+      padding: 3px 8px; border-radius: 20px; text-transform: uppercase; letter-spacing: .4px;
+    }
+    @media (max-width: 768px) {
+      .header-inner { gap: 12px; padding: 12px 16px; }
+      .date-badge { display: none; }
+      .page-nav { padding: 0 16px; }
+      .content { padding: 24px 16px 60px; }
+    }
+
+
+    .idea-lead {
+      background: #fff; border-radius: 12px; padding: 36px 40px 32px;
+      box-shadow: 0 1px 4px rgba(0,0,0,.07), 0 0 0 1px rgba(0,0,0,.05);
+      margin-bottom: 40px;
+    }
+    .idea-hashtag { font-size: 13px; font-weight: 700; color: #fe2c55; margin-bottom: 8px; }
+    .idea-title { font-size: 26px; font-weight: 800; letter-spacing: -.6px; line-height: 1.25; margin-bottom: 16px; }
+    .idea-desc { font-size: 14px; color: #444; line-height: 1.75; max-width: 720px; }
+    .media-grid {
+      display: grid; grid-template-columns: auto 1fr; gap: 28px; align-items: start;
+    }
+    .video-multi {
+      display: flex; gap: 16px; flex-wrap: wrap; align-items: flex-start;
+    }
+    .video-item {
+      width: 200px; display: flex; flex-direction: column; gap: 8px; flex-shrink: 0;
+    }
+    .video-caption {
+      font-size: 11px; color: #999; line-height: 1.4; padding: 0 2px;
+    }
+    .video-player {
+      width: 100%; aspect-ratio: 9/16; object-fit: cover; border-radius: 12px;
+      display: block; box-shadow: 0 2px 16px rgba(0,0,0,.14);
+    }
+    .frame-img {
+      width: 100%; aspect-ratio: 9/16; object-fit: cover; border-radius: 12px;
+      display: block; box-shadow: 0 2px 16px rgba(0,0,0,.14);
+    }
+    .prompts-col { display: flex; flex-direction: column; gap: 12px; }
+    .prompt-block {
+      background: #fff; border-radius: 10px;
+      box-shadow: 0 1px 4px rgba(0,0,0,.07), 0 0 0 1px rgba(0,0,0,.05); overflow: hidden;
+    }
+    .prompt-block summary {
+      padding: 14px 18px; font-size: 13px; font-weight: 700; cursor: pointer;
+      user-select: none; list-style: none; display: flex; align-items: center; gap: 8px; color: #333;
+    }
+    .prompt-block summary::-webkit-details-marker { display: none; }
+    .prompt-block summary::before { content: '▶'; font-size: 8px; color: #bbb; transition: transform .15s; flex-shrink: 0; }
+    .prompt-block[open] summary::before { transform: rotate(90deg); }
+    .prompt-block summary:hover { color: #fe2c55; }
+    .prompt-block summary:hover::before { color: #fe2c55; }
+    .prompt-label { font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: .5px; color: #bbb; margin-left: auto; }
+    .prompt-text {
+      padding: 14px 18px 16px; font-family: 'SF Mono','Fira Code','Menlo',monospace;
+      font-size: 11.5px; line-height: 1.7; color: #555; background: #f9f9f9;
+      border-top: 1px solid #f0f0f0; white-space: pre-wrap; word-break: break-word;
+      max-height: 320px; overflow-y: auto;
+    }
+    @media (max-width: 900px) {
+      .media-grid { grid-template-columns: 1fr; }
+      .video-multi { justify-content: center; }
+      .idea-lead { padding: 24px 22px 22px; }
+    }
+    @media (max-width: 520px) { .idea-title { font-size: 22px; } }
+
+  </style>
+</head>
+<body>
+<div class="page-header">
+  <div class="header-inner">
+    <a class="brand" href="../../../">
+      <span class="brand-tik">Tik</span><span class="brand-tok">Tok</span>
+      <span class="brand-dot">·</span><span class="brand-cc">Video Ideas</span>
+    </a>
+    <div class="header-text">
+      <div class="page-title">#laskara2026</div>
+      <div class="page-sub">Видео-идея · 8 августа 2026</div>
+    </div>
+    <div class="date-badge">08.08.2026<span>Дата</span></div>
+  </div>
+  <nav class="page-nav">
+    <a href="../../../" class="nav-a">← Все отчёты</a>
+    <a href="../../#id" class="nav-a">← 8 авг 2026</a>
+    <a href="#" class="nav-a active">#laskara2026</a>
+  </nav>
+</div>
+<div class="content">
+  <div class="idea-lead">
+    <div class="idea-hashtag">#laskara2026</div>
+    <h1 class="idea-title">Соло-прорыв из построения</h1>
+    <p class="idea-desc">Полностью самостоятельная трактовка: пользователь стоит в глубине группового построения на дворе факультета, почти скрытый за плечами товарищей. Группа расступается полукругом, и пользователь решительно выходит вперёд в центр, исполняя короткую эффектную сольную связку, пока остальные обрамляют его, хлопая в ладоши. Камера резко приближается именно в момент выхода вперёд.</p>
+  </div>
+  <section class="section">
+    <div class="section-header">
+      <h2 class="section-title">Видео</h2>
+      <span class="section-badge">Пример генерации</span>
+    </div>
+    <div class="media-grid">
+      <div class="video-multi">
+        <div class="video-item"><video class="video-player" controls muted loop playsinline poster="https://temp-images.ws.pho.to/578f404eae700d2d17e9fce67a18dd457d335d8b.png"><source src="https://temp-images.ws.pho.to/3b5f9b586b89466470bba202b7db4df65e0a9fea.mp4" type="video/mp4"></video>
+          <div class="video-caption">man in his early 30s with short brown hair, blue eyes, and a short beard</div>
+        </div>
+        <div class="video-item"><video class="video-player" controls muted loop playsinline poster="https://temp-images.ws.pho.to/a3d22726f457477f27f1a8e452574001d482cf32.png"><source src="https://temp-images.ws.pho.to/e8621ec1628e174f7905ce0840eb6f86d68e0162.mp4" type="video/mp4"></video>
+          <div class="video-caption">woman in her late 30s with straight blonde shoulder-length hair and cat-eye glasses</div>
+        </div>
+      </div>
+      <div class="prompts-col">
+        <details class="prompt-block">
+          <summary>Промпт для первого кадра <span class="prompt-label">GPT Image 2</span></summary>
+          <pre class="prompt-text">Turn the photo of the person into a breakout-solo portrait: standing slightly behind and among three other dancers in matching navy blue blazers on an outdoor checkered-tile courtyard in front of a modern grey building, partially framed by teammates&#x27; shoulders on either side, expression focused and ready as if about to step forward into the spotlight.
+
+Pose &amp; Composition: Medium-wide shot, the person positioned centrally but partially obscured by teammates flanking them, weight shifted slightly forward — an &quot;about to emerge&quot; composition.
+
+Setting &amp; Background: The outdoor checkered-tile courtyard with the modern building behind, teammates&#x27; blazer-clad shoulders visible framing the person on both sides.
+
+Lighting: Bright, even outdoor daylight, crisp midday shadows.
+
+Attire: Navy blue blazer over a dark shirt, light blue jeans, matching the group.
+
+Identity preservation (critical): preserve this exact person&#x27;s face shape, exact age, skin tone, eye shape and color, exact hairstyle, hair color and texture, jawline, and any distinctive features precisely as shown in the source photo — no idealization, no bone-structure changes.</pre>
+        </details>
+        <details class="prompt-block">
+          <summary>Промпт для видео <span class="prompt-label">Kling · Grok</span></summary>
+          <pre class="prompt-text">Create a short cinematic video based on the uploaded image.
+The scene is an outdoor courtyard in front of a modern building. The person stands within a small group formation, medium-wide shot, partially framed by teammates.
+
+Camera and motion structure:
+0:00–0:01: The group stands in loose formation, the person visible but flanked by teammates. Camera is static, medium-wide.
+0:01–0:015: The teammates on either side step outward, opening a semicircle and revealing the person at the center.
+0:015–0:02: The person steps forward into the open center space. The camera begins a quick, decisive push-in toward them.
+0:02–0:04: Now in a tighter shot, the person performs a short, high-energy solo combo — two or three sharp, distinct dance moves — while the teammates, visible at the frame edges, clap in rhythm around them.
+0:04–0:05: The person lands a confident final pose, holding it as the teammates&#x27; clapping continues at the edges of frame.
+
+Character:
+Preserve the person&#x27;s face shape, exact age, skin tone, eye shape/color, exact hairstyle, hair color/texture, jawline, and distinctive features exactly as in the source image throughout.
+Allowed motion: stepping forward from the formation, the solo dance combo, the final pose. No other movement.
+
+Key visual events (in order):
+1. The semicircle opening — signals the solo reveal is coming.
+2. The step-forward into the open center — the hero moment begins here.
+3. The solo combo and final pose — the hero moment&#x27;s payoff, must clearly read as the person&#x27;s individual highlight, framed and celebrated by the group.
+
+Style:
+Confident, celebratory, broadcast-adjacent reveal — bright daylight, a decisive push-in on the solo beat, teammates as a supportive framing device rather than the focus.
+
+Restrictions:
+- Do not change the person&#x27;s face, hair, skin tone, or identity at any point
+- The person must stay in frame and identifiable throughout, including the opening beat where they&#x27;re partially framed by teammates; once they step forward they must be the unambiguous visual focus
+- The person never speaks, sings, or mouths words — no lip movement forming words; the moment is carried by movement and expression only
+- No speech bubbles
+- No on-screen text or graphics
+- No improvisation beyond the listed actions — the solo combo is exactly two or three distinct movements as described, not open-ended freestyling
+- Exact-count lock: the person performs their solo combo exactly once, ending in a single final held pose — no repeats
+- No real, identifiable university/faculty name, crest, or logo rendered legibly anywhere in the scene
+- No violent or aggressive actions
+- The step-forward from the group must read clearly as a celebrated, invited solo moment, not as the person being pushed or excluded</pre>
+        </details>
+      </div>
+    </div>
+  </section>
+</div>
+</body>
+</html>

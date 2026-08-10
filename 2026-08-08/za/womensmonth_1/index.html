@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>#womensmonth — Коробка с сюрпризом · Video Ideas</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      background: #f4f4f5; color: #111; font-size: 14px; line-height: 1.5;
+    }
+    .page-header {
+      background: #fff; border-bottom: 1px solid #e4e4e7; position: sticky;
+      top: 0; z-index: 100; box-shadow: 0 1px 8px rgba(0,0,0,.05);
+    }
+    .header-inner {
+      max-width: 1100px; margin: 0 auto; padding: 14px 28px;
+      display: flex; align-items: center; gap: 20px;
+    }
+    .brand {
+      font-size: 18px; font-weight: 800; letter-spacing: -.5px; color: #111;
+      white-space: nowrap; user-select: none; text-decoration: none;
+    }
+    .brand-tik { color: #fe2c55; }
+    .brand-tok { color: #010101; }
+    .brand-dot { color: #d1d1d1; margin: 0 6px; font-weight: 300; }
+    .brand-cc  { color: #888; font-size: 12px; font-weight: 500; }
+    .header-text { flex: 1; min-width: 0; }
+    .page-title {
+      font-size: 15px; font-weight: 700; letter-spacing: -.2px;
+      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    }
+    .page-sub { font-size: 11.5px; color: #999; margin-top: 2px; }
+    .date-badge {
+      background: #fe2c55; color: #fff; font-weight: 700; font-size: 12px;
+      border-radius: 8px; padding: 6px 14px; line-height: 1.4;
+      text-align: center; white-space: nowrap; flex-shrink: 0;
+    }
+    .date-badge span { display: block; font-size: 10px; font-weight: 500; opacity: .8; }
+    .page-nav {
+      max-width: 1100px; margin: 0 auto; padding: 0 28px;
+      display: flex; gap: 2px; border-top: 1px solid #f0f0f0;
+    }
+    .nav-a {
+      text-decoration: none; color: #999; font-size: 12.5px; font-weight: 500;
+      padding: 9px 14px; border-bottom: 2px solid transparent;
+      transition: color .15s, border-color .15s;
+    }
+    .nav-a:hover { color: #fe2c55; }
+    .nav-a.active { color: #fe2c55; border-bottom-color: #fe2c55; }
+    .content { max-width: 1100px; margin: 0 auto; padding: 36px 28px 80px; }
+    .section { margin-bottom: 52px; }
+    .section-header { display: flex; align-items: baseline; gap: 10px; margin-bottom: 16px; }
+    .section-title { font-size: 19px; font-weight: 800; letter-spacing: -.4px; }
+    .section-badge {
+      font-size: 10.5px; font-weight: 600; color: #999; background: #ebebeb;
+      padding: 3px 8px; border-radius: 20px; text-transform: uppercase; letter-spacing: .4px;
+    }
+    @media (max-width: 768px) {
+      .header-inner { gap: 12px; padding: 12px 16px; }
+      .date-badge { display: none; }
+      .page-nav { padding: 0 16px; }
+      .content { padding: 24px 16px 60px; }
+    }
+
+
+    .idea-lead {
+      background: #fff; border-radius: 12px; padding: 36px 40px 32px;
+      box-shadow: 0 1px 4px rgba(0,0,0,.07), 0 0 0 1px rgba(0,0,0,.05);
+      margin-bottom: 40px;
+    }
+    .idea-hashtag { font-size: 13px; font-weight: 700; color: #fe2c55; margin-bottom: 8px; }
+    .idea-title { font-size: 26px; font-weight: 800; letter-spacing: -.6px; line-height: 1.25; margin-bottom: 16px; }
+    .idea-desc { font-size: 14px; color: #444; line-height: 1.75; max-width: 720px; }
+    .media-grid {
+      display: grid; grid-template-columns: auto 1fr; gap: 28px; align-items: start;
+    }
+    .video-multi {
+      display: flex; gap: 16px; flex-wrap: wrap; align-items: flex-start;
+    }
+    .video-item {
+      width: 200px; display: flex; flex-direction: column; gap: 8px; flex-shrink: 0;
+    }
+    .video-caption {
+      font-size: 11px; color: #999; line-height: 1.4; padding: 0 2px;
+    }
+    .video-player {
+      width: 100%; aspect-ratio: 9/16; object-fit: cover; border-radius: 12px;
+      display: block; box-shadow: 0 2px 16px rgba(0,0,0,.14);
+    }
+    .frame-img {
+      width: 100%; aspect-ratio: 9/16; object-fit: cover; border-radius: 12px;
+      display: block; box-shadow: 0 2px 16px rgba(0,0,0,.14);
+    }
+    .prompts-col { display: flex; flex-direction: column; gap: 12px; }
+    .prompt-block {
+      background: #fff; border-radius: 10px;
+      box-shadow: 0 1px 4px rgba(0,0,0,.07), 0 0 0 1px rgba(0,0,0,.05); overflow: hidden;
+    }
+    .prompt-block summary {
+      padding: 14px 18px; font-size: 13px; font-weight: 700; cursor: pointer;
+      user-select: none; list-style: none; display: flex; align-items: center; gap: 8px; color: #333;
+    }
+    .prompt-block summary::-webkit-details-marker { display: none; }
+    .prompt-block summary::before { content: '▶'; font-size: 8px; color: #bbb; transition: transform .15s; flex-shrink: 0; }
+    .prompt-block[open] summary::before { transform: rotate(90deg); }
+    .prompt-block summary:hover { color: #fe2c55; }
+    .prompt-block summary:hover::before { color: #fe2c55; }
+    .prompt-label { font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: .5px; color: #bbb; margin-left: auto; }
+    .prompt-text {
+      padding: 14px 18px 16px; font-family: 'SF Mono','Fira Code','Menlo',monospace;
+      font-size: 11.5px; line-height: 1.7; color: #555; background: #f9f9f9;
+      border-top: 1px solid #f0f0f0; white-space: pre-wrap; word-break: break-word;
+      max-height: 320px; overflow-y: auto;
+    }
+    @media (max-width: 900px) {
+      .media-grid { grid-template-columns: 1fr; }
+      .video-multi { justify-content: center; }
+      .idea-lead { padding: 24px 22px 22px; }
+    }
+    @media (max-width: 520px) { .idea-title { font-size: 22px; } }
+
+  </style>
+</head>
+<body>
+<div class="page-header">
+  <div class="header-inner">
+    <a class="brand" href="../../../">
+      <span class="brand-tik">Tik</span><span class="brand-tok">Tok</span>
+      <span class="brand-dot">·</span><span class="brand-cc">Video Ideas</span>
+    </a>
+    <div class="header-text">
+      <div class="page-title">#womensmonth</div>
+      <div class="page-sub">Видео-идея · 8 августа 2026</div>
+    </div>
+    <div class="date-badge">08.08.2026<span>Дата</span></div>
+  </div>
+  <nav class="page-nav">
+    <a href="../../../" class="nav-a">← Все отчёты</a>
+    <a href="../../#za" class="nav-a">← 8 авг 2026</a>
+    <a href="#" class="nav-a active">#womensmonth</a>
+  </nav>
+</div>
+<div class="content">
+  <div class="idea-lead">
+    <div class="idea-hashtag">#womensmonth</div>
+    <h1 class="idea-title">Коробка с сюрпризом</h1>
+    <p class="idea-desc">Пользователь сидит на диване с закрытой картонной коробкой на коленях, снятой явно для видео-обзора: рядом лежит телефон на мини-штативе. Он вскрывает скотч, достаёт из коробки предметы один за другим — и на последнем предмете коробка вдруг вспыхивает изнутри мягким розово-золотым светом, а сам предмет в руках пользователя превращается в изящный светящийся значок-медаль с гравировкой в духе «месяца женщин». Пользователь удивлённо, затем тепло улыбается и поднимает медаль к камере крупным планом. Реальный контент хэштега в основном — это распаковки/промо-обзоры, а не буквальное празднование, поэтому первая идея прямо адаптирует этот формат «unboxing», добавляя единственный магический твист-реванш в конце.</p>
+  </div>
+  <section class="section">
+    <div class="section-header">
+      <h2 class="section-title">Видео</h2>
+      <span class="section-badge">Пример генерации</span>
+    </div>
+    <div class="media-grid">
+      <div class="video-multi">
+        <div class="video-item"><video class="video-player" controls muted loop playsinline poster="https://temp-images.ws.pho.to/c5b6499c53f78a77b94db48ef130c90b58d44044.png"><source src="https://temp-images.ws.pho.to/08877e3c294ae84d70c1df170fff7c9eb694e34d.mp4" type="video/mp4"></video>
+          <div class="video-caption">woman in her late 30s with straight blonde shoulder-length hair and cat-eye glasses</div>
+        </div>
+        <div class="video-item"><video class="video-player" controls muted loop playsinline poster="https://temp-images.ws.pho.to/b6721cc8de4d4e11741f46650b625e879c6920a3.png"><source src="https://temp-images.ws.pho.to/ca8c9d1e385b81f9f75172c69fd95dff3cd95b93.mp4" type="video/mp4"></video>
+          <div class="video-caption">man in his early 30s with short brown hair, blue eyes, and a short beard</div>
+        </div>
+      </div>
+      <div class="prompts-col">
+        <details class="prompt-block">
+          <summary>Промпт для первого кадра <span class="prompt-label">GPT Image 2</span></summary>
+          <pre class="prompt-text">Turn the photo of the person into a bright, casual medium shot (waist-up), seated on a plain sofa, holding a closed plain brown cardboard box on their lap with both hands, fingers positioned as if about to peel back a strip of packing tape on top. Expression: mild, pleasant anticipation — eyebrows slightly raised, a small curious smile, eyes on the box.
+
+Setting &amp; Background: an ordinary, softly lit living room — a plain sofa, a blurred side table with a small potted plant, nothing branded or cluttered; a phone visible propped on a small tripod just at the frame&#x27;s edge, subtly signaling this is being &quot;filmed&quot; for the platform, consistent with the hashtag&#x27;s real unboxing-video aesthetic.
+
+Lighting: bright, even indoor lighting typical of a home-filmed lifestyle video — slightly cool-white overhead light mixed with soft daylight from an unseen window, no dramatic shadows.
+
+Attire: comfortable, casual home clothing — a simple top, nothing flashy, in keeping with an everyday unboxing-video look.
+
+Materials &amp; fabric behavior: the cardboard box shows realistic surface texture — slight creases, a visible strip of clear packing tape across the top seam, no branding or logos printed on it.
+
+Camera specs: consistent with a phone filming from a low tripod angle just off to the side, slightly wide framing, natural handheld-adjacent imperfection rather than a polished studio look.
+
+Identity preservation (critical): preserve this exact person&#x27;s face shape, exact age, skin tone, eye shape and color, exact hairstyle, hair color and texture, jawline, and any distinctive features (freckles, moles, facial hair, glasses) precisely as shown in the source photo — no idealization, no bone-structure changes. Hands must have realistic proportions and natural finger positioning around the box.
+
+Realism/authenticity artifacts: natural skin texture, no over-smoothing, no text or logos visible anywhere in the frame at this stage.</pre>
+        </details>
+        <details class="prompt-block">
+          <summary>Промпт для видео <span class="prompt-label">Kling · Grok</span></summary>
+          <pre class="prompt-text">Create a short cinematic video based on the uploaded image. The scene is an ordinary living room; the person sits on a sofa with a closed cardboard box on their lap, about to open it for what reads as a filmed unboxing.
+
+Camera and motion structure:
+FRAMES 0–20%: Keep the camera static, medium shot. The person peels back the tape on the box and opens the flaps, glancing inside with mild curiosity.
+FRAMES 20–50%: The person reaches in and pulls out one or two ordinary-looking small items (visible only in silhouette/generic shape, nothing brand-specific) and sets them briefly on the sofa beside them, continuing to look through the box with growing interest.
+FRAMES 50–75%: The person reaches in one final time and lifts out the last item — as their hand closes around it, a soft pink-and-gold light begins glowing from inside the box, spilling out and wrapping around the object in their hand. The object&#x27;s shape smoothly reshapes and solidifies into a small, elegant glowing medal/pendant with a simple engraved emblem, still emitting a gentle warm glow.
+FRAMES 75–100%: The person&#x27;s expression shifts from surprise to a warm, genuine smile as they realize what&#x27;s now in their hand. They lift the glowing medal up toward the camera in a clear, close presentation, holding it steady so its glow and engraved detail are clearly visible, smiling directly at the lens.
+
+Character: Preserve the person&#x27;s face, hair, skin tone, and identity exactly from the source image throughout the entire video. Movement is naturalistic hand-and-arm action — opening the box, retrieving items, and the final reveal-and-lift gesture. No standing, no large body movement.
+
+Key visual events (in order):
+1. The person opening the box and retrieving a couple of ordinary items (frames 20–50%)
+2. The final item transforming in a wrap of pink-gold light into a glowing engraved medal while still in the person&#x27;s hand (frames 50–75%) — this is the hero moment
+3. The person lifting the glowing medal clearly into view toward the camera with a warm smile (frames 75–100%)
+
+Style: Bright, casual, authentic &quot;unboxing video&quot; aesthetic for most of the shot, with one warm, glowing magical-realism moment for the transformation. The mood shifts from everyday curiosity to a genuine, warm sense of being honored or celebrated.
+
+Restrictions:
+- Do not change the person&#x27;s face, hair, skin tone, or identity at any point
+- No speaking, no singing, no lip-sync, no mouthing words — silent reactions and the final smile only
+- The person must remain in frame, recognizable, and the visual focus for the entire video, including during the close-up presentation of the medal — their face must stay visible even while the medal is held up
+- No speech bubbles
+- The transformation of the final item into the glowing engraved medal is the hero moment and must be clearly and unmistakably visible — the medal must be fully formed, glowing, and held steadily toward camera by the 100% mark, not partially formed or obscured
+- Exactly one item transforms — the two earlier retrieved items remain ordinary and do not glow or change; this distinction must be visually clear
+- No additional gestures, actions, or beats beyond opening the box, retrieving items, the transformation, and the final presentation lift — no extra props, no other people entering frame
+- No aggressive or fast movements when reaching into the box
+- No text, logos, or graphics on the box or its contents at any point, other than the medal&#x27;s own simple engraved emblem
+- No brand names, logos, or real company references anywhere in the scene</pre>
+        </details>
+      </div>
+    </div>
+  </section>
+</div>
+</body>
+</html>

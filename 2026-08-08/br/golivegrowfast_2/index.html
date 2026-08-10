@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>#golivegrowfast — Estrada da madrugada · Video Ideas</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      background: #f4f4f5; color: #111; font-size: 14px; line-height: 1.5;
+    }
+    .page-header {
+      background: #fff; border-bottom: 1px solid #e4e4e7; position: sticky;
+      top: 0; z-index: 100; box-shadow: 0 1px 8px rgba(0,0,0,.05);
+    }
+    .header-inner {
+      max-width: 1100px; margin: 0 auto; padding: 14px 28px;
+      display: flex; align-items: center; gap: 20px;
+    }
+    .brand {
+      font-size: 18px; font-weight: 800; letter-spacing: -.5px; color: #111;
+      white-space: nowrap; user-select: none; text-decoration: none;
+    }
+    .brand-tik { color: #fe2c55; }
+    .brand-tok { color: #010101; }
+    .brand-dot { color: #d1d1d1; margin: 0 6px; font-weight: 300; }
+    .brand-cc  { color: #888; font-size: 12px; font-weight: 500; }
+    .header-text { flex: 1; min-width: 0; }
+    .page-title {
+      font-size: 15px; font-weight: 700; letter-spacing: -.2px;
+      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    }
+    .page-sub { font-size: 11.5px; color: #999; margin-top: 2px; }
+    .date-badge {
+      background: #fe2c55; color: #fff; font-weight: 700; font-size: 12px;
+      border-radius: 8px; padding: 6px 14px; line-height: 1.4;
+      text-align: center; white-space: nowrap; flex-shrink: 0;
+    }
+    .date-badge span { display: block; font-size: 10px; font-weight: 500; opacity: .8; }
+    .page-nav {
+      max-width: 1100px; margin: 0 auto; padding: 0 28px;
+      display: flex; gap: 2px; border-top: 1px solid #f0f0f0;
+    }
+    .nav-a {
+      text-decoration: none; color: #999; font-size: 12.5px; font-weight: 500;
+      padding: 9px 14px; border-bottom: 2px solid transparent;
+      transition: color .15s, border-color .15s;
+    }
+    .nav-a:hover { color: #fe2c55; }
+    .nav-a.active { color: #fe2c55; border-bottom-color: #fe2c55; }
+    .content { max-width: 1100px; margin: 0 auto; padding: 36px 28px 80px; }
+    .section { margin-bottom: 52px; }
+    .section-header { display: flex; align-items: baseline; gap: 10px; margin-bottom: 16px; }
+    .section-title { font-size: 19px; font-weight: 800; letter-spacing: -.4px; }
+    .section-badge {
+      font-size: 10.5px; font-weight: 600; color: #999; background: #ebebeb;
+      padding: 3px 8px; border-radius: 20px; text-transform: uppercase; letter-spacing: .4px;
+    }
+    @media (max-width: 768px) {
+      .header-inner { gap: 12px; padding: 12px 16px; }
+      .date-badge { display: none; }
+      .page-nav { padding: 0 16px; }
+      .content { padding: 24px 16px 60px; }
+    }
+
+
+    .idea-lead {
+      background: #fff; border-radius: 12px; padding: 36px 40px 32px;
+      box-shadow: 0 1px 4px rgba(0,0,0,.07), 0 0 0 1px rgba(0,0,0,.05);
+      margin-bottom: 40px;
+    }
+    .idea-hashtag { font-size: 13px; font-weight: 700; color: #fe2c55; margin-bottom: 8px; }
+    .idea-title { font-size: 26px; font-weight: 800; letter-spacing: -.6px; line-height: 1.25; margin-bottom: 16px; }
+    .idea-desc { font-size: 14px; color: #444; line-height: 1.75; max-width: 720px; }
+    .media-grid {
+      display: grid; grid-template-columns: auto 1fr; gap: 28px; align-items: start;
+    }
+    .video-multi {
+      display: flex; gap: 16px; flex-wrap: wrap; align-items: flex-start;
+    }
+    .video-item {
+      width: 200px; display: flex; flex-direction: column; gap: 8px; flex-shrink: 0;
+    }
+    .video-caption {
+      font-size: 11px; color: #999; line-height: 1.4; padding: 0 2px;
+    }
+    .video-player {
+      width: 100%; aspect-ratio: 9/16; object-fit: cover; border-radius: 12px;
+      display: block; box-shadow: 0 2px 16px rgba(0,0,0,.14);
+    }
+    .frame-img {
+      width: 100%; aspect-ratio: 9/16; object-fit: cover; border-radius: 12px;
+      display: block; box-shadow: 0 2px 16px rgba(0,0,0,.14);
+    }
+    .prompts-col { display: flex; flex-direction: column; gap: 12px; }
+    .prompt-block {
+      background: #fff; border-radius: 10px;
+      box-shadow: 0 1px 4px rgba(0,0,0,.07), 0 0 0 1px rgba(0,0,0,.05); overflow: hidden;
+    }
+    .prompt-block summary {
+      padding: 14px 18px; font-size: 13px; font-weight: 700; cursor: pointer;
+      user-select: none; list-style: none; display: flex; align-items: center; gap: 8px; color: #333;
+    }
+    .prompt-block summary::-webkit-details-marker { display: none; }
+    .prompt-block summary::before { content: '▶'; font-size: 8px; color: #bbb; transition: transform .15s; flex-shrink: 0; }
+    .prompt-block[open] summary::before { transform: rotate(90deg); }
+    .prompt-block summary:hover { color: #fe2c55; }
+    .prompt-block summary:hover::before { color: #fe2c55; }
+    .prompt-label { font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: .5px; color: #bbb; margin-left: auto; }
+    .prompt-text {
+      padding: 14px 18px 16px; font-family: 'SF Mono','Fira Code','Menlo',monospace;
+      font-size: 11.5px; line-height: 1.7; color: #555; background: #f9f9f9;
+      border-top: 1px solid #f0f0f0; white-space: pre-wrap; word-break: break-word;
+      max-height: 320px; overflow-y: auto;
+    }
+    @media (max-width: 900px) {
+      .media-grid { grid-template-columns: 1fr; }
+      .video-multi { justify-content: center; }
+      .idea-lead { padding: 24px 22px 22px; }
+    }
+    @media (max-width: 520px) { .idea-title { font-size: 22px; } }
+
+  </style>
+</head>
+<body>
+<div class="page-header">
+  <div class="header-inner">
+    <a class="brand" href="../../../">
+      <span class="brand-tik">Tik</span><span class="brand-tok">Tok</span>
+      <span class="brand-dot">·</span><span class="brand-cc">Video Ideas</span>
+    </a>
+    <div class="header-text">
+      <div class="page-title">#golivegrowfast</div>
+      <div class="page-sub">Видео-идея · 8 августа 2026</div>
+    </div>
+    <div class="date-badge">08.08.2026<span>Дата</span></div>
+  </div>
+  <nav class="page-nav">
+    <a href="../../../" class="nav-a">← Все отчёты</a>
+    <a href="../../#br" class="nav-a">← 8 авг 2026</a>
+    <a href="#" class="nav-a active">#golivegrowfast</a>
+  </nav>
+</div>
+<div class="content">
+  <div class="idea-lead">
+    <div class="idea-hashtag">#golivegrowfast</div>
+    <h1 class="idea-title">Estrada da madrugada</h1>
+    <p class="idea-desc">Камера смонтирована как на руле мотоцикла или мопеда — от первого лица, пользователь виден лишь частично: руки на руле, край куртки. Ночная дорога вдоль моря или набережной, уличные фонари проносятся мимо ритмичными вспышками света. Внезапно на приборной панели/телефоне, закреплённом на руле, загорается уведомление — счётчик просмотров стремительно растёт цифра за цифрой. Пользователь на миг опускает взгляд на экран, довольно улыбается против ветра, затем снова смотрит вперёд на дорогу. Финал — дорога впереди, залитая светом фар, символизирующая движение вперёд.</p>
+  </div>
+  <section class="section">
+    <div class="section-header">
+      <h2 class="section-title">Видео</h2>
+      <span class="section-badge">Пример генерации</span>
+    </div>
+    <div class="media-grid">
+      <div class="video-multi">
+        <div class="video-item"><video class="video-player" controls muted loop playsinline poster="https://temp-images.ws.pho.to/9d2cc7f0d1f22ed2665168d87e3ea844cd77a3de.png"><source src="https://temp-images.ws.pho.to/bc5e6fb6e239b6280064ee5777c589d54d28779c.mp4" type="video/mp4"></video>
+          <div class="video-caption">woman in her late 30s with straight blonde shoulder-length hair and cat-eye glasses</div>
+        </div>
+        <div class="video-item"><video class="video-player" controls muted loop playsinline poster="https://temp-images.ws.pho.to/49781dc09b394c08f434b444f4cc3b87bbd97f8b.png"><source src="https://temp-images.ws.pho.to/1d750e4cb0969efb8476e023f3fa7f534d174bd7.mp4" type="video/mp4"></video>
+          <div class="video-caption">man in his early 30s with short brown hair, blue eyes, and a short beard</div>
+        </div>
+      </div>
+      <div class="prompts-col">
+        <details class="prompt-block">
+          <summary>Промпт для первого кадра <span class="prompt-label">GPT Image 2</span></summary>
+          <pre class="prompt-text">Turn the photo of the person into a close-up shot of their face reflected in a scooter&#x27;s round side mirror at night, shown glancing into the mirror before riding — the handlebars and a smartphone mounted in a phone holder are visible in the foreground below the mirror, the person&#x27;s hands gripping the handlebar grips. The reflected face must be clearly legible and recognizable, not a small or blurred reflection. Preserve this exact person&#x27;s face shape, exact age, skin tone, eye shape and color, exact hairstyle, hair color and texture, jawline, and any distinctive features (freckles, moles, facial hair, glasses) precisely as shown in the source photo, exactly as they should appear in the mirror reflection — no idealization, no bone-structure changes. Preserve realistic hand anatomy gripping the handlebars.
+
+Setting &amp; background: a coastal night road, streetlights passing at regular intervals, the dark silhouette of a guardrail and the sea or a wide dark horizon beyond it, a few parked cars and a scattering of colored lights in the distance.
+
+Lighting: warm pools of streetlight alternating with darkness, the phone screen currently dim/unlit in this first frame, headlight glow spilling onto the road ahead at the bottom edge of frame.
+
+Camera specs: mounted POV framing, slight vibration-ready composition consistent with a rig-mounted camera on a moving vehicle.
+
+Style: photorealistic, naturalistic night photography with visible motion-appropriate lighting, no artificial brightening.</pre>
+        </details>
+        <details class="prompt-block">
+          <summary>Промпт для видео <span class="prompt-label">Kling · Grok</span></summary>
+          <pre class="prompt-text">Create a short cinematic video based on the uploaded image.
+The scene is a first-person POV from a moving scooter at night along a coastal road, handlebars and a mounted phone in the foreground, streetlights passing rhythmically.
+
+Camera and motion structure:
+This starts with a pre-action face-visibility beat in the mirror before the ride begins, then transitions to a rig-mounted POV for the ride itself, capturing real forward motion and slight vibration.
+FRAMES 0–20%: Pre-action beat — the person&#x27;s face is clearly visible, reflected in the round side mirror, as they glance at their own reflection for a moment before setting off. This beat exists specifically to establish the person&#x27;s face clearly before the POV framing takes over.
+FRAMES 20–45%: The camera transitions to the rig-mounted POV as the scooter moves forward down the coastal night road, streetlights passing rhythmically overhead, the mounted phone screen still dim, the mirror with the person&#x27;s reflection still visible at the edge of frame throughout the ride.
+FRAMES 45–70%: The mounted phone screen lights up with a notification, and a view-count number begins rapidly ticking upward, digit by digit.
+FRAMES 70–90%: The person&#x27;s reflected eyes in the mirror glance briefly down at the rising number, then a clearly visible smile forms on their reflected face in the mirror as they look back to the road.
+FRAMES 90–100%: The camera holds on the road ahead, streetlights and the scooter&#x27;s headlight glow leading forward into the night, the phone screen still showing the elevated number and the person&#x27;s smiling reflection still visible in the mirror.
+
+Character:
+Preserve the person&#x27;s face, hair, skin tone, and identity exactly from the source image throughout the entire video, both in the initial mirror close-up and in the smaller reflected view during the ride — the reflection must stay clearly recognizable as the same person, not blurred into anonymity. Preserve realistic hand anatomy gripping the handlebars throughout. The person&#x27;s only actions are: glancing at their own reflection, riding with a steady grip, glancing down at the screen, then smiling. No other gestures.
+
+Key visual events (hero moment):
+The view-count number rapidly ticking upward, digit by digit, on the mounted phone screen, followed immediately by the person&#x27;s clearly visible smile in the mirror reflection, is the hero moment and must be clearly legible — both the numbers increasing and the smiling reflected face, not a blurred or illegible flicker.
+
+Style:
+Grounded, physically real rig-mounted motion — genuine road vibration and forward momentum, not a smoothed or stabilized shot. Night streetlight rhythm and headlight glow carry the mood of momentum and progress.
+
+Restrictions:
+- No speaking, no singing, no lip-sync, no mouthing words — silent glance and implied smile only.
+- The user&#x27;s face must be clearly visible and recognizable in the opening mirror beat, and their reflection must remain legibly recognizable (not blurred into anonymity) in the mirror throughout the ride — this satisfies the project&#x27;s face-visibility requirement despite the POV framing.
+- Do not change the person&#x27;s face, hands, skin tone, or any visible features at any point, in the direct close-up or in the mirror reflection.
+- Named failure-mode preemption: the scooter must stay upright and in its lane throughout — no swerving, no near-misses, no depiction of unsafe riding beyond a normal steady cruise.
+- Hero-moment lock: the view-count number ticking upward on the mounted phone screen must be clearly and legibly visible increasing — this is the single most important visual event of the shot.
+- No improvisation beyond the listed actions — no additional stops, no other vehicles overtaking dangerously, no extra gestures.
+- No speech bubbles.
+- No on-screen text beyond the described view-count number on the phone screen.
+- No other people in frame.
+- No violent or aggressive actions.</pre>
+        </details>
+      </div>
+    </div>
+  </section>
+</div>
+</body>
+</html>

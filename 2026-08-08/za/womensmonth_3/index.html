@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>#womensmonth — Стена признания · Video Ideas</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      background: #f4f4f5; color: #111; font-size: 14px; line-height: 1.5;
+    }
+    .page-header {
+      background: #fff; border-bottom: 1px solid #e4e4e7; position: sticky;
+      top: 0; z-index: 100; box-shadow: 0 1px 8px rgba(0,0,0,.05);
+    }
+    .header-inner {
+      max-width: 1100px; margin: 0 auto; padding: 14px 28px;
+      display: flex; align-items: center; gap: 20px;
+    }
+    .brand {
+      font-size: 18px; font-weight: 800; letter-spacing: -.5px; color: #111;
+      white-space: nowrap; user-select: none; text-decoration: none;
+    }
+    .brand-tik { color: #fe2c55; }
+    .brand-tok { color: #010101; }
+    .brand-dot { color: #d1d1d1; margin: 0 6px; font-weight: 300; }
+    .brand-cc  { color: #888; font-size: 12px; font-weight: 500; }
+    .header-text { flex: 1; min-width: 0; }
+    .page-title {
+      font-size: 15px; font-weight: 700; letter-spacing: -.2px;
+      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    }
+    .page-sub { font-size: 11.5px; color: #999; margin-top: 2px; }
+    .date-badge {
+      background: #fe2c55; color: #fff; font-weight: 700; font-size: 12px;
+      border-radius: 8px; padding: 6px 14px; line-height: 1.4;
+      text-align: center; white-space: nowrap; flex-shrink: 0;
+    }
+    .date-badge span { display: block; font-size: 10px; font-weight: 500; opacity: .8; }
+    .page-nav {
+      max-width: 1100px; margin: 0 auto; padding: 0 28px;
+      display: flex; gap: 2px; border-top: 1px solid #f0f0f0;
+    }
+    .nav-a {
+      text-decoration: none; color: #999; font-size: 12.5px; font-weight: 500;
+      padding: 9px 14px; border-bottom: 2px solid transparent;
+      transition: color .15s, border-color .15s;
+    }
+    .nav-a:hover { color: #fe2c55; }
+    .nav-a.active { color: #fe2c55; border-bottom-color: #fe2c55; }
+    .content { max-width: 1100px; margin: 0 auto; padding: 36px 28px 80px; }
+    .section { margin-bottom: 52px; }
+    .section-header { display: flex; align-items: baseline; gap: 10px; margin-bottom: 16px; }
+    .section-title { font-size: 19px; font-weight: 800; letter-spacing: -.4px; }
+    .section-badge {
+      font-size: 10.5px; font-weight: 600; color: #999; background: #ebebeb;
+      padding: 3px 8px; border-radius: 20px; text-transform: uppercase; letter-spacing: .4px;
+    }
+    @media (max-width: 768px) {
+      .header-inner { gap: 12px; padding: 12px 16px; }
+      .date-badge { display: none; }
+      .page-nav { padding: 0 16px; }
+      .content { padding: 24px 16px 60px; }
+    }
+
+
+    .idea-lead {
+      background: #fff; border-radius: 12px; padding: 36px 40px 32px;
+      box-shadow: 0 1px 4px rgba(0,0,0,.07), 0 0 0 1px rgba(0,0,0,.05);
+      margin-bottom: 40px;
+    }
+    .idea-hashtag { font-size: 13px; font-weight: 700; color: #fe2c55; margin-bottom: 8px; }
+    .idea-title { font-size: 26px; font-weight: 800; letter-spacing: -.6px; line-height: 1.25; margin-bottom: 16px; }
+    .idea-desc { font-size: 14px; color: #444; line-height: 1.75; max-width: 720px; }
+    .media-grid {
+      display: grid; grid-template-columns: auto 1fr; gap: 28px; align-items: start;
+    }
+    .video-multi {
+      display: flex; gap: 16px; flex-wrap: wrap; align-items: flex-start;
+    }
+    .video-item {
+      width: 200px; display: flex; flex-direction: column; gap: 8px; flex-shrink: 0;
+    }
+    .video-caption {
+      font-size: 11px; color: #999; line-height: 1.4; padding: 0 2px;
+    }
+    .video-player {
+      width: 100%; aspect-ratio: 9/16; object-fit: cover; border-radius: 12px;
+      display: block; box-shadow: 0 2px 16px rgba(0,0,0,.14);
+    }
+    .frame-img {
+      width: 100%; aspect-ratio: 9/16; object-fit: cover; border-radius: 12px;
+      display: block; box-shadow: 0 2px 16px rgba(0,0,0,.14);
+    }
+    .prompts-col { display: flex; flex-direction: column; gap: 12px; }
+    .prompt-block {
+      background: #fff; border-radius: 10px;
+      box-shadow: 0 1px 4px rgba(0,0,0,.07), 0 0 0 1px rgba(0,0,0,.05); overflow: hidden;
+    }
+    .prompt-block summary {
+      padding: 14px 18px; font-size: 13px; font-weight: 700; cursor: pointer;
+      user-select: none; list-style: none; display: flex; align-items: center; gap: 8px; color: #333;
+    }
+    .prompt-block summary::-webkit-details-marker { display: none; }
+    .prompt-block summary::before { content: '▶'; font-size: 8px; color: #bbb; transition: transform .15s; flex-shrink: 0; }
+    .prompt-block[open] summary::before { transform: rotate(90deg); }
+    .prompt-block summary:hover { color: #fe2c55; }
+    .prompt-block summary:hover::before { color: #fe2c55; }
+    .prompt-label { font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: .5px; color: #bbb; margin-left: auto; }
+    .prompt-text {
+      padding: 14px 18px 16px; font-family: 'SF Mono','Fira Code','Menlo',monospace;
+      font-size: 11.5px; line-height: 1.7; color: #555; background: #f9f9f9;
+      border-top: 1px solid #f0f0f0; white-space: pre-wrap; word-break: break-word;
+      max-height: 320px; overflow-y: auto;
+    }
+    @media (max-width: 900px) {
+      .media-grid { grid-template-columns: 1fr; }
+      .video-multi { justify-content: center; }
+      .idea-lead { padding: 24px 22px 22px; }
+    }
+    @media (max-width: 520px) { .idea-title { font-size: 22px; } }
+
+  </style>
+</head>
+<body>
+<div class="page-header">
+  <div class="header-inner">
+    <a class="brand" href="../../../">
+      <span class="brand-tik">Tik</span><span class="brand-tok">Tok</span>
+      <span class="brand-dot">·</span><span class="brand-cc">Video Ideas</span>
+    </a>
+    <div class="header-text">
+      <div class="page-title">#womensmonth</div>
+      <div class="page-sub">Видео-идея · 8 августа 2026</div>
+    </div>
+    <div class="date-badge">08.08.2026<span>Дата</span></div>
+  </div>
+  <nav class="page-nav">
+    <a href="../../../" class="nav-a">← Все отчёты</a>
+    <a href="../../#za" class="nav-a">← 8 авг 2026</a>
+    <a href="#" class="nav-a active">#womensmonth</a>
+  </nav>
+</div>
+<div class="content">
+  <div class="idea-lead">
+    <div class="idea-hashtag">#womensmonth</div>
+    <h1 class="idea-title">Стена признания</h1>
+    <p class="idea-desc">Пользователь стоит у простой домашней стены, на которой раньше ничего не было — только пустое пространство. Взгляд направлен куда-то за кадр, будто читает список благодарностей. Внезапно на стене за спиной начинают проступать мягкие светящиеся силуэты — простые абстрактные фигуры женщин разных возрастов и профессий, будто созвездие теней, которое медленно разгорается тёплым золотистым светом. Пользователь оборачивается, видит стену целиком уже светящейся, и на лице — не эйфория, а тихая гордость и благодарность. В отличие от первых двух идей с unboxing-механикой, здесь якорь — сама светящаяся «стена силуэтов», более торжественный, спокойный образ, буквально воплощающий тему месяца, а не заимствующий формат реальных видео.</p>
+  </div>
+  <section class="section">
+    <div class="section-header">
+      <h2 class="section-title">Видео</h2>
+      <span class="section-badge">Пример генерации</span>
+    </div>
+    <div class="media-grid">
+      <div class="video-multi">
+        <div class="video-item"><video class="video-player" controls muted loop playsinline poster="https://temp-images.ws.pho.to/eddfd56d30a3116d7e21d7fd9655c3a4a1757e43.png"><source src="https://temp-images.ws.pho.to/429fe812b7d61db4d6030c4803401a019f68a719.mp4" type="video/mp4"></video>
+          <div class="video-caption">man in his early 30s with short brown hair, blue eyes, and a short beard</div>
+        </div>
+        <div class="video-item"><video class="video-player" controls muted loop playsinline poster="https://temp-images.ws.pho.to/60a89b339de79dda9ed3fc6db429ccc7c7ae0f29.png"><source src="https://temp-images.ws.pho.to/eac36b8508af55ac512471c637d2629abb5738ec.mp4" type="video/mp4"></video>
+          <div class="video-caption">woman in her late 30s with straight blonde shoulder-length hair and cat-eye glasses</div>
+        </div>
+      </div>
+      <div class="prompts-col">
+        <details class="prompt-block">
+          <summary>Промпт для первого кадра <span class="prompt-label">GPT Image 2</span></summary>
+          <pre class="prompt-text">Turn the photo of the person into a contemplative medium shot (waist-up), standing with their back partly angled toward a plain, empty interior wall behind them, body turned three-quarters toward the camera, gaze directed slightly off to the side and upward as if lost in thought. Expression: calm, reflective, a small, genuine, unforced smile beginning to form — not a performative grin.
+
+Setting &amp; Background: a plain, softly lit interior wall — matte, neutral-toned, completely bare, no décor, no shelves, nothing on it yet, since the glowing silhouettes have not yet appeared; the rest of the room stays softly out of focus, simple and uncluttered.
+
+Lighting: soft, diffused ambient light, slightly cool and neutral, deliberately understated so that the later warm glow from the wall reads as a clear, dramatic contrast when it appears.
+
+Attire: simple, comfortable everyday clothing in a neutral tone, so the eventual golden glow from the wall is the dominant color note in the frame, not competing with a busy outfit.
+
+Camera specs: a calm, slightly cinematic medium-shot framing, minimal depth-of-field drama, natural and grounded rather than stylized, consistent with an intimate personal moment rather than a produced commercial.
+
+Identity preservation (critical): preserve this exact person&#x27;s face shape, exact age, skin tone, eye shape and color, exact hairstyle, hair color and texture, jawline, and any distinctive features (freckles, moles, facial hair, glasses) precisely as shown in the source photo — no idealization, no bone-structure changes.
+
+Realism/authenticity artifacts: natural skin texture, no over-smoothing, no text, graphics, or objects on the wall at this stage — it must read as completely bare and unremarkable.</pre>
+        </details>
+        <details class="prompt-block">
+          <summary>Промпт для видео <span class="prompt-label">Kling · Grok</span></summary>
+          <pre class="prompt-text">Create a short cinematic video based on the uploaded image. The scene is a quiet room with a plain, bare wall behind the person; the person stands with their back partly to the wall, lost in thought.
+
+Camera and motion structure:
+FRAMES 0–20%: Keep the camera static, medium shot. The person stands still, gaze distant and thoughtful, as established.
+FRAMES 20–55%: Behind the person, faint warm points of light begin appearing on the bare wall, scattered like distant stars — small at first, then gradually growing brighter and taking shape, resolving into simple, abstract glowing silhouette-figures of women of varied heights and postures, arranged loosely across the wall like a soft constellation. The person doesn&#x27;t turn yet, still facing mostly toward camera, but their eyes flick briefly toward the light growing behind them.
+FRAMES 55–80%: The silhouettes on the wall finish forming and settle into a steady, warm golden glow, fully covering a wide section of the wall behind the person. The person slowly turns their body to face the wall directly, taking it in.
+FRAMES 80–100%: The person turns back to face the camera, the glowing wall of silhouettes still steadily lit behind them, wearing an expression of quiet pride and gratitude — a small, genuine, closed-mouth smile, perhaps a soft exhale, eyes slightly glistening but composed. The camera holds completely still through this final beat.
+
+Character: Preserve the person&#x27;s face, hair, skin tone, and identity exactly from the source image throughout the entire video. Movement is minimal and deliberate — a still opening beat, a slow turn toward the wall, then a slow turn back to camera. No dancing, no large gestures — the calmest, most solemn register of the three ideas in this batch.
+
+Key visual events (in order):
+1. Faint points of light appearing and multiplying on the bare wall behind the person (frames 20–55%)
+2. The lights resolving into a wide arrangement of glowing silhouette-figures fully lit across the wall (frames 55–80%) — this is the hero moment
+3. The person turning back to camera with a quiet, composed expression of pride and gratitude, the glowing wall steady behind them (frames 80–100%)
+
+Style: Calm, cinematic, dignified — soft ambient light giving way to one warm golden glowing tableau on the wall. The mood is quiet reverence and pride, deliberately more solemn and understated than the batch&#x27;s other two, more playful unboxing-style ideas.
+
+Restrictions:
+- Do not change the person&#x27;s face, hair, skin tone, or identity at any point
+- No speaking, no singing, no lip-sync, no mouthing words — only the silent, composed emotional reaction described
+- The person must remain in frame, recognizable, and the visual focus for the entire video, even once the glowing wall behind them is fully formed — the wall&#x27;s glow must never overpower or obscure the person
+- No speech bubbles
+- The wall of glowing silhouette-figures is the hero moment and must be clearly and fully visible, evenly and steadily lit across a wide section of the wall by the 80% mark — not faint, not confined to a small corner, not left half-formed
+- The silhouettes must be abstract, simple glowing human forms with no distinguishable faces or identifying features — they represent a general idea, not depictions of specific real people
+- The light&#x27;s appearance on the wall must read as a gradual materialization across frames 20–55%, never an instant jump-cut appearance
+- No additional gestures, actions, or beats beyond the described stillness, turn toward the wall, and turn back to camera — no walking toward the wall, no touching it, no other people entering frame
+- No aggressive or fast movements
+- No text, logos, or graphics anywhere in the frame</pre>
+        </details>
+      </div>
+    </div>
+  </section>
+</div>
+</body>
+</html>

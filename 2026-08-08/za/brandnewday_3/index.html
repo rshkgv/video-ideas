@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>#brandnewday — Отражение на рассвете · Video Ideas</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      background: #f4f4f5; color: #111; font-size: 14px; line-height: 1.5;
+    }
+    .page-header {
+      background: #fff; border-bottom: 1px solid #e4e4e7; position: sticky;
+      top: 0; z-index: 100; box-shadow: 0 1px 8px rgba(0,0,0,.05);
+    }
+    .header-inner {
+      max-width: 1100px; margin: 0 auto; padding: 14px 28px;
+      display: flex; align-items: center; gap: 20px;
+    }
+    .brand {
+      font-size: 18px; font-weight: 800; letter-spacing: -.5px; color: #111;
+      white-space: nowrap; user-select: none; text-decoration: none;
+    }
+    .brand-tik { color: #fe2c55; }
+    .brand-tok { color: #010101; }
+    .brand-dot { color: #d1d1d1; margin: 0 6px; font-weight: 300; }
+    .brand-cc  { color: #888; font-size: 12px; font-weight: 500; }
+    .header-text { flex: 1; min-width: 0; }
+    .page-title {
+      font-size: 15px; font-weight: 700; letter-spacing: -.2px;
+      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    }
+    .page-sub { font-size: 11.5px; color: #999; margin-top: 2px; }
+    .date-badge {
+      background: #fe2c55; color: #fff; font-weight: 700; font-size: 12px;
+      border-radius: 8px; padding: 6px 14px; line-height: 1.4;
+      text-align: center; white-space: nowrap; flex-shrink: 0;
+    }
+    .date-badge span { display: block; font-size: 10px; font-weight: 500; opacity: .8; }
+    .page-nav {
+      max-width: 1100px; margin: 0 auto; padding: 0 28px;
+      display: flex; gap: 2px; border-top: 1px solid #f0f0f0;
+    }
+    .nav-a {
+      text-decoration: none; color: #999; font-size: 12.5px; font-weight: 500;
+      padding: 9px 14px; border-bottom: 2px solid transparent;
+      transition: color .15s, border-color .15s;
+    }
+    .nav-a:hover { color: #fe2c55; }
+    .nav-a.active { color: #fe2c55; border-bottom-color: #fe2c55; }
+    .content { max-width: 1100px; margin: 0 auto; padding: 36px 28px 80px; }
+    .section { margin-bottom: 52px; }
+    .section-header { display: flex; align-items: baseline; gap: 10px; margin-bottom: 16px; }
+    .section-title { font-size: 19px; font-weight: 800; letter-spacing: -.4px; }
+    .section-badge {
+      font-size: 10.5px; font-weight: 600; color: #999; background: #ebebeb;
+      padding: 3px 8px; border-radius: 20px; text-transform: uppercase; letter-spacing: .4px;
+    }
+    @media (max-width: 768px) {
+      .header-inner { gap: 12px; padding: 12px 16px; }
+      .date-badge { display: none; }
+      .page-nav { padding: 0 16px; }
+      .content { padding: 24px 16px 60px; }
+    }
+
+
+    .idea-lead {
+      background: #fff; border-radius: 12px; padding: 36px 40px 32px;
+      box-shadow: 0 1px 4px rgba(0,0,0,.07), 0 0 0 1px rgba(0,0,0,.05);
+      margin-bottom: 40px;
+    }
+    .idea-hashtag { font-size: 13px; font-weight: 700; color: #fe2c55; margin-bottom: 8px; }
+    .idea-title { font-size: 26px; font-weight: 800; letter-spacing: -.6px; line-height: 1.25; margin-bottom: 16px; }
+    .idea-desc { font-size: 14px; color: #444; line-height: 1.75; max-width: 720px; }
+    .media-grid {
+      display: grid; grid-template-columns: auto 1fr; gap: 28px; align-items: start;
+    }
+    .video-multi {
+      display: flex; gap: 16px; flex-wrap: wrap; align-items: flex-start;
+    }
+    .video-item {
+      width: 200px; display: flex; flex-direction: column; gap: 8px; flex-shrink: 0;
+    }
+    .video-caption {
+      font-size: 11px; color: #999; line-height: 1.4; padding: 0 2px;
+    }
+    .video-player {
+      width: 100%; aspect-ratio: 9/16; object-fit: cover; border-radius: 12px;
+      display: block; box-shadow: 0 2px 16px rgba(0,0,0,.14);
+    }
+    .frame-img {
+      width: 100%; aspect-ratio: 9/16; object-fit: cover; border-radius: 12px;
+      display: block; box-shadow: 0 2px 16px rgba(0,0,0,.14);
+    }
+    .prompts-col { display: flex; flex-direction: column; gap: 12px; }
+    .prompt-block {
+      background: #fff; border-radius: 10px;
+      box-shadow: 0 1px 4px rgba(0,0,0,.07), 0 0 0 1px rgba(0,0,0,.05); overflow: hidden;
+    }
+    .prompt-block summary {
+      padding: 14px 18px; font-size: 13px; font-weight: 700; cursor: pointer;
+      user-select: none; list-style: none; display: flex; align-items: center; gap: 8px; color: #333;
+    }
+    .prompt-block summary::-webkit-details-marker { display: none; }
+    .prompt-block summary::before { content: '▶'; font-size: 8px; color: #bbb; transition: transform .15s; flex-shrink: 0; }
+    .prompt-block[open] summary::before { transform: rotate(90deg); }
+    .prompt-block summary:hover { color: #fe2c55; }
+    .prompt-block summary:hover::before { color: #fe2c55; }
+    .prompt-label { font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: .5px; color: #bbb; margin-left: auto; }
+    .prompt-text {
+      padding: 14px 18px 16px; font-family: 'SF Mono','Fira Code','Menlo',monospace;
+      font-size: 11.5px; line-height: 1.7; color: #555; background: #f9f9f9;
+      border-top: 1px solid #f0f0f0; white-space: pre-wrap; word-break: break-word;
+      max-height: 320px; overflow-y: auto;
+    }
+    @media (max-width: 900px) {
+      .media-grid { grid-template-columns: 1fr; }
+      .video-multi { justify-content: center; }
+      .idea-lead { padding: 24px 22px 22px; }
+    }
+    @media (max-width: 520px) { .idea-title { font-size: 22px; } }
+
+  </style>
+</head>
+<body>
+<div class="page-header">
+  <div class="header-inner">
+    <a class="brand" href="../../../">
+      <span class="brand-tik">Tik</span><span class="brand-tok">Tok</span>
+      <span class="brand-dot">·</span><span class="brand-cc">Video Ideas</span>
+    </a>
+    <div class="header-text">
+      <div class="page-title">#brandnewday</div>
+      <div class="page-sub">Видео-идея · 8 августа 2026</div>
+    </div>
+    <div class="date-badge">08.08.2026<span>Дата</span></div>
+  </div>
+  <nav class="page-nav">
+    <a href="../../../" class="nav-a">← Все отчёты</a>
+    <a href="../../#za" class="nav-a">← 8 авг 2026</a>
+    <a href="#" class="nav-a active">#brandnewday</a>
+  </nav>
+</div>
+<div class="content">
+  <div class="idea-lead">
+    <div class="idea-hashtag">#brandnewday</div>
+    <h1 class="idea-title">Отражение на рассвете</h1>
+    <p class="idea-desc">Пользователь стоит перед зеркалом в ванной ранним утром, свет ещё серый и тусклый, лицо в отражении — сонное, невыразительное. Он медленно поднимает взгляд на своё отражение, и вдруг за окном позади него сквозь щель занавески начинает пробиваться рассветный луч, который ложится на зеркало и буквально «перекрашивает» отражение пользователя — сонные тени под глазами тают, осанка в отражении сама собой выпрямляется, а на лице отражения расцветает бодрая, уверенная улыбка ещё до того, как настоящее лицо пользователя успевает измениться. Настоящий пользователь удивлённо смотрит на своё преобразившееся отражение, затем, приняв его, сам расплывается в такой же улыбке. В отличие от идей 1 и 2, здесь нет ни текстовых оверлеев, ни резких POV-переходов — вместо этого тихий, кинематографичный образ «отражение меняется первым», без единого слова текста на экране.</p>
+  </div>
+  <section class="section">
+    <div class="section-header">
+      <h2 class="section-title">Видео</h2>
+      <span class="section-badge">Пример генерации</span>
+    </div>
+    <div class="media-grid">
+      <div class="video-multi">
+        <div class="video-item"><video class="video-player" controls muted loop playsinline poster="https://temp-images.ws.pho.to/668290eb3af8399aa9df28daf83ab53ef2af43cd.png"><source src="https://temp-images.ws.pho.to/1726f75902ae8aff73f919c8eb7d97405d43008d.mp4" type="video/mp4"></video>
+          <div class="video-caption">woman in her late 30s with straight blonde shoulder-length hair and cat-eye glasses</div>
+        </div>
+        <div class="video-item"><video class="video-player" controls muted loop playsinline poster="https://temp-images.ws.pho.to/08af8cec1e647629fbae02f7baf5399e643acbda.png"><source src="https://temp-images.ws.pho.to/760681227de822c55a0afa6f97d86bdf97f43a90.mp4" type="video/mp4"></video>
+          <div class="video-caption">man in his early 30s with short brown hair, blue eyes, and a short beard</div>
+        </div>
+      </div>
+      <div class="prompts-col">
+        <details class="prompt-block">
+          <summary>Промпт для первого кадра <span class="prompt-label">GPT Image 2</span></summary>
+          <pre class="prompt-text">Turn the photo of the person into an intimate close-to-medium shot (chest-up), standing in front of a bathroom mirror in the pale, cool grey light of early dawn, facing their own reflection, expression tired and flat — heavy-lidded eyes, neutral downturned mouth, the unmistakable look of someone not yet awake.
+
+Setting &amp; Background: a plain, ordinary bathroom — a simple mirror, a hint of a sink counter below the frame, a partially drawn curtain or blind visible at the very edge suggesting an unseen window just out of frame, everything rendered in cool, muted pre-dawn tones.
+
+Pose &amp; Composition: the person stands close enough to the mirror that both their real face and their reflected face are clearly visible and comparably sized in the frame, ideally via a composition that reads clearly as &quot;person on one side, mirror reflection on the other&quot; (e.g. a three-quarter angle capturing both).
+
+Lighting: cool, flat, low pre-dawn light, slightly blue-grey, deliberately unflattering and muted to set up a strong contrast with the coming warm sunrise light.
+
+Camera specs: a calm, intimate framing that holds both the person and their reflection sharply in focus, natural and grounded rather than stylized.
+
+Identity preservation (critical): preserve this exact person&#x27;s face shape, exact age, skin tone, eye shape and color, exact hairstyle, hair color and texture, jawline, and any distinctive features (freckles, moles, facial hair, glasses) precisely as shown in the source photo, consistently in both the real figure and the mirror reflection — no idealization, no bone-structure changes.
+
+Realism/authenticity artifacts: natural skin texture including visible tiredness (slight under-eye shadow, flat expression), no over-smoothing, no text or graphics anywhere in the frame.</pre>
+        </details>
+        <details class="prompt-block">
+          <summary>Промпт для видео <span class="prompt-label">Kling · Grok</span></summary>
+          <pre class="prompt-text">Create a short cinematic video based on the uploaded image. The scene is a plain bathroom at pre-dawn; the person stands facing their own reflection in the mirror, tired and expressionless.
+
+Camera and motion structure:
+FRAMES 0–20%: Static camera, both the real person and reflection in frame. The person blinks slowly, still tired, looking at their reflection without much reaction.
+FRAMES 20–45%: A thin beam of warm golden sunrise light creeps in from the frame edge and falls across the mirror&#x27;s surface — illuminating only the reflection, not yet the real person.
+FRAMES 45–75%: Within the mirror only, the reflection transforms ahead of the real person: tired shadows soften, posture straightens, a warm confident closed-mouth smile spreads — while the real person stays visibly unchanged and tired, watching with growing surprise.
+FRAMES 75–100%: The real person straightens their own posture and smiles to match their already-transformed reflection; the warm light now fills the whole room, both fully lit and matching.
+
+Character: Preserve the person&#x27;s face, hair, skin tone, and identity exactly from the source image throughout, consistently in both the real figure and the reflection. Movement is minimal — blinking, surprise, then a slow posture straighten and matching smile. No large gestures, no leaving the mirror.
+
+Key visual events (in order):
+1. The sunrise beam falling across the mirror, changing the reflection specifically, ahead of the real person (20–45%)
+2. The reflection fully transforming while the real person stays visibly tired and watching (45–75%) — this is the hero moment
+3. The real person&#x27;s posture and expression catching up to match the transformed reflection (75–100%)
+
+Style: Quiet, intimate, cinematic magical-realism — cool pre-dawn tones giving way to warm sunrise light, the sole effect being the reflection changing before the real person does. Gentle, contemplative renewal, no on-screen text.
+
+Restrictions:
+- Do not change the person&#x27;s face, hair, skin tone, or identity at any point; keep appearance consistent between the real figure and reflection, aside from the described transformation lag
+- No speaking, no singing, no lip-sync, no mouthing words — only silent blinking, surprise, and the final matching smiles
+- The person must stay in frame, recognizable, and the visual focus throughout, visible directly and in the mirror at all times
+- No speech bubbles, no on-screen text or captions of any kind
+- Hero-moment lock: the reflection changing distinctly before the real person is a clear two-stage sequence — the reflection must fully finish transforming while the real person is still visibly tired, with a clear beat of contrast, before the real person catches up
+- The transformation must read as gradual across frames 20–75%, never an instant jump-cut
+- No improvisation beyond blinking, watching, and the final posture-and-smile match — no extra props, no other people, no leaving the bathroom
+- No aggressive or fast movements
+- No brand names, logos, or real company references anywhere in the scene</pre>
+        </details>
+      </div>
+    </div>
+  </section>
+</div>
+</body>
+</html>

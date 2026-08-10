@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>#girlfriendsday — Цветок из воздуха · Video Ideas</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      background: #f4f4f5; color: #111; font-size: 14px; line-height: 1.5;
+    }
+    .page-header {
+      background: #fff; border-bottom: 1px solid #e4e4e7; position: sticky;
+      top: 0; z-index: 100; box-shadow: 0 1px 8px rgba(0,0,0,.05);
+    }
+    .header-inner {
+      max-width: 1100px; margin: 0 auto; padding: 14px 28px;
+      display: flex; align-items: center; gap: 20px;
+    }
+    .brand {
+      font-size: 18px; font-weight: 800; letter-spacing: -.5px; color: #111;
+      white-space: nowrap; user-select: none; text-decoration: none;
+    }
+    .brand-tik { color: #fe2c55; }
+    .brand-tok { color: #010101; }
+    .brand-dot { color: #d1d1d1; margin: 0 6px; font-weight: 300; }
+    .brand-cc  { color: #888; font-size: 12px; font-weight: 500; }
+    .header-text { flex: 1; min-width: 0; }
+    .page-title {
+      font-size: 15px; font-weight: 700; letter-spacing: -.2px;
+      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    }
+    .page-sub { font-size: 11.5px; color: #999; margin-top: 2px; }
+    .date-badge {
+      background: #fe2c55; color: #fff; font-weight: 700; font-size: 12px;
+      border-radius: 8px; padding: 6px 14px; line-height: 1.4;
+      text-align: center; white-space: nowrap; flex-shrink: 0;
+    }
+    .date-badge span { display: block; font-size: 10px; font-weight: 500; opacity: .8; }
+    .page-nav {
+      max-width: 1100px; margin: 0 auto; padding: 0 28px;
+      display: flex; gap: 2px; border-top: 1px solid #f0f0f0;
+    }
+    .nav-a {
+      text-decoration: none; color: #999; font-size: 12.5px; font-weight: 500;
+      padding: 9px 14px; border-bottom: 2px solid transparent;
+      transition: color .15s, border-color .15s;
+    }
+    .nav-a:hover { color: #fe2c55; }
+    .nav-a.active { color: #fe2c55; border-bottom-color: #fe2c55; }
+    .content { max-width: 1100px; margin: 0 auto; padding: 36px 28px 80px; }
+    .section { margin-bottom: 52px; }
+    .section-header { display: flex; align-items: baseline; gap: 10px; margin-bottom: 16px; }
+    .section-title { font-size: 19px; font-weight: 800; letter-spacing: -.4px; }
+    .section-badge {
+      font-size: 10.5px; font-weight: 600; color: #999; background: #ebebeb;
+      padding: 3px 8px; border-radius: 20px; text-transform: uppercase; letter-spacing: .4px;
+    }
+    @media (max-width: 768px) {
+      .header-inner { gap: 12px; padding: 12px 16px; }
+      .date-badge { display: none; }
+      .page-nav { padding: 0 16px; }
+      .content { padding: 24px 16px 60px; }
+    }
+
+
+    .idea-lead {
+      background: #fff; border-radius: 12px; padding: 36px 40px 32px;
+      box-shadow: 0 1px 4px rgba(0,0,0,.07), 0 0 0 1px rgba(0,0,0,.05);
+      margin-bottom: 40px;
+    }
+    .idea-hashtag { font-size: 13px; font-weight: 700; color: #fe2c55; margin-bottom: 8px; }
+    .idea-title { font-size: 26px; font-weight: 800; letter-spacing: -.6px; line-height: 1.25; margin-bottom: 16px; }
+    .idea-desc { font-size: 14px; color: #444; line-height: 1.75; max-width: 720px; }
+    .media-grid {
+      display: grid; grid-template-columns: auto 1fr; gap: 28px; align-items: start;
+    }
+    .video-multi {
+      display: flex; gap: 16px; flex-wrap: wrap; align-items: flex-start;
+    }
+    .video-item {
+      width: 200px; display: flex; flex-direction: column; gap: 8px; flex-shrink: 0;
+    }
+    .video-caption {
+      font-size: 11px; color: #999; line-height: 1.4; padding: 0 2px;
+    }
+    .video-player {
+      width: 100%; aspect-ratio: 9/16; object-fit: cover; border-radius: 12px;
+      display: block; box-shadow: 0 2px 16px rgba(0,0,0,.14);
+    }
+    .frame-img {
+      width: 100%; aspect-ratio: 9/16; object-fit: cover; border-radius: 12px;
+      display: block; box-shadow: 0 2px 16px rgba(0,0,0,.14);
+    }
+    .prompts-col { display: flex; flex-direction: column; gap: 12px; }
+    .prompt-block {
+      background: #fff; border-radius: 10px;
+      box-shadow: 0 1px 4px rgba(0,0,0,.07), 0 0 0 1px rgba(0,0,0,.05); overflow: hidden;
+    }
+    .prompt-block summary {
+      padding: 14px 18px; font-size: 13px; font-weight: 700; cursor: pointer;
+      user-select: none; list-style: none; display: flex; align-items: center; gap: 8px; color: #333;
+    }
+    .prompt-block summary::-webkit-details-marker { display: none; }
+    .prompt-block summary::before { content: '▶'; font-size: 8px; color: #bbb; transition: transform .15s; flex-shrink: 0; }
+    .prompt-block[open] summary::before { transform: rotate(90deg); }
+    .prompt-block summary:hover { color: #fe2c55; }
+    .prompt-block summary:hover::before { color: #fe2c55; }
+    .prompt-label { font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: .5px; color: #bbb; margin-left: auto; }
+    .prompt-text {
+      padding: 14px 18px 16px; font-family: 'SF Mono','Fira Code','Menlo',monospace;
+      font-size: 11.5px; line-height: 1.7; color: #555; background: #f9f9f9;
+      border-top: 1px solid #f0f0f0; white-space: pre-wrap; word-break: break-word;
+      max-height: 320px; overflow-y: auto;
+    }
+    @media (max-width: 900px) {
+      .media-grid { grid-template-columns: 1fr; }
+      .video-multi { justify-content: center; }
+      .idea-lead { padding: 24px 22px 22px; }
+    }
+    @media (max-width: 520px) { .idea-title { font-size: 22px; } }
+
+  </style>
+</head>
+<body>
+<div class="page-header">
+  <div class="header-inner">
+    <a class="brand" href="../../../">
+      <span class="brand-tik">Tik</span><span class="brand-tok">Tok</span>
+      <span class="brand-dot">·</span><span class="brand-cc">Video Ideas</span>
+    </a>
+    <div class="header-text">
+      <div class="page-title">#girlfriendsday</div>
+      <div class="page-sub">Видео-идея · 8 августа 2026</div>
+    </div>
+    <div class="date-badge">08.08.2026<span>Дата</span></div>
+  </div>
+  <nav class="page-nav">
+    <a href="../../../" class="nav-a">← Все отчёты</a>
+    <a href="../../#za" class="nav-a">← 8 авг 2026</a>
+    <a href="#" class="nav-a active">#girlfriendsday</a>
+  </nav>
+</div>
+<div class="content">
+  <div class="idea-lead">
+    <div class="idea-hashtag">#girlfriendsday</div>
+    <h1 class="idea-title">Цветок из воздуха</h1>
+    <p class="idea-desc">Пользователь сидит на кровати, лениво листая телефон, — обычный вечер. Внезапно замечает что-то в воздухе перед собой: невидимая рука будто рисует лепестки светом, и прямо на глазах пользователя из мерцающих золотых частиц собирается одна крупная роза, паря в воздухе. Пользователь осторожно тянется и бережно берёт её за стебель, поднося к лицу, будто вдыхая аромат, и на лице проступает удивлённая нежная улыбка. Сохраняем тот же смысловой стержень «получение цветов», что доминирует в реальных видео хэштега, но заменяем букет из коробки/пакета на цветок, материализующийся прямо из воздуха, — отдельный, более волшебный сценарий.</p>
+  </div>
+  <section class="section">
+    <div class="section-header">
+      <h2 class="section-title">Видео</h2>
+      <span class="section-badge">Пример генерации</span>
+    </div>
+    <div class="media-grid">
+      <div class="video-multi">
+        <div class="video-item"><video class="video-player" controls muted loop playsinline poster="https://temp-images.ws.pho.to/cd8d396bf652dfe13c7502e45e1b0219d130bd66.png"><source src="https://temp-images.ws.pho.to/e5bca4b7cbdafdcda930f32950f4811e3d9329a9.mp4" type="video/mp4"></video>
+          <div class="video-caption">woman in her late 30s with straight blonde shoulder-length hair and cat-eye glasses</div>
+        </div>
+        <div class="video-item"><video class="video-player" controls muted loop playsinline poster="https://temp-images.ws.pho.to/7b52090490130052a5f1da70f95ac264c0c37a7b.png"><source src="https://temp-images.ws.pho.to/c608718076e6e99d8d56bf14e6f1fb23adcb3455.mp4" type="video/mp4"></video>
+          <div class="video-caption">man in his early 30s with short brown hair, blue eyes, and a short beard</div>
+        </div>
+      </div>
+      <div class="prompts-col">
+        <details class="prompt-block">
+          <summary>Промпт для первого кадра <span class="prompt-label">GPT Image 2</span></summary>
+          <pre class="prompt-text">Turn the photo of the person into a relaxed, natural medium shot (chest-up), seated on the edge of a bed, one leg tucked slightly under, looking down and to the side at a phone held loosely in one hand, in the middle of an ordinary quiet evening moment. Expression: neutral, relaxed, unremarkable — the &quot;before&quot; state, since the magic moment hasn&#x27;t started yet.
+
+Setting &amp; Background: a cozy, dimly lit bedroom in the evening — a soft bedside lamp glowing warmly, a plain headboard and pillows softly out of focus behind the person, curtains partly drawn, nothing staged or overly tidy, an authentic lived-in evening atmosphere.
+
+Lighting: warm, low-key evening lighting from a single bedside lamp, casting soft shadows and a cozy amber tone across the person&#x27;s face and the room.
+
+Attire: relaxed evening loungewear — a soft oversized shirt or sweater, consistent with a low-key at-home moment.
+
+Environmental atmosphere: a few motes of dust or soft ambient particles gently visible in the lamp light, adding a naturalistic texture to the still, quiet air of the room — subtly foreshadowing, without yet showing, the light-particle transformation to come.
+
+Camera specs: an intimate, slightly low-contrast home-video framing, natural warmth rather than a polished cinematic grade at this stage.
+
+Identity preservation (critical): preserve this exact person&#x27;s face shape, exact age, skin tone, eye shape and color, exact hairstyle, hair color and texture, jawline, and any distinctive features (freckles, moles, facial hair, glasses) precisely as shown in the source photo — no idealization, no bone-structure changes.
+
+Realism/authenticity artifacts: natural skin texture, no over-smoothing, no text or logos anywhere in the frame at this stage, no flower or glowing light visible yet in the air.</pre>
+        </details>
+        <details class="prompt-block">
+          <summary>Промпт для видео <span class="prompt-label">Kling · Grok</span></summary>
+          <pre class="prompt-text">Create a short cinematic video based on the uploaded image. The scene is a cozy, dimly lit bedroom in the evening; the person sits on the edge of the bed, looking at their phone in an ordinary quiet moment.
+
+Camera and motion structure:
+FRAMES 0–20%: Keep the camera static, medium shot. The person continues idly looking at their phone, relaxed and unhurried, establishing the ordinary &quot;before&quot; mood.
+FRAMES 20–40%: The person&#x27;s attention shifts — they slowly look up and off to one side, noticing something. In the empty air in front of them, at chest height, tiny golden light particles begin gathering, faint at first.
+FRAMES 40–70%: The golden particles multiply and swirl gently, gradually tracing and building the layered shape of a single large rose — petal by petal, curling into form, along with a slender glowing stem — fully materializing and hovering steadily in the air in front of the person.
+FRAMES 70–100%: The person watches with widening, delighted eyes, then slowly and carefully reaches out with one hand to close their fingers gently around the glowing rose&#x27;s stem, drawing it toward their face and tilting their head slightly downward as if breathing in its scent, the rose&#x27;s glow softening to a natural warm shine as it settles fully into their hand; a quiet, moved smile spreads across their face in the final beat.
+
+Character: Preserve the person&#x27;s face, hair, skin tone, and identity exactly from the source image throughout the entire video. Movement progresses from stillness to a slow head-turn, a widening gaze, and a careful, gentle reach-and-hold gesture — deliberate and soft throughout, never rushed or large.
+
+Key visual events (in order):
+1. Faint golden light particles first gathering in the empty air in front of the person (frames 20–40%)
+2. The particles assembling petal by petal into a single glowing hovering rose with a stem (frames 40–70%) — this is the hero moment
+3. The person gently taking hold of the rose&#x27;s stem and drawing it close, smiling (frames 70–100%)
+
+Style: Intimate, warm, quietly magical-realist — a dim, cozy evening setting giving way to one soft, glowing floral materialization. The mood is tender surprise and quiet wonder, distinct from the more outward, presentation-style energy of a held bouquet reveal.
+
+Restrictions:
+- Do not change the person&#x27;s face, hair, skin tone, or identity at any point
+- No speaking, no singing, no lip-sync, no mouthing words — only the silent widening gaze and final quiet smile
+- The person must remain in frame, recognizable, and the visual focus for the entire video, including during the rose&#x27;s materialization, which happens directly in front of them without ever obscuring their face
+- No speech bubbles
+- The rose&#x27;s petal-by-petal materialization from golden light particles is the hero moment and must be clearly, fully visible and completely formed by the 70% mark before the person reaches for it — it must not appear as a sudden jump-cut object or remain incomplete
+- Exactly one rose forms — no additional flowers or objects should appear
+- No additional gestures, actions, or beats beyond looking at the phone, noticing, watching the rose form, and the final reach-and-smell-and-smile gesture — no extra props, no other people entering frame, no standing up
+- The person&#x27;s gesture of bringing the rose toward their face must clearly stay near the nose/cheek area as an implied smell, and must not be depicted as bringing it to their mouth or lips, to avoid any ambiguous reading
+- No text, logos, or graphics anywhere in the frame
+- No brand names or real company references</pre>
+        </details>
+      </div>
+    </div>
+  </section>
+</div>
+</body>
+</html>

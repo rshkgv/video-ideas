@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>#kitasatubrawijaya — Обращение на территории кампуса · Video Ideas</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      background: #f4f4f5; color: #111; font-size: 14px; line-height: 1.5;
+    }
+    .page-header {
+      background: #fff; border-bottom: 1px solid #e4e4e7; position: sticky;
+      top: 0; z-index: 100; box-shadow: 0 1px 8px rgba(0,0,0,.05);
+    }
+    .header-inner {
+      max-width: 1100px; margin: 0 auto; padding: 14px 28px;
+      display: flex; align-items: center; gap: 20px;
+    }
+    .brand {
+      font-size: 18px; font-weight: 800; letter-spacing: -.5px; color: #111;
+      white-space: nowrap; user-select: none; text-decoration: none;
+    }
+    .brand-tik { color: #fe2c55; }
+    .brand-tok { color: #010101; }
+    .brand-dot { color: #d1d1d1; margin: 0 6px; font-weight: 300; }
+    .brand-cc  { color: #888; font-size: 12px; font-weight: 500; }
+    .header-text { flex: 1; min-width: 0; }
+    .page-title {
+      font-size: 15px; font-weight: 700; letter-spacing: -.2px;
+      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    }
+    .page-sub { font-size: 11.5px; color: #999; margin-top: 2px; }
+    .date-badge {
+      background: #fe2c55; color: #fff; font-weight: 700; font-size: 12px;
+      border-radius: 8px; padding: 6px 14px; line-height: 1.4;
+      text-align: center; white-space: nowrap; flex-shrink: 0;
+    }
+    .date-badge span { display: block; font-size: 10px; font-weight: 500; opacity: .8; }
+    .page-nav {
+      max-width: 1100px; margin: 0 auto; padding: 0 28px;
+      display: flex; gap: 2px; border-top: 1px solid #f0f0f0;
+    }
+    .nav-a {
+      text-decoration: none; color: #999; font-size: 12.5px; font-weight: 500;
+      padding: 9px 14px; border-bottom: 2px solid transparent;
+      transition: color .15s, border-color .15s;
+    }
+    .nav-a:hover { color: #fe2c55; }
+    .nav-a.active { color: #fe2c55; border-bottom-color: #fe2c55; }
+    .content { max-width: 1100px; margin: 0 auto; padding: 36px 28px 80px; }
+    .section { margin-bottom: 52px; }
+    .section-header { display: flex; align-items: baseline; gap: 10px; margin-bottom: 16px; }
+    .section-title { font-size: 19px; font-weight: 800; letter-spacing: -.4px; }
+    .section-badge {
+      font-size: 10.5px; font-weight: 600; color: #999; background: #ebebeb;
+      padding: 3px 8px; border-radius: 20px; text-transform: uppercase; letter-spacing: .4px;
+    }
+    @media (max-width: 768px) {
+      .header-inner { gap: 12px; padding: 12px 16px; }
+      .date-badge { display: none; }
+      .page-nav { padding: 0 16px; }
+      .content { padding: 24px 16px 60px; }
+    }
+
+
+    .idea-lead {
+      background: #fff; border-radius: 12px; padding: 36px 40px 32px;
+      box-shadow: 0 1px 4px rgba(0,0,0,.07), 0 0 0 1px rgba(0,0,0,.05);
+      margin-bottom: 40px;
+    }
+    .idea-hashtag { font-size: 13px; font-weight: 700; color: #fe2c55; margin-bottom: 8px; }
+    .idea-title { font-size: 26px; font-weight: 800; letter-spacing: -.6px; line-height: 1.25; margin-bottom: 16px; }
+    .idea-desc { font-size: 14px; color: #444; line-height: 1.75; max-width: 720px; }
+    .media-grid {
+      display: grid; grid-template-columns: auto 1fr; gap: 28px; align-items: start;
+    }
+    .video-multi {
+      display: flex; gap: 16px; flex-wrap: wrap; align-items: flex-start;
+    }
+    .video-item {
+      width: 200px; display: flex; flex-direction: column; gap: 8px; flex-shrink: 0;
+    }
+    .video-caption {
+      font-size: 11px; color: #999; line-height: 1.4; padding: 0 2px;
+    }
+    .video-player {
+      width: 100%; aspect-ratio: 9/16; object-fit: cover; border-radius: 12px;
+      display: block; box-shadow: 0 2px 16px rgba(0,0,0,.14);
+    }
+    .frame-img {
+      width: 100%; aspect-ratio: 9/16; object-fit: cover; border-radius: 12px;
+      display: block; box-shadow: 0 2px 16px rgba(0,0,0,.14);
+    }
+    .prompts-col { display: flex; flex-direction: column; gap: 12px; }
+    .prompt-block {
+      background: #fff; border-radius: 10px;
+      box-shadow: 0 1px 4px rgba(0,0,0,.07), 0 0 0 1px rgba(0,0,0,.05); overflow: hidden;
+    }
+    .prompt-block summary {
+      padding: 14px 18px; font-size: 13px; font-weight: 700; cursor: pointer;
+      user-select: none; list-style: none; display: flex; align-items: center; gap: 8px; color: #333;
+    }
+    .prompt-block summary::-webkit-details-marker { display: none; }
+    .prompt-block summary::before { content: '▶'; font-size: 8px; color: #bbb; transition: transform .15s; flex-shrink: 0; }
+    .prompt-block[open] summary::before { transform: rotate(90deg); }
+    .prompt-block summary:hover { color: #fe2c55; }
+    .prompt-block summary:hover::before { color: #fe2c55; }
+    .prompt-label { font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: .5px; color: #bbb; margin-left: auto; }
+    .prompt-text {
+      padding: 14px 18px 16px; font-family: 'SF Mono','Fira Code','Menlo',monospace;
+      font-size: 11.5px; line-height: 1.7; color: #555; background: #f9f9f9;
+      border-top: 1px solid #f0f0f0; white-space: pre-wrap; word-break: break-word;
+      max-height: 320px; overflow-y: auto;
+    }
+    @media (max-width: 900px) {
+      .media-grid { grid-template-columns: 1fr; }
+      .video-multi { justify-content: center; }
+      .idea-lead { padding: 24px 22px 22px; }
+    }
+    @media (max-width: 520px) { .idea-title { font-size: 22px; } }
+
+  </style>
+</head>
+<body>
+<div class="page-header">
+  <div class="header-inner">
+    <a class="brand" href="../../../">
+      <span class="brand-tik">Tik</span><span class="brand-tok">Tok</span>
+      <span class="brand-dot">·</span><span class="brand-cc">Video Ideas</span>
+    </a>
+    <div class="header-text">
+      <div class="page-title">#kitasatubrawijaya</div>
+      <div class="page-sub">Видео-идея · 8 августа 2026</div>
+    </div>
+    <div class="date-badge">08.08.2026<span>Дата</span></div>
+  </div>
+  <nav class="page-nav">
+    <a href="../../../" class="nav-a">← Все отчёты</a>
+    <a href="../../#id" class="nav-a">← 8 авг 2026</a>
+    <a href="#" class="nav-a active">#kitasatubrawijaya</a>
+  </nav>
+</div>
+<div class="content">
+  <div class="idea-lead">
+    <div class="idea-hashtag">#kitasatubrawijaya</div>
+    <h1 class="idea-title">Обращение на территории кампуса</h1>
+    <p class="idea-desc">Та же искренняя интонация прямого обращения, но на этот раз пользователь стоит на улице на территории университетского двора в вечернем золотом свете, а не сидит в комнате. Он произносит тёплую речь единства, прижимая руку к груди, а вокруг него по краям кадра постепенно проступает та же декоративная цветочная рамка — сцена превращается в подобие открытки.</p>
+  </div>
+  <section class="section">
+    <div class="section-header">
+      <h2 class="section-title">Видео</h2>
+      <span class="section-badge">Пример генерации</span>
+    </div>
+    <div class="media-grid">
+      <div class="video-multi"><div class="video-item"><div style="aspect-ratio:9/16;background:#eee;border-radius:12px;"></div></div></div>
+      <div class="prompts-col">
+        <details class="prompt-block">
+          <summary>Промпт для первого кадра <span class="prompt-label">GPT Image 2</span></summary>
+          <pre class="prompt-text">Turn the photo of the person into a golden-hour campus portrait: standing outdoors on a paved university courtyard at golden hour, wearing a crisp white collared shirt and a black tie, warm low sunlight raking across their face, holding a small printed program card in both hands at chest height, looking down at it with a quiet, warm, composed expression.
+
+Pose &amp; Composition: Medium shot, chest-up, standing centered, both hands holding the card steady at chest height, head tilted slightly downward toward it, shoulders relaxed — a calm, dignified stance.
+
+Environmental atmosphere: Golden-hour outdoor light, long soft shadows, a gentle warm haze in the air; the blurred outline of campus buildings and trees in the background.
+
+Lighting: Warm, low, directional late-afternoon sunlight, rim-lighting the hair and one side of the face, soft golden color temperature throughout.
+
+Attire: Crisp white collared shirt, black tie.
+
+Color grading: Warm golden-hour palette — amber highlights, soft warm shadows, gentle overall glow.
+
+Identity preservation (critical): preserve this exact person&#x27;s face shape, exact age, skin tone, eye shape and color, exact hairstyle, hair color and texture, jawline, and any distinctive features precisely as shown in the source photo — no idealization, no bone-structure changes. Hands holding the card must be anatomically correct.</pre>
+        </details>
+        <details class="prompt-block">
+          <summary>Промпт для видео <span class="prompt-label">Kling · Grok</span></summary>
+          <pre class="prompt-text">Create a short cinematic video based on the uploaded image.
+The scene is an outdoor university courtyard at golden hour. The person stands facing the camera, medium shot, chest-up, holding a small printed card in both hands.
+
+Camera and motion structure:
+Keep the shot locked-off and static — no zoom, no camera movement.
+FRAMES 0–35%: The person looks down at the card they&#x27;re holding, calm and still, a light breeze faintly moving their hair and collar.
+FRAMES 35–65%: They slowly look up from the card to the camera, expression softening into quiet warmth.
+FRAMES 65–100%: The same decorative floral border — soft blue and yellow botanical motifs — blooms inward from the frame edges, framing the golden-hour scene like a warm postcard; the person finishes with a small, warm nod directly to camera as the border completes.
+
+Character:
+Preserve the person&#x27;s face shape, exact age, skin tone, eye shape/color, exact hairstyle, hair color/texture, jawline, and distinctive features exactly as in the source image throughout. Hands must remain anatomically correct holding the card throughout.
+Allowed motion: looking down then up, hair/collar moving gently in the breeze, a final nod. No other movement.
+
+Key visual events (in order):
+1. The quiet look-down-then-up beat.
+2. The floral border blooming inward — the hero moment, must clearly and fully bloom into place exactly once.
+
+Style:
+Warm, golden, quiet outdoor aesthetic — soft late-afternoon light, gentle breeze, the same decorative framing motif as a companion piece, evoking a heartfelt postcard-style keepsake.
+
+Restrictions:
+- Do not change the person&#x27;s face, hair, skin tone, or identity at any point
+- Keep the overall shot static. No zoom, no camera movement.
+- The person must stay in frame, recognizable, and the clear visual focus for the entire video
+- The person never speaks, sings, or mouths words on camera — no lip movement forming words; the moment is silent and expressive only
+- No speech bubbles
+- The floral border appears only once, blooming in during the final 35%, and must stay visible until the last frame
+- No on-screen text naming any specific real institution or program
+- No improvisation beyond the listed actions — no additional gestures
+- Hands must retain correct, realistic anatomy throughout
+- No violent or aggressive actions
+- The breeze effect on hair/collar must stay subtle and continuous, not a sudden gust</pre>
+        </details>
+      </div>
+    </div>
+  </section>
+</div>
+</body>
+</html>

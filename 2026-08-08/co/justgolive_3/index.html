@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>#justgolive — Обратный отсчёт под кроватью · Video Ideas</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      background: #f4f4f5; color: #111; font-size: 14px; line-height: 1.5;
+    }
+    .page-header {
+      background: #fff; border-bottom: 1px solid #e4e4e7; position: sticky;
+      top: 0; z-index: 100; box-shadow: 0 1px 8px rgba(0,0,0,.05);
+    }
+    .header-inner {
+      max-width: 1100px; margin: 0 auto; padding: 14px 28px;
+      display: flex; align-items: center; gap: 20px;
+    }
+    .brand {
+      font-size: 18px; font-weight: 800; letter-spacing: -.5px; color: #111;
+      white-space: nowrap; user-select: none; text-decoration: none;
+    }
+    .brand-tik { color: #fe2c55; }
+    .brand-tok { color: #010101; }
+    .brand-dot { color: #d1d1d1; margin: 0 6px; font-weight: 300; }
+    .brand-cc  { color: #888; font-size: 12px; font-weight: 500; }
+    .header-text { flex: 1; min-width: 0; }
+    .page-title {
+      font-size: 15px; font-weight: 700; letter-spacing: -.2px;
+      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    }
+    .page-sub { font-size: 11.5px; color: #999; margin-top: 2px; }
+    .date-badge {
+      background: #fe2c55; color: #fff; font-weight: 700; font-size: 12px;
+      border-radius: 8px; padding: 6px 14px; line-height: 1.4;
+      text-align: center; white-space: nowrap; flex-shrink: 0;
+    }
+    .date-badge span { display: block; font-size: 10px; font-weight: 500; opacity: .8; }
+    .page-nav {
+      max-width: 1100px; margin: 0 auto; padding: 0 28px;
+      display: flex; gap: 2px; border-top: 1px solid #f0f0f0;
+    }
+    .nav-a {
+      text-decoration: none; color: #999; font-size: 12.5px; font-weight: 500;
+      padding: 9px 14px; border-bottom: 2px solid transparent;
+      transition: color .15s, border-color .15s;
+    }
+    .nav-a:hover { color: #fe2c55; }
+    .nav-a.active { color: #fe2c55; border-bottom-color: #fe2c55; }
+    .content { max-width: 1100px; margin: 0 auto; padding: 36px 28px 80px; }
+    .section { margin-bottom: 52px; }
+    .section-header { display: flex; align-items: baseline; gap: 10px; margin-bottom: 16px; }
+    .section-title { font-size: 19px; font-weight: 800; letter-spacing: -.4px; }
+    .section-badge {
+      font-size: 10.5px; font-weight: 600; color: #999; background: #ebebeb;
+      padding: 3px 8px; border-radius: 20px; text-transform: uppercase; letter-spacing: .4px;
+    }
+    @media (max-width: 768px) {
+      .header-inner { gap: 12px; padding: 12px 16px; }
+      .date-badge { display: none; }
+      .page-nav { padding: 0 16px; }
+      .content { padding: 24px 16px 60px; }
+    }
+
+
+    .idea-lead {
+      background: #fff; border-radius: 12px; padding: 36px 40px 32px;
+      box-shadow: 0 1px 4px rgba(0,0,0,.07), 0 0 0 1px rgba(0,0,0,.05);
+      margin-bottom: 40px;
+    }
+    .idea-hashtag { font-size: 13px; font-weight: 700; color: #fe2c55; margin-bottom: 8px; }
+    .idea-title { font-size: 26px; font-weight: 800; letter-spacing: -.6px; line-height: 1.25; margin-bottom: 16px; }
+    .idea-desc { font-size: 14px; color: #444; line-height: 1.75; max-width: 720px; }
+    .media-grid {
+      display: grid; grid-template-columns: auto 1fr; gap: 28px; align-items: start;
+    }
+    .video-multi {
+      display: flex; gap: 16px; flex-wrap: wrap; align-items: flex-start;
+    }
+    .video-item {
+      width: 200px; display: flex; flex-direction: column; gap: 8px; flex-shrink: 0;
+    }
+    .video-caption {
+      font-size: 11px; color: #999; line-height: 1.4; padding: 0 2px;
+    }
+    .video-player {
+      width: 100%; aspect-ratio: 9/16; object-fit: cover; border-radius: 12px;
+      display: block; box-shadow: 0 2px 16px rgba(0,0,0,.14);
+    }
+    .frame-img {
+      width: 100%; aspect-ratio: 9/16; object-fit: cover; border-radius: 12px;
+      display: block; box-shadow: 0 2px 16px rgba(0,0,0,.14);
+    }
+    .prompts-col { display: flex; flex-direction: column; gap: 12px; }
+    .prompt-block {
+      background: #fff; border-radius: 10px;
+      box-shadow: 0 1px 4px rgba(0,0,0,.07), 0 0 0 1px rgba(0,0,0,.05); overflow: hidden;
+    }
+    .prompt-block summary {
+      padding: 14px 18px; font-size: 13px; font-weight: 700; cursor: pointer;
+      user-select: none; list-style: none; display: flex; align-items: center; gap: 8px; color: #333;
+    }
+    .prompt-block summary::-webkit-details-marker { display: none; }
+    .prompt-block summary::before { content: '▶'; font-size: 8px; color: #bbb; transition: transform .15s; flex-shrink: 0; }
+    .prompt-block[open] summary::before { transform: rotate(90deg); }
+    .prompt-block summary:hover { color: #fe2c55; }
+    .prompt-block summary:hover::before { color: #fe2c55; }
+    .prompt-label { font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: .5px; color: #bbb; margin-left: auto; }
+    .prompt-text {
+      padding: 14px 18px 16px; font-family: 'SF Mono','Fira Code','Menlo',monospace;
+      font-size: 11.5px; line-height: 1.7; color: #555; background: #f9f9f9;
+      border-top: 1px solid #f0f0f0; white-space: pre-wrap; word-break: break-word;
+      max-height: 320px; overflow-y: auto;
+    }
+    @media (max-width: 900px) {
+      .media-grid { grid-template-columns: 1fr; }
+      .video-multi { justify-content: center; }
+      .idea-lead { padding: 24px 22px 22px; }
+    }
+    @media (max-width: 520px) { .idea-title { font-size: 22px; } }
+
+  </style>
+</head>
+<body>
+<div class="page-header">
+  <div class="header-inner">
+    <a class="brand" href="../../../">
+      <span class="brand-tik">Tik</span><span class="brand-tok">Tok</span>
+      <span class="brand-dot">·</span><span class="brand-cc">Video Ideas</span>
+    </a>
+    <div class="header-text">
+      <div class="page-title">#justgolive</div>
+      <div class="page-sub">Видео-идея · 8 августа 2026</div>
+    </div>
+    <div class="date-badge">08.08.2026<span>Дата</span></div>
+  </div>
+  <nav class="page-nav">
+    <a href="../../../" class="nav-a">← Все отчёты</a>
+    <a href="../../#co" class="nav-a">← 8 авг 2026</a>
+    <a href="#" class="nav-a active">#justgolive</a>
+  </nav>
+</div>
+<div class="content">
+  <div class="idea-lead">
+    <div class="idea-hashtag">#justgolive</div>
+    <h1 class="idea-title">Обратный отсчёт под кроватью</h1>
+    <p class="idea-desc">Комедийный поворот на тему «просто выйти в эфир»: пользователь сидит на полу спальни, прижавшись спиной к кровати, явно нервничая перед первым стримом — теребит края худи, бросает взгляды на телефон, лежащий перед ним экраном вверх с обратным отсчётом «3… 2… 1…». На нуле экран телефона вспыхивает красным LIVE-бейджем, и пользователь подпрыгивает от неожиданности, хотя сам это и запустил — а затем нервный смех сменяется решительным выдохом и первой уверенной улыбкой в камеру.</p>
+  </div>
+  <section class="section">
+    <div class="section-header">
+      <h2 class="section-title">Видео</h2>
+      <span class="section-badge">Пример генерации</span>
+    </div>
+    <div class="media-grid">
+      <div class="video-multi">
+        <div class="video-item"><video class="video-player" controls muted loop playsinline poster="https://temp-images.ws.pho.to/6ea24cad3c7c9773f31fa49d5e8b26b6f5d45e7c.png"><source src="https://temp-images.ws.pho.to/096df18d66fb6c785f90853d92367aa70ddd51ff.mp4" type="video/mp4"></video>
+          <div class="video-caption">woman in her late 30s with straight blonde shoulder-length hair and cat-eye glasses</div>
+        </div>
+        <div class="video-item"><video class="video-player" controls muted loop playsinline poster="https://temp-images.ws.pho.to/21dfc79ea96ac8ae0b14727df34ed8ed20e69eb7.png"><source src="https://temp-images.ws.pho.to/0e39a174741167e52469428b24c4da4aefa18ab1.mp4" type="video/mp4"></video>
+          <div class="video-caption">man in his early 30s with short brown hair, blue eyes, and a short beard</div>
+        </div>
+      </div>
+      <div class="prompts-col">
+        <details class="prompt-block">
+          <summary>Промпт для первого кадра <span class="prompt-label">GPT Image 2</span></summary>
+          <pre class="prompt-text">Turn the photo of the person into a candid bedroom-floor portrait, sitting cross-legged on a rug with their back against the edge of a bed, visibly nervous — hands fidgeting with the drawstring of a hoodie, eyes darting toward a smartphone propped up on the floor in front of them, screen facing up and glowing. Preserve this exact person&#x27;s face shape, exact age, skin tone, eye shape and color, exact hairstyle, hair color and texture, jawline, and any distinctive features (freckles, moles, facial hair, glasses) precisely as shown in the source photo — no idealization, no bone-structure changes; hands must be anatomically correct.
+
+Pose &amp; Composition: Medium shot, seated on the floor, torso angled toward the propped-up phone in the foreground, shoulders slightly hunched with nervous energy.
+
+Setting &amp; Background: An ordinary, lived-in bedroom — a rumpled bedspread visible behind and above the person, a nightstand lamp casting a warm glow, everyday clutter softly out of focus.
+
+Lighting: Warm, slightly dim bedroom lighting from a nightstand lamp, with a cooler glow spilling from the phone screen onto the person&#x27;s face and hands.
+
+Expression: Nervous anticipation — tight-lipped, slightly wide-eyed, the specific look of someone about to do something a little scary for the first time.
+
+On-screen text/graphics: none visible yet in this frame — the countdown and LIVE badge appear in the video.</pre>
+        </details>
+        <details class="prompt-block">
+          <summary>Промпт для видео <span class="prompt-label">Kling · Grok</span></summary>
+          <pre class="prompt-text">Create a short cinematic video based on the uploaded image. The scene is the same bedroom floor; a smartphone lies propped in front of the person, screen glowing, mid-countdown.
+
+Camera and motion structure:
+FRAMES 0–35%: Keep the overall shot static. No zoom, no camera movement. The person fidgets nervously with their hoodie strings, glancing repeatedly between their own hands and the phone screen. On the phone&#x27;s screen (visible in frame, small but legible), a large countdown number is visible, ticking down: &quot;3&quot;, then &quot;2&quot;, then &quot;1&quot;.
+FRAMES 35–55%: On &quot;1&quot;, the person freezes, holding their breath, eyes fixed on the screen.
+FRAMES 55–75%: The instant the countdown hits zero, a bright red &quot;LIVE&quot; badge fills/overlays the phone screen and a matching smaller LIVE badge pops into the top corner of the main frame simultaneously. The person visibly startles — a small full-body flinch — despite having started the countdown themselves.
+FRAMES 75–100%: The startled flinch resolves into a nervous laugh, then a deep breath, then the person straightens up and breaks into a determined, confident smile directly at the camera. The LIVE badge in the top corner remains visible until the last frame.
+
+Character:
+Preserve the person&#x27;s face, hair, skin tone, and identity exactly from the source image throughout. Hands remain anatomically correct.
+The person never speaks aloud, sings, or mouths legible words — the flinch, nervous laugh, breath, and confident smile are all silent physical/expressive beats, not dialogue.
+
+Key visual events (in order):
+- Visible countdown &quot;3…2…1&quot; on the phone screen
+- Simultaneous LIVE badge appearance on both the phone screen and the main frame corner at zero (hero moment)
+- Startle-flinch reaction
+- Nervous laugh → determined smile resolution
+
+Style:
+Naturalistic, intimate, handheld-adjacent home-video texture with warm practical lighting — a comedic, relatable &quot;first live stream jitters&quot; tone rather than a polished broadcast look.
+
+Restrictions:
+- Do not change the person&#x27;s appearance, face, clothing, or identity at any point
+- No speaking, no singing, no lip-sync — reaction and emotion only; the nervous laugh must read as a silent exhale/chuckle expression, not audible dialogue
+- No speech bubbles
+- The countdown must show exactly the numbers &quot;3&quot;, &quot;2&quot;, &quot;1&quot; in that order, once each, before the LIVE badge appears — do not repeat, skip, or extend the countdown
+- The LIVE badge must appear on both the phone screen and the main frame corner at the exact moment the countdown reaches zero, and must remain visible in the main frame corner until the last frame — this is the hero moment and must clearly and unambiguously appear
+- The startle-flinch must read as a small, brief full-body jolt of surprise — not fear, not falling over, and not knocking over any object in the room
+- No other on-screen text or graphics besides the countdown and the LIVE badge
+- No improvisation beyond the listed actions — no standing up, no leaving the bedroom floor, no additional props</pre>
+        </details>
+      </div>
+    </div>
+  </section>
+</div>
+</body>
+</html>

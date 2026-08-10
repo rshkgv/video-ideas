@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>#justgolive — Прямой эфир под деревом · Video Ideas</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      background: #f4f4f5; color: #111; font-size: 14px; line-height: 1.5;
+    }
+    .page-header {
+      background: #fff; border-bottom: 1px solid #e4e4e7; position: sticky;
+      top: 0; z-index: 100; box-shadow: 0 1px 8px rgba(0,0,0,.05);
+    }
+    .header-inner {
+      max-width: 1100px; margin: 0 auto; padding: 14px 28px;
+      display: flex; align-items: center; gap: 20px;
+    }
+    .brand {
+      font-size: 18px; font-weight: 800; letter-spacing: -.5px; color: #111;
+      white-space: nowrap; user-select: none; text-decoration: none;
+    }
+    .brand-tik { color: #fe2c55; }
+    .brand-tok { color: #010101; }
+    .brand-dot { color: #d1d1d1; margin: 0 6px; font-weight: 300; }
+    .brand-cc  { color: #888; font-size: 12px; font-weight: 500; }
+    .header-text { flex: 1; min-width: 0; }
+    .page-title {
+      font-size: 15px; font-weight: 700; letter-spacing: -.2px;
+      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    }
+    .page-sub { font-size: 11.5px; color: #999; margin-top: 2px; }
+    .date-badge {
+      background: #fe2c55; color: #fff; font-weight: 700; font-size: 12px;
+      border-radius: 8px; padding: 6px 14px; line-height: 1.4;
+      text-align: center; white-space: nowrap; flex-shrink: 0;
+    }
+    .date-badge span { display: block; font-size: 10px; font-weight: 500; opacity: .8; }
+    .page-nav {
+      max-width: 1100px; margin: 0 auto; padding: 0 28px;
+      display: flex; gap: 2px; border-top: 1px solid #f0f0f0;
+    }
+    .nav-a {
+      text-decoration: none; color: #999; font-size: 12.5px; font-weight: 500;
+      padding: 9px 14px; border-bottom: 2px solid transparent;
+      transition: color .15s, border-color .15s;
+    }
+    .nav-a:hover { color: #fe2c55; }
+    .nav-a.active { color: #fe2c55; border-bottom-color: #fe2c55; }
+    .content { max-width: 1100px; margin: 0 auto; padding: 36px 28px 80px; }
+    .section { margin-bottom: 52px; }
+    .section-header { display: flex; align-items: baseline; gap: 10px; margin-bottom: 16px; }
+    .section-title { font-size: 19px; font-weight: 800; letter-spacing: -.4px; }
+    .section-badge {
+      font-size: 10.5px; font-weight: 600; color: #999; background: #ebebeb;
+      padding: 3px 8px; border-radius: 20px; text-transform: uppercase; letter-spacing: .4px;
+    }
+    @media (max-width: 768px) {
+      .header-inner { gap: 12px; padding: 12px 16px; }
+      .date-badge { display: none; }
+      .page-nav { padding: 0 16px; }
+      .content { padding: 24px 16px 60px; }
+    }
+
+
+    .idea-lead {
+      background: #fff; border-radius: 12px; padding: 36px 40px 32px;
+      box-shadow: 0 1px 4px rgba(0,0,0,.07), 0 0 0 1px rgba(0,0,0,.05);
+      margin-bottom: 40px;
+    }
+    .idea-hashtag { font-size: 13px; font-weight: 700; color: #fe2c55; margin-bottom: 8px; }
+    .idea-title { font-size: 26px; font-weight: 800; letter-spacing: -.6px; line-height: 1.25; margin-bottom: 16px; }
+    .idea-desc { font-size: 14px; color: #444; line-height: 1.75; max-width: 720px; }
+    .media-grid {
+      display: grid; grid-template-columns: auto 1fr; gap: 28px; align-items: start;
+    }
+    .video-multi {
+      display: flex; gap: 16px; flex-wrap: wrap; align-items: flex-start;
+    }
+    .video-item {
+      width: 200px; display: flex; flex-direction: column; gap: 8px; flex-shrink: 0;
+    }
+    .video-caption {
+      font-size: 11px; color: #999; line-height: 1.4; padding: 0 2px;
+    }
+    .video-player {
+      width: 100%; aspect-ratio: 9/16; object-fit: cover; border-radius: 12px;
+      display: block; box-shadow: 0 2px 16px rgba(0,0,0,.14);
+    }
+    .frame-img {
+      width: 100%; aspect-ratio: 9/16; object-fit: cover; border-radius: 12px;
+      display: block; box-shadow: 0 2px 16px rgba(0,0,0,.14);
+    }
+    .prompts-col { display: flex; flex-direction: column; gap: 12px; }
+    .prompt-block {
+      background: #fff; border-radius: 10px;
+      box-shadow: 0 1px 4px rgba(0,0,0,.07), 0 0 0 1px rgba(0,0,0,.05); overflow: hidden;
+    }
+    .prompt-block summary {
+      padding: 14px 18px; font-size: 13px; font-weight: 700; cursor: pointer;
+      user-select: none; list-style: none; display: flex; align-items: center; gap: 8px; color: #333;
+    }
+    .prompt-block summary::-webkit-details-marker { display: none; }
+    .prompt-block summary::before { content: '▶'; font-size: 8px; color: #bbb; transition: transform .15s; flex-shrink: 0; }
+    .prompt-block[open] summary::before { transform: rotate(90deg); }
+    .prompt-block summary:hover { color: #fe2c55; }
+    .prompt-block summary:hover::before { color: #fe2c55; }
+    .prompt-label { font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: .5px; color: #bbb; margin-left: auto; }
+    .prompt-text {
+      padding: 14px 18px 16px; font-family: 'SF Mono','Fira Code','Menlo',monospace;
+      font-size: 11.5px; line-height: 1.7; color: #555; background: #f9f9f9;
+      border-top: 1px solid #f0f0f0; white-space: pre-wrap; word-break: break-word;
+      max-height: 320px; overflow-y: auto;
+    }
+    @media (max-width: 900px) {
+      .media-grid { grid-template-columns: 1fr; }
+      .video-multi { justify-content: center; }
+      .idea-lead { padding: 24px 22px 22px; }
+    }
+    @media (max-width: 520px) { .idea-title { font-size: 22px; } }
+
+  </style>
+</head>
+<body>
+<div class="page-header">
+  <div class="header-inner">
+    <a class="brand" href="../../../">
+      <span class="brand-tik">Tik</span><span class="brand-tok">Tok</span>
+      <span class="brand-dot">·</span><span class="brand-cc">Video Ideas</span>
+    </a>
+    <div class="header-text">
+      <div class="page-title">#justgolive</div>
+      <div class="page-sub">Видео-идея · 8 августа 2026</div>
+    </div>
+    <div class="date-badge">08.08.2026<span>Дата</span></div>
+  </div>
+  <nav class="page-nav">
+    <a href="../../../" class="nav-a">← Все отчёты</a>
+    <a href="../../#co" class="nav-a">← 8 авг 2026</a>
+    <a href="#" class="nav-a active">#justgolive</a>
+  </nav>
+</div>
+<div class="content">
+  <div class="idea-lead">
+    <div class="idea-hashtag">#justgolive</div>
+    <h1 class="idea-title">Прямой эфир под деревом</h1>
+    <p class="idea-desc">Пользователь сидит на каменном парапете в тени раскидистого дерева, непринуждённо жестикулируя в разговоре с другом за кадром — типичная сцена стрима «просто выйти в эфир». Камера статична, но в кадре материализуется полупрозрачный LIVE-оверлей TikTok: красный бейдж «LIVE» в углу и счётчик зрителей, который начинает быстро расти. Пользователь замечает растущий счётчик, удивлённо замирает на полусекунду, затем расплывается в довольной улыбке и продолжает жестикулировать с ещё большей энергией. В финале — счётчик зрителей и бейдж LIVE остаются на экране до конца.</p>
+  </div>
+  <section class="section">
+    <div class="section-header">
+      <h2 class="section-title">Видео</h2>
+      <span class="section-badge">Пример генерации</span>
+    </div>
+    <div class="media-grid">
+      <div class="video-multi">
+        <div class="video-item"><video class="video-player" controls muted loop playsinline poster="https://temp-images.ws.pho.to/796836785577bebba4be324d59007f6ebc0c9b8c.png"><source src="https://temp-images.ws.pho.to/a95d260a8981bba699286708e51feaf79ca9ad25.mp4" type="video/mp4"></video>
+          <div class="video-caption">man in his early 30s with short brown hair, blue eyes, and a short beard</div>
+        </div>
+        <div class="video-item"><video class="video-player" controls muted loop playsinline poster="https://temp-images.ws.pho.to/d23102663d16c4042847202d6a3cd25d0c0cf311.png"><source src="https://temp-images.ws.pho.to/d2d3f256a95a90975ca18162175e1756aab995b4.mp4" type="video/mp4"></video>
+          <div class="video-caption">woman in her late 30s with straight blonde shoulder-length hair and cat-eye glasses</div>
+        </div>
+      </div>
+      <div class="prompts-col">
+        <details class="prompt-block">
+          <summary>Промпт для первого кадра <span class="prompt-label">GPT Image 2</span></summary>
+          <pre class="prompt-text">Turn the photo of the person into a candid outdoor portrait, sitting on a low stone ledge in the dappled shade beneath a large, sprawling tree, mid-conversation with an animated, mid-gesture expression — one hand raised near chest height as if emphasizing a point. Preserve this exact person&#x27;s face shape, exact age, skin tone, eye shape and color, exact hairstyle, hair color and texture, jawline, and any distinctive features (freckles, moles, facial hair, glasses) precisely as shown in the source photo — no idealization, no bone-structure changes; hands and fingers must be anatomically correct and naturally posed.
+
+Pose &amp; Composition: Medium shot, chest-up, seated at a slight three-quarter angle to camera, torso turned slightly toward an implied conversation partner off to the side, but face and eyes toward the camera/phone as if livestreaming. One hand mid-gesture, fingers relaxed and natural.
+
+Setting &amp; Background: A large tree&#x27;s thick, gnarled branches fan out overhead, dappled sunlight scattering through the leaves onto the stone ledge; behind and slightly out of focus, a bright, slightly overexposed sky is visible through gaps in the branch network, giving a sense of an open park or plaza.
+
+Lighting: Natural daylight, warm and bright, with soft dappled shadow patterns from the leaves falling across the person&#x27;s shoulders and one side of the face; a gentle overexposed glow near the sky in the background.
+
+Attire: Casual streetwear appropriate to a relaxed outdoor hangout — a zip-up hoodie over a graphic t-shirt, comfortable and lived-in, sleeves slightly pushed up from the gesturing.
+
+On-screen text/graphics: none visible yet — the LIVE badge and viewer counter appear later in the video, not in this first frame.
+
+Camera/lens specs: Shot as if from a phone held at chest height by the person themselves (slight low-angle, selfie-adjacent framing), shallow depth of field with the branch network and sky softly blurred behind.</pre>
+        </details>
+        <details class="prompt-block">
+          <summary>Промпт для видео <span class="prompt-label">Kling · Grok</span></summary>
+          <pre class="prompt-text">Create a short cinematic video based on the uploaded image. The scene is the same outdoor stone ledge beneath the tree; the person sits mid-conversation, phone held steady as if streaming.
+
+Camera and motion structure:
+FRAMES 0–20%: Keep the overall shot static. No zoom, no camera movement. The person gestures naturally while talking, as in the source image — animated hand movements, occasional head tilts, natural conversational energy, mouth not forming words.
+FRAMES 20–45%: Still static framing. A translucent TikTok-style LIVE overlay materializes in the upper-left corner: a red &quot;LIVE&quot; badge and, beside it, a small eye icon with a viewer count that begins ticking upward from a low number.
+FRAMES 45–75%: The viewer count accelerates visibly, climbing rapidly. The person&#x27;s gesturing pauses for a beat as they glance toward the corner of the frame (toward the overlay) with a flicker of surprise — eyebrows raised, half-smile forming.
+FRAMES 75–100%: The person breaks into a full, delighted smile and resumes gesturing with even more energetic, expressive hand movement, clearly buzzing off the growing number. The LIVE badge and climbing viewer counter remain locked in the upper-left corner, fully visible, until the last frame.
+
+Character:
+Preserve the person&#x27;s face, hair, skin tone, and identity exactly from the source image throughout the entire video. Hands must remain anatomically correct with natural finger movement.
+The person never speaks aloud on-screen, sings, or mouths words — their mouth may move as if mid-conversation but no legible speech is depicted; all reaction is conveyed through expression and gesture, not dialogue.
+
+Key visual events (in order):
+- LIVE badge + viewer counter overlay materializing (frame ~20%)
+- Viewer counter accelerating (hero moment, frame ~45–75%)
+- Person&#x27;s surprised-to-delighted reaction beat
+
+Style:
+Naturalistic, warm, handheld-adjacent but locked-off framing — like an actual phone propped up for a livestream. Sunlit, casual, unforced authenticity rather than polished cinematography.
+
+Restrictions:
+- Do not change the person&#x27;s appearance, face, clothing, or identity at any point
+- No speaking, no singing, no lip-sync — reaction and emotion only; any mouth movement reads as ambient conversation, never forming legible words
+- No speech bubbles
+- The LIVE badge and viewer counter must appear starting at frame ~20% and remain visible, unobscured, and legible until the last frame — this is the hero moment and must clearly and unambiguously appear, not just be implied by the described action
+- The viewer counter must visibly increase in value at least twice during the clip — do not show it static or decreasing
+- No other on-screen text or graphics besides the LIVE badge and viewer counter
+- No improvisation beyond the listed actions — no additional unrequested gestures, no standing up, no walking away from the ledge
+- Do not let the surprised-glance beat read as the person looking at another physical object off to the side unrelated to the stream — the glance is specifically toward the overlay graphic itself, understood as checking the livestream count
+- No other people fully shown in frame — an implied off-screen conversation partner is fine (as motivation for the gesturing), but the user must remain the sole visible subject</pre>
+        </details>
+      </div>
+    </div>
+  </section>
+</div>
+</body>
+</html>

@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>#golivegrowfast — Ночная улица и растущий счётчик · Video Ideas</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      background: #f4f4f5; color: #111; font-size: 14px; line-height: 1.5;
+    }
+    .page-header {
+      background: #fff; border-bottom: 1px solid #e4e4e7; position: sticky;
+      top: 0; z-index: 100; box-shadow: 0 1px 8px rgba(0,0,0,.05);
+    }
+    .header-inner {
+      max-width: 1100px; margin: 0 auto; padding: 14px 28px;
+      display: flex; align-items: center; gap: 20px;
+    }
+    .brand {
+      font-size: 18px; font-weight: 800; letter-spacing: -.5px; color: #111;
+      white-space: nowrap; user-select: none; text-decoration: none;
+    }
+    .brand-tik { color: #fe2c55; }
+    .brand-tok { color: #010101; }
+    .brand-dot { color: #d1d1d1; margin: 0 6px; font-weight: 300; }
+    .brand-cc  { color: #888; font-size: 12px; font-weight: 500; }
+    .header-text { flex: 1; min-width: 0; }
+    .page-title {
+      font-size: 15px; font-weight: 700; letter-spacing: -.2px;
+      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    }
+    .page-sub { font-size: 11.5px; color: #999; margin-top: 2px; }
+    .date-badge {
+      background: #fe2c55; color: #fff; font-weight: 700; font-size: 12px;
+      border-radius: 8px; padding: 6px 14px; line-height: 1.4;
+      text-align: center; white-space: nowrap; flex-shrink: 0;
+    }
+    .date-badge span { display: block; font-size: 10px; font-weight: 500; opacity: .8; }
+    .page-nav {
+      max-width: 1100px; margin: 0 auto; padding: 0 28px;
+      display: flex; gap: 2px; border-top: 1px solid #f0f0f0;
+    }
+    .nav-a {
+      text-decoration: none; color: #999; font-size: 12.5px; font-weight: 500;
+      padding: 9px 14px; border-bottom: 2px solid transparent;
+      transition: color .15s, border-color .15s;
+    }
+    .nav-a:hover { color: #fe2c55; }
+    .nav-a.active { color: #fe2c55; border-bottom-color: #fe2c55; }
+    .content { max-width: 1100px; margin: 0 auto; padding: 36px 28px 80px; }
+    .section { margin-bottom: 52px; }
+    .section-header { display: flex; align-items: baseline; gap: 10px; margin-bottom: 16px; }
+    .section-title { font-size: 19px; font-weight: 800; letter-spacing: -.4px; }
+    .section-badge {
+      font-size: 10.5px; font-weight: 600; color: #999; background: #ebebeb;
+      padding: 3px 8px; border-radius: 20px; text-transform: uppercase; letter-spacing: .4px;
+    }
+    @media (max-width: 768px) {
+      .header-inner { gap: 12px; padding: 12px 16px; }
+      .date-badge { display: none; }
+      .page-nav { padding: 0 16px; }
+      .content { padding: 24px 16px 60px; }
+    }
+
+
+    .idea-lead {
+      background: #fff; border-radius: 12px; padding: 36px 40px 32px;
+      box-shadow: 0 1px 4px rgba(0,0,0,.07), 0 0 0 1px rgba(0,0,0,.05);
+      margin-bottom: 40px;
+    }
+    .idea-hashtag { font-size: 13px; font-weight: 700; color: #fe2c55; margin-bottom: 8px; }
+    .idea-title { font-size: 26px; font-weight: 800; letter-spacing: -.6px; line-height: 1.25; margin-bottom: 16px; }
+    .idea-desc { font-size: 14px; color: #444; line-height: 1.75; max-width: 720px; }
+    .media-grid {
+      display: grid; grid-template-columns: auto 1fr; gap: 28px; align-items: start;
+    }
+    .video-multi {
+      display: flex; gap: 16px; flex-wrap: wrap; align-items: flex-start;
+    }
+    .video-item {
+      width: 200px; display: flex; flex-direction: column; gap: 8px; flex-shrink: 0;
+    }
+    .video-caption {
+      font-size: 11px; color: #999; line-height: 1.4; padding: 0 2px;
+    }
+    .video-player {
+      width: 100%; aspect-ratio: 9/16; object-fit: cover; border-radius: 12px;
+      display: block; box-shadow: 0 2px 16px rgba(0,0,0,.14);
+    }
+    .frame-img {
+      width: 100%; aspect-ratio: 9/16; object-fit: cover; border-radius: 12px;
+      display: block; box-shadow: 0 2px 16px rgba(0,0,0,.14);
+    }
+    .prompts-col { display: flex; flex-direction: column; gap: 12px; }
+    .prompt-block {
+      background: #fff; border-radius: 10px;
+      box-shadow: 0 1px 4px rgba(0,0,0,.07), 0 0 0 1px rgba(0,0,0,.05); overflow: hidden;
+    }
+    .prompt-block summary {
+      padding: 14px 18px; font-size: 13px; font-weight: 700; cursor: pointer;
+      user-select: none; list-style: none; display: flex; align-items: center; gap: 8px; color: #333;
+    }
+    .prompt-block summary::-webkit-details-marker { display: none; }
+    .prompt-block summary::before { content: '▶'; font-size: 8px; color: #bbb; transition: transform .15s; flex-shrink: 0; }
+    .prompt-block[open] summary::before { transform: rotate(90deg); }
+    .prompt-block summary:hover { color: #fe2c55; }
+    .prompt-block summary:hover::before { color: #fe2c55; }
+    .prompt-label { font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: .5px; color: #bbb; margin-left: auto; }
+    .prompt-text {
+      padding: 14px 18px 16px; font-family: 'SF Mono','Fira Code','Menlo',monospace;
+      font-size: 11.5px; line-height: 1.7; color: #555; background: #f9f9f9;
+      border-top: 1px solid #f0f0f0; white-space: pre-wrap; word-break: break-word;
+      max-height: 320px; overflow-y: auto;
+    }
+    @media (max-width: 900px) {
+      .media-grid { grid-template-columns: 1fr; }
+      .video-multi { justify-content: center; }
+      .idea-lead { padding: 24px 22px 22px; }
+    }
+    @media (max-width: 520px) { .idea-title { font-size: 22px; } }
+
+  </style>
+</head>
+<body>
+<div class="page-header">
+  <div class="header-inner">
+    <a class="brand" href="../../../">
+      <span class="brand-tik">Tik</span><span class="brand-tok">Tok</span>
+      <span class="brand-dot">·</span><span class="brand-cc">Video Ideas</span>
+    </a>
+    <div class="header-text">
+      <div class="page-title">#golivegrowfast</div>
+      <div class="page-sub">Видео-идея · 8 августа 2026</div>
+    </div>
+    <div class="date-badge">08.08.2026<span>Дата</span></div>
+  </div>
+  <nav class="page-nav">
+    <a href="../../../" class="nav-a">← Все отчёты</a>
+    <a href="../../#co" class="nav-a">← 8 авг 2026</a>
+    <a href="#" class="nav-a active">#golivegrowfast</a>
+  </nav>
+</div>
+<div class="content">
+  <div class="idea-lead">
+    <div class="idea-hashtag">#golivegrowfast</div>
+    <h1 class="idea-title">Ночная улица и растущий счётчик</h1>
+    <p class="idea-desc">Пользователь идёт по оживлённой ночной улице, освещённой неоновыми вывесками, оживлённо жестикулируя в разговоре на ходу — типичная сцена ночного влога. Внезапно рядом с лицом материализуется всплывающее уведомление «+1 подписчик», за ним ещё одно, и ещё — уведомления начинают появляться каскадом быстрее, чем пользователь успевает на них среагировать. Пользователь останавливается посреди тротуара, прижимает ладонь ко рту в жесте искреннего изумления, а затем разражается радостным смехом.</p>
+  </div>
+  <section class="section">
+    <div class="section-header">
+      <h2 class="section-title">Видео</h2>
+      <span class="section-badge">Пример генерации</span>
+    </div>
+    <div class="media-grid">
+      <div class="video-multi">
+        <div class="video-item"><video class="video-player" controls muted loop playsinline poster="https://temp-images.ws.pho.to/486873f3798bb1bbbfcc8ad02e4047742da3603d.png"><source src="https://temp-images.ws.pho.to/ca48b7758cab2f0fc117d68ae544e0f71a55c6db.mp4" type="video/mp4"></video>
+          <div class="video-caption">woman in her late 30s with straight blonde shoulder-length hair and cat-eye glasses</div>
+        </div>
+        <div class="video-item"><video class="video-player" controls muted loop playsinline poster="https://temp-images.ws.pho.to/2789c29343a8e3505a0d624a52018c5a0f0fdfd1.png"><source src="https://temp-images.ws.pho.to/6a6565aa2306ac0f91c4e982b06eedf55d897d0d.mp4" type="video/mp4"></video>
+          <div class="video-caption">man in his early 30s with short brown hair, blue eyes, and a short beard</div>
+        </div>
+      </div>
+      <div class="prompts-col">
+        <details class="prompt-block">
+          <summary>Промпт для первого кадра <span class="prompt-label">GPT Image 2</span></summary>
+          <pre class="prompt-text">Turn the photo of the person into a candid nighttime street portrait, walking along a bustling city sidewalk lit by colorful neon signs, mid-gesture as if talking animatedly to someone off-camera. Preserve this exact person&#x27;s face shape, exact age, skin tone, eye shape and color, exact hairstyle, hair color and texture, jawline, and any distinctive features (freckles, moles, facial hair, glasses) precisely as shown in the source photo — no idealization, no bone-structure changes; hands must be anatomically correct.
+
+Pose &amp; Composition: Medium shot, walking toward camera at a slight angle, one hand raised mid-gesture, energetic forward momentum implied in the posture.
+
+Setting &amp; Background: A lively city sidewalk at night — neon signage in pink, blue, and warm yellow glows from storefronts and signs behind, blurred pedestrians and a parked taxi softly out of focus, string lights or shop lights adding scattered points of warm light.
+
+Lighting: Predominantly neon-lit — cool blues and warm pinks mixing across the face and clothing, with occasional warmer highlights from streetlights.
+
+Attire: Casual night-out streetwear — a tank top or light jacket suited to a warm evening out.
+
+On-screen text/graphics: none in this frame — the follower notifications appear later in the video.</pre>
+        </details>
+        <details class="prompt-block">
+          <summary>Промпт для видео <span class="prompt-label">Kling · Grok</span></summary>
+          <pre class="prompt-text">Create a short cinematic video based on the uploaded image. The scene is the same neon-lit night street; the person is mid-walk, mid-conversation.
+
+Camera and motion structure:
+FRAMES 0–25%: Camera tracks alongside the person at a steady walking pace, medium shot, handheld-style but smooth. The person gestures animatedly while walking, natural conversational energy.
+FRAMES 25–50%: A small &quot;+1 follower&quot; notification pill pops in near the top of the frame, fades after a beat.
+FRAMES 50–70%: More notification pills begin popping in faster, overlapping slightly, &quot;+1&quot;, &quot;+1&quot;, &quot;+1&quot; in quick succession, filling more of the upper frame.
+FRAMES 70–85%: The person stops walking abruptly, the camera settling to a static hold on them, one hand rising to cover their open mouth in genuine shock as notifications continue cascading.
+FRAMES 85–100%: The shock resolves into open, delighted laughter, head tilting back slightly. The notification cascade continues at the top of frame, fully visible, until the last frame.
+
+Character:
+Preserve the person&#x27;s face, hair, skin tone, and identity exactly from the source image throughout. Hands remain anatomically correct.
+The person never speaks aloud, sings, or mouths legible words — the conversational gesturing in the first beat is silent/ambient, and the shock-to-laughter arc is expressed through face and body only.
+
+Key visual events (in order):
+- Walking, animated silent conversation
+- First single &quot;+1&quot; notification pop
+- Cascading acceleration of notifications (hero moment)
+- Hand-to-mouth shock reaction
+- Resolution into delighted laughter
+
+Style:
+Vibrant, neon-soaked night-vlog aesthetic, smooth handheld tracking shot energy — high-contrast colorful lighting against the crisp white/red notification pills.
+
+Restrictions:
+- Do not change the person&#x27;s appearance, face, clothing, or identity at any point
+- No speaking, no singing, no lip-sync — reaction and emotion only; the laughter must read as a silent, visible laugh (open mouth, shoulders shaking), never audible dialogue
+- No speech bubbles
+- The notification cascade must visibly accelerate from a single &quot;+1&quot; to multiple overlapping notifications, and must remain visible at the top of frame until the last frame — this is the hero moment and must clearly appear, not just be implied
+- The person must come to a full stop before the hand-to-mouth beat — do not have them react while still walking, to avoid a collision-looking motion
+- No other on-screen text or graphics besides the &quot;+1&quot; notification pills
+- No improvisation beyond the listed actions — no other pedestrians interacting with the person, no entering any storefront
+- Do not let the walking-and-gesturing opening beat read as the person being distressed or arguing — the energy must clearly be upbeat, animated storytelling</pre>
+        </details>
+      </div>
+    </div>
+  </section>
+</div>
+</body>
+</html>

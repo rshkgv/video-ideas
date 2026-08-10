@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>#august — Страница нового месяца · Video Ideas</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      background: #f4f4f5; color: #111; font-size: 14px; line-height: 1.5;
+    }
+    .page-header {
+      background: #fff; border-bottom: 1px solid #e4e4e7; position: sticky;
+      top: 0; z-index: 100; box-shadow: 0 1px 8px rgba(0,0,0,.05);
+    }
+    .header-inner {
+      max-width: 1100px; margin: 0 auto; padding: 14px 28px;
+      display: flex; align-items: center; gap: 20px;
+    }
+    .brand {
+      font-size: 18px; font-weight: 800; letter-spacing: -.5px; color: #111;
+      white-space: nowrap; user-select: none; text-decoration: none;
+    }
+    .brand-tik { color: #fe2c55; }
+    .brand-tok { color: #010101; }
+    .brand-dot { color: #d1d1d1; margin: 0 6px; font-weight: 300; }
+    .brand-cc  { color: #888; font-size: 12px; font-weight: 500; }
+    .header-text { flex: 1; min-width: 0; }
+    .page-title {
+      font-size: 15px; font-weight: 700; letter-spacing: -.2px;
+      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    }
+    .page-sub { font-size: 11.5px; color: #999; margin-top: 2px; }
+    .date-badge {
+      background: #fe2c55; color: #fff; font-weight: 700; font-size: 12px;
+      border-radius: 8px; padding: 6px 14px; line-height: 1.4;
+      text-align: center; white-space: nowrap; flex-shrink: 0;
+    }
+    .date-badge span { display: block; font-size: 10px; font-weight: 500; opacity: .8; }
+    .page-nav {
+      max-width: 1100px; margin: 0 auto; padding: 0 28px;
+      display: flex; gap: 2px; border-top: 1px solid #f0f0f0;
+    }
+    .nav-a {
+      text-decoration: none; color: #999; font-size: 12.5px; font-weight: 500;
+      padding: 9px 14px; border-bottom: 2px solid transparent;
+      transition: color .15s, border-color .15s;
+    }
+    .nav-a:hover { color: #fe2c55; }
+    .nav-a.active { color: #fe2c55; border-bottom-color: #fe2c55; }
+    .content { max-width: 1100px; margin: 0 auto; padding: 36px 28px 80px; }
+    .section { margin-bottom: 52px; }
+    .section-header { display: flex; align-items: baseline; gap: 10px; margin-bottom: 16px; }
+    .section-title { font-size: 19px; font-weight: 800; letter-spacing: -.4px; }
+    .section-badge {
+      font-size: 10.5px; font-weight: 600; color: #999; background: #ebebeb;
+      padding: 3px 8px; border-radius: 20px; text-transform: uppercase; letter-spacing: .4px;
+    }
+    @media (max-width: 768px) {
+      .header-inner { gap: 12px; padding: 12px 16px; }
+      .date-badge { display: none; }
+      .page-nav { padding: 0 16px; }
+      .content { padding: 24px 16px 60px; }
+    }
+
+
+    .idea-lead {
+      background: #fff; border-radius: 12px; padding: 36px 40px 32px;
+      box-shadow: 0 1px 4px rgba(0,0,0,.07), 0 0 0 1px rgba(0,0,0,.05);
+      margin-bottom: 40px;
+    }
+    .idea-hashtag { font-size: 13px; font-weight: 700; color: #fe2c55; margin-bottom: 8px; }
+    .idea-title { font-size: 26px; font-weight: 800; letter-spacing: -.6px; line-height: 1.25; margin-bottom: 16px; }
+    .idea-desc { font-size: 14px; color: #444; line-height: 1.75; max-width: 720px; }
+    .media-grid {
+      display: grid; grid-template-columns: auto 1fr; gap: 28px; align-items: start;
+    }
+    .video-multi {
+      display: flex; gap: 16px; flex-wrap: wrap; align-items: flex-start;
+    }
+    .video-item {
+      width: 200px; display: flex; flex-direction: column; gap: 8px; flex-shrink: 0;
+    }
+    .video-caption {
+      font-size: 11px; color: #999; line-height: 1.4; padding: 0 2px;
+    }
+    .video-player {
+      width: 100%; aspect-ratio: 9/16; object-fit: cover; border-radius: 12px;
+      display: block; box-shadow: 0 2px 16px rgba(0,0,0,.14);
+    }
+    .frame-img {
+      width: 100%; aspect-ratio: 9/16; object-fit: cover; border-radius: 12px;
+      display: block; box-shadow: 0 2px 16px rgba(0,0,0,.14);
+    }
+    .prompts-col { display: flex; flex-direction: column; gap: 12px; }
+    .prompt-block {
+      background: #fff; border-radius: 10px;
+      box-shadow: 0 1px 4px rgba(0,0,0,.07), 0 0 0 1px rgba(0,0,0,.05); overflow: hidden;
+    }
+    .prompt-block summary {
+      padding: 14px 18px; font-size: 13px; font-weight: 700; cursor: pointer;
+      user-select: none; list-style: none; display: flex; align-items: center; gap: 8px; color: #333;
+    }
+    .prompt-block summary::-webkit-details-marker { display: none; }
+    .prompt-block summary::before { content: '▶'; font-size: 8px; color: #bbb; transition: transform .15s; flex-shrink: 0; }
+    .prompt-block[open] summary::before { transform: rotate(90deg); }
+    .prompt-block summary:hover { color: #fe2c55; }
+    .prompt-block summary:hover::before { color: #fe2c55; }
+    .prompt-label { font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: .5px; color: #bbb; margin-left: auto; }
+    .prompt-text {
+      padding: 14px 18px 16px; font-family: 'SF Mono','Fira Code','Menlo',monospace;
+      font-size: 11.5px; line-height: 1.7; color: #555; background: #f9f9f9;
+      border-top: 1px solid #f0f0f0; white-space: pre-wrap; word-break: break-word;
+      max-height: 320px; overflow-y: auto;
+    }
+    @media (max-width: 900px) {
+      .media-grid { grid-template-columns: 1fr; }
+      .video-multi { justify-content: center; }
+      .idea-lead { padding: 24px 22px 22px; }
+    }
+    @media (max-width: 520px) { .idea-title { font-size: 22px; } }
+
+  </style>
+</head>
+<body>
+<div class="page-header">
+  <div class="header-inner">
+    <a class="brand" href="../../../">
+      <span class="brand-tik">Tik</span><span class="brand-tok">Tok</span>
+      <span class="brand-dot">·</span><span class="brand-cc">Video Ideas</span>
+    </a>
+    <div class="header-text">
+      <div class="page-title">#august</div>
+      <div class="page-sub">Видео-идея · 8 августа 2026</div>
+    </div>
+    <div class="date-badge">08.08.2026<span>Дата</span></div>
+  </div>
+  <nav class="page-nav">
+    <a href="../../../" class="nav-a">← Все отчёты</a>
+    <a href="../../#za" class="nav-a">← 8 авг 2026</a>
+    <a href="#" class="nav-a active">#august</a>
+  </nav>
+</div>
+<div class="content">
+  <div class="idea-lead">
+    <div class="idea-hashtag">#august</div>
+    <h1 class="idea-title">Страница нового месяца</h1>
+    <p class="idea-desc">Крупный план: пользователь сидит у окна с настоящим бумажным настенным календарём в кадре рядом, июльская страница ещё видна. Лёгкий порыв воображаемого ветра переворачивает страницу — и под пальцами пользователя из вихря света и бумажных частиц материализуется новая страница «AUGUST», украшенная тёплым золотым узором. Пользователь опускает взгляд на неё, затем поднимает глаза на камеру с тихой, уверенной улыбкой — как будто сам решил, каким будет этот месяц. Здесь якорь месяца — не танец и не бытовая сцена, а буквально физический предмет календаря, что даёт третьей идее самостоятельный, более интимный и созерцательный регистр.</p>
+  </div>
+  <section class="section">
+    <div class="section-header">
+      <h2 class="section-title">Видео</h2>
+      <span class="section-badge">Пример генерации</span>
+    </div>
+    <div class="media-grid">
+      <div class="video-multi">
+        <div class="video-item"><video class="video-player" controls muted loop playsinline poster="https://temp-images.ws.pho.to/01cb2a920e0b467711113eff8127391438f186ba.png"><source src="https://temp-images.ws.pho.to/f13af1504828d7941640e53de36ddbce8ffbd4ae.mp4" type="video/mp4"></video>
+          <div class="video-caption">woman in her late 30s with straight blonde shoulder-length hair and cat-eye glasses</div>
+        </div>
+        <div class="video-item"><video class="video-player" controls muted loop playsinline poster="https://temp-images.ws.pho.to/e9da6bd4678b26b0ad8a59a0f3017c2c5727fd2f.png"><source src="https://temp-images.ws.pho.to/3a2172eead720e2660e7a08c7fe6aceb39090c85.mp4" type="video/mp4"></video>
+          <div class="video-caption">man in his early 30s with short brown hair, blue eyes, and a short beard</div>
+        </div>
+      </div>
+      <div class="prompts-col">
+        <details class="prompt-block">
+          <summary>Промпт для первого кадра <span class="prompt-label">GPT Image 2</span></summary>
+          <pre class="prompt-text">Turn the photo of the person into an intimate, softly lit close-up (chest-up), seated near a window, angled slightly toward a paper wall calendar visible just beside them in the frame — the calendar currently open to a page reading &quot;JULY&quot; in simple black lettering. The person&#x27;s expression is calm, thoughtful, quietly present — a small, private half-smile, gaze directed just off-camera toward the calendar page.
+
+Pose &amp; Composition: the person&#x27;s shoulder and upper body angled so both their face and a good portion of the calendar page share the frame naturally, hands resting near the calendar&#x27;s edge as if about to touch it.
+
+Setting &amp; Background: a quiet, softly furnished room near a window — a hint of gauzy curtain, warm wood tones, nothing cluttered; the calendar hangs on a plain wall a little behind and beside the person, large enough that &quot;JULY&quot; is legible.
+
+Lighting: soft, warm natural window light from one side, low golden-hour quality, casting gentle highlights on the person&#x27;s face and a warm glow across the calendar&#x27;s paper texture.
+
+Materials &amp; fabric behavior: the calendar page shown with visible paper texture and a slight natural curl at the corner, grounding it as a real physical object about to be turned.
+
+Camera specs: intimate 50mm-equivalent framing, shallow depth of field with the room softly falling out of focus behind the person and calendar, both of which stay sharp.
+
+Identity preservation (critical): preserve this exact person&#x27;s face shape, exact age, skin tone, eye shape and color, exact hairstyle, hair color and texture, jawline, and any distinctive features (freckles, moles, facial hair, glasses) precisely as shown in the source photo — no idealization, no bone-structure changes. Hands, if visible near the calendar, must have realistic proportions and natural finger positioning.
+
+Realism/authenticity artifacts: natural skin texture, gentle window-light grain, no over-smoothing, no other text or graphics anywhere except the visible &quot;JULY&quot; on the calendar page.</pre>
+        </details>
+        <details class="prompt-block">
+          <summary>Промпт для видео <span class="prompt-label">Kling · Grok</span></summary>
+          <pre class="prompt-text">Create a short cinematic video based on the uploaded image. The scene is a quiet, window-lit room; the person sits beside a paper wall calendar currently open to a page reading &quot;JULY.&quot;
+
+Camera and motion structure:
+FRAMES 0–20%: Keep the camera static, close on the person and the calendar sharing the frame. The person looks at the &quot;JULY&quot; page with a calm, reflective expression, one hand slowly rising toward the page&#x27;s edge.
+FRAMES 20–45%: As the person&#x27;s fingers touch the page&#x27;s corner, the &quot;JULY&quot; paper begins lifting and curling on its own, as if caught by a gentle unseen breeze, while faint golden light particles start gathering at the page&#x27;s edge.
+FRAMES 45–75%: The July page fully lifts and dissolves into a swirl of warm golden light and drifting paper-like fragments in front of the person&#x27;s hand. From that swirl, a new page visibly assembles and settles into place on the calendar — clean, warmly lit, reading &quot;AUGUST&quot; in a matching typeface, decorated with a simple thin gold botanical line-flourish along its edge.
+FRAMES 75–100%: The person lowers their hand, looks down at the newly formed &quot;AUGUST&quot; page for a beat, then slowly lifts their gaze to look directly into the camera with a quiet, confident half-smile — calm certainty rather than big excitement. The camera holds completely still through this final beat.
+
+Character: Preserve the person&#x27;s face, hair, skin tone, and identity exactly from the source image throughout the entire video. Movement is minimal and deliberate — one hand reaching to the page, then withdrawing, a downward glance, then a slow raise of the eyes to camera. No large body movement, no dancing — this idea is the most still and intimate of the batch.
+
+Key visual events (in order):
+1. The &quot;JULY&quot; page beginning to lift and curl as if caught by a breeze, with golden light particles gathering at its edge (frames 20–45%)
+2. The old page dissolving into swirling golden light and a new &quot;AUGUST&quot; page visibly assembling and settling into place on the calendar (frames 45–75%) — this is the hero moment
+3. The person&#x27;s slow, quiet look up into camera with a calm, confident half-smile once the new page has fully formed (frames 75–100%)
+
+Style: Intimate, warm, painterly-realist — soft window light, a slightly magical-realism touch limited entirely to the calendar transformation. The mood is quiet, grounded confidence rather than loud celebration, deliberately contrasting with the higher-energy dance register of other ideas in this batch.
+
+Restrictions:
+- Do not change the person&#x27;s face, hair, skin tone, or identity at any point
+- No speaking, no singing, no lip-sync, no mouthing words — only the silent downward glance and the final quiet smile into camera
+- The person must remain in frame, recognizable, and the visual focus for the entire video; the calendar page transformation happens beside them, never replacing them as the visual focus, and the person&#x27;s face must stay clearly visible throughout, including during the page transformation
+- No speech bubbles
+- The transformation from the &quot;JULY&quot; page into the fully formed &quot;AUGUST&quot; page (with its gold line-flourish) is the hero moment and must be clearly and completely visible — the new page must be fully assembled, legible, and settled into place by the 75% mark, not left half-formed or cut away from
+- The page transformation must read as one continuous magical dissolve-and-reassemble, not a jump cut — the old page must visibly break apart into light/paper fragments before the new page assembles
+- No additional gestures, actions, or beats beyond the described reach-toward-calendar, page transformation, downward glance, and final look-to-camera — no extra props, no other people entering frame, no getting up or moving around the room
+- The hand movement toward the calendar must stay a light, controlled touch at the page&#x27;s corner — never depicted as forcefully tearing or ripping the page, to avoid reading as a destructive or violent action
+- No text or graphics other than the &quot;JULY&quot; and &quot;AUGUST&quot; calendar page lettering and the thin gold flourish</pre>
+        </details>
+      </div>
+    </div>
+  </section>
+</div>
+</body>
+</html>

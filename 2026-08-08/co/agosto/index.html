@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>#agosto — Кокос на закате · Video Ideas</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      background: #f4f4f5; color: #111; font-size: 14px; line-height: 1.5;
+    }
+    .page-header {
+      background: #fff; border-bottom: 1px solid #e4e4e7; position: sticky;
+      top: 0; z-index: 100; box-shadow: 0 1px 8px rgba(0,0,0,.05);
+    }
+    .header-inner {
+      max-width: 1100px; margin: 0 auto; padding: 14px 28px;
+      display: flex; align-items: center; gap: 20px;
+    }
+    .brand {
+      font-size: 18px; font-weight: 800; letter-spacing: -.5px; color: #111;
+      white-space: nowrap; user-select: none; text-decoration: none;
+    }
+    .brand-tik { color: #fe2c55; }
+    .brand-tok { color: #010101; }
+    .brand-dot { color: #d1d1d1; margin: 0 6px; font-weight: 300; }
+    .brand-cc  { color: #888; font-size: 12px; font-weight: 500; }
+    .header-text { flex: 1; min-width: 0; }
+    .page-title {
+      font-size: 15px; font-weight: 700; letter-spacing: -.2px;
+      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    }
+    .page-sub { font-size: 11.5px; color: #999; margin-top: 2px; }
+    .date-badge {
+      background: #fe2c55; color: #fff; font-weight: 700; font-size: 12px;
+      border-radius: 8px; padding: 6px 14px; line-height: 1.4;
+      text-align: center; white-space: nowrap; flex-shrink: 0;
+    }
+    .date-badge span { display: block; font-size: 10px; font-weight: 500; opacity: .8; }
+    .page-nav {
+      max-width: 1100px; margin: 0 auto; padding: 0 28px;
+      display: flex; gap: 2px; border-top: 1px solid #f0f0f0;
+    }
+    .nav-a {
+      text-decoration: none; color: #999; font-size: 12.5px; font-weight: 500;
+      padding: 9px 14px; border-bottom: 2px solid transparent;
+      transition: color .15s, border-color .15s;
+    }
+    .nav-a:hover { color: #fe2c55; }
+    .nav-a.active { color: #fe2c55; border-bottom-color: #fe2c55; }
+    .content { max-width: 1100px; margin: 0 auto; padding: 36px 28px 80px; }
+    .section { margin-bottom: 52px; }
+    .section-header { display: flex; align-items: baseline; gap: 10px; margin-bottom: 16px; }
+    .section-title { font-size: 19px; font-weight: 800; letter-spacing: -.4px; }
+    .section-badge {
+      font-size: 10.5px; font-weight: 600; color: #999; background: #ebebeb;
+      padding: 3px 8px; border-radius: 20px; text-transform: uppercase; letter-spacing: .4px;
+    }
+    @media (max-width: 768px) {
+      .header-inner { gap: 12px; padding: 12px 16px; }
+      .date-badge { display: none; }
+      .page-nav { padding: 0 16px; }
+      .content { padding: 24px 16px 60px; }
+    }
+
+
+    .idea-lead {
+      background: #fff; border-radius: 12px; padding: 36px 40px 32px;
+      box-shadow: 0 1px 4px rgba(0,0,0,.07), 0 0 0 1px rgba(0,0,0,.05);
+      margin-bottom: 40px;
+    }
+    .idea-hashtag { font-size: 13px; font-weight: 700; color: #fe2c55; margin-bottom: 8px; }
+    .idea-title { font-size: 26px; font-weight: 800; letter-spacing: -.6px; line-height: 1.25; margin-bottom: 16px; }
+    .idea-desc { font-size: 14px; color: #444; line-height: 1.75; max-width: 720px; }
+    .media-grid {
+      display: grid; grid-template-columns: auto 1fr; gap: 28px; align-items: start;
+    }
+    .video-multi {
+      display: flex; gap: 16px; flex-wrap: wrap; align-items: flex-start;
+    }
+    .video-item {
+      width: 200px; display: flex; flex-direction: column; gap: 8px; flex-shrink: 0;
+    }
+    .video-caption {
+      font-size: 11px; color: #999; line-height: 1.4; padding: 0 2px;
+    }
+    .video-player {
+      width: 100%; aspect-ratio: 9/16; object-fit: cover; border-radius: 12px;
+      display: block; box-shadow: 0 2px 16px rgba(0,0,0,.14);
+    }
+    .frame-img {
+      width: 100%; aspect-ratio: 9/16; object-fit: cover; border-radius: 12px;
+      display: block; box-shadow: 0 2px 16px rgba(0,0,0,.14);
+    }
+    .prompts-col { display: flex; flex-direction: column; gap: 12px; }
+    .prompt-block {
+      background: #fff; border-radius: 10px;
+      box-shadow: 0 1px 4px rgba(0,0,0,.07), 0 0 0 1px rgba(0,0,0,.05); overflow: hidden;
+    }
+    .prompt-block summary {
+      padding: 14px 18px; font-size: 13px; font-weight: 700; cursor: pointer;
+      user-select: none; list-style: none; display: flex; align-items: center; gap: 8px; color: #333;
+    }
+    .prompt-block summary::-webkit-details-marker { display: none; }
+    .prompt-block summary::before { content: '▶'; font-size: 8px; color: #bbb; transition: transform .15s; flex-shrink: 0; }
+    .prompt-block[open] summary::before { transform: rotate(90deg); }
+    .prompt-block summary:hover { color: #fe2c55; }
+    .prompt-block summary:hover::before { color: #fe2c55; }
+    .prompt-label { font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: .5px; color: #bbb; margin-left: auto; }
+    .prompt-text {
+      padding: 14px 18px 16px; font-family: 'SF Mono','Fira Code','Menlo',monospace;
+      font-size: 11.5px; line-height: 1.7; color: #555; background: #f9f9f9;
+      border-top: 1px solid #f0f0f0; white-space: pre-wrap; word-break: break-word;
+      max-height: 320px; overflow-y: auto;
+    }
+    @media (max-width: 900px) {
+      .media-grid { grid-template-columns: 1fr; }
+      .video-multi { justify-content: center; }
+      .idea-lead { padding: 24px 22px 22px; }
+    }
+    @media (max-width: 520px) { .idea-title { font-size: 22px; } }
+
+  </style>
+</head>
+<body>
+<div class="page-header">
+  <div class="header-inner">
+    <a class="brand" href="../../../">
+      <span class="brand-tik">Tik</span><span class="brand-tok">Tok</span>
+      <span class="brand-dot">·</span><span class="brand-cc">Video Ideas</span>
+    </a>
+    <div class="header-text">
+      <div class="page-title">#agosto</div>
+      <div class="page-sub">Видео-идея · 8 августа 2026</div>
+    </div>
+    <div class="date-badge">08.08.2026<span>Дата</span></div>
+  </div>
+  <nav class="page-nav">
+    <a href="../../../" class="nav-a">← Все отчёты</a>
+    <a href="../../#co" class="nav-a">← 8 авг 2026</a>
+    <a href="#" class="nav-a active">#agosto</a>
+  </nav>
+</div>
+<div class="content">
+  <div class="idea-lead">
+    <div class="idea-hashtag">#agosto</div>
+    <h1 class="idea-title">Кокос на закате</h1>
+    <p class="idea-desc">Пользователь сидит на песке тропического пляжа на закате, держа половинку кокоса с трубочкой, наблюдая за волнами — сцена летнего умиротворения в честь начала августа. Небо постепенно окрашивается в тёплые оранжево-розовые тона заката, и на фоне медленно, изящно проявляется каллиграфическая надпись «AGOSTO» из мерцающих золотых частиц, будто вырастающая прямо из света заходящего солнца. Пользователь делает глоток из кокоса и с тихой, довольной улыбкой смотрит на горизонт.</p>
+  </div>
+  <section class="section">
+    <div class="section-header">
+      <h2 class="section-title">Видео</h2>
+      <span class="section-badge">Пример генерации</span>
+    </div>
+    <div class="media-grid">
+      <div class="video-multi">
+        <div class="video-item"><video class="video-player" controls muted loop playsinline poster="https://temp-images.ws.pho.to/1f0ad7e2e8b5891bfe871a0cfbc4919734114940.png"><source src="https://temp-images.ws.pho.to/0fbaaa16f4526136f92ea534b7d6138c352a3a2c.mp4" type="video/mp4"></video>
+          <div class="video-caption">man in his early 30s with short brown hair, blue eyes, and a short beard</div>
+        </div>
+        <div class="video-item"><video class="video-player" controls muted loop playsinline poster="https://temp-images.ws.pho.to/7e0ac4f82f5e229a063a796fada55be9b011df85.png"><source src="https://temp-images.ws.pho.to/6a52b3b0b8f1aeb82a5fc186994fdb3e2193b36d.mp4" type="video/mp4"></video>
+          <div class="video-caption">woman in her late 30s with straight blonde shoulder-length hair and cat-eye glasses</div>
+        </div>
+      </div>
+      <div class="prompts-col">
+        <details class="prompt-block">
+          <summary>Промпт для первого кадра <span class="prompt-label">GPT Image 2</span></summary>
+          <pre class="prompt-text">Turn the photo of the person into a serene beachside portrait at golden hour, sitting on soft sand facing the ocean, holding a halved coconut with a straw, gazing out toward the horizon where the sun is beginning to set. Preserve this exact person&#x27;s face shape, exact age, skin tone, eye shape and color, exact hairstyle, hair color and texture, jawline, and any distinctive features (freckles, moles, facial hair, glasses) precisely as shown in the source photo — no idealization, no bone-structure changes; hands must be anatomically correct holding the coconut.
+
+Pose &amp; Composition: Medium shot, three-quarter angle, seated on the sand with knees drawn up slightly, coconut held near chest height, gaze directed toward the ocean horizon rather than the camera.
+
+Setting &amp; Background: A wide tropical beach at golden hour — soft sand in the foreground, gentle waves rolling in, palm trees silhouetted at the edge of frame, the sun low over the water casting a warm glow across the whole scene.
+
+Lighting: Warm, saturated golden-hour light, the sun low and glowing orange-pink, long soft shadows, warm rim light on the person&#x27;s hair and shoulder.
+
+Environmental atmosphere: A light sea breeze implied through slightly windswept hair strands, faint ambient warmth in the color grading.
+
+On-screen text/graphics: none in this frame — the &quot;AGOSTO&quot; title materializes later in the video, formed from light particles.</pre>
+        </details>
+        <details class="prompt-block">
+          <summary>Промпт для видео <span class="prompt-label">Kling · Grok</span></summary>
+          <pre class="prompt-text">Create a short cinematic video based on the uploaded image. The scene is the same golden-hour beach; the person sits with a coconut, watching the sunset.
+
+Camera and motion structure:
+FRAMES 0–25%: Keep the shot mostly static with a very slow, barely perceptible push-in. The person sits quietly, gaze on the horizon, a light breeze moving their hair slightly.
+FRAMES 25–55%: The sunset light deepens further into richer orange and pink tones. Small golden light particles begin drifting up gently from the shimmer on the water&#x27;s surface.
+FRAMES 55–80%: The drifting golden particles gradually converge and arrange themselves into elegant script letters spelling &quot;AGOSTO,&quot; materializing gradually above the horizon like a title forming from the sunset light itself.
+FRAMES 80–100%: Once fully formed, the &quot;AGOSTO&quot; title holds steady, gently shimmering. The person raises the coconut and takes a slow sip through the straw, then lowers it with a soft, content smile toward the ocean. The title remains visible until the last frame.
+
+Character:
+Preserve the person&#x27;s face, hair, skin tone, and identity exactly from the source image throughout. Hands remain anatomically correct holding the coconut.
+The person never speaks aloud, sings, or mouths legible words — only quiet, contented stillness and a small sip and smile.
+
+Key visual events (in order):
+- Golden light particles beginning to drift from the water&#x27;s shimmer
+- Gradual materialization of the &quot;AGOSTO&quot; title from the particles (hero moment)
+- Slow sip from the coconut
+- Soft, content smile toward the horizon
+
+Style:
+Warm, cinematic golden-hour beach aesthetic, soft and dreamlike — gentle, nostalgic &quot;new month&quot; mood rather than high-energy.
+
+Restrictions:
+- Do not change the person&#x27;s appearance, face, clothing, or identity at any point
+- No speaking, no singing, no lip-sync — reaction and emotion only
+- No speech bubbles
+- The &quot;AGOSTO&quot; title must gradually materialize from drifting golden light particles (not appear as an instant cut or pre-existing static overlay), completing by frame ~80%, and must remain visible until the last frame — this is the hero moment and must clearly and unambiguously appear
+- The particle-to-text materialization happens exactly once — do not have the letters dissolve and reform again
+- No other on-screen text or graphics besides the &quot;AGOSTO&quot; title
+- No improvisation beyond the listed actions — no standing up, no walking along the beach, no other people entering frame
+- Do not let the sip-from-coconut beat read as spilling or fumbling — it must be a smooth, natural, single sip</pre>
+        </details>
+      </div>
+    </div>
+  </section>
+</div>
+</body>
+</html>
