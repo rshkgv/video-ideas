@@ -6,7 +6,7 @@ Usage:
     python3 generate.py [--date 2026-05-14]   # rebuild one date
     python3 generate.py                        # rebuild all dates
 """
-import re, pathlib, html, json, sys, argparse
+import re, pathlib, html, json, sys, argparse, time
 
 ROOT      = pathlib.Path(__file__).parent.parent
 SITE      = pathlib.Path(__file__).parent
@@ -841,7 +841,19 @@ def build_date(date):
     return _flatten(mode, data)
 
 
+def format_duration(seconds):
+    seconds = int(seconds)
+    h, rem = divmod(seconds, 3600)
+    m, s = divmod(rem, 60)
+    if h:
+        return f'{h}h{m:02d}m{s:02d}s'
+    if m:
+        return f'{m}m{s:02d}s'
+    return f'{s}s'
+
+
 def build_all():
+    start_time = time.monotonic()
     parser = argparse.ArgumentParser()
     parser.add_argument('--date', help='Rebuild only this date (YYYY-MM-DD). The main index is always '
                                         'regenerated from every date folder on disk, regardless of --date.')
@@ -865,6 +877,7 @@ def build_all():
     # Main index — always reflects every date folder, even when only one was rebuilt
     (SITE / 'index.html').write_text(gen_main_index(all_entries))
     print(f'\nwrote index.html  ({len(all_entries)} dates)')
+    print(f'Время генерации сайта: {format_duration(time.monotonic() - start_time)}')
 
 
 if __name__ == '__main__':

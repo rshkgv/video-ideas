@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>#sidehustlelive — Гигантский подарок взрывается конфетти на сплит-экране · Video Ideas</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      background: #f4f4f5; color: #111; font-size: 14px; line-height: 1.5;
+    }
+    .page-header {
+      background: #fff; border-bottom: 1px solid #e4e4e7; position: sticky;
+      top: 0; z-index: 100; box-shadow: 0 1px 8px rgba(0,0,0,.05);
+    }
+    .header-inner {
+      max-width: 1100px; margin: 0 auto; padding: 14px 28px;
+      display: flex; align-items: center; gap: 20px;
+    }
+    .brand {
+      font-size: 18px; font-weight: 800; letter-spacing: -.5px; color: #111;
+      white-space: nowrap; user-select: none; text-decoration: none;
+    }
+    .brand-tik { color: #fe2c55; }
+    .brand-tok { color: #010101; }
+    .brand-dot { color: #d1d1d1; margin: 0 6px; font-weight: 300; }
+    .brand-cc  { color: #888; font-size: 12px; font-weight: 500; }
+    .header-text { flex: 1; min-width: 0; }
+    .page-title {
+      font-size: 15px; font-weight: 700; letter-spacing: -.2px;
+      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    }
+    .page-sub { font-size: 11.5px; color: #999; margin-top: 2px; }
+    .date-badge {
+      background: #fe2c55; color: #fff; font-weight: 700; font-size: 12px;
+      border-radius: 8px; padding: 6px 14px; line-height: 1.4;
+      text-align: center; white-space: nowrap; flex-shrink: 0;
+    }
+    .date-badge span { display: block; font-size: 10px; font-weight: 500; opacity: .8; }
+    .page-nav {
+      max-width: 1100px; margin: 0 auto; padding: 0 28px;
+      display: flex; gap: 2px; border-top: 1px solid #f0f0f0;
+    }
+    .nav-a {
+      text-decoration: none; color: #999; font-size: 12.5px; font-weight: 500;
+      padding: 9px 14px; border-bottom: 2px solid transparent;
+      transition: color .15s, border-color .15s;
+    }
+    .nav-a:hover { color: #fe2c55; }
+    .nav-a.active { color: #fe2c55; border-bottom-color: #fe2c55; }
+    .content { max-width: 1100px; margin: 0 auto; padding: 36px 28px 80px; }
+    .section { margin-bottom: 52px; }
+    .section-header { display: flex; align-items: baseline; gap: 10px; margin-bottom: 16px; }
+    .section-title { font-size: 19px; font-weight: 800; letter-spacing: -.4px; }
+    .section-badge {
+      font-size: 10.5px; font-weight: 600; color: #999; background: #ebebeb;
+      padding: 3px 8px; border-radius: 20px; text-transform: uppercase; letter-spacing: .4px;
+    }
+    @media (max-width: 768px) {
+      .header-inner { gap: 12px; padding: 12px 16px; }
+      .date-badge { display: none; }
+      .page-nav { padding: 0 16px; }
+      .content { padding: 24px 16px 60px; }
+    }
+
+
+    .idea-lead {
+      background: #fff; border-radius: 12px; padding: 36px 40px 32px;
+      box-shadow: 0 1px 4px rgba(0,0,0,.07), 0 0 0 1px rgba(0,0,0,.05);
+      margin-bottom: 40px;
+    }
+    .idea-hashtag { font-size: 13px; font-weight: 700; color: #fe2c55; margin-bottom: 8px; }
+    .idea-title { font-size: 26px; font-weight: 800; letter-spacing: -.6px; line-height: 1.25; margin-bottom: 16px; }
+    .idea-desc { font-size: 14px; color: #444; line-height: 1.75; max-width: 720px; }
+    .media-grid {
+      display: grid; grid-template-columns: auto 1fr; gap: 28px; align-items: start;
+    }
+    .video-multi {
+      display: flex; gap: 16px; flex-wrap: wrap; align-items: flex-start;
+    }
+    .video-item {
+      width: 200px; display: flex; flex-direction: column; gap: 8px; flex-shrink: 0;
+    }
+    .video-caption {
+      font-size: 11px; color: #999; line-height: 1.4; padding: 0 2px;
+    }
+    .video-player {
+      width: 100%; aspect-ratio: 9/16; object-fit: cover; border-radius: 12px;
+      display: block; box-shadow: 0 2px 16px rgba(0,0,0,.14);
+    }
+    .frame-img {
+      width: 100%; aspect-ratio: 9/16; object-fit: cover; border-radius: 12px;
+      display: block; box-shadow: 0 2px 16px rgba(0,0,0,.14);
+    }
+    .prompts-col { display: flex; flex-direction: column; gap: 12px; }
+    .prompt-block {
+      background: #fff; border-radius: 10px;
+      box-shadow: 0 1px 4px rgba(0,0,0,.07), 0 0 0 1px rgba(0,0,0,.05); overflow: hidden;
+    }
+    .prompt-block summary {
+      padding: 14px 18px; font-size: 13px; font-weight: 700; cursor: pointer;
+      user-select: none; list-style: none; display: flex; align-items: center; gap: 8px; color: #333;
+    }
+    .prompt-block summary::-webkit-details-marker { display: none; }
+    .prompt-block summary::before { content: '▶'; font-size: 8px; color: #bbb; transition: transform .15s; flex-shrink: 0; }
+    .prompt-block[open] summary::before { transform: rotate(90deg); }
+    .prompt-block summary:hover { color: #fe2c55; }
+    .prompt-block summary:hover::before { color: #fe2c55; }
+    .prompt-label { font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: .5px; color: #bbb; margin-left: auto; }
+    .prompt-text {
+      padding: 14px 18px 16px; font-family: 'SF Mono','Fira Code','Menlo',monospace;
+      font-size: 11.5px; line-height: 1.7; color: #555; background: #f9f9f9;
+      border-top: 1px solid #f0f0f0; white-space: pre-wrap; word-break: break-word;
+      max-height: 320px; overflow-y: auto;
+    }
+    @media (max-width: 900px) {
+      .media-grid { grid-template-columns: 1fr; }
+      .video-multi { justify-content: center; }
+      .idea-lead { padding: 24px 22px 22px; }
+    }
+    @media (max-width: 520px) { .idea-title { font-size: 22px; } }
+
+  </style>
+</head>
+<body>
+<div class="page-header">
+  <div class="header-inner">
+    <a class="brand" href="../../">
+      <span class="brand-tik">Tik</span><span class="brand-tok">Tok</span>
+      <span class="brand-dot">·</span><span class="brand-cc">Video Ideas</span>
+    </a>
+    <div class="header-text">
+      <div class="page-title">#sidehustlelive</div>
+      <div class="page-sub">Видео-идея · 9 августа 2026</div>
+    </div>
+    <div class="date-badge">09.08.2026<span>Дата</span></div>
+  </div>
+  <nav class="page-nav">
+    <a href="../../" class="nav-a">← Все отчёты</a>
+    <a href="../" class="nav-a">← 9 авг 2026</a>
+    <a href="#" class="nav-a active">#sidehustlelive</a>
+  </nav>
+</div>
+<div class="content">
+  <div class="idea-lead">
+    <div class="idea-hashtag">#sidehustlelive</div>
+    <h1 class="idea-title">Гигантский подарок взрывается конфетти на сплит-экране</h1>
+    <p class="idea-desc">Экран разделён пополам, как в реальных дуэтных прямых эфирах этого тега: пользователь занимает свою половину, рядом — силуэт партнёра по эфиру во второй половине. Внизу ползёт лента комментариев зрителей, сверху — счётчик подарков. Внезапно на половине пользователя материализуется огромная анимированная иконка подарка, которая тут же взрывается конфетти и монетками — именно такой формат &quot;цифровых подарков&quot; узнаваем по реальным видео тега. Пользователь вскидывает руки в восторге, беззвучно смеясь. Финальный кадр — застывшая сцена ликования со счётчиком подарков, зафиксированным на большом числе.</p>
+  </div>
+  <section class="section">
+    <div class="section-header">
+      <h2 class="section-title">Видео</h2>
+      <span class="section-badge">Пример генерации</span>
+    </div>
+    <div class="media-grid">
+      <div class="video-multi"><div class="video-item"><div style="aspect-ratio:9/16;background:#eee;border-radius:12px;"></div></div></div>
+      <div class="prompts-col">
+        <details class="prompt-block">
+          <summary>Промпт для первого кадра <span class="prompt-label">GPT Image 2</span></summary>
+          <pre class="prompt-text">Turn the photo of the person into a medium shot, waist-up, framed inside the left half of a vertical split-screen composition, styled exactly like a real TikTok Live &quot;duet call&quot; interface. Preserve their exact identity in full detail: the same face shape, skin tone, eye shape and color, hairstyle and hair color and texture, jawline, and any distinctive features — no beautification, no age change. The person sits or stands casually facing the camera, mid-conversation energy, mouth closed and relaxed, eyes bright and engaged, in a home setting with a colorful LED light strip glowing softly along the wall behind them (purple-and-blue tones). The right half of the vertical frame shows a softly out-of-focus, generic silhouette of another person in a plainly lit room, present but not the focus — their face should stay indistinct/unclear so attention stays on the left half. A thin white dividing line runs down the center of the frame separating the two halves, exactly like a live-call split screen. At the very top of the frame, a thin bar shows a small placeholder gift-counter icon at zero; at the very bottom, a narrow band suggests (without specific readable text yet) a scrolling comment area. Lighting on the person is a mix of the colorful LED strip and soft ambient room light, giving a warm-cool contrast typical of livestream setups. Camera specs: front-camera-style framing, moderate depth of field. Skin should retain natural texture and pores. Vertical 9:16 orientation.</pre>
+        </details>
+        <details class="prompt-block">
+          <summary>Промпт для видео <span class="prompt-label">Kling · Grok</span></summary>
+          <pre class="prompt-text">Create a short cinematic video based on the uploaded image. The scene is a vertical split-screen livestream call: the person occupies the left half, a generic silhouetted other caller occupies the right half, with a comment-scroll band at the bottom and a gift counter at the top.
+
+Camera and motion structure:
+Keep the overall shot locked-off and static for the entire video — the split-screen frame itself never moves; all motion happens within the two halves and the overlay elements.
+0:00–0:02 — The person talks and gestures casually and energetically within their half of the split screen, engaged and animated, mouth moving naturally in conversation-style gesture (implied dialogue only, never forming clear words toward camera as if narrating to the viewer — see restrictions). The silhouetted caller on the right remains a soft, indistinct presence.
+0:02–0:03 — A large, colorful animated gift-box icon suddenly materializes in the center of the person&#x27;s half of the screen, popping in with a small flash — an instant appearance, not a fade-in.
+0:03–0:03.5 — The gift-box icon bursts open in one decisive beat, releasing a shower of animated confetti and small coin icons that scatter across the person&#x27;s half of the screen.
+0:03.5–0:05 — The person throws both arms up in silent, delighted celebration, head tilting back with a wide open-mouthed laugh (laughing, not speaking). The gift counter at the top ticks up rapidly to a large final number and locks there; the comment band at the bottom fills with a few scrolling celebratory comment lines. All overlay elements remain visible, unchanged, through the last frame.
+
+Character:
+Preserve the person&#x27;s face, hair, skin tone, and identity exactly from the source image throughout. Their only physical motion is: casual animated gesturing, then throwing both arms up and laughing with head tilted back — no standing up, no leaving their half of the frame.
+
+Key visual events (in order):
+- The casual, animated conversational starting beat within the split screen
+- The instant materialization of the large gift-box icon — this sets up the payoff
+- The gift-box bursting into confetti and coins — this is the hero moment and must be clearly, unmistakably a full burst filling a visible portion of the person&#x27;s half of the screen, not a small or subtle effect
+- The person&#x27;s arms-up, laughing celebration
+- The gift counter locking on its final large number and the comment band filling in during the final 30%
+
+Style:
+Bright, energetic, digital-livestream aesthetic — saturated LED colors, playful animated UI graphics, the celebratory chaos of a real gifting moment on a live call. Comedic/absurd and joyfully over-the-top, matching real &quot;big gift&quot; reaction clips.
+
+Restrictions:
+- Do not change the person&#x27;s face, hair, skin tone, or identity at any point
+- No speaking, no singing, no lip-sync, no mouthing clear words — the person&#x27;s mouth may move naturally in animated conversational gesture and open-mouthed laughter, but must never form recognizable speech; any implied conversation is understood as unheard chatter, never depicted as the person narrating directly to the audience
+- The person must remain in their half of the split screen, recognizable, and the visual focus of that half for the entire video
+- The gift-box materializing and then bursting into confetti and coins is the single most important visual event of this video and must occur exactly once, as two distinct beats (appear, then burst) — it must not be skipped or merged into one instant
+- No speech bubbles — the comment-scroll band is a static list-style graphic, never a bubble pointing at a specific speaker
+- No additional on-screen text or graphics beyond the gift counter, the comment-scroll band, and the gift/confetti/coin icons
+- The gift counter&#x27;s final number and the comment band&#x27;s content lock in during the final 30% of the video and must remain visible, unchanged, until the last frame
+- The silhouetted caller on the right half must remain indistinct and out of focus throughout — never sharpen into a clearly identifiable face
+- No improvisation beyond the actions explicitly listed above — no extra gestures, no additional gift icons beyond the one described burst
+- The split-screen dividing line and both halves&#x27; basic framing must remain fixed and unmoving for the entire video — only the content within each half changes</pre>
+        </details>
+      </div>
+    </div>
+  </section>
+</div>
+</body>
+</html>

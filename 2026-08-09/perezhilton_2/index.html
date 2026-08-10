@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>#perezhilton — Экстренный выпуск врывается в вечер · Video Ideas</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      background: #f4f4f5; color: #111; font-size: 14px; line-height: 1.5;
+    }
+    .page-header {
+      background: #fff; border-bottom: 1px solid #e4e4e7; position: sticky;
+      top: 0; z-index: 100; box-shadow: 0 1px 8px rgba(0,0,0,.05);
+    }
+    .header-inner {
+      max-width: 1100px; margin: 0 auto; padding: 14px 28px;
+      display: flex; align-items: center; gap: 20px;
+    }
+    .brand {
+      font-size: 18px; font-weight: 800; letter-spacing: -.5px; color: #111;
+      white-space: nowrap; user-select: none; text-decoration: none;
+    }
+    .brand-tik { color: #fe2c55; }
+    .brand-tok { color: #010101; }
+    .brand-dot { color: #d1d1d1; margin: 0 6px; font-weight: 300; }
+    .brand-cc  { color: #888; font-size: 12px; font-weight: 500; }
+    .header-text { flex: 1; min-width: 0; }
+    .page-title {
+      font-size: 15px; font-weight: 700; letter-spacing: -.2px;
+      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    }
+    .page-sub { font-size: 11.5px; color: #999; margin-top: 2px; }
+    .date-badge {
+      background: #fe2c55; color: #fff; font-weight: 700; font-size: 12px;
+      border-radius: 8px; padding: 6px 14px; line-height: 1.4;
+      text-align: center; white-space: nowrap; flex-shrink: 0;
+    }
+    .date-badge span { display: block; font-size: 10px; font-weight: 500; opacity: .8; }
+    .page-nav {
+      max-width: 1100px; margin: 0 auto; padding: 0 28px;
+      display: flex; gap: 2px; border-top: 1px solid #f0f0f0;
+    }
+    .nav-a {
+      text-decoration: none; color: #999; font-size: 12.5px; font-weight: 500;
+      padding: 9px 14px; border-bottom: 2px solid transparent;
+      transition: color .15s, border-color .15s;
+    }
+    .nav-a:hover { color: #fe2c55; }
+    .nav-a.active { color: #fe2c55; border-bottom-color: #fe2c55; }
+    .content { max-width: 1100px; margin: 0 auto; padding: 36px 28px 80px; }
+    .section { margin-bottom: 52px; }
+    .section-header { display: flex; align-items: baseline; gap: 10px; margin-bottom: 16px; }
+    .section-title { font-size: 19px; font-weight: 800; letter-spacing: -.4px; }
+    .section-badge {
+      font-size: 10.5px; font-weight: 600; color: #999; background: #ebebeb;
+      padding: 3px 8px; border-radius: 20px; text-transform: uppercase; letter-spacing: .4px;
+    }
+    @media (max-width: 768px) {
+      .header-inner { gap: 12px; padding: 12px 16px; }
+      .date-badge { display: none; }
+      .page-nav { padding: 0 16px; }
+      .content { padding: 24px 16px 60px; }
+    }
+
+
+    .idea-lead {
+      background: #fff; border-radius: 12px; padding: 36px 40px 32px;
+      box-shadow: 0 1px 4px rgba(0,0,0,.07), 0 0 0 1px rgba(0,0,0,.05);
+      margin-bottom: 40px;
+    }
+    .idea-hashtag { font-size: 13px; font-weight: 700; color: #fe2c55; margin-bottom: 8px; }
+    .idea-title { font-size: 26px; font-weight: 800; letter-spacing: -.6px; line-height: 1.25; margin-bottom: 16px; }
+    .idea-desc { font-size: 14px; color: #444; line-height: 1.75; max-width: 720px; }
+    .media-grid {
+      display: grid; grid-template-columns: auto 1fr; gap: 28px; align-items: start;
+    }
+    .video-multi {
+      display: flex; gap: 16px; flex-wrap: wrap; align-items: flex-start;
+    }
+    .video-item {
+      width: 200px; display: flex; flex-direction: column; gap: 8px; flex-shrink: 0;
+    }
+    .video-caption {
+      font-size: 11px; color: #999; line-height: 1.4; padding: 0 2px;
+    }
+    .video-player {
+      width: 100%; aspect-ratio: 9/16; object-fit: cover; border-radius: 12px;
+      display: block; box-shadow: 0 2px 16px rgba(0,0,0,.14);
+    }
+    .frame-img {
+      width: 100%; aspect-ratio: 9/16; object-fit: cover; border-radius: 12px;
+      display: block; box-shadow: 0 2px 16px rgba(0,0,0,.14);
+    }
+    .prompts-col { display: flex; flex-direction: column; gap: 12px; }
+    .prompt-block {
+      background: #fff; border-radius: 10px;
+      box-shadow: 0 1px 4px rgba(0,0,0,.07), 0 0 0 1px rgba(0,0,0,.05); overflow: hidden;
+    }
+    .prompt-block summary {
+      padding: 14px 18px; font-size: 13px; font-weight: 700; cursor: pointer;
+      user-select: none; list-style: none; display: flex; align-items: center; gap: 8px; color: #333;
+    }
+    .prompt-block summary::-webkit-details-marker { display: none; }
+    .prompt-block summary::before { content: '▶'; font-size: 8px; color: #bbb; transition: transform .15s; flex-shrink: 0; }
+    .prompt-block[open] summary::before { transform: rotate(90deg); }
+    .prompt-block summary:hover { color: #fe2c55; }
+    .prompt-block summary:hover::before { color: #fe2c55; }
+    .prompt-label { font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: .5px; color: #bbb; margin-left: auto; }
+    .prompt-text {
+      padding: 14px 18px 16px; font-family: 'SF Mono','Fira Code','Menlo',monospace;
+      font-size: 11.5px; line-height: 1.7; color: #555; background: #f9f9f9;
+      border-top: 1px solid #f0f0f0; white-space: pre-wrap; word-break: break-word;
+      max-height: 320px; overflow-y: auto;
+    }
+    @media (max-width: 900px) {
+      .media-grid { grid-template-columns: 1fr; }
+      .video-multi { justify-content: center; }
+      .idea-lead { padding: 24px 22px 22px; }
+    }
+    @media (max-width: 520px) { .idea-title { font-size: 22px; } }
+
+  </style>
+</head>
+<body>
+<div class="page-header">
+  <div class="header-inner">
+    <a class="brand" href="../../">
+      <span class="brand-tik">Tik</span><span class="brand-tok">Tok</span>
+      <span class="brand-dot">·</span><span class="brand-cc">Video Ideas</span>
+    </a>
+    <div class="header-text">
+      <div class="page-title">#perezhilton</div>
+      <div class="page-sub">Видео-идея · 9 августа 2026</div>
+    </div>
+    <div class="date-badge">09.08.2026<span>Дата</span></div>
+  </div>
+  <nav class="page-nav">
+    <a href="../../" class="nav-a">← Все отчёты</a>
+    <a href="../" class="nav-a">← 9 авг 2026</a>
+    <a href="#" class="nav-a active">#perezhilton</a>
+  </nav>
+</div>
+<div class="content">
+  <div class="idea-lead">
+    <div class="idea-hashtag">#perezhilton</div>
+    <h1 class="idea-title">Экстренный выпуск врывается в вечер</h1>
+    <p class="idea-desc">Пользователь спокойно сидит в гостиной, за спиной у него светится включённый телевизор с приглушённым обычным вечерним шоу. Он не смотрит на экран — камера статична, единственное, что меняется в кадре, это сам телевизор. Внезапно на нём вспыхивает баннер «BREAKING NEWS» с мигающими огнями пожарных и полицейских машин, а поверх — крупный розовый вордмарк «HILTON» фирменного гэссип-стиля этого тега. Контраст между спокойствием пользователя и хаосом на экране за его спиной — и есть сам гэг. Пользователь наконец оборачивается на шум и застывает в шоке, пока драматичная плашка держится на экране до конца видео.</p>
+  </div>
+  <section class="section">
+    <div class="section-header">
+      <h2 class="section-title">Видео</h2>
+      <span class="section-badge">Пример генерации</span>
+    </div>
+    <div class="media-grid">
+      <div class="video-multi">
+        <div class="video-item"><video class="video-player" controls muted loop playsinline poster="https://temp-images.ws.pho.to/a03eff2b7688d18a3cd523d9cb4cea2c2eb486e4.png"><source src="https://temp-images.ws.pho.to/cbc19df3c3d38534940be72d4ea169c6e48ad422.mp4" type="video/mp4"></video>
+          <div class="video-caption">woman in her late 30s with straight blonde shoulder-length hair and cat-eye glasses</div>
+        </div>
+        <div class="video-item"><video class="video-player" controls muted loop playsinline poster="https://temp-images.ws.pho.to/0d4673873614470eb6a793cfbbd14dd645fd2ce3.png"><source src="https://temp-images.ws.pho.to/fbe444d14dd3f7d9c71ab2150d3540283534838c.mp4" type="video/mp4"></video>
+          <div class="video-caption">man in his early 30s with short brown hair, blue eyes, and a short beard</div>
+        </div>
+      </div>
+      <div class="prompts-col">
+        <details class="prompt-block">
+          <summary>Промпт для первого кадра <span class="prompt-label">GPT Image 2</span></summary>
+          <pre class="prompt-text">Turn the photo of the person into a medium-wide shot, waist-up, seated on a living-room sofa with their back partially toward a television set glowing softly in the background, angled so both their face (turned three-quarters toward camera) and the TV screen behind them are visible in the same frame. Preserve their exact identity in full detail: the same face shape, skin tone, eye shape and color, hairstyle and hair color, jawline, and any distinctive features — no beautification or age change. Their expression is relaxed and unbothered, perhaps mid-yawn-suppressed calm, attention on their own hands or a mug in their lap rather than the TV. They wear cozy evening loungewear. The television behind them, softly out of focus, currently displays only a generic, low-contrast evening talk-show scene in muted colors — nothing dramatic yet, since the breaking-news graphic appears only later in the video. The living room is warmly lit by a floor lamp with amber tones, a bookshelf silhouette visible in the deep background. Lighting mixes the warm lamp glow with the cooler flicker of the TV screen reflecting faintly on the wall beside it. Camera specs: 35mm-equivalent lens with a slightly wider field of view to keep both the person and the TV in frame, moderate depth of field so the person is sharp and the TV content is legible but soft-focus. Skin should show natural texture and pores. Vertical 9:16 orientation.</pre>
+        </details>
+        <details class="prompt-block">
+          <summary>Промпт для видео <span class="prompt-label">Kling · Grok</span></summary>
+          <pre class="prompt-text">Create a short cinematic video based on the uploaded image. The scene is a living room where the person sits calmly on the sofa, a television glowing behind them, unaware that the broadcast is about to change dramatically.
+
+Camera and motion structure:
+Keep the overall shot static. No zoom, no camera movement, no pan — the entire video is a single locked-off composition. The contrast reveal is carried entirely by the television screen changing behind the still, unmoving person.
+FRAMES 0–30%: The person sits calm and relaxed, attention on their hands/mug, occasionally glancing down, completely unaware of the TV. The TV continues showing its muted, low-contrast talk-show content, unchanged.
+FRAMES 30–60%: Without the person reacting yet, the TV screen abruptly cuts to a red &quot;BREAKING NEWS&quot; banner sliding across its lower third, with flashing blue-and-red emergency-vehicle lights filling the rest of the screen — fire trucks and police cars with lights flashing, casting sudden colored light flicker onto the person&#x27;s shoulder and the wall, even though the person still hasn&#x27;t turned around.
+FRAMES 60–80%: A bold hot-pink &quot;HILTON&quot; wordmark, in the same tabloid-gossip lettering style associated with this hashtag&#x27;s coverage, crashes onto the TV screen over the emergency-vehicle footage, filling most of the screen. Only now does the person&#x27;s head snap around toward the TV, mouth falling open in shock.
+FRAMES 80–100%: Holding on the person&#x27;s shocked profile/three-quarter face, now turned fully toward the television, the &quot;BREAKING NEWS&quot; banner and the pink &quot;HILTON&quot; wordmark remain locked in place on the screen behind them, unchanged, through the last frame.
+
+Character:
+Preserve the person&#x27;s face, hair, skin tone, and identity exactly from the source image throughout. Their only physical motion is: small idle gestures with their hands/mug during the calm opening, then a single decisive head-turn toward the TV once the &quot;HILTON&quot; wordmark appears — no other movement.
+
+Key visual events (in order):
+- The calm, unaware starting beat, TV showing ordinary muted content
+- The TV cutting to the &quot;BREAKING NEWS&quot; banner with flashing emergency-vehicle lights, while the person still has not reacted — this contrast (chaos on screen vs. calm person) is the core device
+- The pink &quot;HILTON&quot; wordmark crashing onto the screen — this is the hero moment and must be clearly, unmistakably legible in bold pink lettering
+- The single head-turn to shocked reaction, synchronized with the wordmark&#x27;s appearance
+- The banner and wordmark holding steady, unchanged, through the final 20%
+
+Style:
+Deadpan contrast comedy-meets-dread: a calm, warmly lit domestic scene undercut by a jarring, cold-flickering news graphic. Dark/surreal in tone — the humor comes from the mismatch between the person&#x27;s stillness and the screen&#x27;s escalating drama.
+
+Restrictions:
+- Do not change the person&#x27;s face, hair, skin tone, or identity at any point
+- No speaking, no singing, no lip-sync, no mouthing words — silent emotional reaction (the shocked head-turn, the open mouth) only
+- The person must remain in frame, recognizable, and the visual focus for the entire video, even while the television behind them is doing most of the visual work
+- The camera must remain fully static and locked-off for the entire video — no zoom, pan, or push-in at any point; the reveal is carried only by the TV screen&#x27;s content changing
+- The pink &quot;HILTON&quot; wordmark crashing onto the screen is the single most important visual element of this video and must render as clearly legible bold pink lettering — it must not appear faint, blurred, or cut off
+- The person turns their head toward the TV exactly once, and only after the wordmark has appeared — they must not react earlier to the breaking-news banner alone
+- No speech bubbles
+- No additional on-screen text beyond the &quot;BREAKING NEWS&quot; banner and the &quot;HILTON&quot; wordmark
+- Both graphics appear only from frame 30% onward and, once shown, must remain visible and unchanged on the TV screen through the last frame
+- No other people appear in the room; any figures visible on the TV screen itself must stay as generic, non-identifiable news-graphic imagery (emergency vehicles, flashing lights), never a specific recognizable face
+- No improvisation beyond the actions explicitly listed above — no extra gestures, no standing up, no muting or interacting with the TV
+- The flashing emergency lights on the TV must be understood as broadcast footage only — never depicted as an actual emergency happening inside the living room itself</pre>
+        </details>
+      </div>
+    </div>
+  </section>
+</div>
+</body>
+</html>

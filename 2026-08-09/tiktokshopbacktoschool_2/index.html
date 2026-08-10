@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>#tiktokshopbacktoschool — Радужная раскладка школьных находок · Video Ideas</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      background: #f4f4f5; color: #111; font-size: 14px; line-height: 1.5;
+    }
+    .page-header {
+      background: #fff; border-bottom: 1px solid #e4e4e7; position: sticky;
+      top: 0; z-index: 100; box-shadow: 0 1px 8px rgba(0,0,0,.05);
+    }
+    .header-inner {
+      max-width: 1100px; margin: 0 auto; padding: 14px 28px;
+      display: flex; align-items: center; gap: 20px;
+    }
+    .brand {
+      font-size: 18px; font-weight: 800; letter-spacing: -.5px; color: #111;
+      white-space: nowrap; user-select: none; text-decoration: none;
+    }
+    .brand-tik { color: #fe2c55; }
+    .brand-tok { color: #010101; }
+    .brand-dot { color: #d1d1d1; margin: 0 6px; font-weight: 300; }
+    .brand-cc  { color: #888; font-size: 12px; font-weight: 500; }
+    .header-text { flex: 1; min-width: 0; }
+    .page-title {
+      font-size: 15px; font-weight: 700; letter-spacing: -.2px;
+      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    }
+    .page-sub { font-size: 11.5px; color: #999; margin-top: 2px; }
+    .date-badge {
+      background: #fe2c55; color: #fff; font-weight: 700; font-size: 12px;
+      border-radius: 8px; padding: 6px 14px; line-height: 1.4;
+      text-align: center; white-space: nowrap; flex-shrink: 0;
+    }
+    .date-badge span { display: block; font-size: 10px; font-weight: 500; opacity: .8; }
+    .page-nav {
+      max-width: 1100px; margin: 0 auto; padding: 0 28px;
+      display: flex; gap: 2px; border-top: 1px solid #f0f0f0;
+    }
+    .nav-a {
+      text-decoration: none; color: #999; font-size: 12.5px; font-weight: 500;
+      padding: 9px 14px; border-bottom: 2px solid transparent;
+      transition: color .15s, border-color .15s;
+    }
+    .nav-a:hover { color: #fe2c55; }
+    .nav-a.active { color: #fe2c55; border-bottom-color: #fe2c55; }
+    .content { max-width: 1100px; margin: 0 auto; padding: 36px 28px 80px; }
+    .section { margin-bottom: 52px; }
+    .section-header { display: flex; align-items: baseline; gap: 10px; margin-bottom: 16px; }
+    .section-title { font-size: 19px; font-weight: 800; letter-spacing: -.4px; }
+    .section-badge {
+      font-size: 10.5px; font-weight: 600; color: #999; background: #ebebeb;
+      padding: 3px 8px; border-radius: 20px; text-transform: uppercase; letter-spacing: .4px;
+    }
+    @media (max-width: 768px) {
+      .header-inner { gap: 12px; padding: 12px 16px; }
+      .date-badge { display: none; }
+      .page-nav { padding: 0 16px; }
+      .content { padding: 24px 16px 60px; }
+    }
+
+
+    .idea-lead {
+      background: #fff; border-radius: 12px; padding: 36px 40px 32px;
+      box-shadow: 0 1px 4px rgba(0,0,0,.07), 0 0 0 1px rgba(0,0,0,.05);
+      margin-bottom: 40px;
+    }
+    .idea-hashtag { font-size: 13px; font-weight: 700; color: #fe2c55; margin-bottom: 8px; }
+    .idea-title { font-size: 26px; font-weight: 800; letter-spacing: -.6px; line-height: 1.25; margin-bottom: 16px; }
+    .idea-desc { font-size: 14px; color: #444; line-height: 1.75; max-width: 720px; }
+    .media-grid {
+      display: grid; grid-template-columns: auto 1fr; gap: 28px; align-items: start;
+    }
+    .video-multi {
+      display: flex; gap: 16px; flex-wrap: wrap; align-items: flex-start;
+    }
+    .video-item {
+      width: 200px; display: flex; flex-direction: column; gap: 8px; flex-shrink: 0;
+    }
+    .video-caption {
+      font-size: 11px; color: #999; line-height: 1.4; padding: 0 2px;
+    }
+    .video-player {
+      width: 100%; aspect-ratio: 9/16; object-fit: cover; border-radius: 12px;
+      display: block; box-shadow: 0 2px 16px rgba(0,0,0,.14);
+    }
+    .frame-img {
+      width: 100%; aspect-ratio: 9/16; object-fit: cover; border-radius: 12px;
+      display: block; box-shadow: 0 2px 16px rgba(0,0,0,.14);
+    }
+    .prompts-col { display: flex; flex-direction: column; gap: 12px; }
+    .prompt-block {
+      background: #fff; border-radius: 10px;
+      box-shadow: 0 1px 4px rgba(0,0,0,.07), 0 0 0 1px rgba(0,0,0,.05); overflow: hidden;
+    }
+    .prompt-block summary {
+      padding: 14px 18px; font-size: 13px; font-weight: 700; cursor: pointer;
+      user-select: none; list-style: none; display: flex; align-items: center; gap: 8px; color: #333;
+    }
+    .prompt-block summary::-webkit-details-marker { display: none; }
+    .prompt-block summary::before { content: '▶'; font-size: 8px; color: #bbb; transition: transform .15s; flex-shrink: 0; }
+    .prompt-block[open] summary::before { transform: rotate(90deg); }
+    .prompt-block summary:hover { color: #fe2c55; }
+    .prompt-block summary:hover::before { color: #fe2c55; }
+    .prompt-label { font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: .5px; color: #bbb; margin-left: auto; }
+    .prompt-text {
+      padding: 14px 18px 16px; font-family: 'SF Mono','Fira Code','Menlo',monospace;
+      font-size: 11.5px; line-height: 1.7; color: #555; background: #f9f9f9;
+      border-top: 1px solid #f0f0f0; white-space: pre-wrap; word-break: break-word;
+      max-height: 320px; overflow-y: auto;
+    }
+    @media (max-width: 900px) {
+      .media-grid { grid-template-columns: 1fr; }
+      .video-multi { justify-content: center; }
+      .idea-lead { padding: 24px 22px 22px; }
+    }
+    @media (max-width: 520px) { .idea-title { font-size: 22px; } }
+
+  </style>
+</head>
+<body>
+<div class="page-header">
+  <div class="header-inner">
+    <a class="brand" href="../../">
+      <span class="brand-tik">Tik</span><span class="brand-tok">Tok</span>
+      <span class="brand-dot">·</span><span class="brand-cc">Video Ideas</span>
+    </a>
+    <div class="header-text">
+      <div class="page-title">#tiktokshopbacktoschool</div>
+      <div class="page-sub">Видео-идея · 9 августа 2026</div>
+    </div>
+    <div class="date-badge">09.08.2026<span>Дата</span></div>
+  </div>
+  <nav class="page-nav">
+    <a href="../../" class="nav-a">← Все отчёты</a>
+    <a href="../" class="nav-a">← 9 авг 2026</a>
+    <a href="#" class="nav-a active">#tiktokshopbacktoschool</a>
+  </nav>
+</div>
+<div class="content">
+  <div class="idea-lead">
+    <div class="idea-hashtag">#tiktokshopbacktoschool</div>
+    <h1 class="idea-title">Радужная раскладка школьных находок</h1>
+    <p class="idea-desc">Камера смотрит вертикально сверху на стол, где пользователь распаковывает коробку со школьными принадлежностями — ровно как в реальных TikTok Shop demo-видео с гаджетами: сначала один предмет крупным планом, потом полная раскладка. Руки пользователя достают из коробки один яркий предмет за другим — пенал, маркеры, планер — и аккуратно выкладывают их в сетку по цветам. Финальный кадр — идеальная радужная сетка из школьных находок на столе, а пользователь в кадре сверху с довольной улыбкой. В последние секунды снизу выезжает плашка «TIKTOK SHOP FINDS» с ценником, повторяя фирменный узнаваемый вид платформенных demo-роликов.</p>
+  </div>
+  <section class="section">
+    <div class="section-header">
+      <h2 class="section-title">Видео</h2>
+      <span class="section-badge">Пример генерации</span>
+    </div>
+    <div class="media-grid">
+      <div class="video-multi">
+        <div class="video-item"><video class="video-player" controls muted loop playsinline poster="https://temp-images.ws.pho.to/29d328d0d8e1d2a0490e556934415ad17d625fdd.png"><source src="https://temp-images.ws.pho.to/c09065c6b13deb139afe7cd98fb7c4f21da71ddb.mp4" type="video/mp4"></video>
+          <div class="video-caption">woman in her late 30s with straight blonde shoulder-length hair and cat-eye glasses</div>
+        </div>
+        <div class="video-item"><video class="video-player" controls muted loop playsinline poster="https://temp-images.ws.pho.to/bf93dac18c9b5d89f9fd71d9056bf26621702a40.png"><source src="https://temp-images.ws.pho.to/42d0956f5c87a0de88b642fb52344574da5ffc4b.mp4" type="video/mp4"></video>
+          <div class="video-caption">man in his early 30s with short brown hair, blue eyes, and a short beard</div>
+        </div>
+      </div>
+      <div class="prompts-col">
+        <details class="prompt-block">
+          <summary>Промпт для первого кадра <span class="prompt-label">GPT Image 2</span></summary>
+          <pre class="prompt-text">Turn the photo of the person into a top-down &quot;flat lay&quot; product-demo shot, styled after real TikTok Shop unboxing videos. Preserve their exact identity precisely: same face shape, skin tone, eye color and shape, hairstyle and hair color, jawline, and any distinctive marks — no beautification or age changes. Frame the shot from directly overhead, looking straight down at a grey-and-white grid-patterned tabletop; the person&#x27;s face and shoulders are visible entering the top of the frame, leaning in from one side with their forearms and hands resting on the table, so their face stays clearly legible even in this top-down composition. On the table in front of them sits a single opened white cardboard shipping box with the flap folds still crisp, and beside it one bright yellow pencil case has just been pulled halfway out, its zipper glinting. Small scattered packing paper and a torn shipping label lie near the box. Lighting is bright, even, slightly cool-toned overhead studio lighting typical of product-demo content, eliminating harsh shadows and rendering true, saturated color in the yellow case and white cardboard. Camera specs: wide-angle top-down product shot, sharp focus across the whole tabletop with only the very edges of the frame softening slightly. Skin on the visible hands and forearms should show natural, realistic texture, with anatomically correct fingers gripping the box flap. Vertical 9:16 orientation. No overlay graphics or text visible in this first frame — those appear only later in the video.</pre>
+        </details>
+        <details class="prompt-block">
+          <summary>Промпт для видео <span class="prompt-label">Kling · Grok</span></summary>
+          <pre class="prompt-text">Create a short cinematic video based on the uploaded image. The scene is a top-down flat-lay unboxing: the person&#x27;s hands and face are visible entering from the top of frame as they unpack a school-supplies box on a tabletop.
+
+Camera and motion structure:
+FRAMES 0–20%: Locked-off, static overhead shot. The person pulls the yellow pencil case fully out of the box and sets it down, unzips it partway to show the supplies inside, glancing up toward camera with a satisfied nod.
+FRAMES 20–45%: Still locked-off overhead. The person&#x27;s hands reach back into the box and, one at a time, lift out three more items — a set of pastel highlighters, a spiral planner, and a set of sticky-tab dividers — placing each one down on the table in turn, arranging them loosely.
+FRAMES 45–75%: The person&#x27;s hands begin sliding and rotating each item into a tidy grid, sorting by color: yellow case top-left, pastel highlighters top-right, planner bottom-left, dividers bottom-right, nudging each into alignment. The camera remains completely static throughout — the reveal is built by the hands&#x27; arranging motion, not by camera movement.
+FRAMES 75–100%: The grid is complete and symmetrical. The person&#x27;s face, still visible at the top of frame, breaks into a pleased smile and gives one small thumbs-up beside the grid. A broadcast-style shopping bar slides up from the bottom of the frame: white background, bold black &quot;TIKTOK SHOP FINDS&quot; wordmark with a small price-tag icon. It locks in place and remains visible, unmoving, through the last frame.
+
+Character:
+Preserve the person&#x27;s face, skin tone, and identity exactly from the source image throughout. Hands must keep correct, realistic anatomy — five fingers each, natural grip and joint bends — while lifting, placing, and nudging the four items. No other body motion is required; the person&#x27;s visible presence is the face and forearms at the top of frame plus their hands doing the arranging.
+
+Key visual events (in order):
+- Pencil case pulled out and unzipped
+- Three more items lifted from the box, one at a time — exactly three, in this order: highlighters, planner, dividers
+- The four items sliding into a perfectly aligned color-sorted grid — this is the hero moment
+- The final thumbs-up
+- The &quot;TIKTOK SHOP FINDS&quot; bar locking in during the final quarter
+
+Style:
+Clean, bright, top-down product-demo aesthetic exactly like real TikTok Shop haul/unboxing content — crisp studio lighting, satisfying tidy arrangement, no cinematic shadows or moodiness. Sensory and satisfying, like a well-organized desk-setup video.
+
+Restrictions:
+- Do not change the person&#x27;s face, skin tone, or identity at any point
+- No speaking, no singing, no lip-sync, no mouthing words — silent emotional reaction (smiles, nods, a thumbs-up) only
+- The person&#x27;s face must remain visible and legible at the top of the frame for the entire video, even in this top-down composition — never crop out the face to show only hands and objects
+- Exactly three additional items are lifted from the box after the pencil case (highlighters, planner, dividers) — no more, no fewer, and no other objects
+- The final grid arrangement must be clearly, unmistakably tidy and color-sorted — this is the single most important visual payoff of the shot and must not be left messy or partially arranged
+- No speech bubbles
+- No additional on-screen text beyond the &quot;TIKTOK SHOP FINDS&quot; bar and its price-tag icon
+- The &quot;TIKTOK SHOP FINDS&quot; bar appears only in the final 25% of the video and must remain visible, unchanged, until the last frame
+- No additional people, hands, or pets enter the frame
+- No improvisation beyond the actions explicitly listed above — no extra items, no extra gestures
+- The camera must stay static and locked-off overhead for the entire video — no zoom, pan, or tilt at any point, since the reveal is carried entirely by the hands&#x27; arranging motion</pre>
+        </details>
+      </div>
+    </div>
+  </section>
+</div>
+</body>
+</html>

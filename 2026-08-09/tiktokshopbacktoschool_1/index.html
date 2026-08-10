@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>#tiktokshopbacktoschool — Мгновенный аутфит для первого дня · Video Ideas</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      background: #f4f4f5; color: #111; font-size: 14px; line-height: 1.5;
+    }
+    .page-header {
+      background: #fff; border-bottom: 1px solid #e4e4e7; position: sticky;
+      top: 0; z-index: 100; box-shadow: 0 1px 8px rgba(0,0,0,.05);
+    }
+    .header-inner {
+      max-width: 1100px; margin: 0 auto; padding: 14px 28px;
+      display: flex; align-items: center; gap: 20px;
+    }
+    .brand {
+      font-size: 18px; font-weight: 800; letter-spacing: -.5px; color: #111;
+      white-space: nowrap; user-select: none; text-decoration: none;
+    }
+    .brand-tik { color: #fe2c55; }
+    .brand-tok { color: #010101; }
+    .brand-dot { color: #d1d1d1; margin: 0 6px; font-weight: 300; }
+    .brand-cc  { color: #888; font-size: 12px; font-weight: 500; }
+    .header-text { flex: 1; min-width: 0; }
+    .page-title {
+      font-size: 15px; font-weight: 700; letter-spacing: -.2px;
+      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    }
+    .page-sub { font-size: 11.5px; color: #999; margin-top: 2px; }
+    .date-badge {
+      background: #fe2c55; color: #fff; font-weight: 700; font-size: 12px;
+      border-radius: 8px; padding: 6px 14px; line-height: 1.4;
+      text-align: center; white-space: nowrap; flex-shrink: 0;
+    }
+    .date-badge span { display: block; font-size: 10px; font-weight: 500; opacity: .8; }
+    .page-nav {
+      max-width: 1100px; margin: 0 auto; padding: 0 28px;
+      display: flex; gap: 2px; border-top: 1px solid #f0f0f0;
+    }
+    .nav-a {
+      text-decoration: none; color: #999; font-size: 12.5px; font-weight: 500;
+      padding: 9px 14px; border-bottom: 2px solid transparent;
+      transition: color .15s, border-color .15s;
+    }
+    .nav-a:hover { color: #fe2c55; }
+    .nav-a.active { color: #fe2c55; border-bottom-color: #fe2c55; }
+    .content { max-width: 1100px; margin: 0 auto; padding: 36px 28px 80px; }
+    .section { margin-bottom: 52px; }
+    .section-header { display: flex; align-items: baseline; gap: 10px; margin-bottom: 16px; }
+    .section-title { font-size: 19px; font-weight: 800; letter-spacing: -.4px; }
+    .section-badge {
+      font-size: 10.5px; font-weight: 600; color: #999; background: #ebebeb;
+      padding: 3px 8px; border-radius: 20px; text-transform: uppercase; letter-spacing: .4px;
+    }
+    @media (max-width: 768px) {
+      .header-inner { gap: 12px; padding: 12px 16px; }
+      .date-badge { display: none; }
+      .page-nav { padding: 0 16px; }
+      .content { padding: 24px 16px 60px; }
+    }
+
+
+    .idea-lead {
+      background: #fff; border-radius: 12px; padding: 36px 40px 32px;
+      box-shadow: 0 1px 4px rgba(0,0,0,.07), 0 0 0 1px rgba(0,0,0,.05);
+      margin-bottom: 40px;
+    }
+    .idea-hashtag { font-size: 13px; font-weight: 700; color: #fe2c55; margin-bottom: 8px; }
+    .idea-title { font-size: 26px; font-weight: 800; letter-spacing: -.6px; line-height: 1.25; margin-bottom: 16px; }
+    .idea-desc { font-size: 14px; color: #444; line-height: 1.75; max-width: 720px; }
+    .media-grid {
+      display: grid; grid-template-columns: auto 1fr; gap: 28px; align-items: start;
+    }
+    .video-multi {
+      display: flex; gap: 16px; flex-wrap: wrap; align-items: flex-start;
+    }
+    .video-item {
+      width: 200px; display: flex; flex-direction: column; gap: 8px; flex-shrink: 0;
+    }
+    .video-caption {
+      font-size: 11px; color: #999; line-height: 1.4; padding: 0 2px;
+    }
+    .video-player {
+      width: 100%; aspect-ratio: 9/16; object-fit: cover; border-radius: 12px;
+      display: block; box-shadow: 0 2px 16px rgba(0,0,0,.14);
+    }
+    .frame-img {
+      width: 100%; aspect-ratio: 9/16; object-fit: cover; border-radius: 12px;
+      display: block; box-shadow: 0 2px 16px rgba(0,0,0,.14);
+    }
+    .prompts-col { display: flex; flex-direction: column; gap: 12px; }
+    .prompt-block {
+      background: #fff; border-radius: 10px;
+      box-shadow: 0 1px 4px rgba(0,0,0,.07), 0 0 0 1px rgba(0,0,0,.05); overflow: hidden;
+    }
+    .prompt-block summary {
+      padding: 14px 18px; font-size: 13px; font-weight: 700; cursor: pointer;
+      user-select: none; list-style: none; display: flex; align-items: center; gap: 8px; color: #333;
+    }
+    .prompt-block summary::-webkit-details-marker { display: none; }
+    .prompt-block summary::before { content: '▶'; font-size: 8px; color: #bbb; transition: transform .15s; flex-shrink: 0; }
+    .prompt-block[open] summary::before { transform: rotate(90deg); }
+    .prompt-block summary:hover { color: #fe2c55; }
+    .prompt-block summary:hover::before { color: #fe2c55; }
+    .prompt-label { font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: .5px; color: #bbb; margin-left: auto; }
+    .prompt-text {
+      padding: 14px 18px 16px; font-family: 'SF Mono','Fira Code','Menlo',monospace;
+      font-size: 11.5px; line-height: 1.7; color: #555; background: #f9f9f9;
+      border-top: 1px solid #f0f0f0; white-space: pre-wrap; word-break: break-word;
+      max-height: 320px; overflow-y: auto;
+    }
+    @media (max-width: 900px) {
+      .media-grid { grid-template-columns: 1fr; }
+      .video-multi { justify-content: center; }
+      .idea-lead { padding: 24px 22px 22px; }
+    }
+    @media (max-width: 520px) { .idea-title { font-size: 22px; } }
+
+  </style>
+</head>
+<body>
+<div class="page-header">
+  <div class="header-inner">
+    <a class="brand" href="../../">
+      <span class="brand-tik">Tik</span><span class="brand-tok">Tok</span>
+      <span class="brand-dot">·</span><span class="brand-cc">Video Ideas</span>
+    </a>
+    <div class="header-text">
+      <div class="page-title">#tiktokshopbacktoschool</div>
+      <div class="page-sub">Видео-идея · 9 августа 2026</div>
+    </div>
+    <div class="date-badge">09.08.2026<span>Дата</span></div>
+  </div>
+  <nav class="page-nav">
+    <a href="../../" class="nav-a">← Все отчёты</a>
+    <a href="../" class="nav-a">← 9 авг 2026</a>
+    <a href="#" class="nav-a active">#tiktokshopbacktoschool</a>
+  </nav>
+</div>
+<div class="content">
+  <div class="idea-lead">
+    <div class="idea-hashtag">#tiktokshopbacktoschool</div>
+    <h1 class="idea-title">Мгновенный аутфит для первого дня</h1>
+    <p class="idea-desc">Пользователь стоит перед огромным walk-in closet, забитым разноцветными вещами и корзинами для хранения — типичный &quot;school haul&quot; сет, который снимают для TikTok Shop. Он держит в руках новые джинсы с биркой, ещё в домашней одежде. Резкий вжим камеры — и в следующую же секунду он уже одет в готовый back-to-school образ, уверенно разворачивается перед зеркалом гардеробной, хлопает в ладоши от восторга. В финале снизу появляется плашка каталога с ценой и надписью «TIKTOK SHOP FINDS», которая остаётся до конца.</p>
+  </div>
+  <section class="section">
+    <div class="section-header">
+      <h2 class="section-title">Видео</h2>
+      <span class="section-badge">Пример генерации</span>
+    </div>
+    <div class="media-grid">
+      <div class="video-multi">
+        <div class="video-item"><video class="video-player" controls muted loop playsinline poster="https://temp-images.ws.pho.to/fc0cdab8181704021e82f66a69f3d5b3a2897d4c.png"><source src="https://temp-images.ws.pho.to/7546400d36543bc5e36c3717417bec42c60600cc.mp4" type="video/mp4"></video>
+          <div class="video-caption">man in his early 30s with short brown hair, blue eyes, and a short beard</div>
+        </div>
+        <div class="video-item"><video class="video-player" controls muted loop playsinline poster="https://temp-images.ws.pho.to/453d6504354f50249df7021d6af71f3ced85c164.png"><source src="https://temp-images.ws.pho.to/de6d3faed4c8c8411ea256e9a554e4b7873dc0c6.mp4" type="video/mp4"></video>
+          <div class="video-caption">woman in her late 30s with straight blonde shoulder-length hair and cat-eye glasses</div>
+        </div>
+      </div>
+      <div class="prompts-col">
+        <details class="prompt-block">
+          <summary>Промпт для первого кадра <span class="prompt-label">GPT Image 2</span></summary>
+          <pre class="prompt-text">Turn the photo of the person into a knee-up &quot;cowboy shot&quot; portrait staged inside a walk-in closet styled exactly like a TikTok Shop back-to-school haul video. Preserve their exact identity: keep the same face shape, skin tone, eye shape and color, hairstyle, hair color and texture, jawline, and any distinctive features (moles, freckles, facial hair, glasses) completely unchanged from the source photo — do not beautify, slim, or age the face. The person is dressed in relaxed loungewear (a soft oversized t-shirt and joggers), standing at an angle toward camera with one knee slightly bent, holding up a folded pair of new light-blue denim jeans still bearing a visible cardboard price tag, examining them with a pleased, anticipatory half-smile. The background is a spacious dark-grey walk-in closet: open shelving stacked with folded clothes in red, yellow, teal, and pink, woven storage bins, a scatter of shoe boxes on the floor, and a wall-mounted round mirror catching a soft reflection. The carpet underfoot is a warm beige. Lighting is bright, even, slightly warm household lighting from an overhead fixture plus a soft vanity light near the mirror, casting gentle, realistic shadows across the folds of the fabric. Camera specs: shot on an 85mm-equivalent portrait lens with shallow depth of field, keeping the person and the jeans sharp while the racks of clothing behind soften slightly into a colorful bokeh. Skin should retain natural texture — visible pores, no plastic over-smoothing. Hands must be anatomically correct, gripping the denim naturally with realistic finger placement. Vertical 9:16 orientation. No on-screen text or graphics visible in this frame.</pre>
+        </details>
+        <details class="prompt-block">
+          <summary>Промпт для видео <span class="prompt-label">Kling · Grok</span></summary>
+          <pre class="prompt-text">Create a short cinematic video based on the uploaded image. The scene is a walk-in closet where the person, still in loungewear, is about to try on a new pair of back-to-school jeans they&#x27;ve just unboxed.
+
+Camera and motion structure:
+0:00–0:01.5 — Static knee-up framing. The person stands holding up the tagged jeans, glancing between the denim and the mirror, weight shifting slightly onto one hip, a small anticipatory breath visible.
+0:01.5–0:02 — The camera performs one fast, decisive whip push-in toward the person&#x27;s midsection/face — a single hard camera snap, not a slow zoom.
+0:02–0:02.2 — Exactly on the landing frame of the whip, the outfit change completes: the person is now instantly wearing the finished back-to-school look (the same light-blue jeans, now on and fitted, paired with a clean white top and white sneakers already in frame) — no visible dressing motion, the swap reads as a single hard cut disguised by the camera snap.
+0:02.2–0:04 — The person turns a quarter-turn toward the mirror and back to face camera once, hands brushing down the front of the jeans, then claps both hands together once in delighted approval, big genuine smile, eyes bright.
+0:04–0:05 — The person settles into a confident three-quarter pose facing camera, chin slightly up, one hand on hip. A broadcast-style shopping bar slides up from the bottom of the frame: white background, bold black &quot;TIKTOK SHOP FINDS&quot; wordmark and a small price tag icon. It locks in place and holds, unmoving, through the last frame.
+
+Character:
+Preserve the person&#x27;s face, hair, skin tone, and identity exactly from the source image throughout — the instant outfit swap changes clothing only, never the face or body proportions. Hands must keep correct, realistic anatomy (five fingers each, natural grip) throughout the clapping beat.
+
+Key visual events (in order):
+- The held, tagged jeans (establishing beat)
+- The single whip-cut instant outfit change — this is the hero moment
+- One quarter-turn to the mirror and back
+- One clap of delight
+- The &quot;TIKTOK SHOP FINDS&quot; bar locking in during the final 20%
+
+Style:
+Bright, punchy, commercial haul-video energy — the kind of crisp, high-contrast lighting and quick-cut rhythm used in real TikTok Shop unboxing content. Cheerful, consumer-satisfying, not cinematic-moody.
+
+Restrictions:
+- Do not change the person&#x27;s face, body proportions, or identity at any point — only the outfit changes
+- No speaking, no singing, no lip-sync, no mouthing words — silent emotional reaction only
+- The person must remain in frame, recognizable, and the visual focus for the entire video
+- The instant outfit-change whip-cut is the single most important visual event in this video and must be clearly, unmistakably visible exactly once — it must not be softened into a gradual dissolve or skipped
+- The outfit change happens exactly once — no second wardrobe change, no repeated whip-cuts
+- No speech bubbles
+- No additional text captions other than the &quot;TIKTOK SHOP FINDS&quot; bar and its price tag icon
+- The &quot;TIKTOK SHOP FINDS&quot; bar appears only in the final 20% of the video and must remain visible, unchanged, until the last frame
+- No additional people added to the scene
+- No improvisation beyond the actions explicitly listed above — no extra gestures, spins, or beats
+- The quarter-turn toward the mirror must not be read as the person walking away or leaving frame — they pivot in place and immediately return to face camera, staying in the same spot throughout</pre>
+        </details>
+      </div>
+    </div>
+  </section>
+</div>
+</body>
+</html>

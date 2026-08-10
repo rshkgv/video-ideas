@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>#sidehustlelive — Дождь из подарков и растущий счётчик заработка · Video Ideas</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      background: #f4f4f5; color: #111; font-size: 14px; line-height: 1.5;
+    }
+    .page-header {
+      background: #fff; border-bottom: 1px solid #e4e4e7; position: sticky;
+      top: 0; z-index: 100; box-shadow: 0 1px 8px rgba(0,0,0,.05);
+    }
+    .header-inner {
+      max-width: 1100px; margin: 0 auto; padding: 14px 28px;
+      display: flex; align-items: center; gap: 20px;
+    }
+    .brand {
+      font-size: 18px; font-weight: 800; letter-spacing: -.5px; color: #111;
+      white-space: nowrap; user-select: none; text-decoration: none;
+    }
+    .brand-tik { color: #fe2c55; }
+    .brand-tok { color: #010101; }
+    .brand-dot { color: #d1d1d1; margin: 0 6px; font-weight: 300; }
+    .brand-cc  { color: #888; font-size: 12px; font-weight: 500; }
+    .header-text { flex: 1; min-width: 0; }
+    .page-title {
+      font-size: 15px; font-weight: 700; letter-spacing: -.2px;
+      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    }
+    .page-sub { font-size: 11.5px; color: #999; margin-top: 2px; }
+    .date-badge {
+      background: #fe2c55; color: #fff; font-weight: 700; font-size: 12px;
+      border-radius: 8px; padding: 6px 14px; line-height: 1.4;
+      text-align: center; white-space: nowrap; flex-shrink: 0;
+    }
+    .date-badge span { display: block; font-size: 10px; font-weight: 500; opacity: .8; }
+    .page-nav {
+      max-width: 1100px; margin: 0 auto; padding: 0 28px;
+      display: flex; gap: 2px; border-top: 1px solid #f0f0f0;
+    }
+    .nav-a {
+      text-decoration: none; color: #999; font-size: 12.5px; font-weight: 500;
+      padding: 9px 14px; border-bottom: 2px solid transparent;
+      transition: color .15s, border-color .15s;
+    }
+    .nav-a:hover { color: #fe2c55; }
+    .nav-a.active { color: #fe2c55; border-bottom-color: #fe2c55; }
+    .content { max-width: 1100px; margin: 0 auto; padding: 36px 28px 80px; }
+    .section { margin-bottom: 52px; }
+    .section-header { display: flex; align-items: baseline; gap: 10px; margin-bottom: 16px; }
+    .section-title { font-size: 19px; font-weight: 800; letter-spacing: -.4px; }
+    .section-badge {
+      font-size: 10.5px; font-weight: 600; color: #999; background: #ebebeb;
+      padding: 3px 8px; border-radius: 20px; text-transform: uppercase; letter-spacing: .4px;
+    }
+    @media (max-width: 768px) {
+      .header-inner { gap: 12px; padding: 12px 16px; }
+      .date-badge { display: none; }
+      .page-nav { padding: 0 16px; }
+      .content { padding: 24px 16px 60px; }
+    }
+
+
+    .idea-lead {
+      background: #fff; border-radius: 12px; padding: 36px 40px 32px;
+      box-shadow: 0 1px 4px rgba(0,0,0,.07), 0 0 0 1px rgba(0,0,0,.05);
+      margin-bottom: 40px;
+    }
+    .idea-hashtag { font-size: 13px; font-weight: 700; color: #fe2c55; margin-bottom: 8px; }
+    .idea-title { font-size: 26px; font-weight: 800; letter-spacing: -.6px; line-height: 1.25; margin-bottom: 16px; }
+    .idea-desc { font-size: 14px; color: #444; line-height: 1.75; max-width: 720px; }
+    .media-grid {
+      display: grid; grid-template-columns: auto 1fr; gap: 28px; align-items: start;
+    }
+    .video-multi {
+      display: flex; gap: 16px; flex-wrap: wrap; align-items: flex-start;
+    }
+    .video-item {
+      width: 200px; display: flex; flex-direction: column; gap: 8px; flex-shrink: 0;
+    }
+    .video-caption {
+      font-size: 11px; color: #999; line-height: 1.4; padding: 0 2px;
+    }
+    .video-player {
+      width: 100%; aspect-ratio: 9/16; object-fit: cover; border-radius: 12px;
+      display: block; box-shadow: 0 2px 16px rgba(0,0,0,.14);
+    }
+    .frame-img {
+      width: 100%; aspect-ratio: 9/16; object-fit: cover; border-radius: 12px;
+      display: block; box-shadow: 0 2px 16px rgba(0,0,0,.14);
+    }
+    .prompts-col { display: flex; flex-direction: column; gap: 12px; }
+    .prompt-block {
+      background: #fff; border-radius: 10px;
+      box-shadow: 0 1px 4px rgba(0,0,0,.07), 0 0 0 1px rgba(0,0,0,.05); overflow: hidden;
+    }
+    .prompt-block summary {
+      padding: 14px 18px; font-size: 13px; font-weight: 700; cursor: pointer;
+      user-select: none; list-style: none; display: flex; align-items: center; gap: 8px; color: #333;
+    }
+    .prompt-block summary::-webkit-details-marker { display: none; }
+    .prompt-block summary::before { content: '▶'; font-size: 8px; color: #bbb; transition: transform .15s; flex-shrink: 0; }
+    .prompt-block[open] summary::before { transform: rotate(90deg); }
+    .prompt-block summary:hover { color: #fe2c55; }
+    .prompt-block summary:hover::before { color: #fe2c55; }
+    .prompt-label { font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: .5px; color: #bbb; margin-left: auto; }
+    .prompt-text {
+      padding: 14px 18px 16px; font-family: 'SF Mono','Fira Code','Menlo',monospace;
+      font-size: 11.5px; line-height: 1.7; color: #555; background: #f9f9f9;
+      border-top: 1px solid #f0f0f0; white-space: pre-wrap; word-break: break-word;
+      max-height: 320px; overflow-y: auto;
+    }
+    @media (max-width: 900px) {
+      .media-grid { grid-template-columns: 1fr; }
+      .video-multi { justify-content: center; }
+      .idea-lead { padding: 24px 22px 22px; }
+    }
+    @media (max-width: 520px) { .idea-title { font-size: 22px; } }
+
+  </style>
+</head>
+<body>
+<div class="page-header">
+  <div class="header-inner">
+    <a class="brand" href="../../">
+      <span class="brand-tik">Tik</span><span class="brand-tok">Tok</span>
+      <span class="brand-dot">·</span><span class="brand-cc">Video Ideas</span>
+    </a>
+    <div class="header-text">
+      <div class="page-title">#sidehustlelive</div>
+      <div class="page-sub">Видео-идея · 9 августа 2026</div>
+    </div>
+    <div class="date-badge">09.08.2026<span>Дата</span></div>
+  </div>
+  <nav class="page-nav">
+    <a href="../../" class="nav-a">← Все отчёты</a>
+    <a href="../" class="nav-a">← 9 авг 2026</a>
+    <a href="#" class="nav-a active">#sidehustlelive</a>
+  </nav>
+</div>
+<div class="content">
+  <div class="idea-lead">
+    <div class="idea-hashtag">#sidehustlelive</div>
+    <h1 class="idea-title">Дождь из подарков и растущий счётчик заработка</h1>
+    <p class="idea-desc">Пользователь сидит один в своей комнате перед телефоном на маленькой подставке, ведя обычный прямой эфир — без сплит-экрана, просто он и приглушённый свет комнаты. Постепенно вокруг него в воздухе начинают материализовываться и медленно падать сверху вниз мелкие анимированные иконки подарков — сердечки, звёздочки, монетки — точно так же, как в реальных видео тега с &quot;дождём&quot; цифровых подарков во время эфира. Рядом с этим нарастающим цифровым дождём кадр за кадром растёт счётчик заработка. Пользователь остаётся спокойным и сосредоточенным, лишь понемногу расплываясь в улыбке по мере роста числа. Это сохраняет общий узнаваемый элемент тега — цифровые подарки-графика прямого эфира, — но в совершенно новом, не сплит-скрин сюжете.</p>
+  </div>
+  <section class="section">
+    <div class="section-header">
+      <h2 class="section-title">Видео</h2>
+      <span class="section-badge">Пример генерации</span>
+    </div>
+    <div class="media-grid">
+      <div class="video-multi">
+        <div class="video-item"><video class="video-player" controls muted loop playsinline poster="https://temp-images.ws.pho.to/c12fcd04d72c12ce5f1ed71d7f37fcd0cc6e7d34.png"><source src="https://temp-images.ws.pho.to/382fcb7440628baa190bb9f79204715eafa87c20.mp4" type="video/mp4"></video>
+          <div class="video-caption">man in his early 30s with short brown hair, blue eyes, and a short beard</div>
+        </div>
+        <div class="video-item"><video class="video-player" controls muted loop playsinline poster="https://temp-images.ws.pho.to/b7a0008287a7546612e5d9e386c6849cc4f6d7ee.png"><source src="https://temp-images.ws.pho.to/5c4792d0a3f7924efb3000b8d6bac6434231ab90.mp4" type="video/mp4"></video>
+          <div class="video-caption">woman in her late 30s with straight blonde shoulder-length hair and cat-eye glasses</div>
+        </div>
+      </div>
+      <div class="prompts-col">
+        <details class="prompt-block">
+          <summary>Промпт для первого кадра <span class="prompt-label">GPT Image 2</span></summary>
+          <pre class="prompt-text">Turn the photo of the person into a medium shot, chest-up, seated alone at a small desk in front of a smartphone propped on a mini tripod, facing them, framed as the start of a solo livestream. Preserve their exact identity in full detail: the same face shape, skin tone, eye shape and color, hairstyle and hair color and texture, jawline, and any distinctive features — no beautification, no age change. Their expression is calm, focused, and pleasant, mouth closed, eyes on the phone/camera with a composed half-smile, as if mid-livestream but not actively speaking at this instant. They wear casual, comfortable clothing suited to streaming from home. The background is a plain bedroom or home-office corner: a section of wall, perhaps a small shelf with a plant, softly out of focus, dimly lit by a warm desk lamp. No gift icons, counters, or overlays are visible yet in this first frame — they materialize only later in the video. Lighting is soft and warm from the desk lamp, mixed with the cool glow of the phone screen facing them, creating a gentle two-tone lighting on the face. Camera specs: 50mm-equivalent lens, shallow depth of field with the face sharp and the background softly blurred. Skin should retain natural texture and pores. Vertical 9:16 orientation.</pre>
+        </details>
+        <details class="prompt-block">
+          <summary>Промпт для видео <span class="prompt-label">Kling · Grok</span></summary>
+          <pre class="prompt-text">Create a short cinematic video based on the uploaded image. The scene is a home bedroom where the person sits alone streaming to their propped-up phone, and animated gift icons begin gently raining down around them as their earnings tally climbs.
+
+Camera and motion structure:
+Keep the overall shot static. No zoom, no camera movement, no pan — the entire reveal is carried by the accumulating gift-icon particles and the counter, not by camera motion.
+FRAMES 0–25%: The person sits calm and composed, glancing at the phone, occasionally nodding slightly as if listening to unheard viewers. No overlay elements are visible yet.
+FRAMES 25–55%: Small animated gift icons — hearts, stars, and coins — begin gently drifting downward from the top of the frame, appearing one at a time at first, sparse and slow, gradually materializing as they fall past the person on either side without touching them.
+FRAMES 55–80%: The falling icons increase steadily in number and speed, becoming a fuller, denser gentle shower of hearts, stars, and coins framing the person on both sides. Alongside this, a small earnings-tally readout fades in at the bottom corner, its number visibly ticking upward in sync with the icon shower.
+FRAMES 80–100%: The icon shower reaches its fullest density and the tally reaches a final large number, both holding steady. The person&#x27;s expression shifts from calm focus into a warm, growing smile, eyes crinkling with quiet pride, head tilting slightly. All overlay elements remain visible, unchanged, through the last frame.
+
+Character:
+Preserve the person&#x27;s face, hair, skin tone, and identity exactly from the source image throughout. Their only physical motion is: occasional small nods during the calm opening, and a gradual shift into a warm smile with a slight head tilt as the shower and counter build — no standing up, no leaving the desk.
+
+Key visual events (in order):
+- The calm, solo-livestream starting beat, no overlays yet
+- The gift icons beginning to drift down sparsely, then thickening into a fuller shower — this gradual materialization is the hero moment and must be clearly visible building in density over time, not appearing instantly at full density
+- The earnings-tally counter appearing and visibly climbing in sync with the icon shower
+- The person&#x27;s growing smile as both elements peak
+- The full-density shower and final tally number holding steady through the final 20%
+
+Style:
+Warm, satisfying, softly glowing digital-abundance aesthetic — a gentle, sensory &quot;reward raining down&quot; feeling rather than a loud burst. Sensory/satisfying register, calm pride rather than exaggerated celebration.
+
+Restrictions:
+- Do not change the person&#x27;s face, hair, skin tone, or identity at any point
+- No speaking, no singing, no lip-sync, no mouthing words — silent nodding and a growing smile only; any implied listening to viewers is never depicted as the person themselves speaking on camera
+- The person must remain in frame, seated, and clearly recognizable for the entire video — the falling gift icons must pass around them, never obscuring their face
+- The gradual thickening of the gift-icon shower from sparse to dense is the single most important visual element of this video and must be clearly, unmistakably progressive — it must not jump straight to full density
+- No speech bubbles
+- No additional on-screen text or graphics beyond the falling gift icons (hearts, stars, coins) and the earnings-tally readout
+- The earnings tally and full-density icon shower lock into their final state only in the final 20% of the video and must remain visible, unchanged, until the last frame
+- No other people appear in the room
+- No improvisation beyond the actions explicitly listed above — no extra gestures, no additional overlay elements beyond those described
+- The camera must remain fully static and locked-off for the entire video — no zoom, pan, or push-in at any point</pre>
+        </details>
+      </div>
+    </div>
+  </section>
+</div>
+</body>
+</html>

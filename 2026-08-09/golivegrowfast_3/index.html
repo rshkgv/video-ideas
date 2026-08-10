@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>#golivegrowfast — Счётчик зрителей взлетает вокруг пользователя · Video Ideas</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      background: #f4f4f5; color: #111; font-size: 14px; line-height: 1.5;
+    }
+    .page-header {
+      background: #fff; border-bottom: 1px solid #e4e4e7; position: sticky;
+      top: 0; z-index: 100; box-shadow: 0 1px 8px rgba(0,0,0,.05);
+    }
+    .header-inner {
+      max-width: 1100px; margin: 0 auto; padding: 14px 28px;
+      display: flex; align-items: center; gap: 20px;
+    }
+    .brand {
+      font-size: 18px; font-weight: 800; letter-spacing: -.5px; color: #111;
+      white-space: nowrap; user-select: none; text-decoration: none;
+    }
+    .brand-tik { color: #fe2c55; }
+    .brand-tok { color: #010101; }
+    .brand-dot { color: #d1d1d1; margin: 0 6px; font-weight: 300; }
+    .brand-cc  { color: #888; font-size: 12px; font-weight: 500; }
+    .header-text { flex: 1; min-width: 0; }
+    .page-title {
+      font-size: 15px; font-weight: 700; letter-spacing: -.2px;
+      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    }
+    .page-sub { font-size: 11.5px; color: #999; margin-top: 2px; }
+    .date-badge {
+      background: #fe2c55; color: #fff; font-weight: 700; font-size: 12px;
+      border-radius: 8px; padding: 6px 14px; line-height: 1.4;
+      text-align: center; white-space: nowrap; flex-shrink: 0;
+    }
+    .date-badge span { display: block; font-size: 10px; font-weight: 500; opacity: .8; }
+    .page-nav {
+      max-width: 1100px; margin: 0 auto; padding: 0 28px;
+      display: flex; gap: 2px; border-top: 1px solid #f0f0f0;
+    }
+    .nav-a {
+      text-decoration: none; color: #999; font-size: 12.5px; font-weight: 500;
+      padding: 9px 14px; border-bottom: 2px solid transparent;
+      transition: color .15s, border-color .15s;
+    }
+    .nav-a:hover { color: #fe2c55; }
+    .nav-a.active { color: #fe2c55; border-bottom-color: #fe2c55; }
+    .content { max-width: 1100px; margin: 0 auto; padding: 36px 28px 80px; }
+    .section { margin-bottom: 52px; }
+    .section-header { display: flex; align-items: baseline; gap: 10px; margin-bottom: 16px; }
+    .section-title { font-size: 19px; font-weight: 800; letter-spacing: -.4px; }
+    .section-badge {
+      font-size: 10.5px; font-weight: 600; color: #999; background: #ebebeb;
+      padding: 3px 8px; border-radius: 20px; text-transform: uppercase; letter-spacing: .4px;
+    }
+    @media (max-width: 768px) {
+      .header-inner { gap: 12px; padding: 12px 16px; }
+      .date-badge { display: none; }
+      .page-nav { padding: 0 16px; }
+      .content { padding: 24px 16px 60px; }
+    }
+
+
+    .idea-lead {
+      background: #fff; border-radius: 12px; padding: 36px 40px 32px;
+      box-shadow: 0 1px 4px rgba(0,0,0,.07), 0 0 0 1px rgba(0,0,0,.05);
+      margin-bottom: 40px;
+    }
+    .idea-hashtag { font-size: 13px; font-weight: 700; color: #fe2c55; margin-bottom: 8px; }
+    .idea-title { font-size: 26px; font-weight: 800; letter-spacing: -.6px; line-height: 1.25; margin-bottom: 16px; }
+    .idea-desc { font-size: 14px; color: #444; line-height: 1.75; max-width: 720px; }
+    .media-grid {
+      display: grid; grid-template-columns: auto 1fr; gap: 28px; align-items: start;
+    }
+    .video-multi {
+      display: flex; gap: 16px; flex-wrap: wrap; align-items: flex-start;
+    }
+    .video-item {
+      width: 200px; display: flex; flex-direction: column; gap: 8px; flex-shrink: 0;
+    }
+    .video-caption {
+      font-size: 11px; color: #999; line-height: 1.4; padding: 0 2px;
+    }
+    .video-player {
+      width: 100%; aspect-ratio: 9/16; object-fit: cover; border-radius: 12px;
+      display: block; box-shadow: 0 2px 16px rgba(0,0,0,.14);
+    }
+    .frame-img {
+      width: 100%; aspect-ratio: 9/16; object-fit: cover; border-radius: 12px;
+      display: block; box-shadow: 0 2px 16px rgba(0,0,0,.14);
+    }
+    .prompts-col { display: flex; flex-direction: column; gap: 12px; }
+    .prompt-block {
+      background: #fff; border-radius: 10px;
+      box-shadow: 0 1px 4px rgba(0,0,0,.07), 0 0 0 1px rgba(0,0,0,.05); overflow: hidden;
+    }
+    .prompt-block summary {
+      padding: 14px 18px; font-size: 13px; font-weight: 700; cursor: pointer;
+      user-select: none; list-style: none; display: flex; align-items: center; gap: 8px; color: #333;
+    }
+    .prompt-block summary::-webkit-details-marker { display: none; }
+    .prompt-block summary::before { content: '▶'; font-size: 8px; color: #bbb; transition: transform .15s; flex-shrink: 0; }
+    .prompt-block[open] summary::before { transform: rotate(90deg); }
+    .prompt-block summary:hover { color: #fe2c55; }
+    .prompt-block summary:hover::before { color: #fe2c55; }
+    .prompt-label { font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: .5px; color: #bbb; margin-left: auto; }
+    .prompt-text {
+      padding: 14px 18px 16px; font-family: 'SF Mono','Fira Code','Menlo',monospace;
+      font-size: 11.5px; line-height: 1.7; color: #555; background: #f9f9f9;
+      border-top: 1px solid #f0f0f0; white-space: pre-wrap; word-break: break-word;
+      max-height: 320px; overflow-y: auto;
+    }
+    @media (max-width: 900px) {
+      .media-grid { grid-template-columns: 1fr; }
+      .video-multi { justify-content: center; }
+      .idea-lead { padding: 24px 22px 22px; }
+    }
+    @media (max-width: 520px) { .idea-title { font-size: 22px; } }
+
+  </style>
+</head>
+<body>
+<div class="page-header">
+  <div class="header-inner">
+    <a class="brand" href="../../">
+      <span class="brand-tik">Tik</span><span class="brand-tok">Tok</span>
+      <span class="brand-dot">·</span><span class="brand-cc">Video Ideas</span>
+    </a>
+    <div class="header-text">
+      <div class="page-title">#golivegrowfast</div>
+      <div class="page-sub">Видео-идея · 9 августа 2026</div>
+    </div>
+    <div class="date-badge">09.08.2026<span>Дата</span></div>
+  </div>
+  <nav class="page-nav">
+    <a href="../../" class="nav-a">← Все отчёты</a>
+    <a href="../" class="nav-a">← 9 авг 2026</a>
+    <a href="#" class="nav-a active">#golivegrowfast</a>
+  </nav>
+</div>
+<div class="content">
+  <div class="idea-lead">
+    <div class="idea-hashtag">#golivegrowfast</div>
+    <h1 class="idea-title">Счётчик зрителей взлетает вокруг пользователя</h1>
+    <p class="idea-desc">Пользователь сидит в тёмной комнате перед светящимся экраном телефона на подставке — типичная поза перед началом прямого эфира. Свет экрана мягко освещает его лицо снизу. Камера статична — единственное движение происходит вокруг пользователя: вокруг него в воздухе начинает материализовываться, частица за частицей, светящаяся рамка прямого эфира, а рядом — счётчик зрителей, стремительно тикающий вверх, как фейерверк цифр. Пользователь остаётся неподвижным и спокойным в центре этого нарастающего цифрового вихря, лишь его улыбка становится всё увереннее. Финальный кадр — вся рамка и счётчик собраны полностью, вокруг пользователя эффектное сияние.</p>
+  </div>
+  <section class="section">
+    <div class="section-header">
+      <h2 class="section-title">Видео</h2>
+      <span class="section-badge">Пример генерации</span>
+    </div>
+    <div class="media-grid">
+      <div class="video-multi">
+        <div class="video-item"><video class="video-player" controls muted loop playsinline poster="https://temp-images.ws.pho.to/70d1bff12f3ae35f2b075112de8cd56dd2c019fa.png"><source src="https://temp-images.ws.pho.to/1bcb06750c3cb4edd0a89c8242f5f9141cb9b59a.mp4" type="video/mp4"></video>
+          <div class="video-caption">woman in her late 30s with straight blonde shoulder-length hair and cat-eye glasses</div>
+        </div>
+        <div class="video-item"><video class="video-player" controls muted loop playsinline poster="https://temp-images.ws.pho.to/fd8e9df5e9717a975f39596386293936b844241b.png"><source src="https://temp-images.ws.pho.to/f3c198271df14b9f99c63548bb438e6579d81d9c.mp4" type="video/mp4"></video>
+          <div class="video-caption">man in his early 30s with short brown hair, blue eyes, and a short beard</div>
+        </div>
+      </div>
+      <div class="prompts-col">
+        <details class="prompt-block">
+          <summary>Промпт для первого кадра <span class="prompt-label">GPT Image 2</span></summary>
+          <pre class="prompt-text">Turn the photo of the person into a close-up, chest-up portrait seated in a dim room at night, lit primarily by the cool blue-white glow of a smartphone propped on a small tripod just out of frame, facing them. Preserve their exact identity in full detail: same face shape, skin tone, eye shape and color, hairstyle and hair color, jawline, and any distinctive features — no beautification, no age change. The person sits calm and composed, hands resting loosely in their lap, expression neutral-to-anticipatory, eyes focused steadily forward as if about to start a broadcast, mouth closed. The room behind them is almost entirely dark, just the faint outline of a bookshelf and a curtain barely visible in deep shadow. The screen-glow lighting is the dominant light source: a cool blue-white key light from slightly below and in front, catching the underside of the chin and cheekbones, with soft falloff into near-total darkness at the edges of the frame — a moody, screen-lit look. Camera specs: 50mm-equivalent lens, shallow depth of field with the face in crisp focus and the dark background essentially featureless. Skin should retain natural texture and pores; no plastic smoothing despite the dramatic lighting. Vertical 9:16 orientation. No overlay graphics visible yet in this first frame — the room is otherwise empty of any UI elements.</pre>
+        </details>
+        <details class="prompt-block">
+          <summary>Промпт для видео <span class="prompt-label">Kling · Grok</span></summary>
+          <pre class="prompt-text">Create a short cinematic video based on the uploaded image. The scene is a dark room where the person sits still, lit by their phone&#x27;s glow, moments before what looks like the start of a live broadcast.
+
+Camera and motion structure:
+FRAMES 0–20%: Keep the overall shot completely static. No zoom, no camera movement, no pan. The person sits calm and composed in the screen-glow light, breathing steadily, eyes fixed forward.
+FRAMES 20–55%: Small glowing particles of light begin to appear in the dark space around the person&#x27;s head and shoulders, drifting inward and slowly assembling, piece by piece, into the outline of a thin rectangular broadcast frame that hovers just outside their silhouette — a gradual materialization, never a sudden pop-in.
+FRAMES 55–80%: As the frame outline completes, a column of small glowing digit-particles begins assembling beside it into a rapidly incrementing viewer-counter readout, the numbers visibly ticking upward faster and faster, each new digit materializing from the same drifting light particles.
+FRAMES 80–100%: The frame and the counter both reach full, stable completion, glowing steadily. The person&#x27;s expression shifts subtly from calm anticipation to a small, confident, closed-mouth smile, chin lifting slightly. The completed broadcast-frame graphic and viewer-counter remain locked in place, fully formed, unchanged through the last frame.
+
+Character:
+Preserve the person&#x27;s face, skin tone, and identity exactly from the source image throughout. The person&#x27;s only physical motion is: steady breathing, a slight chin lift, and the shift from a neutral expression to a small confident smile — they remain seated and otherwise still for the entire video.
+
+Key visual events (in order):
+- The calm, static, screen-lit starting pose
+- The glowing particles drifting in and assembling into the broadcast-frame outline around the person
+- The digit-particles assembling into a rapidly climbing viewer counter — this pair (frame + counter materializing from drifting light) is the hero moment and must be clearly, unmistakably visible as a gradual particle-by-particle assembly, not an instant pop-in
+- The person&#x27;s shift to a confident smile
+- The fully completed, glowing frame and counter holding steady through the final frames
+
+Style:
+Moody, screen-lit, slightly surreal digital atmosphere — dark negative space punctuated by warm, deliberate glowing particle effects. Sensory and quietly triumphant rather than loud or comedic; the stillness of the person contrasts with the growing digital energy around them.
+
+Restrictions:
+- Do not change the person&#x27;s face, skin tone, or identity at any point
+- No speaking, no singing, no lip-sync, no mouthing words — silent emotional reaction (the calm gaze, the confident smile) only
+- The person must remain seated, in frame, and clearly recognizable for the entire video — the materializing graphics form around them, never over or in front of their face
+- The particle-by-particle materialization of the broadcast frame and the viewer counter is the single most important visual element of this video and must be clearly visible building up gradually — it must not appear instantly or be reduced to a simple fade-in
+- The viewer-counter numbers must be shown visibly incrementing upward at least three distinct times before settling on their final value — not just appearing once at a fixed number
+- No speech bubbles
+- No text captions or graphics other than the broadcast-frame outline and the viewer-counter digits
+- Both the frame and the counter appear only from frame 20% onward and, once complete, must remain visible and unchanged through the last frame
+- No other people or objects enter the dark room
+- No improvisation beyond the actions explicitly listed above — no extra hand gestures, no standing up, no additional light effects beyond the described particles
+- The camera must remain fully static and locked-off for the entire video — no zoom, no push-in, no pan at any point</pre>
+        </details>
+      </div>
+    </div>
+  </section>
+</div>
+</body>
+</html>

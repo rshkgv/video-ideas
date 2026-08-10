@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>#sidehustlelive — Ночной трекер дохода на светящемся экране · Video Ideas</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      background: #f4f4f5; color: #111; font-size: 14px; line-height: 1.5;
+    }
+    .page-header {
+      background: #fff; border-bottom: 1px solid #e4e4e7; position: sticky;
+      top: 0; z-index: 100; box-shadow: 0 1px 8px rgba(0,0,0,.05);
+    }
+    .header-inner {
+      max-width: 1100px; margin: 0 auto; padding: 14px 28px;
+      display: flex; align-items: center; gap: 20px;
+    }
+    .brand {
+      font-size: 18px; font-weight: 800; letter-spacing: -.5px; color: #111;
+      white-space: nowrap; user-select: none; text-decoration: none;
+    }
+    .brand-tik { color: #fe2c55; }
+    .brand-tok { color: #010101; }
+    .brand-dot { color: #d1d1d1; margin: 0 6px; font-weight: 300; }
+    .brand-cc  { color: #888; font-size: 12px; font-weight: 500; }
+    .header-text { flex: 1; min-width: 0; }
+    .page-title {
+      font-size: 15px; font-weight: 700; letter-spacing: -.2px;
+      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    }
+    .page-sub { font-size: 11.5px; color: #999; margin-top: 2px; }
+    .date-badge {
+      background: #fe2c55; color: #fff; font-weight: 700; font-size: 12px;
+      border-radius: 8px; padding: 6px 14px; line-height: 1.4;
+      text-align: center; white-space: nowrap; flex-shrink: 0;
+    }
+    .date-badge span { display: block; font-size: 10px; font-weight: 500; opacity: .8; }
+    .page-nav {
+      max-width: 1100px; margin: 0 auto; padding: 0 28px;
+      display: flex; gap: 2px; border-top: 1px solid #f0f0f0;
+    }
+    .nav-a {
+      text-decoration: none; color: #999; font-size: 12.5px; font-weight: 500;
+      padding: 9px 14px; border-bottom: 2px solid transparent;
+      transition: color .15s, border-color .15s;
+    }
+    .nav-a:hover { color: #fe2c55; }
+    .nav-a.active { color: #fe2c55; border-bottom-color: #fe2c55; }
+    .content { max-width: 1100px; margin: 0 auto; padding: 36px 28px 80px; }
+    .section { margin-bottom: 52px; }
+    .section-header { display: flex; align-items: baseline; gap: 10px; margin-bottom: 16px; }
+    .section-title { font-size: 19px; font-weight: 800; letter-spacing: -.4px; }
+    .section-badge {
+      font-size: 10.5px; font-weight: 600; color: #999; background: #ebebeb;
+      padding: 3px 8px; border-radius: 20px; text-transform: uppercase; letter-spacing: .4px;
+    }
+    @media (max-width: 768px) {
+      .header-inner { gap: 12px; padding: 12px 16px; }
+      .date-badge { display: none; }
+      .page-nav { padding: 0 16px; }
+      .content { padding: 24px 16px 60px; }
+    }
+
+
+    .idea-lead {
+      background: #fff; border-radius: 12px; padding: 36px 40px 32px;
+      box-shadow: 0 1px 4px rgba(0,0,0,.07), 0 0 0 1px rgba(0,0,0,.05);
+      margin-bottom: 40px;
+    }
+    .idea-hashtag { font-size: 13px; font-weight: 700; color: #fe2c55; margin-bottom: 8px; }
+    .idea-title { font-size: 26px; font-weight: 800; letter-spacing: -.6px; line-height: 1.25; margin-bottom: 16px; }
+    .idea-desc { font-size: 14px; color: #444; line-height: 1.75; max-width: 720px; }
+    .media-grid {
+      display: grid; grid-template-columns: auto 1fr; gap: 28px; align-items: start;
+    }
+    .video-multi {
+      display: flex; gap: 16px; flex-wrap: wrap; align-items: flex-start;
+    }
+    .video-item {
+      width: 200px; display: flex; flex-direction: column; gap: 8px; flex-shrink: 0;
+    }
+    .video-caption {
+      font-size: 11px; color: #999; line-height: 1.4; padding: 0 2px;
+    }
+    .video-player {
+      width: 100%; aspect-ratio: 9/16; object-fit: cover; border-radius: 12px;
+      display: block; box-shadow: 0 2px 16px rgba(0,0,0,.14);
+    }
+    .frame-img {
+      width: 100%; aspect-ratio: 9/16; object-fit: cover; border-radius: 12px;
+      display: block; box-shadow: 0 2px 16px rgba(0,0,0,.14);
+    }
+    .prompts-col { display: flex; flex-direction: column; gap: 12px; }
+    .prompt-block {
+      background: #fff; border-radius: 10px;
+      box-shadow: 0 1px 4px rgba(0,0,0,.07), 0 0 0 1px rgba(0,0,0,.05); overflow: hidden;
+    }
+    .prompt-block summary {
+      padding: 14px 18px; font-size: 13px; font-weight: 700; cursor: pointer;
+      user-select: none; list-style: none; display: flex; align-items: center; gap: 8px; color: #333;
+    }
+    .prompt-block summary::-webkit-details-marker { display: none; }
+    .prompt-block summary::before { content: '▶'; font-size: 8px; color: #bbb; transition: transform .15s; flex-shrink: 0; }
+    .prompt-block[open] summary::before { transform: rotate(90deg); }
+    .prompt-block summary:hover { color: #fe2c55; }
+    .prompt-block summary:hover::before { color: #fe2c55; }
+    .prompt-label { font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: .5px; color: #bbb; margin-left: auto; }
+    .prompt-text {
+      padding: 14px 18px 16px; font-family: 'SF Mono','Fira Code','Menlo',monospace;
+      font-size: 11.5px; line-height: 1.7; color: #555; background: #f9f9f9;
+      border-top: 1px solid #f0f0f0; white-space: pre-wrap; word-break: break-word;
+      max-height: 320px; overflow-y: auto;
+    }
+    @media (max-width: 900px) {
+      .media-grid { grid-template-columns: 1fr; }
+      .video-multi { justify-content: center; }
+      .idea-lead { padding: 24px 22px 22px; }
+    }
+    @media (max-width: 520px) { .idea-title { font-size: 22px; } }
+
+  </style>
+</head>
+<body>
+<div class="page-header">
+  <div class="header-inner">
+    <a class="brand" href="../../">
+      <span class="brand-tik">Tik</span><span class="brand-tok">Tok</span>
+      <span class="brand-dot">·</span><span class="brand-cc">Video Ideas</span>
+    </a>
+    <div class="header-text">
+      <div class="page-title">#sidehustlelive</div>
+      <div class="page-sub">Видео-идея · 9 августа 2026</div>
+    </div>
+    <div class="date-badge">09.08.2026<span>Дата</span></div>
+  </div>
+  <nav class="page-nav">
+    <a href="../../" class="nav-a">← Все отчёты</a>
+    <a href="../" class="nav-a">← 9 авг 2026</a>
+    <a href="#" class="nav-a active">#sidehustlelive</a>
+  </nav>
+</div>
+<div class="content">
+  <div class="idea-lead">
+    <div class="idea-hashtag">#sidehustlelive</div>
+    <h1 class="idea-title">Ночной трекер дохода на светящемся экране</h1>
+    <p class="idea-desc">Глубокая ночь, пользователь сидит за столом в тёмной комнате, лицо освещено лишь холодным сиянием экрана телефона, лежащего перед ним — типичная сцена &quot;работаю на подработке допоздна&quot;. Свет экрана постепенно усиливается и теплеет, будто расползаясь по лицу пользователя, а вместе с ним крупная цифра трекера дохода на экране медленно, но неотвратимо растёт. Пользователь не совершает резких движений — только уверенно выпрямляется в кресле и позволяет себе едва заметную улыбку по мере того, как свет и цифры набирают силу. Финальный кадр — яркое, тёплое сияние экрана на лице пользователя и застывший на итоговой сумме трекер.</p>
+  </div>
+  <section class="section">
+    <div class="section-header">
+      <h2 class="section-title">Видео</h2>
+      <span class="section-badge">Пример генерации</span>
+    </div>
+    <div class="media-grid">
+      <div class="video-multi">
+        <div class="video-item"><video class="video-player" controls muted loop playsinline poster="https://temp-images.ws.pho.to/fde65e1694f6d678095bc7cd7b49b5e533f1c40a.png"><source src="https://temp-images.ws.pho.to/f81864694ec316583631027ff85d0aecbb66dac3.mp4" type="video/mp4"></video>
+          <div class="video-caption">woman in her late 30s with straight blonde shoulder-length hair and cat-eye glasses</div>
+        </div>
+        <div class="video-item"><video class="video-player" controls muted loop playsinline poster="https://temp-images.ws.pho.to/aa11c20d5482280dc29e9489985813b88464c284.png"><source src="https://temp-images.ws.pho.to/131ab2126675084801084236cab1b7d25b66f50f.mp4" type="video/mp4"></video>
+          <div class="video-caption">man in his early 30s with short brown hair, blue eyes, and a short beard</div>
+        </div>
+      </div>
+      <div class="prompts-col">
+        <details class="prompt-block">
+          <summary>Промпт для первого кадра <span class="prompt-label">GPT Image 2</span></summary>
+          <pre class="prompt-text">Turn the photo of the person into a close-up, chest-up portrait seated at a desk in a completely dark room late at night, lit only by the cool blue-white glow of a smartphone lying flat on the desk in front of them, screen facing up. Preserve their exact identity in full detail: the same face shape, skin tone, eye shape and color, hairstyle and hair color and texture, jawline, and any distinctive features — no beautification, no age change. Their posture is slightly tired but focused, shoulders a little rounded, chin low, eyes fixed downward toward the phone&#x27;s glow, expression neutral and a little weary — not yet the confident pose that develops later in the video. They wear a plain, comfortable hoodie. The room around them is almost entirely black, with no visible furniture or wall detail beyond the faintest suggestion of a window&#x27;s silhouette in deep shadow. The only light source is the phone&#x27;s cool glow, striking the underside of the chin, the nose, and the cheekbones, leaving the rest of the frame in deep, moody shadow. Camera specs: 50mm-equivalent lens, shallow depth of field with the face sharp and the surrounding darkness essentially featureless. Skin should retain natural, realistic texture and pores even under this low, cool lighting — no plastic smoothing. Vertical 9:16 orientation. No readable text visible on the phone screen in this first frame.</pre>
+        </details>
+        <details class="prompt-block">
+          <summary>Промпт для видео <span class="prompt-label">Kling · Grok</span></summary>
+          <pre class="prompt-text">Create a short cinematic video based on the uploaded image. The scene is a dark room late at night where the person sits at a desk, lit only by their phone&#x27;s glow, as an income-tracker readout on the screen slowly climbs.
+
+Camera and motion structure:
+FRAMES 0–20%: Close-up, chest-up. The person sits with tired, rounded posture, eyes down at the phone, lit only by its cool glow. The camera begins a slow, continuous push-in toward the face.
+FRAMES 20–55%: As the camera creeps closer, the phone&#x27;s glow on the person&#x27;s face gradually intensifies and warms in color temperature, spreading further up across the cheeks and forehead — a slow, creeping change in the quality of the light itself, not a sudden brightening.
+FRAMES 55–80%: In sync with the warming, intensifying glow, the person&#x27;s posture straightens by degrees — shoulders lifting, chin rising slightly — while their expression shifts gradually from tired neutrality toward quiet, growing confidence. On the phone screen, an income-tracker number (visible only as a soft glow shape, not needing to be sharply legible at this distance) is understood to be climbing steadily.
+FRAMES 80–100%: The push-in comes to a stop on a close, warmly lit face holding a small, confident, closed-mouth smile, sitting fully upright. The phone&#x27;s glow, now fully warm and bright, casts a final steady light. A clean, minimal readout card fades in near the bottom of the frame showing a large final number with a small upward arrow icon, remaining visible, unchanged, through the last frame.
+
+Character:
+Preserve the person&#x27;s face, hair, skin tone, and identity exactly from the source image throughout. Their only physical motion is: a slow, continuous straightening of posture from tired-rounded to confident-upright, paired with a gradual shift in facial expression from weary neutrality to a small confident smile — no other gesture, no hand movement, no standing up.
+
+Key visual events (in order):
+- The tired, cool-lit, rounded-posture starting beat
+- The creeping warm intensification of the phone&#x27;s glow spreading across the face — this gradual lighting change is the hero moment and must be clearly, unmistakably progressive, never an abrupt brightness jump
+- The synchronized gradual straightening of posture and shift to confidence
+- The final upright, warmly lit, confidently smiling pose
+- The income-tracker readout card fading in during the final 20%
+
+Style:
+Quiet, defiant-confidence mood built through light and posture alone — moody darkness giving way to warm, earned glow. Understated and personal rather than loud or celebratory; the payoff is dignity and quiet pride, not an explosive reveal.
+
+Restrictions:
+- Do not change the person&#x27;s face, hair, skin tone, or identity at any point
+- No speaking, no singing, no lip-sync, no mouthing words — silent emotional progression (posture, expression, breathing) only
+- The person must remain in frame, seated, and clearly recognizable for the entire video
+- The gradual warming and intensifying of the phone&#x27;s glow across the face is the single most important visual element of this video and must be clearly, unmistakably progressive across the full middle section of the video — it must not jump straight from cool-dim to warm-bright
+- The posture change from tired-rounded to confident-upright must happen gradually and exactly once — no slumping back down at any point
+- No speech bubbles
+- No on-screen text beyond the final income-tracker readout card and its upward-arrow icon
+- The readout card appears only in the final 20% of the video and must remain visible, unchanged, until the last frame
+- No other people or objects enter the dark room
+- No improvisation beyond the actions explicitly listed above — no extra hand gestures, no picking up the phone, no additional light sources
+- The camera must perform only the single slow continuous push-in described — no additional zooms, pans, or camera snaps at any point</pre>
+        </details>
+      </div>
+    </div>
+  </section>
+</div>
+</body>
+</html>
