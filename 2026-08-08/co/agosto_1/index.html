@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>#agosto — Descalzo hacia el atardecer · Video Ideas</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      background: #f4f4f5; color: #111; font-size: 14px; line-height: 1.5;
+    }
+    .page-header {
+      background: #fff; border-bottom: 1px solid #e4e4e7; position: sticky;
+      top: 0; z-index: 100; box-shadow: 0 1px 8px rgba(0,0,0,.05);
+    }
+    .header-inner {
+      max-width: 1100px; margin: 0 auto; padding: 14px 28px;
+      display: flex; align-items: center; gap: 20px;
+    }
+    .brand {
+      font-size: 18px; font-weight: 800; letter-spacing: -.5px; color: #111;
+      white-space: nowrap; user-select: none; text-decoration: none;
+    }
+    .brand-tik { color: #fe2c55; }
+    .brand-tok { color: #010101; }
+    .brand-dot { color: #d1d1d1; margin: 0 6px; font-weight: 300; }
+    .brand-cc  { color: #888; font-size: 12px; font-weight: 500; }
+    .header-text { flex: 1; min-width: 0; }
+    .page-title {
+      font-size: 15px; font-weight: 700; letter-spacing: -.2px;
+      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    }
+    .page-sub { font-size: 11.5px; color: #999; margin-top: 2px; }
+    .date-badge {
+      background: #fe2c55; color: #fff; font-weight: 700; font-size: 12px;
+      border-radius: 8px; padding: 6px 14px; line-height: 1.4;
+      text-align: center; white-space: nowrap; flex-shrink: 0;
+    }
+    .date-badge span { display: block; font-size: 10px; font-weight: 500; opacity: .8; }
+    .page-nav {
+      max-width: 1100px; margin: 0 auto; padding: 0 28px;
+      display: flex; gap: 2px; border-top: 1px solid #f0f0f0;
+    }
+    .nav-a {
+      text-decoration: none; color: #999; font-size: 12.5px; font-weight: 500;
+      padding: 9px 14px; border-bottom: 2px solid transparent;
+      transition: color .15s, border-color .15s;
+    }
+    .nav-a:hover { color: #fe2c55; }
+    .nav-a.active { color: #fe2c55; border-bottom-color: #fe2c55; }
+    .content { max-width: 1100px; margin: 0 auto; padding: 36px 28px 80px; }
+    .section { margin-bottom: 52px; }
+    .section-header { display: flex; align-items: baseline; gap: 10px; margin-bottom: 16px; }
+    .section-title { font-size: 19px; font-weight: 800; letter-spacing: -.4px; }
+    .section-badge {
+      font-size: 10.5px; font-weight: 600; color: #999; background: #ebebeb;
+      padding: 3px 8px; border-radius: 20px; text-transform: uppercase; letter-spacing: .4px;
+    }
+    @media (max-width: 768px) {
+      .header-inner { gap: 12px; padding: 12px 16px; }
+      .date-badge { display: none; }
+      .page-nav { padding: 0 16px; }
+      .content { padding: 24px 16px 60px; }
+    }
+
+
+    .idea-lead {
+      background: #fff; border-radius: 12px; padding: 36px 40px 32px;
+      box-shadow: 0 1px 4px rgba(0,0,0,.07), 0 0 0 1px rgba(0,0,0,.05);
+      margin-bottom: 40px;
+    }
+    .idea-hashtag { font-size: 13px; font-weight: 700; color: #fe2c55; margin-bottom: 8px; }
+    .idea-title { font-size: 26px; font-weight: 800; letter-spacing: -.6px; line-height: 1.25; margin-bottom: 16px; }
+    .idea-desc { font-size: 14px; color: #444; line-height: 1.75; max-width: 720px; }
+    .media-grid {
+      display: grid; grid-template-columns: auto 1fr; gap: 28px; align-items: start;
+    }
+    .video-multi {
+      display: flex; gap: 16px; flex-wrap: wrap; align-items: flex-start;
+    }
+    .video-item {
+      width: 200px; display: flex; flex-direction: column; gap: 8px; flex-shrink: 0;
+    }
+    .video-caption {
+      font-size: 11px; color: #999; line-height: 1.4; padding: 0 2px;
+    }
+    .video-player {
+      width: 100%; aspect-ratio: 9/16; object-fit: cover; border-radius: 12px;
+      display: block; box-shadow: 0 2px 16px rgba(0,0,0,.14);
+    }
+    .frame-img {
+      width: 100%; aspect-ratio: 9/16; object-fit: cover; border-radius: 12px;
+      display: block; box-shadow: 0 2px 16px rgba(0,0,0,.14);
+    }
+    .prompts-col { display: flex; flex-direction: column; gap: 12px; }
+    .prompt-block {
+      background: #fff; border-radius: 10px;
+      box-shadow: 0 1px 4px rgba(0,0,0,.07), 0 0 0 1px rgba(0,0,0,.05); overflow: hidden;
+    }
+    .prompt-block summary {
+      padding: 14px 18px; font-size: 13px; font-weight: 700; cursor: pointer;
+      user-select: none; list-style: none; display: flex; align-items: center; gap: 8px; color: #333;
+    }
+    .prompt-block summary::-webkit-details-marker { display: none; }
+    .prompt-block summary::before { content: '▶'; font-size: 8px; color: #bbb; transition: transform .15s; flex-shrink: 0; }
+    .prompt-block[open] summary::before { transform: rotate(90deg); }
+    .prompt-block summary:hover { color: #fe2c55; }
+    .prompt-block summary:hover::before { color: #fe2c55; }
+    .prompt-label { font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: .5px; color: #bbb; margin-left: auto; }
+    .prompt-text {
+      padding: 14px 18px 16px; font-family: 'SF Mono','Fira Code','Menlo',monospace;
+      font-size: 11.5px; line-height: 1.7; color: #555; background: #f9f9f9;
+      border-top: 1px solid #f0f0f0; white-space: pre-wrap; word-break: break-word;
+      max-height: 320px; overflow-y: auto;
+    }
+    @media (max-width: 900px) {
+      .media-grid { grid-template-columns: 1fr; }
+      .video-multi { justify-content: center; }
+      .idea-lead { padding: 24px 22px 22px; }
+    }
+    @media (max-width: 520px) { .idea-title { font-size: 22px; } }
+
+  </style>
+</head>
+<body>
+<div class="page-header">
+  <div class="header-inner">
+    <a class="brand" href="../../../">
+      <span class="brand-tik">Tik</span><span class="brand-tok">Tok</span>
+      <span class="brand-dot">·</span><span class="brand-cc">Video Ideas</span>
+    </a>
+    <div class="header-text">
+      <div class="page-title">#agosto</div>
+      <div class="page-sub">Видео-идея · 8 августа 2026</div>
+    </div>
+    <div class="date-badge">08.08.2026<span>Дата</span></div>
+  </div>
+  <nav class="page-nav">
+    <a href="../../../" class="nav-a">← Все отчёты</a>
+    <a href="../../#co" class="nav-a">← 8 авг 2026</a>
+    <a href="#" class="nav-a active">#agosto</a>
+  </nav>
+</div>
+<div class="content">
+  <div class="idea-lead">
+    <div class="idea-hashtag">#agosto</div>
+    <h1 class="idea-title">Descalzo hacia el atardecer</h1>
+    <p class="idea-desc">Пользователь стоит у окна с полупрозрачными шторами в комнате — ровно как в одном из реальных видео тега — и делает шаг вперёд: следующий кадр уже переносит его на тропический карибский пляж Колумбии в час золотого заката, с пальмами и волнами вдалеке. Он держит половинку кокоса с трубочкой, идёт по песку в сторону моря, свет становится всё теплее и краснее. В последних кадрах — крупный план его следов на мокром песке на фоне пылающего горизонта, и поверх появляется испанская надпись-размышление об августе («agosto se despide así»), стилизованная как леттеринг из тренда. Якорь хэштега — тропический пляжный закат с кокосом и следами на песке, характерный визуальный код колумбийских видео под #agosto.</p>
+  </div>
+  <section class="section">
+    <div class="section-header">
+      <h2 class="section-title">Видео</h2>
+      <span class="section-badge">Пример генерации</span>
+    </div>
+    <div class="media-grid">
+      <div class="video-multi"><div class="video-item"><div style="aspect-ratio:9/16;background:#eee;border-radius:12px;"></div></div></div>
+      <div class="prompts-col">
+        <details class="prompt-block">
+          <summary>Промпт для первого кадра <span class="prompt-label">GPT Image 2</span></summary>
+          <pre class="prompt-text">Turn the photo of the person into a warm, cinematic travel-diary portrait taken on a tropical Caribbean beach at golden hour, framed from the knees up so the whole scene reads as an intimate late-afternoon walk. Keep the person&#x27;s identity fully intact: preserve their exact face shape, skin tone, eye shape and eye color, natural hairstyle, hair color and texture, jawline, and any distinctive features such as freckles, moles, or facial hair exactly as in the source photo — do not smooth, reshape, or idealize their features. Pose them mid-step on soft golden sand, weight on the back foot as if they just started walking toward the ocean, torso turned three-quarters toward camera so the face stays clearly lit and legible while the gaze drifts toward the horizon with a soft, wistful half-smile. They hold a halved green coconut with a striped paper straw in one hand, fingers relaxed around its rough fibrous shell, a few drops of condensation visible on the rind. They wear a loose linen button-up shirt in faded terracotta, sleeves rolled to the forearm, unbuttoned enough to catch the breeze, over simple linen shorts; the fabric is caught mid-motion by a gentle onshore wind, creasing and rippling naturally. Behind them, tall coconut palms lean into frame on both sides, their fronds silhouetted and rustling; low surf rolls in glassy, backlit waves that catch the low sun in bright horizontal streaks, and a scatter of white beach umbrellas sits softly out of focus far in the background. The sky is a deep gradient from burning orange near the horizon into dusty rose and violet higher up, with the sun itself a soft glowing disc just above the waterline, throwing long warm rim-light along the person&#x27;s hairline, shoulder, and the curve of the coconut. Skin should show natural, believable texture — visible pores, a light warm flush from the heat, no plastic over-smoothing. Shoot this as if on a 35mm lens with a shallow-medium depth of field: the person and coconut are tack-sharp, the palm fronds and umbrellas melt into a soft bokeh glow. Add a faint warm film-grain and a touch of natural lens flare where the sun edge nearly grazes the frame, keeping the overall mood nostalgic and cinematic rather than harshly bright. Vertical 9:16 orientation. No text or graphic overlays visible in this first frame — the frame is a pure photographic moment.</pre>
+        </details>
+        <details class="prompt-block">
+          <summary>Промпт для видео <span class="prompt-label">Kling · Grok</span></summary>
+          <pre class="prompt-text">Create a short cinematic video based on the uploaded image. The scene is a tropical Caribbean beach in Colombia at golden hour: the person walks barefoot across warm sand toward the ocean, holding a halved coconut with a straw, as the light deepens toward sunset.
+
+Camera and motion structure:
+1. FRAMES 0–25%: Handheld POV-style medium shot (knee-up), the camera moving forward and slightly downward with the person&#x27;s own walking rhythm, as if worn chest-high. The person walks steadily away from the camera&#x27;s starting point toward the sea — always in the same forward direction, never doubling back. Palm trees drift past at the edges of frame. Light is warm but still mid-afternoon gold.
+2. FRAMES 25–55%: The camera continues its forward drift, now catching up slightly so the person&#x27;s upper body and face are clearly framed three-quarter view. They glance toward the ocean and take a slow sip from the coconut straw, exhaling contentedly — no words, just a breath and a small smile. The sky visibly warms further, the gold deepening toward orange.
+3. FRAMES 55–80%: The camera lowers and tilts down as the person stops walking, now standing ankle-deep at the tideline. Their bare footprints trail behind them in the wet sand. The sky continues its color creep — orange bleeding into rose and violet — tracked continuously, not as a cut.
+4. FRAMES 80–100%: Camera settles into a gentle, near-static hold on a low-angle composition: the person&#x27;s silhouette against the full sunset, footprints leading toward them in the foreground sand. A stylized handwritten Spanish text overlay fades in at the bottom third — &quot;agosto se despide así&quot; — in a warm cursive font with a small heart accent, and remains locked on screen until the last frame.
+
+Character:
+Preserve the person&#x27;s face, hair, skin tone, and identity exactly from the source image throughout the entire video. Do not alter their appearance, age, or body proportions. Their only movements are: walking forward, sipping from the coconut, and coming to a natural stop — no other gestures, no waving, no looking directly into the lens.
+
+Key visual events (in order):
+- The walk toward the ocean, coconut in hand — establishes the tropical setting immediately
+- The color of the sky and light creeping from bright gold to deep orange-violet sunset (the hero moment: this gradual, continuous warming of the entire scene&#x27;s light and color must be clearly visible across the whole video, not just at the end)
+- Bare footprints appearing in the wet sand as the person stops
+- The Spanish handwritten quote materializing in the final quarter and staying locked on screen
+
+Style:
+Warm, nostalgic travel-diary cinematography — the kind of golden-hour beach clip shared as a personal reflection, not a commercial. Soft natural grain, warm color grading, gentle handheld sway. Wistful and intimate, never overly polished or corporate.
+
+Restrictions:
+- Do not change the person&#x27;s face, hair, skin tone, body proportions, or identity at any point
+- No speaking, no singing, no lip-sync, no mouthing words — silent, wistful reaction only
+- The person must remain in frame, recognizable, and the visual focus for the entire video
+- The sunset color-deepening effect must be clearly and continuously visible across the whole video — this is the single most important visual element of the shot, not just a background detail
+- The handwritten Spanish text overlay appears only in the final 20% and must remain visible and undistorted until the last frame
+- No other on-screen text, captions, or graphics besides the specified quote
+- No speech bubbles
+- The person walks in one consistent direction (toward the ocean) only — no doubling back, no teleporting position between frames
+- Exactly one coconut sip occurs — no repeated drinking motion
+- No additional people, animals, or vehicles added to the beach
+- No jump cuts between the four described beats — each transitions smoothly and continuously from the last
+- No additional gestures, actions, or beats beyond those explicitly described above
+- The person&#x27;s feet and the wet sand must remain clearly visible when footprints are shown — the shot must not crop below the knee at that moment</pre>
+        </details>
+      </div>
+    </div>
+  </section>
+</div>
+</body>
+</html>
