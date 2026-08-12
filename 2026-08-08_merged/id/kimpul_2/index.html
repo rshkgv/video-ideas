@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>#kimpul — Пар в форме сердца · Video Ideas</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      background: #f4f4f5; color: #111; font-size: 14px; line-height: 1.5;
+    }
+    .page-header {
+      background: #fff; border-bottom: 1px solid #e4e4e7; position: sticky;
+      top: 0; z-index: 100; box-shadow: 0 1px 8px rgba(0,0,0,.05);
+    }
+    .header-inner {
+      max-width: 1100px; margin: 0 auto; padding: 14px 28px;
+      display: flex; align-items: center; gap: 20px;
+    }
+    .brand {
+      font-size: 18px; font-weight: 800; letter-spacing: -.5px; color: #111;
+      white-space: nowrap; user-select: none; text-decoration: none;
+    }
+    .brand-tik { color: #fe2c55; }
+    .brand-tok { color: #010101; }
+    .brand-dot { color: #d1d1d1; margin: 0 6px; font-weight: 300; }
+    .brand-cc  { color: #888; font-size: 12px; font-weight: 500; }
+    .header-text { flex: 1; min-width: 0; }
+    .page-title {
+      font-size: 15px; font-weight: 700; letter-spacing: -.2px;
+      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    }
+    .page-sub { font-size: 11.5px; color: #999; margin-top: 2px; }
+    .date-badge {
+      background: #fe2c55; color: #fff; font-weight: 700; font-size: 12px;
+      border-radius: 8px; padding: 6px 14px; line-height: 1.4;
+      text-align: center; white-space: nowrap; flex-shrink: 0;
+    }
+    .date-badge span { display: block; font-size: 10px; font-weight: 500; opacity: .8; }
+    .page-nav {
+      max-width: 1100px; margin: 0 auto; padding: 0 28px;
+      display: flex; gap: 2px; border-top: 1px solid #f0f0f0;
+    }
+    .nav-a {
+      text-decoration: none; color: #999; font-size: 12.5px; font-weight: 500;
+      padding: 9px 14px; border-bottom: 2px solid transparent;
+      transition: color .15s, border-color .15s;
+    }
+    .nav-a:hover { color: #fe2c55; }
+    .nav-a.active { color: #fe2c55; border-bottom-color: #fe2c55; }
+    .content { max-width: 1100px; margin: 0 auto; padding: 36px 28px 80px; }
+    .section { margin-bottom: 52px; }
+    .section-header { display: flex; align-items: baseline; gap: 10px; margin-bottom: 16px; }
+    .section-title { font-size: 19px; font-weight: 800; letter-spacing: -.4px; }
+    .section-badge {
+      font-size: 10.5px; font-weight: 600; color: #999; background: #ebebeb;
+      padding: 3px 8px; border-radius: 20px; text-transform: uppercase; letter-spacing: .4px;
+    }
+    @media (max-width: 768px) {
+      .header-inner { gap: 12px; padding: 12px 16px; }
+      .date-badge { display: none; }
+      .page-nav { padding: 0 16px; }
+      .content { padding: 24px 16px 60px; }
+    }
+
+
+    .idea-lead {
+      background: #fff; border-radius: 12px; padding: 36px 40px 32px;
+      box-shadow: 0 1px 4px rgba(0,0,0,.07), 0 0 0 1px rgba(0,0,0,.05);
+      margin-bottom: 40px;
+    }
+    .idea-hashtag { font-size: 13px; font-weight: 700; color: #fe2c55; margin-bottom: 8px; }
+    .idea-title { font-size: 26px; font-weight: 800; letter-spacing: -.6px; line-height: 1.25; margin-bottom: 16px; }
+    .idea-desc { font-size: 14px; color: #444; line-height: 1.75; max-width: 720px; }
+    .media-grid {
+      display: grid; grid-template-columns: auto 1fr; gap: 28px; align-items: start;
+    }
+    .video-multi {
+      display: flex; gap: 16px; flex-wrap: wrap; align-items: flex-start;
+    }
+    .video-item {
+      width: 200px; display: flex; flex-direction: column; gap: 8px; flex-shrink: 0;
+    }
+    .video-caption {
+      font-size: 11px; color: #999; line-height: 1.4; padding: 0 2px;
+    }
+    .video-player {
+      width: 100%; aspect-ratio: 9/16; object-fit: cover; border-radius: 12px;
+      display: block; box-shadow: 0 2px 16px rgba(0,0,0,.14);
+    }
+    .frame-img {
+      width: 100%; aspect-ratio: 9/16; object-fit: cover; border-radius: 12px;
+      display: block; box-shadow: 0 2px 16px rgba(0,0,0,.14);
+    }
+    .prompts-col { display: flex; flex-direction: column; gap: 12px; }
+    .prompt-block {
+      background: #fff; border-radius: 10px;
+      box-shadow: 0 1px 4px rgba(0,0,0,.07), 0 0 0 1px rgba(0,0,0,.05); overflow: hidden;
+    }
+    .prompt-block summary {
+      padding: 14px 18px; font-size: 13px; font-weight: 700; cursor: pointer;
+      user-select: none; list-style: none; display: flex; align-items: center; gap: 8px; color: #333;
+    }
+    .prompt-block summary::-webkit-details-marker { display: none; }
+    .prompt-block summary::before { content: '▶'; font-size: 8px; color: #bbb; transition: transform .15s; flex-shrink: 0; }
+    .prompt-block[open] summary::before { transform: rotate(90deg); }
+    .prompt-block summary:hover { color: #fe2c55; }
+    .prompt-block summary:hover::before { color: #fe2c55; }
+    .prompt-label { font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: .5px; color: #bbb; margin-left: auto; }
+    .prompt-text {
+      padding: 14px 18px 16px; font-family: 'SF Mono','Fira Code','Menlo',monospace;
+      font-size: 11.5px; line-height: 1.7; color: #555; background: #f9f9f9;
+      border-top: 1px solid #f0f0f0; white-space: pre-wrap; word-break: break-word;
+      max-height: 320px; overflow-y: auto;
+    }
+    @media (max-width: 900px) {
+      .media-grid { grid-template-columns: 1fr; }
+      .video-multi { justify-content: center; }
+      .idea-lead { padding: 24px 22px 22px; }
+    }
+    @media (max-width: 520px) { .idea-title { font-size: 22px; } }
+
+  </style>
+</head>
+<body>
+<div class="page-header">
+  <div class="header-inner">
+    <a class="brand" href="../../../">
+      <span class="brand-tik">Tik</span><span class="brand-tok">Tok</span>
+      <span class="brand-dot">·</span><span class="brand-cc">Video Ideas</span>
+    </a>
+    <div class="header-text">
+      <div class="page-title">#kimpul</div>
+      <div class="page-sub">Видео-идея · 8 августа 2026 · Выпуск merged</div>
+    </div>
+    <div class="date-badge">08.08.2026<span>Дата · Выпуск merged</span></div>
+  </div>
+  <nav class="page-nav">
+    <a href="../../../" class="nav-a">← Все отчёты</a>
+    <a href="../../#id" class="nav-a">← 8 авг 2026 · Выпуск merged</a>
+    <a href="#" class="nav-a active">#kimpul</a>
+  </nav>
+</div>
+<div class="content">
+  <div class="idea-lead">
+    <div class="idea-hashtag">#kimpul</div>
+    <h1 class="idea-title">Пар в форме сердца</h1>
+    <p class="idea-desc">Та же домашняя кухня и та же миска дымящегося пюре кимпул — но не спокойный ревью, а восторженный порыв «попробуй это немедленно»: пользователь снимает себя сам, с руки, поднимая миску прямо к объективу, будто показывая другу по видеозвонку. Ложка зачерпывает пюре, и над ней сворачивается завиток пара — на мгновение он складывается в форму сердечка, прежде чем расплыться в обычную дымку. Пользователь довольно смеётся одними глазами и пробует зачерпнутое. Ни одного слова — только жест показа и смех без звука.
+
+Визуальный якорь: та же домашняя кухня, миска дымящегося пюре кимпул, повседневная рубашка и хиджаб пользователя, крупный план ложки с завитком пара.</p>
+  </div>
+  <section class="section">
+    <div class="section-header">
+      <h2 class="section-title">Видео</h2>
+      <span class="section-badge">Пример генерации</span>
+    </div>
+    <div class="media-grid">
+      <div class="video-multi">
+        <div class="video-item"><video class="video-player" controls muted loop playsinline poster="https://temp-images.ws.pho.to/2acb18e24bfa94caa964ccba0a8c5a9df64e62a7.png"><source src="https://temp-images.ws.pho.to/280254fe1d5d524bdb4b4263ae01e1b71d20e429.mp4" type="video/mp4"></video>
+          <div class="video-caption">woman in her late 30s with straight blonde shoulder-length hair and cat-eye glasses</div>
+        </div>
+        <div class="video-item"><video class="video-player" controls muted loop playsinline poster="https://temp-images.ws.pho.to/7220e65f9a681efbfd1b38915fe27c94b4aa7265.png"><source src="https://temp-images.ws.pho.to/9a289476e8e1f9835c7b70a8786a8e51cab4f779.mp4" type="video/mp4"></video>
+          <div class="video-caption">man in his early 30s with short brown hair, blue eyes, and a short beard</div>
+        </div>
+      </div>
+      <div class="prompts-col">
+        <details class="prompt-block">
+          <summary>Промпт для первого кадра <span class="prompt-label">GPT Image 2</span></summary>
+          <pre class="prompt-text">Turn the photo of the person into a portrait of them in a bright home kitchen, holding up a glass bowl of steaming mashed kimpul (a starchy root-vegetable purée, pale golden, still visibly hot) directly toward the camera at arm&#x27;s length, as if showing it off on a video call. Vertical 9:16 composition, framed from the chest up with the extended arm and bowl reaching toward the lower part of the frame, the face still clearly legible and large in frame despite the foreshortened arm.
+
+Pose &amp; composition: one arm extended toward the camera holding the bowl slightly tilted so the steaming surface is visible, the other hand holding a spoon already dipped into the purée, body turned a few degrees toward the raised arm, an energetic, caught-in-motion feel rather than a posed sit.
+
+Expression: bright, excited delight — eyes wide and smiling, mouth open in a silent laugh, eyebrows raised, the look of someone genuinely thrilled to share what they&#x27;re eating.
+
+Attire: their everyday clothes exactly as in the source photo — casual shirt, hijab if present, unchanged.
+
+Setting &amp; background: the same ordinary home kitchen — white cabinetry, a microwave, small potted plants, slightly blurred behind the outstretched arm since it&#x27;s the nearest thing to camera.
+
+Lighting: bright, warm domestic light, slightly brighter near the steaming bowl where the light catches the rising vapour.
+
+Colour grading: warm and homely — pale golden purée, white bowl, warm skin tones, soft haze where the steam catches the light.
+
+Materials &amp; texture: the purée reads as genuinely soft and steaming, faint wisps of visible steam curling up from its surface; the spoon&#x27;s metal has a soft warm highlight.
+
+Camera &amp; lens: close, slightly wide-angle feel consistent with an arm&#x27;s-length selfie, natural falloff at the edges.
+
+Skin texture: keep real skin — visible pores, natural unevenness, no smoothing or retouching.
+
+Identity preservation: keep the person&#x27;s identity exactly as in the source photo — same age, face shape and proportions, skin tone and undertone, eye shape and eye colour, eyebrow shape, nose and jawline, and the exact hairstyle including colour, parting, length and texture, plus any freckles, moles, scars, facial hair or glasses. Hands must be anatomically correct: five fingers each, natural proportion, a secure grip on both the bowl and the spoon.
+
+Avoid: over-smoothed skin, a pasted-face or cutout look, plastic-looking food, motion blur so heavy the face becomes illegible, and no overlay graphics or captions of any kind.</pre>
+        </details>
+        <details class="prompt-block">
+          <summary>Промпт для видео <span class="prompt-label">Kling · Grok</span></summary>
+          <pre class="prompt-text">Create a short cinematic video based on the uploaded image. Vertical 9:16.
+The person from the image holds a steaming bowl of mashed kimpul toward the camera at arm&#x27;s length in a home kitchen, an arm&#x27;s-length selfie framing.
+
+Camera and motion structure:
+Handheld selfie POV throughout, with natural small sway as if the person is holding the camera themselves — never locked off, never a tripod move.
+0:00–0:01: The person thrusts the bowl a little closer to the lens, grinning, showing it off.
+0:01–0:03: They dip the spoon into the purée and lift a scoop toward the lens. As the spoon rises, the steam curling off the scoop briefly coils and folds into the unmistakable shape of a small heart, hanging in the air above the spoon for a moment.
+0:03–0:04: The heart-shaped steam dissolves back into an ordinary loose wisp and thins into nothing.
+0:04–0:05: The person brings the spoon to their own mouth and takes the bite, eyes crinkling into a silent, delighted laugh as they chew. Hold on their laughing face as the last of the steam fades — that fading is the ending.
+
+Character:
+Preserve the person&#x27;s face, hair, skin tone and identity exactly from the source image throughout. Allowed motion: thrusting the bowl closer, dipping and lifting the spoon, eating the scoop, laughing silently. Nothing else.
+
+Key visual events:
+The steam briefly holding a heart shape above the spoon is the idea&#x27;s signature moment — a materialization the trend&#x27;s own videos never show, invented at this level.
+The heart shape forms exactly once and dissolves exactly once — no repeats, no second heart.
+
+Style:
+Warm, energetic home-video mukbang style shot handheld and close, as if filmed for a friend rather than an audience — a little shaky, intimate, delighted. Comedic and sensory rather than composed.
+
+Restrictions:
+- Do not change the person&#x27;s face, hair, skin tone or identity at any point
+- The person stays in frame, recognizable and the visual focus for the whole video
+- The person never speaks, sings or mouths words — the laugh is silent, emotional reaction only
+- No speech bubbles
+- The heart-shaped steam forms only once, directly above the spoon, and dissolves back into ordinary steam within the same beat — it never reforms and never appears anywhere else in the frame
+- No screen-locked overlays, cards, plates, lower thirds, captions or wordmarks of any kind
+- No additional gestures, actions, or beats beyond those explicitly described above
+- No extra people added to the frame
+- The bowl and spoon must stay in the person&#x27;s own hands throughout — nothing floats or moves on its own except the steam itself</pre>
+        </details>
+      </div>
+    </div>
+  </section>
+</div>
+</body>
+</html>

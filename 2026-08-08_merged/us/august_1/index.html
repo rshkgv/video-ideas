@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>#august — Отрывной календарь · Video Ideas</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      background: #f4f4f5; color: #111; font-size: 14px; line-height: 1.5;
+    }
+    .page-header {
+      background: #fff; border-bottom: 1px solid #e4e4e7; position: sticky;
+      top: 0; z-index: 100; box-shadow: 0 1px 8px rgba(0,0,0,.05);
+    }
+    .header-inner {
+      max-width: 1100px; margin: 0 auto; padding: 14px 28px;
+      display: flex; align-items: center; gap: 20px;
+    }
+    .brand {
+      font-size: 18px; font-weight: 800; letter-spacing: -.5px; color: #111;
+      white-space: nowrap; user-select: none; text-decoration: none;
+    }
+    .brand-tik { color: #fe2c55; }
+    .brand-tok { color: #010101; }
+    .brand-dot { color: #d1d1d1; margin: 0 6px; font-weight: 300; }
+    .brand-cc  { color: #888; font-size: 12px; font-weight: 500; }
+    .header-text { flex: 1; min-width: 0; }
+    .page-title {
+      font-size: 15px; font-weight: 700; letter-spacing: -.2px;
+      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    }
+    .page-sub { font-size: 11.5px; color: #999; margin-top: 2px; }
+    .date-badge {
+      background: #fe2c55; color: #fff; font-weight: 700; font-size: 12px;
+      border-radius: 8px; padding: 6px 14px; line-height: 1.4;
+      text-align: center; white-space: nowrap; flex-shrink: 0;
+    }
+    .date-badge span { display: block; font-size: 10px; font-weight: 500; opacity: .8; }
+    .page-nav {
+      max-width: 1100px; margin: 0 auto; padding: 0 28px;
+      display: flex; gap: 2px; border-top: 1px solid #f0f0f0;
+    }
+    .nav-a {
+      text-decoration: none; color: #999; font-size: 12.5px; font-weight: 500;
+      padding: 9px 14px; border-bottom: 2px solid transparent;
+      transition: color .15s, border-color .15s;
+    }
+    .nav-a:hover { color: #fe2c55; }
+    .nav-a.active { color: #fe2c55; border-bottom-color: #fe2c55; }
+    .content { max-width: 1100px; margin: 0 auto; padding: 36px 28px 80px; }
+    .section { margin-bottom: 52px; }
+    .section-header { display: flex; align-items: baseline; gap: 10px; margin-bottom: 16px; }
+    .section-title { font-size: 19px; font-weight: 800; letter-spacing: -.4px; }
+    .section-badge {
+      font-size: 10.5px; font-weight: 600; color: #999; background: #ebebeb;
+      padding: 3px 8px; border-radius: 20px; text-transform: uppercase; letter-spacing: .4px;
+    }
+    @media (max-width: 768px) {
+      .header-inner { gap: 12px; padding: 12px 16px; }
+      .date-badge { display: none; }
+      .page-nav { padding: 0 16px; }
+      .content { padding: 24px 16px 60px; }
+    }
+
+
+    .idea-lead {
+      background: #fff; border-radius: 12px; padding: 36px 40px 32px;
+      box-shadow: 0 1px 4px rgba(0,0,0,.07), 0 0 0 1px rgba(0,0,0,.05);
+      margin-bottom: 40px;
+    }
+    .idea-hashtag { font-size: 13px; font-weight: 700; color: #fe2c55; margin-bottom: 8px; }
+    .idea-title { font-size: 26px; font-weight: 800; letter-spacing: -.6px; line-height: 1.25; margin-bottom: 16px; }
+    .idea-desc { font-size: 14px; color: #444; line-height: 1.75; max-width: 720px; }
+    .media-grid {
+      display: grid; grid-template-columns: auto 1fr; gap: 28px; align-items: start;
+    }
+    .video-multi {
+      display: flex; gap: 16px; flex-wrap: wrap; align-items: flex-start;
+    }
+    .video-item {
+      width: 200px; display: flex; flex-direction: column; gap: 8px; flex-shrink: 0;
+    }
+    .video-caption {
+      font-size: 11px; color: #999; line-height: 1.4; padding: 0 2px;
+    }
+    .video-player {
+      width: 100%; aspect-ratio: 9/16; object-fit: cover; border-radius: 12px;
+      display: block; box-shadow: 0 2px 16px rgba(0,0,0,.14);
+    }
+    .frame-img {
+      width: 100%; aspect-ratio: 9/16; object-fit: cover; border-radius: 12px;
+      display: block; box-shadow: 0 2px 16px rgba(0,0,0,.14);
+    }
+    .prompts-col { display: flex; flex-direction: column; gap: 12px; }
+    .prompt-block {
+      background: #fff; border-radius: 10px;
+      box-shadow: 0 1px 4px rgba(0,0,0,.07), 0 0 0 1px rgba(0,0,0,.05); overflow: hidden;
+    }
+    .prompt-block summary {
+      padding: 14px 18px; font-size: 13px; font-weight: 700; cursor: pointer;
+      user-select: none; list-style: none; display: flex; align-items: center; gap: 8px; color: #333;
+    }
+    .prompt-block summary::-webkit-details-marker { display: none; }
+    .prompt-block summary::before { content: '▶'; font-size: 8px; color: #bbb; transition: transform .15s; flex-shrink: 0; }
+    .prompt-block[open] summary::before { transform: rotate(90deg); }
+    .prompt-block summary:hover { color: #fe2c55; }
+    .prompt-block summary:hover::before { color: #fe2c55; }
+    .prompt-label { font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: .5px; color: #bbb; margin-left: auto; }
+    .prompt-text {
+      padding: 14px 18px 16px; font-family: 'SF Mono','Fira Code','Menlo',monospace;
+      font-size: 11.5px; line-height: 1.7; color: #555; background: #f9f9f9;
+      border-top: 1px solid #f0f0f0; white-space: pre-wrap; word-break: break-word;
+      max-height: 320px; overflow-y: auto;
+    }
+    @media (max-width: 900px) {
+      .media-grid { grid-template-columns: 1fr; }
+      .video-multi { justify-content: center; }
+      .idea-lead { padding: 24px 22px 22px; }
+    }
+    @media (max-width: 520px) { .idea-title { font-size: 22px; } }
+
+  </style>
+</head>
+<body>
+<div class="page-header">
+  <div class="header-inner">
+    <a class="brand" href="../../../">
+      <span class="brand-tik">Tik</span><span class="brand-tok">Tok</span>
+      <span class="brand-dot">·</span><span class="brand-cc">Video Ideas</span>
+    </a>
+    <div class="header-text">
+      <div class="page-title">#august</div>
+      <div class="page-sub">Видео-идея · 8 августа 2026 · Выпуск merged</div>
+    </div>
+    <div class="date-badge">08.08.2026<span>Дата · Выпуск merged</span></div>
+  </div>
+  <nav class="page-nav">
+    <a href="../../../" class="nav-a">← Все отчёты</a>
+    <a href="../../#us" class="nav-a">← 8 авг 2026 · Выпуск merged</a>
+    <a href="#" class="nav-a active">#august</a>
+  </nav>
+</div>
+<div class="content">
+  <div class="idea-lead">
+    <div class="idea-hashtag">#august</div>
+    <h1 class="idea-title">Отрывной календарь</h1>
+    <p class="idea-desc">Раннее утро, тёплый августовский свет лежит на прикроватном настольном календаре-блокноте — пользователь ещё в домашней одежде, сонно тянется к нему. Он отрывает листок «31 июля», и под ним открывается страница «АВГУСТ» с мелкой нарисованной бабочкой и цветком в углу — ровно та природная орнаментика, которой живут благословляющие слайд-шоу тренда. Он замирает, читает надпись, и на лице медленно расплывается тёплая, спокойная улыбка. В этот же момент утренний свет за окном становится ярче и золотистее, будто сам месяц отозвался.
+
+Визуальный якорь: настольный блокнот-календарь с крупной надписью «АВГУСТ» и мелкой иллюстрацией бабочки и цветка на открывшейся странице, тёплый утренний свет спальни — прямая перекличка с природной орнаментикой благословляющих слайд-шоу тренда.</p>
+  </div>
+  <section class="section">
+    <div class="section-header">
+      <h2 class="section-title">Видео</h2>
+      <span class="section-badge">Пример генерации</span>
+    </div>
+    <div class="media-grid">
+      <div class="video-multi">
+        <div class="video-item"><video class="video-player" controls muted loop playsinline poster="https://temp-images.ws.pho.to/21df2621de166268d8c8beb34270f1b70b9c72c5.png"><source src="https://temp-images.ws.pho.to/dd5adac2a6499d00137419266af2e7511beaff1f.mp4" type="video/mp4"></video>
+          <div class="video-caption">woman in her late 30s with straight blonde shoulder-length hair and cat-eye glasses</div>
+        </div>
+        <div class="video-item"><video class="video-player" controls muted loop playsinline poster="https://temp-images.ws.pho.to/29b916c87c4a4312e53e6b7c193b2e39df60ec5c.png"><source src="https://temp-images.ws.pho.to/bdab06fb1baabdb3366ab766dbf9edf1b3969927.mp4" type="video/mp4"></video>
+          <div class="video-caption">man in his early 30s with short brown hair, blue eyes, and a short beard</div>
+        </div>
+      </div>
+      <div class="prompts-col">
+        <details class="prompt-block">
+          <summary>Промпт для первого кадра <span class="prompt-label">GPT Image 2</span></summary>
+          <pre class="prompt-text">Turn the photo of the person into a close, warm morning portrait, vertical 9:16 composition, framed chest-up and slightly off-centre so a desk calendar block occupies the lower-right third of frame within arm&#x27;s reach.
+
+Pose &amp; composition: the person sits up in bed or at a bedside table, one hand resting on top of a thick spiral-bound desk calendar block whose visible top page reads &quot;31&quot; in bold black numerals under the word &quot;JULY&quot; in smaller type, a thin illustrated vine border running along its edge. Their head is turned slightly down and toward the calendar, shoulders relaxed, still soft with sleep.
+
+Expression: drowsy but content — eyes half-lidded, lips softly closed, the unguarded look of someone just waking up, not yet performing for a camera.
+
+Setting: a small bedroom nook — a nightstand with a lamp switched off, a rumpled edge of a light-coloured blanket visible at the very bottom of frame, a sliver of curtain letting in early light.
+
+Lighting: low, warm morning sun coming through the curtain from the left, gold and soft, catching the side of the face and the top edge of the calendar block; shadows long and gentle.
+
+Colour grading: warm amber and soft cream tones, slightly desaturated shadows, nothing cold in the frame.
+
+Camera &amp; lens: 50mm at f/2.2, shallow depth of field with the calendar&#x27;s top page and the person&#x27;s face both sharp, the background nightstand softly out of focus, fine natural grain.
+
+Skin texture: real skin — visible pores, faint under-eye softness from sleep, no smoothing.
+
+Identity preservation: keep the person&#x27;s identity exactly as in the source photo — same age, face shape and proportions, skin tone and undertone, eye shape and eye colour, eyebrow shape, nose and jawline, and the exact hairstyle including its colour, parting, length and texture, plus any freckles, moles, scars, facial hair or glasses. Hands must be anatomically correct: five fingers per hand, natural relaxed grip resting on the calendar&#x27;s edge.
+
+Avoid: over-smoothed skin, a pasted-face or cutout look, and no overlay graphics or captions of any kind — the calendar&#x27;s own printed &quot;31&quot;/&quot;JULY&quot; is the only lettering, and it is not yet legible past this framing&#x27;s edge if partially cropped.</pre>
+        </details>
+        <details class="prompt-block">
+          <summary>Промпт для видео <span class="prompt-label">Kling · Grok</span></summary>
+          <pre class="prompt-text">Create a short cinematic video based on the uploaded image. Vertical 9:16.
+A quiet bedroom in warm morning light. The person from the image sits chest-up beside a desk calendar block reading &quot;31 / JULY&quot; on its top page.
+
+Camera and motion structure:
+Keep the overall shot locked-off and static — no zoom, no pan, no reframing. One continuous take, one single beat.
+FRAMES 0–30%: The person sits still, drowsy, hand resting near the calendar. They slowly reach two fingers to the top corner of the &quot;31 / JULY&quot; page.
+FRAMES 30–60%: In one clean, gentle motion they lift and tear the page free along its perforated edge — the paper detaches whole, no crumpling, no tearing into pieces — revealing the next page beneath: bold letters &quot;AUGUST&quot; with a small hand-drawn butterfly and flower in the lower corner.
+FRAMES 60–100%: The person&#x27;s eyes move down to read the new page, and a slow, warm smile spreads across their face. At the same time the morning light through the curtain brightens and turns a shade more golden, washing gently across their face and the calendar&#x27;s page — this warming light is the ending; nothing else happens after the smile settles.
+
+Character:
+Preserve the person&#x27;s face, hair, skin tone, and identity exactly from the source image throughout. The only motion is the hand reaching, the single clean page tear, and the smile — no other gestures.
+
+Key visual events:
+The hero moment is the page tear itself — one whole sheet lifting free in a single motion to reveal &quot;AUGUST&quot; with the small butterfly-and-flower illustration beneath. This must be clearly and unmistakably visible: the old page comes away in one piece, the new page&#x27;s lettering and illustration are sharp and legible the instant it is revealed.
+
+Style:
+Warm, quiet, observational — like a single held breath of morning light. No broadcast polish, no drama; a small domestic ritual, softly lit and intimate.
+
+Restrictions:
+- Do not change the person&#x27;s appearance, face, clothing, or identity at any point
+- The person stays in frame, recognizable and the visual focus for the entire video
+- The person never speaks, sings or mouths words — the smile is silent, emotional reaction only
+- No speech bubbles
+- No on-screen text or graphics beyond the calendar&#x27;s own printed pages — no title cards, lower thirds or added captions anywhere in the frame
+- The page tear happens exactly once, in one clean motion — the sheet comes away whole, never shredding, crumpling, or being torn into multiple pieces
+- No improvisation beyond the actions described above — no extra gestures, no getting up, no additional objects introduced
+- The calendar&#x27;s &quot;AUGUST&quot; page and its butterfly/flower illustration must be fully legible and undamaged once revealed — this is the single most important visual element of the shot
+- No violent or aggressive motion of any kind — the tear is gentle, not a yank or a rip</pre>
+        </details>
+      </div>
+    </div>
+  </section>
+</div>
+</body>
+</html>

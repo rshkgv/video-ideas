@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>#perezhilton — Не может отвести взгляд · Video Ideas</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      background: #f4f4f5; color: #111; font-size: 14px; line-height: 1.5;
+    }
+    .page-header {
+      background: #fff; border-bottom: 1px solid #e4e4e7; position: sticky;
+      top: 0; z-index: 100; box-shadow: 0 1px 8px rgba(0,0,0,.05);
+    }
+    .header-inner {
+      max-width: 1100px; margin: 0 auto; padding: 14px 28px;
+      display: flex; align-items: center; gap: 20px;
+    }
+    .brand {
+      font-size: 18px; font-weight: 800; letter-spacing: -.5px; color: #111;
+      white-space: nowrap; user-select: none; text-decoration: none;
+    }
+    .brand-tik { color: #fe2c55; }
+    .brand-tok { color: #010101; }
+    .brand-dot { color: #d1d1d1; margin: 0 6px; font-weight: 300; }
+    .brand-cc  { color: #888; font-size: 12px; font-weight: 500; }
+    .header-text { flex: 1; min-width: 0; }
+    .page-title {
+      font-size: 15px; font-weight: 700; letter-spacing: -.2px;
+      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    }
+    .page-sub { font-size: 11.5px; color: #999; margin-top: 2px; }
+    .date-badge {
+      background: #fe2c55; color: #fff; font-weight: 700; font-size: 12px;
+      border-radius: 8px; padding: 6px 14px; line-height: 1.4;
+      text-align: center; white-space: nowrap; flex-shrink: 0;
+    }
+    .date-badge span { display: block; font-size: 10px; font-weight: 500; opacity: .8; }
+    .page-nav {
+      max-width: 1100px; margin: 0 auto; padding: 0 28px;
+      display: flex; gap: 2px; border-top: 1px solid #f0f0f0;
+    }
+    .nav-a {
+      text-decoration: none; color: #999; font-size: 12.5px; font-weight: 500;
+      padding: 9px 14px; border-bottom: 2px solid transparent;
+      transition: color .15s, border-color .15s;
+    }
+    .nav-a:hover { color: #fe2c55; }
+    .nav-a.active { color: #fe2c55; border-bottom-color: #fe2c55; }
+    .content { max-width: 1100px; margin: 0 auto; padding: 36px 28px 80px; }
+    .section { margin-bottom: 52px; }
+    .section-header { display: flex; align-items: baseline; gap: 10px; margin-bottom: 16px; }
+    .section-title { font-size: 19px; font-weight: 800; letter-spacing: -.4px; }
+    .section-badge {
+      font-size: 10.5px; font-weight: 600; color: #999; background: #ebebeb;
+      padding: 3px 8px; border-radius: 20px; text-transform: uppercase; letter-spacing: .4px;
+    }
+    @media (max-width: 768px) {
+      .header-inner { gap: 12px; padding: 12px 16px; }
+      .date-badge { display: none; }
+      .page-nav { padding: 0 16px; }
+      .content { padding: 24px 16px 60px; }
+    }
+
+
+    .idea-lead {
+      background: #fff; border-radius: 12px; padding: 36px 40px 32px;
+      box-shadow: 0 1px 4px rgba(0,0,0,.07), 0 0 0 1px rgba(0,0,0,.05);
+      margin-bottom: 40px;
+    }
+    .idea-hashtag { font-size: 13px; font-weight: 700; color: #fe2c55; margin-bottom: 8px; }
+    .idea-title { font-size: 26px; font-weight: 800; letter-spacing: -.6px; line-height: 1.25; margin-bottom: 16px; }
+    .idea-desc { font-size: 14px; color: #444; line-height: 1.75; max-width: 720px; }
+    .media-grid {
+      display: grid; grid-template-columns: auto 1fr; gap: 28px; align-items: start;
+    }
+    .video-multi {
+      display: flex; gap: 16px; flex-wrap: wrap; align-items: flex-start;
+    }
+    .video-item {
+      width: 200px; display: flex; flex-direction: column; gap: 8px; flex-shrink: 0;
+    }
+    .video-caption {
+      font-size: 11px; color: #999; line-height: 1.4; padding: 0 2px;
+    }
+    .video-player {
+      width: 100%; aspect-ratio: 9/16; object-fit: cover; border-radius: 12px;
+      display: block; box-shadow: 0 2px 16px rgba(0,0,0,.14);
+    }
+    .frame-img {
+      width: 100%; aspect-ratio: 9/16; object-fit: cover; border-radius: 12px;
+      display: block; box-shadow: 0 2px 16px rgba(0,0,0,.14);
+    }
+    .prompts-col { display: flex; flex-direction: column; gap: 12px; }
+    .prompt-block {
+      background: #fff; border-radius: 10px;
+      box-shadow: 0 1px 4px rgba(0,0,0,.07), 0 0 0 1px rgba(0,0,0,.05); overflow: hidden;
+    }
+    .prompt-block summary {
+      padding: 14px 18px; font-size: 13px; font-weight: 700; cursor: pointer;
+      user-select: none; list-style: none; display: flex; align-items: center; gap: 8px; color: #333;
+    }
+    .prompt-block summary::-webkit-details-marker { display: none; }
+    .prompt-block summary::before { content: '▶'; font-size: 8px; color: #bbb; transition: transform .15s; flex-shrink: 0; }
+    .prompt-block[open] summary::before { transform: rotate(90deg); }
+    .prompt-block summary:hover { color: #fe2c55; }
+    .prompt-block summary:hover::before { color: #fe2c55; }
+    .prompt-label { font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: .5px; color: #bbb; margin-left: auto; }
+    .prompt-text {
+      padding: 14px 18px 16px; font-family: 'SF Mono','Fira Code','Menlo',monospace;
+      font-size: 11.5px; line-height: 1.7; color: #555; background: #f9f9f9;
+      border-top: 1px solid #f0f0f0; white-space: pre-wrap; word-break: break-word;
+      max-height: 320px; overflow-y: auto;
+    }
+    @media (max-width: 900px) {
+      .media-grid { grid-template-columns: 1fr; }
+      .video-multi { justify-content: center; }
+      .idea-lead { padding: 24px 22px 22px; }
+    }
+    @media (max-width: 520px) { .idea-title { font-size: 22px; } }
+
+  </style>
+</head>
+<body>
+<div class="page-header">
+  <div class="header-inner">
+    <a class="brand" href="../../../">
+      <span class="brand-tik">Tik</span><span class="brand-tok">Tok</span>
+      <span class="brand-dot">·</span><span class="brand-cc">Video Ideas</span>
+    </a>
+    <div class="header-text">
+      <div class="page-title">#perezhilton</div>
+      <div class="page-sub">Видео-идея · 8 августа 2026 · Выпуск merged</div>
+    </div>
+    <div class="date-badge">08.08.2026<span>Дата · Выпуск merged</span></div>
+  </div>
+  <nav class="page-nav">
+    <a href="../../../" class="nav-a">← Все отчёты</a>
+    <a href="../../#us" class="nav-a">← 8 авг 2026 · Выпуск merged</a>
+    <a href="#" class="nav-a active">#perezhilton</a>
+  </nav>
+</div>
+<div class="content">
+  <div class="idea-lead">
+    <div class="idea-hashtag">#perezhilton</div>
+    <h1 class="idea-title">Не может отвести взгляд</h1>
+    <p class="idea-desc">Та же тёмная комната, тот же диван — но вместо одного шокового узнавания получается комическая цепочка попыток «не смотреть». Пользователь замечает уведомление о эфире Перез Хилтона, демонстративно откладывает телефон экраном вниз на подушку — и через секунду не выдерживает, хватает его обратно: эфир уже громче, крупнее, с новой деталью скандала. Он снова откладывает телефон, отворачивается к спинке дивана — и снова сдаётся, хватая его в третий раз, теперь уже не отпуская, полностью поглощённый. Камера дёргается вслед за этими бросками рук, снято от руки, будто сам зритель ловит на нём этот момент.
+
+Визуальный якорь: тот же диван и тот же телефон с эфиром Перез Хилтона и розовой плашкой «HILTON» на экране — узнаётся не в первые секунды, а по ходу ролика, когда телефон снова и снова возвращается в руки.</p>
+  </div>
+  <section class="section">
+    <div class="section-header">
+      <h2 class="section-title">Видео</h2>
+      <span class="section-badge">Пример генерации</span>
+    </div>
+    <div class="media-grid">
+      <div class="video-multi">
+        <div class="video-item"><video class="video-player" controls muted loop playsinline poster="https://temp-images.ws.pho.to/5a843e6ca75985470205bf86e51b648b2cfc33df.png"><source src="https://temp-images.ws.pho.to/4a5bcc3d77ff8c95f16d83debc0474e40edc2f3a.mp4" type="video/mp4"></video>
+          <div class="video-caption">woman in her late 30s with straight blonde shoulder-length hair and cat-eye glasses</div>
+        </div>
+        <div class="video-item"><video class="video-player" controls muted loop playsinline poster="https://temp-images.ws.pho.to/2ad43038c83f9480c8d21afc0df8e0c0df4ded18.png"><source src="https://temp-images.ws.pho.to/2dcd85c9e846993a011d0d6c3b15a8035565b2a6.mp4" type="video/mp4"></video>
+          <div class="video-caption">man in his early 30s with short brown hair, blue eyes, and a short beard</div>
+        </div>
+      </div>
+      <div class="prompts-col">
+        <details class="prompt-block">
+          <summary>Промпт для первого кадра <span class="prompt-label">GPT Image 2</span></summary>
+          <pre class="prompt-text">Turn the photo of the person into a candid nighttime portrait, vertical 9:16 composition, chest-up framing, caught mid-motion rather than posed.
+
+Pose &amp; composition: the person sits up on the couch, one arm extended as if just setting a phone face-down onto a cushion beside them, torso half-turned away from where the phone lies.
+
+Expression: a strained, theatrical resolve — jaw set, eyes narrowed as if forcing themselves not to look, the specific comedy of someone failing at self-control.
+
+Setting: the same dim living room, couch fabric visible at the edges, phone lying face-down on a cushion within reach, everything beyond falling into soft darkness.
+
+Lighting: a faint cool glow bleeds from under the face-down phone onto the cushion; otherwise the room is dark, a single warm lamp just barely visible in the far background giving a low ambient fill.
+
+Colour grading: mostly dark, cool-toned shadow with a small warm pocket of lamp light and a sliver of cold screen-glow.
+
+Camera &amp; lens: 35mm at f/2.2, natural handheld-style edge falloff, fine grain.
+
+Skin texture: real skin, visible pores, no smoothing.
+
+Identity preservation: keep the person&#x27;s identity exactly as in the source photo — same age, face shape and proportions, skin tone and undertone, eye shape and eye colour, eyebrow shape, nose and jawline, and the exact hairstyle including colour, parting, length and texture, plus any freckles, moles, scars, facial hair or glasses. Hands anatomically correct, five fingers each.
+
+Avoid: over-smoothed skin, pasted-face look, and no overlay graphics or legible text visible in this frame — the phone lies face-down, screen hidden.</pre>
+        </details>
+        <details class="prompt-block">
+          <summary>Промпт для видео <span class="prompt-label">Kling · Grok</span></summary>
+          <pre class="prompt-text">Create a short cinematic video based on the uploaded image. Vertical 9:16.
+A dim living room. The person from the image sits on a couch, chest-up, repeatedly setting down and grabbing back a phone.
+
+Camera and motion structure:
+Handheld throughout, with a small jolt on each grab — never locked-off. Three beats, each happening once, no cuts.
+0:00–0:01: The person sets the phone face-down on the cushion beside them with a firm, deliberate motion, then turns away.
+0:01–0:02: They snap back and grab it, screen now showing Perez Hilton mid-broadcast, larger and louder than before, his pink &quot;HILTON&quot; backdrop clearly visible; their face flashes wide-eyed.
+0:02–0:03: They set it face-down again, more hesitant this time, turning further toward the couch back.
+0:03–0:04: They grab it a second time, screen now showing Perez Hilton leaning in close to his own camera as if revealing something bigger, the &quot;HILTON&quot; wordmark still visible behind him.
+0:04–0:05: The person gives up entirely — leaning fully into the screen&#x27;s glow, phone held close, transfixed, mouth slightly open. That transfixed stillness is the ending.
+
+Character:
+Preserve the person&#x27;s face, hair, skin tone and identity exactly from the source image throughout. Allowed motion: the two set-downs, the two grabs, the final lean-in — nothing else. Perez Hilton, visible only on the phone&#x27;s screen, may move and appear to speak silently on his own broadcast each time; the constraint on speaking applies to the user only.
+
+Style:
+Fast, comedic, self-aware — the specific humour of losing a battle with your own curiosity, shot handheld like it&#x27;s really happening.
+
+Restrictions:
+- Do not change the person&#x27;s appearance, face, clothing, or identity at any point
+- The person stays in frame, recognizable and the visual focus for the whole video
+- The person never speaks, sings or mouths words — every reaction is silent; any voice belongs to Perez Hilton on the screen, never to the user
+- No speech bubbles
+- The phone&#x27;s screen is the only place any graphic or lettering appears — the &quot;HILTON&quot; wordmark behind Perez Hilton stays visible each time the screen is shown, but no other text or banner appears anywhere
+- Exactly 2 set-downs and 2 grabs happen, followed by one final lean-in — no more, no fewer, each happening only once with no resets
+- No improvisation beyond the actions described above — no extra gestures, no standing up, no other objects
+- No violent or aggressive motion of any kind</pre>
+        </details>
+      </div>
+    </div>
+  </section>
+</div>
+</body>
+</html>

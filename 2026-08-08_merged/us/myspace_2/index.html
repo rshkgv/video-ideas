@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>#myspace — Три позы для нового профиля · Video Ideas</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      background: #f4f4f5; color: #111; font-size: 14px; line-height: 1.5;
+    }
+    .page-header {
+      background: #fff; border-bottom: 1px solid #e4e4e7; position: sticky;
+      top: 0; z-index: 100; box-shadow: 0 1px 8px rgba(0,0,0,.05);
+    }
+    .header-inner {
+      max-width: 1100px; margin: 0 auto; padding: 14px 28px;
+      display: flex; align-items: center; gap: 20px;
+    }
+    .brand {
+      font-size: 18px; font-weight: 800; letter-spacing: -.5px; color: #111;
+      white-space: nowrap; user-select: none; text-decoration: none;
+    }
+    .brand-tik { color: #fe2c55; }
+    .brand-tok { color: #010101; }
+    .brand-dot { color: #d1d1d1; margin: 0 6px; font-weight: 300; }
+    .brand-cc  { color: #888; font-size: 12px; font-weight: 500; }
+    .header-text { flex: 1; min-width: 0; }
+    .page-title {
+      font-size: 15px; font-weight: 700; letter-spacing: -.2px;
+      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    }
+    .page-sub { font-size: 11.5px; color: #999; margin-top: 2px; }
+    .date-badge {
+      background: #fe2c55; color: #fff; font-weight: 700; font-size: 12px;
+      border-radius: 8px; padding: 6px 14px; line-height: 1.4;
+      text-align: center; white-space: nowrap; flex-shrink: 0;
+    }
+    .date-badge span { display: block; font-size: 10px; font-weight: 500; opacity: .8; }
+    .page-nav {
+      max-width: 1100px; margin: 0 auto; padding: 0 28px;
+      display: flex; gap: 2px; border-top: 1px solid #f0f0f0;
+    }
+    .nav-a {
+      text-decoration: none; color: #999; font-size: 12.5px; font-weight: 500;
+      padding: 9px 14px; border-bottom: 2px solid transparent;
+      transition: color .15s, border-color .15s;
+    }
+    .nav-a:hover { color: #fe2c55; }
+    .nav-a.active { color: #fe2c55; border-bottom-color: #fe2c55; }
+    .content { max-width: 1100px; margin: 0 auto; padding: 36px 28px 80px; }
+    .section { margin-bottom: 52px; }
+    .section-header { display: flex; align-items: baseline; gap: 10px; margin-bottom: 16px; }
+    .section-title { font-size: 19px; font-weight: 800; letter-spacing: -.4px; }
+    .section-badge {
+      font-size: 10.5px; font-weight: 600; color: #999; background: #ebebeb;
+      padding: 3px 8px; border-radius: 20px; text-transform: uppercase; letter-spacing: .4px;
+    }
+    @media (max-width: 768px) {
+      .header-inner { gap: 12px; padding: 12px 16px; }
+      .date-badge { display: none; }
+      .page-nav { padding: 0 16px; }
+      .content { padding: 24px 16px 60px; }
+    }
+
+
+    .idea-lead {
+      background: #fff; border-radius: 12px; padding: 36px 40px 32px;
+      box-shadow: 0 1px 4px rgba(0,0,0,.07), 0 0 0 1px rgba(0,0,0,.05);
+      margin-bottom: 40px;
+    }
+    .idea-hashtag { font-size: 13px; font-weight: 700; color: #fe2c55; margin-bottom: 8px; }
+    .idea-title { font-size: 26px; font-weight: 800; letter-spacing: -.6px; line-height: 1.25; margin-bottom: 16px; }
+    .idea-desc { font-size: 14px; color: #444; line-height: 1.75; max-width: 720px; }
+    .media-grid {
+      display: grid; grid-template-columns: auto 1fr; gap: 28px; align-items: start;
+    }
+    .video-multi {
+      display: flex; gap: 16px; flex-wrap: wrap; align-items: flex-start;
+    }
+    .video-item {
+      width: 200px; display: flex; flex-direction: column; gap: 8px; flex-shrink: 0;
+    }
+    .video-caption {
+      font-size: 11px; color: #999; line-height: 1.4; padding: 0 2px;
+    }
+    .video-player {
+      width: 100%; aspect-ratio: 9/16; object-fit: cover; border-radius: 12px;
+      display: block; box-shadow: 0 2px 16px rgba(0,0,0,.14);
+    }
+    .frame-img {
+      width: 100%; aspect-ratio: 9/16; object-fit: cover; border-radius: 12px;
+      display: block; box-shadow: 0 2px 16px rgba(0,0,0,.14);
+    }
+    .prompts-col { display: flex; flex-direction: column; gap: 12px; }
+    .prompt-block {
+      background: #fff; border-radius: 10px;
+      box-shadow: 0 1px 4px rgba(0,0,0,.07), 0 0 0 1px rgba(0,0,0,.05); overflow: hidden;
+    }
+    .prompt-block summary {
+      padding: 14px 18px; font-size: 13px; font-weight: 700; cursor: pointer;
+      user-select: none; list-style: none; display: flex; align-items: center; gap: 8px; color: #333;
+    }
+    .prompt-block summary::-webkit-details-marker { display: none; }
+    .prompt-block summary::before { content: '▶'; font-size: 8px; color: #bbb; transition: transform .15s; flex-shrink: 0; }
+    .prompt-block[open] summary::before { transform: rotate(90deg); }
+    .prompt-block summary:hover { color: #fe2c55; }
+    .prompt-block summary:hover::before { color: #fe2c55; }
+    .prompt-label { font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: .5px; color: #bbb; margin-left: auto; }
+    .prompt-text {
+      padding: 14px 18px 16px; font-family: 'SF Mono','Fira Code','Menlo',monospace;
+      font-size: 11.5px; line-height: 1.7; color: #555; background: #f9f9f9;
+      border-top: 1px solid #f0f0f0; white-space: pre-wrap; word-break: break-word;
+      max-height: 320px; overflow-y: auto;
+    }
+    @media (max-width: 900px) {
+      .media-grid { grid-template-columns: 1fr; }
+      .video-multi { justify-content: center; }
+      .idea-lead { padding: 24px 22px 22px; }
+    }
+    @media (max-width: 520px) { .idea-title { font-size: 22px; } }
+
+  </style>
+</head>
+<body>
+<div class="page-header">
+  <div class="header-inner">
+    <a class="brand" href="../../../">
+      <span class="brand-tik">Tik</span><span class="brand-tok">Tok</span>
+      <span class="brand-dot">·</span><span class="brand-cc">Video Ideas</span>
+    </a>
+    <div class="header-text">
+      <div class="page-title">#myspace</div>
+      <div class="page-sub">Видео-идея · 8 августа 2026 · Выпуск merged</div>
+    </div>
+    <div class="date-badge">08.08.2026<span>Дата · Выпуск merged</span></div>
+  </div>
+  <nav class="page-nav">
+    <a href="../../../" class="nav-a">← Все отчёты</a>
+    <a href="../../#us" class="nav-a">← 8 авг 2026 · Выпуск merged</a>
+    <a href="#" class="nav-a active">#myspace</a>
+  </nav>
+</div>
+<div class="content">
+  <div class="idea-lead">
+    <div class="idea-hashtag">#myspace</div>
+    <h1 class="idea-title">Три позы для нового профиля</h1>
+    <p class="idea-desc">Та же розово-леопардовая комната, тот же чокер и подводка — но вместо созерцательной реакции на оживший экран пользователь устраивает быстрый мини-кастинг «фото для нового профиля»: хватает телефон и в трёх стремительных позах примеряет разные выражения перед объективом, будто выбирая идеальный кадр для профиля, — сначала серьёзный «загадочный» взгляд через плечо, затем широкая улыбка с виктори-жестом у щеки, наконец капризная гримаса с высунутым языком. Между позами он на долю секунды опускает телефон, чтобы проверить кадр, и снова поднимает — камера дёргается вслед за этими быстрыми движениями рук. Никакого единого «вау»-момента нет: это каскад из трёх смен, снятый на одном дыхании.
+
+Визуальный якорь: та же розово-леопардовая комната с неоновым кроликом и леопардовым ковром на фоне — она остаётся узнаваемой на протяжении всего ролика, хотя в первые секунды в кадре крупно только лицо и телефон.</p>
+  </div>
+  <section class="section">
+    <div class="section-header">
+      <h2 class="section-title">Видео</h2>
+      <span class="section-badge">Пример генерации</span>
+    </div>
+    <div class="media-grid">
+      <div class="video-multi">
+        <div class="video-item"><video class="video-player" controls muted loop playsinline poster="https://temp-images.ws.pho.to/4aa3571923ad7a0eef9953118a40b05e8a100c6f.png"><source src="https://temp-images.ws.pho.to/67653f86e9d9f815c5b667a787cbe1b1b1d3fbcb.mp4" type="video/mp4"></video>
+          <div class="video-caption">man in his early 30s with short brown hair, blue eyes, and a short beard</div>
+        </div>
+        <div class="video-item"><video class="video-player" controls muted loop playsinline poster="https://temp-images.ws.pho.to/3e0fcc012870a6dded6d6e659016b629141f2bb1.png"><source src="https://temp-images.ws.pho.to/f03efab0822bfee26d3248780ac7b3449e86aa60.mp4" type="video/mp4"></video>
+          <div class="video-caption">woman in her late 30s with straight blonde shoulder-length hair and cat-eye glasses</div>
+        </div>
+      </div>
+      <div class="prompts-col">
+        <details class="prompt-block">
+          <summary>Промпт для первого кадра <span class="prompt-label">GPT Image 2</span></summary>
+          <pre class="prompt-text">Turn the photo of the person into a candid selfie-style portrait, vertical 9:16 composition, close chest-up framing with a phone held up near the lower edge of frame as if about to take a picture of themselves.
+
+Pose &amp; composition: the person holds a phone at arm&#x27;s length toward the camera, screen turned away, their own face angled in a first testing pose — chin slightly down, eyes glancing sideways over one shoulder in a deliberately moody, &quot;mysterious&quot; expression.
+
+Expression: a performed, faintly theatrical seriousness — the specific look of someone testing a pose rather than genuinely feeling it.
+
+Attire: the same pink-and-grey layered top, wide white belt, black choker, and heavy black eyeliner as established for this trend.
+
+Setting &amp; background: the same loud Y2K pink-and-leopard bedroom — leopard rug corner, pink-framed mirror, glowing neon-pink rabbit sign — all visible but softly out of focus behind the close framing.
+
+Lighting: the same mixed cool screen-glow-adjacent light and warm pink ambient bounce as before, now closer and slightly harsher as befits a selfie taken at arm&#x27;s length.
+
+Colour grading: the same saturated pink-and-leopard palette.
+
+Camera &amp; lens: 28mm at f/2.4, wider selfie-style perspective with natural slight distortion at the frame edge, fine grain.
+
+Skin texture: real skin, visible pores, eyeliner crisp and hand-applied, no smoothing.
+
+Identity preservation: keep the person&#x27;s identity exactly as in the source photo — same age, face shape and proportions, skin tone and undertone, eye shape and eye colour, eyebrow shape, nose and jawline, and the exact hairstyle including colour, parting, length and texture, plus any freckles, moles, scars or facial hair. Hands anatomically correct, five fingers, natural grip on the phone.
+
+Avoid: over-smoothed skin, pasted-face look, and no overlay graphics or captions of any kind — the phone&#x27;s own screen is turned away and not visible in this frame.</pre>
+        </details>
+        <details class="prompt-block">
+          <summary>Промпт для видео <span class="prompt-label">Kling · Grok</span></summary>
+          <pre class="prompt-text">Create a short cinematic video based on the uploaded image. Vertical 9:16.
+The same pink-and-leopard Y2K bedroom. The person from the image holds a phone at arm&#x27;s length, testing poses for a profile picture.
+
+Camera and motion structure:
+Handheld throughout, with a quick small jolt each time the phone is lowered and raised again — never locked-off. Three distinct posed beats, each happening once, no cuts.
+0:00–0:01: The person holds the &quot;mysterious&quot; over-the-shoulder glance, chin down, phone raised.
+0:01–0:02: They drop the phone slightly to check the shot, then snap back into a second pose — a wide grin with a peace sign held up near the cheek.
+0:02–0:03: They drop the phone again, then pop into a third pose — a playful pout with tongue slightly out, eyebrows raised.
+0:03–0:05: They lower the phone fully, look at the imagined result, and give one satisfied, silent laugh with a small approving nod — the nod settling into stillness is the ending.
+
+Character:
+Preserve the person&#x27;s face, hair, skin tone and identity exactly from the source image throughout. Allowed motion: the three named poses, the two phone-lowering checks between them, and the final nod and laugh — nothing else.
+
+Style:
+Quick, playful, self-aware — a mini profile-picture casting session shot like a real phone-in-hand selfie session, not a produced shoot.
+
+Restrictions:
+- Do not change the person&#x27;s appearance, face, clothing, or identity at any point
+- The person stays in frame, recognizable and the visual focus for the whole video
+- The person never speaks, sings or mouths words — the laugh is silent, emotional reaction only
+- No speech bubbles
+- No on-screen text or graphics of any kind — the phone&#x27;s screen is never shown facing the camera and never carries visible UI or lettering
+- Exactly 3 poses are struck in total — no more, no fewer — each happening only once, with no resets or repeats
+- No improvisation beyond the three named poses and the two checks between them — no extra poses, no additional gestures
+- No violent or aggressive motion of any kind</pre>
+        </details>
+      </div>
+    </div>
+  </section>
+</div>
+</body>
+</html>

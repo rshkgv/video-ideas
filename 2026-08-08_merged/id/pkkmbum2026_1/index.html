@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>#pkkmbum2026 — Приветствие у статуи · Video Ideas</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      background: #f4f4f5; color: #111; font-size: 14px; line-height: 1.5;
+    }
+    .page-header {
+      background: #fff; border-bottom: 1px solid #e4e4e7; position: sticky;
+      top: 0; z-index: 100; box-shadow: 0 1px 8px rgba(0,0,0,.05);
+    }
+    .header-inner {
+      max-width: 1100px; margin: 0 auto; padding: 14px 28px;
+      display: flex; align-items: center; gap: 20px;
+    }
+    .brand {
+      font-size: 18px; font-weight: 800; letter-spacing: -.5px; color: #111;
+      white-space: nowrap; user-select: none; text-decoration: none;
+    }
+    .brand-tik { color: #fe2c55; }
+    .brand-tok { color: #010101; }
+    .brand-dot { color: #d1d1d1; margin: 0 6px; font-weight: 300; }
+    .brand-cc  { color: #888; font-size: 12px; font-weight: 500; }
+    .header-text { flex: 1; min-width: 0; }
+    .page-title {
+      font-size: 15px; font-weight: 700; letter-spacing: -.2px;
+      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    }
+    .page-sub { font-size: 11.5px; color: #999; margin-top: 2px; }
+    .date-badge {
+      background: #fe2c55; color: #fff; font-weight: 700; font-size: 12px;
+      border-radius: 8px; padding: 6px 14px; line-height: 1.4;
+      text-align: center; white-space: nowrap; flex-shrink: 0;
+    }
+    .date-badge span { display: block; font-size: 10px; font-weight: 500; opacity: .8; }
+    .page-nav {
+      max-width: 1100px; margin: 0 auto; padding: 0 28px;
+      display: flex; gap: 2px; border-top: 1px solid #f0f0f0;
+    }
+    .nav-a {
+      text-decoration: none; color: #999; font-size: 12.5px; font-weight: 500;
+      padding: 9px 14px; border-bottom: 2px solid transparent;
+      transition: color .15s, border-color .15s;
+    }
+    .nav-a:hover { color: #fe2c55; }
+    .nav-a.active { color: #fe2c55; border-bottom-color: #fe2c55; }
+    .content { max-width: 1100px; margin: 0 auto; padding: 36px 28px 80px; }
+    .section { margin-bottom: 52px; }
+    .section-header { display: flex; align-items: baseline; gap: 10px; margin-bottom: 16px; }
+    .section-title { font-size: 19px; font-weight: 800; letter-spacing: -.4px; }
+    .section-badge {
+      font-size: 10.5px; font-weight: 600; color: #999; background: #ebebeb;
+      padding: 3px 8px; border-radius: 20px; text-transform: uppercase; letter-spacing: .4px;
+    }
+    @media (max-width: 768px) {
+      .header-inner { gap: 12px; padding: 12px 16px; }
+      .date-badge { display: none; }
+      .page-nav { padding: 0 16px; }
+      .content { padding: 24px 16px 60px; }
+    }
+
+
+    .idea-lead {
+      background: #fff; border-radius: 12px; padding: 36px 40px 32px;
+      box-shadow: 0 1px 4px rgba(0,0,0,.07), 0 0 0 1px rgba(0,0,0,.05);
+      margin-bottom: 40px;
+    }
+    .idea-hashtag { font-size: 13px; font-weight: 700; color: #fe2c55; margin-bottom: 8px; }
+    .idea-title { font-size: 26px; font-weight: 800; letter-spacing: -.6px; line-height: 1.25; margin-bottom: 16px; }
+    .idea-desc { font-size: 14px; color: #444; line-height: 1.75; max-width: 720px; }
+    .media-grid {
+      display: grid; grid-template-columns: auto 1fr; gap: 28px; align-items: start;
+    }
+    .video-multi {
+      display: flex; gap: 16px; flex-wrap: wrap; align-items: flex-start;
+    }
+    .video-item {
+      width: 200px; display: flex; flex-direction: column; gap: 8px; flex-shrink: 0;
+    }
+    .video-caption {
+      font-size: 11px; color: #999; line-height: 1.4; padding: 0 2px;
+    }
+    .video-player {
+      width: 100%; aspect-ratio: 9/16; object-fit: cover; border-radius: 12px;
+      display: block; box-shadow: 0 2px 16px rgba(0,0,0,.14);
+    }
+    .frame-img {
+      width: 100%; aspect-ratio: 9/16; object-fit: cover; border-radius: 12px;
+      display: block; box-shadow: 0 2px 16px rgba(0,0,0,.14);
+    }
+    .prompts-col { display: flex; flex-direction: column; gap: 12px; }
+    .prompt-block {
+      background: #fff; border-radius: 10px;
+      box-shadow: 0 1px 4px rgba(0,0,0,.07), 0 0 0 1px rgba(0,0,0,.05); overflow: hidden;
+    }
+    .prompt-block summary {
+      padding: 14px 18px; font-size: 13px; font-weight: 700; cursor: pointer;
+      user-select: none; list-style: none; display: flex; align-items: center; gap: 8px; color: #333;
+    }
+    .prompt-block summary::-webkit-details-marker { display: none; }
+    .prompt-block summary::before { content: '▶'; font-size: 8px; color: #bbb; transition: transform .15s; flex-shrink: 0; }
+    .prompt-block[open] summary::before { transform: rotate(90deg); }
+    .prompt-block summary:hover { color: #fe2c55; }
+    .prompt-block summary:hover::before { color: #fe2c55; }
+    .prompt-label { font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: .5px; color: #bbb; margin-left: auto; }
+    .prompt-text {
+      padding: 14px 18px 16px; font-family: 'SF Mono','Fira Code','Menlo',monospace;
+      font-size: 11.5px; line-height: 1.7; color: #555; background: #f9f9f9;
+      border-top: 1px solid #f0f0f0; white-space: pre-wrap; word-break: break-word;
+      max-height: 320px; overflow-y: auto;
+    }
+    @media (max-width: 900px) {
+      .media-grid { grid-template-columns: 1fr; }
+      .video-multi { justify-content: center; }
+      .idea-lead { padding: 24px 22px 22px; }
+    }
+    @media (max-width: 520px) { .idea-title { font-size: 22px; } }
+
+  </style>
+</head>
+<body>
+<div class="page-header">
+  <div class="header-inner">
+    <a class="brand" href="../../../">
+      <span class="brand-tik">Tik</span><span class="brand-tok">Tok</span>
+      <span class="brand-dot">·</span><span class="brand-cc">Video Ideas</span>
+    </a>
+    <div class="header-text">
+      <div class="page-title">#pkkmbum2026</div>
+      <div class="page-sub">Видео-идея · 8 августа 2026 · Выпуск merged</div>
+    </div>
+    <div class="date-badge">08.08.2026<span>Дата · Выпуск merged</span></div>
+  </div>
+  <nav class="page-nav">
+    <a href="../../../" class="nav-a">← Все отчёты</a>
+    <a href="../../#id" class="nav-a">← 8 авг 2026 · Выпуск merged</a>
+    <a href="#" class="nav-a active">#pkkmbum2026</a>
+  </nav>
+</div>
+<div class="content">
+  <div class="idea-lead">
+    <div class="idea-hashtag">#pkkmbum2026</div>
+    <h1 class="idea-title">Приветствие у статуи</h1>
+    <p class="idea-desc">Пользователь в тёмно-синем деловом пиджаке стоит на открытой площади у бронзовой статуи в Блитаре — одной из точек реального роадшоу-тренда — с маленьким войлочным талисманом-пингвином PKKMB UM, усаженным на постамент статуи рядом с ним. Камера статична, план от пояса, статуя и пингвин-талисман хорошо видны в кадре. Он проходит ту же связку, что и в реальных видео тренда: хлопок в ладони, затем оба локтя выпрямляются, руки взлетают над головой в приветственном взмахе. На самом пике взмаха его поза оседает чуть тяжелее и увереннее — вес переходит на обе стопы, плечи расправляются, — и именно эта перемена в осанке, а не сам взмах, читается как финальная точка.
+
+Визуальный якорь: открытая площадь с бронзовой статуей в Блитаре, деловой пиджак пользователя, войлочный талисман-пингвин PKKMB UM на постаменте, приветственный хлопок и взмах руками над головой.</p>
+  </div>
+  <section class="section">
+    <div class="section-header">
+      <h2 class="section-title">Видео</h2>
+      <span class="section-badge">Пример генерации</span>
+    </div>
+    <div class="media-grid">
+      <div class="video-multi">
+        <div class="video-item"><video class="video-player" controls muted loop playsinline poster="https://temp-images.ws.pho.to/ae35f085564adb60f1c9ea578b7a689e6affcbe2.png"><source src="https://temp-images.ws.pho.to/03c3823f61a2ae56948192a4eba8030adfc426a7.mp4" type="video/mp4"></video>
+          <div class="video-caption">man in his early 30s with short brown hair, blue eyes, and a short beard</div>
+        </div>
+        <div class="video-item"><video class="video-player" controls muted loop playsinline poster="https://temp-images.ws.pho.to/d045a03f9488e9c779fd8b0bdddde623a719ba59.png"><source src="https://temp-images.ws.pho.to/7a9077173b995fae00b8ee2d625e2152dfae7428.mp4" type="video/mp4"></video>
+          <div class="video-caption">woman in her late 30s with straight blonde shoulder-length hair and cat-eye glasses</div>
+        </div>
+      </div>
+      <div class="prompts-col">
+        <details class="prompt-block">
+          <summary>Промпт для первого кадра <span class="prompt-label">GPT Image 2</span></summary>
+          <pre class="prompt-text">Turn the photo of the person into a portrait of them standing on an open stone plaza beside a large bronze statue, mid-way through an energetic greeting gesture — vertical 9:16 composition, waist-up framing, the person centred and their face clearly legible, the statue&#x27;s base and a small felt penguin mascot figure visible in the lower part of the frame beside them.
+
+Pose &amp; composition: they stand with both hands brought together at chest height as if just having clapped, weight balanced, body angled slightly toward camera, energetic and mid-motion rather than posed still.
+
+Expression: bright, cheerful confidence — a wide open smile, eyes forward and engaged, the look of someone performing an upbeat welcome routine for a camera.
+
+Attire: a dark blue business blazer over a white shirt and black trousers, neat and formal but clearly worn for an outdoor performance.
+
+Setting &amp; background: an open stone plaza beneath an overcast sky, a large weathered bronze statue rising behind and beside the person, its base at their shoulder height. A small, palm-sized felt penguin mascot doll, matching the university orientation event&#x27;s own mascot design, sits perched on the statue&#x27;s stone base near the person&#x27;s hip, clearly visible and in focus.
+
+Lighting: soft, even overcast daylight, no harsh shadows, natural and slightly cool in tone.
+
+Colour grading: naturalistic outdoor tones — grey stone, weathered bronze-green statue patina, the blazer&#x27;s dark blue as the strongest colour note, with a small warm accent from the felt penguin&#x27;s orange details.
+
+Materials &amp; texture: the statue reads as real aged bronze with visible patina and weathering; the felt penguin mascot has a soft, matte, slightly fuzzy felt texture, clearly a handmade plush object rather than a graphic.
+
+Camera &amp; lens: consistent with a static tripod-mounted phone camera at a short distance, natural depth of field.
+
+Skin texture: keep real skin — visible pores, natural unevenness, no smoothing or retouching.
+
+Identity preservation: keep the person&#x27;s identity exactly as in the source photo — same age, face shape and proportions, skin tone and undertone, eye shape and eye colour, eyebrow shape, nose and jawline, and the exact hairstyle including colour, parting, length and texture, plus any freckles, moles, scars, facial hair or glasses. Hands must be anatomically correct: five fingers each, natural proportion, palms together as if just clapped.
+
+Avoid: over-smoothed skin, a pasted-face or cutout look, and no overlay graphics or captions of any kind.</pre>
+        </details>
+        <details class="prompt-block">
+          <summary>Промпт для видео <span class="prompt-label">Kling · Grok</span></summary>
+          <pre class="prompt-text">Create a short cinematic video based on the uploaded image. Vertical 9:16.
+The person from the image performs a greeting dance routine on an open stone plaza beside a large bronze statue, a small felt penguin mascot perched on the statue&#x27;s base beside them.
+
+Camera and motion structure:
+Keep the overall shot locked-off and static — no zoom, no pan, no camera movement of any kind.
+FRAMES 0–30%: The person claps their hands together once, then again, in a bright rhythmic greeting.
+FRAMES 30–65%: They extend both arms outward wide to the sides in a welcoming gesture, then bring them back in.
+FRAMES 65–90%: On the routine&#x27;s final beat, both arms shoot straight up overhead in a triumphant wave, palms open toward the sky.
+FRAMES 90–100%: As the arms come back down to rest, their whole stance settles — feet planting a little wider and more firmly, shoulders drawing back and down, weight sinking evenly onto both feet. That settled, grounded posture, held still at the end, is the ending — no further motion.
+
+Character:
+Preserve the person&#x27;s face, hair, skin tone, and identity exactly from the source image throughout the entire video. Do not alter their appearance. Allowed motion: the two claps, the wide arm-open gesture, the overhead wave, and the final settling of stance. No other gestures.
+
+Key visual events:
+The hero moment is the overhead wave with both arms fully raised — this must be clearly and unmistakably visible, arms fully extended, not partially raised.
+Exactly two claps occur at the start — no more, no fewer.
+
+Style:
+Bright, upbeat outdoor promotional-roadshow style — soft overcast natural light, confident and cheerful energy, a little comedic in the mascot&#x27;s small scale beside the large statue. Adventurous, on-location energy.
+
+Restrictions:
+- Do not change the person&#x27;s appearance, face, clothing, or identity at any point
+- The person stays in frame, recognizable and the visual focus for the whole video
+- The person never speaks, sings or mouths words — silent, energetic performance only
+- No speech bubbles
+- No on-screen text, captions, or graphics of any kind anywhere in the video
+- The felt penguin mascot stays perched motionless on the statue&#x27;s base throughout — it does not move, animate, or fall
+- Exactly two claps at the start and exactly one overhead wave at the end — no repeats
+- No additional gestures, actions, or beats beyond those explicitly described above
+- No extra people added to the frame</pre>
+        </details>
+      </div>
+    </div>
+  </section>
+</div>
+</body>
+</html>

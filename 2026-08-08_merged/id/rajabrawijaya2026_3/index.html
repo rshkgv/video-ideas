@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>#rajabrawijaya2026 — Отражение уже спокойно · Video Ideas</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      background: #f4f4f5; color: #111; font-size: 14px; line-height: 1.5;
+    }
+    .page-header {
+      background: #fff; border-bottom: 1px solid #e4e4e7; position: sticky;
+      top: 0; z-index: 100; box-shadow: 0 1px 8px rgba(0,0,0,.05);
+    }
+    .header-inner {
+      max-width: 1100px; margin: 0 auto; padding: 14px 28px;
+      display: flex; align-items: center; gap: 20px;
+    }
+    .brand {
+      font-size: 18px; font-weight: 800; letter-spacing: -.5px; color: #111;
+      white-space: nowrap; user-select: none; text-decoration: none;
+    }
+    .brand-tik { color: #fe2c55; }
+    .brand-tok { color: #010101; }
+    .brand-dot { color: #d1d1d1; margin: 0 6px; font-weight: 300; }
+    .brand-cc  { color: #888; font-size: 12px; font-weight: 500; }
+    .header-text { flex: 1; min-width: 0; }
+    .page-title {
+      font-size: 15px; font-weight: 700; letter-spacing: -.2px;
+      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    }
+    .page-sub { font-size: 11.5px; color: #999; margin-top: 2px; }
+    .date-badge {
+      background: #fe2c55; color: #fff; font-weight: 700; font-size: 12px;
+      border-radius: 8px; padding: 6px 14px; line-height: 1.4;
+      text-align: center; white-space: nowrap; flex-shrink: 0;
+    }
+    .date-badge span { display: block; font-size: 10px; font-weight: 500; opacity: .8; }
+    .page-nav {
+      max-width: 1100px; margin: 0 auto; padding: 0 28px;
+      display: flex; gap: 2px; border-top: 1px solid #f0f0f0;
+    }
+    .nav-a {
+      text-decoration: none; color: #999; font-size: 12.5px; font-weight: 500;
+      padding: 9px 14px; border-bottom: 2px solid transparent;
+      transition: color .15s, border-color .15s;
+    }
+    .nav-a:hover { color: #fe2c55; }
+    .nav-a.active { color: #fe2c55; border-bottom-color: #fe2c55; }
+    .content { max-width: 1100px; margin: 0 auto; padding: 36px 28px 80px; }
+    .section { margin-bottom: 52px; }
+    .section-header { display: flex; align-items: baseline; gap: 10px; margin-bottom: 16px; }
+    .section-title { font-size: 19px; font-weight: 800; letter-spacing: -.4px; }
+    .section-badge {
+      font-size: 10.5px; font-weight: 600; color: #999; background: #ebebeb;
+      padding: 3px 8px; border-radius: 20px; text-transform: uppercase; letter-spacing: .4px;
+    }
+    @media (max-width: 768px) {
+      .header-inner { gap: 12px; padding: 12px 16px; }
+      .date-badge { display: none; }
+      .page-nav { padding: 0 16px; }
+      .content { padding: 24px 16px 60px; }
+    }
+
+
+    .idea-lead {
+      background: #fff; border-radius: 12px; padding: 36px 40px 32px;
+      box-shadow: 0 1px 4px rgba(0,0,0,.07), 0 0 0 1px rgba(0,0,0,.05);
+      margin-bottom: 40px;
+    }
+    .idea-hashtag { font-size: 13px; font-weight: 700; color: #fe2c55; margin-bottom: 8px; }
+    .idea-title { font-size: 26px; font-weight: 800; letter-spacing: -.6px; line-height: 1.25; margin-bottom: 16px; }
+    .idea-desc { font-size: 14px; color: #444; line-height: 1.75; max-width: 720px; }
+    .media-grid {
+      display: grid; grid-template-columns: auto 1fr; gap: 28px; align-items: start;
+    }
+    .video-multi {
+      display: flex; gap: 16px; flex-wrap: wrap; align-items: flex-start;
+    }
+    .video-item {
+      width: 200px; display: flex; flex-direction: column; gap: 8px; flex-shrink: 0;
+    }
+    .video-caption {
+      font-size: 11px; color: #999; line-height: 1.4; padding: 0 2px;
+    }
+    .video-player {
+      width: 100%; aspect-ratio: 9/16; object-fit: cover; border-radius: 12px;
+      display: block; box-shadow: 0 2px 16px rgba(0,0,0,.14);
+    }
+    .frame-img {
+      width: 100%; aspect-ratio: 9/16; object-fit: cover; border-radius: 12px;
+      display: block; box-shadow: 0 2px 16px rgba(0,0,0,.14);
+    }
+    .prompts-col { display: flex; flex-direction: column; gap: 12px; }
+    .prompt-block {
+      background: #fff; border-radius: 10px;
+      box-shadow: 0 1px 4px rgba(0,0,0,.07), 0 0 0 1px rgba(0,0,0,.05); overflow: hidden;
+    }
+    .prompt-block summary {
+      padding: 14px 18px; font-size: 13px; font-weight: 700; cursor: pointer;
+      user-select: none; list-style: none; display: flex; align-items: center; gap: 8px; color: #333;
+    }
+    .prompt-block summary::-webkit-details-marker { display: none; }
+    .prompt-block summary::before { content: '▶'; font-size: 8px; color: #bbb; transition: transform .15s; flex-shrink: 0; }
+    .prompt-block[open] summary::before { transform: rotate(90deg); }
+    .prompt-block summary:hover { color: #fe2c55; }
+    .prompt-block summary:hover::before { color: #fe2c55; }
+    .prompt-label { font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: .5px; color: #bbb; margin-left: auto; }
+    .prompt-text {
+      padding: 14px 18px 16px; font-family: 'SF Mono','Fira Code','Menlo',monospace;
+      font-size: 11.5px; line-height: 1.7; color: #555; background: #f9f9f9;
+      border-top: 1px solid #f0f0f0; white-space: pre-wrap; word-break: break-word;
+      max-height: 320px; overflow-y: auto;
+    }
+    @media (max-width: 900px) {
+      .media-grid { grid-template-columns: 1fr; }
+      .video-multi { justify-content: center; }
+      .idea-lead { padding: 24px 22px 22px; }
+    }
+    @media (max-width: 520px) { .idea-title { font-size: 22px; } }
+
+  </style>
+</head>
+<body>
+<div class="page-header">
+  <div class="header-inner">
+    <a class="brand" href="../../../">
+      <span class="brand-tik">Tik</span><span class="brand-tok">Tok</span>
+      <span class="brand-dot">·</span><span class="brand-cc">Video Ideas</span>
+    </a>
+    <div class="header-text">
+      <div class="page-title">#rajabrawijaya2026</div>
+      <div class="page-sub">Видео-идея · 8 августа 2026 · Выпуск merged</div>
+    </div>
+    <div class="date-badge">08.08.2026<span>Дата · Выпуск merged</span></div>
+  </div>
+  <nav class="page-nav">
+    <a href="../../../" class="nav-a">← Все отчёты</a>
+    <a href="../../#id" class="nav-a">← 8 авг 2026 · Выпуск merged</a>
+    <a href="#" class="nav-a active">#rajabrawijaya2026</a>
+  </nav>
+</div>
+<div class="content">
+  <div class="idea-lead">
+    <div class="idea-hashtag">#rajabrawijaya2026</div>
+    <h1 class="idea-title">Отражение уже спокойно</h1>
+    <p class="idea-desc">Танец перед ректоратом в реальных видео тренда — это пик, короткая вспышка после которой наступают обычные студенческие будни. Здесь оба состояния показаны одновременно, в одном кадре. На мокрой после дождя плитке площади перед ректоратом — чёрно-золотая вывеска отражается в луже — пользователь, фотореалистичный, танцует ту же синхронную связку, полный энергии, пиджак ярок и подвижен. Но в самой луже, в отражении, всё уже закончилось: там же на плитке отражённая фигура давно стоит спокойно, без движения, будто танец в отражении случился и прошёл раньше, чем наверху. Постепенная камера медленно отъезжает назад, удерживая в одном кадре и живого танцующего пользователя, и его неподвижное отражение — и к последнему кадру движение наверху само угасает, повторяя ту же спокойную неподвижность, что все это время уже была в луже.
+
+Связь с трендом: сам танец у ректората в реальных видео — короткий пик, за которым возвращаются обычные будни; здесь эта переходность буквально показана как разница между танцующим человеком и его уже успокоившимся отражением в одной луже.</p>
+  </div>
+  <section class="section">
+    <div class="section-header">
+      <h2 class="section-title">Видео</h2>
+      <span class="section-badge">Пример генерации</span>
+    </div>
+    <div class="media-grid">
+      <div class="video-multi">
+        <div class="video-item"><video class="video-player" controls muted loop playsinline poster="https://temp-images.ws.pho.to/030bc5fb61ecbaac4714b7d75b242b54b5f84695.png"><source src="https://temp-images.ws.pho.to/2dd5cb19f3c37632fd739b1171ed65ebba1dfdd0.mp4" type="video/mp4"></video>
+          <div class="video-caption">woman in her late 30s with straight blonde shoulder-length hair and cat-eye glasses</div>
+        </div>
+        <div class="video-item"><video class="video-player" controls muted loop playsinline poster="https://temp-images.ws.pho.to/e6899acaa76d1f09537faa313af2e43cf5423525.png"><source src="https://temp-images.ws.pho.to/6bc9e85841752bcf2105fad2cf8303b3f15bb93f.mp4" type="video/mp4"></video>
+          <div class="video-caption">man in his early 30s with short brown hair, blue eyes, and a short beard</div>
+        </div>
+      </div>
+      <div class="prompts-col">
+        <details class="prompt-block">
+          <summary>Промпт для первого кадра <span class="prompt-label">GPT Image 2</span></summary>
+          <pre class="prompt-text">Turn the photo of the person into a portrait of them dancing on a rain-wet stone plaza in front of a university building with a black-and-gold sign, their reflection visible in a large puddle at their feet — vertical 9:16 composition, waist-up-to-full framing wide enough to include both the person and the puddle reflection at the bottom of frame, the face still large and clearly legible.
+
+Pose &amp; composition: the person stands mid-dance, one arm raised and body turned in an energetic pose, feet planted on wet stone paving; directly below them, a broad, still puddle holds a clear reflection of the black-and-gold sign and the building — and, within it, a reflected figure of the same person standing perfectly upright and motionless, arms at their sides, unlike the live pose above.
+
+Expression: bright, energetic joy on the real person&#x27;s face above; the reflected figure&#x27;s face, faint and rippled in the water, reads as calm and unreadable — not sad, simply still.
+
+Attire: a blue blazer over a white shirt and light-coloured trousers, matching the real ambassador dance uniform, both in the real figure and, more softly rendered, in the reflection.
+
+Setting &amp; background: an open stone plaza after rain, its patterned paving darkened and glossy with water, the university building&#x27;s black-and-gold entrance sign rising behind the person, everything doubled faintly in the large puddle below.
+
+Lighting: soft, even daylight just after rain, slightly overcast, with the wet stone and puddle adding extra reflected highlights.
+
+Colour grading: naturalistic outdoor tones, slightly cooler and more muted than full sun, the black-and-gold sign and its gold reflection the brightest accents.
+
+Materials &amp; texture: the wet stone paving shows real specular sheen; the puddle&#x27;s reflection is slightly rippled and softened rather than a perfect mirror, giving the reflected figure a gently blurred, dreamlike edge.
+
+Camera &amp; lens: 35mm equivalent, natural depth of field keeping both the person and the puddle reflection reasonably sharp.
+
+Skin texture: keep real skin — visible pores, natural unevenness, no smoothing or retouching.
+
+Identity preservation: keep the person&#x27;s identity exactly as in the source photo — same age, face shape and proportions, skin tone and undertone, eye shape and eye colour, eyebrow shape, nose and jawline, and the exact hairstyle including colour, parting, length and texture, plus any freckles, moles, scars, facial hair, glasses or hijab, for the real figure; the reflected figure may be softer and rippled but must still clearly be the same person&#x27;s silhouette. Hands must be anatomically correct: five fingers each, natural proportion.
+
+Avoid: over-smoothed skin, a pasted-face or cutout look, a reflection so sharp it reads as a second real person rather than water, and no overlay graphics or captions of any kind.</pre>
+        </details>
+        <details class="prompt-block">
+          <summary>Промпт для видео <span class="prompt-label">Kling · Grok</span></summary>
+          <pre class="prompt-text">Create a short cinematic video based on the uploaded image. Vertical 9:16.
+The person from the image dances energetically on a rain-wet plaza in front of a university building, their still, motionless reflection visible in a large puddle at their feet throughout.
+
+Camera and motion structure:
+One continuous slow pull-back. No cuts, no reveal beat, no reframing.
+FRAMES 0–70%: The person dances the synchronized routine&#x27;s rhythmic arm and leg movements, full of energy and motion. In the puddle below, their reflection stays perfectly still throughout this whole span, upright and motionless, never matching the real motion above it. The camera pulls back slowly, keeping both the live dancer and the still reflection in frame together.
+FRAMES 70–100%: The person&#x27;s own motion gradually slows and settles, movement by movement, until they too come to a complete, quiet stop — matching, at last, the same stillness their reflection held the entire time. The camera settles as they do. The video ends on both figures, real and reflected, equally still.
+
+Character:
+Preserve the person&#x27;s face, hair, skin tone and identity exactly from the source image for the real figure throughout; the reflection stays a softer, rippled likeness of the same person. The real figure&#x27;s only motion is the dance routine gradually slowing to a stop; the reflection never moves at all.
+
+Style:
+Quiet, melancholic, cinematic — soft post-rain daylight, wet stone reflections, a contemplative pull-back rather than a triumphant hold. Bittersweet rather than celebratory.
+
+Restrictions:
+- No identity changes to the person&#x27;s face, hair, skin tone or clothing at any point, in either the real figure or the reflection
+- The person stays in frame, recognizable and the visual focus for the whole video — the pull-back stops while their face is still clearly legible
+- The person never speaks, sings, or mouths words — silent physical motion only
+- No speech bubbles
+- The reflection in the puddle must stay completely motionless throughout the entire video, regardless of how much the real figure above moves — it never dances, ripples into motion, or mirrors the real figure&#x27;s gestures
+- No on-screen text, captions, wordmarks or graphics of any kind anywhere in the video
+- No additional gestures, actions, or beats beyond the described slowing-to-a-stop
+- No extra people in the frame, in either the real scene or the reflection</pre>
+        </details>
+      </div>
+    </div>
+  </section>
+</div>
+</body>
+</html>

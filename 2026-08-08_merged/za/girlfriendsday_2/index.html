@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>#girlfriendsday — Букет делится собой · Video Ideas</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      background: #f4f4f5; color: #111; font-size: 14px; line-height: 1.5;
+    }
+    .page-header {
+      background: #fff; border-bottom: 1px solid #e4e4e7; position: sticky;
+      top: 0; z-index: 100; box-shadow: 0 1px 8px rgba(0,0,0,.05);
+    }
+    .header-inner {
+      max-width: 1100px; margin: 0 auto; padding: 14px 28px;
+      display: flex; align-items: center; gap: 20px;
+    }
+    .brand {
+      font-size: 18px; font-weight: 800; letter-spacing: -.5px; color: #111;
+      white-space: nowrap; user-select: none; text-decoration: none;
+    }
+    .brand-tik { color: #fe2c55; }
+    .brand-tok { color: #010101; }
+    .brand-dot { color: #d1d1d1; margin: 0 6px; font-weight: 300; }
+    .brand-cc  { color: #888; font-size: 12px; font-weight: 500; }
+    .header-text { flex: 1; min-width: 0; }
+    .page-title {
+      font-size: 15px; font-weight: 700; letter-spacing: -.2px;
+      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    }
+    .page-sub { font-size: 11.5px; color: #999; margin-top: 2px; }
+    .date-badge {
+      background: #fe2c55; color: #fff; font-weight: 700; font-size: 12px;
+      border-radius: 8px; padding: 6px 14px; line-height: 1.4;
+      text-align: center; white-space: nowrap; flex-shrink: 0;
+    }
+    .date-badge span { display: block; font-size: 10px; font-weight: 500; opacity: .8; }
+    .page-nav {
+      max-width: 1100px; margin: 0 auto; padding: 0 28px;
+      display: flex; gap: 2px; border-top: 1px solid #f0f0f0;
+    }
+    .nav-a {
+      text-decoration: none; color: #999; font-size: 12.5px; font-weight: 500;
+      padding: 9px 14px; border-bottom: 2px solid transparent;
+      transition: color .15s, border-color .15s;
+    }
+    .nav-a:hover { color: #fe2c55; }
+    .nav-a.active { color: #fe2c55; border-bottom-color: #fe2c55; }
+    .content { max-width: 1100px; margin: 0 auto; padding: 36px 28px 80px; }
+    .section { margin-bottom: 52px; }
+    .section-header { display: flex; align-items: baseline; gap: 10px; margin-bottom: 16px; }
+    .section-title { font-size: 19px; font-weight: 800; letter-spacing: -.4px; }
+    .section-badge {
+      font-size: 10.5px; font-weight: 600; color: #999; background: #ebebeb;
+      padding: 3px 8px; border-radius: 20px; text-transform: uppercase; letter-spacing: .4px;
+    }
+    @media (max-width: 768px) {
+      .header-inner { gap: 12px; padding: 12px 16px; }
+      .date-badge { display: none; }
+      .page-nav { padding: 0 16px; }
+      .content { padding: 24px 16px 60px; }
+    }
+
+
+    .idea-lead {
+      background: #fff; border-radius: 12px; padding: 36px 40px 32px;
+      box-shadow: 0 1px 4px rgba(0,0,0,.07), 0 0 0 1px rgba(0,0,0,.05);
+      margin-bottom: 40px;
+    }
+    .idea-hashtag { font-size: 13px; font-weight: 700; color: #fe2c55; margin-bottom: 8px; }
+    .idea-title { font-size: 26px; font-weight: 800; letter-spacing: -.6px; line-height: 1.25; margin-bottom: 16px; }
+    .idea-desc { font-size: 14px; color: #444; line-height: 1.75; max-width: 720px; }
+    .media-grid {
+      display: grid; grid-template-columns: auto 1fr; gap: 28px; align-items: start;
+    }
+    .video-multi {
+      display: flex; gap: 16px; flex-wrap: wrap; align-items: flex-start;
+    }
+    .video-item {
+      width: 200px; display: flex; flex-direction: column; gap: 8px; flex-shrink: 0;
+    }
+    .video-caption {
+      font-size: 11px; color: #999; line-height: 1.4; padding: 0 2px;
+    }
+    .video-player {
+      width: 100%; aspect-ratio: 9/16; object-fit: cover; border-radius: 12px;
+      display: block; box-shadow: 0 2px 16px rgba(0,0,0,.14);
+    }
+    .frame-img {
+      width: 100%; aspect-ratio: 9/16; object-fit: cover; border-radius: 12px;
+      display: block; box-shadow: 0 2px 16px rgba(0,0,0,.14);
+    }
+    .prompts-col { display: flex; flex-direction: column; gap: 12px; }
+    .prompt-block {
+      background: #fff; border-radius: 10px;
+      box-shadow: 0 1px 4px rgba(0,0,0,.07), 0 0 0 1px rgba(0,0,0,.05); overflow: hidden;
+    }
+    .prompt-block summary {
+      padding: 14px 18px; font-size: 13px; font-weight: 700; cursor: pointer;
+      user-select: none; list-style: none; display: flex; align-items: center; gap: 8px; color: #333;
+    }
+    .prompt-block summary::-webkit-details-marker { display: none; }
+    .prompt-block summary::before { content: '▶'; font-size: 8px; color: #bbb; transition: transform .15s; flex-shrink: 0; }
+    .prompt-block[open] summary::before { transform: rotate(90deg); }
+    .prompt-block summary:hover { color: #fe2c55; }
+    .prompt-block summary:hover::before { color: #fe2c55; }
+    .prompt-label { font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: .5px; color: #bbb; margin-left: auto; }
+    .prompt-text {
+      padding: 14px 18px 16px; font-family: 'SF Mono','Fira Code','Menlo',monospace;
+      font-size: 11.5px; line-height: 1.7; color: #555; background: #f9f9f9;
+      border-top: 1px solid #f0f0f0; white-space: pre-wrap; word-break: break-word;
+      max-height: 320px; overflow-y: auto;
+    }
+    @media (max-width: 900px) {
+      .media-grid { grid-template-columns: 1fr; }
+      .video-multi { justify-content: center; }
+      .idea-lead { padding: 24px 22px 22px; }
+    }
+    @media (max-width: 520px) { .idea-title { font-size: 22px; } }
+
+  </style>
+</head>
+<body>
+<div class="page-header">
+  <div class="header-inner">
+    <a class="brand" href="../../../">
+      <span class="brand-tik">Tik</span><span class="brand-tok">Tok</span>
+      <span class="brand-dot">·</span><span class="brand-cc">Video Ideas</span>
+    </a>
+    <div class="header-text">
+      <div class="page-title">#girlfriendsday</div>
+      <div class="page-sub">Видео-идея · 8 августа 2026 · Выпуск merged</div>
+    </div>
+    <div class="date-badge">08.08.2026<span>Дата · Выпуск merged</span></div>
+  </div>
+  <nav class="page-nav">
+    <a href="../../../" class="nav-a">← Все отчёты</a>
+    <a href="../../#za" class="nav-a">← 8 авг 2026 · Выпуск merged</a>
+    <a href="#" class="nav-a active">#girlfriendsday</a>
+  </nav>
+</div>
+<div class="content">
+  <div class="idea-lead">
+    <div class="idea-hashtag">#girlfriendsday</div>
+    <h1 class="idea-title">Букет делится собой</h1>
+    <p class="idea-desc">Человек стоит в домашней гостиной. Подруга входит в кадр с одной стороны, держа тот же букет красных роз в чёрной обёртке, и протягивает его обеими руками. В момент, когда пользователь принимает букет в свои руки, несколько лепестков сами отделяются от бутонов и медленно взлетают вверх — не падают, а именно поднимаются, оседая на плечи и в волосы пользователя, будто букет сам делится собой. Подруга, теперь с пустыми руками, один раз хлопает в ладоши от восторга. Пользователь просто стоит и улыбается, принимая лепестки на себя, ничего больше не делая.
+
+Визуальный якорь: букет красных роз в чёрной обёртке, вручаемый из рук в руки, лепестки, взлетающие вверх и оседающие на пользователе — тот же букет из тренда, только его лепестки теперь физически касаются пользователя.</p>
+  </div>
+  <section class="section">
+    <div class="section-header">
+      <h2 class="section-title">Видео</h2>
+      <span class="section-badge">Пример генерации</span>
+    </div>
+    <div class="media-grid">
+      <div class="video-multi">
+        <div class="video-item"><video class="video-player" controls muted loop playsinline poster="https://temp-images.ws.pho.to/9a7c4579ad6a91023b0afdcf3831f50eccce1884.png"><source src="https://temp-images.ws.pho.to/b974d8f9e4f246c0c2e9984fd2213ff9f010953c.mp4" type="video/mp4"></video>
+          <div class="video-caption">man in his early 30s with short brown hair, blue eyes, and a short beard</div>
+        </div>
+        <div class="video-item"><video class="video-player" controls muted loop playsinline poster="https://temp-images.ws.pho.to/5ad6a9b07f636d488d75acda193422c5492ce25d.png"><source src="https://temp-images.ws.pho.to/b56d9e59d887bdf280f79229ee6133b11101d014.mp4" type="video/mp4"></video>
+          <div class="video-caption">woman in her late 30s with straight blonde shoulder-length hair and cat-eye glasses</div>
+        </div>
+      </div>
+      <div class="prompts-col">
+        <details class="prompt-block">
+          <summary>Промпт для первого кадра <span class="prompt-label">GPT Image 2</span></summary>
+          <pre class="prompt-text">Turn the photo of the person into a portrait of them standing in a home living room, both hands just closing around a bouquet of red roses wrapped in black paper being handed to them, vertical 9:16 composition, chest-up framing.
+
+Pose &amp; composition: hands meeting the bouquet at chest height, torso angled slightly toward the person handing it over (only a hand and forearm of that second person visible entering from frame-left), gaze on the flowers.
+
+Expression: soft, warm surprise — lips parted in a small delighted intake of breath.
+
+Attire: casual, comfortable home clothes.
+
+Setting &amp; background: a bright home living room, a neutral sofa and a plain wall visible behind, soft daytime light through a window.
+
+Lighting: soft, warm, even daylight, gentle highlight on the rose petals.
+
+Camera &amp; lens: eye-level, natural phone-style framing, shallow depth of field keeping the bouquet and the person both sharp.
+
+Identity preservation: keep the person&#x27;s identity exactly as in the source photo — same age, face shape and proportions, skin tone and undertone, eye shape and eye colour, eyebrow shape, nose and jawline, and the exact hairstyle including its colour, parting, length and texture, plus any freckles, moles, scars or facial hair. Hands must be anatomically correct.
+
+Avoid: over-smoothed skin, a pasted-face or cutout look, no overlay graphics or captions of any kind.</pre>
+        </details>
+        <details class="prompt-block">
+          <summary>Промпт для видео <span class="prompt-label">Kling · Grok</span></summary>
+          <pre class="prompt-text">Create a short cinematic video based on the uploaded image. Vertical 9:16.
+A home living room. The person from the image receives a bouquet of red roses wrapped in black paper, handed to them by a friend visible only as a hand and forearm entering frame-left.
+
+Camera and motion structure:
+Keep the overall shot static. No zoom, no camera movement, no cuts.
+0:00–0:01.5: The friend&#x27;s hand and forearm extend into frame holding the bouquet out; the person reaches up and takes hold of it with both hands.
+0:01.5–0:03: Several rose petals detach from the bouquet on their own and drift slowly upward — never falling — settling gently onto the person&#x27;s shoulders and hair, as if the bouquet is offering itself outward.
+0:03–0:04: The friend&#x27;s hand, now empty, claps once, once only, then withdraws from frame.
+0:04–0:05: The person simply stands still, smiling, petals resting on their shoulders and hair, holding the bouquet close, to the last frame.
+
+Character:
+Preserve the person&#x27;s face, hair, skin tone and identity exactly from the source image throughout. Allowed motion: reaching for the bouquet, the settling smile. The friend&#x27;s hand claps exactly once. Nothing else.
+
+Style:
+Warm, gentle, slightly wondrous home-video realism — the drifting petals are the only unreal touch, everything else stays grounded and natural.
+
+Restrictions:
+- Do not change the person&#x27;s face, hair, skin tone or identity at any point
+- The person stays in frame, recognizable and the visual focus for the entire video
+- The person never speaks, sings or mouths words — silent, warm reaction only; the friend is heard or shown only as a hand, never speaking
+- No speech bubbles
+- The petals must drift upward and settle exactly once, never falling downward and never repeating the motion
+- The friend&#x27;s clap happens exactly once
+- No additional gestures or beats beyond the ones described above; each action happens only once, continuing directly from the last
+- No on-screen text, captions, bars or graphics of any kind anywhere in the video
+- No other people besides the person and the single implied friend&#x27;s hand/forearm</pre>
+        </details>
+      </div>
+    </div>
+  </section>
+</div>
+</body>
+</html>

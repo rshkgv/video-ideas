@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>#copadobrasil — Прилив вместо трибун · Video Ideas</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      background: #f4f4f5; color: #111; font-size: 14px; line-height: 1.5;
+    }
+    .page-header {
+      background: #fff; border-bottom: 1px solid #e4e4e7; position: sticky;
+      top: 0; z-index: 100; box-shadow: 0 1px 8px rgba(0,0,0,.05);
+    }
+    .header-inner {
+      max-width: 1100px; margin: 0 auto; padding: 14px 28px;
+      display: flex; align-items: center; gap: 20px;
+    }
+    .brand {
+      font-size: 18px; font-weight: 800; letter-spacing: -.5px; color: #111;
+      white-space: nowrap; user-select: none; text-decoration: none;
+    }
+    .brand-tik { color: #fe2c55; }
+    .brand-tok { color: #010101; }
+    .brand-dot { color: #d1d1d1; margin: 0 6px; font-weight: 300; }
+    .brand-cc  { color: #888; font-size: 12px; font-weight: 500; }
+    .header-text { flex: 1; min-width: 0; }
+    .page-title {
+      font-size: 15px; font-weight: 700; letter-spacing: -.2px;
+      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    }
+    .page-sub { font-size: 11.5px; color: #999; margin-top: 2px; }
+    .date-badge {
+      background: #fe2c55; color: #fff; font-weight: 700; font-size: 12px;
+      border-radius: 8px; padding: 6px 14px; line-height: 1.4;
+      text-align: center; white-space: nowrap; flex-shrink: 0;
+    }
+    .date-badge span { display: block; font-size: 10px; font-weight: 500; opacity: .8; }
+    .page-nav {
+      max-width: 1100px; margin: 0 auto; padding: 0 28px;
+      display: flex; gap: 2px; border-top: 1px solid #f0f0f0;
+    }
+    .nav-a {
+      text-decoration: none; color: #999; font-size: 12.5px; font-weight: 500;
+      padding: 9px 14px; border-bottom: 2px solid transparent;
+      transition: color .15s, border-color .15s;
+    }
+    .nav-a:hover { color: #fe2c55; }
+    .nav-a.active { color: #fe2c55; border-bottom-color: #fe2c55; }
+    .content { max-width: 1100px; margin: 0 auto; padding: 36px 28px 80px; }
+    .section { margin-bottom: 52px; }
+    .section-header { display: flex; align-items: baseline; gap: 10px; margin-bottom: 16px; }
+    .section-title { font-size: 19px; font-weight: 800; letter-spacing: -.4px; }
+    .section-badge {
+      font-size: 10.5px; font-weight: 600; color: #999; background: #ebebeb;
+      padding: 3px 8px; border-radius: 20px; text-transform: uppercase; letter-spacing: .4px;
+    }
+    @media (max-width: 768px) {
+      .header-inner { gap: 12px; padding: 12px 16px; }
+      .date-badge { display: none; }
+      .page-nav { padding: 0 16px; }
+      .content { padding: 24px 16px 60px; }
+    }
+
+
+    .idea-lead {
+      background: #fff; border-radius: 12px; padding: 36px 40px 32px;
+      box-shadow: 0 1px 4px rgba(0,0,0,.07), 0 0 0 1px rgba(0,0,0,.05);
+      margin-bottom: 40px;
+    }
+    .idea-hashtag { font-size: 13px; font-weight: 700; color: #fe2c55; margin-bottom: 8px; }
+    .idea-title { font-size: 26px; font-weight: 800; letter-spacing: -.6px; line-height: 1.25; margin-bottom: 16px; }
+    .idea-desc { font-size: 14px; color: #444; line-height: 1.75; max-width: 720px; }
+    .media-grid {
+      display: grid; grid-template-columns: auto 1fr; gap: 28px; align-items: start;
+    }
+    .video-multi {
+      display: flex; gap: 16px; flex-wrap: wrap; align-items: flex-start;
+    }
+    .video-item {
+      width: 200px; display: flex; flex-direction: column; gap: 8px; flex-shrink: 0;
+    }
+    .video-caption {
+      font-size: 11px; color: #999; line-height: 1.4; padding: 0 2px;
+    }
+    .video-player {
+      width: 100%; aspect-ratio: 9/16; object-fit: cover; border-radius: 12px;
+      display: block; box-shadow: 0 2px 16px rgba(0,0,0,.14);
+    }
+    .frame-img {
+      width: 100%; aspect-ratio: 9/16; object-fit: cover; border-radius: 12px;
+      display: block; box-shadow: 0 2px 16px rgba(0,0,0,.14);
+    }
+    .prompts-col { display: flex; flex-direction: column; gap: 12px; }
+    .prompt-block {
+      background: #fff; border-radius: 10px;
+      box-shadow: 0 1px 4px rgba(0,0,0,.07), 0 0 0 1px rgba(0,0,0,.05); overflow: hidden;
+    }
+    .prompt-block summary {
+      padding: 14px 18px; font-size: 13px; font-weight: 700; cursor: pointer;
+      user-select: none; list-style: none; display: flex; align-items: center; gap: 8px; color: #333;
+    }
+    .prompt-block summary::-webkit-details-marker { display: none; }
+    .prompt-block summary::before { content: '▶'; font-size: 8px; color: #bbb; transition: transform .15s; flex-shrink: 0; }
+    .prompt-block[open] summary::before { transform: rotate(90deg); }
+    .prompt-block summary:hover { color: #fe2c55; }
+    .prompt-block summary:hover::before { color: #fe2c55; }
+    .prompt-label { font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: .5px; color: #bbb; margin-left: auto; }
+    .prompt-text {
+      padding: 14px 18px 16px; font-family: 'SF Mono','Fira Code','Menlo',monospace;
+      font-size: 11.5px; line-height: 1.7; color: #555; background: #f9f9f9;
+      border-top: 1px solid #f0f0f0; white-space: pre-wrap; word-break: break-word;
+      max-height: 320px; overflow-y: auto;
+    }
+    @media (max-width: 900px) {
+      .media-grid { grid-template-columns: 1fr; }
+      .video-multi { justify-content: center; }
+      .idea-lead { padding: 24px 22px 22px; }
+    }
+    @media (max-width: 520px) { .idea-title { font-size: 22px; } }
+
+  </style>
+</head>
+<body>
+<div class="page-header">
+  <div class="header-inner">
+    <a class="brand" href="../../../">
+      <span class="brand-tik">Tik</span><span class="brand-tok">Tok</span>
+      <span class="brand-dot">·</span><span class="brand-cc">Video Ideas</span>
+    </a>
+    <div class="header-text">
+      <div class="page-title">#copadobrasil</div>
+      <div class="page-sub">Видео-идея · 8 августа 2026 · Выпуск merged</div>
+    </div>
+    <div class="date-badge">08.08.2026<span>Дата · Выпуск merged</span></div>
+  </div>
+  <nav class="page-nav">
+    <a href="../../../" class="nav-a">← Все отчёты</a>
+    <a href="../../#br" class="nav-a">← 8 авг 2026 · Выпуск merged</a>
+    <a href="#" class="nav-a active">#copadobrasil</a>
+  </nav>
+</div>
+<div class="content">
+  <div class="idea-lead">
+    <div class="idea-hashtag">#copadobrasil</div>
+    <h1 class="idea-title">Прилив вместо трибун</h1>
+    <p class="idea-desc">Ночной пирс в портовом городе — там же, где играет команда, чьё имя и есть название этого самого города у моря. Пользователь стоит у самого края причала, вода внизу чёрная и неподвижная. Никакого стадиона, никакой трансляции — только он и вода. Постепенно, без единого рывка, вода у его ног начинает светиться сине-белым, как биолюминесцентный прилив, и этот свет медленно поднимается — до колен, до пояса — не заливая его буквально, а обнимая светом снизу, как трибуны обнимают поле светом прожекторов. Никакого гола, никакой вспышки эмоции нет вообще — есть только нарастающее, тихое чувство того, что что-то огромное и коллективное поднимается вокруг одного человека. В финале камера отъезжает и вверх, и весь залив оказывается одной светящейся чашей, похожей на стадион, а пользователь — маленькой точкой в её центре; это раскрытие масштаба и есть конец видео.
+
+Связь с трендом: имя клуба — это имя самого портового города у моря, а сине-белая палитра тренда рифмуется с водой и приливом; коллективная волна ожидания и облегчения, которая проходит через болельщика при голе, здесь становится буквальным физическим приливом, поднимающимся вокруг человека, вместо трибун и трансляции.</p>
+  </div>
+  <section class="section">
+    <div class="section-header">
+      <h2 class="section-title">Видео</h2>
+      <span class="section-badge">Пример генерации</span>
+    </div>
+    <div class="media-grid">
+      <div class="video-multi">
+        <div class="video-item"><video class="video-player" controls muted loop playsinline poster="https://temp-images.ws.pho.to/2417499a8c5129561750c7180b6c3904d001595b.png"><source src="https://temp-images.ws.pho.to/fd0b3232298c630a8fbd26c92281a65c0aa7b1b1.mp4" type="video/mp4"></video>
+          <div class="video-caption">woman in her late 30s with straight blonde shoulder-length hair and cat-eye glasses</div>
+        </div>
+        <div class="video-item"><video class="video-player" controls muted loop playsinline poster="https://temp-images.ws.pho.to/955f010ea6e4fcfc9a0ea3e63edaf0f84b50c589.png"><source src="https://temp-images.ws.pho.to/b8f426ea6d7c3696a5010ad9806a2158ad35d805.mp4" type="video/mp4"></video>
+          <div class="video-caption">man in his early 30s with short brown hair, blue eyes, and a short beard</div>
+        </div>
+      </div>
+      <div class="prompts-col">
+        <details class="prompt-block">
+          <summary>Промпт для первого кадра <span class="prompt-label">GPT Image 2</span></summary>
+          <pre class="prompt-text">Turn the photo of the person into a portrait of them standing at the very end of a long wooden pier at night, vertical 9:16 composition, waist-up framing, face clearly legible and centred in the lower two-thirds of the frame.
+
+Pose &amp; composition: standing square to camera, weight even, hands loose at their sides, chin level, looking straight ahead past the camera toward the open water. The pier&#x27;s wooden planks lead the eye toward them from the frame&#x27;s bottom edge; dark, glassy, still water surrounds the pier on both sides and stretches into the background.
+
+Setting &amp; background: a quiet port city skyline sits low on the horizon behind them, its lights small and distant, unremarkable — no stadium, no crowd, nothing dramatic yet. The sky is a deep, star-flecked navy.
+
+Expression: calm, private, unhurried — the look of someone standing still at the edge of something, not waiting for an event.
+
+Attire: ordinary real clothes — a plain dark jacket, hands bare, nothing branded or team-coloured.
+
+Lighting: a cool, even moonlight from above and slightly behind, giving a soft rim to the shoulders and hair; the water below sits in near-black, only a faint silver moon-glint breaking its surface.
+
+Colour grading: near-monochrome deep navy and black, the skin the only warm value in frame.
+
+Materials &amp; texture: the wooden pier is weathered, individual plank grain and gaps visible; the water is glassy and still, with a faint ripple texture at the edges of frame.
+
+Camera &amp; lens: 50mm at f/2.8, natural falloff at the frame edges, fine film grain.
+
+Skin texture: keep real skin — visible pores, natural unevenness, no smoothing.
+
+Identity preservation: keep the person&#x27;s identity exactly as in the source photo — same age, face shape and proportions, skin tone and undertone, eye shape and eye colour, eyebrow shape, nose and jawline, and the exact hairstyle including its colour, parting, length and texture, plus any freckles, moles, scars, glasses or facial hair.
+
+Avoid: over-smoothed skin, a pasted-face or cutout look, glossy CGI water, and no overlay graphics, captions, logos or lettering of any kind anywhere in the frame — nothing glowing is visible yet at this frame.</pre>
+        </details>
+        <details class="prompt-block">
+          <summary>Промпт для видео <span class="prompt-label">Kling · Grok</span></summary>
+          <pre class="prompt-text">Create a short cinematic video based on the uploaded image. Vertical 9:16. A person stands alone at the end of a wooden pier at night over dark, still water, a quiet port skyline behind them. No stadium, no crowd, no broadcast anywhere in this video.
+
+Camera and motion structure:
+One continuous slow pull-back and rise, no cuts, deliberately no single hero moment.
+FRAMES 0–35%: The person stands still, looking out over the water. Faint threads of blue-white bioluminescent light begin to bloom in the water near the pier&#x27;s pilings, barely perceptible at first.
+FRAMES 35–70%: The glowing light spreads outward across the water&#x27;s surface and rises gently up the pilings, reaching the level of the pier deck around the person&#x27;s feet — never touching or wetting them, simply surrounding the pier with rising light from below, like floodlight glow reflected upward instead of down. The person&#x27;s expression softens into quiet wonder, eyes following the light, body otherwise still.
+FRAMES 70–100%: The pull-back continues and rises higher, the frame widening until the whole bay is visible as one continuous sheet of glowing blue-white water, its shape reading like a lit stadium bowl seen from above, the person a small still figure at its centre on the pier. The light keeps spreading gently to the frame&#x27;s edges as the video ends — the reveal of scale is the ending, not any single event.
+
+Character:
+Preserve the person&#x27;s face, hair, skin tone and identity exactly from the source image throughout. Motion is minimal: standing still, then slowly turning the head to follow the spreading light with a soft, quiet expression. No other movement.
+
+Style:
+Quiet, vast, painterly night photography — deep navy and glowing blue-white, no hard edges, no CGI plastic shine on the water. Awed and contemplative, not triumphant or loud.
+
+Restrictions:
+- No identity changes to the person&#x27;s face, hair or skin tone at any point
+- The person stays in frame, recognizable and the visual focus for the whole video even as the frame widens — the pull-back stops while their figure is still clearly identifiable
+- The person never speaks, sings, or mouths words — silent, quiet wonder only
+- No speech bubbles
+- The glowing water must stay visibly liquid and natural in behaviour — no plastic or CGI-glossy look, no waves crashing, no water touching or wetting the person
+- No stadium, crowd, floodlight rig, broadcast screen, jersey, scarf, club crest, logo or on-screen text of any kind anywhere in the video
+- No improvisation beyond the listed actions — no raised arms, no shouting, no sudden movement
+- No cuts, no jump between camera positions — one continuous pull-back and rise only</pre>
+        </details>
+      </div>
+    </div>
+  </section>
+</div>
+</body>
+</html>

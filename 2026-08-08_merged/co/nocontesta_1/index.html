@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>#nocontesta — Player Two входит в игру · Video Ideas</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      background: #f4f4f5; color: #111; font-size: 14px; line-height: 1.5;
+    }
+    .page-header {
+      background: #fff; border-bottom: 1px solid #e4e4e7; position: sticky;
+      top: 0; z-index: 100; box-shadow: 0 1px 8px rgba(0,0,0,.05);
+    }
+    .header-inner {
+      max-width: 1100px; margin: 0 auto; padding: 14px 28px;
+      display: flex; align-items: center; gap: 20px;
+    }
+    .brand {
+      font-size: 18px; font-weight: 800; letter-spacing: -.5px; color: #111;
+      white-space: nowrap; user-select: none; text-decoration: none;
+    }
+    .brand-tik { color: #fe2c55; }
+    .brand-tok { color: #010101; }
+    .brand-dot { color: #d1d1d1; margin: 0 6px; font-weight: 300; }
+    .brand-cc  { color: #888; font-size: 12px; font-weight: 500; }
+    .header-text { flex: 1; min-width: 0; }
+    .page-title {
+      font-size: 15px; font-weight: 700; letter-spacing: -.2px;
+      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    }
+    .page-sub { font-size: 11.5px; color: #999; margin-top: 2px; }
+    .date-badge {
+      background: #fe2c55; color: #fff; font-weight: 700; font-size: 12px;
+      border-radius: 8px; padding: 6px 14px; line-height: 1.4;
+      text-align: center; white-space: nowrap; flex-shrink: 0;
+    }
+    .date-badge span { display: block; font-size: 10px; font-weight: 500; opacity: .8; }
+    .page-nav {
+      max-width: 1100px; margin: 0 auto; padding: 0 28px;
+      display: flex; gap: 2px; border-top: 1px solid #f0f0f0;
+    }
+    .nav-a {
+      text-decoration: none; color: #999; font-size: 12.5px; font-weight: 500;
+      padding: 9px 14px; border-bottom: 2px solid transparent;
+      transition: color .15s, border-color .15s;
+    }
+    .nav-a:hover { color: #fe2c55; }
+    .nav-a.active { color: #fe2c55; border-bottom-color: #fe2c55; }
+    .content { max-width: 1100px; margin: 0 auto; padding: 36px 28px 80px; }
+    .section { margin-bottom: 52px; }
+    .section-header { display: flex; align-items: baseline; gap: 10px; margin-bottom: 16px; }
+    .section-title { font-size: 19px; font-weight: 800; letter-spacing: -.4px; }
+    .section-badge {
+      font-size: 10.5px; font-weight: 600; color: #999; background: #ebebeb;
+      padding: 3px 8px; border-radius: 20px; text-transform: uppercase; letter-spacing: .4px;
+    }
+    @media (max-width: 768px) {
+      .header-inner { gap: 12px; padding: 12px 16px; }
+      .date-badge { display: none; }
+      .page-nav { padding: 0 16px; }
+      .content { padding: 24px 16px 60px; }
+    }
+
+
+    .idea-lead {
+      background: #fff; border-radius: 12px; padding: 36px 40px 32px;
+      box-shadow: 0 1px 4px rgba(0,0,0,.07), 0 0 0 1px rgba(0,0,0,.05);
+      margin-bottom: 40px;
+    }
+    .idea-hashtag { font-size: 13px; font-weight: 700; color: #fe2c55; margin-bottom: 8px; }
+    .idea-title { font-size: 26px; font-weight: 800; letter-spacing: -.6px; line-height: 1.25; margin-bottom: 16px; }
+    .idea-desc { font-size: 14px; color: #444; line-height: 1.75; max-width: 720px; }
+    .media-grid {
+      display: grid; grid-template-columns: auto 1fr; gap: 28px; align-items: start;
+    }
+    .video-multi {
+      display: flex; gap: 16px; flex-wrap: wrap; align-items: flex-start;
+    }
+    .video-item {
+      width: 200px; display: flex; flex-direction: column; gap: 8px; flex-shrink: 0;
+    }
+    .video-caption {
+      font-size: 11px; color: #999; line-height: 1.4; padding: 0 2px;
+    }
+    .video-player {
+      width: 100%; aspect-ratio: 9/16; object-fit: cover; border-radius: 12px;
+      display: block; box-shadow: 0 2px 16px rgba(0,0,0,.14);
+    }
+    .frame-img {
+      width: 100%; aspect-ratio: 9/16; object-fit: cover; border-radius: 12px;
+      display: block; box-shadow: 0 2px 16px rgba(0,0,0,.14);
+    }
+    .prompts-col { display: flex; flex-direction: column; gap: 12px; }
+    .prompt-block {
+      background: #fff; border-radius: 10px;
+      box-shadow: 0 1px 4px rgba(0,0,0,.07), 0 0 0 1px rgba(0,0,0,.05); overflow: hidden;
+    }
+    .prompt-block summary {
+      padding: 14px 18px; font-size: 13px; font-weight: 700; cursor: pointer;
+      user-select: none; list-style: none; display: flex; align-items: center; gap: 8px; color: #333;
+    }
+    .prompt-block summary::-webkit-details-marker { display: none; }
+    .prompt-block summary::before { content: '▶'; font-size: 8px; color: #bbb; transition: transform .15s; flex-shrink: 0; }
+    .prompt-block[open] summary::before { transform: rotate(90deg); }
+    .prompt-block summary:hover { color: #fe2c55; }
+    .prompt-block summary:hover::before { color: #fe2c55; }
+    .prompt-label { font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: .5px; color: #bbb; margin-left: auto; }
+    .prompt-text {
+      padding: 14px 18px 16px; font-family: 'SF Mono','Fira Code','Menlo',monospace;
+      font-size: 11.5px; line-height: 1.7; color: #555; background: #f9f9f9;
+      border-top: 1px solid #f0f0f0; white-space: pre-wrap; word-break: break-word;
+      max-height: 320px; overflow-y: auto;
+    }
+    @media (max-width: 900px) {
+      .media-grid { grid-template-columns: 1fr; }
+      .video-multi { justify-content: center; }
+      .idea-lead { padding: 24px 22px 22px; }
+    }
+    @media (max-width: 520px) { .idea-title { font-size: 22px; } }
+
+  </style>
+</head>
+<body>
+<div class="page-header">
+  <div class="header-inner">
+    <a class="brand" href="../../../">
+      <span class="brand-tik">Tik</span><span class="brand-tok">Tok</span>
+      <span class="brand-dot">·</span><span class="brand-cc">Video Ideas</span>
+    </a>
+    <div class="header-text">
+      <div class="page-title">#nocontesta</div>
+      <div class="page-sub">Видео-идея · 8 августа 2026 · Выпуск merged</div>
+    </div>
+    <div class="date-badge">08.08.2026<span>Дата · Выпуск merged</span></div>
+  </div>
+  <nav class="page-nav">
+    <a href="../../../" class="nav-a">← Все отчёты</a>
+    <a href="../../#co" class="nav-a">← 8 авг 2026 · Выпуск merged</a>
+    <a href="#" class="nav-a active">#nocontesta</a>
+  </nav>
+</div>
+<div class="content">
+  <div class="idea-lead">
+    <div class="idea-hashtag">#nocontesta</div>
+    <h1 class="idea-title">Player Two входит в игру</h1>
+    <p class="idea-desc">Пользователь оказывается внутри официального ретро-визуалайзера трека «No Contesta» — пиксельный неоновый гараж, за спиной — силуэт красного кабриолета, на стене светится вывеска с искажённым логотипом «No Contesta». Рядом уже стоит пиксельный аватар самого артиста — дреды, золотые авиаторы, золотая цепь, — который поёт хук трека с поднятым кулаком под тегом «PLAYER 1». Силуэт пользователя рядом с ним сперва контурный, как незагруженный игровой персонаж, затем плавно заполняется деталями его внешности, и рядом фиксируется тег «PLAYER 2». Оба одновременно вскидывают кулаки в унисон — и именно на этом кадре тег окончательно закрепляется на экране.
+
+Визуальный якорь: пиксельный неоновый гараж визуалайзера трека — красный кабриолет в тени, вывеска с искажённым логотипом «No Contesta», аватар артиста в золотых авиаторах и с золотой цепью, поднимающий кулак под HUD-тегом «PLAYER 1».</p>
+  </div>
+  <section class="section">
+    <div class="section-header">
+      <h2 class="section-title">Видео</h2>
+      <span class="section-badge">Пример генерации</span>
+    </div>
+    <div class="media-grid">
+      <div class="video-multi">
+        <div class="video-item"><video class="video-player" controls muted loop playsinline poster="https://temp-images.ws.pho.to/9d17665fc398f9938899029205eef427a4d5eaf8.png"><source src="https://temp-images.ws.pho.to/8ec8e6de326576d927c5fd1f514ddec099b0d775.mp4" type="video/mp4"></video>
+          <div class="video-caption">man in his early 30s with short brown hair, blue eyes, and a short beard</div>
+        </div>
+        <div class="video-item"><video class="video-player" controls muted loop playsinline poster="https://temp-images.ws.pho.to/09b29f68dbddca3415fd959bcd0e1a31f9df9e20.png"><source src="https://temp-images.ws.pho.to/59c9147c14f8a265ac5270d8a662f97a3184e694.mp4" type="video/mp4"></video>
+          <div class="video-caption">woman in her late 30s with straight blonde shoulder-length hair and cat-eye glasses</div>
+        </div>
+      </div>
+      <div class="prompts-col">
+        <details class="prompt-block">
+          <summary>Промпт для первого кадра <span class="prompt-label">GPT Image 2</span></summary>
+          <pre class="prompt-text">Turn the photo of the person into a retro 8-bit video-game-style pixel-art avatar standing inside a neon-lit garage straight out of the official &quot;No Contesta&quot; arcade-style music visualizer, vertical 9:16 composition, chest-up framing so the face reads large and clearly legible even through the pixel treatment.
+
+Pose &amp; composition: the person&#x27;s avatar stands with one fist raised at shoulder height, weight settled, facing camera at a slight three-quarter angle; beside them, close enough to share the frame, stands a second pixel-art character — a rendering of the track&#x27;s own recurring performer, dreadlocks visible beneath a black beanie, gold-rimmed sunglasses, a thick gold chain, a red-and-blue jacket, his own fist raised in the same gesture.
+
+Expression: the person&#x27;s avatar reads as confident and delighted despite the pixel treatment — a wide grin, eyes bright even in low-resolution rendering.
+
+Setting &amp; background: a dim retro garage interior rendered in blocky, high-contrast pixel art — a red convertible car parked in silhouette behind both characters, a purple-lit doorway further back, dark furniture silhouettes; on the wall to one side, a glowing marquee sign reads &quot;NO CONTESTA&quot; in a distorted, colourful retro-game font.
+
+Environmental atmosphere &amp; lighting: saturated neon purple, pink and blue lighting throughout, hard-edged pixel shading, visible scanlines faintly overlaying the whole frame.
+
+Colour grading: high-contrast synthwave palette — magenta, cyan and deep purple.
+
+Materials &amp; texture: everything renders in visible square pixel blocks, low-resolution but readable, echoing 1990s console game aesthetics.
+
+Style: retro 8-bit/16-bit pixel-art game rendering, applied to both characters and the whole environment equally — this is a full stylization, not a photoreal person pasted into a pixel world.
+
+Identity preservation within the pixel style: even in blocky pixel-art form, keep the person&#x27;s identity recognizable — same general face shape and proportions, skin tone, hairstyle silhouette and any distinctive features (glasses, facial hair) translated faithfully into the low-resolution style.
+
+On-screen text: a HUD tag reading &quot;PLAYER 1&quot; floats near the performer character&#x27;s head, in the same blocky pixel font as the title sign; no tag yet appears near the person&#x27;s own avatar in this first frame — their character is still a plain outlined silhouette without the tag, about to be filled in.
+
+Avoid: a smooth photorealistic face pasted into a pixel world (the whole person must be pixel-rendered), and no lettering anywhere except the established &quot;NO CONTESTA&quot; marquee and the &quot;PLAYER 1&quot; tag already described.</pre>
+        </details>
+        <details class="prompt-block">
+          <summary>Промпт для видео <span class="prompt-label">Kling · Grok</span></summary>
+          <pre class="prompt-text">Create a short cinematic video based on the uploaded image. Vertical 9:16.
+A retro 8-bit pixel-art garage from the official &quot;No Contesta&quot; music visualizer — a red convertible in silhouette, a glowing &quot;NO CONTESTA&quot; marquee sign, neon purple-pink lighting. The person from the image appears as a pixel-art avatar, chest-up, standing beside the track&#x27;s own pixel-rendered performer character.
+
+Camera and motion structure:
+Locked-off static, matching the visualizer&#x27;s own static title-screen shots.
+FRAMES 0–30%: The performer character — dreadlocks, gold-rimmed sunglasses, gold chain, red-and-blue jacket — stands fist raised, singing the track&#x27;s hook with visible mouth movement, a &quot;PLAYER 1&quot; tag glowing steady beside his head.
+FRAMES 30–70%: Beside him, the person&#x27;s avatar — so far just a plain glowing outline — begins filling in with pixel detail from the outline inward, like a character loading on a select screen, their own fist rising to match the performer&#x27;s pose as the fill completes.
+FRAMES 70–100%: The instant the fill finishes, a &quot;PLAYER 2&quot; tag locks into place beside the person&#x27;s head with a small pixel-flash. On that same beat, both characters&#x27; raised fists meet in the air between them and freeze there completely — the freeze, fists together, is the ending; the tag is already in place beside it, not the last thing to happen.
+
+Character:
+Preserve the person&#x27;s identity — face shape, skin tone, hairstyle silhouette, distinctive features — recognizable throughout the pixel-art rendering. The performer character sings and moves his mouth freely; the person&#x27;s avatar never speaks, sings or mouths words — their only motion is the fist rising to meet the performer&#x27;s.
+
+Atmosphere and detail:
+- Garage, car silhouette, marquee and lighting stay exactly as established throughout
+- Scanlines and pixel blockiness remain consistent on both characters and the environment
+- No smooth photoreal shading appears anywhere — the whole frame stays pixel-rendered
+
+Style:
+Full retro 8-bit/16-bit pixel-art game rendering, neon synthwave palette, hard-edged pixel shading. Whimsical, nostalgic, triumphant-but-playful register.
+
+Restrictions:
+- The person&#x27;s avatar&#x27;s identity markers (face shape, hair, distinctive features) must stay recognizable throughout the pixel style — no identity changes
+- The person&#x27;s avatar stays in frame, recognizable and the visual focus alongside the performer for the whole video
+- The person never speaks, sings, or mouths words at any point — only the fist-raise gesture; only the performer character sings
+- No speech bubbles
+- The avatar fills in from outline to full pixel detail only once — no flicker, no reset, no repeat of the load-in
+- The &quot;PLAYER 2&quot; tag must appear clearly and unmistakably at the moment described — this is the single most important visual element of the shot
+- No on-screen text or graphic anywhere beyond the established &quot;NO CONTESTA&quot; marquee and the &quot;PLAYER 1&quot;/&quot;PLAYER 2&quot; tags
+- No additional gestures beyond those described — no walking, no camera movement, no extra characters</pre>
+        </details>
+      </div>
+    </div>
+  </section>
+</div>
+</body>
+</html>

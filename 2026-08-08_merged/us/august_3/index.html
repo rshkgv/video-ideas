@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>#august — Порог между месяцами · Video Ideas</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      background: #f4f4f5; color: #111; font-size: 14px; line-height: 1.5;
+    }
+    .page-header {
+      background: #fff; border-bottom: 1px solid #e4e4e7; position: sticky;
+      top: 0; z-index: 100; box-shadow: 0 1px 8px rgba(0,0,0,.05);
+    }
+    .header-inner {
+      max-width: 1100px; margin: 0 auto; padding: 14px 28px;
+      display: flex; align-items: center; gap: 20px;
+    }
+    .brand {
+      font-size: 18px; font-weight: 800; letter-spacing: -.5px; color: #111;
+      white-space: nowrap; user-select: none; text-decoration: none;
+    }
+    .brand-tik { color: #fe2c55; }
+    .brand-tok { color: #010101; }
+    .brand-dot { color: #d1d1d1; margin: 0 6px; font-weight: 300; }
+    .brand-cc  { color: #888; font-size: 12px; font-weight: 500; }
+    .header-text { flex: 1; min-width: 0; }
+    .page-title {
+      font-size: 15px; font-weight: 700; letter-spacing: -.2px;
+      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    }
+    .page-sub { font-size: 11.5px; color: #999; margin-top: 2px; }
+    .date-badge {
+      background: #fe2c55; color: #fff; font-weight: 700; font-size: 12px;
+      border-radius: 8px; padding: 6px 14px; line-height: 1.4;
+      text-align: center; white-space: nowrap; flex-shrink: 0;
+    }
+    .date-badge span { display: block; font-size: 10px; font-weight: 500; opacity: .8; }
+    .page-nav {
+      max-width: 1100px; margin: 0 auto; padding: 0 28px;
+      display: flex; gap: 2px; border-top: 1px solid #f0f0f0;
+    }
+    .nav-a {
+      text-decoration: none; color: #999; font-size: 12.5px; font-weight: 500;
+      padding: 9px 14px; border-bottom: 2px solid transparent;
+      transition: color .15s, border-color .15s;
+    }
+    .nav-a:hover { color: #fe2c55; }
+    .nav-a.active { color: #fe2c55; border-bottom-color: #fe2c55; }
+    .content { max-width: 1100px; margin: 0 auto; padding: 36px 28px 80px; }
+    .section { margin-bottom: 52px; }
+    .section-header { display: flex; align-items: baseline; gap: 10px; margin-bottom: 16px; }
+    .section-title { font-size: 19px; font-weight: 800; letter-spacing: -.4px; }
+    .section-badge {
+      font-size: 10.5px; font-weight: 600; color: #999; background: #ebebeb;
+      padding: 3px 8px; border-radius: 20px; text-transform: uppercase; letter-spacing: .4px;
+    }
+    @media (max-width: 768px) {
+      .header-inner { gap: 12px; padding: 12px 16px; }
+      .date-badge { display: none; }
+      .page-nav { padding: 0 16px; }
+      .content { padding: 24px 16px 60px; }
+    }
+
+
+    .idea-lead {
+      background: #fff; border-radius: 12px; padding: 36px 40px 32px;
+      box-shadow: 0 1px 4px rgba(0,0,0,.07), 0 0 0 1px rgba(0,0,0,.05);
+      margin-bottom: 40px;
+    }
+    .idea-hashtag { font-size: 13px; font-weight: 700; color: #fe2c55; margin-bottom: 8px; }
+    .idea-title { font-size: 26px; font-weight: 800; letter-spacing: -.6px; line-height: 1.25; margin-bottom: 16px; }
+    .idea-desc { font-size: 14px; color: #444; line-height: 1.75; max-width: 720px; }
+    .media-grid {
+      display: grid; grid-template-columns: auto 1fr; gap: 28px; align-items: start;
+    }
+    .video-multi {
+      display: flex; gap: 16px; flex-wrap: wrap; align-items: flex-start;
+    }
+    .video-item {
+      width: 200px; display: flex; flex-direction: column; gap: 8px; flex-shrink: 0;
+    }
+    .video-caption {
+      font-size: 11px; color: #999; line-height: 1.4; padding: 0 2px;
+    }
+    .video-player {
+      width: 100%; aspect-ratio: 9/16; object-fit: cover; border-radius: 12px;
+      display: block; box-shadow: 0 2px 16px rgba(0,0,0,.14);
+    }
+    .frame-img {
+      width: 100%; aspect-ratio: 9/16; object-fit: cover; border-radius: 12px;
+      display: block; box-shadow: 0 2px 16px rgba(0,0,0,.14);
+    }
+    .prompts-col { display: flex; flex-direction: column; gap: 12px; }
+    .prompt-block {
+      background: #fff; border-radius: 10px;
+      box-shadow: 0 1px 4px rgba(0,0,0,.07), 0 0 0 1px rgba(0,0,0,.05); overflow: hidden;
+    }
+    .prompt-block summary {
+      padding: 14px 18px; font-size: 13px; font-weight: 700; cursor: pointer;
+      user-select: none; list-style: none; display: flex; align-items: center; gap: 8px; color: #333;
+    }
+    .prompt-block summary::-webkit-details-marker { display: none; }
+    .prompt-block summary::before { content: '▶'; font-size: 8px; color: #bbb; transition: transform .15s; flex-shrink: 0; }
+    .prompt-block[open] summary::before { transform: rotate(90deg); }
+    .prompt-block summary:hover { color: #fe2c55; }
+    .prompt-block summary:hover::before { color: #fe2c55; }
+    .prompt-label { font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: .5px; color: #bbb; margin-left: auto; }
+    .prompt-text {
+      padding: 14px 18px 16px; font-family: 'SF Mono','Fira Code','Menlo',monospace;
+      font-size: 11.5px; line-height: 1.7; color: #555; background: #f9f9f9;
+      border-top: 1px solid #f0f0f0; white-space: pre-wrap; word-break: break-word;
+      max-height: 320px; overflow-y: auto;
+    }
+    @media (max-width: 900px) {
+      .media-grid { grid-template-columns: 1fr; }
+      .video-multi { justify-content: center; }
+      .idea-lead { padding: 24px 22px 22px; }
+    }
+    @media (max-width: 520px) { .idea-title { font-size: 22px; } }
+
+  </style>
+</head>
+<body>
+<div class="page-header">
+  <div class="header-inner">
+    <a class="brand" href="../../../">
+      <span class="brand-tik">Tik</span><span class="brand-tok">Tok</span>
+      <span class="brand-dot">·</span><span class="brand-cc">Video Ideas</span>
+    </a>
+    <div class="header-text">
+      <div class="page-title">#august</div>
+      <div class="page-sub">Видео-идея · 8 августа 2026 · Выпуск merged</div>
+    </div>
+    <div class="date-badge">08.08.2026<span>Дата · Выпуск merged</span></div>
+  </div>
+  <nav class="page-nav">
+    <a href="../../../" class="nav-a">← Все отчёты</a>
+    <a href="../../#us" class="nav-a">← 8 авг 2026 · Выпуск merged</a>
+    <a href="#" class="nav-a active">#august</a>
+  </nav>
+</div>
+<div class="content">
+  <div class="idea-lead">
+    <div class="idea-hashtag">#august</div>
+    <h1 class="idea-title">Порог между месяцами</h1>
+    <p class="idea-desc">Пользователь стоит в дверном проёме обычной квартиры — но по одну сторону порога свет августовский, густой и золотой, воздух почти видимый от жары; по другую сторону, за той же дверью, свет уже другой: прохладнее, чуть тронут ржавчиной осени, с еле заметным движением сухого листа в углу кадра. Он не идёт ни туда, ни туда — просто медленно переносит вес с одной ноги на другую, стоя ровно на границе, и оба света одновременно касаются его лица. Камера не двигается, ничего не «случается»: пять секунд — это просто стояние на пороге между двумя качествами света, оба одинаково реальны, оба ложатся на кожу одновременно.
+
+Связь с трендом: тренд #august целиком построен на ощущении смены месяца — благословения на «новый месяц», реплики про «скоро сезон соли и ржавчины», паника с осенним декором; здесь это буквальное чувство «между двумя временами» превращено в физический порог, а не описано текстом.</p>
+  </div>
+  <section class="section">
+    <div class="section-header">
+      <h2 class="section-title">Видео</h2>
+      <span class="section-badge">Пример генерации</span>
+    </div>
+    <div class="media-grid">
+      <div class="video-multi">
+        <div class="video-item"><video class="video-player" controls muted loop playsinline poster="https://temp-images.ws.pho.to/88dd44198c4b144f3c422d217686665c925a7511.png"><source src="https://temp-images.ws.pho.to/22c533f686c17ceb53aca9f1145d6e169bf64834.mp4" type="video/mp4"></video>
+          <div class="video-caption">woman in her late 30s with straight blonde shoulder-length hair and cat-eye glasses</div>
+        </div>
+        <div class="video-item"><video class="video-player" controls muted loop playsinline poster="https://temp-images.ws.pho.to/33d0720facbb2014383c914e142b370cd2db7d41.png"><source src="https://temp-images.ws.pho.to/9b08240934ed83f6fcf69915f00d592062e98e3a.mp4" type="video/mp4"></video>
+          <div class="video-caption">man in his early 30s with short brown hair, blue eyes, and a short beard</div>
+        </div>
+      </div>
+      <div class="prompts-col">
+        <details class="prompt-block">
+          <summary>Промпт для первого кадра <span class="prompt-label">GPT Image 2</span></summary>
+          <pre class="prompt-text">Turn the photo of the person into a portrait of them standing squarely in an open doorway, vertical 9:16 composition, framed from the knees up so the doorway&#x27;s full height and both rooms beyond it stay visible while the face remains large enough to read clearly.
+
+Pose &amp; composition: the person stands centred in the doorway, weight even between both feet, one hand resting lightly on the door frame at shoulder height, body facing the camera straight-on so the threshold line runs exactly behind them, invisible but implied by the light change on either side of their body.
+
+Expression: calm, unhurried, slightly inward — eyes open but soft-focused, as if feeling a temperature change rather than looking at anything in particular.
+
+Setting: an ordinary interior doorway. To the left of the frame, glimpsed through the opening, a room bathed in dense golden late-summer light — warm walls, a hint of a fan blade barely turning. To the right, through the same doorway&#x27;s other half, a room in a cooler, slightly desaturated light with a faint rust-orange cast, one dry leaf visible mid-air near the floor as if just blown in.
+
+Lighting: the left half of the person&#x27;s face and body catches warm gold light; the right half catches the cooler, rust-tinted light; the split runs down the centre of their body along the doorway&#x27;s vertical line, both lights equally strong, meeting without a hard shadow line — a soft gradient, not a knife-edge.
+
+Colour grading: warm amber grading dominant on the left side of frame, a cooler, faintly rust-toned grading on the right, blending at the centre where the person stands.
+
+Materials &amp; texture: heat-shimmer softness in the left room&#x27;s air, a slight crispness and dryness implied in the right room&#x27;s air — visible as a very faint haze difference, nothing overt.
+
+Camera &amp; lens: 35mm at f/4, enough depth of field to keep both rooms behind the person legibly different from each other, natural grain, no vignette.
+
+Skin texture: real skin, visible pores, no smoothing — the two lighting temperatures should read differently across the two halves of the face without looking artificial or like a filter.
+
+Identity preservation: keep the person&#x27;s identity exactly as in the source photo — same age, face shape and proportions, skin tone and undertone (rendered under the two-toned light rather than altered), eye shape and eye colour, eyebrow shape, nose and jawline, and the exact hairstyle including colour, parting, length and texture, plus any freckles, moles, scars, facial hair or glasses. Hands anatomically correct, five fingers, natural relaxed touch on the door frame.
+
+Avoid: over-smoothed skin, a pasted-face or cutout look, an obvious split-screen or filter seam down the middle — the two lights must blend as one continuous doorway, not two stitched images; no overlay graphics or captions of any kind.</pre>
+        </details>
+        <details class="prompt-block">
+          <summary>Промпт для видео <span class="prompt-label">Kling · Grok</span></summary>
+          <pre class="prompt-text">Create a short cinematic video based on the uploaded image. Vertical 9:16.
+An ordinary doorway split by two qualities of light — dense gold on one side, cooler rust-tinted light on the other. The person from the image stands centred in the threshold, knees-up framing.
+
+Camera and motion structure:
+Keep the overall shot static. No zoom, no pan, no reframing — one continuous, unbroken beat. Deliberately no reveal and no event.
+FRAMES 0–100%: The person stands on the threshold, weight shifting slowly and almost imperceptibly from one foot to the other, nothing more. Both lights hold steady on either side of their body the entire time. Near the end of the frame, the single dry leaf visible in the cooler room drifts a few inches lower in the air, settling — that quiet settling, with the person still standing exactly where they started, is the entire ending.
+
+Character:
+Preserve the person&#x27;s face, hair, skin tone and identity exactly from the source image throughout. The only motion allowed is the slow weight shift between feet — no walking through either doorway, no turning, no gesture.
+
+Style:
+Quiet, suspended, painterly — two temperatures of light meeting on one body. Not a transformation and not a transition shot; a held moment of being neither in one season nor the other.
+
+Restrictions:
+- Do not change the person&#x27;s appearance, face, clothing, or identity at any point
+- The person stays in frame, recognizable and the visual focus for the entire video, standing in the doorway throughout
+- The person never speaks, sings or mouths words — silent stillness only, no reaction performance
+- No speech bubbles
+- No on-screen text or graphics of any kind
+- The person must not step through the doorway in either direction at any point — they stay exactly on the threshold from first frame to last
+- No improvisation beyond the described weight shift and the leaf&#x27;s settling — no additional gestures, no turning of the head, no new objects appearing
+- The two lighting temperatures must remain distinct and stable on their respective sides throughout — neither light spreads to fully take over the frame</pre>
+        </details>
+      </div>
+    </div>
+  </section>
+</div>
+</body>
+</html>

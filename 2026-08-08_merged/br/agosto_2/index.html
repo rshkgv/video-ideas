@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>#agosto — Комната украшает себя · Video Ideas</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      background: #f4f4f5; color: #111; font-size: 14px; line-height: 1.5;
+    }
+    .page-header {
+      background: #fff; border-bottom: 1px solid #e4e4e7; position: sticky;
+      top: 0; z-index: 100; box-shadow: 0 1px 8px rgba(0,0,0,.05);
+    }
+    .header-inner {
+      max-width: 1100px; margin: 0 auto; padding: 14px 28px;
+      display: flex; align-items: center; gap: 20px;
+    }
+    .brand {
+      font-size: 18px; font-weight: 800; letter-spacing: -.5px; color: #111;
+      white-space: nowrap; user-select: none; text-decoration: none;
+    }
+    .brand-tik { color: #fe2c55; }
+    .brand-tok { color: #010101; }
+    .brand-dot { color: #d1d1d1; margin: 0 6px; font-weight: 300; }
+    .brand-cc  { color: #888; font-size: 12px; font-weight: 500; }
+    .header-text { flex: 1; min-width: 0; }
+    .page-title {
+      font-size: 15px; font-weight: 700; letter-spacing: -.2px;
+      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    }
+    .page-sub { font-size: 11.5px; color: #999; margin-top: 2px; }
+    .date-badge {
+      background: #fe2c55; color: #fff; font-weight: 700; font-size: 12px;
+      border-radius: 8px; padding: 6px 14px; line-height: 1.4;
+      text-align: center; white-space: nowrap; flex-shrink: 0;
+    }
+    .date-badge span { display: block; font-size: 10px; font-weight: 500; opacity: .8; }
+    .page-nav {
+      max-width: 1100px; margin: 0 auto; padding: 0 28px;
+      display: flex; gap: 2px; border-top: 1px solid #f0f0f0;
+    }
+    .nav-a {
+      text-decoration: none; color: #999; font-size: 12.5px; font-weight: 500;
+      padding: 9px 14px; border-bottom: 2px solid transparent;
+      transition: color .15s, border-color .15s;
+    }
+    .nav-a:hover { color: #fe2c55; }
+    .nav-a.active { color: #fe2c55; border-bottom-color: #fe2c55; }
+    .content { max-width: 1100px; margin: 0 auto; padding: 36px 28px 80px; }
+    .section { margin-bottom: 52px; }
+    .section-header { display: flex; align-items: baseline; gap: 10px; margin-bottom: 16px; }
+    .section-title { font-size: 19px; font-weight: 800; letter-spacing: -.4px; }
+    .section-badge {
+      font-size: 10.5px; font-weight: 600; color: #999; background: #ebebeb;
+      padding: 3px 8px; border-radius: 20px; text-transform: uppercase; letter-spacing: .4px;
+    }
+    @media (max-width: 768px) {
+      .header-inner { gap: 12px; padding: 12px 16px; }
+      .date-badge { display: none; }
+      .page-nav { padding: 0 16px; }
+      .content { padding: 24px 16px 60px; }
+    }
+
+
+    .idea-lead {
+      background: #fff; border-radius: 12px; padding: 36px 40px 32px;
+      box-shadow: 0 1px 4px rgba(0,0,0,.07), 0 0 0 1px rgba(0,0,0,.05);
+      margin-bottom: 40px;
+    }
+    .idea-hashtag { font-size: 13px; font-weight: 700; color: #fe2c55; margin-bottom: 8px; }
+    .idea-title { font-size: 26px; font-weight: 800; letter-spacing: -.6px; line-height: 1.25; margin-bottom: 16px; }
+    .idea-desc { font-size: 14px; color: #444; line-height: 1.75; max-width: 720px; }
+    .media-grid {
+      display: grid; grid-template-columns: auto 1fr; gap: 28px; align-items: start;
+    }
+    .video-multi {
+      display: flex; gap: 16px; flex-wrap: wrap; align-items: flex-start;
+    }
+    .video-item {
+      width: 200px; display: flex; flex-direction: column; gap: 8px; flex-shrink: 0;
+    }
+    .video-caption {
+      font-size: 11px; color: #999; line-height: 1.4; padding: 0 2px;
+    }
+    .video-player {
+      width: 100%; aspect-ratio: 9/16; object-fit: cover; border-radius: 12px;
+      display: block; box-shadow: 0 2px 16px rgba(0,0,0,.14);
+    }
+    .frame-img {
+      width: 100%; aspect-ratio: 9/16; object-fit: cover; border-radius: 12px;
+      display: block; box-shadow: 0 2px 16px rgba(0,0,0,.14);
+    }
+    .prompts-col { display: flex; flex-direction: column; gap: 12px; }
+    .prompt-block {
+      background: #fff; border-radius: 10px;
+      box-shadow: 0 1px 4px rgba(0,0,0,.07), 0 0 0 1px rgba(0,0,0,.05); overflow: hidden;
+    }
+    .prompt-block summary {
+      padding: 14px 18px; font-size: 13px; font-weight: 700; cursor: pointer;
+      user-select: none; list-style: none; display: flex; align-items: center; gap: 8px; color: #333;
+    }
+    .prompt-block summary::-webkit-details-marker { display: none; }
+    .prompt-block summary::before { content: '▶'; font-size: 8px; color: #bbb; transition: transform .15s; flex-shrink: 0; }
+    .prompt-block[open] summary::before { transform: rotate(90deg); }
+    .prompt-block summary:hover { color: #fe2c55; }
+    .prompt-block summary:hover::before { color: #fe2c55; }
+    .prompt-label { font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: .5px; color: #bbb; margin-left: auto; }
+    .prompt-text {
+      padding: 14px 18px 16px; font-family: 'SF Mono','Fira Code','Menlo',monospace;
+      font-size: 11.5px; line-height: 1.7; color: #555; background: #f9f9f9;
+      border-top: 1px solid #f0f0f0; white-space: pre-wrap; word-break: break-word;
+      max-height: 320px; overflow-y: auto;
+    }
+    @media (max-width: 900px) {
+      .media-grid { grid-template-columns: 1fr; }
+      .video-multi { justify-content: center; }
+      .idea-lead { padding: 24px 22px 22px; }
+    }
+    @media (max-width: 520px) { .idea-title { font-size: 22px; } }
+
+  </style>
+</head>
+<body>
+<div class="page-header">
+  <div class="header-inner">
+    <a class="brand" href="../../../">
+      <span class="brand-tik">Tik</span><span class="brand-tok">Tok</span>
+      <span class="brand-dot">·</span><span class="brand-cc">Video Ideas</span>
+    </a>
+    <div class="header-text">
+      <div class="page-title">#agosto</div>
+      <div class="page-sub">Видео-идея · 8 августа 2026 · Выпуск merged</div>
+    </div>
+    <div class="date-badge">08.08.2026<span>Дата · Выпуск merged</span></div>
+  </div>
+  <nav class="page-nav">
+    <a href="../../../" class="nav-a">← Все отчёты</a>
+    <a href="../../#br" class="nav-a">← 8 авг 2026 · Выпуск merged</a>
+    <a href="#" class="nav-a active">#agosto</a>
+  </nav>
+</div>
+<div class="content">
+  <div class="idea-lead">
+    <div class="idea-hashtag">#agosto</div>
+    <h1 class="idea-title">Комната украшает себя</h1>
+    <p class="idea-desc">Пользователь сидит в пастельно украшенной комнате, спокойный, ничего не делает — просто сидит с чашкой чая, в самых обычных домашних вещах. Камера с рук медленно кружит по комнате, и на глазах становится видно: свёрнутая бумажная гирлянда сама разматывается со стула, петля за петлёй ползёт по воздуху вдоль стены и медленно завязывается бантом прямо над его головой — без рук, без видимого источника, просто разворачивается, как оживший подарочный шнур. Пользователь никак не реагирует на это волшебство — он даже не поворачивает головы, будто это происходит каждый август. Никакого одного «вау»-момента нет: гирлянда просто продолжает медленно виться, пока камера не остановится на завязанном банте над его головой. Ролик заканчивается тем, что бант затягивается в финальный узел и застывает — комната украсила себя сама, а человек в ней остался тем самым спокойным центром, вокруг которого всё это происходит.
+
+Визуальный якорь: пастельные шары и цветочный декор комнаты, самостоятельно разматывающаяся и завязывающаяся бантом бумажная гирлянда над головой пользователя — тот же праздничный реквизит тренда, только оживший сам по себе.</p>
+  </div>
+  <section class="section">
+    <div class="section-header">
+      <h2 class="section-title">Видео</h2>
+      <span class="section-badge">Пример генерации</span>
+    </div>
+    <div class="media-grid">
+      <div class="video-multi">
+        <div class="video-item"><video class="video-player" controls muted loop playsinline poster="https://temp-images.ws.pho.to/f7b2128138b9e30cc4964ee356e2ccfbbb303281.png"><source src="https://temp-images.ws.pho.to/ba265b7d1b64091e7e0e0dcb3df866c7b08fa469.mp4" type="video/mp4"></video>
+          <div class="video-caption">man in his early 30s with short brown hair, blue eyes, and a short beard</div>
+        </div>
+        <div class="video-item"><video class="video-player" controls muted loop playsinline poster="https://temp-images.ws.pho.to/b2c08164d8ead643ee25f7bc7e6402e198b6dc62.png"><source src="https://temp-images.ws.pho.to/1eac9ad9d5c931f8181ce4274776028fa2269966.mp4" type="video/mp4"></video>
+          <div class="video-caption">woman in her late 30s with straight blonde shoulder-length hair and cat-eye glasses</div>
+        </div>
+      </div>
+      <div class="prompts-col">
+        <details class="prompt-block">
+          <summary>Промпт для первого кадра <span class="prompt-label">GPT Image 2</span></summary>
+          <pre class="prompt-text">Turn the photo of the person into a portrait of them sitting relaxed in a pastel-decorated living room, vertical 9:16 composition, chest-up framing, face clearly legible.
+
+Pose &amp; composition: sitting sideways in a soft armchair, one leg tucked, holding a plain mug loosely in both hands at chest height, body relaxed and unhurried, gaze calm and slightly off to the side rather than at camera.
+
+Setting &amp; background: a cosy pastel-pink and cream room — a folded paper garland sits coiled on a side table nearby, a small cluster of muted balloons in the corner, soft floral wallpaper detail visible on one wall. Warm daylight comes through a curtained window.
+
+Expression: content, unhurried, faintly amused — the look of someone completely at ease in their own space, not anticipating anything unusual.
+
+Lighting: soft diffused daylight from the window side, warm ambient bounce filling the shadows, no hard edges.
+
+Colour grading: warm pastel palette — cream, blush pink, muted sage — cosy and soft.
+
+Camera &amp; lens: 35mm at f/2.8, natural falloff, gentle film grain.
+
+Materials &amp; texture: the coiled paper garland has visible fold creases and a slight paper sheen; the armchair fabric is a soft woven texture.
+
+Identity preservation: keep the person&#x27;s identity exactly as in the source photo — same age, face shape and proportions, skin tone and undertone, eye shape and eye colour, eyebrow shape, nose and jawline, and the exact hairstyle including its colour, parting, length and texture, plus any freckles, moles, scars, glasses or facial hair. Hands holding the mug must be anatomically correct.
+
+Avoid: over-smoothed skin, a pasted-face or cutout look, and no overlay graphics or captions of any kind — the garland is still fully coiled and motionless in this frame, nothing is unwinding yet.</pre>
+        </details>
+        <details class="prompt-block">
+          <summary>Промпт для видео <span class="prompt-label">Kling · Grok</span></summary>
+          <pre class="prompt-text">Create a short cinematic video based on the uploaded image. Vertical 9:16. The person sits relaxed in a pastel-decorated room holding a mug, a coiled paper garland resting nearby, balloons in the corner.
+
+Camera and motion structure:
+Handheld throughout, a slow drifting circle around the person and room — never locked-off. No single hero moment; a continuous, unhurried transformation instead.
+FRAMES 0–30%: The person sits calmly, sipping from the mug, unbothered. The camera begins to drift.
+FRAMES 30–60%: The coiled garland on the side table begins to unspool on its own, one loop lifting into the air and drifting slowly along the wall toward a point above the person&#x27;s head — no hands, no visible force, simply unwinding like a ribbon caught in a slow current.
+FRAMES 60–90%: The garland continues looping and gathering above the person&#x27;s head, gradually shaping itself into a large soft bow. The person still does not react, glancing at it only once with mild, familiar amusement, then looking back at their mug.
+FRAMES 90–100%: The garland&#x27;s final loop pulls taut into the completed bow above the person&#x27;s head and settles, motionless. The camera settles on this final framing — the finished bow, the calm person beneath it — as the ending.
+
+Character:
+Preserve the person&#x27;s face, hair, skin tone and identity exactly from the source image throughout. Allowed motion: sipping the mug, one glance upward, a small smile. No other movement — the person never touches or assists the garland.
+
+Style:
+Cosy, warm, magical-realist home-video texture — soft pastel light, handheld drift, gentle film grain. Whimsical and unhurried, treating the impossible as perfectly ordinary.
+
+Restrictions:
+- Do not change the person&#x27;s face, hair, skin tone or identity at any point
+- The person stays in frame, recognizable and the visual focus for the whole video even as the camera drifts around the room
+- The person never speaks, sings or mouths words — a single small, calm smile is the only reaction
+- No speech bubbles
+- No on-screen text, lettering, or captions of any kind anywhere in the video — the garland forms only a plain bow shape, never letters or words
+- The garland must move and loop on its own with no visible hands, strings, or mechanism touching it — it never touches or wraps the person
+- No improvisation beyond the listed actions — no extra gestures, no extra decorative objects appearing
+- The garland&#x27;s unwinding and bow-tying happens exactly once, continuously, with no resets or repeats
+- No fire, sharp objects, or hazardous elements anywhere in the room</pre>
+        </details>
+      </div>
+    </div>
+  </section>
+</div>
+</body>
+</html>

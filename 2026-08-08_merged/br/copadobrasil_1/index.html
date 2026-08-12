@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>#copadobrasil — Сплит-скрин двух правд · Video Ideas</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      background: #f4f4f5; color: #111; font-size: 14px; line-height: 1.5;
+    }
+    .page-header {
+      background: #fff; border-bottom: 1px solid #e4e4e7; position: sticky;
+      top: 0; z-index: 100; box-shadow: 0 1px 8px rgba(0,0,0,.05);
+    }
+    .header-inner {
+      max-width: 1100px; margin: 0 auto; padding: 14px 28px;
+      display: flex; align-items: center; gap: 20px;
+    }
+    .brand {
+      font-size: 18px; font-weight: 800; letter-spacing: -.5px; color: #111;
+      white-space: nowrap; user-select: none; text-decoration: none;
+    }
+    .brand-tik { color: #fe2c55; }
+    .brand-tok { color: #010101; }
+    .brand-dot { color: #d1d1d1; margin: 0 6px; font-weight: 300; }
+    .brand-cc  { color: #888; font-size: 12px; font-weight: 500; }
+    .header-text { flex: 1; min-width: 0; }
+    .page-title {
+      font-size: 15px; font-weight: 700; letter-spacing: -.2px;
+      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    }
+    .page-sub { font-size: 11.5px; color: #999; margin-top: 2px; }
+    .date-badge {
+      background: #fe2c55; color: #fff; font-weight: 700; font-size: 12px;
+      border-radius: 8px; padding: 6px 14px; line-height: 1.4;
+      text-align: center; white-space: nowrap; flex-shrink: 0;
+    }
+    .date-badge span { display: block; font-size: 10px; font-weight: 500; opacity: .8; }
+    .page-nav {
+      max-width: 1100px; margin: 0 auto; padding: 0 28px;
+      display: flex; gap: 2px; border-top: 1px solid #f0f0f0;
+    }
+    .nav-a {
+      text-decoration: none; color: #999; font-size: 12.5px; font-weight: 500;
+      padding: 9px 14px; border-bottom: 2px solid transparent;
+      transition: color .15s, border-color .15s;
+    }
+    .nav-a:hover { color: #fe2c55; }
+    .nav-a.active { color: #fe2c55; border-bottom-color: #fe2c55; }
+    .content { max-width: 1100px; margin: 0 auto; padding: 36px 28px 80px; }
+    .section { margin-bottom: 52px; }
+    .section-header { display: flex; align-items: baseline; gap: 10px; margin-bottom: 16px; }
+    .section-title { font-size: 19px; font-weight: 800; letter-spacing: -.4px; }
+    .section-badge {
+      font-size: 10.5px; font-weight: 600; color: #999; background: #ebebeb;
+      padding: 3px 8px; border-radius: 20px; text-transform: uppercase; letter-spacing: .4px;
+    }
+    @media (max-width: 768px) {
+      .header-inner { gap: 12px; padding: 12px 16px; }
+      .date-badge { display: none; }
+      .page-nav { padding: 0 16px; }
+      .content { padding: 24px 16px 60px; }
+    }
+
+
+    .idea-lead {
+      background: #fff; border-radius: 12px; padding: 36px 40px 32px;
+      box-shadow: 0 1px 4px rgba(0,0,0,.07), 0 0 0 1px rgba(0,0,0,.05);
+      margin-bottom: 40px;
+    }
+    .idea-hashtag { font-size: 13px; font-weight: 700; color: #fe2c55; margin-bottom: 8px; }
+    .idea-title { font-size: 26px; font-weight: 800; letter-spacing: -.6px; line-height: 1.25; margin-bottom: 16px; }
+    .idea-desc { font-size: 14px; color: #444; line-height: 1.75; max-width: 720px; }
+    .media-grid {
+      display: grid; grid-template-columns: auto 1fr; gap: 28px; align-items: start;
+    }
+    .video-multi {
+      display: flex; gap: 16px; flex-wrap: wrap; align-items: flex-start;
+    }
+    .video-item {
+      width: 200px; display: flex; flex-direction: column; gap: 8px; flex-shrink: 0;
+    }
+    .video-caption {
+      font-size: 11px; color: #999; line-height: 1.4; padding: 0 2px;
+    }
+    .video-player {
+      width: 100%; aspect-ratio: 9/16; object-fit: cover; border-radius: 12px;
+      display: block; box-shadow: 0 2px 16px rgba(0,0,0,.14);
+    }
+    .frame-img {
+      width: 100%; aspect-ratio: 9/16; object-fit: cover; border-radius: 12px;
+      display: block; box-shadow: 0 2px 16px rgba(0,0,0,.14);
+    }
+    .prompts-col { display: flex; flex-direction: column; gap: 12px; }
+    .prompt-block {
+      background: #fff; border-radius: 10px;
+      box-shadow: 0 1px 4px rgba(0,0,0,.07), 0 0 0 1px rgba(0,0,0,.05); overflow: hidden;
+    }
+    .prompt-block summary {
+      padding: 14px 18px; font-size: 13px; font-weight: 700; cursor: pointer;
+      user-select: none; list-style: none; display: flex; align-items: center; gap: 8px; color: #333;
+    }
+    .prompt-block summary::-webkit-details-marker { display: none; }
+    .prompt-block summary::before { content: '▶'; font-size: 8px; color: #bbb; transition: transform .15s; flex-shrink: 0; }
+    .prompt-block[open] summary::before { transform: rotate(90deg); }
+    .prompt-block summary:hover { color: #fe2c55; }
+    .prompt-block summary:hover::before { color: #fe2c55; }
+    .prompt-label { font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: .5px; color: #bbb; margin-left: auto; }
+    .prompt-text {
+      padding: 14px 18px 16px; font-family: 'SF Mono','Fira Code','Menlo',monospace;
+      font-size: 11.5px; line-height: 1.7; color: #555; background: #f9f9f9;
+      border-top: 1px solid #f0f0f0; white-space: pre-wrap; word-break: break-word;
+      max-height: 320px; overflow-y: auto;
+    }
+    @media (max-width: 900px) {
+      .media-grid { grid-template-columns: 1fr; }
+      .video-multi { justify-content: center; }
+      .idea-lead { padding: 24px 22px 22px; }
+    }
+    @media (max-width: 520px) { .idea-title { font-size: 22px; } }
+
+  </style>
+</head>
+<body>
+<div class="page-header">
+  <div class="header-inner">
+    <a class="brand" href="../../../">
+      <span class="brand-tik">Tik</span><span class="brand-tok">Tok</span>
+      <span class="brand-dot">·</span><span class="brand-cc">Video Ideas</span>
+    </a>
+    <div class="header-text">
+      <div class="page-title">#copadobrasil</div>
+      <div class="page-sub">Видео-идея · 8 августа 2026 · Выпуск merged</div>
+    </div>
+    <div class="date-badge">08.08.2026<span>Дата · Выпуск merged</span></div>
+  </div>
+  <nav class="page-nav">
+    <a href="../../../" class="nav-a">← Все отчёты</a>
+    <a href="../../#br" class="nav-a">← 8 авг 2026 · Выпуск merged</a>
+    <a href="#" class="nav-a active">#copadobrasil</a>
+  </nav>
+</div>
+<div class="content">
+  <div class="idea-lead">
+    <div class="idea-hashtag">#copadobrasil</div>
+    <h1 class="idea-title">Сплит-скрин двух правд</h1>
+    <p class="idea-desc">Вертикальный кадр честно разделён пополам: в верхней половине — пользователь у себя дома в темноте, лицо освещено только холодным светом экрана; в нижней — трансляция ночного матча Кубка Бразилии, поле в прожекторах, игроки в бело-синей и сине-белой форме. Мяч влетает в сетку внизу — а наверху пользователь ещё спокоен, взгляд прикован к экрану, секунда полной тишины. Реакция настигает с опозданием: только когда ворота внизу уже утонули в конфетти замедленного повтора, наверху происходит выброс — пользователь вскидывает руки и беззвучно кричит. Ролик кончается тем, что реакция наверху достигает пика и замирает — рот приоткрыт, руки подняты, — а трансляция внизу спокойно крутит тот же замедленный повтор по кругу, не обращая внимания на то, что происходит наверху.
+
+Визуальный якорь: сплит-скрин «реакция сверху / трансляция снизу» — ночной стадион в прожекторах и командная бело-синяя форма в нижней половине, тёмная домашняя комната и лицо пользователя, подсвеченное экраном, в верхней.</p>
+  </div>
+  <section class="section">
+    <div class="section-header">
+      <h2 class="section-title">Видео</h2>
+      <span class="section-badge">Пример генерации</span>
+    </div>
+    <div class="media-grid">
+      <div class="video-multi">
+        <div class="video-item"><video class="video-player" controls muted loop playsinline poster="https://temp-images.ws.pho.to/f0df98ab30b77e19c13ad3afb4a7677a2801f788.png"><source src="https://temp-images.ws.pho.to/75834c32de8ebf1f261ffc1486bf94477711d695.mp4" type="video/mp4"></video>
+          <div class="video-caption">woman in her late 30s with straight blonde shoulder-length hair and cat-eye glasses</div>
+        </div>
+        <div class="video-item"><video class="video-player" controls muted loop playsinline poster="https://temp-images.ws.pho.to/ca1a6af897e5b170d70945ea298515c36a58a27b.png"><source src="https://temp-images.ws.pho.to/75ecca860be8fb7afb07e4ea52587b26dec9866f.mp4" type="video/mp4"></video>
+          <div class="video-caption">man in his early 30s with short brown hair, blue eyes, and a short beard</div>
+        </div>
+      </div>
+      <div class="prompts-col">
+        <details class="prompt-block">
+          <summary>Промпт для первого кадра <span class="prompt-label">GPT Image 2</span></summary>
+          <pre class="prompt-text">Turn the photo of the person into the top half of a vertical 9:16 split-screen reaction shot, aspect ratio 9:16. A thin horizontal seam sits at the exact midpoint of the frame. The upper half holds the person, chest-up, centred, lit only by the cold blue-white glow of an off-screen phone screen held low and out of frame — the light hits the face from below and in front, leaving the top of the head and the room behind in near-black shadow. The lower half is a broadcast still: a floodlit night football pitch seen from a high stand camera, vivid green grass with white boundary lines, a goal net in the background, players from two generic teams — one in white kits, one in dark navy kits with pale blue trim, no real names, numbers, or logos legible — frozen mid-action near the goal, packed stands glowing under floodlights behind them.
+
+Pose &amp; composition: the person sits leaning slightly forward toward the unseen phone, shoulders tense, hands not yet raised, still in the split-second before reacting.
+
+Expression: calm, focused, slightly parted lips — the held breath just before a reaction, not the reaction itself.
+
+Lighting: hard, cool, directional light from below (the phone glow) on the face; everything behind falls into black. The lower half is lit by warm-white stadium floodlights with a faint green cast from the pitch.
+
+Camera &amp; lens: for the upper half, a stationary handheld-style framing, slight film grain; for the lower half, a long lens broadcast look with natural depth compression.
+
+Identity preservation: keep the person&#x27;s identity exactly as in the source photo — same age, face shape and proportions, skin tone and undertone, eye shape and eye colour, eyebrow shape, nose and jawline, and the exact hairstyle including its colour, parting, length and texture, plus any freckles, moles, scars, glasses or facial hair.
+
+Avoid: no overlay graphics, scoreboards, captions or lettering of any kind on either half — no lettering anywhere in the frame; no real player names, jersey numbers, club crests or logos anywhere in the lower half.</pre>
+        </details>
+        <details class="prompt-block">
+          <summary>Промпт для видео <span class="prompt-label">Kling · Grok</span></summary>
+          <pre class="prompt-text">Create a short cinematic video based on the uploaded image. Vertical 9:16, a permanent split-screen: the top half shows the person from the image, the bottom half shows a broadcast replay of a floodlit night football match.
+
+Camera and motion structure:
+0:00–0:01: Both halves static. Top: the person sits still, calm, watching intently, lit only by phone glow. Bottom: the broadcast plays live match action — the ball moves toward the goal.
+0:01–0:02: Bottom half — the ball crosses the line into the net; players in white celebrate, floodlight flare and confetti-like broadcast graphics burst around the replay angle. Top half stays static: the person has not reacted yet.
+0:02–0:03: Top half — with a deliberate half-second delay after the goal below, the person&#x27;s stillness breaks: eyes widen, they surge forward, arms flying up. Bottom half loops the same slow-motion replay of the goal, unaffected by the top.
+0:03–0:04: Top half — the person reaches their peak: mouth open in a silent shout, both arms raised, body rocking back. Bottom half continues its slow-motion replay loop, players still celebrating in the same frozen-feeling motion.
+0:04–0:05: Top half holds on the peak reaction — frozen at its highest point, no further motion, no reframing. Bottom half keeps calmly looping the same replay, indifferent to the top half&#x27;s explosion. That contrast — one half spent, one half endlessly replaying — is the ending.
+
+Character:
+Preserve the person&#x27;s face, hair, skin tone and identity exactly from the source image throughout. Allowed motion: sitting still, then surging forward and raising both arms in a silent celebratory shout. Nothing else.
+
+Style:
+Real handheld reaction-video look for the top half — visible grain, phone-glow lighting; broadcast sports look for the bottom half — floodlights, long lens, slow-motion replay. The two halves never blend or interact visually.
+
+Restrictions:
+- Do not change the person&#x27;s face, hair, skin tone or identity at any point
+- The person stays in frame, recognizable and the visual focus of the top half for the entire video
+- The person never speaks, sings or mouths words — the shout is silent, emotional reaction only
+- No speech bubbles
+- No on-screen text, captions, scoreboards, lower thirds or graphics on either half — no lettering anywhere in the frame
+- No real player names, numbers, club crests or logos in the bottom half — generic kits only
+- The half-second delay between the goal (bottom) and the reaction (top) must be clearly visible — the top half must not react simultaneously with or before the bottom half event
+- No improvisation beyond the listed actions — no extra gestures, no extra beats
+- The bottom half&#x27;s replay loops exactly once and never cuts to new footage; the seam between the two halves stays fixed and never moves or dissolves
+- No violent or aggressive actions; the on-field contact stays a normal celebratory scrum, not a fight</pre>
+        </details>
+      </div>
+    </div>
+  </section>
+</div>
+</body>
+</html>

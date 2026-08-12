@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>#august — Смена сезонного реквизита · Video Ideas</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      background: #f4f4f5; color: #111; font-size: 14px; line-height: 1.5;
+    }
+    .page-header {
+      background: #fff; border-bottom: 1px solid #e4e4e7; position: sticky;
+      top: 0; z-index: 100; box-shadow: 0 1px 8px rgba(0,0,0,.05);
+    }
+    .header-inner {
+      max-width: 1100px; margin: 0 auto; padding: 14px 28px;
+      display: flex; align-items: center; gap: 20px;
+    }
+    .brand {
+      font-size: 18px; font-weight: 800; letter-spacing: -.5px; color: #111;
+      white-space: nowrap; user-select: none; text-decoration: none;
+    }
+    .brand-tik { color: #fe2c55; }
+    .brand-tok { color: #010101; }
+    .brand-dot { color: #d1d1d1; margin: 0 6px; font-weight: 300; }
+    .brand-cc  { color: #888; font-size: 12px; font-weight: 500; }
+    .header-text { flex: 1; min-width: 0; }
+    .page-title {
+      font-size: 15px; font-weight: 700; letter-spacing: -.2px;
+      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    }
+    .page-sub { font-size: 11.5px; color: #999; margin-top: 2px; }
+    .date-badge {
+      background: #fe2c55; color: #fff; font-weight: 700; font-size: 12px;
+      border-radius: 8px; padding: 6px 14px; line-height: 1.4;
+      text-align: center; white-space: nowrap; flex-shrink: 0;
+    }
+    .date-badge span { display: block; font-size: 10px; font-weight: 500; opacity: .8; }
+    .page-nav {
+      max-width: 1100px; margin: 0 auto; padding: 0 28px;
+      display: flex; gap: 2px; border-top: 1px solid #f0f0f0;
+    }
+    .nav-a {
+      text-decoration: none; color: #999; font-size: 12.5px; font-weight: 500;
+      padding: 9px 14px; border-bottom: 2px solid transparent;
+      transition: color .15s, border-color .15s;
+    }
+    .nav-a:hover { color: #fe2c55; }
+    .nav-a.active { color: #fe2c55; border-bottom-color: #fe2c55; }
+    .content { max-width: 1100px; margin: 0 auto; padding: 36px 28px 80px; }
+    .section { margin-bottom: 52px; }
+    .section-header { display: flex; align-items: baseline; gap: 10px; margin-bottom: 16px; }
+    .section-title { font-size: 19px; font-weight: 800; letter-spacing: -.4px; }
+    .section-badge {
+      font-size: 10.5px; font-weight: 600; color: #999; background: #ebebeb;
+      padding: 3px 8px; border-radius: 20px; text-transform: uppercase; letter-spacing: .4px;
+    }
+    @media (max-width: 768px) {
+      .header-inner { gap: 12px; padding: 12px 16px; }
+      .date-badge { display: none; }
+      .page-nav { padding: 0 16px; }
+      .content { padding: 24px 16px 60px; }
+    }
+
+
+    .idea-lead {
+      background: #fff; border-radius: 12px; padding: 36px 40px 32px;
+      box-shadow: 0 1px 4px rgba(0,0,0,.07), 0 0 0 1px rgba(0,0,0,.05);
+      margin-bottom: 40px;
+    }
+    .idea-hashtag { font-size: 13px; font-weight: 700; color: #fe2c55; margin-bottom: 8px; }
+    .idea-title { font-size: 26px; font-weight: 800; letter-spacing: -.6px; line-height: 1.25; margin-bottom: 16px; }
+    .idea-desc { font-size: 14px; color: #444; line-height: 1.75; max-width: 720px; }
+    .media-grid {
+      display: grid; grid-template-columns: auto 1fr; gap: 28px; align-items: start;
+    }
+    .video-multi {
+      display: flex; gap: 16px; flex-wrap: wrap; align-items: flex-start;
+    }
+    .video-item {
+      width: 200px; display: flex; flex-direction: column; gap: 8px; flex-shrink: 0;
+    }
+    .video-caption {
+      font-size: 11px; color: #999; line-height: 1.4; padding: 0 2px;
+    }
+    .video-player {
+      width: 100%; aspect-ratio: 9/16; object-fit: cover; border-radius: 12px;
+      display: block; box-shadow: 0 2px 16px rgba(0,0,0,.14);
+    }
+    .frame-img {
+      width: 100%; aspect-ratio: 9/16; object-fit: cover; border-radius: 12px;
+      display: block; box-shadow: 0 2px 16px rgba(0,0,0,.14);
+    }
+    .prompts-col { display: flex; flex-direction: column; gap: 12px; }
+    .prompt-block {
+      background: #fff; border-radius: 10px;
+      box-shadow: 0 1px 4px rgba(0,0,0,.07), 0 0 0 1px rgba(0,0,0,.05); overflow: hidden;
+    }
+    .prompt-block summary {
+      padding: 14px 18px; font-size: 13px; font-weight: 700; cursor: pointer;
+      user-select: none; list-style: none; display: flex; align-items: center; gap: 8px; color: #333;
+    }
+    .prompt-block summary::-webkit-details-marker { display: none; }
+    .prompt-block summary::before { content: '▶'; font-size: 8px; color: #bbb; transition: transform .15s; flex-shrink: 0; }
+    .prompt-block[open] summary::before { transform: rotate(90deg); }
+    .prompt-block summary:hover { color: #fe2c55; }
+    .prompt-block summary:hover::before { color: #fe2c55; }
+    .prompt-label { font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: .5px; color: #bbb; margin-left: auto; }
+    .prompt-text {
+      padding: 14px 18px 16px; font-family: 'SF Mono','Fira Code','Menlo',monospace;
+      font-size: 11.5px; line-height: 1.7; color: #555; background: #f9f9f9;
+      border-top: 1px solid #f0f0f0; white-space: pre-wrap; word-break: break-word;
+      max-height: 320px; overflow-y: auto;
+    }
+    @media (max-width: 900px) {
+      .media-grid { grid-template-columns: 1fr; }
+      .video-multi { justify-content: center; }
+      .idea-lead { padding: 24px 22px 22px; }
+    }
+    @media (max-width: 520px) { .idea-title { font-size: 22px; } }
+
+  </style>
+</head>
+<body>
+<div class="page-header">
+  <div class="header-inner">
+    <a class="brand" href="../../../">
+      <span class="brand-tik">Tik</span><span class="brand-tok">Tok</span>
+      <span class="brand-dot">·</span><span class="brand-cc">Video Ideas</span>
+    </a>
+    <div class="header-text">
+      <div class="page-title">#august</div>
+      <div class="page-sub">Видео-идея · 8 августа 2026 · Выпуск merged</div>
+    </div>
+    <div class="date-badge">08.08.2026<span>Дата · Выпуск merged</span></div>
+  </div>
+  <nav class="page-nav">
+    <a href="../../../" class="nav-a">← Все отчёты</a>
+    <a href="../../#us" class="nav-a">← 8 авг 2026 · Выпуск merged</a>
+    <a href="#" class="nav-a active">#august</a>
+  </nav>
+</div>
+<div class="content">
+  <div class="idea-lead">
+    <div class="idea-hashtag">#august</div>
+    <h1 class="idea-title">Смена сезонного реквизита</h1>
+    <p class="idea-desc">Тот же прикроватный столик, то же тёплое утро — но вместо одного созерцательного жеста пользователь устраивает быстрый, немного хаотичный ритуал «сдать июль — принять август»: одним движением сдвигает с тумбочки летние мелочи (солнцезащитный крем, пляжный браслет) в сторону кадра и тут же, чуть не роняя, водружает на их место осенние — свечу с ароматом тыквы и вязаный шарф, — при этом одной рукой прижимая к груди тот же настольный календарь с уже открытой страницей «АВГУСТ». Камера не стоит смирно, а слегка вздрагивает и подрагивает вместе с движениями рук, будто снято второпях кем-то, кто торопится успеть. Три коротких столкновения предметов друг с другом на тумбочке — это и есть сюжет, без единого «вау»-момента: под конец пользователь опускает руки, оглядывает получившийся натюрморт и коротко фыркает от смеха над собственной спешкой.
+
+Визуальный якорь: та же прикроватная тумбочка и настольный календарь с открытой страницей «АВГУСТ», но теперь заваленная и летними, и осенними мелочами одновременно — солнцезащитный крем рядом с тыквенной свечой, пляжный браслет рядом с вязаным шарфом.</p>
+  </div>
+  <section class="section">
+    <div class="section-header">
+      <h2 class="section-title">Видео</h2>
+      <span class="section-badge">Пример генерации</span>
+    </div>
+    <div class="media-grid">
+      <div class="video-multi">
+        <div class="video-item"><video class="video-player" controls muted loop playsinline poster="https://temp-images.ws.pho.to/df00fd798e57b882252a0f741305b5e8af63ba15.png"><source src="https://temp-images.ws.pho.to/1e543d85b9579fbd82bc703758fb5d2b7483700a.mp4" type="video/mp4"></video>
+          <div class="video-caption">woman in her late 30s with straight blonde shoulder-length hair and cat-eye glasses</div>
+        </div>
+        <div class="video-item"><video class="video-player" controls muted loop playsinline poster="https://temp-images.ws.pho.to/831d4bc74a524e358685f1825bcdd5a705607c0e.png"><source src="https://temp-images.ws.pho.to/77842763dde7345dfcb46e3a6696d354b3a3613c.mp4" type="video/mp4"></video>
+          <div class="video-caption">man in his early 30s with short brown hair, blue eyes, and a short beard</div>
+        </div>
+      </div>
+      <div class="prompts-col">
+        <details class="prompt-block">
+          <summary>Промпт для первого кадра <span class="prompt-label">GPT Image 2</span></summary>
+          <pre class="prompt-text">Turn the photo of the person into a candid, slightly off-balance morning portrait, vertical 9:16 composition, chest-up, angled a few degrees as if caught mid-motion rather than posed.
+
+Pose &amp; composition: the person leans over a cluttered nightstand, one arm extended mid-reach toward a scatter of small objects — a tube of sunscreen, a woven friendship-style beach bracelet, a small pumpkin-scented candle with a cream label, a folded knit scarf in rust orange — with the same spiral desk calendar block from before propped against the lamp, its visible top page already reading &quot;AUGUST&quot; in bold letters with a small butterfly-and-flower illustration in the corner.
+
+Expression: focused but faintly amused — brows slightly raised, lips parted as if about to laugh at their own scramble, eyes on the objects rather than on the camera.
+
+Setting: the same small bedroom nook, now visibly mid-reorganisation — the blanket more rumpled, the lamp switched on this time for a warmer practical glow layered over the morning light.
+
+Lighting: warm morning sun from the left combined with a small warm lamp glow from the nightstand itself, creating two soft light sources that overlap gently on the hands and objects.
+
+Colour grading: warm amber tones through most of the frame, with the rust-orange scarf and the candle&#x27;s cream label giving small pockets of autumnal contrast against the still-summery blue of the sunscreen tube.
+
+Camera &amp; lens: 40mm at f/2.5, slightly wider than a tight portrait so both hands and the cluttered nightstand read clearly, natural handheld-style falloff at the edges, fine grain.
+
+Skin texture: real skin, visible pores, no smoothing.
+
+Identity preservation: keep the person&#x27;s identity exactly as in the source photo — same age, face shape and proportions, skin tone and undertone, eye shape and eye colour, eyebrow shape, nose and jawline, and the exact hairstyle including colour, parting, length and texture, plus any freckles, moles, scars, facial hair or glasses. Hands anatomically correct, five fingers each, mid-motion but not blurred into distortion.
+
+Avoid: over-smoothed skin, pasted-face look, and no overlay graphics or captions beyond the calendar&#x27;s own printed &quot;AUGUST&quot; page, which stays exactly as established, not newly legible here.</pre>
+        </details>
+        <details class="prompt-block">
+          <summary>Промпт для видео <span class="prompt-label">Kling · Grok</span></summary>
+          <pre class="prompt-text">Create a short cinematic video based on the uploaded image. Vertical 9:16.
+A cluttered nightstand in warm morning light. The person from the image leans over it chest-up, sorting summer and early-autumn objects around the desk calendar already open to &quot;AUGUST.&quot;
+
+Camera and motion structure:
+Handheld throughout, with small natural sway and a slight jolt on each object placed down — never locked-off, never a smooth tripod move. Three short beats, each happening once, no cuts.
+0:00–0:01: The person sweeps the sunscreen tube and the beach bracelet a few inches to one side of the nightstand with the back of one hand.
+0:01–0:03: With the other hand they set down the pumpkin-scented candle a little too fast, it wobbles slightly against the lamp base before settling — they catch it with a quick steadying touch.
+0:03–0:04: They drape the knit scarf half over the candle and half over the calendar&#x27;s edge, tucking one corner down.
+0:04–0:05: They straighten up, look at the small pile of mixed summer-and-autumn objects, and let out a short, silent laugh at the mess they&#x27;ve made — shoulders shaking once, head tipping back slightly. This settling laugh is the ending.
+
+Character:
+Preserve the person&#x27;s face, hair, skin tone and identity exactly from the source image throughout. Allowed motion: the two-handed sweep, the candle placement and catch, the scarf drape, the final laugh — nothing else.
+
+Style:
+Fast, warm, a little chaotic — filmed like a real morning caught candidly, not staged. Handheld immediacy, natural light, the humour of a small domestic scramble rather than epic or cinematic polish.
+
+Restrictions:
+- Do not change the person&#x27;s appearance, face, clothing, or identity at any point
+- The person stays in frame, recognizable and the visual focus for the whole video
+- The person never speaks, sings or mouths words — the laugh is silent, emotional reaction only
+- No speech bubbles
+- No on-screen text or graphics of any kind beyond the calendar&#x27;s already-established &quot;AUGUST&quot; page, which does not change or become more legible than in the first frame
+- Each of the three beats happens only once — no resets, no repeated placements, no jump cuts; each timecode continues directly from the last
+- No improvisation beyond the four described actions — no extra objects added beyond the four named, no getting up, no additional gestures
+- The candle&#x27;s wobble must read as a small, harmless near-miss the person catches — never as something actually falling, breaking, or spilling
+- No violent or aggressive motion of any kind</pre>
+        </details>
+      </div>
+    </div>
+  </section>
+</div>
+</body>
+</html>

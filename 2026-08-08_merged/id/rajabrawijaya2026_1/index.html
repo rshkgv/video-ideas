@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>#rajabrawijaya2026 — Один становится группой · Video Ideas</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      background: #f4f4f5; color: #111; font-size: 14px; line-height: 1.5;
+    }
+    .page-header {
+      background: #fff; border-bottom: 1px solid #e4e4e7; position: sticky;
+      top: 0; z-index: 100; box-shadow: 0 1px 8px rgba(0,0,0,.05);
+    }
+    .header-inner {
+      max-width: 1100px; margin: 0 auto; padding: 14px 28px;
+      display: flex; align-items: center; gap: 20px;
+    }
+    .brand {
+      font-size: 18px; font-weight: 800; letter-spacing: -.5px; color: #111;
+      white-space: nowrap; user-select: none; text-decoration: none;
+    }
+    .brand-tik { color: #fe2c55; }
+    .brand-tok { color: #010101; }
+    .brand-dot { color: #d1d1d1; margin: 0 6px; font-weight: 300; }
+    .brand-cc  { color: #888; font-size: 12px; font-weight: 500; }
+    .header-text { flex: 1; min-width: 0; }
+    .page-title {
+      font-size: 15px; font-weight: 700; letter-spacing: -.2px;
+      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    }
+    .page-sub { font-size: 11.5px; color: #999; margin-top: 2px; }
+    .date-badge {
+      background: #fe2c55; color: #fff; font-weight: 700; font-size: 12px;
+      border-radius: 8px; padding: 6px 14px; line-height: 1.4;
+      text-align: center; white-space: nowrap; flex-shrink: 0;
+    }
+    .date-badge span { display: block; font-size: 10px; font-weight: 500; opacity: .8; }
+    .page-nav {
+      max-width: 1100px; margin: 0 auto; padding: 0 28px;
+      display: flex; gap: 2px; border-top: 1px solid #f0f0f0;
+    }
+    .nav-a {
+      text-decoration: none; color: #999; font-size: 12.5px; font-weight: 500;
+      padding: 9px 14px; border-bottom: 2px solid transparent;
+      transition: color .15s, border-color .15s;
+    }
+    .nav-a:hover { color: #fe2c55; }
+    .nav-a.active { color: #fe2c55; border-bottom-color: #fe2c55; }
+    .content { max-width: 1100px; margin: 0 auto; padding: 36px 28px 80px; }
+    .section { margin-bottom: 52px; }
+    .section-header { display: flex; align-items: baseline; gap: 10px; margin-bottom: 16px; }
+    .section-title { font-size: 19px; font-weight: 800; letter-spacing: -.4px; }
+    .section-badge {
+      font-size: 10.5px; font-weight: 600; color: #999; background: #ebebeb;
+      padding: 3px 8px; border-radius: 20px; text-transform: uppercase; letter-spacing: .4px;
+    }
+    @media (max-width: 768px) {
+      .header-inner { gap: 12px; padding: 12px 16px; }
+      .date-badge { display: none; }
+      .page-nav { padding: 0 16px; }
+      .content { padding: 24px 16px 60px; }
+    }
+
+
+    .idea-lead {
+      background: #fff; border-radius: 12px; padding: 36px 40px 32px;
+      box-shadow: 0 1px 4px rgba(0,0,0,.07), 0 0 0 1px rgba(0,0,0,.05);
+      margin-bottom: 40px;
+    }
+    .idea-hashtag { font-size: 13px; font-weight: 700; color: #fe2c55; margin-bottom: 8px; }
+    .idea-title { font-size: 26px; font-weight: 800; letter-spacing: -.6px; line-height: 1.25; margin-bottom: 16px; }
+    .idea-desc { font-size: 14px; color: #444; line-height: 1.75; max-width: 720px; }
+    .media-grid {
+      display: grid; grid-template-columns: auto 1fr; gap: 28px; align-items: start;
+    }
+    .video-multi {
+      display: flex; gap: 16px; flex-wrap: wrap; align-items: flex-start;
+    }
+    .video-item {
+      width: 200px; display: flex; flex-direction: column; gap: 8px; flex-shrink: 0;
+    }
+    .video-caption {
+      font-size: 11px; color: #999; line-height: 1.4; padding: 0 2px;
+    }
+    .video-player {
+      width: 100%; aspect-ratio: 9/16; object-fit: cover; border-radius: 12px;
+      display: block; box-shadow: 0 2px 16px rgba(0,0,0,.14);
+    }
+    .frame-img {
+      width: 100%; aspect-ratio: 9/16; object-fit: cover; border-radius: 12px;
+      display: block; box-shadow: 0 2px 16px rgba(0,0,0,.14);
+    }
+    .prompts-col { display: flex; flex-direction: column; gap: 12px; }
+    .prompt-block {
+      background: #fff; border-radius: 10px;
+      box-shadow: 0 1px 4px rgba(0,0,0,.07), 0 0 0 1px rgba(0,0,0,.05); overflow: hidden;
+    }
+    .prompt-block summary {
+      padding: 14px 18px; font-size: 13px; font-weight: 700; cursor: pointer;
+      user-select: none; list-style: none; display: flex; align-items: center; gap: 8px; color: #333;
+    }
+    .prompt-block summary::-webkit-details-marker { display: none; }
+    .prompt-block summary::before { content: '▶'; font-size: 8px; color: #bbb; transition: transform .15s; flex-shrink: 0; }
+    .prompt-block[open] summary::before { transform: rotate(90deg); }
+    .prompt-block summary:hover { color: #fe2c55; }
+    .prompt-block summary:hover::before { color: #fe2c55; }
+    .prompt-label { font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: .5px; color: #bbb; margin-left: auto; }
+    .prompt-text {
+      padding: 14px 18px 16px; font-family: 'SF Mono','Fira Code','Menlo',monospace;
+      font-size: 11.5px; line-height: 1.7; color: #555; background: #f9f9f9;
+      border-top: 1px solid #f0f0f0; white-space: pre-wrap; word-break: break-word;
+      max-height: 320px; overflow-y: auto;
+    }
+    @media (max-width: 900px) {
+      .media-grid { grid-template-columns: 1fr; }
+      .video-multi { justify-content: center; }
+      .idea-lead { padding: 24px 22px 22px; }
+    }
+    @media (max-width: 520px) { .idea-title { font-size: 22px; } }
+
+  </style>
+</head>
+<body>
+<div class="page-header">
+  <div class="header-inner">
+    <a class="brand" href="../../../">
+      <span class="brand-tik">Tik</span><span class="brand-tok">Tok</span>
+      <span class="brand-dot">·</span><span class="brand-cc">Video Ideas</span>
+    </a>
+    <div class="header-text">
+      <div class="page-title">#rajabrawijaya2026</div>
+      <div class="page-sub">Видео-идея · 8 августа 2026 · Выпуск merged</div>
+    </div>
+    <div class="date-badge">08.08.2026<span>Дата · Выпуск merged</span></div>
+  </div>
+  <nav class="page-nav">
+    <a href="../../../" class="nav-a">← Все отчёты</a>
+    <a href="../../#id" class="nav-a">← 8 авг 2026 · Выпуск merged</a>
+    <a href="#" class="nav-a active">#rajabrawijaya2026</a>
+  </nav>
+</div>
+<div class="content">
+  <div class="idea-lead">
+    <div class="idea-hashtag">#rajabrawijaya2026</div>
+    <h1 class="idea-title">Один становится группой</h1>
+    <p class="idea-desc">Пользователь в синем пиджаке и светлых брюках стоит один на каменной площади перед ректоратом Universitas Brawijaya — узнаваемая чёрно-золотая вывеска входа хорошо видна за его спиной. Камера статична. Он поправляет волосы, улыбается в объектив — и один за другим, входя в кадр по обе стороны, к нему присоединяются другие участники в таких же синих пиджаках, пока не выстраивается целая синхронно танцующая группа вокруг него. На пике связки, когда все движутся идеально в такт, камера коротко поднимается вверх, к фасаду здания над их головами — раскрывая масштаб места, где это происходит, — и этим подъёмом видео заканчивается.
+
+Визуальный якорь: площадь перед ректоратом Universitas Brawijaya с чёрно-золотой вывеской, синий пиджак пользователя, синхронная группа танцующих участников в одинаковых пиджаках.</p>
+  </div>
+  <section class="section">
+    <div class="section-header">
+      <h2 class="section-title">Видео</h2>
+      <span class="section-badge">Пример генерации</span>
+    </div>
+    <div class="media-grid">
+      <div class="video-multi">
+        <div class="video-item"><video class="video-player" controls muted loop playsinline poster="https://temp-images.ws.pho.to/6d36dd7168857a07768fe2276a6f7cc16cc2337d.png"><source src="https://temp-images.ws.pho.to/e042b309e9e43a4411b17900f4d0674e97d9588b.mp4" type="video/mp4"></video>
+          <div class="video-caption">woman in her late 30s with straight blonde shoulder-length hair and cat-eye glasses</div>
+        </div>
+        <div class="video-item"><video class="video-player" controls muted loop playsinline poster="https://temp-images.ws.pho.to/a0721b1bfbcf507e63809a8f97d7e6eb59f6217b.png"><source src="https://temp-images.ws.pho.to/2913aa12f8c627b179961870d8a3237bf2ee3719.mp4" type="video/mp4"></video>
+          <div class="video-caption">man in his early 30s with short brown hair, blue eyes, and a short beard</div>
+        </div>
+      </div>
+      <div class="prompts-col">
+        <details class="prompt-block">
+          <summary>Промпт для первого кадра <span class="prompt-label">GPT Image 2</span></summary>
+          <pre class="prompt-text">Turn the photo of the person into a portrait of them standing alone at the centre of a stone plaza in front of a modern university building entrance with a large black-and-gold sign — vertical 9:16 composition, waist-up framing, the person centred and their face clearly legible, the building entrance and sign visible behind them.
+
+Pose &amp; composition: they stand with one hand just finishing adjusting their hair, weight on one hip, a relaxed and confident stance, smiling toward the camera as if a beat before a group performance begins.
+
+Expression: warm, confident anticipation — a genuine smile, eyes bright and forward, the look of someone about to be joined by others for something exciting.
+
+Attire: a blue blazer over a white shirt and light-coloured trousers, neat and formal, matching a campus ambassador&#x27;s promotional uniform.
+
+Setting &amp; background: an open stone or patterned-concrete plaza in front of a modern university building, its entrance marked by a large black sign with gold lettering and lit gold accents, large potted plants flanking the doorway on either side.
+
+Lighting: bright, even natural daylight, clear sky, no harsh shadows.
+
+Colour grading: naturalistic outdoor tones — warm stone plaza, the black-and-gold sign as a striking accent, the blue blazer as the strongest colour note on the person.
+
+Materials &amp; texture: the blazer fabric has a slight structured sheen, the plaza&#x27;s stone paving shows a fine patterned texture, the sign&#x27;s gold lettering catches a soft highlight.
+
+Camera &amp; lens: consistent with a static tripod-mounted camera at a short-to-medium distance, natural depth of field.
+
+Skin texture: keep real skin — visible pores, natural unevenness, no smoothing or retouching.
+
+Identity preservation: keep the person&#x27;s identity exactly as in the source photo — same age, face shape and proportions, skin tone and undertone, eye shape and eye colour, eyebrow shape, nose and jawline, and the exact hairstyle including colour, parting, length and texture, plus any freckles, moles, scars, facial hair, glasses or hijab. Hands must be anatomically correct: five fingers each, natural proportion.
+
+Avoid: over-smoothed skin, a pasted-face or cutout look, and no overlay graphics or captions of any kind.</pre>
+        </details>
+        <details class="prompt-block">
+          <summary>Промпт для видео <span class="prompt-label">Kling · Grok</span></summary>
+          <pre class="prompt-text">Create a short cinematic video based on the uploaded image. Vertical 9:16.
+The person from the image stands alone on a stone plaza in front of a university building with a black-and-gold entrance sign, about to be joined by other dancers.
+
+Camera and motion structure:
+Keep the shot locked-off and static for almost the entire video — no zoom, no pan — except for one brief upward tilt at the very end.
+FRAMES 0–20%: The person stands alone, adjusts their hair, smiles at the camera.
+FRAMES 20–45%: Other performers in matching blue blazers enter from both sides of frame, one or two at a time, taking up positions around the person until a full group has assembled.
+FRAMES 45–80%: The whole group, person included, performs a synchronized routine of rhythmic arm and leg movements together, perfectly in time.
+FRAMES 80–100%: On the routine&#x27;s final beat, the camera tilts smoothly upward away from the group&#x27;s faces toward the building&#x27;s overhang and sign above them, ending the video on that wider view of the building&#x27;s scale with the group&#x27;s motion still visible at the bottom of frame.
+
+Character:
+Preserve the person&#x27;s face, hair, skin tone, and identity exactly from the source image throughout the entire video. Do not alter their appearance. Allowed motion: adjusting hair, smiling, then the synchronized dance routine alongside the joining group. No other individual gestures.
+
+Key visual events:
+The hero moment is the group assembling around the person one by one until the full synchronized ensemble is dancing together — this joining-in must be clearly visible as a sequence, not an instant cut to a full group.
+Exactly the same small group of joining performers appears — no additional people beyond those shown joining.
+
+Style:
+Cinematic campus-promotional style — bright natural daylight, confident and celebratory, broadcast-quality but on-location. Spectacular and triumphant.
+
+Restrictions:
+- Do not change the person&#x27;s appearance, face, clothing, or identity at any point
+- The person stays in frame, recognizable and the visual focus for the whole video, even once others join
+- The person never speaks, sings or mouths words — silent, energetic dance only
+- No speech bubbles
+- No on-screen text, captions, or graphics of any kind anywhere in the video
+- The camera stays completely static until the final beat, then tilts upward exactly once — no earlier pans, zooms, or movements
+- No extra people beyond the joining group described — no duplicated or merged identities among the joining performers
+- No additional gestures, actions, or beats beyond those explicitly described above</pre>
+        </details>
+      </div>
+    </div>
+  </section>
+</div>
+</body>
+</html>

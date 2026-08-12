@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>#myspace — Экран загорается заново · Video Ideas</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      background: #f4f4f5; color: #111; font-size: 14px; line-height: 1.5;
+    }
+    .page-header {
+      background: #fff; border-bottom: 1px solid #e4e4e7; position: sticky;
+      top: 0; z-index: 100; box-shadow: 0 1px 8px rgba(0,0,0,.05);
+    }
+    .header-inner {
+      max-width: 1100px; margin: 0 auto; padding: 14px 28px;
+      display: flex; align-items: center; gap: 20px;
+    }
+    .brand {
+      font-size: 18px; font-weight: 800; letter-spacing: -.5px; color: #111;
+      white-space: nowrap; user-select: none; text-decoration: none;
+    }
+    .brand-tik { color: #fe2c55; }
+    .brand-tok { color: #010101; }
+    .brand-dot { color: #d1d1d1; margin: 0 6px; font-weight: 300; }
+    .brand-cc  { color: #888; font-size: 12px; font-weight: 500; }
+    .header-text { flex: 1; min-width: 0; }
+    .page-title {
+      font-size: 15px; font-weight: 700; letter-spacing: -.2px;
+      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    }
+    .page-sub { font-size: 11.5px; color: #999; margin-top: 2px; }
+    .date-badge {
+      background: #fe2c55; color: #fff; font-weight: 700; font-size: 12px;
+      border-radius: 8px; padding: 6px 14px; line-height: 1.4;
+      text-align: center; white-space: nowrap; flex-shrink: 0;
+    }
+    .date-badge span { display: block; font-size: 10px; font-weight: 500; opacity: .8; }
+    .page-nav {
+      max-width: 1100px; margin: 0 auto; padding: 0 28px;
+      display: flex; gap: 2px; border-top: 1px solid #f0f0f0;
+    }
+    .nav-a {
+      text-decoration: none; color: #999; font-size: 12.5px; font-weight: 500;
+      padding: 9px 14px; border-bottom: 2px solid transparent;
+      transition: color .15s, border-color .15s;
+    }
+    .nav-a:hover { color: #fe2c55; }
+    .nav-a.active { color: #fe2c55; border-bottom-color: #fe2c55; }
+    .content { max-width: 1100px; margin: 0 auto; padding: 36px 28px 80px; }
+    .section { margin-bottom: 52px; }
+    .section-header { display: flex; align-items: baseline; gap: 10px; margin-bottom: 16px; }
+    .section-title { font-size: 19px; font-weight: 800; letter-spacing: -.4px; }
+    .section-badge {
+      font-size: 10.5px; font-weight: 600; color: #999; background: #ebebeb;
+      padding: 3px 8px; border-radius: 20px; text-transform: uppercase; letter-spacing: .4px;
+    }
+    @media (max-width: 768px) {
+      .header-inner { gap: 12px; padding: 12px 16px; }
+      .date-badge { display: none; }
+      .page-nav { padding: 0 16px; }
+      .content { padding: 24px 16px 60px; }
+    }
+
+
+    .idea-lead {
+      background: #fff; border-radius: 12px; padding: 36px 40px 32px;
+      box-shadow: 0 1px 4px rgba(0,0,0,.07), 0 0 0 1px rgba(0,0,0,.05);
+      margin-bottom: 40px;
+    }
+    .idea-hashtag { font-size: 13px; font-weight: 700; color: #fe2c55; margin-bottom: 8px; }
+    .idea-title { font-size: 26px; font-weight: 800; letter-spacing: -.6px; line-height: 1.25; margin-bottom: 16px; }
+    .idea-desc { font-size: 14px; color: #444; line-height: 1.75; max-width: 720px; }
+    .media-grid {
+      display: grid; grid-template-columns: auto 1fr; gap: 28px; align-items: start;
+    }
+    .video-multi {
+      display: flex; gap: 16px; flex-wrap: wrap; align-items: flex-start;
+    }
+    .video-item {
+      width: 200px; display: flex; flex-direction: column; gap: 8px; flex-shrink: 0;
+    }
+    .video-caption {
+      font-size: 11px; color: #999; line-height: 1.4; padding: 0 2px;
+    }
+    .video-player {
+      width: 100%; aspect-ratio: 9/16; object-fit: cover; border-radius: 12px;
+      display: block; box-shadow: 0 2px 16px rgba(0,0,0,.14);
+    }
+    .frame-img {
+      width: 100%; aspect-ratio: 9/16; object-fit: cover; border-radius: 12px;
+      display: block; box-shadow: 0 2px 16px rgba(0,0,0,.14);
+    }
+    .prompts-col { display: flex; flex-direction: column; gap: 12px; }
+    .prompt-block {
+      background: #fff; border-radius: 10px;
+      box-shadow: 0 1px 4px rgba(0,0,0,.07), 0 0 0 1px rgba(0,0,0,.05); overflow: hidden;
+    }
+    .prompt-block summary {
+      padding: 14px 18px; font-size: 13px; font-weight: 700; cursor: pointer;
+      user-select: none; list-style: none; display: flex; align-items: center; gap: 8px; color: #333;
+    }
+    .prompt-block summary::-webkit-details-marker { display: none; }
+    .prompt-block summary::before { content: '▶'; font-size: 8px; color: #bbb; transition: transform .15s; flex-shrink: 0; }
+    .prompt-block[open] summary::before { transform: rotate(90deg); }
+    .prompt-block summary:hover { color: #fe2c55; }
+    .prompt-block summary:hover::before { color: #fe2c55; }
+    .prompt-label { font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: .5px; color: #bbb; margin-left: auto; }
+    .prompt-text {
+      padding: 14px 18px 16px; font-family: 'SF Mono','Fira Code','Menlo',monospace;
+      font-size: 11.5px; line-height: 1.7; color: #555; background: #f9f9f9;
+      border-top: 1px solid #f0f0f0; white-space: pre-wrap; word-break: break-word;
+      max-height: 320px; overflow-y: auto;
+    }
+    @media (max-width: 900px) {
+      .media-grid { grid-template-columns: 1fr; }
+      .video-multi { justify-content: center; }
+      .idea-lead { padding: 24px 22px 22px; }
+    }
+    @media (max-width: 520px) { .idea-title { font-size: 22px; } }
+
+  </style>
+</head>
+<body>
+<div class="page-header">
+  <div class="header-inner">
+    <a class="brand" href="../../../">
+      <span class="brand-tik">Tik</span><span class="brand-tok">Tok</span>
+      <span class="brand-dot">·</span><span class="brand-cc">Video Ideas</span>
+    </a>
+    <div class="header-text">
+      <div class="page-title">#myspace</div>
+      <div class="page-sub">Видео-идея · 8 августа 2026 · Выпуск merged</div>
+    </div>
+    <div class="date-badge">08.08.2026<span>Дата · Выпуск merged</span></div>
+  </div>
+  <nav class="page-nav">
+    <a href="../../../" class="nav-a">← Все отчёты</a>
+    <a href="../../#us" class="nav-a">← 8 авг 2026 · Выпуск merged</a>
+    <a href="#" class="nav-a active">#myspace</a>
+  </nav>
+</div>
+<div class="content">
+  <div class="idea-lead">
+    <div class="idea-hashtag">#myspace</div>
+    <h1 class="idea-title">Экран загорается заново</h1>
+    <p class="idea-desc">Пользователь сидит перед старым винтажным монитором в комнате, выдержанной в розово-леопардовой эстетике 2000-х — на плечах слоёный топ, на шее чокер, глаза подведены густой чёрной подводкой, как в реальных видео тега. Экран за спиной пока тускло светится ровным синим — просто заставка. Пользователь тянется и нажимает клавишу, и в тот же миг экран за его плечом вспыхивает ярче, заливая комнату розовым и голубым светом монитора. Он оборачивается на свечение через плечо и расплывается в узнавающей, почти ошеломлённой улыбке — то самое лицо человека, увидевшего старый профиль живым.
+
+Визуальный якорь: винтажный монитор с ровным синим экраном, вспыхивающим ярче за плечом пользователя, розово-леопардовая комната, эмо-подводка и чокер — прямая примета Y2K-эстетики тега.</p>
+  </div>
+  <section class="section">
+    <div class="section-header">
+      <h2 class="section-title">Видео</h2>
+      <span class="section-badge">Пример генерации</span>
+    </div>
+    <div class="media-grid">
+      <div class="video-multi">
+        <div class="video-item"><video class="video-player" controls muted loop playsinline poster="https://temp-images.ws.pho.to/55223bb4e472c9715fc7e5d2c021872f52a93fb1.png"><source src="https://temp-images.ws.pho.to/57c12e91ee0559b49a3da5cf7f3e225f7db123e7.mp4" type="video/mp4"></video>
+          <div class="video-caption">man in his early 30s with short brown hair, blue eyes, and a short beard</div>
+        </div>
+        <div class="video-item"><video class="video-player" controls muted loop playsinline poster="https://temp-images.ws.pho.to/246fd07c1e3f396d6ca9c0fb57533e3bb01b90e4.png"><source src="https://temp-images.ws.pho.to/7a4f65e01ca59aef0e685075357a3cba36b7a577.mp4" type="video/mp4"></video>
+          <div class="video-caption">woman in her late 30s with straight blonde shoulder-length hair and cat-eye glasses</div>
+        </div>
+      </div>
+      <div class="prompts-col">
+        <details class="prompt-block">
+          <summary>Промпт для первого кадра <span class="prompt-label">GPT Image 2</span></summary>
+          <pre class="prompt-text">Turn the photo of the person into a portrait seated at a vintage silver-and-cream CRT computer monitor, vertical 9:16 composition, chest-up framing angled a few degrees so both the person&#x27;s face and the glowing screen behind their shoulder are visible together.
+
+Pose &amp; composition: the person sits square to a desk, one hand resting near an old beige keyboard, body turned slightly toward the camera while the bulky CRT monitor glows a plain, even blue behind their shoulder, its rounded plastic casing catching a soft reflection of that glow.
+
+Expression: relaxed anticipation — a faint half-smile, eyes flicking toward the screen rather than the camera, the look of someone about to see something they&#x27;ve missed for years.
+
+Attire: a pink-and-grey layered top, a wide white belt just visible at the waist, a black choker, heavy black eyeliner along the upper lash line in the exact scene/emo style of the early-2000s.
+
+Setting &amp; background: a bedroom decorated in loud Y2K pink-and-leopard style — a leopard-print rug corner visible, a pink-framed mirror on the wall catching a blur of the monitor&#x27;s glow, a neon-pink rabbit-shaped sign softly lit in the background, a scatter of nail polish bottles near the keyboard.
+
+Lighting: the monitor&#x27;s even blue glow lights the person&#x27;s face and the near side of the room from the side and slightly below; a warm pink ambient bounce comes off the room&#x27;s own décor, so the face reads with both a cool screen-light edge and a warm pink fill.
+
+Colour grading: saturated pink and leopard-brown tones through the room, cut with the monitor&#x27;s cool blue glow — the two temperatures visibly coexisting on the skin.
+
+Camera &amp; lens: 40mm at f/2.2, shallow depth of field keeping the face and the near edge of the monitor sharp, the leopard rug and mirror softly blurred behind.
+
+Skin texture: real skin, visible pores, no smoothing, the eyeliner crisp and hand-applied rather than airbrushed.
+
+Identity preservation: keep the person&#x27;s identity exactly as in the source photo — same age, face shape and proportions, skin tone and undertone, eye shape and eye colour, eyebrow shape, nose and jawline, and the exact hairstyle including colour, parting, length and texture, plus any freckles, moles, scars or facial hair. Hands anatomically correct, five fingers, natural relaxed position near the keyboard.
+
+Avoid: over-smoothed skin, a pasted-face or cutout look, glossy CGI screen glow, and no overlay graphics or captions of any kind — the monitor&#x27;s screen is plain even blue in this frame, nothing legible on it yet.</pre>
+        </details>
+        <details class="prompt-block">
+          <summary>Промпт для видео <span class="prompt-label">Kling · Grok</span></summary>
+          <pre class="prompt-text">Create a short cinematic video based on the uploaded image. Vertical 9:16.
+A pink-and-leopard Y2K bedroom. The person from the image sits chest-up at a vintage CRT monitor glowing plain blue behind their shoulder.
+
+Camera and motion structure:
+Keep the overall shot static and locked-off — no zoom, no pan, no reframing. One continuous take, one single beat.
+FRAMES 0–35%: The person sits facing slightly toward the desk, one hand near the keyboard, screen glowing steady plain blue behind them.
+FRAMES 35–55%: They press a key. The screen&#x27;s glow behind their shoulder brightens sharply, the plain blue deepening into a richer, more saturated pink-and-blue wash that spills further into the room, lighting the leopard rug and pink mirror more vividly than before.
+FRAMES 55–100%: The person turns their head over their shoulder toward the brightened glow, and their face breaks into a wide, recognising, slightly stunned smile. They hold that turned pose, lit by the now-brighter screen glow, as the ending — nothing else happens after the smile settles.
+
+Character:
+Preserve the person&#x27;s face, hair, skin tone, and identity exactly from the source image throughout. Allowed motion: the keypress, the screen brightening, the turn of the head and shoulders, the smile — nothing else.
+
+Key visual events:
+The hero moment is the screen&#x27;s glow intensifying the instant the key is pressed — richer, more saturated light spilling further into the room. This brightening must be clearly and unmistakably visible — this is the single most important visual element of the shot.
+
+Style:
+Warm, nostalgic, a little breathless — the exact feeling of an old profile loading back to life. Handheld-adjacent intimacy despite the locked camera, saturated Y2K colour, no broadcast polish.
+
+Restrictions:
+- Do not change the person&#x27;s appearance, face, clothing, or identity at any point
+- The person stays in frame, recognizable and the visual focus for the entire video
+- The person never speaks, sings or mouths words — the smile is silent, emotional reaction only
+- No speech bubbles
+- No on-screen text or graphics of any kind — no legible words, logos, or interface elements appear on the monitor&#x27;s screen at any point, only the glow and its colour brightening
+- The screen brightens exactly once, in a single continuous surge — no flickering, no repeated pulses, no cuts
+- No improvisation beyond the actions described above — no extra gestures, no standing up, no touching the screen itself
+- No violent or aggressive motion of any kind</pre>
+        </details>
+      </div>
+    </div>
+  </section>
+</div>
+</body>
+</html>

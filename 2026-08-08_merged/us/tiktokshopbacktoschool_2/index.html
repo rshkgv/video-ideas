@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>#tiktokshopbacktoschool — Собрать рюкзак за пять секунд · Video Ideas</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      background: #f4f4f5; color: #111; font-size: 14px; line-height: 1.5;
+    }
+    .page-header {
+      background: #fff; border-bottom: 1px solid #e4e4e7; position: sticky;
+      top: 0; z-index: 100; box-shadow: 0 1px 8px rgba(0,0,0,.05);
+    }
+    .header-inner {
+      max-width: 1100px; margin: 0 auto; padding: 14px 28px;
+      display: flex; align-items: center; gap: 20px;
+    }
+    .brand {
+      font-size: 18px; font-weight: 800; letter-spacing: -.5px; color: #111;
+      white-space: nowrap; user-select: none; text-decoration: none;
+    }
+    .brand-tik { color: #fe2c55; }
+    .brand-tok { color: #010101; }
+    .brand-dot { color: #d1d1d1; margin: 0 6px; font-weight: 300; }
+    .brand-cc  { color: #888; font-size: 12px; font-weight: 500; }
+    .header-text { flex: 1; min-width: 0; }
+    .page-title {
+      font-size: 15px; font-weight: 700; letter-spacing: -.2px;
+      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    }
+    .page-sub { font-size: 11.5px; color: #999; margin-top: 2px; }
+    .date-badge {
+      background: #fe2c55; color: #fff; font-weight: 700; font-size: 12px;
+      border-radius: 8px; padding: 6px 14px; line-height: 1.4;
+      text-align: center; white-space: nowrap; flex-shrink: 0;
+    }
+    .date-badge span { display: block; font-size: 10px; font-weight: 500; opacity: .8; }
+    .page-nav {
+      max-width: 1100px; margin: 0 auto; padding: 0 28px;
+      display: flex; gap: 2px; border-top: 1px solid #f0f0f0;
+    }
+    .nav-a {
+      text-decoration: none; color: #999; font-size: 12.5px; font-weight: 500;
+      padding: 9px 14px; border-bottom: 2px solid transparent;
+      transition: color .15s, border-color .15s;
+    }
+    .nav-a:hover { color: #fe2c55; }
+    .nav-a.active { color: #fe2c55; border-bottom-color: #fe2c55; }
+    .content { max-width: 1100px; margin: 0 auto; padding: 36px 28px 80px; }
+    .section { margin-bottom: 52px; }
+    .section-header { display: flex; align-items: baseline; gap: 10px; margin-bottom: 16px; }
+    .section-title { font-size: 19px; font-weight: 800; letter-spacing: -.4px; }
+    .section-badge {
+      font-size: 10.5px; font-weight: 600; color: #999; background: #ebebeb;
+      padding: 3px 8px; border-radius: 20px; text-transform: uppercase; letter-spacing: .4px;
+    }
+    @media (max-width: 768px) {
+      .header-inner { gap: 12px; padding: 12px 16px; }
+      .date-badge { display: none; }
+      .page-nav { padding: 0 16px; }
+      .content { padding: 24px 16px 60px; }
+    }
+
+
+    .idea-lead {
+      background: #fff; border-radius: 12px; padding: 36px 40px 32px;
+      box-shadow: 0 1px 4px rgba(0,0,0,.07), 0 0 0 1px rgba(0,0,0,.05);
+      margin-bottom: 40px;
+    }
+    .idea-hashtag { font-size: 13px; font-weight: 700; color: #fe2c55; margin-bottom: 8px; }
+    .idea-title { font-size: 26px; font-weight: 800; letter-spacing: -.6px; line-height: 1.25; margin-bottom: 16px; }
+    .idea-desc { font-size: 14px; color: #444; line-height: 1.75; max-width: 720px; }
+    .media-grid {
+      display: grid; grid-template-columns: auto 1fr; gap: 28px; align-items: start;
+    }
+    .video-multi {
+      display: flex; gap: 16px; flex-wrap: wrap; align-items: flex-start;
+    }
+    .video-item {
+      width: 200px; display: flex; flex-direction: column; gap: 8px; flex-shrink: 0;
+    }
+    .video-caption {
+      font-size: 11px; color: #999; line-height: 1.4; padding: 0 2px;
+    }
+    .video-player {
+      width: 100%; aspect-ratio: 9/16; object-fit: cover; border-radius: 12px;
+      display: block; box-shadow: 0 2px 16px rgba(0,0,0,.14);
+    }
+    .frame-img {
+      width: 100%; aspect-ratio: 9/16; object-fit: cover; border-radius: 12px;
+      display: block; box-shadow: 0 2px 16px rgba(0,0,0,.14);
+    }
+    .prompts-col { display: flex; flex-direction: column; gap: 12px; }
+    .prompt-block {
+      background: #fff; border-radius: 10px;
+      box-shadow: 0 1px 4px rgba(0,0,0,.07), 0 0 0 1px rgba(0,0,0,.05); overflow: hidden;
+    }
+    .prompt-block summary {
+      padding: 14px 18px; font-size: 13px; font-weight: 700; cursor: pointer;
+      user-select: none; list-style: none; display: flex; align-items: center; gap: 8px; color: #333;
+    }
+    .prompt-block summary::-webkit-details-marker { display: none; }
+    .prompt-block summary::before { content: '▶'; font-size: 8px; color: #bbb; transition: transform .15s; flex-shrink: 0; }
+    .prompt-block[open] summary::before { transform: rotate(90deg); }
+    .prompt-block summary:hover { color: #fe2c55; }
+    .prompt-block summary:hover::before { color: #fe2c55; }
+    .prompt-label { font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: .5px; color: #bbb; margin-left: auto; }
+    .prompt-text {
+      padding: 14px 18px 16px; font-family: 'SF Mono','Fira Code','Menlo',monospace;
+      font-size: 11.5px; line-height: 1.7; color: #555; background: #f9f9f9;
+      border-top: 1px solid #f0f0f0; white-space: pre-wrap; word-break: break-word;
+      max-height: 320px; overflow-y: auto;
+    }
+    @media (max-width: 900px) {
+      .media-grid { grid-template-columns: 1fr; }
+      .video-multi { justify-content: center; }
+      .idea-lead { padding: 24px 22px 22px; }
+    }
+    @media (max-width: 520px) { .idea-title { font-size: 22px; } }
+
+  </style>
+</head>
+<body>
+<div class="page-header">
+  <div class="header-inner">
+    <a class="brand" href="../../../">
+      <span class="brand-tik">Tik</span><span class="brand-tok">Tok</span>
+      <span class="brand-dot">·</span><span class="brand-cc">Video Ideas</span>
+    </a>
+    <div class="header-text">
+      <div class="page-title">#tiktokshopbacktoschool</div>
+      <div class="page-sub">Видео-идея · 8 августа 2026 · Выпуск merged</div>
+    </div>
+    <div class="date-badge">08.08.2026<span>Дата · Выпуск merged</span></div>
+  </div>
+  <nav class="page-nav">
+    <a href="../../../" class="nav-a">← Все отчёты</a>
+    <a href="../../#us" class="nav-a">← 8 авг 2026 · Выпуск merged</a>
+    <a href="#" class="nav-a active">#tiktokshopbacktoschool</a>
+  </nav>
+</div>
+<div class="content">
+  <div class="idea-lead">
+    <div class="idea-hashtag">#tiktokshopbacktoschool</div>
+    <h1 class="idea-title">Собрать рюкзак за пять секунд</h1>
+    <p class="idea-desc">Тот же заваленный школьными принадлежностями стол — но вместо спокойной демонстрации одного товара пользователь устраивает стремительную гонку «собрать рюкзак за пять секунд»: хватает открытый рюкзак и в трёх быстрых бросках закидывает туда тот же настольный светильник-органайзер, стопку тетрадей и пачку ручек, каждый раз слегка не рассчитывая бросок и ловя предмет у самого края рюкзака в последний момент. Камера дёргается вслед за руками, будто снято второпях самим участником гонки. Никакого единого «вау»-эффекта нет — есть только нарастающий комический азарт, который на последнем броске выливается в короткий облегчённый выдох и торжествующе поднятый кулак, когда молния на рюкзаке застёгивается.
+
+Визуальный якорь: тот же стол со свежими школьными принадлежностями и та же демонстрационная манера держать товар крупно перед объективом — узнаётся не в первые секунды, а по ходу ролика, когда в кадре мелькают тетради, ручки и светильник вперемешку с рюкзаком.</p>
+  </div>
+  <section class="section">
+    <div class="section-header">
+      <h2 class="section-title">Видео</h2>
+      <span class="section-badge">Пример генерации</span>
+    </div>
+    <div class="media-grid">
+      <div class="video-multi">
+        <div class="video-item"><video class="video-player" controls muted loop playsinline poster="https://temp-images.ws.pho.to/2c18a57cb596fec73b7dd7583f0730314f7b6940.png"><source src="https://temp-images.ws.pho.to/8a39ac598174cac6c90c791554bb7d1c7e405c33.mp4" type="video/mp4"></video>
+          <div class="video-caption">woman in her late 30s with straight blonde shoulder-length hair and cat-eye glasses</div>
+        </div>
+        <div class="video-item"><video class="video-player" controls muted loop playsinline poster="https://temp-images.ws.pho.to/8c93f9657750659e28b881c454700aa9332a2885.png"><source src="https://temp-images.ws.pho.to/461094f4806217e08c426bd7b4f60d2ab530a518.mp4" type="video/mp4"></video>
+          <div class="video-caption">man in his early 30s with short brown hair, blue eyes, and a short beard</div>
+        </div>
+      </div>
+      <div class="prompts-col">
+        <details class="prompt-block">
+          <summary>Промпт для первого кадра <span class="prompt-label">GPT Image 2</span></summary>
+          <pre class="prompt-text">Turn the photo of the person into a candid, energetic portrait mid-motion, vertical 9:16 composition, medium shot from the chest up, angled as if caught in the middle of a quick action rather than posed.
+
+Pose &amp; composition: the person leans over a desk, one arm extended mid-toss toward an open backpack just at the frame&#x27;s lower edge, the same cream desk lamp-organizer device from before caught mid-air between their hand and the bag&#x27;s open mouth; the desk still holds a stack of notebooks and a pack of pens.
+
+Expression: focused, slightly wide-eyed urgency with the beginning of a grin — the specific look of someone racing against an invented deadline and enjoying it.
+
+Setting &amp; background: the same home desk and bedroom setting as before.
+
+Lighting: the same bright, even daylight-balanced light.
+
+Colour grading: the same clean, slightly warm neutral tones.
+
+Camera &amp; lens: 28mm at f/2.6, wider and slightly more informal than before, natural handheld-style edge falloff, fine grain.
+
+Skin texture: real skin, visible pores, no smoothing.
+
+Identity preservation: keep the person&#x27;s identity exactly as in the source photo — same age, face shape and proportions, skin tone and undertone, eye shape and eye colour, eyebrow shape, nose and jawline, and the exact hairstyle including colour, parting, length and texture, plus any freckles, moles, scars, facial hair or glasses. Hands anatomically correct, five fingers, mid-toss but not distorted.
+
+Avoid: over-smoothed skin, pasted-face look, and no overlay graphics, price tags, or captions of any kind — the device carries no visible brand name or logo.</pre>
+        </details>
+        <details class="prompt-block">
+          <summary>Промпт для видео <span class="prompt-label">Kling · Grok</span></summary>
+          <pre class="prompt-text">Create a short cinematic video based on the uploaded image. Vertical 9:16.
+The same home desk with school supplies and an open backpack. The person from the image races to pack three items into the bag.
+
+Camera and motion structure:
+Handheld throughout, with a small jolt on each toss and catch — never locked-off. Three short beats, each happening once, no cuts.
+0:00–0:01: The person tosses the desk lamp-organizer device toward the open backpack; it lands slightly off-centre and they catch its edge with a quick steadying hand before it settles inside.
+0:01–0:02: They snatch up the stack of notebooks and drop them in on top, one corner catching the bag&#x27;s rim before sliding fully in.
+0:02–0:03: They grab the pack of pens and push it down into a side pocket, patting it once to make sure it&#x27;s seated.
+0:03–0:04: They grip the zipper pull and drag it closed in one motion along the bag&#x27;s top.
+0:04–0:05: They exhale sharply, straighten up, and pump one fist once in triumph, breaking into a silent laugh. That raised fist settling and the laugh softening is the ending.
+
+Character:
+Preserve the person&#x27;s face, hair, skin tone and identity exactly from the source image throughout. Allowed motion: the three tosses/catches, the zipping motion, the exhale and fist-pump — nothing else.
+
+Style:
+Fast, bright, comedic — a self-imposed race against the clock, filmed handheld like a real dare rather than a produced ad.
+
+Restrictions:
+- Do not change the person&#x27;s appearance, face, clothing, or identity at any point
+- The person stays in frame, recognizable and the visual focus for the whole video
+- The person never speaks, sings or mouths words — the exhale and laugh are silent, emotional reaction only
+- No speech bubbles
+- No on-screen text, price tags, or graphics of any kind — none of the three items carries a visible brand name or logo
+- Exactly 3 items are packed in total — the device, the notebook stack, and the pens — no more, no fewer, each placed only once
+- No improvisation beyond the actions described above — no extra items, no dropped or missed catches, no additional gestures
+- No violent or aggressive motion of any kind — every catch must read as successful, never as something actually falling or breaking</pre>
+        </details>
+      </div>
+    </div>
+  </section>
+</div>
+</body>
+</html>

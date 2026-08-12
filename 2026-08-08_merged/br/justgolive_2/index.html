@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>#justgolive — Чат вылетает в комнату · Video Ideas</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      background: #f4f4f5; color: #111; font-size: 14px; line-height: 1.5;
+    }
+    .page-header {
+      background: #fff; border-bottom: 1px solid #e4e4e7; position: sticky;
+      top: 0; z-index: 100; box-shadow: 0 1px 8px rgba(0,0,0,.05);
+    }
+    .header-inner {
+      max-width: 1100px; margin: 0 auto; padding: 14px 28px;
+      display: flex; align-items: center; gap: 20px;
+    }
+    .brand {
+      font-size: 18px; font-weight: 800; letter-spacing: -.5px; color: #111;
+      white-space: nowrap; user-select: none; text-decoration: none;
+    }
+    .brand-tik { color: #fe2c55; }
+    .brand-tok { color: #010101; }
+    .brand-dot { color: #d1d1d1; margin: 0 6px; font-weight: 300; }
+    .brand-cc  { color: #888; font-size: 12px; font-weight: 500; }
+    .header-text { flex: 1; min-width: 0; }
+    .page-title {
+      font-size: 15px; font-weight: 700; letter-spacing: -.2px;
+      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    }
+    .page-sub { font-size: 11.5px; color: #999; margin-top: 2px; }
+    .date-badge {
+      background: #fe2c55; color: #fff; font-weight: 700; font-size: 12px;
+      border-radius: 8px; padding: 6px 14px; line-height: 1.4;
+      text-align: center; white-space: nowrap; flex-shrink: 0;
+    }
+    .date-badge span { display: block; font-size: 10px; font-weight: 500; opacity: .8; }
+    .page-nav {
+      max-width: 1100px; margin: 0 auto; padding: 0 28px;
+      display: flex; gap: 2px; border-top: 1px solid #f0f0f0;
+    }
+    .nav-a {
+      text-decoration: none; color: #999; font-size: 12.5px; font-weight: 500;
+      padding: 9px 14px; border-bottom: 2px solid transparent;
+      transition: color .15s, border-color .15s;
+    }
+    .nav-a:hover { color: #fe2c55; }
+    .nav-a.active { color: #fe2c55; border-bottom-color: #fe2c55; }
+    .content { max-width: 1100px; margin: 0 auto; padding: 36px 28px 80px; }
+    .section { margin-bottom: 52px; }
+    .section-header { display: flex; align-items: baseline; gap: 10px; margin-bottom: 16px; }
+    .section-title { font-size: 19px; font-weight: 800; letter-spacing: -.4px; }
+    .section-badge {
+      font-size: 10.5px; font-weight: 600; color: #999; background: #ebebeb;
+      padding: 3px 8px; border-radius: 20px; text-transform: uppercase; letter-spacing: .4px;
+    }
+    @media (max-width: 768px) {
+      .header-inner { gap: 12px; padding: 12px 16px; }
+      .date-badge { display: none; }
+      .page-nav { padding: 0 16px; }
+      .content { padding: 24px 16px 60px; }
+    }
+
+
+    .idea-lead {
+      background: #fff; border-radius: 12px; padding: 36px 40px 32px;
+      box-shadow: 0 1px 4px rgba(0,0,0,.07), 0 0 0 1px rgba(0,0,0,.05);
+      margin-bottom: 40px;
+    }
+    .idea-hashtag { font-size: 13px; font-weight: 700; color: #fe2c55; margin-bottom: 8px; }
+    .idea-title { font-size: 26px; font-weight: 800; letter-spacing: -.6px; line-height: 1.25; margin-bottom: 16px; }
+    .idea-desc { font-size: 14px; color: #444; line-height: 1.75; max-width: 720px; }
+    .media-grid {
+      display: grid; grid-template-columns: auto 1fr; gap: 28px; align-items: start;
+    }
+    .video-multi {
+      display: flex; gap: 16px; flex-wrap: wrap; align-items: flex-start;
+    }
+    .video-item {
+      width: 200px; display: flex; flex-direction: column; gap: 8px; flex-shrink: 0;
+    }
+    .video-caption {
+      font-size: 11px; color: #999; line-height: 1.4; padding: 0 2px;
+    }
+    .video-player {
+      width: 100%; aspect-ratio: 9/16; object-fit: cover; border-radius: 12px;
+      display: block; box-shadow: 0 2px 16px rgba(0,0,0,.14);
+    }
+    .frame-img {
+      width: 100%; aspect-ratio: 9/16; object-fit: cover; border-radius: 12px;
+      display: block; box-shadow: 0 2px 16px rgba(0,0,0,.14);
+    }
+    .prompts-col { display: flex; flex-direction: column; gap: 12px; }
+    .prompt-block {
+      background: #fff; border-radius: 10px;
+      box-shadow: 0 1px 4px rgba(0,0,0,.07), 0 0 0 1px rgba(0,0,0,.05); overflow: hidden;
+    }
+    .prompt-block summary {
+      padding: 14px 18px; font-size: 13px; font-weight: 700; cursor: pointer;
+      user-select: none; list-style: none; display: flex; align-items: center; gap: 8px; color: #333;
+    }
+    .prompt-block summary::-webkit-details-marker { display: none; }
+    .prompt-block summary::before { content: '▶'; font-size: 8px; color: #bbb; transition: transform .15s; flex-shrink: 0; }
+    .prompt-block[open] summary::before { transform: rotate(90deg); }
+    .prompt-block summary:hover { color: #fe2c55; }
+    .prompt-block summary:hover::before { color: #fe2c55; }
+    .prompt-label { font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: .5px; color: #bbb; margin-left: auto; }
+    .prompt-text {
+      padding: 14px 18px 16px; font-family: 'SF Mono','Fira Code','Menlo',monospace;
+      font-size: 11.5px; line-height: 1.7; color: #555; background: #f9f9f9;
+      border-top: 1px solid #f0f0f0; white-space: pre-wrap; word-break: break-word;
+      max-height: 320px; overflow-y: auto;
+    }
+    @media (max-width: 900px) {
+      .media-grid { grid-template-columns: 1fr; }
+      .video-multi { justify-content: center; }
+      .idea-lead { padding: 24px 22px 22px; }
+    }
+    @media (max-width: 520px) { .idea-title { font-size: 22px; } }
+
+  </style>
+</head>
+<body>
+<div class="page-header">
+  <div class="header-inner">
+    <a class="brand" href="../../../">
+      <span class="brand-tik">Tik</span><span class="brand-tok">Tok</span>
+      <span class="brand-dot">·</span><span class="brand-cc">Video Ideas</span>
+    </a>
+    <div class="header-text">
+      <div class="page-title">#justgolive</div>
+      <div class="page-sub">Видео-идея · 8 августа 2026 · Выпуск merged</div>
+    </div>
+    <div class="date-badge">08.08.2026<span>Дата · Выпуск merged</span></div>
+  </div>
+  <nav class="page-nav">
+    <a href="../../../" class="nav-a">← Все отчёты</a>
+    <a href="../../#br" class="nav-a">← 8 авг 2026 · Выпуск merged</a>
+    <a href="#" class="nav-a active">#justgolive</a>
+  </nav>
+</div>
+<div class="content">
+  <div class="idea-lead">
+    <div class="idea-hashtag">#justgolive</div>
+    <h1 class="idea-title">Чат вылетает в комнату</h1>
+    <p class="idea-desc">Пользователь сидит в самой обычной комнате, телефон лежит на столе перед ним экраном вверх, на экране бежит лента чата. Камера с рук медленно кружит вокруг него. С экрана телефона начинают срываться маленькие светящиеся клочки — как будто сами сообщения отрываются от экрана бумажными искрами — и разлетаются по комнате, оседая на плечах, на столе, на волосах пользователя. Чем активнее лента на экране, тем гуще становится этот бумажный снегопад в воздухе вокруг него. Никакого одного пика реакции нет — просто нарастающее, безостановочное накопление этих светящихся клочков в комнате, пока пользователь спокойно читает дальше, время от времени улыбаясь. Ролик заканчивается тем, что последний клочок долетает и опускается ему на плечо, а лента на экране замедляется — и это оседание последнего клочка, а не смех, ставит точку.
+
+Визуальный якорь: телефон с лентой чата на столе и светящиеся бумажные клочки сообщений, разлетающиеся по комнате и оседающие на пользователе — тот же чат-формат тренда, только вырвавшийся с экрана в реальное пространство.</p>
+  </div>
+  <section class="section">
+    <div class="section-header">
+      <h2 class="section-title">Видео</h2>
+      <span class="section-badge">Пример генерации</span>
+    </div>
+    <div class="media-grid">
+      <div class="video-multi">
+        <div class="video-item"><video class="video-player" controls muted loop playsinline poster="https://temp-images.ws.pho.to/c9eb7262953b87336c0202bedb46412f09e674bd.png"><source src="https://temp-images.ws.pho.to/a3ab0afa302d3c13da0036220119e84922c3768d.mp4" type="video/mp4"></video>
+          <div class="video-caption">woman in her late 30s with straight blonde shoulder-length hair and cat-eye glasses</div>
+        </div>
+        <div class="video-item"><video class="video-player" controls muted loop playsinline poster="https://temp-images.ws.pho.to/f30d40609318c37f7f7b79033898119d112f790d.png"><source src="https://temp-images.ws.pho.to/2f5af8bebf8d5ae5ee3bb3d6f35b0ad3290d51ca.mp4" type="video/mp4"></video>
+          <div class="video-caption">man in his early 30s with short brown hair, blue eyes, and a short beard</div>
+        </div>
+      </div>
+      <div class="prompts-col">
+        <details class="prompt-block">
+          <summary>Промпт для первого кадра <span class="prompt-label">GPT Image 2</span></summary>
+          <pre class="prompt-text">Turn the photo of the person into a portrait of them sitting at an ordinary table in a plain home room, vertical 9:16 composition, chest-up framing, face clearly legible.
+
+Pose &amp; composition: leaning slightly forward, elbows near the table, eyes down toward a phone lying flat on the table in front of them, screen facing up.
+
+Setting &amp; background: a plain, lived-in room — a wall, a shelf with ordinary objects, soft daylight. The phone on the table shows a softly blurred stream of small chat bubbles, not legible, just a rhythmic pale blur.
+
+Expression: calm, attentive, reading — the ordinary look of someone scrolling through messages, not yet reacting.
+
+Attire: plain casual clothing, nothing branded.
+
+Lighting: soft daylight from a window to one side, gentle and even, a faint cool glow from the phone screen adding a small accent under the chin.
+
+Camera &amp; lens: 35mm equivalent, natural falloff, fine film grain.
+
+Identity preservation: keep the person&#x27;s identity exactly as in the source photo — same age, face shape and proportions, skin tone and undertone, eye shape and eye colour, eyebrow shape, nose and jawline, and the exact hairstyle including its colour, parting, length and texture, plus any freckles, moles, scars, glasses or facial hair. Hands must be anatomically correct.
+
+Avoid: over-smoothed skin, a pasted-face or cutout look, and no legible lettering anywhere in the frame — the phone&#x27;s chat feed stays a soft, unreadable blur; nothing is flying off the screen yet in this frame.</pre>
+        </details>
+        <details class="prompt-block">
+          <summary>Промпт для видео <span class="prompt-label">Kling · Grok</span></summary>
+          <pre class="prompt-text">Create a short cinematic video based on the uploaded image. Vertical 9:16. The person sits at a table reading a phone whose screen shows a softly blurred chat stream.
+
+Camera and motion structure:
+Handheld throughout, a slow drifting circle around the person and table — never locked-off. No single hero moment; a continuous, accumulating scatter instead.
+FRAMES 0–25%: The person reads calmly. The chat stream on the phone scrolls at a steady pace. The camera begins to drift.
+FRAMES 25–55%: Small glowing paper-like flecks begin peeling off the phone&#x27;s screen, one or two at a time, drifting up into the air above the table.
+FRAMES 55–85%: More flecks tear free and scatter through the room, settling on the table, on the person&#x27;s shoulders, in their hair — the faster the chat stream scrolls, the thicker the drift of flecks becomes. The person keeps reading, glancing up once with a small smile as a fleck lands near their hand.
+FRAMES 85–100%: The chat stream slows back to its original steady pace, and one final glowing fleck drifts down and settles on the person&#x27;s shoulder. The camera holds on that last fleck coming to rest — its landing is the ending.
+
+Character:
+Preserve the person&#x27;s face, hair, skin tone and identity exactly from the source image throughout. Allowed motion: reading, one glance up, one small smile. No other movement.
+
+Style:
+Quiet, handheld magical-realist home footage — soft daylight, gentle drifting camera, the impossible scatter of light treated as ordinary. Whimsical and unhurried.
+
+Restrictions:
+- Do not change the person&#x27;s face, hair, skin tone or identity at any point
+- The person stays in frame, recognizable and the visual focus for the whole video even as the camera drifts
+- The person never speaks, sings or mouths words — a single small smile is the only reaction
+- No speech bubbles
+- No legible on-screen text or lettering anywhere in the video — the chat stream and the glowing flecks stay wordless
+- The glowing flecks drift only from the phone&#x27;s screen into the room — they never form words, shapes, or letters, only soft irregular specks of light
+- No improvisation beyond the listed actions — no extra gestures, no extra objects appearing
+- The accumulation of flecks in the room must increase steadily and never reverse or vanish before the final settled fleck
+- No platform names, logos, or brand marks appear anywhere in the video</pre>
+        </details>
+      </div>
+    </div>
+  </section>
+</div>
+</body>
+</html>

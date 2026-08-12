@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>#sidehustlelive — Корни под столом · Video Ideas</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      background: #f4f4f5; color: #111; font-size: 14px; line-height: 1.5;
+    }
+    .page-header {
+      background: #fff; border-bottom: 1px solid #e4e4e7; position: sticky;
+      top: 0; z-index: 100; box-shadow: 0 1px 8px rgba(0,0,0,.05);
+    }
+    .header-inner {
+      max-width: 1100px; margin: 0 auto; padding: 14px 28px;
+      display: flex; align-items: center; gap: 20px;
+    }
+    .brand {
+      font-size: 18px; font-weight: 800; letter-spacing: -.5px; color: #111;
+      white-space: nowrap; user-select: none; text-decoration: none;
+    }
+    .brand-tik { color: #fe2c55; }
+    .brand-tok { color: #010101; }
+    .brand-dot { color: #d1d1d1; margin: 0 6px; font-weight: 300; }
+    .brand-cc  { color: #888; font-size: 12px; font-weight: 500; }
+    .header-text { flex: 1; min-width: 0; }
+    .page-title {
+      font-size: 15px; font-weight: 700; letter-spacing: -.2px;
+      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    }
+    .page-sub { font-size: 11.5px; color: #999; margin-top: 2px; }
+    .date-badge {
+      background: #fe2c55; color: #fff; font-weight: 700; font-size: 12px;
+      border-radius: 8px; padding: 6px 14px; line-height: 1.4;
+      text-align: center; white-space: nowrap; flex-shrink: 0;
+    }
+    .date-badge span { display: block; font-size: 10px; font-weight: 500; opacity: .8; }
+    .page-nav {
+      max-width: 1100px; margin: 0 auto; padding: 0 28px;
+      display: flex; gap: 2px; border-top: 1px solid #f0f0f0;
+    }
+    .nav-a {
+      text-decoration: none; color: #999; font-size: 12.5px; font-weight: 500;
+      padding: 9px 14px; border-bottom: 2px solid transparent;
+      transition: color .15s, border-color .15s;
+    }
+    .nav-a:hover { color: #fe2c55; }
+    .nav-a.active { color: #fe2c55; border-bottom-color: #fe2c55; }
+    .content { max-width: 1100px; margin: 0 auto; padding: 36px 28px 80px; }
+    .section { margin-bottom: 52px; }
+    .section-header { display: flex; align-items: baseline; gap: 10px; margin-bottom: 16px; }
+    .section-title { font-size: 19px; font-weight: 800; letter-spacing: -.4px; }
+    .section-badge {
+      font-size: 10.5px; font-weight: 600; color: #999; background: #ebebeb;
+      padding: 3px 8px; border-radius: 20px; text-transform: uppercase; letter-spacing: .4px;
+    }
+    @media (max-width: 768px) {
+      .header-inner { gap: 12px; padding: 12px 16px; }
+      .date-badge { display: none; }
+      .page-nav { padding: 0 16px; }
+      .content { padding: 24px 16px 60px; }
+    }
+
+
+    .idea-lead {
+      background: #fff; border-radius: 12px; padding: 36px 40px 32px;
+      box-shadow: 0 1px 4px rgba(0,0,0,.07), 0 0 0 1px rgba(0,0,0,.05);
+      margin-bottom: 40px;
+    }
+    .idea-hashtag { font-size: 13px; font-weight: 700; color: #fe2c55; margin-bottom: 8px; }
+    .idea-title { font-size: 26px; font-weight: 800; letter-spacing: -.6px; line-height: 1.25; margin-bottom: 16px; }
+    .idea-desc { font-size: 14px; color: #444; line-height: 1.75; max-width: 720px; }
+    .media-grid {
+      display: grid; grid-template-columns: auto 1fr; gap: 28px; align-items: start;
+    }
+    .video-multi {
+      display: flex; gap: 16px; flex-wrap: wrap; align-items: flex-start;
+    }
+    .video-item {
+      width: 200px; display: flex; flex-direction: column; gap: 8px; flex-shrink: 0;
+    }
+    .video-caption {
+      font-size: 11px; color: #999; line-height: 1.4; padding: 0 2px;
+    }
+    .video-player {
+      width: 100%; aspect-ratio: 9/16; object-fit: cover; border-radius: 12px;
+      display: block; box-shadow: 0 2px 16px rgba(0,0,0,.14);
+    }
+    .frame-img {
+      width: 100%; aspect-ratio: 9/16; object-fit: cover; border-radius: 12px;
+      display: block; box-shadow: 0 2px 16px rgba(0,0,0,.14);
+    }
+    .prompts-col { display: flex; flex-direction: column; gap: 12px; }
+    .prompt-block {
+      background: #fff; border-radius: 10px;
+      box-shadow: 0 1px 4px rgba(0,0,0,.07), 0 0 0 1px rgba(0,0,0,.05); overflow: hidden;
+    }
+    .prompt-block summary {
+      padding: 14px 18px; font-size: 13px; font-weight: 700; cursor: pointer;
+      user-select: none; list-style: none; display: flex; align-items: center; gap: 8px; color: #333;
+    }
+    .prompt-block summary::-webkit-details-marker { display: none; }
+    .prompt-block summary::before { content: '▶'; font-size: 8px; color: #bbb; transition: transform .15s; flex-shrink: 0; }
+    .prompt-block[open] summary::before { transform: rotate(90deg); }
+    .prompt-block summary:hover { color: #fe2c55; }
+    .prompt-block summary:hover::before { color: #fe2c55; }
+    .prompt-label { font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: .5px; color: #bbb; margin-left: auto; }
+    .prompt-text {
+      padding: 14px 18px 16px; font-family: 'SF Mono','Fira Code','Menlo',monospace;
+      font-size: 11.5px; line-height: 1.7; color: #555; background: #f9f9f9;
+      border-top: 1px solid #f0f0f0; white-space: pre-wrap; word-break: break-word;
+      max-height: 320px; overflow-y: auto;
+    }
+    @media (max-width: 900px) {
+      .media-grid { grid-template-columns: 1fr; }
+      .video-multi { justify-content: center; }
+      .idea-lead { padding: 24px 22px 22px; }
+    }
+    @media (max-width: 520px) { .idea-title { font-size: 22px; } }
+
+  </style>
+</head>
+<body>
+<div class="page-header">
+  <div class="header-inner">
+    <a class="brand" href="../../../">
+      <span class="brand-tik">Tik</span><span class="brand-tok">Tok</span>
+      <span class="brand-dot">·</span><span class="brand-cc">Video Ideas</span>
+    </a>
+    <div class="header-text">
+      <div class="page-title">#sidehustlelive</div>
+      <div class="page-sub">Видео-идея · 8 августа 2026 · Выпуск merged</div>
+    </div>
+    <div class="date-badge">08.08.2026<span>Дата · Выпуск merged</span></div>
+  </div>
+  <nav class="page-nav">
+    <a href="../../../" class="nav-a">← Все отчёты</a>
+    <a href="../../#co" class="nav-a">← 8 авг 2026 · Выпуск merged</a>
+    <a href="#" class="nav-a active">#sidehustlelive</a>
+  </nav>
+</div>
+<div class="content">
+  <div class="idea-lead">
+    <div class="idea-hashtag">#sidehustlelive</div>
+    <h1 class="idea-title">Корни под столом</h1>
+    <p class="idea-desc">Пользователь сидит за тем же скромным столом с товаром — но стол стоит не в комнате, а на маленьком островке земли посреди исполинской подземной пещеры, пронизанной светящимися золотыми корнями. Каждый корень тянется от его стола вглубь темноты, а вдалеке, там где корни расходятся, виднеются десятки крошечных таких же огоньков — таких же маленьких дел, каждое со своим слабым светом. Камера медленно отъезжает и поднимается, открывая масштаб всей корневой сети, пока стол пользователя не превращается в одну маленькую светящуюся точку среди множества таких же.
+
+Связь с трендом: тренд держится на упорной, часто невидимой борьбе маленького дела за рост аудитории — здесь это буквально показано как подземная сеть из множества таких же маленьких, скромных огней, связанных друг с другом.</p>
+  </div>
+  <section class="section">
+    <div class="section-header">
+      <h2 class="section-title">Видео</h2>
+      <span class="section-badge">Пример генерации</span>
+    </div>
+    <div class="media-grid">
+      <div class="video-multi">
+        <div class="video-item"><video class="video-player" controls muted loop playsinline poster="https://temp-images.ws.pho.to/26be2065d79f2df9f6bbb29abcd177641cd025a2.png"><source src="https://temp-images.ws.pho.to/38fccecc5e09aab30cefbdcc7851db6a3880d7ae.mp4" type="video/mp4"></video>
+          <div class="video-caption">woman in her late 30s with straight blonde shoulder-length hair and cat-eye glasses</div>
+        </div>
+        <div class="video-item"><video class="video-player" controls muted loop playsinline poster="https://temp-images.ws.pho.to/5ab2f588409d4376295a0caff1a49d0cf77a78dd.png"><source src="https://temp-images.ws.pho.to/2294710a48a8894d23d8424c53d0a4e6001e6199.mp4" type="video/mp4"></video>
+          <div class="video-caption">man in his early 30s with short brown hair, blue eyes, and a short beard</div>
+        </div>
+      </div>
+      <div class="prompts-col">
+        <details class="prompt-block">
+          <summary>Промпт для первого кадра <span class="prompt-label">GPT Image 2</span></summary>
+          <pre class="prompt-text">Turn the photo of the person into a portrait of them sitting at the same simple table of handmade goods, but now the table stands on a small patch of bare earth inside a vast underground cavern, its surface threaded everywhere with glowing golden roots. Vertical 9:16 composition, chest-up framing, the person centred and clearly legible against the dark.
+
+Pose &amp; composition: they sit calmly behind the table, hands resting near the products, head slightly lifted as if noticing the roots around them for the first time, posture relaxed and unhurried.
+
+Expression: quiet wonder and calm resolve — steady eyes, the faint hint of a proud smile.
+
+Setting &amp; background: a small island of packed earth holding the table and a simple stool, surrounded by darkness; thick glowing golden roots run out from beneath the table in every direction, disappearing into the cavern&#x27;s black distance; far off, tiny pinpricks of similar golden light are just visible where other unseen tables presumably sit.
+
+Environmental atmosphere &amp; lighting: the roots themselves are the only light source, a warm gold glow rising up to softly light the person&#x27;s face and hands from below and around, the cavern beyond falling into total black.
+
+Colour grading: deep black cavern against warm gold root-light, the person&#x27;s skin the only fully lit warm surface besides the roots.
+
+Materials &amp; texture: the roots read as organic and fibrous, glowing faintly from within like embers under bark; the earth is real packed dirt, the table plain worn wood.
+
+Camera &amp; lens: 35mm at f/2.2, fine grain, no flare.
+
+Skin texture: natural, visible pores, root-glow lighting the skin without smoothing it.
+
+Identity preservation: keep the person&#x27;s identity exactly as in the source photo — same age, face shape and proportions, skin tone and undertone, eye shape and eye colour, eyebrow shape, nose and jawline, and the exact hairstyle including its colour, parting, length and texture, plus any freckles, moles, scars, facial hair or glasses.
+
+Avoid: over-smoothed skin, a pasted-face or cutout look, and no overlay graphics or captions of any kind — no text is legible anywhere in this frame, and the distant lights stay too far and small to read as anything but glow.</pre>
+        </details>
+        <details class="prompt-block">
+          <summary>Промпт для видео <span class="prompt-label">Kling · Grok</span></summary>
+          <pre class="prompt-text">Create a short cinematic video based on the uploaded image. Vertical 9:16.
+A small table of handmade goods on an island of earth inside a vast dark cavern, threaded with glowing golden roots. The person from the image sits chest-up behind it, fully photorealistic.
+
+Camera and motion structure:
+One continuous slow pull-back and rise. No cuts, no single hero-moment reveal.
+FRAMES 0–50%: The person notices one of the glowing roots near their hand, following it with their eyes out into the dark. The camera begins pulling back and rising slowly, the table growing smaller in frame.
+FRAMES 50–100%: The pull-back and rise continue steadily until the full scale of the cavern is visible — countless roots branching outward from the person&#x27;s table toward dozens of other tiny, distant points of the same golden light scattered through the darkness. The person, still seated and calm, remains the clearly recognizable, most brightly lit point at the centre as the scale of the whole hidden network becomes the last thing the video shows.
+
+Character:
+Preserve the person&#x27;s face, hair, skin tone and identity exactly from the source image. They stay fully photorealistic throughout, never becoming root-like or stylized themselves. Motion is minimal: the eyes following the root, a calm, steady posture.
+
+Style:
+Warm, quietly awestruck, handmade-magical-realist — golden underlighting, real grain, no harsh key light. Melancholic hope rather than spectacle.
+
+Restrictions:
+- No identity changes to the person&#x27;s face, hair or skin tone; they are never turned into root or stylized
+- The person stays in frame, recognizable and the visual focus for the whole video — the pull-back stops while they are still clearly the brightest, most legible point in the scene
+- The person never speaks, sings or mouths words — silent, calm reaction only
+- No speech bubbles
+- The pull-back and rise happen smoothly and only once — no jump cuts, no zoom resets
+- No on-screen text or graphic of any kind anywhere in the video
+- No additional gestures beyond the eyes following the root and the calm, steady posture</pre>
+        </details>
+      </div>
+    </div>
+  </section>
+</div>
+</body>
+</html>

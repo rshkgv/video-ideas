@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>#golivegrowfast — Кнопка на панели · Video Ideas</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      background: #f4f4f5; color: #111; font-size: 14px; line-height: 1.5;
+    }
+    .page-header {
+      background: #fff; border-bottom: 1px solid #e4e4e7; position: sticky;
+      top: 0; z-index: 100; box-shadow: 0 1px 8px rgba(0,0,0,.05);
+    }
+    .header-inner {
+      max-width: 1100px; margin: 0 auto; padding: 14px 28px;
+      display: flex; align-items: center; gap: 20px;
+    }
+    .brand {
+      font-size: 18px; font-weight: 800; letter-spacing: -.5px; color: #111;
+      white-space: nowrap; user-select: none; text-decoration: none;
+    }
+    .brand-tik { color: #fe2c55; }
+    .brand-tok { color: #010101; }
+    .brand-dot { color: #d1d1d1; margin: 0 6px; font-weight: 300; }
+    .brand-cc  { color: #888; font-size: 12px; font-weight: 500; }
+    .header-text { flex: 1; min-width: 0; }
+    .page-title {
+      font-size: 15px; font-weight: 700; letter-spacing: -.2px;
+      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    }
+    .page-sub { font-size: 11.5px; color: #999; margin-top: 2px; }
+    .date-badge {
+      background: #fe2c55; color: #fff; font-weight: 700; font-size: 12px;
+      border-radius: 8px; padding: 6px 14px; line-height: 1.4;
+      text-align: center; white-space: nowrap; flex-shrink: 0;
+    }
+    .date-badge span { display: block; font-size: 10px; font-weight: 500; opacity: .8; }
+    .page-nav {
+      max-width: 1100px; margin: 0 auto; padding: 0 28px;
+      display: flex; gap: 2px; border-top: 1px solid #f0f0f0;
+    }
+    .nav-a {
+      text-decoration: none; color: #999; font-size: 12.5px; font-weight: 500;
+      padding: 9px 14px; border-bottom: 2px solid transparent;
+      transition: color .15s, border-color .15s;
+    }
+    .nav-a:hover { color: #fe2c55; }
+    .nav-a.active { color: #fe2c55; border-bottom-color: #fe2c55; }
+    .content { max-width: 1100px; margin: 0 auto; padding: 36px 28px 80px; }
+    .section { margin-bottom: 52px; }
+    .section-header { display: flex; align-items: baseline; gap: 10px; margin-bottom: 16px; }
+    .section-title { font-size: 19px; font-weight: 800; letter-spacing: -.4px; }
+    .section-badge {
+      font-size: 10.5px; font-weight: 600; color: #999; background: #ebebeb;
+      padding: 3px 8px; border-radius: 20px; text-transform: uppercase; letter-spacing: .4px;
+    }
+    @media (max-width: 768px) {
+      .header-inner { gap: 12px; padding: 12px 16px; }
+      .date-badge { display: none; }
+      .page-nav { padding: 0 16px; }
+      .content { padding: 24px 16px 60px; }
+    }
+
+
+    .idea-lead {
+      background: #fff; border-radius: 12px; padding: 36px 40px 32px;
+      box-shadow: 0 1px 4px rgba(0,0,0,.07), 0 0 0 1px rgba(0,0,0,.05);
+      margin-bottom: 40px;
+    }
+    .idea-hashtag { font-size: 13px; font-weight: 700; color: #fe2c55; margin-bottom: 8px; }
+    .idea-title { font-size: 26px; font-weight: 800; letter-spacing: -.6px; line-height: 1.25; margin-bottom: 16px; }
+    .idea-desc { font-size: 14px; color: #444; line-height: 1.75; max-width: 720px; }
+    .media-grid {
+      display: grid; grid-template-columns: auto 1fr; gap: 28px; align-items: start;
+    }
+    .video-multi {
+      display: flex; gap: 16px; flex-wrap: wrap; align-items: flex-start;
+    }
+    .video-item {
+      width: 200px; display: flex; flex-direction: column; gap: 8px; flex-shrink: 0;
+    }
+    .video-caption {
+      font-size: 11px; color: #999; line-height: 1.4; padding: 0 2px;
+    }
+    .video-player {
+      width: 100%; aspect-ratio: 9/16; object-fit: cover; border-radius: 12px;
+      display: block; box-shadow: 0 2px 16px rgba(0,0,0,.14);
+    }
+    .frame-img {
+      width: 100%; aspect-ratio: 9/16; object-fit: cover; border-radius: 12px;
+      display: block; box-shadow: 0 2px 16px rgba(0,0,0,.14);
+    }
+    .prompts-col { display: flex; flex-direction: column; gap: 12px; }
+    .prompt-block {
+      background: #fff; border-radius: 10px;
+      box-shadow: 0 1px 4px rgba(0,0,0,.07), 0 0 0 1px rgba(0,0,0,.05); overflow: hidden;
+    }
+    .prompt-block summary {
+      padding: 14px 18px; font-size: 13px; font-weight: 700; cursor: pointer;
+      user-select: none; list-style: none; display: flex; align-items: center; gap: 8px; color: #333;
+    }
+    .prompt-block summary::-webkit-details-marker { display: none; }
+    .prompt-block summary::before { content: '▶'; font-size: 8px; color: #bbb; transition: transform .15s; flex-shrink: 0; }
+    .prompt-block[open] summary::before { transform: rotate(90deg); }
+    .prompt-block summary:hover { color: #fe2c55; }
+    .prompt-block summary:hover::before { color: #fe2c55; }
+    .prompt-label { font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: .5px; color: #bbb; margin-left: auto; }
+    .prompt-text {
+      padding: 14px 18px 16px; font-family: 'SF Mono','Fira Code','Menlo',monospace;
+      font-size: 11.5px; line-height: 1.7; color: #555; background: #f9f9f9;
+      border-top: 1px solid #f0f0f0; white-space: pre-wrap; word-break: break-word;
+      max-height: 320px; overflow-y: auto;
+    }
+    @media (max-width: 900px) {
+      .media-grid { grid-template-columns: 1fr; }
+      .video-multi { justify-content: center; }
+      .idea-lead { padding: 24px 22px 22px; }
+    }
+    @media (max-width: 520px) { .idea-title { font-size: 22px; } }
+
+  </style>
+</head>
+<body>
+<div class="page-header">
+  <div class="header-inner">
+    <a class="brand" href="../../../">
+      <span class="brand-tik">Tik</span><span class="brand-tok">Tok</span>
+      <span class="brand-dot">·</span><span class="brand-cc">Video Ideas</span>
+    </a>
+    <div class="header-text">
+      <div class="page-title">#golivegrowfast</div>
+      <div class="page-sub">Видео-идея · 8 августа 2026 · Выпуск merged</div>
+    </div>
+    <div class="date-badge">08.08.2026<span>Дата · Выпуск merged</span></div>
+  </div>
+  <nav class="page-nav">
+    <a href="../../../" class="nav-a">← Все отчёты</a>
+    <a href="../../#br" class="nav-a">← 8 авг 2026 · Выпуск merged</a>
+    <a href="#" class="nav-a active">#golivegrowfast</a>
+  </nav>
+</div>
+<div class="content">
+  <div class="idea-lead">
+    <div class="idea-hashtag">#golivegrowfast</div>
+    <h1 class="idea-title">Кнопка на панели</h1>
+    <p class="idea-desc">Пользователь ведёт машину днём, телефон закреплён на козырьке перед лицом — обычная поездка, ничего особенного. На экране телефона, который виден в кадре как реальный физический предмет, светится кнопка «Inicie sua live». Пользователь, не отрывая взгляда от дороги, тянется и нажимает её одним движением. Экран на панели мгновенно меняется: вверх по нему летят сердечки, а счётчик зрителей начинает расти — сначала десятки, потом сотни, за секунду. Тёплый свет экрана вспыхивает и заливает лицо пользователя снизу. Он ничего не говорит — просто позволяет себе одну быструю, довольную улыбку, не отрываясь от руля. Ролик заканчивается тем, что счётчик на экране останавливается на резко выросшем числе, и именно эта цифра — последнее, что показывает камера крупным планом.
+
+Визуальный якорь: телефон, закреплённый на козырьке машины, с настоящей кнопкой «Inicie sua live» и растущим счётчиком зрителей на собственном экране — та самая деталь, которая напрямую связывает тег с его буквальным смыслом.</p>
+  </div>
+  <section class="section">
+    <div class="section-header">
+      <h2 class="section-title">Видео</h2>
+      <span class="section-badge">Пример генерации</span>
+    </div>
+    <div class="media-grid">
+      <div class="video-multi">
+        <div class="video-item"><video class="video-player" controls muted loop playsinline poster="https://temp-images.ws.pho.to/80f693a96a396e1b6f2e7c6116876a8de746b6a4.png"><source src="https://temp-images.ws.pho.to/dd24b90a8369c95634e0bdee2b1b026ce6af5432.mp4" type="video/mp4"></video>
+          <div class="video-caption">man in his early 30s with short brown hair, blue eyes, and a short beard</div>
+        </div>
+        <div class="video-item"><video class="video-player" controls muted loop playsinline poster="https://temp-images.ws.pho.to/fe787d1edae2c9109d497f3642ae4e52bb91ded2.png"><source src="https://temp-images.ws.pho.to/1787deef0caccb806b8477830e25e9e78474cf15.mp4" type="video/mp4"></video>
+          <div class="video-caption">woman in her late 30s with straight blonde shoulder-length hair and cat-eye glasses</div>
+        </div>
+      </div>
+      <div class="prompts-col">
+        <details class="prompt-block">
+          <summary>Промпт для первого кадра <span class="prompt-label">GPT Image 2</span></summary>
+          <pre class="prompt-text">Turn the photo of the person into a portrait of them driving a car during the day, vertical 9:16 composition, chest-up framing as seen from a small phone camera clipped to the sun visor just above the dashboard, face clearly legible and centred, hands visible at the bottom edge of frame on the steering wheel.
+
+Pose &amp; composition: sitting upright in the driver&#x27;s seat, both hands loosely on the wheel, head level, eyes forward on the road ahead rather than at the camera — an ordinary, unposed driving moment.
+
+Setting &amp; background: the car&#x27;s interior — a plain dashboard, a sliver of windshield showing a bright highway and green roadside trees, seatbelt crossing the chest. Mounted just below the camera on the dashboard, angled toward the person, a second phone screen is visible showing a dim, unlit &quot;Inicie sua live&quot; button in plain sans-serif lettering on a rounded dark button shape — a real physical phone screen, not a caption over the video.
+
+Expression: neutral, relaxed, focused on driving — the ordinary look of someone mid-commute.
+
+Attire: plain casual t-shirt, a wristwatch, nothing branded.
+
+Lighting: bright, even daylight through the windshield, a soft warm bounce off the dashboard, natural highlights on the face from the front.
+
+Camera &amp; lens: wide-ish phone-camera focal length, natural slight barrel distortion at the edges, everyday handheld-clip stability, faint digital sharpness typical of a phone lens rather than a cinema lens.
+
+Identity preservation: keep the person&#x27;s identity exactly as in the source photo — same age, face shape and proportions, skin tone and undertone, eye shape and eye colour, eyebrow shape, nose and jawline, and the exact hairstyle including its colour, parting, length and texture, plus any freckles, moles, scars, glasses or facial hair. Hands on the wheel must be anatomically correct.
+
+Avoid: over-smoothed skin, a pasted-face or cutout look, no lettering anywhere except the dim, unlit &quot;Inicie sua live&quot; button on the dashboard phone screen already described — nothing else lettered, no logos, no platform names or brand marks visible anywhere.</pre>
+        </details>
+        <details class="prompt-block">
+          <summary>Промпт для видео <span class="prompt-label">Kling · Grok</span></summary>
+          <pre class="prompt-text">Create a short cinematic video based on the uploaded image. Vertical 9:16. The person drives a car during the day, filmed by a phone clipped to the sun visor; a second phone is mounted on the dashboard showing a dim &quot;Inicie sua live&quot; button.
+
+Camera and motion structure:
+FRAMES 0–25%: The person drives calmly, eyes on the road, hands on the wheel. The dashboard phone&#x27;s button glows faintly, unlit and waiting.
+FRAMES 25–45%: Without looking away from the road for long, the person reaches down with one hand and taps the dashboard phone&#x27;s button once.
+FRAMES 45–70%: The dashboard screen instantly changes: small heart icons begin rising up it in a steady stream, and a viewer counter appears beneath them, ticking upward rapidly — tens, then hundreds, within seconds. A warm glow from that screen washes up onto the underside of the person&#x27;s face and hands.
+FRAMES 70–100%: The person allows themselves one quick, pleased smile without taking their eyes fully off the road for more than a beat, hands staying on the wheel. The camera holds on the dashboard screen as the viewer counter settles on its final high number and the hearts thin out — that settled number is the last thing shown.
+
+Character:
+Preserve the person&#x27;s face, hair, skin tone and identity exactly from the source image throughout. Allowed motion: driving posture, one hand reaching to tap the button once, returning to the wheel, one smile. No other movement.
+
+Style:
+Ordinary, handheld dashboard-clip realism — natural daylight, slight phone-lens texture, unglamorous and lived-in. Understated satisfaction rather than broadcast spectacle.
+
+Restrictions:
+- Do not change the person&#x27;s appearance, face, clothing, or identity at any point
+- The person stays in frame, recognizable and the visual focus for the whole video
+- The person never speaks, sings or mouths words — the smile is silent, emotional reaction only
+- No speech bubbles
+- The dashboard phone&#x27;s &quot;Inicie sua live&quot; button is tapped exactly once — no repeated taps
+- The rising heart icons and the climbing viewer counter appear only on the dashboard phone&#x27;s own screen — never as a caption or graphic over the main frame
+- The viewer counter&#x27;s final settled number must be clearly legible in the last beat — this is the single most important visual element of the shot
+- No improvisation beyond the listed actions — no extra gestures, no extra glances away from the road
+- The person keeps at least one hand on the wheel and eyes mostly on the road throughout — no unsafe or reckless driving depicted
+- No other platform names, logos, or brand marks appear anywhere in the video</pre>
+        </details>
+      </div>
+    </div>
+  </section>
+</div>
+</body>
+</html>

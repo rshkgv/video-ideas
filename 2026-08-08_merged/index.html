@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Video Ideas — 8 августа 2026 · Выпуск merged</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      background: #f4f4f5; color: #111; font-size: 14px; line-height: 1.5;
+    }
+    .page-header {
+      background: #fff; border-bottom: 1px solid #e4e4e7; position: sticky;
+      top: 0; z-index: 100; box-shadow: 0 1px 8px rgba(0,0,0,.05);
+    }
+    .header-inner {
+      max-width: 1100px; margin: 0 auto; padding: 14px 28px;
+      display: flex; align-items: center; gap: 20px;
+    }
+    .brand {
+      font-size: 18px; font-weight: 800; letter-spacing: -.5px; color: #111;
+      white-space: nowrap; user-select: none; text-decoration: none;
+    }
+    .brand-tik { color: #fe2c55; }
+    .brand-tok { color: #010101; }
+    .brand-dot { color: #d1d1d1; margin: 0 6px; font-weight: 300; }
+    .brand-cc  { color: #888; font-size: 12px; font-weight: 500; }
+    .header-text { flex: 1; min-width: 0; }
+    .page-title {
+      font-size: 15px; font-weight: 700; letter-spacing: -.2px;
+      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    }
+    .page-sub { font-size: 11.5px; color: #999; margin-top: 2px; }
+    .date-badge {
+      background: #fe2c55; color: #fff; font-weight: 700; font-size: 12px;
+      border-radius: 8px; padding: 6px 14px; line-height: 1.4;
+      text-align: center; white-space: nowrap; flex-shrink: 0;
+    }
+    .date-badge span { display: block; font-size: 10px; font-weight: 500; opacity: .8; }
+    .page-nav {
+      max-width: 1100px; margin: 0 auto; padding: 0 28px;
+      display: flex; gap: 2px; border-top: 1px solid #f0f0f0;
+    }
+    .nav-a {
+      text-decoration: none; color: #999; font-size: 12.5px; font-weight: 500;
+      padding: 9px 14px; border-bottom: 2px solid transparent;
+      transition: color .15s, border-color .15s;
+    }
+    .nav-a:hover { color: #fe2c55; }
+    .nav-a.active { color: #fe2c55; border-bottom-color: #fe2c55; }
+    .content { max-width: 1100px; margin: 0 auto; padding: 36px 28px 80px; }
+    .section { margin-bottom: 52px; }
+    .section-header { display: flex; align-items: baseline; gap: 10px; margin-bottom: 16px; }
+    .section-title { font-size: 19px; font-weight: 800; letter-spacing: -.4px; }
+    .section-badge {
+      font-size: 10.5px; font-weight: 600; color: #999; background: #ebebeb;
+      padding: 3px 8px; border-radius: 20px; text-transform: uppercase; letter-spacing: .4px;
+    }
+    @media (max-width: 768px) {
+      .header-inner { gap: 12px; padding: 12px 16px; }
+      .date-badge { display: none; }
+      .page-nav { padding: 0 16px; }
+      .content { padding: 24px 16px 60px; }
+    }
+
+
+    .table-wrap {
+      background: #fff; border-radius: 12px; overflow: hidden;
+      box-shadow: 0 1px 4px rgba(0,0,0,.07), 0 0 0 1px rgba(0,0,0,.05);
+    }
+    .ht-table { width: 100%; border-collapse: collapse; }
+    .ht-table thead th {
+      text-align: left; padding: 10px 16px; font-size: 10.5px; font-weight: 600;
+      text-transform: uppercase; letter-spacing: .5px; color: #aaa;
+      background: #f9f9f9; border-bottom: 1px solid #ebebeb;
+    }
+    .ht-table tbody td { padding: 0; border-bottom: 1px solid #f2f2f2; vertical-align: middle; }
+    .ht-table tbody tr:last-child td { border-bottom: none; }
+    .ht-table tbody tr:hover td { background: #fafbff; }
+    .td-inner { padding: 12px 16px; display: flex; align-items: center; position: relative; }
+    .rank-num { font-weight: 800; font-size: 14px; display: inline-block; min-width: 24px; text-align: right; color: #ccc; }
+    .thumb-cell { padding: 8px 10px 8px 16px !important; }
+    .thumb-img { width: 44px; height: 78px; object-fit: cover; border-radius: 6px; display: block; background: #eee; }
+    .thumb-placeholder { width: 44px; height: 78px; border-radius: 6px; background: #eee; }
+    .htag-link { font-weight: 700; font-size: 14px; color: #111; text-decoration: none; display: inline-flex; align-items: center; gap: 1px; }
+    .htag-link:hover { color: #fe2c55; }
+    .htag-hash { color: #bbb; font-weight: 400; }
+    .htag-disabled { color: #999; cursor: default; }
+    .htag-disabled:hover { color: #999; }
+    .td-title { font-size: 13px; color: #555; padding-left: 12px; }
+    .td-reason { font-size: 12.5px; color: #777; padding: 12px 16px 12px 12px; line-height: 1.5; max-width: 420px; }
+    .td-arrow { color: #ddd; font-size: 13px; padding: 12px 20px 12px 8px !important; text-align: right; }
+    .ht-table tbody tr:hover .td-arrow { color: #fe2c55; }
+    .no-ideas-row { opacity: .7; }
+    .no-ideas-row:hover td { background: transparent !important; }
+    @media (max-width: 520px) { .td-title { display: none; } .td-reason { display: none; } }
+    .htag-label {
+      font-weight: 700; font-size: 14px; color: #111; display: inline-flex; align-items: center; gap: 1px;
+    }
+    .idea-links { display: inline-flex; align-items: center; gap: 6px; margin-left: 12px; flex-wrap: wrap; }
+    .idea-links a {
+      font-size: 12px; font-weight: 600; color: #666; text-decoration: none;
+      background: #f2f2f2; border-radius: 20px; padding: 4px 11px; white-space: nowrap;
+      transition: background .15s, color .15s;
+    }
+    .idea-links a:hover { background: #fe2c55; color: #fff; }
+    .section-title-warn { color: #92400e; }
+    .section-badge-warn { background: #fef3c7; color: #92400e; }
+    .section-title-brand { color: #3730a3; }
+    .section-badge-brand { background: #e0e7ff; color: #3730a3; }
+    .not-touch-note { font-size: 12.5px; color: #999; margin: -8px 0 16px; max-width: 640px; line-height: 1.6; }
+    .not-touch-table thead th { background: #fffbeb; }
+    .brand-media-table thead th { background: #eef2ff; }
+
+
+    .tabs-bar { background: #fff; border-bottom: 1px solid #e4e4e7; position: sticky; top: 93px; z-index: 99; }
+    .tabs-inner { max-width: 1100px; margin: 0 auto; padding: 0 28px; display: flex; gap: 4px; overflow-x: auto; }
+    .tab-btn {
+      background: none; border: none; border-bottom: 2px solid transparent;
+      padding: 12px 16px; cursor: pointer; font-family: inherit; font-size: 13px;
+      font-weight: 600; color: #999; white-space: nowrap; display: flex;
+      align-items: center; gap: 7px; transition: color .15s, border-color .15s;
+    }
+    .tab-btn:hover { color: #111; }
+    .tab-btn.active { color: #fe2c55; border-bottom-color: #fe2c55; }
+    .tab-flag { font-size: 16px; }
+    .tab-count { font-size: 10.5px; font-weight: 700; background: #ebebeb; color: #999; padding: 1px 7px; border-radius: 20px; }
+    .tab-btn.active .tab-count { background: #fff0f3; color: #fe2c55; }
+    .tab-panel { display: none; }
+    .tab-panel.active { display: block; }
+    @media (max-width: 768px) { .tabs-inner { padding: 0 16px; } }
+
+  </style>
+</head>
+<body>
+<div class="page-header">
+  <div class="header-inner">
+    <a class="brand" href="../">
+      <span class="brand-tik">Tik</span><span class="brand-tok">Tok</span>
+      <span class="brand-dot">·</span><span class="brand-cc">Video Ideas</span>
+    </a>
+    <div class="header-text">
+      <div class="page-title">Видео-идеи · 8 августа 2026 · Выпуск merged</div>
+      <div class="page-sub">AI-сгенерированные эффекты по трендовым хештегам TikTok</div>
+    </div>
+    <div class="date-badge">08.08.2026<span>Дата отчёта · Выпуск merged</span></div>
+  </div>
+  <nav class="page-nav">
+    <a href="../" class="nav-a">← Все отчёты</a>
+    <a href="#ideas" class="nav-a active">Идеи</a>
+  </nav>
+</div>
+<div class="tabs-bar">
+  <div class="tabs-inner"><button class="tab-btn active" data-tab="br" onclick="showTab('br')"><span class="tab-flag">🇧🇷</span> BR<span class="tab-count">15</span></button><button class="tab-btn" data-tab="co" onclick="showTab('co')"><span class="tab-flag">🇨🇴</span> CO<span class="tab-count">15</span></button><button class="tab-btn" data-tab="id" onclick="showTab('id')"><span class="tab-flag">🇮🇩</span> ID<span class="tab-count">15</span></button><button class="tab-btn" data-tab="us" onclick="showTab('us')"><span class="tab-flag">🇺🇸</span> US<span class="tab-count">15</span></button><button class="tab-btn" data-tab="za" onclick="showTab('za')"><span class="tab-flag">🇿🇦</span> ZA<span class="tab-count">15</span></button>
+  </div>
+</div>
+<div class="content">
+
+<div class="tab-panel active" id="panel-br">
+  <section id="ideas" class="section">
+    <div class="section-header">
+      <h2 class="section-title">Идеи</h2>
+      <span class="section-badge">15 идей · 15 видео</span>
+    </div>
+    <div class="table-wrap">
+      <table class="ht-table">
+        <thead><tr>
+          <th style="width:68px"></th>
+          <th>Хештег</th>
+          <th style="width:48px"></th>
+        </tr></thead>
+        <tbody>
+        </tbody>
+      </table>
+    </div>
+  </section>
+  <section id="brand-media" class="section">
+    <div class="section-header">
+      <h2 class="section-title section-title-brand">Реальные лица, бренды, чужое медиа</h2>
+      <span class="section-badge section-badge-brand">3 хэштега</span>
+    </div>
+    <p class="not-touch-note">Хэштеги, исключённые отчётом nnAgentsReports из-за бренда/IP, реальных людей или стороннего медиа. Идеи для них всё равно сгенерированы и показаны здесь отдельно от основного списка.</p>
+    <div class="table-wrap">
+      <table class="ht-table brand-media-table">
+        <thead><tr>
+          <th style="width:68px"></th>
+          <th>Хештег</th>
+          <th>Причина исключения</th>
+          <th style="width:48px"></th>
+        </tr></thead>
+        <tbody>
+      <tr>
+        <td class="thumb-cell"><img class="thumb-img" src="https://temp-images.ws.pho.to/80f693a96a396e1b6f2e7c6116876a8de746b6a4.png" alt="#golivegrowfast"></td>
+        <td><div class="td-inner">
+          <span class="rank-num">1</span>
+          <span style="width:16px"></span>
+          <span class="htag-label"><span class="htag-hash">#</span>golivegrowfast</span><span class="idea-links"><a href="./br/golivegrowfast_1/">Идея 1</a><a href="./br/golivegrowfast_2/">Идея 2</a><a href="./br/golivegrowfast_3/">Идея 3</a></span>
+        </div></td>
+        <td class="td-reason">Мусорный тег — платформенный маркетинг TikTok</td>
+        <td class="td-arrow">→</td>
+      </tr>
+      <tr>
+        <td class="thumb-cell"><img class="thumb-img" src="https://temp-images.ws.pho.to/3a306cbe98f798c9463f382632bf68f25de03cc4.png" alt="#justgolive"></td>
+        <td><div class="td-inner">
+          <span class="rank-num">2</span>
+          <span style="width:16px"></span>
+          <span class="htag-label"><span class="htag-hash">#</span>justgolive</span><span class="idea-links"><a href="./br/justgolive_1/">Идея 1</a><a href="./br/justgolive_2/">Идея 2</a><a href="./br/justgolive_3/">Идея 3</a></span>
+        </div></td>
+        <td class="td-reason">Мусорный тег — платформенный маркетинг TikTok</td>
+        <td class="td-arrow">→</td>
+      </tr>
+      <tr>
+        <td class="thumb-cell"><img class="thumb-img" src="https://temp-images.ws.pho.to/b4b26cc4febbaed0fd56a52d6a0244d1ae9c9ac2.png" alt="#sidehustlelive"></td>
+        <td><div class="td-inner">
+          <span class="rank-num">3</span>
+          <span style="width:16px"></span>
+          <span class="htag-label"><span class="htag-hash">#</span>sidehustlelive</span><span class="idea-links"><a href="./br/sidehustlelive_1/">Идея 1</a><a href="./br/sidehustlelive_2/">Идея 2</a><a href="./br/sidehustlelive_3/">Идея 3</a></span>
+        </div></td>
+        <td class="td-reason">Мусорный тег — платформенный маркетинг TikTok</td>
+        <td class="td-arrow">→</td>
+      </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+  <section id="not-touch" class="section">
+    <div class="section-header">
+      <h2 class="section-title section-title-warn">Не трогать</h2>
+      <span class="section-badge section-badge-warn">2 хэштега</span>
+    </div>
+    <p class="not-touch-note">Хэштеги, связанные со стихийными бедствиями, вспышками заболеваний и т.п. — реальные трагедии/угрозы, для которых идеи намеренно не генерируются без отдельного явного запроса.</p>
+    <div class="table-wrap">
+      <table class="ht-table not-touch-table">
+        <thead><tr>
+          <th style="width:68px"></th>
+          <th>Хештег</th>
+          <th>Причина исключения</th>
+          <th style="width:48px"></th>
+        </tr></thead>
+        <tbody>
+      <tr>
+        <td class="thumb-cell"><img class="thumb-img" src="https://temp-images.ws.pho.to/a552d02a841e8b20bd7ae956eeaedb524ba10688.png" alt="#agosto"></td>
+        <td><div class="td-inner">
+          <span class="rank-num">1</span>
+          <span style="width:16px"></span>
+          <span class="htag-label"><span class="htag-hash">#</span>agosto</span><span class="idea-links"><a href="./br/agosto_1/">Идея 1</a><a href="./br/agosto_2/">Идея 2</a><a href="./br/agosto_3/">Идея 3</a></span>
+        </div></td>
+        <td class="td-reason">Нет BR-аудитории, declining</td>
+        <td class="td-arrow">→</td>
+      </tr>
+      <tr>
+        <td class="thumb-cell"><img class="thumb-img" src="https://temp-images.ws.pho.to/f0df98ab30b77e19c13ad3afb4a7677a2801f788.png" alt="#copadobrasil"></td>
+        <td><div class="td-inner">
+          <span class="rank-num">2</span>
+          <span style="width:16px"></span>
+          <span class="htag-label"><span class="htag-hash">#</span>copadobrasil</span><span class="idea-links"><a href="./br/copadobrasil_1/">Идея 1</a><a href="./br/copadobrasil_2/">Идея 2</a><a href="./br/copadobrasil_3/">Идея 3</a></span>
+        </div></td>
+        <td class="td-reason">Смотрят спорт — болельщики потребляют матч-контент, не создают</td>
+        <td class="td-arrow">→</td>
+      </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+</div>
+<div class="tab-panel" id="panel-co">
+  <section id="ideas" class="section">
+    <div class="section-header">
+      <h2 class="section-title">Идеи</h2>
+      <span class="section-badge">15 идей · 15 видео</span>
+    </div>
+    <div class="table-wrap">
+      <table class="ht-table">
+        <thead><tr>
+          <th style="width:68px"></th>
+          <th>Хештег</th>
+          <th style="width:48px"></th>
+        </tr></thead>
+        <tbody>
+      <tr>
+        <td class="thumb-cell"><img class="thumb-img" src="https://temp-images.ws.pho.to/9d17665fc398f9938899029205eef427a4d5eaf8.png" alt="#nocontesta"></td>
+        <td><div class="td-inner">
+          <span class="rank-num">1</span>
+          <span style="width:16px"></span>
+          <span class="htag-label"><span class="htag-hash">#</span>nocontesta</span><span class="idea-links"><a href="./co/nocontesta_1/">Идея 1</a><a href="./co/nocontesta_2/">Идея 2</a><a href="./co/nocontesta_3/">Идея 3</a></span>
+        </div></td>
+        <td class="td-arrow">→</td>
+      </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+  <section id="not-touch" class="section">
+    <div class="section-header">
+      <h2 class="section-title section-title-warn">Не трогать</h2>
+      <span class="section-badge section-badge-warn">4 хэштега</span>
+    </div>
+    <p class="not-touch-note">Хэштеги, связанные со стихийными бедствиями, вспышками заболеваний и т.п. — реальные трагедии/угрозы, для которых идеи намеренно не генерируются без отдельного явного запроса.</p>
+    <div class="table-wrap">
+      <table class="ht-table not-touch-table">
+        <thead><tr>
+          <th style="width:68px"></th>
+          <th>Хештег</th>
+          <th>Причина исключения</th>
+          <th style="width:48px"></th>
+        </tr></thead>
+        <tbody>
+      <tr>
+        <td class="thumb-cell"><img class="thumb-img" src="https://temp-images.ws.pho.to/a6e492ac3acca02cf560470346f1cc715513ffa8.png" alt="#agosto"></td>
+        <td><div class="td-inner">
+          <span class="rank-num">1</span>
+          <span style="width:16px"></span>
+          <span class="htag-label"><span class="htag-hash">#</span>agosto</span><span class="idea-links"><a href="./co/agosto_1/">Идея 1</a><a href="./co/agosto_2/">Идея 2</a><a href="./co/agosto_3/">Идея 3</a></span>
+        </div></td>
+        <td class="td-reason">Уже отработали — праздник 7 августа прошёл, declining</td>
+        <td class="td-arrow">→</td>
+      </tr>
+      <tr>
+        <td class="thumb-cell"><img class="thumb-img" src="https://temp-images.ws.pho.to/7b225626e127e670ebacc5bbb7f6d4ce1e594bc9.png" alt="#golivegrowfast"></td>
+        <td><div class="td-inner">
+          <span class="rank-num">2</span>
+          <span style="width:16px"></span>
+          <span class="htag-label"><span class="htag-hash">#</span>golivegrowfast</span><span class="idea-links"><a href="./co/golivegrowfast_1/">Идея 1</a><a href="./co/golivegrowfast_2/">Идея 2</a><a href="./co/golivegrowfast_3/">Идея 3</a></span>
+        </div></td>
+        <td class="td-reason">Спам/накрутка — координированная TikTok LIVE кампания, нет органической темы</td>
+        <td class="td-arrow">→</td>
+      </tr>
+      <tr>
+        <td class="thumb-cell"><img class="thumb-img" src="https://temp-images.ws.pho.to/8cbd1ef48c8a7e67f9614221d08e26a9151230a9.png" alt="#justgolive"></td>
+        <td><div class="td-inner">
+          <span class="rank-num">3</span>
+          <span style="width:16px"></span>
+          <span class="htag-label"><span class="htag-hash">#</span>justgolive</span><span class="idea-links"><a href="./co/justgolive_1/">Идея 1</a><a href="./co/justgolive_2/">Идея 2</a><a href="./co/justgolive_3/">Идея 3</a></span>
+        </div></td>
+        <td class="td-reason">Спам/накрутка — координированная TikTok LIVE кампания, нет органической темы</td>
+        <td class="td-arrow">→</td>
+      </tr>
+      <tr>
+        <td class="thumb-cell"><img class="thumb-img" src="https://temp-images.ws.pho.to/213fc60359b6416b4934c2f530ade67f8ec18447.png" alt="#sidehustlelive"></td>
+        <td><div class="td-inner">
+          <span class="rank-num">4</span>
+          <span style="width:16px"></span>
+          <span class="htag-label"><span class="htag-hash">#</span>sidehustlelive</span><span class="idea-links"><a href="./co/sidehustlelive_1/">Идея 1</a><a href="./co/sidehustlelive_2/">Идея 2</a><a href="./co/sidehustlelive_3/">Идея 3</a></span>
+        </div></td>
+        <td class="td-reason">Спам/накрутка — координированная TikTok LIVE кампания, нет органической темы</td>
+        <td class="td-arrow">→</td>
+      </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+</div>
+<div class="tab-panel" id="panel-id">
+  <section id="ideas" class="section">
+    <div class="section-header">
+      <h2 class="section-title">Идеи</h2>
+      <span class="section-badge">15 идей · 15 видео</span>
+    </div>
+    <div class="table-wrap">
+      <table class="ht-table">
+        <thead><tr>
+          <th style="width:68px"></th>
+          <th>Хештег</th>
+          <th style="width:48px"></th>
+        </tr></thead>
+        <tbody>
+        </tbody>
+      </table>
+    </div>
+  </section>
+  <section id="not-touch" class="section">
+    <div class="section-header">
+      <h2 class="section-title section-title-warn">Не трогать</h2>
+      <span class="section-badge section-badge-warn">5 хэштегов</span>
+    </div>
+    <p class="not-touch-note">Хэштеги, связанные со стихийными бедствиями, вспышками заболеваний и т.п. — реальные трагедии/угрозы, для которых идеи намеренно не генерируются без отдельного явного запроса.</p>
+    <div class="table-wrap">
+      <table class="ht-table not-touch-table">
+        <thead><tr>
+          <th style="width:68px"></th>
+          <th>Хештег</th>
+          <th>Причина исключения</th>
+          <th style="width:48px"></th>
+        </tr></thead>
+        <tbody>
+      <tr>
+        <td class="thumb-cell"><img class="thumb-img" src="https://temp-images.ws.pho.to/ceb32c4cad10cc7f7e2243867944e9b8048c029a.png" alt="#kimpul"></td>
+        <td><div class="td-inner">
+          <span class="rank-num">1</span>
+          <span style="width:16px"></span>
+          <span class="htag-label"><span class="htag-hash">#</span>kimpul</span><span class="idea-links"><a href="./id/kimpul_1/">Идея 1</a><a href="./id/kimpul_2/">Идея 2</a><a href="./id/kimpul_3/">Идея 3</a></span>
+        </div></td>
+        <td class="td-reason">Смотрят — вирусный food-контент, продуктовой зацепки нет</td>
+        <td class="td-arrow">→</td>
+      </tr>
+      <tr>
+        <td class="thumb-cell"><img class="thumb-img" src="https://temp-images.ws.pho.to/507ee39f78c3c18725bf1296548322bf04711d5e.png" alt="#kitasatubrawijaya"></td>
+        <td><div class="td-inner">
+          <span class="rank-num">2</span>
+          <span style="width:16px"></span>
+          <span class="htag-label"><span class="htag-hash">#</span>kitasatubrawijaya</span><span class="idea-links"><a href="./id/kitasatubrawijaya_1/">Идея 1</a><a href="./id/kitasatubrawijaya_2/">Идея 2</a><a href="./id/kitasatubrawijaya_3/">Идея 3</a></span>
+        </div></td>
+        <td class="td-reason">PKKMB/university orientation — институциональный флешмоб, нет продуктовой ценности</td>
+        <td class="td-arrow">→</td>
+      </tr>
+      <tr>
+        <td class="thumb-cell"><img class="thumb-img" src="https://temp-images.ws.pho.to/c2ec47ac994852891cbd2bdae3c94dd0991c8029.png" alt="#laskara2026"></td>
+        <td><div class="td-inner">
+          <span class="rank-num">3</span>
+          <span style="width:16px"></span>
+          <span class="htag-label"><span class="htag-hash">#</span>laskara2026</span><span class="idea-links"><a href="./id/laskara2026_1/">Идея 1</a><a href="./id/laskara2026_2/">Идея 2</a><a href="./id/laskara2026_3/">Идея 3</a></span>
+        </div></td>
+        <td class="td-reason">PKKMB/university orientation — институциональный флешмоб, нет продуктовой ценности</td>
+        <td class="td-arrow">→</td>
+      </tr>
+      <tr>
+        <td class="thumb-cell"><img class="thumb-img" src="https://temp-images.ws.pho.to/ae35f085564adb60f1c9ea578b7a689e6affcbe2.png" alt="#pkkmbum2026"></td>
+        <td><div class="td-inner">
+          <span class="rank-num">4</span>
+          <span style="width:16px"></span>
+          <span class="htag-label"><span class="htag-hash">#</span>pkkmbum2026</span><span class="idea-links"><a href="./id/pkkmbum2026_1/">Идея 1</a><a href="./id/pkkmbum2026_2/">Идея 2</a><a href="./id/pkkmbum2026_3/">Идея 3</a></span>
+        </div></td>
+        <td class="td-reason">PKKMB/university orientation — институциональный флешмоб, нет продуктовой ценности</td>
+        <td class="td-arrow">→</td>
+      </tr>
+      <tr>
+        <td class="thumb-cell"><img class="thumb-img" src="https://temp-images.ws.pho.to/6d36dd7168857a07768fe2276a6f7cc16cc2337d.png" alt="#rajabrawijaya2026"></td>
+        <td><div class="td-inner">
+          <span class="rank-num">5</span>
+          <span style="width:16px"></span>
+          <span class="htag-label"><span class="htag-hash">#</span>rajabrawijaya2026</span><span class="idea-links"><a href="./id/rajabrawijaya2026_1/">Идея 1</a><a href="./id/rajabrawijaya2026_2/">Идея 2</a><a href="./id/rajabrawijaya2026_3/">Идея 3</a></span>
+        </div></td>
+        <td class="td-reason">PKKMB/university orientation — институциональный флешмоб, нет продуктовой ценности</td>
+        <td class="td-arrow">→</td>
+      </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+</div>
+<div class="tab-panel" id="panel-us">
+  <section id="ideas" class="section">
+    <div class="section-header">
+      <h2 class="section-title">Идеи</h2>
+      <span class="section-badge">15 идей · 15 видео</span>
+    </div>
+    <div class="table-wrap">
+      <table class="ht-table">
+        <thead><tr>
+          <th style="width:68px"></th>
+          <th>Хештег</th>
+          <th style="width:48px"></th>
+        </tr></thead>
+        <tbody>
+      <tr>
+        <td class="thumb-cell"><img class="thumb-img" src="https://temp-images.ws.pho.to/55223bb4e472c9715fc7e5d2c021872f52a93fb1.png" alt="#myspace"></td>
+        <td><div class="td-inner">
+          <span class="rank-num">1</span>
+          <span style="width:16px"></span>
+          <span class="htag-label"><span class="htag-hash">#</span>myspace</span><span class="idea-links"><a href="./us/myspace_1/">Идея 1</a><a href="./us/myspace_2/">Идея 2</a><a href="./us/myspace_3/">Идея 3</a></span>
+        </div></td>
+        <td class="td-arrow">→</td>
+      </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+  <section id="brand-media" class="section">
+    <div class="section-header">
+      <h2 class="section-title section-title-brand">Реальные лица, бренды, чужое медиа</h2>
+      <span class="section-badge section-badge-brand">2 хэштега</span>
+    </div>
+    <p class="not-touch-note">Хэштеги, исключённые отчётом nnAgentsReports из-за бренда/IP, реальных людей или стороннего медиа. Идеи для них всё равно сгенерированы и показаны здесь отдельно от основного списка.</p>
+    <div class="table-wrap">
+      <table class="ht-table brand-media-table">
+        <thead><tr>
+          <th style="width:68px"></th>
+          <th>Хештег</th>
+          <th>Причина исключения</th>
+          <th style="width:48px"></th>
+        </tr></thead>
+        <tbody>
+      <tr>
+        <td class="thumb-cell"><img class="thumb-img" src="https://temp-images.ws.pho.to/748f1ae31a366a2b3e24639c1d011622c90b6fd6.png" alt="#perezhilton"></td>
+        <td><div class="td-inner">
+          <span class="rank-num">1</span>
+          <span style="width:16px"></span>
+          <span class="htag-label"><span class="htag-hash">#</span>perezhilton</span><span class="idea-links"><a href="./us/perezhilton_1/">Идея 1</a><a href="./us/perezhilton_2/">Идея 2</a><a href="./us/perezhilton_3/">Идея 3</a></span>
+        </div></td>
+        <td class="td-reason">Реальное лицо (блогер), право на изображение</td>
+        <td class="td-arrow">→</td>
+      </tr>
+      <tr>
+        <td class="thumb-cell"><img class="thumb-img" src="https://temp-images.ws.pho.to/c9b7fd0b0185fecf47e33fb4cdd1bf75e53c66c8.png" alt="#tiktokshopbacktoschool"></td>
+        <td><div class="td-inner">
+          <span class="rank-num">2</span>
+          <span style="width:16px"></span>
+          <span class="htag-label"><span class="htag-hash">#</span>tiktokshopbacktoschool</span><span class="idea-links"><a href="./us/tiktokshopbacktoschool_1/">Идея 1</a><a href="./us/tiktokshopbacktoschool_2/">Идея 2</a><a href="./us/tiktokshopbacktoschool_3/">Идея 3</a></span>
+        </div></td>
+        <td class="td-reason">Товарный знак — бренд с активной IP-защитой</td>
+        <td class="td-arrow">→</td>
+      </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+  <section id="not-touch" class="section">
+    <div class="section-header">
+      <h2 class="section-title section-title-warn">Не трогать</h2>
+      <span class="section-badge section-badge-warn">2 хэштега</span>
+    </div>
+    <p class="not-touch-note">Хэштеги, связанные со стихийными бедствиями, вспышками заболеваний и т.п. — реальные трагедии/угрозы, для которых идеи намеренно не генерируются без отдельного явного запроса.</p>
+    <div class="table-wrap">
+      <table class="ht-table not-touch-table">
+        <thead><tr>
+          <th style="width:68px"></th>
+          <th>Хештег</th>
+          <th>Причина исключения</th>
+          <th style="width:48px"></th>
+        </tr></thead>
+        <tbody>
+      <tr>
+        <td class="thumb-cell"><img class="thumb-img" src="https://temp-images.ws.pho.to/21df2621de166268d8c8beb34270f1b70b9c72c5.png" alt="#august"></td>
+        <td><div class="td-inner">
+          <span class="rank-num">1</span>
+          <span style="width:16px"></span>
+          <span class="htag-label"><span class="htag-hash">#</span>august</span><span class="idea-links"><a href="./us/august_1/">Идея 1</a><a href="./us/august_2/">Идея 2</a><a href="./us/august_3/">Идея 3</a></span>
+        </div></td>
+        <td class="td-reason">Уже гаснет — declining, начало месяца отработало</td>
+        <td class="td-arrow">→</td>
+      </tr>
+      <tr>
+        <td class="thumb-cell"><img class="thumb-img" src="https://temp-images.ws.pho.to/68b1ab0fd5ed3f315304030b472759ceca2e6994.png" alt="#justgolive"></td>
+        <td><div class="td-inner">
+          <span class="rank-num">2</span>
+          <span style="width:16px"></span>
+          <span class="htag-label"><span class="htag-hash">#</span>justgolive</span><span class="idea-links"><a href="./us/justgolive_1/">Идея 1</a><a href="./us/justgolive_2/">Идея 2</a><a href="./us/justgolive_3/">Идея 3</a></span>
+        </div></td>
+        <td class="td-reason">Мусорный тег — TikTok Live промо, не тренд аудитории</td>
+        <td class="td-arrow">→</td>
+      </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+</div>
+<div class="tab-panel" id="panel-za">
+  <section id="ideas" class="section">
+    <div class="section-header">
+      <h2 class="section-title">Идеи</h2>
+      <span class="section-badge">15 идей · 12 видео</span>
+    </div>
+    <div class="table-wrap">
+      <table class="ht-table">
+        <thead><tr>
+          <th style="width:68px"></th>
+          <th>Хештег</th>
+          <th style="width:48px"></th>
+        </tr></thead>
+        <tbody>
+      <tr>
+        <td class="thumb-cell"><img class="thumb-img" src="https://temp-images.ws.pho.to/d3098cef5515ec794cd602d4fa0925374c60be1a.png" alt="#girlfriendsday"></td>
+        <td><div class="td-inner">
+          <span class="rank-num">1</span>
+          <span style="width:16px"></span>
+          <span class="htag-label"><span class="htag-hash">#</span>girlfriendsday</span><span class="idea-links"><a href="./za/girlfriendsday_1/">Идея 1</a><a href="./za/girlfriendsday_2/">Идея 2</a><a href="./za/girlfriendsday_3/">Идея 3</a></span>
+        </div></td>
+        <td class="td-arrow">→</td>
+      </tr>
+      <tr>
+        <td class="thumb-cell"><img class="thumb-img" src="https://temp-images.ws.pho.to/240cd2589f33452204de9a66a211f3580b89565a.png" alt="#womensmonth"></td>
+        <td><div class="td-inner">
+          <span class="rank-num">2</span>
+          <span style="width:16px"></span>
+          <span class="htag-label"><span class="htag-hash">#</span>womensmonth</span><span class="idea-links"><a href="./za/womensmonth_1/">Идея 1</a><a href="./za/womensmonth_2/">Идея 2</a><a href="./za/womensmonth_3/">Идея 3</a></span>
+        </div></td>
+        <td class="td-arrow">→</td>
+      </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+  <section id="brand-media" class="section">
+    <div class="section-header">
+      <h2 class="section-title section-title-brand">Реальные лица, бренды, чужое медиа</h2>
+      <span class="section-badge section-badge-brand">1 хэштег</span>
+    </div>
+    <p class="not-touch-note">Хэштеги, исключённые отчётом nnAgentsReports из-за бренда/IP, реальных людей или стороннего медиа. Идеи для них всё равно сгенерированы и показаны здесь отдельно от основного списка.</p>
+    <div class="table-wrap">
+      <table class="ht-table brand-media-table">
+        <thead><tr>
+          <th style="width:68px"></th>
+          <th>Хештег</th>
+          <th>Причина исключения</th>
+          <th style="width:48px"></th>
+        </tr></thead>
+        <tbody>
+      <tr>
+        <td class="thumb-cell"><div class="thumb-placeholder"></div></td>
+        <td><div class="td-inner">
+          <span class="rank-num">1</span>
+          <span style="width:16px"></span>
+          <span class="htag-label"><span class="htag-hash">#</span>brandnewday</span><span class="idea-links"><a href="./za/brandnewday_1/">Идея 1</a><a href="./za/brandnewday_2/">Идея 2</a><a href="./za/brandnewday_3/">Идея 3</a></span>
+        </div></td>
+        <td class="td-reason">Реальное лицо / чужое медиа — привязка к южноафриканской певице</td>
+        <td class="td-arrow">→</td>
+      </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+  <section id="not-touch" class="section">
+    <div class="section-header">
+      <h2 class="section-title section-title-warn">Не трогать</h2>
+      <span class="section-badge section-badge-warn">2 хэштега</span>
+    </div>
+    <p class="not-touch-note">Хэштеги, связанные со стихийными бедствиями, вспышками заболеваний и т.п. — реальные трагедии/угрозы, для которых идеи намеренно не генерируются без отдельного явного запроса.</p>
+    <div class="table-wrap">
+      <table class="ht-table not-touch-table">
+        <thead><tr>
+          <th style="width:68px"></th>
+          <th>Хештег</th>
+          <th>Причина исключения</th>
+          <th style="width:48px"></th>
+        </tr></thead>
+        <tbody>
+      <tr>
+        <td class="thumb-cell"><img class="thumb-img" src="https://temp-images.ws.pho.to/776f209b07f8b70da8ce2f4d57c477b756d59cdc.png" alt="#august"></td>
+        <td><div class="td-inner">
+          <span class="rank-num">1</span>
+          <span style="width:16px"></span>
+          <span class="htag-label"><span class="htag-hash">#</span>august</span><span class="idea-links"><a href="./za/august_1/">Идея 1</a><a href="./za/august_2/">Идея 2</a><a href="./za/august_3/">Идея 3</a></span>
+        </div></td>
+        <td class="td-reason">Уже гаснет — declining-кривые</td>
+        <td class="td-arrow">→</td>
+      </tr>
+      <tr>
+        <td class="thumb-cell"><img class="thumb-img" src="https://temp-images.ws.pho.to/7ff5c7d2cc0b39aead5f38271e2bb5831bbecf4f.png" alt="#julydump"></td>
+        <td><div class="td-inner">
+          <span class="rank-num">2</span>
+          <span style="width:16px"></span>
+          <span class="htag-label"><span class="htag-hash">#</span>julydump</span><span class="idea-links"><a href="./za/julydump_1/">Идея 1</a><a href="./za/julydump_2/">Идея 2</a><a href="./za/julydump_3/">Идея 3</a></span>
+        </div></td>
+        <td class="td-reason">Уже гаснет — declining-кривые</td>
+        <td class="td-arrow">→</td>
+      </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+</div>
+</div>
+<script>
+  function showTab(cc) {
+    document.querySelectorAll('.tab-panel').forEach(function(p) { p.classList.remove('active'); });
+    document.querySelectorAll('.tab-btn').forEach(function(b) { b.classList.remove('active'); });
+    document.getElementById('panel-' + cc).classList.add('active');
+    document.querySelector('.tab-btn[data-tab="' + cc + '"]').classList.add('active');
+    if (history.replaceState) history.replaceState(null, '', '#' + cc);
+  }
+  var initialTab = (location.hash || '').slice(1);
+  if (initialTab && document.getElementById('panel-' + initialTab)) showTab(initialTab);
+</script>
+</body>
+</html>
