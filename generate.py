@@ -510,7 +510,7 @@ def _render_ideas_sections(ideas_with_media, flags, link_prefix=''):
         brand_groups, brand_idealess,
     )
     not_touch_section = flagged_section_html(
-        'not-touch', 'Не трогать',
+        'not-touch', 'Хэштеги, которые nnAgentReports рекомендовал исключить',
         'Хэштеги, исключённые отчётом nnAgentsReports из своего продуктового плана по причинам без бренда/IP — не входят в целевую аудиторию, только смотрят (не создают), затухающий тренд, нет продуктовой ценности и т.п. Идеи для них всё равно сгенерированы и показаны здесь отдельно от основного списка. Единственное исключение — реальная катастрофа или угроза здоровью: такие хэштеги показаны без ссылки на идею, только с причиной.',
         'section-title-warn', 'section-badge-warn', 'not-touch-table',
         nt_groups, nt_idealess,
