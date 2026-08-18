@@ -315,14 +315,10 @@ DATE_INDEX_CSS = """
     .htag-link { font-weight: 700; font-size: 14px; color: #111; text-decoration: none; display: inline-flex; align-items: center; gap: 1px; }
     .htag-link:hover { color: #fe2c55; }
     .htag-hash { color: #bbb; font-weight: 400; }
-    .htag-disabled { color: #999; cursor: default; }
-    .htag-disabled:hover { color: #999; }
     .td-title { font-size: 13px; color: #555; padding-left: 12px; }
     .td-reason { font-size: 12.5px; color: #777; padding: 12px 16px 12px 12px; line-height: 1.5; max-width: 420px; }
     .td-arrow { color: #ddd; font-size: 13px; padding: 12px 20px 12px 8px !important; text-align: right; }
     .ht-table tbody tr:hover .td-arrow { color: #fe2c55; }
-    .no-ideas-row { opacity: .7; }
-    .no-ideas-row:hover td { background: transparent !important; }
     @media (max-width: 520px) { .td-title { display: none; } .td-reason { display: none; } }
     .htag-label {
       font-weight: 700; font-size: 14px; color: #111; display: inline-flex; align-items: center; gap: 1px;
@@ -417,18 +413,14 @@ def _render_ideas_sections(ideas_with_media, flags, link_prefix=''):
 
     main_groups = [(bh, items) for bh, items in grouped if bh not in flags]
     flagged_groups = [(bh, items) for bh, items in grouped if bh in flags]
-    flagged_with_ideas = {bh for bh, _ in flagged_groups}
     # Flagged hashtags with no generated ideas at all (the disaster/health-crisis
-    # case per SKILL.md Step 2b) — reason-only rows, no dropdown/link.
-    idealess_flagged = [bh for bh in flags if bh not in flagged_with_ideas]
+    # case per SKILL.md Step 2b) are never mentioned anywhere on the site.
 
     def category_of(bh):
         return flags[bh].get('category', 'not_touch')
 
     brand_groups = [(bh, items) for bh, items in flagged_groups if category_of(bh) == 'brand']
     nt_groups = [(bh, items) for bh, items in flagged_groups if category_of(bh) != 'brand']
-    brand_idealess = [bh for bh in idealess_flagged if category_of(bh) == 'brand']
-    nt_idealess = [bh for bh in idealess_flagged if category_of(bh) != 'brand']
 
     rows = ''
     for i, (base_hashtag, items) in enumerate(main_groups, 1):
@@ -445,7 +437,7 @@ def _render_ideas_sections(ideas_with_media, flags, link_prefix=''):
         <td class="td-arrow">→</td>
       </tr>"""
 
-    def flagged_rows_html(groups, idealess):
+    def flagged_rows_html(groups):
         out = ''
         i = 1
         for base_hashtag, items in groups:
@@ -463,23 +455,10 @@ def _render_ideas_sections(ideas_with_media, flags, link_prefix=''):
         <td class="td-arrow">→</td>
       </tr>"""
             i += 1
-        for base_hashtag in idealess:
-            out += f"""
-      <tr class="no-ideas-row">
-        <td class="thumb-cell"><div class="thumb-placeholder"></div></td>
-        <td><div class="td-inner">
-          <span class="rank-num">{i}</span>
-          <span style="width:16px"></span>
-          <span class="htag-link htag-disabled"><span class="htag-hash">#</span>{html.escape(base_hashtag)}</span>
-        </div></td>
-        <td class="td-reason">{html.escape(flags[base_hashtag].get('reason', ''))}</td>
-        <td class="td-arrow">—</td>
-      </tr>"""
-            i += 1
         return out
 
-    def flagged_section_html(section_id, title, note, title_class, badge_class, table_class, groups, idealess):
-        n_section = len(groups) + len(idealess)
+    def flagged_section_html(section_id, title, note, title_class, badge_class, table_class, groups):
+        n_section = len(groups)
         if not n_section:
             return ''
         return f"""
@@ -497,7 +476,7 @@ def _render_ideas_sections(ideas_with_media, flags, link_prefix=''):
           <th>Причина исключения</th>
           <th style="width:48px"></th>
         </tr></thead>
-        <tbody>{flagged_rows_html(groups, idealess)}
+        <tbody>{flagged_rows_html(groups)}
         </tbody>
       </table>
     </div>
@@ -507,13 +486,13 @@ def _render_ideas_sections(ideas_with_media, flags, link_prefix=''):
         'brand-media', 'Реальные лица, бренды, чужое медиа',
         'Хэштеги, исключённые отчётом nnAgentsReports из-за бренда/IP, реальных людей или стороннего медиа. Идеи для них всё равно сгенерированы и показаны здесь отдельно от основного списка.',
         'section-title-brand', 'section-badge-brand', 'brand-media-table',
-        brand_groups, brand_idealess,
+        brand_groups,
     )
     not_touch_section = flagged_section_html(
         'not-touch', 'Хэштеги, которые nnAgentReports рекомендовал исключить',
-        'Хэштеги, исключённые отчётом nnAgentsReports из своего продуктового плана по причинам без бренда/IP — не входят в целевую аудиторию, только смотрят (не создают), затухающий тренд, нет продуктовой ценности и т.п. Идеи для них всё равно сгенерированы и показаны здесь отдельно от основного списка. Единственное исключение — реальная катастрофа или угроза здоровью: такие хэштеги показаны без ссылки на идею, только с причиной.',
+        'Хэштеги, исключённые отчётом nnAgentsReports из своего продуктового плана по причинам без бренда/IP — не входят в целевую аудиторию, только смотрят (не создают), затухающий тренд, нет продуктовой ценности и т.п. Идеи для них всё равно сгенерированы и показаны здесь отдельно от основного списка.',
         'section-title-warn', 'section-badge-warn', 'not-touch-table',
-        nt_groups, nt_idealess,
+        nt_groups,
     )
 
     n = len(ideas_with_media)
