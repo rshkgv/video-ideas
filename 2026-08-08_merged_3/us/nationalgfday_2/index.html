@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>#nationalgfday — Букет, который растёт сам · Video Ideas</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      background: #f4f4f5; color: #111; font-size: 14px; line-height: 1.5;
+    }
+    .page-header {
+      background: #fff; border-bottom: 1px solid #e4e4e7; position: sticky;
+      top: 0; z-index: 100; box-shadow: 0 1px 8px rgba(0,0,0,.05);
+    }
+    .header-inner {
+      max-width: 1100px; margin: 0 auto; padding: 14px 28px;
+      display: flex; align-items: center; gap: 20px;
+    }
+    .brand {
+      font-size: 18px; font-weight: 800; letter-spacing: -.5px; color: #111;
+      white-space: nowrap; user-select: none; text-decoration: none;
+    }
+    .brand-tik { color: #fe2c55; }
+    .brand-tok { color: #010101; }
+    .brand-dot { color: #d1d1d1; margin: 0 6px; font-weight: 300; }
+    .brand-cc  { color: #888; font-size: 12px; font-weight: 500; }
+    .header-text { flex: 1; min-width: 0; }
+    .page-title {
+      font-size: 15px; font-weight: 700; letter-spacing: -.2px;
+      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    }
+    .page-sub { font-size: 11.5px; color: #999; margin-top: 2px; }
+    .date-badge {
+      background: #fe2c55; color: #fff; font-weight: 700; font-size: 12px;
+      border-radius: 8px; padding: 6px 14px; line-height: 1.4;
+      text-align: center; white-space: nowrap; flex-shrink: 0;
+    }
+    .date-badge span { display: block; font-size: 10px; font-weight: 500; opacity: .8; }
+    .page-nav {
+      max-width: 1100px; margin: 0 auto; padding: 0 28px;
+      display: flex; gap: 2px; border-top: 1px solid #f0f0f0;
+    }
+    .nav-a {
+      text-decoration: none; color: #999; font-size: 12.5px; font-weight: 500;
+      padding: 9px 14px; border-bottom: 2px solid transparent;
+      transition: color .15s, border-color .15s;
+    }
+    .nav-a:hover { color: #fe2c55; }
+    .nav-a.active { color: #fe2c55; border-bottom-color: #fe2c55; }
+    .content { max-width: 1100px; margin: 0 auto; padding: 36px 28px 80px; }
+    .section { margin-bottom: 52px; }
+    .section-header { display: flex; align-items: baseline; gap: 10px; margin-bottom: 16px; }
+    .section-title { font-size: 19px; font-weight: 800; letter-spacing: -.4px; }
+    .section-badge {
+      font-size: 10.5px; font-weight: 600; color: #999; background: #ebebeb;
+      padding: 3px 8px; border-radius: 20px; text-transform: uppercase; letter-spacing: .4px;
+    }
+    @media (max-width: 768px) {
+      .header-inner { gap: 12px; padding: 12px 16px; }
+      .date-badge { display: none; }
+      .page-nav { padding: 0 16px; }
+      .content { padding: 24px 16px 60px; }
+    }
+
+
+    .idea-lead {
+      background: #fff; border-radius: 12px; padding: 36px 40px 32px;
+      box-shadow: 0 1px 4px rgba(0,0,0,.07), 0 0 0 1px rgba(0,0,0,.05);
+      margin-bottom: 40px;
+    }
+    .idea-hashtag { font-size: 13px; font-weight: 700; color: #fe2c55; margin-bottom: 8px; }
+    .idea-title { font-size: 26px; font-weight: 800; letter-spacing: -.6px; line-height: 1.25; margin-bottom: 16px; }
+    .idea-desc { font-size: 14px; color: #444; line-height: 1.75; max-width: 720px; }
+    .media-grid {
+      display: grid; grid-template-columns: auto 1fr; gap: 28px; align-items: start;
+    }
+    .video-multi {
+      display: flex; gap: 16px; flex-wrap: wrap; align-items: flex-start;
+    }
+    .video-item {
+      width: 200px; display: flex; flex-direction: column; gap: 8px; flex-shrink: 0;
+    }
+    .video-caption {
+      font-size: 11px; color: #999; line-height: 1.4; padding: 0 2px;
+    }
+    .video-player {
+      width: 100%; aspect-ratio: 9/16; object-fit: cover; border-radius: 12px;
+      display: block; box-shadow: 0 2px 16px rgba(0,0,0,.14);
+    }
+    .frame-img {
+      width: 100%; aspect-ratio: 9/16; object-fit: cover; border-radius: 12px;
+      display: block; box-shadow: 0 2px 16px rgba(0,0,0,.14);
+    }
+    .prompts-col { display: flex; flex-direction: column; gap: 12px; }
+    .prompt-block {
+      background: #fff; border-radius: 10px;
+      box-shadow: 0 1px 4px rgba(0,0,0,.07), 0 0 0 1px rgba(0,0,0,.05); overflow: hidden;
+    }
+    .prompt-block summary {
+      padding: 14px 18px; font-size: 13px; font-weight: 700; cursor: pointer;
+      user-select: none; list-style: none; display: flex; align-items: center; gap: 8px; color: #333;
+    }
+    .prompt-block summary::-webkit-details-marker { display: none; }
+    .prompt-block summary::before { content: '▶'; font-size: 8px; color: #bbb; transition: transform .15s; flex-shrink: 0; }
+    .prompt-block[open] summary::before { transform: rotate(90deg); }
+    .prompt-block summary:hover { color: #fe2c55; }
+    .prompt-block summary:hover::before { color: #fe2c55; }
+    .prompt-label { font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: .5px; color: #bbb; margin-left: auto; }
+    .prompt-text {
+      padding: 14px 18px 16px; font-family: 'SF Mono','Fira Code','Menlo',monospace;
+      font-size: 11.5px; line-height: 1.7; color: #555; background: #f9f9f9;
+      border-top: 1px solid #f0f0f0; white-space: pre-wrap; word-break: break-word;
+      max-height: 320px; overflow-y: auto;
+    }
+    @media (max-width: 900px) {
+      .media-grid { grid-template-columns: 1fr; }
+      .video-multi { justify-content: center; }
+      .idea-lead { padding: 24px 22px 22px; }
+    }
+    @media (max-width: 520px) { .idea-title { font-size: 22px; } }
+
+  </style>
+</head>
+<body>
+<div class="page-header">
+  <div class="header-inner">
+    <a class="brand" href="../../../">
+      <span class="brand-tik">Tik</span><span class="brand-tok">Tok</span>
+      <span class="brand-dot">·</span><span class="brand-cc">Video Ideas</span>
+    </a>
+    <div class="header-text">
+      <div class="page-title">#nationalgfday</div>
+      <div class="page-sub">Видео-идея · 8 августа 2026 · Выпуск merged_3</div>
+    </div>
+    <div class="date-badge">08.08.2026<span>Дата · Выпуск merged_3</span></div>
+  </div>
+  <nav class="page-nav">
+    <a href="../../../" class="nav-a">← Все отчёты</a>
+    <a href="../../#us" class="nav-a">← 8 авг 2026 · Выпуск merged_3</a>
+    <a href="#" class="nav-a active">#nationalgfday</a>
+  </nav>
+</div>
+<div class="content">
+  <div class="idea-lead">
+    <div class="idea-hashtag">#nationalgfday</div>
+    <h1 class="idea-title">Букет, который растёт сам</h1>
+    <p class="idea-desc">Никакого партнёра и никакого готового букета — пользователь сидит в одиночестве за туалетным столиком, просто рассматривая себя в зеркале. В прозрачной вазе перед ней вдруг, без всякой видимой причины, появляется одна-единственная розовая роза — там, где мгновение назад её не было. Камера медленно кружит вокруг, и с каждым её витком в вазе прибавляется ещё одна роза, пока не набирается полный, пышный букет. Пользователь замечает происходящее не сразу — а когда наконец опускает взгляд на вазу и видит уже готовый букет, на её лице расцветает тихая, изумлённая улыбка, и она осторожно тянется коснуться ближайшего цветка кончиками пальцев.
+
+Визуальный якорь: пышный букет розовых роз, набирающийся цветок за цветком в вазе на туалетном столике, домашняя уютная обстановка — узнаётся по ходу видео как трендовый мотив «подарок на National Girlfriend Day», не с первого кадра.</p>
+  </div>
+  <section class="section">
+    <div class="section-header">
+      <h2 class="section-title">Видео</h2>
+      <span class="section-badge">Пример генерации</span>
+    </div>
+    <div class="media-grid">
+      <div class="video-multi">
+        <div class="video-item"><video class="video-player" controls muted loop playsinline poster="https://temp-images.ws.pho.to/b7bcb52369acadaaa357eaea7b263ad901435042.png"><source src="https://temp-images.ws.pho.to/aa2e37f2b526a3e988e436007a1097f5ec1a8a00.mp4" type="video/mp4"></video>
+          <div class="video-caption">woman in her late 30s with straight blonde shoulder-length hair and cat-eye glasses</div>
+        </div>
+        <div class="video-item"><video class="video-player" controls muted loop playsinline poster="https://temp-images.ws.pho.to/9caaac210c4457e3be39724265e485cc74f6f193.png"><source src="https://temp-images.ws.pho.to/60480320c6d6709f622a182cccdde2f86c41e952.mp4" type="video/mp4"></video>
+          <div class="video-caption">man in his early 30s with short brown hair, blue eyes, and a short beard</div>
+        </div>
+      </div>
+      <div class="prompts-col">
+        <details class="prompt-block">
+          <summary>Промпт для первого кадра <span class="prompt-label">GPT Image 2</span></summary>
+          <pre class="prompt-text">Turn the photo of the person into a portrait of them sitting at a home vanity table, framed from chest-up, looking into a mirror just off-camera, face large and clearly legible, an empty clear glass vase visible on the table in front of them. Vertical 9:16 composition.
+
+Pose &amp; composition: seated upright, one hand resting near the empty vase, head tilted slightly toward her own reflection, an unhurried, private moment alone.
+
+Expression: calm, quietly content, a little absent-minded — the ordinary look of someone in a private moment, not performing for anyone.
+
+Setting &amp; background: a home vanity table with a mirror, soft everyday items (a hairbrush, a small tray) softly out of focus, a plain empty glass vase in clear view holding no flowers yet.
+
+Lighting: warm, soft ambient lamp light from one side, gentle and even across the face.
+
+Colour grading: warm neutral tones with soft pink undertones in the room&#x27;s decor.
+
+Camera &amp; lens: 35mm, natural falloff, fine grain, a subtle handheld quality even in this still frame.
+
+Skin texture: real skin, visible pores, natural unevenness, no smoothing.
+
+Identity preservation: keep the person&#x27;s identity exactly as in the source photo — same age, face shape and proportions, skin tone and undertone, eye shape and colour, eyebrow shape, nose and jawline, and the exact hairstyle including its colour, parting, length and texture, plus any freckles, moles, scars or facial hair. Hands must be anatomically correct, five fingers each.
+
+Avoid: no overlay graphics or captions of any kind, no over-smoothed skin, no pasted-face or cutout look, the vase must read as clearly empty in this frame.</pre>
+        </details>
+        <details class="prompt-block">
+          <summary>Промпт для видео <span class="prompt-label">Kling · Grok</span></summary>
+          <pre class="prompt-text">Create a short cinematic video based on the uploaded image. Vertical 9:16.
+A home vanity table with an empty glass vase. The person from the image, chest-up, sits looking into the mirror, face visible throughout.
+
+Camera and motion structure:
+Handheld, a slow continuous circling drift around the person and the vase — real, subtle handheld sway, never locked off.
+0:00–0:01: The person looks into the mirror, unaware, the vase empty beside her.
+0:01–0:02: A single pink rose appears in the vase where none was a moment before.
+0:02–0:03: A second and third rose appear in quick succession, the bouquet visibly filling out.
+0:03–0:04: Two final roses complete a full, lush bouquet in the vase.
+0:04–0:05: The person&#x27;s gaze drops from the mirror to the now-full vase, her expression softening into quiet astonishment, and she reaches out to gently touch the nearest petal with her fingertips — that gentle touch is the ending.
+
+Character:
+Preserve the person&#x27;s face, hair, skin tone and identity exactly from the source image throughout. Allowed motion: looking into the mirror, the gaze dropping to the vase, the fingertip touch — nothing else.
+
+Key visual events:
+No single named hero moment — the escalating, rose-by-rose materialization of the bouquet is the idea&#x27;s own invented mechanic and its own payoff, ending on the person&#x27;s quiet, delayed astonishment rather than on any single flower.
+
+Style:
+Warm, handheld domestic cinematography with a quietly magical undertone — private, tender, unhurried rather than performative.
+
+Restrictions:
+- Do not change the person&#x27;s face, hair, skin tone or identity at any point
+- The person stays in frame, recognizable and the visual focus for the whole video
+- The person never speaks, sings or mouths words — silent, tender reaction only
+- No speech bubbles
+- No on-screen text or captions of any kind
+- Exactly five roses appear in total, filling the vase — no more, no fewer
+- Each rose appears only once and stays in place afterward — no resets, no repeats, no jump cuts; each timecode continues from the last
+- No additional gestures, actions, or beats beyond those explicitly described above
+- The roses&#x27; appearance must read as gentle and magical, never as objects falling, dropping, or flying into place with force
+- No extra people added to the scene</pre>
+        </details>
+      </div>
+    </div>
+  </section>
+</div>
+</body>
+</html>

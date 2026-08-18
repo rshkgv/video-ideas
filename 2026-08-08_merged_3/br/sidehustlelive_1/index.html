@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>#sidehustlelive — Кольцевая лампа зажигается · Video Ideas</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      background: #f4f4f5; color: #111; font-size: 14px; line-height: 1.5;
+    }
+    .page-header {
+      background: #fff; border-bottom: 1px solid #e4e4e7; position: sticky;
+      top: 0; z-index: 100; box-shadow: 0 1px 8px rgba(0,0,0,.05);
+    }
+    .header-inner {
+      max-width: 1100px; margin: 0 auto; padding: 14px 28px;
+      display: flex; align-items: center; gap: 20px;
+    }
+    .brand {
+      font-size: 18px; font-weight: 800; letter-spacing: -.5px; color: #111;
+      white-space: nowrap; user-select: none; text-decoration: none;
+    }
+    .brand-tik { color: #fe2c55; }
+    .brand-tok { color: #010101; }
+    .brand-dot { color: #d1d1d1; margin: 0 6px; font-weight: 300; }
+    .brand-cc  { color: #888; font-size: 12px; font-weight: 500; }
+    .header-text { flex: 1; min-width: 0; }
+    .page-title {
+      font-size: 15px; font-weight: 700; letter-spacing: -.2px;
+      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    }
+    .page-sub { font-size: 11.5px; color: #999; margin-top: 2px; }
+    .date-badge {
+      background: #fe2c55; color: #fff; font-weight: 700; font-size: 12px;
+      border-radius: 8px; padding: 6px 14px; line-height: 1.4;
+      text-align: center; white-space: nowrap; flex-shrink: 0;
+    }
+    .date-badge span { display: block; font-size: 10px; font-weight: 500; opacity: .8; }
+    .page-nav {
+      max-width: 1100px; margin: 0 auto; padding: 0 28px;
+      display: flex; gap: 2px; border-top: 1px solid #f0f0f0;
+    }
+    .nav-a {
+      text-decoration: none; color: #999; font-size: 12.5px; font-weight: 500;
+      padding: 9px 14px; border-bottom: 2px solid transparent;
+      transition: color .15s, border-color .15s;
+    }
+    .nav-a:hover { color: #fe2c55; }
+    .nav-a.active { color: #fe2c55; border-bottom-color: #fe2c55; }
+    .content { max-width: 1100px; margin: 0 auto; padding: 36px 28px 80px; }
+    .section { margin-bottom: 52px; }
+    .section-header { display: flex; align-items: baseline; gap: 10px; margin-bottom: 16px; }
+    .section-title { font-size: 19px; font-weight: 800; letter-spacing: -.4px; }
+    .section-badge {
+      font-size: 10.5px; font-weight: 600; color: #999; background: #ebebeb;
+      padding: 3px 8px; border-radius: 20px; text-transform: uppercase; letter-spacing: .4px;
+    }
+    @media (max-width: 768px) {
+      .header-inner { gap: 12px; padding: 12px 16px; }
+      .date-badge { display: none; }
+      .page-nav { padding: 0 16px; }
+      .content { padding: 24px 16px 60px; }
+    }
+
+
+    .idea-lead {
+      background: #fff; border-radius: 12px; padding: 36px 40px 32px;
+      box-shadow: 0 1px 4px rgba(0,0,0,.07), 0 0 0 1px rgba(0,0,0,.05);
+      margin-bottom: 40px;
+    }
+    .idea-hashtag { font-size: 13px; font-weight: 700; color: #fe2c55; margin-bottom: 8px; }
+    .idea-title { font-size: 26px; font-weight: 800; letter-spacing: -.6px; line-height: 1.25; margin-bottom: 16px; }
+    .idea-desc { font-size: 14px; color: #444; line-height: 1.75; max-width: 720px; }
+    .media-grid {
+      display: grid; grid-template-columns: auto 1fr; gap: 28px; align-items: start;
+    }
+    .video-multi {
+      display: flex; gap: 16px; flex-wrap: wrap; align-items: flex-start;
+    }
+    .video-item {
+      width: 200px; display: flex; flex-direction: column; gap: 8px; flex-shrink: 0;
+    }
+    .video-caption {
+      font-size: 11px; color: #999; line-height: 1.4; padding: 0 2px;
+    }
+    .video-player {
+      width: 100%; aspect-ratio: 9/16; object-fit: cover; border-radius: 12px;
+      display: block; box-shadow: 0 2px 16px rgba(0,0,0,.14);
+    }
+    .frame-img {
+      width: 100%; aspect-ratio: 9/16; object-fit: cover; border-radius: 12px;
+      display: block; box-shadow: 0 2px 16px rgba(0,0,0,.14);
+    }
+    .prompts-col { display: flex; flex-direction: column; gap: 12px; }
+    .prompt-block {
+      background: #fff; border-radius: 10px;
+      box-shadow: 0 1px 4px rgba(0,0,0,.07), 0 0 0 1px rgba(0,0,0,.05); overflow: hidden;
+    }
+    .prompt-block summary {
+      padding: 14px 18px; font-size: 13px; font-weight: 700; cursor: pointer;
+      user-select: none; list-style: none; display: flex; align-items: center; gap: 8px; color: #333;
+    }
+    .prompt-block summary::-webkit-details-marker { display: none; }
+    .prompt-block summary::before { content: '▶'; font-size: 8px; color: #bbb; transition: transform .15s; flex-shrink: 0; }
+    .prompt-block[open] summary::before { transform: rotate(90deg); }
+    .prompt-block summary:hover { color: #fe2c55; }
+    .prompt-block summary:hover::before { color: #fe2c55; }
+    .prompt-label { font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: .5px; color: #bbb; margin-left: auto; }
+    .prompt-text {
+      padding: 14px 18px 16px; font-family: 'SF Mono','Fira Code','Menlo',monospace;
+      font-size: 11.5px; line-height: 1.7; color: #555; background: #f9f9f9;
+      border-top: 1px solid #f0f0f0; white-space: pre-wrap; word-break: break-word;
+      max-height: 320px; overflow-y: auto;
+    }
+    @media (max-width: 900px) {
+      .media-grid { grid-template-columns: 1fr; }
+      .video-multi { justify-content: center; }
+      .idea-lead { padding: 24px 22px 22px; }
+    }
+    @media (max-width: 520px) { .idea-title { font-size: 22px; } }
+
+  </style>
+</head>
+<body>
+<div class="page-header">
+  <div class="header-inner">
+    <a class="brand" href="../../../">
+      <span class="brand-tik">Tik</span><span class="brand-tok">Tok</span>
+      <span class="brand-dot">·</span><span class="brand-cc">Video Ideas</span>
+    </a>
+    <div class="header-text">
+      <div class="page-title">#sidehustlelive</div>
+      <div class="page-sub">Видео-идея · 8 августа 2026 · Выпуск merged_3</div>
+    </div>
+    <div class="date-badge">08.08.2026<span>Дата · Выпуск merged_3</span></div>
+  </div>
+  <nav class="page-nav">
+    <a href="../../../" class="nav-a">← Все отчёты</a>
+    <a href="../../#br" class="nav-a">← 8 авг 2026 · Выпуск merged_3</a>
+    <a href="#" class="nav-a active">#sidehustlelive</a>
+  </nav>
+</div>
+<div class="content">
+  <div class="idea-lead">
+    <div class="idea-hashtag">#sidehustlelive</div>
+    <h1 class="idea-title">Кольцевая лампа зажигается</h1>
+    <p class="idea-desc">Пользователь сидит в скромном, наполовину собранном домашнем уголке для эфира: акустические поролоновые панели криво закреплены на стене позади, LED-лампа-полусфера стоит рядом выключенная, кольцевая лампа на штативе — прямо перед ним, тоже пока не включена. Он смотрит на неё, тянется и щёлкает выключателем. В тот же миг тёплый ровный свет кольцевой лампы вспыхивает и полностью меняет освещение всего кадра — тусклый домашний угол мгновенно читается как настоящая, профессиональная студия. Пользователь на секунду замирает, разглядывая себя в новом свете, и на лице расплывается тихая, гордая улыбка. Финал — свет остаётся включённым, ровным и профессиональным, тусклый уголок исчез навсегда.
+
+Визуальный якорь: скромный домашний уголок с кривовато закреплёнными акустическими панелями и кольцевой лампой на штативе, чей щелчок мгновенно меняет весь свет в кадре с тусклого домашнего на ровный студийный.</p>
+  </div>
+  <section class="section">
+    <div class="section-header">
+      <h2 class="section-title">Видео</h2>
+      <span class="section-badge">Пример генерации</span>
+    </div>
+    <div class="media-grid">
+      <div class="video-multi">
+        <div class="video-item"><video class="video-player" controls muted loop playsinline poster="https://temp-images.ws.pho.to/ad16b4f442d9e7647507b291421a202f043b41dd.png"><source src="https://temp-images.ws.pho.to/1ab85be49175b34bbbfa918184b3cac21145954b.mp4" type="video/mp4"></video>
+          <div class="video-caption">man in his early 30s with short brown hair, blue eyes, and a short beard</div>
+        </div>
+        <div class="video-item"><video class="video-player" controls muted loop playsinline poster="https://temp-images.ws.pho.to/571974ebf2f38e1d422bc234675c2610428f41e1.png"><source src="https://temp-images.ws.pho.to/ca19e2ef8b3760b6870c7ddab7d2b6842d2475c1.mp4" type="video/mp4"></video>
+          <div class="video-caption">woman in her late 30s with straight blonde shoulder-length hair and cat-eye glasses</div>
+        </div>
+      </div>
+      <div class="prompts-col">
+        <details class="prompt-block">
+          <summary>Промпт для первого кадра <span class="prompt-label">GPT Image 2</span></summary>
+          <pre class="prompt-text">Turn the photo of the person into a portrait of them sitting in a modest, half-set-up home streaming corner, vertical 9:16, chest-up framing, face large and clearly legible, a ring light on a tripod stand positioned directly in front of them at chest height, currently unlit.
+
+Pose &amp; composition: sitting upright but casually, one hand reaching toward the ring light&#x27;s switch at its base, head tilted slightly to watch it, an expression of quiet anticipation rather than excitement yet.
+
+Attire: relaxed home clothing — a simple t-shirt, nothing branded.
+
+Setting &amp; background: a small bedroom corner doubling as a makeshift studio — acoustic foam panels in a muted grey, slightly crooked, mounted on the wall behind, a white LED dome light sitting unlit on a nearby shelf, a tangle of cables visible at the edge of frame, general room light dim and slightly uneven.
+
+Lighting: flat, dim, slightly cool ambient overhead light typical of an ordinary bedroom — nothing flattering yet, some mild shadow under the chin and around the eyes.
+
+Colour grading: muted, slightly grey-blue tones, unremarkable and a little drab.
+
+Camera &amp; lens: 35mm at f/2.8, natural falloff, a plain, unglamorous look befitting a not-yet-finished setup.
+
+Skin texture: real skin, visible pores, natural unevenness, no smoothing.
+
+Identity preservation: keep the person&#x27;s identity exactly as in the source photo — same age, face shape and proportions, skin tone and undertone, eye shape and eye colour, eyebrow shape, nose and jawline, and the exact hairstyle including its colour, parting, length and texture, plus any freckles, moles, scars or facial hair. The reaching hand must be anatomically correct: five fingers, natural proportion.
+
+Avoid: no overlay graphics or captions of any kind; no pasted-face or cutout look; the ring light must read as clearly unlit and unglamorous at this frame — no glow yet.</pre>
+        </details>
+        <details class="prompt-block">
+          <summary>Промпт для видео <span class="prompt-label">Kling · Grok</span></summary>
+          <pre class="prompt-text">Create a short cinematic video based on the uploaded image. Vertical 9:16.
+The person sits chest-up in a modest, half-finished home streaming corner — crooked acoustic foam panels behind them, an unlit ring light on a tripod directly in front.
+
+Camera and motion structure:
+Keep the overall shot static. No zoom, no camera movement — the light change itself is the entire event.
+FRAMES 0–30%: The person sits in dim, flat, slightly drab room light, looking at the unlit ring light, one hand reaching toward its switch.
+FRAMES 30–55%: Their fingers reach the switch and press it.
+FRAMES 55–80%: The ring light flicks on instantly, its warm even glow flooding the frame — the whole picture shifts in one beat from dim and drab to bright, flattering and professional.
+FRAMES 80–100%: The person holds still under the new light, a slow, quiet, proud smile spreading across their face as they take in the change. The light stays on, steady, unwavering — that steady glow is the ending.
+
+Character:
+Preserve the person&#x27;s face, hair, skin tone and identity exactly from the source image throughout. Their only motion: the hand reaching to the switch, then the proud smile settling in afterward. Nothing else.
+
+Key visual events:
+The hero moment is the ring light flicking on and the whole frame&#x27;s lighting instantly transforming from dim to studio-bright — it must happen in a single clean beat, clearly and unmistakably visible, this is the single most important visual element of the shot.
+
+Style:
+Warm, intimate, quietly proud realism — the transformation is entirely about light, no crowd, no broadcast energy. Tender pride in a small personal milestone.
+
+Restrictions:
+- Do not change the person&#x27;s appearance, face, clothing or identity at any point
+- The person stays in frame, recognizable and the visual focus for the whole video
+- The person never speaks, sings or mouths words — the pride is silent, emotional reaction only
+- No speech bubbles
+- The ring light must switch from fully unlit to fully lit in exactly one instant beat — no gradual dimming up, no flicker before or after
+- No on-screen text or captions of any kind, no lettering on any surface
+- No additional gestures, actions, or beats beyond those explicitly described above
+- No extra people added to the frame; no violent or aggressive motion</pre>
+        </details>
+      </div>
+    </div>
+  </section>
+</div>
+</body>
+</html>

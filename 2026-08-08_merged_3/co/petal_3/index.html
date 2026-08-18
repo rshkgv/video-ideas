@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>#petal — El campo que responde otra palabra · Video Ideas</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      background: #f4f4f5; color: #111; font-size: 14px; line-height: 1.5;
+    }
+    .page-header {
+      background: #fff; border-bottom: 1px solid #e4e4e7; position: sticky;
+      top: 0; z-index: 100; box-shadow: 0 1px 8px rgba(0,0,0,.05);
+    }
+    .header-inner {
+      max-width: 1100px; margin: 0 auto; padding: 14px 28px;
+      display: flex; align-items: center; gap: 20px;
+    }
+    .brand {
+      font-size: 18px; font-weight: 800; letter-spacing: -.5px; color: #111;
+      white-space: nowrap; user-select: none; text-decoration: none;
+    }
+    .brand-tik { color: #fe2c55; }
+    .brand-tok { color: #010101; }
+    .brand-dot { color: #d1d1d1; margin: 0 6px; font-weight: 300; }
+    .brand-cc  { color: #888; font-size: 12px; font-weight: 500; }
+    .header-text { flex: 1; min-width: 0; }
+    .page-title {
+      font-size: 15px; font-weight: 700; letter-spacing: -.2px;
+      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    }
+    .page-sub { font-size: 11.5px; color: #999; margin-top: 2px; }
+    .date-badge {
+      background: #fe2c55; color: #fff; font-weight: 700; font-size: 12px;
+      border-radius: 8px; padding: 6px 14px; line-height: 1.4;
+      text-align: center; white-space: nowrap; flex-shrink: 0;
+    }
+    .date-badge span { display: block; font-size: 10px; font-weight: 500; opacity: .8; }
+    .page-nav {
+      max-width: 1100px; margin: 0 auto; padding: 0 28px;
+      display: flex; gap: 2px; border-top: 1px solid #f0f0f0;
+    }
+    .nav-a {
+      text-decoration: none; color: #999; font-size: 12.5px; font-weight: 500;
+      padding: 9px 14px; border-bottom: 2px solid transparent;
+      transition: color .15s, border-color .15s;
+    }
+    .nav-a:hover { color: #fe2c55; }
+    .nav-a.active { color: #fe2c55; border-bottom-color: #fe2c55; }
+    .content { max-width: 1100px; margin: 0 auto; padding: 36px 28px 80px; }
+    .section { margin-bottom: 52px; }
+    .section-header { display: flex; align-items: baseline; gap: 10px; margin-bottom: 16px; }
+    .section-title { font-size: 19px; font-weight: 800; letter-spacing: -.4px; }
+    .section-badge {
+      font-size: 10.5px; font-weight: 600; color: #999; background: #ebebeb;
+      padding: 3px 8px; border-radius: 20px; text-transform: uppercase; letter-spacing: .4px;
+    }
+    @media (max-width: 768px) {
+      .header-inner { gap: 12px; padding: 12px 16px; }
+      .date-badge { display: none; }
+      .page-nav { padding: 0 16px; }
+      .content { padding: 24px 16px 60px; }
+    }
+
+
+    .idea-lead {
+      background: #fff; border-radius: 12px; padding: 36px 40px 32px;
+      box-shadow: 0 1px 4px rgba(0,0,0,.07), 0 0 0 1px rgba(0,0,0,.05);
+      margin-bottom: 40px;
+    }
+    .idea-hashtag { font-size: 13px; font-weight: 700; color: #fe2c55; margin-bottom: 8px; }
+    .idea-title { font-size: 26px; font-weight: 800; letter-spacing: -.6px; line-height: 1.25; margin-bottom: 16px; }
+    .idea-desc { font-size: 14px; color: #444; line-height: 1.75; max-width: 720px; }
+    .media-grid {
+      display: grid; grid-template-columns: auto 1fr; gap: 28px; align-items: start;
+    }
+    .video-multi {
+      display: flex; gap: 16px; flex-wrap: wrap; align-items: flex-start;
+    }
+    .video-item {
+      width: 200px; display: flex; flex-direction: column; gap: 8px; flex-shrink: 0;
+    }
+    .video-caption {
+      font-size: 11px; color: #999; line-height: 1.4; padding: 0 2px;
+    }
+    .video-player {
+      width: 100%; aspect-ratio: 9/16; object-fit: cover; border-radius: 12px;
+      display: block; box-shadow: 0 2px 16px rgba(0,0,0,.14);
+    }
+    .frame-img {
+      width: 100%; aspect-ratio: 9/16; object-fit: cover; border-radius: 12px;
+      display: block; box-shadow: 0 2px 16px rgba(0,0,0,.14);
+    }
+    .prompts-col { display: flex; flex-direction: column; gap: 12px; }
+    .prompt-block {
+      background: #fff; border-radius: 10px;
+      box-shadow: 0 1px 4px rgba(0,0,0,.07), 0 0 0 1px rgba(0,0,0,.05); overflow: hidden;
+    }
+    .prompt-block summary {
+      padding: 14px 18px; font-size: 13px; font-weight: 700; cursor: pointer;
+      user-select: none; list-style: none; display: flex; align-items: center; gap: 8px; color: #333;
+    }
+    .prompt-block summary::-webkit-details-marker { display: none; }
+    .prompt-block summary::before { content: '▶'; font-size: 8px; color: #bbb; transition: transform .15s; flex-shrink: 0; }
+    .prompt-block[open] summary::before { transform: rotate(90deg); }
+    .prompt-block summary:hover { color: #fe2c55; }
+    .prompt-block summary:hover::before { color: #fe2c55; }
+    .prompt-label { font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: .5px; color: #bbb; margin-left: auto; }
+    .prompt-text {
+      padding: 14px 18px 16px; font-family: 'SF Mono','Fira Code','Menlo',monospace;
+      font-size: 11.5px; line-height: 1.7; color: #555; background: #f9f9f9;
+      border-top: 1px solid #f0f0f0; white-space: pre-wrap; word-break: break-word;
+      max-height: 320px; overflow-y: auto;
+    }
+    @media (max-width: 900px) {
+      .media-grid { grid-template-columns: 1fr; }
+      .video-multi { justify-content: center; }
+      .idea-lead { padding: 24px 22px 22px; }
+    }
+    @media (max-width: 520px) { .idea-title { font-size: 22px; } }
+
+  </style>
+</head>
+<body>
+<div class="page-header">
+  <div class="header-inner">
+    <a class="brand" href="../../../">
+      <span class="brand-tik">Tik</span><span class="brand-tok">Tok</span>
+      <span class="brand-dot">·</span><span class="brand-cc">Video Ideas</span>
+    </a>
+    <div class="header-text">
+      <div class="page-title">#petal</div>
+      <div class="page-sub">Видео-идея · 8 августа 2026 · Выпуск merged_3</div>
+    </div>
+    <div class="date-badge">08.08.2026<span>Дата · Выпуск merged_3</span></div>
+  </div>
+  <nav class="page-nav">
+    <a href="../../../" class="nav-a">← Все отчёты</a>
+    <a href="../../#co" class="nav-a">← 8 авг 2026 · Выпуск merged_3</a>
+    <a href="#" class="nav-a active">#petal</a>
+  </nav>
+</div>
+<div class="content">
+  <div class="idea-lead">
+    <div class="idea-hashtag">#petal</div>
+    <h1 class="idea-title">El campo que responde otra palabra</h1>
+    <p class="idea-desc">Бескрайнее поле бумажных цветов вместо экрана телефона — у каждого цветка на месте сердцевины не пыльца, а одна-единственная буква, вырезанная из бумаги. Пользователь идёт вдоль поля, срывая цветы один за другим и складывая буквы в ладони, пытаясь собрать одно конкретное слово. Он не останавливается и не оглядывается. Когда в ладони набирается достаточно букв, он раскрывает кулак — и вместо задуманного слова буквы сложились в совсем другое: среди них ясно читается фрагмент &quot;Ariana&quot;, хотя он никогда не срывал цветок с такой буквой первым. Он не удивлён и не расстроен — просто смотрит на неожиданное слово в своей ладони с тихой, понимающей полуулыбкой. Поле продолжает молча стоять вокруг него.
+
+Связь с трендом: буквальное воплощение того, что происходит во всех видео тренда, — ты ищешь одно слово, а получаешь в ответ совершенно другое имя; поле, само подменяющее буквы, делает это несовпадение физическим, а не показывает конкретный экран или конкретную поп-звезду.</p>
+  </div>
+  <section class="section">
+    <div class="section-header">
+      <h2 class="section-title">Видео</h2>
+      <span class="section-badge">Пример генерации</span>
+    </div>
+    <div class="media-grid">
+      <div class="video-multi">
+        <div class="video-item"><video class="video-player" controls muted loop playsinline poster="https://temp-images.ws.pho.to/bc07eef895fbab40f557ce98dd068b497ac0395b.png"><source src="https://temp-images.ws.pho.to/f4e6e05c3468cb14c02d862d1cb1b45fd2e2d354.mp4" type="video/mp4"></video>
+          <div class="video-caption">woman in her late 30s with straight blonde shoulder-length hair and cat-eye glasses</div>
+        </div>
+        <div class="video-item"><video class="video-player" controls muted loop playsinline poster="https://temp-images.ws.pho.to/7d71bc43f9dc4daae3b2193e19f9c3c3c1ff166e.png"><source src="https://temp-images.ws.pho.to/9cc25cc1085f71a72609d2bf3bb31a95b580fa50.mp4" type="video/mp4"></video>
+          <div class="video-caption">man in his early 30s with short brown hair, blue eyes, and a short beard</div>
+        </div>
+      </div>
+      <div class="prompts-col">
+        <details class="prompt-block">
+          <summary>Промпт для первого кадра <span class="prompt-label">GPT Image 2</span></summary>
+          <pre class="prompt-text">Turn the photo of the person into a portrait of them walking through an endless field of paper flowers, vertical 9:16 composition, framed chest-up so the face reads large and clearly legible, one hand held out at waist height, cupped and holding several plucked paper flowers, each with a single cut-paper letter at its centre instead of pollen.
+
+Pose &amp; composition: mid-stride, torso angled three-quarters toward camera, one hand extended forward and down, cupped around a small handful of paper flowers with visible letters at their centres, the other hand trailing at the side, gaze forward and calm.
+
+Expression: quiet, unhurried curiosity — a soft, focused half-smile, not searching, simply gathering.
+
+Attire: ordinary, real-world clothes, nothing costume-like.
+
+Setting &amp; background: an endless field of identical white paper flowers stretching to the horizon under a soft overcast sky, each flower&#x27;s centre bearing a single, different cut-paper letter instead of a normal flower centre; the field recedes into soft blur in the distance.
+
+Environmental atmosphere &amp; lighting: soft, even, diffuse daylight with no harsh shadows, a gentle breeze suggested by a few flower heads tilted.
+
+Colour grading: muted white, pale green and soft grey tones, the person&#x27;s skin the warmest value in frame.
+
+Materials &amp; texture: the paper flowers show real matte paper texture and visible fold lines; the letters at their centres are cleanly cut, slightly uneven by hand; skin keeps natural pores and texture, no smoothing.
+
+Camera &amp; lens: 40mm at f/2.2, shallow depth of field keeping the person and the handful of flowers sharp, the surrounding field softly resolving into texture and blur.
+
+Depth separation: person and cupped hand sharp; the receding field of flowers softly blurred.
+
+Identity preservation: keep the person&#x27;s identity exactly as in the source photo — same age, face shape and proportions, skin tone and undertone, eye shape and eye colour, eyebrow shape, nose and jawline, and the exact hairstyle including its colour, length and texture, plus any freckles, moles, scars or facial hair. The cupped hand must show five fingers in correct, natural anatomy.
+
+Avoid: over-smoothed skin, a pasted-face or cutout look, plastic-looking flowers, and no overlay graphics or captions of any kind beyond the letters already described as printed on the flowers themselves.</pre>
+        </details>
+        <details class="prompt-block">
+          <summary>Промпт для видео <span class="prompt-label">Kling · Grok</span></summary>
+          <pre class="prompt-text">Create a short cinematic video based on the uploaded image. Vertical 9:16.
+An endless field of paper flowers, each centred with a single cut-paper letter. The person from the image walks through it, chest-up, plucking flowers into a cupped hand.
+
+Camera and motion structure:
+One continuous slow tracking shot alongside the person&#x27;s walk. No cuts, deliberately no single hero moment.
+FRAMES 0–70%: The person walks steadily forward, plucking one paper flower at a time from the field with their free hand and adding each one to the growing handful cupped in the other, never pausing, never looking down at the letters, always facing forward.
+FRAMES 70–100%: The person comes to a stop and opens their cupped hand to look at the collected flowers. Among the letters now visible, the fragment &quot;Ariana&quot; reads clearly, spelled from flowers they never deliberately chose for it. The person&#x27;s expression settles into a quiet, knowing half-smile — no surprise, no distress — as they look at the unexpected word. That calm look at the word in their hand is the last thing the video shows.
+
+Character:
+Preserve the person&#x27;s face, hair, skin tone and identity exactly from the source image. Motion is limited to the steady walk, the repeated plucking gesture, the stop, and opening the hand — no other movement.
+
+Style:
+Quiet, painterly, muted — real paper texture throughout, natural film grain, unhurried pacing. Whimsical, gently surreal, calmly amused rather than unsettling.
+
+Restrictions:
+- No identity changes to the person&#x27;s face, hair, or skin tone at any point
+- The person stays in frame, recognizable and the visual focus for the entire video
+- No speaking, no singing, no lip-sync, no mouthing words — silent emotional reaction only
+- The lettering on each paper flower is present on its own paper surface from the moment that flower is first seen and never forms or writes itself in on camera; the &quot;Ariana&quot; fragment must be clearly and unmistakably legible once the hand opens at the end — this is the single most important visual element of the shot
+- No speech bubbles
+- No cuts, no jump cuts, no backtracking — one continuous tracking shot alongside the walk
+- The plucking gesture repeats at a steady, even pace throughout — no pausing to inspect letters mid-walk
+- No additional gestures, actions, or beats beyond walking, plucking, stopping, and opening the hand
+- No other people appear anywhere in the field</pre>
+        </details>
+      </div>
+    </div>
+  </section>
+</div>
+</body>
+</html>

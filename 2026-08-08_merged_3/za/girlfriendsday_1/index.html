@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>#girlfriendsday — Букет у сердца · Video Ideas</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      background: #f4f4f5; color: #111; font-size: 14px; line-height: 1.5;
+    }
+    .page-header {
+      background: #fff; border-bottom: 1px solid #e4e4e7; position: sticky;
+      top: 0; z-index: 100; box-shadow: 0 1px 8px rgba(0,0,0,.05);
+    }
+    .header-inner {
+      max-width: 1100px; margin: 0 auto; padding: 14px 28px;
+      display: flex; align-items: center; gap: 20px;
+    }
+    .brand {
+      font-size: 18px; font-weight: 800; letter-spacing: -.5px; color: #111;
+      white-space: nowrap; user-select: none; text-decoration: none;
+    }
+    .brand-tik { color: #fe2c55; }
+    .brand-tok { color: #010101; }
+    .brand-dot { color: #d1d1d1; margin: 0 6px; font-weight: 300; }
+    .brand-cc  { color: #888; font-size: 12px; font-weight: 500; }
+    .header-text { flex: 1; min-width: 0; }
+    .page-title {
+      font-size: 15px; font-weight: 700; letter-spacing: -.2px;
+      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    }
+    .page-sub { font-size: 11.5px; color: #999; margin-top: 2px; }
+    .date-badge {
+      background: #fe2c55; color: #fff; font-weight: 700; font-size: 12px;
+      border-radius: 8px; padding: 6px 14px; line-height: 1.4;
+      text-align: center; white-space: nowrap; flex-shrink: 0;
+    }
+    .date-badge span { display: block; font-size: 10px; font-weight: 500; opacity: .8; }
+    .page-nav {
+      max-width: 1100px; margin: 0 auto; padding: 0 28px;
+      display: flex; gap: 2px; border-top: 1px solid #f0f0f0;
+    }
+    .nav-a {
+      text-decoration: none; color: #999; font-size: 12.5px; font-weight: 500;
+      padding: 9px 14px; border-bottom: 2px solid transparent;
+      transition: color .15s, border-color .15s;
+    }
+    .nav-a:hover { color: #fe2c55; }
+    .nav-a.active { color: #fe2c55; border-bottom-color: #fe2c55; }
+    .content { max-width: 1100px; margin: 0 auto; padding: 36px 28px 80px; }
+    .section { margin-bottom: 52px; }
+    .section-header { display: flex; align-items: baseline; gap: 10px; margin-bottom: 16px; }
+    .section-title { font-size: 19px; font-weight: 800; letter-spacing: -.4px; }
+    .section-badge {
+      font-size: 10.5px; font-weight: 600; color: #999; background: #ebebeb;
+      padding: 3px 8px; border-radius: 20px; text-transform: uppercase; letter-spacing: .4px;
+    }
+    @media (max-width: 768px) {
+      .header-inner { gap: 12px; padding: 12px 16px; }
+      .date-badge { display: none; }
+      .page-nav { padding: 0 16px; }
+      .content { padding: 24px 16px 60px; }
+    }
+
+
+    .idea-lead {
+      background: #fff; border-radius: 12px; padding: 36px 40px 32px;
+      box-shadow: 0 1px 4px rgba(0,0,0,.07), 0 0 0 1px rgba(0,0,0,.05);
+      margin-bottom: 40px;
+    }
+    .idea-hashtag { font-size: 13px; font-weight: 700; color: #fe2c55; margin-bottom: 8px; }
+    .idea-title { font-size: 26px; font-weight: 800; letter-spacing: -.6px; line-height: 1.25; margin-bottom: 16px; }
+    .idea-desc { font-size: 14px; color: #444; line-height: 1.75; max-width: 720px; }
+    .media-grid {
+      display: grid; grid-template-columns: auto 1fr; gap: 28px; align-items: start;
+    }
+    .video-multi {
+      display: flex; gap: 16px; flex-wrap: wrap; align-items: flex-start;
+    }
+    .video-item {
+      width: 200px; display: flex; flex-direction: column; gap: 8px; flex-shrink: 0;
+    }
+    .video-caption {
+      font-size: 11px; color: #999; line-height: 1.4; padding: 0 2px;
+    }
+    .video-player {
+      width: 100%; aspect-ratio: 9/16; object-fit: cover; border-radius: 12px;
+      display: block; box-shadow: 0 2px 16px rgba(0,0,0,.14);
+    }
+    .frame-img {
+      width: 100%; aspect-ratio: 9/16; object-fit: cover; border-radius: 12px;
+      display: block; box-shadow: 0 2px 16px rgba(0,0,0,.14);
+    }
+    .prompts-col { display: flex; flex-direction: column; gap: 12px; }
+    .prompt-block {
+      background: #fff; border-radius: 10px;
+      box-shadow: 0 1px 4px rgba(0,0,0,.07), 0 0 0 1px rgba(0,0,0,.05); overflow: hidden;
+    }
+    .prompt-block summary {
+      padding: 14px 18px; font-size: 13px; font-weight: 700; cursor: pointer;
+      user-select: none; list-style: none; display: flex; align-items: center; gap: 8px; color: #333;
+    }
+    .prompt-block summary::-webkit-details-marker { display: none; }
+    .prompt-block summary::before { content: '▶'; font-size: 8px; color: #bbb; transition: transform .15s; flex-shrink: 0; }
+    .prompt-block[open] summary::before { transform: rotate(90deg); }
+    .prompt-block summary:hover { color: #fe2c55; }
+    .prompt-block summary:hover::before { color: #fe2c55; }
+    .prompt-label { font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: .5px; color: #bbb; margin-left: auto; }
+    .prompt-text {
+      padding: 14px 18px 16px; font-family: 'SF Mono','Fira Code','Menlo',monospace;
+      font-size: 11.5px; line-height: 1.7; color: #555; background: #f9f9f9;
+      border-top: 1px solid #f0f0f0; white-space: pre-wrap; word-break: break-word;
+      max-height: 320px; overflow-y: auto;
+    }
+    @media (max-width: 900px) {
+      .media-grid { grid-template-columns: 1fr; }
+      .video-multi { justify-content: center; }
+      .idea-lead { padding: 24px 22px 22px; }
+    }
+    @media (max-width: 520px) { .idea-title { font-size: 22px; } }
+
+  </style>
+</head>
+<body>
+<div class="page-header">
+  <div class="header-inner">
+    <a class="brand" href="../../../">
+      <span class="brand-tik">Tik</span><span class="brand-tok">Tok</span>
+      <span class="brand-dot">·</span><span class="brand-cc">Video Ideas</span>
+    </a>
+    <div class="header-text">
+      <div class="page-title">#girlfriendsday</div>
+      <div class="page-sub">Видео-идея · 8 августа 2026 · Выпуск merged_3</div>
+    </div>
+    <div class="date-badge">08.08.2026<span>Дата · Выпуск merged_3</span></div>
+  </div>
+  <nav class="page-nav">
+    <a href="../../../" class="nav-a">← Все отчёты</a>
+    <a href="../../#za" class="nav-a">← 8 авг 2026 · Выпуск merged_3</a>
+    <a href="#" class="nav-a active">#girlfriendsday</a>
+  </nav>
+</div>
+<div class="content">
+  <div class="idea-lead">
+    <div class="idea-hashtag">#girlfriendsday</div>
+    <h1 class="idea-title">Букет у сердца</h1>
+    <p class="idea-desc">Пользователь в светлой комнате держит перед камерой пышный букет алых роз, обёрнутый в чёрную бумагу, с лентой, на которой читается «Happy Girlfriend Day» — ровно так, как в топ-видео тренда. Букет медленно поворачивается из стороны в сторону, показывая его густоту и количество роз. Затем пользователь одним движением подносит букет к лицу, зарывается в него носом и закрывает глаза с широкой улыбкой — и застывает в этом объятии, дыхание видно по лёгкому подъёму плеч.
+
+Визуальный якорь: пышный букет алых роз в чёрной обёртке с лентой «Happy Girlfriend Day», светлая домашняя комната, финальное объятие лицом в цветах — именно так выглядит формат тренда #girlfriendsday.</p>
+  </div>
+  <section class="section">
+    <div class="section-header">
+      <h2 class="section-title">Видео</h2>
+      <span class="section-badge">Пример генерации</span>
+    </div>
+    <div class="media-grid">
+      <div class="video-multi">
+        <div class="video-item"><video class="video-player" controls muted loop playsinline poster="https://temp-images.ws.pho.to/ec550e8f990cf48f585b2921f1361946c7b75817.png"><source src="https://temp-images.ws.pho.to/79fc159c271369d7cc5340cb2258abf0e2decc18.mp4" type="video/mp4"></video>
+          <div class="video-caption">woman in her late 30s with straight blonde shoulder-length hair and cat-eye glasses</div>
+        </div>
+        <div class="video-item"><video class="video-player" controls muted loop playsinline poster="https://temp-images.ws.pho.to/7382de8959200d460e411a610d38e3c4cfd9051f.png"><source src="https://temp-images.ws.pho.to/b4c49fef950feaa68da8706d4b286f71600fba32.mp4" type="video/mp4"></video>
+          <div class="video-caption">man in his early 30s with short brown hair, blue eyes, and a short beard</div>
+        </div>
+      </div>
+      <div class="prompts-col">
+        <details class="prompt-block">
+          <summary>Промпт для первого кадра <span class="prompt-label">GPT Image 2</span></summary>
+          <pre class="prompt-text">Turn the photo of the person into a chest-up portrait of them holding a lush bouquet of deep red roses wrapped in black paper, up near chest height, mid-turn to show its volume to camera. Vertical 9:16 composition, camera at chest height as if propped for a selfie.
+
+Pose &amp; composition: both hands cradling the bouquet just below chin level, body angled slightly to one side as if mid-rotation to display the flowers, shoulders relaxed.
+
+Expression: warm, delighted, a little overwhelmed — eyes bright, lips parted in a genuine smile, the look of someone who just received something meaningful.
+
+Attire: a simple everyday top in a soft neutral or warm tone, comfortable at-home clothing.
+
+Setting &amp; background: a bright bedroom or living room with light-coloured walls, a hint of soft furniture (a bed edge or sofa arm) blurred at the frame&#x27;s border, nothing cluttered.
+
+Bouquet detail: the roses are a deep saturated red, densely packed, surrounded by a few sprigs of white baby&#x27;s breath, wrapped in matte black paper with a satin ribbon tied in a bow at the base; the ribbon carries small embossed or printed lettering reading &quot;Happy Girlfriend Day,&quot; visible and legible where it wraps the stems.
+
+Lighting: bright, soft daylight from a window just out of frame, even and flattering, natural warm bounce on the skin.
+
+Colour grading: warm and naturalistic, the saturated-but-real look of a phone-shot video, the red of the roses the most vivid tone in frame.
+
+Camera &amp; lens: shot as if from a phone held at arm&#x27;s length, slightly wide close-medium perspective typical of front-camera video, natural rendering.
+
+Skin texture: keep real skin — visible pores, natural texture, no over-smoothing.
+
+Identity preservation: keep the person&#x27;s identity exactly as in the source photo — same age, face shape and proportions, skin tone and undertone, eye shape and eye colour, eyebrow shape, nose and jawline, and the exact hairstyle including its colour, parting, length and texture, plus any freckles, moles, scars or facial hair. Hands holding the bouquet must be anatomically correct, five fingers each, natural grip.
+
+Avoid: over-smoothed beauty-filter skin, a stiff posed-for-a-photo stillness, and no overlay graphics or captions of any kind beyond the ribbon&#x27;s own lettering, which is already part of the bouquet and not a caption over the frame.</pre>
+        </details>
+        <details class="prompt-block">
+          <summary>Промпт для видео <span class="prompt-label">Kling · Grok</span></summary>
+          <pre class="prompt-text">Create a short cinematic video based on the uploaded image. Vertical 9:16.
+The scene is a bright bedroom. The person from the image holds a lush bouquet of red roses wrapped in black paper with a ribbon reading &quot;Happy Girlfriend Day,&quot; filming themselves selfie-style, chest-up framing throughout.
+
+Camera and motion structure:
+FRAMES 0–35%: The person holds the bouquet up near chest height and slowly rotates it from side to side, showing off its full volume and the packed red roses, natural handheld micro-sway.
+FRAMES 35–60%: They bring the bouquet slightly closer, glancing between the flowers and the camera, a growing smile.
+FRAMES 60–80%: In one continuous motion, they lift the bouquet up and press their face gently into the petals, eyes closing.
+FRAMES 80–100%: They hold completely still with their face buried in the flowers, a wide smile visible at the edge of the petals, shoulders lifting once with a deep, contented breath. That stillness is the ending.
+
+Character:
+Preserve the person&#x27;s face, hair, skin tone, and identity exactly from the source image throughout. Allowed motion: rotating the bouquet, bringing it to their face, the single settling breath. No other movement.
+
+Style:
+Casual phone-shot selfie video, warm daylight, natural handheld micro-sway, the unpolished authentic energy of a real front-camera recording, not a cinematic production.
+
+Restrictions:
+- Do not change the person&#x27;s appearance, face, clothing, or identity at any point
+- The person stays in frame, recognizable and the visual focus for the whole video
+- The person never speaks, sings or mouths words — silent, emotional reaction only
+- No speech bubbles
+- The bouquet&#x27;s ribbon lettering &quot;Happy Girlfriend Day&quot; is present and legible on the ribbon from the first frame and stays visible until the last frame; it never forms or animates itself, it is simply part of the physical ribbon
+- The final face-in-the-flowers embrace must be clearly and unmistakably reached and held still — this is the single most important beat of the video
+- No additional gestures, actions, or beats beyond those explicitly described above
+- No jump cuts — one continuous take from the rotation into the embrace
+- No extra people added to the room</pre>
+        </details>
+      </div>
+    </div>
+  </section>
+</div>
+</body>
+</html>

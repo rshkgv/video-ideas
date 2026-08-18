@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>#julydump — Высыпанный месяц · Video Ideas</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      background: #f4f4f5; color: #111; font-size: 14px; line-height: 1.5;
+    }
+    .page-header {
+      background: #fff; border-bottom: 1px solid #e4e4e7; position: sticky;
+      top: 0; z-index: 100; box-shadow: 0 1px 8px rgba(0,0,0,.05);
+    }
+    .header-inner {
+      max-width: 1100px; margin: 0 auto; padding: 14px 28px;
+      display: flex; align-items: center; gap: 20px;
+    }
+    .brand {
+      font-size: 18px; font-weight: 800; letter-spacing: -.5px; color: #111;
+      white-space: nowrap; user-select: none; text-decoration: none;
+    }
+    .brand-tik { color: #fe2c55; }
+    .brand-tok { color: #010101; }
+    .brand-dot { color: #d1d1d1; margin: 0 6px; font-weight: 300; }
+    .brand-cc  { color: #888; font-size: 12px; font-weight: 500; }
+    .header-text { flex: 1; min-width: 0; }
+    .page-title {
+      font-size: 15px; font-weight: 700; letter-spacing: -.2px;
+      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    }
+    .page-sub { font-size: 11.5px; color: #999; margin-top: 2px; }
+    .date-badge {
+      background: #fe2c55; color: #fff; font-weight: 700; font-size: 12px;
+      border-radius: 8px; padding: 6px 14px; line-height: 1.4;
+      text-align: center; white-space: nowrap; flex-shrink: 0;
+    }
+    .date-badge span { display: block; font-size: 10px; font-weight: 500; opacity: .8; }
+    .page-nav {
+      max-width: 1100px; margin: 0 auto; padding: 0 28px;
+      display: flex; gap: 2px; border-top: 1px solid #f0f0f0;
+    }
+    .nav-a {
+      text-decoration: none; color: #999; font-size: 12.5px; font-weight: 500;
+      padding: 9px 14px; border-bottom: 2px solid transparent;
+      transition: color .15s, border-color .15s;
+    }
+    .nav-a:hover { color: #fe2c55; }
+    .nav-a.active { color: #fe2c55; border-bottom-color: #fe2c55; }
+    .content { max-width: 1100px; margin: 0 auto; padding: 36px 28px 80px; }
+    .section { margin-bottom: 52px; }
+    .section-header { display: flex; align-items: baseline; gap: 10px; margin-bottom: 16px; }
+    .section-title { font-size: 19px; font-weight: 800; letter-spacing: -.4px; }
+    .section-badge {
+      font-size: 10.5px; font-weight: 600; color: #999; background: #ebebeb;
+      padding: 3px 8px; border-radius: 20px; text-transform: uppercase; letter-spacing: .4px;
+    }
+    @media (max-width: 768px) {
+      .header-inner { gap: 12px; padding: 12px 16px; }
+      .date-badge { display: none; }
+      .page-nav { padding: 0 16px; }
+      .content { padding: 24px 16px 60px; }
+    }
+
+
+    .idea-lead {
+      background: #fff; border-radius: 12px; padding: 36px 40px 32px;
+      box-shadow: 0 1px 4px rgba(0,0,0,.07), 0 0 0 1px rgba(0,0,0,.05);
+      margin-bottom: 40px;
+    }
+    .idea-hashtag { font-size: 13px; font-weight: 700; color: #fe2c55; margin-bottom: 8px; }
+    .idea-title { font-size: 26px; font-weight: 800; letter-spacing: -.6px; line-height: 1.25; margin-bottom: 16px; }
+    .idea-desc { font-size: 14px; color: #444; line-height: 1.75; max-width: 720px; }
+    .media-grid {
+      display: grid; grid-template-columns: auto 1fr; gap: 28px; align-items: start;
+    }
+    .video-multi {
+      display: flex; gap: 16px; flex-wrap: wrap; align-items: flex-start;
+    }
+    .video-item {
+      width: 200px; display: flex; flex-direction: column; gap: 8px; flex-shrink: 0;
+    }
+    .video-caption {
+      font-size: 11px; color: #999; line-height: 1.4; padding: 0 2px;
+    }
+    .video-player {
+      width: 100%; aspect-ratio: 9/16; object-fit: cover; border-radius: 12px;
+      display: block; box-shadow: 0 2px 16px rgba(0,0,0,.14);
+    }
+    .frame-img {
+      width: 100%; aspect-ratio: 9/16; object-fit: cover; border-radius: 12px;
+      display: block; box-shadow: 0 2px 16px rgba(0,0,0,.14);
+    }
+    .prompts-col { display: flex; flex-direction: column; gap: 12px; }
+    .prompt-block {
+      background: #fff; border-radius: 10px;
+      box-shadow: 0 1px 4px rgba(0,0,0,.07), 0 0 0 1px rgba(0,0,0,.05); overflow: hidden;
+    }
+    .prompt-block summary {
+      padding: 14px 18px; font-size: 13px; font-weight: 700; cursor: pointer;
+      user-select: none; list-style: none; display: flex; align-items: center; gap: 8px; color: #333;
+    }
+    .prompt-block summary::-webkit-details-marker { display: none; }
+    .prompt-block summary::before { content: '▶'; font-size: 8px; color: #bbb; transition: transform .15s; flex-shrink: 0; }
+    .prompt-block[open] summary::before { transform: rotate(90deg); }
+    .prompt-block summary:hover { color: #fe2c55; }
+    .prompt-block summary:hover::before { color: #fe2c55; }
+    .prompt-label { font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: .5px; color: #bbb; margin-left: auto; }
+    .prompt-text {
+      padding: 14px 18px 16px; font-family: 'SF Mono','Fira Code','Menlo',monospace;
+      font-size: 11.5px; line-height: 1.7; color: #555; background: #f9f9f9;
+      border-top: 1px solid #f0f0f0; white-space: pre-wrap; word-break: break-word;
+      max-height: 320px; overflow-y: auto;
+    }
+    @media (max-width: 900px) {
+      .media-grid { grid-template-columns: 1fr; }
+      .video-multi { justify-content: center; }
+      .idea-lead { padding: 24px 22px 22px; }
+    }
+    @media (max-width: 520px) { .idea-title { font-size: 22px; } }
+
+  </style>
+</head>
+<body>
+<div class="page-header">
+  <div class="header-inner">
+    <a class="brand" href="../../../">
+      <span class="brand-tik">Tik</span><span class="brand-tok">Tok</span>
+      <span class="brand-dot">·</span><span class="brand-cc">Video Ideas</span>
+    </a>
+    <div class="header-text">
+      <div class="page-title">#julydump</div>
+      <div class="page-sub">Видео-идея · 8 августа 2026 · Выпуск merged_3</div>
+    </div>
+    <div class="date-badge">08.08.2026<span>Дата · Выпуск merged_3</span></div>
+  </div>
+  <nav class="page-nav">
+    <a href="../../../" class="nav-a">← Все отчёты</a>
+    <a href="../../#za" class="nav-a">← 8 авг 2026 · Выпуск merged_3</a>
+    <a href="#" class="nav-a active">#julydump</a>
+  </nav>
+</div>
+<div class="content">
+  <div class="idea-lead">
+    <div class="idea-hashtag">#julydump</div>
+    <h1 class="idea-title">Высыпанный месяц</h1>
+    <p class="idea-desc">Крупный макро-план: миниатюрный, кукольного масштаба ворох вещей месяца — крошечный чек, огрызок билета на аттракцион, смятый стаканчик из-под мороженого, фантик — высыпается из перевёрнутого бумажного пакета на стол, будто мусор из кармана после долгого месяца. Камера медленно отъезжает, и в кадре обнаруживается пользователь за столом, разглядывающий этот крошечный ворох сверху с тёплой ностальгической улыбкой — ни один предмет не увеличивается и не оживает, это просто маленькая куча месяца, оставшаяся на столе.
+
+Связь с трендом: буквальное прочтение слова «дамп» (высыпать/вывалить) — те же повседневные мелочи, что мелькают в реальных видео тренда (чеки, билеты, обёртки), здесь показаны не как компиляция кадров, а как крошечная высыпанная кучка — сам «дамп» месяца в физическом виде.</p>
+  </div>
+  <section class="section">
+    <div class="section-header">
+      <h2 class="section-title">Видео</h2>
+      <span class="section-badge">Пример генерации</span>
+    </div>
+    <div class="media-grid">
+      <div class="video-multi">
+        <div class="video-item"><video class="video-player" controls muted loop playsinline poster="https://temp-images.ws.pho.to/94af65e4732ea3ba168a9d76fb9b760c939a89cc.png"><source src="https://temp-images.ws.pho.to/c380bb0901ab214cc86e6c1355dabb0eb681506d.mp4" type="video/mp4"></video>
+          <div class="video-caption">woman in her late 30s with straight blonde shoulder-length hair and cat-eye glasses</div>
+        </div>
+        <div class="video-item"><video class="video-player" controls muted loop playsinline poster="https://temp-images.ws.pho.to/ee13017435dd4da9b617b1a1ce88d8451ad81ce6.png"><source src="https://temp-images.ws.pho.to/0ffaf9d5b3dda46b8bd9c0c675ea52f6f9530191.mp4" type="video/mp4"></video>
+          <div class="video-caption">man in his early 30s with short brown hair, blue eyes, and a short beard</div>
+        </div>
+      </div>
+      <div class="prompts-col">
+        <details class="prompt-block">
+          <summary>Промпт для первого кадра <span class="prompt-label">GPT Image 2</span></summary>
+          <pre class="prompt-text">Turn the photo of the person into a portrait of them seated at a table, looking down with a soft nostalgic smile at a small overturned paper bag from which a tiny miniature pile of everyday trinkets has just spilled out. Vertical 9:16 composition, waist-up framing, tilt-shift toy-like rendering on the tabletop scene while the person themselves stays fully photorealistic.
+
+Pose &amp; composition: seated, leaning slightly over the table, both hands resting near the small paper bag, head tilted down toward the little pile.
+
+Expression: warm, nostalgic, quietly amused — the look of someone fondly recognizing scraps of a month gone by.
+
+Setting &amp; background: a plain home table, soft warm indoor light, nothing else on the table but the little bag and its spilled contents.
+
+Miniature pile detail: a handful of tiny, doll-scale everyday objects — a crumpled till receipt, a torn carnival ticket stub, a small ice-cream cup with a spoon, a candy wrapper, a folded shopping bag — rendered with toy-diorama tilt-shift clarity, each object catching light like a real tiny object.
+
+CRITICAL SEPARATION RULE: the person themselves is fully photorealistic, normal life-size and normal in every way — only the spilled objects on the table are miniature and toy-rendered. Their lighting and shadows must match the room&#x27;s real light exactly.
+
+Lighting: warm, soft indoor light, even across the table and the person.
+
+Colour grading: warm, naturalistic on the person, slightly heightened colour and clarity on the miniature objects.
+
+Camera &amp; lens: 85mm at f/2.8 on the person, with a tilt-shift macro quality specifically on the tabletop objects, shallow depth of field.
+
+Skin texture: keep real skin on the person — visible pores, natural texture, no over-smoothing.
+
+Identity preservation: keep the person&#x27;s identity exactly as in the source photo — same age, face shape and proportions, skin tone and undertone, eye shape and eye colour, eyebrow shape, nose and jawline, and the exact hairstyle including its colour, parting, length and texture, plus any freckles, moles, scars or facial hair.
+
+Avoid: making the miniature objects glow or sparkle, a cartoonish look on the person, and no overlay graphics or captions of any kind.</pre>
+        </details>
+        <details class="prompt-block">
+          <summary>Промпт для видео <span class="prompt-label">Kling · Grok</span></summary>
+          <pre class="prompt-text">Create a short cinematic video based on the uploaded image. Vertical 9:16.
+A home table. A small paper bag spills a tiny toy-scale pile of everyday trinkets from the month. The person from the image sits fully photorealistic, waist-up, looking down at the pile.
+
+Camera and motion structure:
+One continuous slow pull-back. No cuts, no reveal beat, no event beyond what is already described.
+FRAMES 0–60%: The camera holds close on the small spilled pile — the tiny receipt, ticket stub, ice-cream cup, wrapper and folded bag sitting still on the table, tilt-shift toy clarity. The person&#x27;s hands rest quietly nearby.
+FRAMES 60–100%: The camera pulls back slowly, bringing the person&#x27;s face into fuller view above the little pile, their expression warm and nostalgic, gaze fixed on the trinkets. The pull-back settles and holds, the whole tabletop scene — the person and their tiny spilled month — visible at once. That settled view is the ending.
+
+Character:
+Preserve the person&#x27;s face, hair, skin tone and identity exactly from the source image, fully photorealistic throughout. Motion is minimal: the pull-back is the camera&#x27;s only movement; the person stays still, gaze on the pile.
+
+Style:
+Tilt-shift toy-diorama tabletop rendering paired with a fully real, photorealistic person — nostalgic, quiet, warm light, no fantasy glow or sparkle on the objects.
+
+Restrictions:
+- No identity changes to the person&#x27;s face, hair or skin tone; the person is never miniaturized or stylized, only the spilled objects are toy-scale
+- The person stays in frame, recognizable and the visual focus for the entire video — the pull-back stops while their face is still clearly legible
+- The person never speaks, sings or mouths words — silent, nostalgic reaction only
+- No speech bubbles
+- No additional objects, gestures, or beats beyond the pile and pull-back described above — the objects do not move, glow, or animate on their own
+- No extra people in frame</pre>
+        </details>
+      </div>
+    </div>
+  </section>
+</div>
+</body>
+</html>

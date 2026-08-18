@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>#nocontesta — El espejo que no coincide · Video Ideas</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      background: #f4f4f5; color: #111; font-size: 14px; line-height: 1.5;
+    }
+    .page-header {
+      background: #fff; border-bottom: 1px solid #e4e4e7; position: sticky;
+      top: 0; z-index: 100; box-shadow: 0 1px 8px rgba(0,0,0,.05);
+    }
+    .header-inner {
+      max-width: 1100px; margin: 0 auto; padding: 14px 28px;
+      display: flex; align-items: center; gap: 20px;
+    }
+    .brand {
+      font-size: 18px; font-weight: 800; letter-spacing: -.5px; color: #111;
+      white-space: nowrap; user-select: none; text-decoration: none;
+    }
+    .brand-tik { color: #fe2c55; }
+    .brand-tok { color: #010101; }
+    .brand-dot { color: #d1d1d1; margin: 0 6px; font-weight: 300; }
+    .brand-cc  { color: #888; font-size: 12px; font-weight: 500; }
+    .header-text { flex: 1; min-width: 0; }
+    .page-title {
+      font-size: 15px; font-weight: 700; letter-spacing: -.2px;
+      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    }
+    .page-sub { font-size: 11.5px; color: #999; margin-top: 2px; }
+    .date-badge {
+      background: #fe2c55; color: #fff; font-weight: 700; font-size: 12px;
+      border-radius: 8px; padding: 6px 14px; line-height: 1.4;
+      text-align: center; white-space: nowrap; flex-shrink: 0;
+    }
+    .date-badge span { display: block; font-size: 10px; font-weight: 500; opacity: .8; }
+    .page-nav {
+      max-width: 1100px; margin: 0 auto; padding: 0 28px;
+      display: flex; gap: 2px; border-top: 1px solid #f0f0f0;
+    }
+    .nav-a {
+      text-decoration: none; color: #999; font-size: 12.5px; font-weight: 500;
+      padding: 9px 14px; border-bottom: 2px solid transparent;
+      transition: color .15s, border-color .15s;
+    }
+    .nav-a:hover { color: #fe2c55; }
+    .nav-a.active { color: #fe2c55; border-bottom-color: #fe2c55; }
+    .content { max-width: 1100px; margin: 0 auto; padding: 36px 28px 80px; }
+    .section { margin-bottom: 52px; }
+    .section-header { display: flex; align-items: baseline; gap: 10px; margin-bottom: 16px; }
+    .section-title { font-size: 19px; font-weight: 800; letter-spacing: -.4px; }
+    .section-badge {
+      font-size: 10.5px; font-weight: 600; color: #999; background: #ebebeb;
+      padding: 3px 8px; border-radius: 20px; text-transform: uppercase; letter-spacing: .4px;
+    }
+    @media (max-width: 768px) {
+      .header-inner { gap: 12px; padding: 12px 16px; }
+      .date-badge { display: none; }
+      .page-nav { padding: 0 16px; }
+      .content { padding: 24px 16px 60px; }
+    }
+
+
+    .idea-lead {
+      background: #fff; border-radius: 12px; padding: 36px 40px 32px;
+      box-shadow: 0 1px 4px rgba(0,0,0,.07), 0 0 0 1px rgba(0,0,0,.05);
+      margin-bottom: 40px;
+    }
+    .idea-hashtag { font-size: 13px; font-weight: 700; color: #fe2c55; margin-bottom: 8px; }
+    .idea-title { font-size: 26px; font-weight: 800; letter-spacing: -.6px; line-height: 1.25; margin-bottom: 16px; }
+    .idea-desc { font-size: 14px; color: #444; line-height: 1.75; max-width: 720px; }
+    .media-grid {
+      display: grid; grid-template-columns: auto 1fr; gap: 28px; align-items: start;
+    }
+    .video-multi {
+      display: flex; gap: 16px; flex-wrap: wrap; align-items: flex-start;
+    }
+    .video-item {
+      width: 200px; display: flex; flex-direction: column; gap: 8px; flex-shrink: 0;
+    }
+    .video-caption {
+      font-size: 11px; color: #999; line-height: 1.4; padding: 0 2px;
+    }
+    .video-player {
+      width: 100%; aspect-ratio: 9/16; object-fit: cover; border-radius: 12px;
+      display: block; box-shadow: 0 2px 16px rgba(0,0,0,.14);
+    }
+    .frame-img {
+      width: 100%; aspect-ratio: 9/16; object-fit: cover; border-radius: 12px;
+      display: block; box-shadow: 0 2px 16px rgba(0,0,0,.14);
+    }
+    .prompts-col { display: flex; flex-direction: column; gap: 12px; }
+    .prompt-block {
+      background: #fff; border-radius: 10px;
+      box-shadow: 0 1px 4px rgba(0,0,0,.07), 0 0 0 1px rgba(0,0,0,.05); overflow: hidden;
+    }
+    .prompt-block summary {
+      padding: 14px 18px; font-size: 13px; font-weight: 700; cursor: pointer;
+      user-select: none; list-style: none; display: flex; align-items: center; gap: 8px; color: #333;
+    }
+    .prompt-block summary::-webkit-details-marker { display: none; }
+    .prompt-block summary::before { content: '▶'; font-size: 8px; color: #bbb; transition: transform .15s; flex-shrink: 0; }
+    .prompt-block[open] summary::before { transform: rotate(90deg); }
+    .prompt-block summary:hover { color: #fe2c55; }
+    .prompt-block summary:hover::before { color: #fe2c55; }
+    .prompt-label { font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: .5px; color: #bbb; margin-left: auto; }
+    .prompt-text {
+      padding: 14px 18px 16px; font-family: 'SF Mono','Fira Code','Menlo',monospace;
+      font-size: 11.5px; line-height: 1.7; color: #555; background: #f9f9f9;
+      border-top: 1px solid #f0f0f0; white-space: pre-wrap; word-break: break-word;
+      max-height: 320px; overflow-y: auto;
+    }
+    @media (max-width: 900px) {
+      .media-grid { grid-template-columns: 1fr; }
+      .video-multi { justify-content: center; }
+      .idea-lead { padding: 24px 22px 22px; }
+    }
+    @media (max-width: 520px) { .idea-title { font-size: 22px; } }
+
+  </style>
+</head>
+<body>
+<div class="page-header">
+  <div class="header-inner">
+    <a class="brand" href="../../../">
+      <span class="brand-tik">Tik</span><span class="brand-tok">Tok</span>
+      <span class="brand-dot">·</span><span class="brand-cc">Video Ideas</span>
+    </a>
+    <div class="header-text">
+      <div class="page-title">#nocontesta</div>
+      <div class="page-sub">Видео-идея · 8 августа 2026 · Выпуск merged_3</div>
+    </div>
+    <div class="date-badge">08.08.2026<span>Дата · Выпуск merged_3</span></div>
+  </div>
+  <nav class="page-nav">
+    <a href="../../../" class="nav-a">← Все отчёты</a>
+    <a href="../../#co" class="nav-a">← 8 авг 2026 · Выпуск merged_3</a>
+    <a href="#" class="nav-a active">#nocontesta</a>
+  </nav>
+</div>
+<div class="content">
+  <div class="idea-lead">
+    <div class="idea-hashtag">#nocontesta</div>
+    <h1 class="idea-title">El espejo que no coincide</h1>
+    <p class="idea-desc">Вместо статичного титульного экрана — пользователь фотореалистично сидит за рулём пиксельного кабриолета, мчащегося по тому же неоновому городу с пальмами-силуэтами, что и в визуализаторе трека. Рядом на пассажирском месте — пиксельный компаньон в жёлтых очках и синей рубашке, тот самый персонаж трека, беззвучно жестикулирует в такт музыке, которую мы не слышим. Пользователь на миг бросает взгляд в зеркало заднего вида — и там, вместо дороги позади, на долю мгновения мелькает совсем другая сцена: ретро-аркадный экран &quot;boss fight&quot; с силуэтами пиксельных монстров, которого физически не может быть у них за спиной. Пользователь моргает, смотрит вперёд снова — дорога и город на месте, ничего не изменилось. Это не одна кульминация, а серия мелких сюрреальных бит: руль, спутник, зеркало, дорога.
+
+Визуальный якорь: пиксельный кабриолет, едущий по неоновому synthwave-городу с пальмами, пиксельный компаньон в жёлтых очках и синей рубашке на пассажирском сиденье.</p>
+  </div>
+  <section class="section">
+    <div class="section-header">
+      <h2 class="section-title">Видео</h2>
+      <span class="section-badge">Пример генерации</span>
+    </div>
+    <div class="media-grid">
+      <div class="video-multi">
+        <div class="video-item"><video class="video-player" controls muted loop playsinline poster="https://temp-images.ws.pho.to/61a2ab679ca9bdd887e55a9db92a6fe41e99e1c8.png"><source src="https://temp-images.ws.pho.to/5cad369e9245458d00c31fdb7f3ad29c6b3d3a3f.mp4" type="video/mp4"></video>
+          <div class="video-caption">woman in her late 30s with straight blonde shoulder-length hair and cat-eye glasses</div>
+        </div>
+        <div class="video-item"><video class="video-player" controls muted loop playsinline poster="https://temp-images.ws.pho.to/e4e5162cdbcee04543a41bb235ddd1251cb7ba90.png"><source src="https://temp-images.ws.pho.to/a30db4d31c7d60057783a21625e29975dad04442.mp4" type="video/mp4"></video>
+          <div class="video-caption">man in his early 30s with short brown hair, blue eyes, and a short beard</div>
+        </div>
+      </div>
+      <div class="prompts-col">
+        <details class="prompt-block">
+          <summary>Промпт для первого кадра <span class="prompt-label">GPT Image 2</span></summary>
+          <pre class="prompt-text">Turn the photo of the person into a portrait of them sitting photorealistically in the driver&#x27;s seat of a pixel-art convertible car, vertical 9:16 composition, framed chest-up so the face reads large and clearly legible, both hands visible gripping a blocky pixel-art steering wheel at the bottom of frame.
+
+Pose &amp; composition: seated upright behind the wheel, both hands gripping it loosely, torso facing forward, head turned very slightly toward a small pixel-art passenger seated beside them — the same blocky retro sprite character from the &quot;No Contesta&quot; title-screen visualizer, wearing bright yellow-rimmed sunglasses and a blue shirt, mid-gesture with one hand raised.
+
+Expression: relaxed, easy enjoyment — a light smile, eyes forward on the road with a glance toward the passenger.
+
+Attire: ordinary real-world driving clothes, casual, unremarkable.
+
+Setting &amp; background: a retro synthwave cityscape rendered in blocky, low-resolution pixel art — neon purple and blue buildings, silhouetted palm trees lining the road, a grid-lined horizon, scanline texture across the background; the convertible&#x27;s own body and dashboard are rendered in the same blocky pixel style, contrasting with the photoreal driver.
+
+CRITICAL SEPARATION RULE: the person themselves stays fully photorealistic — real skin, real hair, real fabric — never pixelated or blocky. Only the car, the passenger character, and the city environment are rendered in the retro pixel-art medium. Their lighting should still pick up the scene&#x27;s neon glow.
+
+Environmental atmosphere &amp; lighting: saturated neon purple-blue ambient light from the passing cityscape, with warm dashboard-glow fill on the driver&#x27;s face keeping it clearly legible.
+
+Colour grading: neon purple-blue city tones against natural skin tones in the foreground.
+
+Materials &amp; texture: skin keeps real pores and texture, no smoothing; the car and passenger show visible blocky pixel edges and scanline banding.
+
+Camera &amp; lens: 28mm at f/2.5, slightly wide dashboard-level angle, shallow depth of field keeping the driver sharp, the road and skyline resolving as a flat stylized backdrop.
+
+Identity preservation: keep the person&#x27;s identity exactly as in the source photo — same age, face shape and proportions, skin tone and undertone, eye shape and eye colour, eyebrow shape, nose and jawline, and the exact hairstyle including its colour, length and texture, plus any freckles, moles, scars or facial hair. Hands on the wheel must show five fingers each in correct, natural anatomy.
+
+Avoid: over-smoothed skin, a pasted-face or cutout look, the person themselves becoming pixelated, and no overlay graphics or captions of any kind.</pre>
+        </details>
+        <details class="prompt-block">
+          <summary>Промпт для видео <span class="prompt-label">Kling · Grok</span></summary>
+          <pre class="prompt-text">Create a short cinematic video based on the uploaded image. Vertical 9:16.
+A photorealistic person drives a pixel-art convertible through a retro synthwave city, a pixel-art passenger in yellow sunglasses and a blue shirt beside them.
+
+Camera and motion structure:
+Handheld dashboard-level POV throughout, gentle sway matching the car&#x27;s motion — never fully locked off. Four distinct beats, each happening once.
+0:00–0:01: The person drives forward, hands on the wheel, passenger gesturing silently beside them in rhythm.
+0:01–0:02: The person&#x27;s eyes flick briefly to the rearview mirror.
+0:02–0:03: In the mirror&#x27;s reflection, for this beat only, an impossible retro arcade &quot;boss fight&quot; screen flashes — blocky pixel monster silhouettes against a red-orange background — where the road behind them should be.
+0:03–0:04: The person blinks and looks back to the road ahead; the mirror&#x27;s reflection has returned to normal, showing only the road and city behind them.
+0:04–0:05: The drive continues exactly as before, the person&#x27;s expression settling into the same relaxed enjoyment as the opening beat, the neon city passing steadily by. That return to the ordinary drive is the last thing the video shows.
+
+Character:
+Preserve the person&#x27;s face, hair, skin tone and identity exactly from the source image throughout — fully photorealistic at every moment, never pixelated. The passenger character keeps gesturing in its own silent rhythm throughout, never speaking.
+Allowed motion: driving posture, the glance to the mirror, the blink, looking back to the road. No other gestures.
+
+Style:
+Retro synthwave cruise aesthetic — blocky pixel art for the car, passenger and city, fully photorealistic rendering for the driver, one deliberate surreal mirror-flash beat. Whimsical, playful, gently uncanny.
+
+Restrictions:
+- Do not change the person&#x27;s face, hair, skin tone or identity at any point; they must never become pixelated or blocky
+- The person stays in frame, recognizable and the visual focus for the whole video
+- No speaking, no singing, no lip-sync, no mouthing words — silent reaction only; the passenger may gesture but is never heard
+- No speech bubbles
+- The passenger character&#x27;s yellow sunglasses and blue shirt must remain clearly visible throughout — this is the single most important brand identifier in the shot
+- The mirror&#x27;s impossible reflection appears exactly once, lasting exactly one beat, then reverts fully to normal — no repeats, no lingering distortion
+- No cuts, no jump cuts — one continuous handheld POV take, each beat flowing into the next
+- No on-screen text, captions, or lettering of any kind
+- No additional gestures, actions, or beats beyond the four described
+- The car never changes direction or speed abruptly; the drive stays smooth and forward throughout</pre>
+        </details>
+      </div>
+    </div>
+  </section>
+</div>
+</body>
+</html>

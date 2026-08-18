@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>#justgolive — La risa que no viene a cuento · Video Ideas</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      background: #f4f4f5; color: #111; font-size: 14px; line-height: 1.5;
+    }
+    .page-header {
+      background: #fff; border-bottom: 1px solid #e4e4e7; position: sticky;
+      top: 0; z-index: 100; box-shadow: 0 1px 8px rgba(0,0,0,.05);
+    }
+    .header-inner {
+      max-width: 1100px; margin: 0 auto; padding: 14px 28px;
+      display: flex; align-items: center; gap: 20px;
+    }
+    .brand {
+      font-size: 18px; font-weight: 800; letter-spacing: -.5px; color: #111;
+      white-space: nowrap; user-select: none; text-decoration: none;
+    }
+    .brand-tik { color: #fe2c55; }
+    .brand-tok { color: #010101; }
+    .brand-dot { color: #d1d1d1; margin: 0 6px; font-weight: 300; }
+    .brand-cc  { color: #888; font-size: 12px; font-weight: 500; }
+    .header-text { flex: 1; min-width: 0; }
+    .page-title {
+      font-size: 15px; font-weight: 700; letter-spacing: -.2px;
+      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    }
+    .page-sub { font-size: 11.5px; color: #999; margin-top: 2px; }
+    .date-badge {
+      background: #fe2c55; color: #fff; font-weight: 700; font-size: 12px;
+      border-radius: 8px; padding: 6px 14px; line-height: 1.4;
+      text-align: center; white-space: nowrap; flex-shrink: 0;
+    }
+    .date-badge span { display: block; font-size: 10px; font-weight: 500; opacity: .8; }
+    .page-nav {
+      max-width: 1100px; margin: 0 auto; padding: 0 28px;
+      display: flex; gap: 2px; border-top: 1px solid #f0f0f0;
+    }
+    .nav-a {
+      text-decoration: none; color: #999; font-size: 12.5px; font-weight: 500;
+      padding: 9px 14px; border-bottom: 2px solid transparent;
+      transition: color .15s, border-color .15s;
+    }
+    .nav-a:hover { color: #fe2c55; }
+    .nav-a.active { color: #fe2c55; border-bottom-color: #fe2c55; }
+    .content { max-width: 1100px; margin: 0 auto; padding: 36px 28px 80px; }
+    .section { margin-bottom: 52px; }
+    .section-header { display: flex; align-items: baseline; gap: 10px; margin-bottom: 16px; }
+    .section-title { font-size: 19px; font-weight: 800; letter-spacing: -.4px; }
+    .section-badge {
+      font-size: 10.5px; font-weight: 600; color: #999; background: #ebebeb;
+      padding: 3px 8px; border-radius: 20px; text-transform: uppercase; letter-spacing: .4px;
+    }
+    @media (max-width: 768px) {
+      .header-inner { gap: 12px; padding: 12px 16px; }
+      .date-badge { display: none; }
+      .page-nav { padding: 0 16px; }
+      .content { padding: 24px 16px 60px; }
+    }
+
+
+    .idea-lead {
+      background: #fff; border-radius: 12px; padding: 36px 40px 32px;
+      box-shadow: 0 1px 4px rgba(0,0,0,.07), 0 0 0 1px rgba(0,0,0,.05);
+      margin-bottom: 40px;
+    }
+    .idea-hashtag { font-size: 13px; font-weight: 700; color: #fe2c55; margin-bottom: 8px; }
+    .idea-title { font-size: 26px; font-weight: 800; letter-spacing: -.6px; line-height: 1.25; margin-bottom: 16px; }
+    .idea-desc { font-size: 14px; color: #444; line-height: 1.75; max-width: 720px; }
+    .media-grid {
+      display: grid; grid-template-columns: auto 1fr; gap: 28px; align-items: start;
+    }
+    .video-multi {
+      display: flex; gap: 16px; flex-wrap: wrap; align-items: flex-start;
+    }
+    .video-item {
+      width: 200px; display: flex; flex-direction: column; gap: 8px; flex-shrink: 0;
+    }
+    .video-caption {
+      font-size: 11px; color: #999; line-height: 1.4; padding: 0 2px;
+    }
+    .video-player {
+      width: 100%; aspect-ratio: 9/16; object-fit: cover; border-radius: 12px;
+      display: block; box-shadow: 0 2px 16px rgba(0,0,0,.14);
+    }
+    .frame-img {
+      width: 100%; aspect-ratio: 9/16; object-fit: cover; border-radius: 12px;
+      display: block; box-shadow: 0 2px 16px rgba(0,0,0,.14);
+    }
+    .prompts-col { display: flex; flex-direction: column; gap: 12px; }
+    .prompt-block {
+      background: #fff; border-radius: 10px;
+      box-shadow: 0 1px 4px rgba(0,0,0,.07), 0 0 0 1px rgba(0,0,0,.05); overflow: hidden;
+    }
+    .prompt-block summary {
+      padding: 14px 18px; font-size: 13px; font-weight: 700; cursor: pointer;
+      user-select: none; list-style: none; display: flex; align-items: center; gap: 8px; color: #333;
+    }
+    .prompt-block summary::-webkit-details-marker { display: none; }
+    .prompt-block summary::before { content: '▶'; font-size: 8px; color: #bbb; transition: transform .15s; flex-shrink: 0; }
+    .prompt-block[open] summary::before { transform: rotate(90deg); }
+    .prompt-block summary:hover { color: #fe2c55; }
+    .prompt-block summary:hover::before { color: #fe2c55; }
+    .prompt-label { font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: .5px; color: #bbb; margin-left: auto; }
+    .prompt-text {
+      padding: 14px 18px 16px; font-family: 'SF Mono','Fira Code','Menlo',monospace;
+      font-size: 11.5px; line-height: 1.7; color: #555; background: #f9f9f9;
+      border-top: 1px solid #f0f0f0; white-space: pre-wrap; word-break: break-word;
+      max-height: 320px; overflow-y: auto;
+    }
+    @media (max-width: 900px) {
+      .media-grid { grid-template-columns: 1fr; }
+      .video-multi { justify-content: center; }
+      .idea-lead { padding: 24px 22px 22px; }
+    }
+    @media (max-width: 520px) { .idea-title { font-size: 22px; } }
+
+  </style>
+</head>
+<body>
+<div class="page-header">
+  <div class="header-inner">
+    <a class="brand" href="../../../">
+      <span class="brand-tik">Tik</span><span class="brand-tok">Tok</span>
+      <span class="brand-dot">·</span><span class="brand-cc">Video Ideas</span>
+    </a>
+    <div class="header-text">
+      <div class="page-title">#justgolive</div>
+      <div class="page-sub">Видео-идея · 8 августа 2026 · Выпуск merged_3</div>
+    </div>
+    <div class="date-badge">08.08.2026<span>Дата · Выпуск merged_3</span></div>
+  </div>
+  <nav class="page-nav">
+    <a href="../../../" class="nav-a">← Все отчёты</a>
+    <a href="../../#co" class="nav-a">← 8 авг 2026 · Выпуск merged_3</a>
+    <a href="#" class="nav-a active">#justgolive</a>
+  </nav>
+</div>
+<div class="content">
+  <div class="idea-lead">
+    <div class="idea-hashtag">#justgolive</div>
+    <h1 class="idea-title">La risa que no viene a cuento</h1>
+    <p class="idea-desc">Пользователь держит телефон на вытянутой руке в обычной комнате — ничего примечательного, свет обычный, комната случайная. Он спокойно поправляет кольцевую лампу рядом с собой, готовясь снимать. И вдруг, без всякой видимой причины и без монтажной склейки, взрывается беззвучным хохотом, запрокидывая голову — будто отреагировал на что-то, чего в кадре никогда не было и не будет объяснено. Смех держится секунду, обрывается так же внезапно, и он снова спокойно поправляет лампу, как будто ничего не случилось. Эта необъяснимая, ничем не мотивированная вспышка смеха — и есть сама суть тренда: контент, который существует только ради реакции, а не ради содержания.
+
+Визуальный якорь: телефон на вытянутой руке в обычной комнате с кольцевой лампой — немотивированный, ничем не объяснённый взрыв смеха посреди спокойного жеста, без всякой причины в кадре.</p>
+  </div>
+  <section class="section">
+    <div class="section-header">
+      <h2 class="section-title">Видео</h2>
+      <span class="section-badge">Пример генерации</span>
+    </div>
+    <div class="media-grid">
+      <div class="video-multi">
+        <div class="video-item"><video class="video-player" controls muted loop playsinline poster="https://temp-images.ws.pho.to/de2764953bf57b6d710429a94d368f14ac7f2055.png"><source src="https://temp-images.ws.pho.to/dd09c1f074bcc1aaa5e8d128684045b5e4ec0de1.mp4" type="video/mp4"></video>
+          <div class="video-caption">woman in her late 30s with straight blonde shoulder-length hair and cat-eye glasses</div>
+        </div>
+        <div class="video-item"><video class="video-player" controls muted loop playsinline poster="https://temp-images.ws.pho.to/b6febb34cd3a92d47db5963ad5e398bf343c1e01.png"><source src="https://temp-images.ws.pho.to/6ce8c4d00369a6cc4d2602d16a26504e9db69816.mp4" type="video/mp4"></video>
+          <div class="video-caption">man in his early 30s with short brown hair, blue eyes, and a short beard</div>
+        </div>
+      </div>
+      <div class="prompts-col">
+        <details class="prompt-block">
+          <summary>Промпт для первого кадра <span class="prompt-label">GPT Image 2</span></summary>
+          <pre class="prompt-text">Turn the photo of the person into a portrait of them holding a phone at arm&#x27;s length in an ordinary indoor room, vertical 9:16 composition, framed chest-up so the face reads large and clearly legible, the extended arm and phone visible at the edge of frame in a plausible selfie angle.
+
+Pose &amp; composition: one arm extended toward camera holding a phone (the implied camera itself), the other hand reaching just off to the side to touch the edge of a small ring light on a tripod stand. Torso angled slightly, weight even, head level.
+
+Expression: neutral, mildly focused concentration — the look of someone adjusting equipment before recording, nothing dramatic yet.
+
+Attire: plain, ordinary everyday clothes — a simple t-shirt, nothing costume-like or branded.
+
+Setting &amp; background: a nondescript indoor room — plain wall, a bit of a shelf or a door edge visible, unremarkable furniture — deliberately generic, the kind of background any casual phone video is shot against.
+
+Environmental atmosphere &amp; lighting: flat, even indoor lighting supplemented by the ring light&#x27;s soft glow on the face, no dramatic shadows.
+
+Colour grading: neutral, slightly warm indoor colour balance, nothing stylized.
+
+Materials &amp; texture: skin keeps natural pores and texture, no smoothing; the ring light shows a simple plastic-and-metal tripod stand.
+
+Camera &amp; lens: standard smartphone-style framing, slight wide-angle distortion at the extended arm consistent with a real phone selfie, natural indoor depth of field.
+
+Identity preservation: keep the person&#x27;s identity exactly as in the source photo — same age, face shape and proportions, skin tone and undertone, eye shape and eye colour, eyebrow shape, nose and jawline, and the exact hairstyle including its colour, length and texture, plus any freckles, moles, scars or facial hair. The extended arm and hand touching the ring light must show correct anatomy, five fingers.
+
+Avoid: over-smoothed skin, a pasted-face or cutout look, and no overlay graphics or captions of any kind — no lettering anywhere in the frame.</pre>
+        </details>
+        <details class="prompt-block">
+          <summary>Промпт для видео <span class="prompt-label">Kling · Grok</span></summary>
+          <pre class="prompt-text">Create a short cinematic video based on the uploaded image. Vertical 9:16.
+An ordinary indoor room. The person from the image holds a phone at arm&#x27;s length, chest-up in frame, adjusting a small ring light beside them.
+
+Camera and motion structure:
+Keep the overall shot static, framed as a fixed selfie angle. No zoom, no camera movement, no cuts.
+FRAMES 0–30%: The person calmly adjusts the ring light with one hand, expression neutral and focused, nothing eventful.
+FRAMES 30–55%: Mid-adjustment, with no visible cause in frame, their expression abruptly breaks into a silent, wide-open burst of laughter, head tilting back — sudden, with no build-up or warning.
+FRAMES 55–80%: The laugh holds for a beat, head still tilted back, shoulders shaking slightly with the silent laughter.
+FRAMES 80–100%: The laugh cuts off just as abruptly as it began. The person&#x27;s expression returns to the same calm, neutral focus from the start, hand resuming the ring-light adjustment exactly where it left off — as if the laugh never happened. That return to calm, unexplained, is the last thing the video shows.
+
+Character:
+Preserve the person&#x27;s face, hair, skin tone, and identity exactly from the source image throughout the entire video. Do not alter their appearance.
+Allowed motion: the ring-light adjustment, the sudden laugh, the return to calm. No standing, no walking, no turning away from camera.
+
+Atmosphere and detail:
+- Lighting stays flat and constant throughout — no flicker, no dimming
+- The room behind stays completely still and unchanged
+- No sound-implying visual cue (no phone screen change, no door opening) explains the laugh
+
+Style:
+Flat, unremarkable amateur phone-video look — plain indoor light, no cinematic grade, static framing. Deadpan, absurd, comedic specifically because nothing justifies the reaction.
+
+Restrictions:
+- Do not change the person&#x27;s appearance, face, clothing, or identity at any point
+- The person stays in frame, recognizable and the visual focus for the entire video
+- No speaking, no singing, no lip-sync, no mouthing words — the laugh is silent, emotional reaction only
+- No speech bubbles
+- No on-screen text of any kind — no captions, plates, or lettering anywhere in the frame
+- No cuts, no reframing, no change of angle — one static locked-off shot throughout
+- The laugh happens exactly once and cuts off exactly once — no repeats, no second burst
+- No additional gestures, actions, or beats beyond the ring-light adjustment and the single laugh
+- Nothing new must enter the frame (no object, no person, no light change) that would explain or motivate the laugh — its lack of explanation is the point
+- No violent or aggressive movement of any kind</pre>
+        </details>
+      </div>
+    </div>
+  </section>
+</div>
+</body>
+</html>

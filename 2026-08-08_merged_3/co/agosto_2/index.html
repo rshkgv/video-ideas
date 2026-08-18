@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>#agosto — Lo que se escribe en la arena · Video Ideas</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      background: #f4f4f5; color: #111; font-size: 14px; line-height: 1.5;
+    }
+    .page-header {
+      background: #fff; border-bottom: 1px solid #e4e4e7; position: sticky;
+      top: 0; z-index: 100; box-shadow: 0 1px 8px rgba(0,0,0,.05);
+    }
+    .header-inner {
+      max-width: 1100px; margin: 0 auto; padding: 14px 28px;
+      display: flex; align-items: center; gap: 20px;
+    }
+    .brand {
+      font-size: 18px; font-weight: 800; letter-spacing: -.5px; color: #111;
+      white-space: nowrap; user-select: none; text-decoration: none;
+    }
+    .brand-tik { color: #fe2c55; }
+    .brand-tok { color: #010101; }
+    .brand-dot { color: #d1d1d1; margin: 0 6px; font-weight: 300; }
+    .brand-cc  { color: #888; font-size: 12px; font-weight: 500; }
+    .header-text { flex: 1; min-width: 0; }
+    .page-title {
+      font-size: 15px; font-weight: 700; letter-spacing: -.2px;
+      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    }
+    .page-sub { font-size: 11.5px; color: #999; margin-top: 2px; }
+    .date-badge {
+      background: #fe2c55; color: #fff; font-weight: 700; font-size: 12px;
+      border-radius: 8px; padding: 6px 14px; line-height: 1.4;
+      text-align: center; white-space: nowrap; flex-shrink: 0;
+    }
+    .date-badge span { display: block; font-size: 10px; font-weight: 500; opacity: .8; }
+    .page-nav {
+      max-width: 1100px; margin: 0 auto; padding: 0 28px;
+      display: flex; gap: 2px; border-top: 1px solid #f0f0f0;
+    }
+    .nav-a {
+      text-decoration: none; color: #999; font-size: 12.5px; font-weight: 500;
+      padding: 9px 14px; border-bottom: 2px solid transparent;
+      transition: color .15s, border-color .15s;
+    }
+    .nav-a:hover { color: #fe2c55; }
+    .nav-a.active { color: #fe2c55; border-bottom-color: #fe2c55; }
+    .content { max-width: 1100px; margin: 0 auto; padding: 36px 28px 80px; }
+    .section { margin-bottom: 52px; }
+    .section-header { display: flex; align-items: baseline; gap: 10px; margin-bottom: 16px; }
+    .section-title { font-size: 19px; font-weight: 800; letter-spacing: -.4px; }
+    .section-badge {
+      font-size: 10.5px; font-weight: 600; color: #999; background: #ebebeb;
+      padding: 3px 8px; border-radius: 20px; text-transform: uppercase; letter-spacing: .4px;
+    }
+    @media (max-width: 768px) {
+      .header-inner { gap: 12px; padding: 12px 16px; }
+      .date-badge { display: none; }
+      .page-nav { padding: 0 16px; }
+      .content { padding: 24px 16px 60px; }
+    }
+
+
+    .idea-lead {
+      background: #fff; border-radius: 12px; padding: 36px 40px 32px;
+      box-shadow: 0 1px 4px rgba(0,0,0,.07), 0 0 0 1px rgba(0,0,0,.05);
+      margin-bottom: 40px;
+    }
+    .idea-hashtag { font-size: 13px; font-weight: 700; color: #fe2c55; margin-bottom: 8px; }
+    .idea-title { font-size: 26px; font-weight: 800; letter-spacing: -.6px; line-height: 1.25; margin-bottom: 16px; }
+    .idea-desc { font-size: 14px; color: #444; line-height: 1.75; max-width: 720px; }
+    .media-grid {
+      display: grid; grid-template-columns: auto 1fr; gap: 28px; align-items: start;
+    }
+    .video-multi {
+      display: flex; gap: 16px; flex-wrap: wrap; align-items: flex-start;
+    }
+    .video-item {
+      width: 200px; display: flex; flex-direction: column; gap: 8px; flex-shrink: 0;
+    }
+    .video-caption {
+      font-size: 11px; color: #999; line-height: 1.4; padding: 0 2px;
+    }
+    .video-player {
+      width: 100%; aspect-ratio: 9/16; object-fit: cover; border-radius: 12px;
+      display: block; box-shadow: 0 2px 16px rgba(0,0,0,.14);
+    }
+    .frame-img {
+      width: 100%; aspect-ratio: 9/16; object-fit: cover; border-radius: 12px;
+      display: block; box-shadow: 0 2px 16px rgba(0,0,0,.14);
+    }
+    .prompts-col { display: flex; flex-direction: column; gap: 12px; }
+    .prompt-block {
+      background: #fff; border-radius: 10px;
+      box-shadow: 0 1px 4px rgba(0,0,0,.07), 0 0 0 1px rgba(0,0,0,.05); overflow: hidden;
+    }
+    .prompt-block summary {
+      padding: 14px 18px; font-size: 13px; font-weight: 700; cursor: pointer;
+      user-select: none; list-style: none; display: flex; align-items: center; gap: 8px; color: #333;
+    }
+    .prompt-block summary::-webkit-details-marker { display: none; }
+    .prompt-block summary::before { content: '▶'; font-size: 8px; color: #bbb; transition: transform .15s; flex-shrink: 0; }
+    .prompt-block[open] summary::before { transform: rotate(90deg); }
+    .prompt-block summary:hover { color: #fe2c55; }
+    .prompt-block summary:hover::before { color: #fe2c55; }
+    .prompt-label { font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: .5px; color: #bbb; margin-left: auto; }
+    .prompt-text {
+      padding: 14px 18px 16px; font-family: 'SF Mono','Fira Code','Menlo',monospace;
+      font-size: 11.5px; line-height: 1.7; color: #555; background: #f9f9f9;
+      border-top: 1px solid #f0f0f0; white-space: pre-wrap; word-break: break-word;
+      max-height: 320px; overflow-y: auto;
+    }
+    @media (max-width: 900px) {
+      .media-grid { grid-template-columns: 1fr; }
+      .video-multi { justify-content: center; }
+      .idea-lead { padding: 24px 22px 22px; }
+    }
+    @media (max-width: 520px) { .idea-title { font-size: 22px; } }
+
+  </style>
+</head>
+<body>
+<div class="page-header">
+  <div class="header-inner">
+    <a class="brand" href="../../../">
+      <span class="brand-tik">Tik</span><span class="brand-tok">Tok</span>
+      <span class="brand-dot">·</span><span class="brand-cc">Video Ideas</span>
+    </a>
+    <div class="header-text">
+      <div class="page-title">#agosto</div>
+      <div class="page-sub">Видео-идея · 8 августа 2026 · Выпуск merged_3</div>
+    </div>
+    <div class="date-badge">08.08.2026<span>Дата · Выпуск merged_3</span></div>
+  </div>
+  <nav class="page-nav">
+    <a href="../../../" class="nav-a">← Все отчёты</a>
+    <a href="../../#co" class="nav-a">← 8 авг 2026 · Выпуск merged_3</a>
+    <a href="#" class="nav-a active">#agosto</a>
+  </nav>
+</div>
+<div class="content">
+  <div class="idea-lead">
+    <div class="idea-hashtag">#agosto</div>
+    <h1 class="idea-title">Lo que se escribe en la arena</h1>
+    <p class="idea-desc">Вместо статичного дневника-настроения — маленький ритуал на кромке прибоя. Пользователь идёт босиком по мокрому песку в час заката (POV с руки, идущей рядом с ним), останавливается, приседает и пальцем пишет на песке одно слово — тихое желание на август. Рядом, чуть в стороне и не в фокусе, стоит ещё один силуэт — тоже смотрит на воду. Волна набегает и медленно стирает надпись; оба просто стоят и смотрят, как песок снова становится гладким. Это не монтаж кадров, а один слитный момент на берегу — тот же золотой пляж, что и в тренде, но другая история.
+
+Визуальный якорь: кромка прибоя на золотом пляже на закате — босые ноги в мокром песке, слово, написанное пальцем и стёртое волной, тёплый закатный свет на воде.</p>
+  </div>
+  <section class="section">
+    <div class="section-header">
+      <h2 class="section-title">Видео</h2>
+      <span class="section-badge">Пример генерации</span>
+    </div>
+    <div class="media-grid">
+      <div class="video-multi">
+        <div class="video-item"><video class="video-player" controls muted loop playsinline poster="https://temp-images.ws.pho.to/f7b159a09665f9bb8db987958f4043c9236d5409.png"><source src="https://temp-images.ws.pho.to/e62b7ea4266e203d09dc1cc7945053f9fb08a41b.mp4" type="video/mp4"></video>
+          <div class="video-caption">woman in her late 30s with straight blonde shoulder-length hair and cat-eye glasses</div>
+        </div>
+        <div class="video-item"><video class="video-player" controls muted loop playsinline poster="https://temp-images.ws.pho.to/72d046158fa71a6ed127849bbdc3e15da4d15f8f.png"><source src="https://temp-images.ws.pho.to/d8805362be85304aab221cdc7b68bf420382bb09.mp4" type="video/mp4"></video>
+          <div class="video-caption">man in his early 30s with short brown hair, blue eyes, and a short beard</div>
+        </div>
+      </div>
+      <div class="prompts-col">
+        <details class="prompt-block">
+          <summary>Промпт для первого кадра <span class="prompt-label">GPT Image 2</span></summary>
+          <pre class="prompt-text">Turn the photo of the person into a portrait of them crouched at the tide-line of a beach at golden hour, vertical 9:16 composition, framed from mid-thigh up so the face reads large and clearly legible while one hand and the wet sand are visible at the bottom of frame.
+
+Pose &amp; composition: they crouch low, balanced on the balls of their bare feet, one knee bent forward, torso angled three-quarters to camera, one hand extended down with a fingertip resting in the wet sand mid-stroke of writing a word — the word itself only half-formed, not legible yet. Their face is turned slightly up and toward the sea, not at the camera. In the soft-focus background, a second figure stands a few metres off, silhouetted against the water, also facing the horizon.
+
+Expression: quiet concentration easing into wistfulness — lips softly parted, eyes lowered toward the sand and then lifting toward the water line.
+
+Attire: rolled linen trousers wet at the cuffs, a loose short-sleeve shirt, sleeves pushed up past the elbow.
+
+Setting &amp; background: a wide tidal flat of wet, mirror-sheened sand reflecting the sky, a thin line of foam from the last wave a few feet away, the sea stretching to a low golden sun; the second silhouetted figure stands just outside the sharpest focus, a scatter of loose pink petals half-buried in the sand nearby.
+
+Environmental atmosphere &amp; lighting: low golden-hour sun directly ahead, throwing a long warm reflection across the wet sand toward camera, rim-lighting the person&#x27;s profile and the drops of water on their forearm.
+
+Colour grading: warm gold and soft coral in the sky and reflection, cooling to muted blue-grey in the shadowed wet sand near the person.
+
+Materials &amp; texture: wet sand shows real granular texture and a mirror sheen where the last wave receded; water beads visibly on skin and rolled fabric; skin keeps natural texture, no smoothing.
+
+Camera &amp; lens: 35mm at f/2.8, low angle near the sand, shallow depth of field keeping the person sharp and the silhouette softly blurred behind.
+
+Depth separation: person and wet sand in sharp focus, sea, sun and second figure softly out of focus.
+
+Identity preservation: keep the person&#x27;s identity exactly as in the source photo — same age, face shape and proportions, skin tone and undertone, eye shape and eye colour, eyebrow shape, nose and jawline, and the exact hairstyle including its colour, parting, length and texture, plus any freckles, moles, scars or facial hair. The crouching hand must show five fingers in correct, natural anatomy, fingertip just touching the sand.
+
+Avoid: over-smoothed skin, a pasted-face or cutout look, and no overlay graphics or captions of any kind — the word in the sand is unfinished and unreadable in this frame.</pre>
+        </details>
+        <details class="prompt-block">
+          <summary>Промпт для видео <span class="prompt-label">Kling · Grok</span></summary>
+          <pre class="prompt-text">Create a short cinematic video based on the uploaded image. Vertical 9:16.
+A tidal flat on a golden-hour beach. The person from the image crouches at the waterline, finger in the wet sand, a second silhouetted figure standing nearby facing the sea.
+
+Camera and motion structure:
+One continuous handheld POV, walking pace, following just behind and beside the person — never locked off, real footstep sway.
+0:00–0:01: The camera arrives at the person&#x27;s side as they finish crouching, finger already touching the sand.
+0:01–0:03: They drag their fingertip through the wet sand, completing one word — a short, private word, never shown fully legible to camera, traced once, no retracing. They straighten up slightly, still crouched, and look toward the horizon where the second figure stands.
+0:03–0:04: A single wave rolls in from the sea, reaches the word, and washes over it once.
+0:04–0:05: The wave recedes, leaving the sand smooth and blank again. Both the person and the distant silhouette stay still, watching the flattened sand and the retreating water — nothing else happens.
+
+Character:
+Preserve the person&#x27;s face, hair, skin tone and identity exactly from the source image throughout. Allowed motion: the one finger-stroke writing the word, straightening slightly, looking up. No standing fully, no walking after arrival, no turning to camera.
+
+Atmosphere and detail:
+- Golden-hour light reflects off the wet sand and the incoming wave the whole time
+- The second figure remains a soft silhouette in the background, motionless except for a slight sway from the breeze
+- Foam from the wave spreads and recedes naturally, once only
+
+Style:
+Handheld, intimate, unhurried — real footstep sway in the camera, warm natural light, the register of a quiet private moment rather than a broadcast reveal. Tender, wistful.
+
+Restrictions:
+- Do not change the person&#x27;s face, hair, skin tone or identity at any point
+- The person stays in frame, recognizable and the visual focus for the whole video
+- No speaking, no singing, no lip-sync, no mouthing words — silent emotional reaction only
+- No speech bubbles
+- The word traced in the sand must never become fully legible to camera and must be written only once — no retracing, no second word
+- Exactly one wave washes over the word — no more, no fewer
+- No on-screen text, captions, or lettering of any kind, diegetic or otherwise
+- No cuts, no jump cuts, no reset of the writing action — one continuous handheld take
+- No additional gestures or actions beyond the writing, the straightening, and the watching described above
+- The second silhouette never turns to face camera and never becomes more than a soft, unidentifiable silhouette
+- The person&#x27;s face and head must stay above the sand and never dip down to the water&#x27;s surface — no submerging, no ducking</pre>
+        </details>
+      </div>
+    </div>
+  </section>
+</div>
+</body>
+</html>

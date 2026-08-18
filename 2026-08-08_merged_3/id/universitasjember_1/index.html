@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>#universitasjember — У памятника трёх · Video Ideas</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      background: #f4f4f5; color: #111; font-size: 14px; line-height: 1.5;
+    }
+    .page-header {
+      background: #fff; border-bottom: 1px solid #e4e4e7; position: sticky;
+      top: 0; z-index: 100; box-shadow: 0 1px 8px rgba(0,0,0,.05);
+    }
+    .header-inner {
+      max-width: 1100px; margin: 0 auto; padding: 14px 28px;
+      display: flex; align-items: center; gap: 20px;
+    }
+    .brand {
+      font-size: 18px; font-weight: 800; letter-spacing: -.5px; color: #111;
+      white-space: nowrap; user-select: none; text-decoration: none;
+    }
+    .brand-tik { color: #fe2c55; }
+    .brand-tok { color: #010101; }
+    .brand-dot { color: #d1d1d1; margin: 0 6px; font-weight: 300; }
+    .brand-cc  { color: #888; font-size: 12px; font-weight: 500; }
+    .header-text { flex: 1; min-width: 0; }
+    .page-title {
+      font-size: 15px; font-weight: 700; letter-spacing: -.2px;
+      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    }
+    .page-sub { font-size: 11.5px; color: #999; margin-top: 2px; }
+    .date-badge {
+      background: #fe2c55; color: #fff; font-weight: 700; font-size: 12px;
+      border-radius: 8px; padding: 6px 14px; line-height: 1.4;
+      text-align: center; white-space: nowrap; flex-shrink: 0;
+    }
+    .date-badge span { display: block; font-size: 10px; font-weight: 500; opacity: .8; }
+    .page-nav {
+      max-width: 1100px; margin: 0 auto; padding: 0 28px;
+      display: flex; gap: 2px; border-top: 1px solid #f0f0f0;
+    }
+    .nav-a {
+      text-decoration: none; color: #999; font-size: 12.5px; font-weight: 500;
+      padding: 9px 14px; border-bottom: 2px solid transparent;
+      transition: color .15s, border-color .15s;
+    }
+    .nav-a:hover { color: #fe2c55; }
+    .nav-a.active { color: #fe2c55; border-bottom-color: #fe2c55; }
+    .content { max-width: 1100px; margin: 0 auto; padding: 36px 28px 80px; }
+    .section { margin-bottom: 52px; }
+    .section-header { display: flex; align-items: baseline; gap: 10px; margin-bottom: 16px; }
+    .section-title { font-size: 19px; font-weight: 800; letter-spacing: -.4px; }
+    .section-badge {
+      font-size: 10.5px; font-weight: 600; color: #999; background: #ebebeb;
+      padding: 3px 8px; border-radius: 20px; text-transform: uppercase; letter-spacing: .4px;
+    }
+    @media (max-width: 768px) {
+      .header-inner { gap: 12px; padding: 12px 16px; }
+      .date-badge { display: none; }
+      .page-nav { padding: 0 16px; }
+      .content { padding: 24px 16px 60px; }
+    }
+
+
+    .idea-lead {
+      background: #fff; border-radius: 12px; padding: 36px 40px 32px;
+      box-shadow: 0 1px 4px rgba(0,0,0,.07), 0 0 0 1px rgba(0,0,0,.05);
+      margin-bottom: 40px;
+    }
+    .idea-hashtag { font-size: 13px; font-weight: 700; color: #fe2c55; margin-bottom: 8px; }
+    .idea-title { font-size: 26px; font-weight: 800; letter-spacing: -.6px; line-height: 1.25; margin-bottom: 16px; }
+    .idea-desc { font-size: 14px; color: #444; line-height: 1.75; max-width: 720px; }
+    .media-grid {
+      display: grid; grid-template-columns: auto 1fr; gap: 28px; align-items: start;
+    }
+    .video-multi {
+      display: flex; gap: 16px; flex-wrap: wrap; align-items: flex-start;
+    }
+    .video-item {
+      width: 200px; display: flex; flex-direction: column; gap: 8px; flex-shrink: 0;
+    }
+    .video-caption {
+      font-size: 11px; color: #999; line-height: 1.4; padding: 0 2px;
+    }
+    .video-player {
+      width: 100%; aspect-ratio: 9/16; object-fit: cover; border-radius: 12px;
+      display: block; box-shadow: 0 2px 16px rgba(0,0,0,.14);
+    }
+    .frame-img {
+      width: 100%; aspect-ratio: 9/16; object-fit: cover; border-radius: 12px;
+      display: block; box-shadow: 0 2px 16px rgba(0,0,0,.14);
+    }
+    .prompts-col { display: flex; flex-direction: column; gap: 12px; }
+    .prompt-block {
+      background: #fff; border-radius: 10px;
+      box-shadow: 0 1px 4px rgba(0,0,0,.07), 0 0 0 1px rgba(0,0,0,.05); overflow: hidden;
+    }
+    .prompt-block summary {
+      padding: 14px 18px; font-size: 13px; font-weight: 700; cursor: pointer;
+      user-select: none; list-style: none; display: flex; align-items: center; gap: 8px; color: #333;
+    }
+    .prompt-block summary::-webkit-details-marker { display: none; }
+    .prompt-block summary::before { content: '▶'; font-size: 8px; color: #bbb; transition: transform .15s; flex-shrink: 0; }
+    .prompt-block[open] summary::before { transform: rotate(90deg); }
+    .prompt-block summary:hover { color: #fe2c55; }
+    .prompt-block summary:hover::before { color: #fe2c55; }
+    .prompt-label { font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: .5px; color: #bbb; margin-left: auto; }
+    .prompt-text {
+      padding: 14px 18px 16px; font-family: 'SF Mono','Fira Code','Menlo',monospace;
+      font-size: 11.5px; line-height: 1.7; color: #555; background: #f9f9f9;
+      border-top: 1px solid #f0f0f0; white-space: pre-wrap; word-break: break-word;
+      max-height: 320px; overflow-y: auto;
+    }
+    @media (max-width: 900px) {
+      .media-grid { grid-template-columns: 1fr; }
+      .video-multi { justify-content: center; }
+      .idea-lead { padding: 24px 22px 22px; }
+    }
+    @media (max-width: 520px) { .idea-title { font-size: 22px; } }
+
+  </style>
+</head>
+<body>
+<div class="page-header">
+  <div class="header-inner">
+    <a class="brand" href="../../../">
+      <span class="brand-tik">Tik</span><span class="brand-tok">Tok</span>
+      <span class="brand-dot">·</span><span class="brand-cc">Video Ideas</span>
+    </a>
+    <div class="header-text">
+      <div class="page-title">#universitasjember</div>
+      <div class="page-sub">Видео-идея · 8 августа 2026 · Выпуск merged_3</div>
+    </div>
+    <div class="date-badge">08.08.2026<span>Дата · Выпуск merged_3</span></div>
+  </div>
+  <nav class="page-nav">
+    <a href="../../../" class="nav-a">← Все отчёты</a>
+    <a href="../../#id" class="nav-a">← 8 авг 2026 · Выпуск merged_3</a>
+    <a href="#" class="nav-a active">#universitasjember</a>
+  </nav>
+</div>
+<div class="content">
+  <div class="idea-lead">
+    <div class="idea-hashtag">#universitasjember</div>
+    <h1 class="idea-title">У памятника трёх</h1>
+    <p class="idea-desc">Пользователь в белой рубашке с чёрным галстуком стоит у подножия бронзового памятника трёх фигур на территории кампуса, рядом — такой же одетый однокурсник. Камера держит статичный крупный план, пока оба коротко смотрят в объектив — а затем отъезжает шире, открывая всю танцевальную площадку перед памятником, и оба срываются в синхронный ритмичный танец с взмахами рук. На пике номера они одновременно вскидывают обе руки над головой точно в такт — памятник за спиной становится частью кадра целиком. В финале движение останавливается, оба замирают с поднятыми руками, и внизу кадра проступает плашка «PKKMB UNEJ 2026», остающаяся до конца.
+
+Визуальный якорь: белая рубашка с чёрным галстуком, бронзовый памятник трёх фигур на территории кампуса, синхронный взмах рук на пике танца.</p>
+  </div>
+  <section class="section">
+    <div class="section-header">
+      <h2 class="section-title">Видео</h2>
+      <span class="section-badge">Пример генерации</span>
+    </div>
+    <div class="media-grid">
+      <div class="video-multi">
+        <div class="video-item"><video class="video-player" controls muted loop playsinline poster="https://temp-images.ws.pho.to/1b5736e8d34cedfbebe9ac494718c956f01cb1d1.png"><source src="https://temp-images.ws.pho.to/626124ab04ba5333d9293acc4ae3e3130d981767.mp4" type="video/mp4"></video>
+          <div class="video-caption">woman in her late 30s with straight blonde shoulder-length hair and cat-eye glasses</div>
+        </div>
+        <div class="video-item"><video class="video-player" controls muted loop playsinline poster="https://temp-images.ws.pho.to/4da39151de8d6769f6c8b0803251b045b21a84da.png"><source src="https://temp-images.ws.pho.to/c1bd5c52fa3a13a4b17be12642e73ab385b88f9d.mp4" type="video/mp4"></video>
+          <div class="video-caption">man in his early 30s with short brown hair, blue eyes, and a short beard</div>
+        </div>
+      </div>
+      <div class="prompts-col">
+        <details class="prompt-block">
+          <summary>Промпт для первого кадра <span class="prompt-label">GPT Image 2</span></summary>
+          <pre class="prompt-text">Turn the photo of the person into a portrait of them standing on a paved university plaza in front of a large bronze statue of three figures on a stone pedestal, waist-up framing, centred, vertical 9:16 composition, face clearly legible.
+
+Pose &amp; composition: they stand upright, wearing a crisp white long-sleeved collared shirt and a slim black necktie, one hand relaxed at their side and the other beginning to lift, mid-transition from stillness into a dance beat. A fellow student in an identical white-shirt-black-tie outfit stands just beside them, slightly softer focus.
+
+Expression: bright, confident cheerfulness — a warm, open smile, eyes engaged directly with the camera.
+
+Setting &amp; background: a sunny university plaza, palm and leafy trees framing the scene, the large bronze statue and its stone pedestal visible behind the pair, orange-painted stair railings at the edge of frame, clear blue sky.
+
+Lighting: bright, even midday sunlight, natural shadows cast on the paving.
+
+Colour grading: clean and vibrant — white shirts, black ties, green foliage, warm stone tones.
+
+Materials &amp; texture: the shirt fabric crisp cotton, the tie fabric with a faint sheen, the statue reading as weathered bronze with visible patina.
+
+Camera &amp; lens: 35mm at f/3.5, enough depth of field to keep the person, their classmate and the statue legible.
+
+Skin texture: keep real skin — visible pores, natural unevenness, no smoothing.
+
+Identity preservation: keep the person&#x27;s identity exactly as in the source photo — same age, face shape and proportions, skin tone and undertone, eye shape and eye colour, eyebrow shape, nose and jawline, exact hairstyle including colour, parting, length and texture, plus any freckles, moles, scars, facial hair or glasses. Hands anatomically correct, five fingers each.
+
+Avoid: over-smoothed skin, pasted-face look, no overlay graphics or captions of any kind — the branding banner is not yet visible in this frame.</pre>
+        </details>
+        <details class="prompt-block">
+          <summary>Промпт для видео <span class="prompt-label">Kling · Grok</span></summary>
+          <pre class="prompt-text">Create a short cinematic video based on the uploaded image. Vertical 9:16.
+A university plaza in front of a large bronze statue. The person from the image, in a white shirt and black tie, stands waist-up beside a fellow student, camera starting close and pulling wide into a dance routine.
+
+Camera and motion structure:
+1. FRAMES 0–20%: Static close shot — the person and their classmate glance briefly at the camera, still and composed.
+2. FRAMES 20–45%: The camera pulls back and widens, revealing the full plaza and the statue behind them as both begin a synchronized rhythmic dance — arm waves and torso sways in time with each other.
+3. FRAMES 45–80%: The camera follows the dance dynamically, panning with the movement as the pair performs synchronized arm-wave and clap beats, energy building.
+4. FRAMES 80–100%: Both raise both arms high together on the routine&#x27;s peak beat — this synchronized double arm-raise is the single hero moment and must be clearly, unmistakably visible with the statue in frame behind them. Motion stops as they hold the pose, and a graphic banner reading &quot;PKKMB UNEJ 2026&quot; appears at the bottom of frame and stays visible until the last frame.
+
+Character:
+Preserve the person&#x27;s face, hair, skin tone and identity exactly from the source image throughout. Allowed motion: the synchronized dance steps, arm waves, and the final double arm-raise held still. No other individual gestures.
+
+Key visual events:
+The hero moment is the synchronized double arm-raise at the routine&#x27;s peak, with the bronze statue visible behind both dancers — it must read clearly, not be rushed or partially framed.
+
+Style:
+Bright, energetic campus-orientation video — natural daylight, dynamic camera pull-back and pan, spectacular and celebratory like a real PKKMB promo clip.
+
+Restrictions:
+- Do not change the person&#x27;s appearance, face, clothing, or identity at any point
+- The person stays in frame, recognizable and the visual focus for the entire video
+- The person never speaks, sings or mouths words — silent dancing and smiling only
+- No speech bubbles
+- The synchronized double arm-raise at the peak beat must be clearly and unmistakably visible — this is the single most important visual element of the shot
+- The &quot;PKKMB UNEJ 2026&quot; banner appears only in the final 20% and must stay visible until the last frame
+- No captions other than the branding banner, which this trend&#x27;s own format carries
+- No additional gestures, actions, or beats beyond the described routine
+- No identity changes to the classmate; no faces duplicated or removed
+- No cuts, no jump cuts, no scene reset</pre>
+        </details>
+      </div>
+    </div>
+  </section>
+</div>
+</body>
+</html>

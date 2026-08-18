@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>#august — Календарь срывается танцем · Video Ideas</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      background: #f4f4f5; color: #111; font-size: 14px; line-height: 1.5;
+    }
+    .page-header {
+      background: #fff; border-bottom: 1px solid #e4e4e7; position: sticky;
+      top: 0; z-index: 100; box-shadow: 0 1px 8px rgba(0,0,0,.05);
+    }
+    .header-inner {
+      max-width: 1100px; margin: 0 auto; padding: 14px 28px;
+      display: flex; align-items: center; gap: 20px;
+    }
+    .brand {
+      font-size: 18px; font-weight: 800; letter-spacing: -.5px; color: #111;
+      white-space: nowrap; user-select: none; text-decoration: none;
+    }
+    .brand-tik { color: #fe2c55; }
+    .brand-tok { color: #010101; }
+    .brand-dot { color: #d1d1d1; margin: 0 6px; font-weight: 300; }
+    .brand-cc  { color: #888; font-size: 12px; font-weight: 500; }
+    .header-text { flex: 1; min-width: 0; }
+    .page-title {
+      font-size: 15px; font-weight: 700; letter-spacing: -.2px;
+      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    }
+    .page-sub { font-size: 11.5px; color: #999; margin-top: 2px; }
+    .date-badge {
+      background: #fe2c55; color: #fff; font-weight: 700; font-size: 12px;
+      border-radius: 8px; padding: 6px 14px; line-height: 1.4;
+      text-align: center; white-space: nowrap; flex-shrink: 0;
+    }
+    .date-badge span { display: block; font-size: 10px; font-weight: 500; opacity: .8; }
+    .page-nav {
+      max-width: 1100px; margin: 0 auto; padding: 0 28px;
+      display: flex; gap: 2px; border-top: 1px solid #f0f0f0;
+    }
+    .nav-a {
+      text-decoration: none; color: #999; font-size: 12.5px; font-weight: 500;
+      padding: 9px 14px; border-bottom: 2px solid transparent;
+      transition: color .15s, border-color .15s;
+    }
+    .nav-a:hover { color: #fe2c55; }
+    .nav-a.active { color: #fe2c55; border-bottom-color: #fe2c55; }
+    .content { max-width: 1100px; margin: 0 auto; padding: 36px 28px 80px; }
+    .section { margin-bottom: 52px; }
+    .section-header { display: flex; align-items: baseline; gap: 10px; margin-bottom: 16px; }
+    .section-title { font-size: 19px; font-weight: 800; letter-spacing: -.4px; }
+    .section-badge {
+      font-size: 10.5px; font-weight: 600; color: #999; background: #ebebeb;
+      padding: 3px 8px; border-radius: 20px; text-transform: uppercase; letter-spacing: .4px;
+    }
+    @media (max-width: 768px) {
+      .header-inner { gap: 12px; padding: 12px 16px; }
+      .date-badge { display: none; }
+      .page-nav { padding: 0 16px; }
+      .content { padding: 24px 16px 60px; }
+    }
+
+
+    .idea-lead {
+      background: #fff; border-radius: 12px; padding: 36px 40px 32px;
+      box-shadow: 0 1px 4px rgba(0,0,0,.07), 0 0 0 1px rgba(0,0,0,.05);
+      margin-bottom: 40px;
+    }
+    .idea-hashtag { font-size: 13px; font-weight: 700; color: #fe2c55; margin-bottom: 8px; }
+    .idea-title { font-size: 26px; font-weight: 800; letter-spacing: -.6px; line-height: 1.25; margin-bottom: 16px; }
+    .idea-desc { font-size: 14px; color: #444; line-height: 1.75; max-width: 720px; }
+    .media-grid {
+      display: grid; grid-template-columns: auto 1fr; gap: 28px; align-items: start;
+    }
+    .video-multi {
+      display: flex; gap: 16px; flex-wrap: wrap; align-items: flex-start;
+    }
+    .video-item {
+      width: 200px; display: flex; flex-direction: column; gap: 8px; flex-shrink: 0;
+    }
+    .video-caption {
+      font-size: 11px; color: #999; line-height: 1.4; padding: 0 2px;
+    }
+    .video-player {
+      width: 100%; aspect-ratio: 9/16; object-fit: cover; border-radius: 12px;
+      display: block; box-shadow: 0 2px 16px rgba(0,0,0,.14);
+    }
+    .frame-img {
+      width: 100%; aspect-ratio: 9/16; object-fit: cover; border-radius: 12px;
+      display: block; box-shadow: 0 2px 16px rgba(0,0,0,.14);
+    }
+    .prompts-col { display: flex; flex-direction: column; gap: 12px; }
+    .prompt-block {
+      background: #fff; border-radius: 10px;
+      box-shadow: 0 1px 4px rgba(0,0,0,.07), 0 0 0 1px rgba(0,0,0,.05); overflow: hidden;
+    }
+    .prompt-block summary {
+      padding: 14px 18px; font-size: 13px; font-weight: 700; cursor: pointer;
+      user-select: none; list-style: none; display: flex; align-items: center; gap: 8px; color: #333;
+    }
+    .prompt-block summary::-webkit-details-marker { display: none; }
+    .prompt-block summary::before { content: '▶'; font-size: 8px; color: #bbb; transition: transform .15s; flex-shrink: 0; }
+    .prompt-block[open] summary::before { transform: rotate(90deg); }
+    .prompt-block summary:hover { color: #fe2c55; }
+    .prompt-block summary:hover::before { color: #fe2c55; }
+    .prompt-label { font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: .5px; color: #bbb; margin-left: auto; }
+    .prompt-text {
+      padding: 14px 18px 16px; font-family: 'SF Mono','Fira Code','Menlo',monospace;
+      font-size: 11.5px; line-height: 1.7; color: #555; background: #f9f9f9;
+      border-top: 1px solid #f0f0f0; white-space: pre-wrap; word-break: break-word;
+      max-height: 320px; overflow-y: auto;
+    }
+    @media (max-width: 900px) {
+      .media-grid { grid-template-columns: 1fr; }
+      .video-multi { justify-content: center; }
+      .idea-lead { padding: 24px 22px 22px; }
+    }
+    @media (max-width: 520px) { .idea-title { font-size: 22px; } }
+
+  </style>
+</head>
+<body>
+<div class="page-header">
+  <div class="header-inner">
+    <a class="brand" href="../../../">
+      <span class="brand-tik">Tik</span><span class="brand-tok">Tok</span>
+      <span class="brand-dot">·</span><span class="brand-cc">Video Ideas</span>
+    </a>
+    <div class="header-text">
+      <div class="page-title">#august</div>
+      <div class="page-sub">Видео-идея · 8 августа 2026 · Выпуск merged_3</div>
+    </div>
+    <div class="date-badge">08.08.2026<span>Дата · Выпуск merged_3</span></div>
+  </div>
+  <nav class="page-nav">
+    <a href="../../../" class="nav-a">← Все отчёты</a>
+    <a href="../../#za" class="nav-a">← 8 авг 2026 · Выпуск merged_3</a>
+    <a href="#" class="nav-a active">#august</a>
+  </nav>
+</div>
+<div class="content">
+  <div class="idea-lead">
+    <div class="idea-hashtag">#august</div>
+    <h1 class="idea-title">Календарь срывается танцем</h1>
+    <p class="idea-desc">Пользователь сидит за кухонным столом рядом с настенным перекидным календарём, до этого явно скучающий; одним резким движением срывает лист июля — под ним «AUGUST» — и тут же врывается энергия: из дверного проёма влетает сосед по квартире, и они вдвоём пускаются в тот самый уверенный танец нового месяца, камера теперь стоит на штативе через комнату и медленно наезжает по мере нарастания танца. Ролик обрывается на синхронной властной позе двоих — вскинутые кулаки, довольные ухмылки — вместо привычной сольной селфи-съёмки перед зеркалом.
+
+Визуальный якорь: настенный перекидной календарь с сорванным листом июля и открывшимся «AUGUST», домашняя кухня, тот самый уверенный ритмичный танец-декларация тренда — теперь исполненный вдвоём.</p>
+  </div>
+  <section class="section">
+    <div class="section-header">
+      <h2 class="section-title">Видео</h2>
+      <span class="section-badge">Пример генерации</span>
+    </div>
+    <div class="media-grid">
+      <div class="video-multi">
+        <div class="video-item"><video class="video-player" controls muted loop playsinline poster="https://temp-images.ws.pho.to/96eb9d8eb7880e6437ff5cae1ed439e299521794.png"><source src="https://temp-images.ws.pho.to/fbd4569123b3b5ded98fa0c3188983a769c05cc9.mp4" type="video/mp4"></video>
+          <div class="video-caption">woman in her late 30s with straight blonde shoulder-length hair and cat-eye glasses</div>
+        </div>
+        <div class="video-item"><video class="video-player" controls muted loop playsinline poster="https://temp-images.ws.pho.to/8549dc0318ee2a9790b97efd96abfbb9ad3b9904.png"><source src="https://temp-images.ws.pho.to/b49b6cf47dec73481aeeeb5139a9405c547a3e2e.mp4" type="video/mp4"></video>
+          <div class="video-caption">man in his early 30s with short brown hair, blue eyes, and a short beard</div>
+        </div>
+      </div>
+      <div class="prompts-col">
+        <details class="prompt-block">
+          <summary>Промпт для первого кадра <span class="prompt-label">GPT Image 2</span></summary>
+          <pre class="prompt-text">Turn the photo of the person into a chest-up portrait of them sitting at a small kitchen table, mid-motion of ripping a page off a wall calendar, caught in a flicker of surprised realization. Vertical 9:16 composition, camera at chest height across the small table.
+
+Pose &amp; composition: seated, torso turned slightly toward a wall-mounted page-a-day calendar just to their side, right hand gripping a torn calendar page mid-rip, the month name &quot;AUGUST&quot; printed in bold black letters on the page now exposed underneath.
+
+Expression: caught between bored and startled — brows lifting, mouth slightly open, eyes flicking toward the calendar, the exact instant boredom breaks.
+
+Attire: a soft oversized hoodie or t-shirt, everyday loungewear, slightly rumpled.
+
+Setting &amp; background: a small bright kitchen/dining nook, light wood table, a doorway visible just out of frame&#x27;s edge on one side where a blurred figure edge suggests someone about to enter, plain warm-toned wall behind the calendar.
+
+Lighting: bright, even morning daylight from an unseen window, soft shadows, natural colour temperature.
+
+Colour grading: warm, naturalistic, slightly boosted like a phone photo, not cinematic.
+
+Camera &amp; lens: shot as if from a tripod-mounted phone across the small room, slightly wide perspective, natural rendering, minimal grain.
+
+Skin texture: keep real skin — visible pores, natural texture, no over-smoothing.
+
+Identity preservation: keep the person&#x27;s identity exactly as in the source photo — same age, face shape and proportions, skin tone and undertone, eye shape and eye colour, eyebrow shape, nose and jawline, and the exact hairstyle including its colour, parting, length and texture, plus any freckles, moles, scars or facial hair. Hands must be anatomically correct: five fingers, natural grip on the torn paper.
+
+Avoid: over-smoothed beauty-filter skin, a stiff posed-for-a-photo stillness, and no overlay graphics or captions of any kind beyond the calendar&#x27;s own printed month name, which is already part of the calendar and not legible as anything else.</pre>
+        </details>
+        <details class="prompt-block">
+          <summary>Промпт для видео <span class="prompt-label">Kling · Grok</span></summary>
+          <pre class="prompt-text">Create a short cinematic video based on the uploaded image. Vertical 9:16.
+The scene is a bright kitchen/dining nook with a wall calendar. The person from the image sits at a small table, unimpressed, next to a page-a-day wall calendar.
+
+Camera and motion structure:
+Locked-off tripod shot from across the room, then a slow push-in as the dance builds.
+0:00–0:01: The person sits slouched, bored, glancing at the calendar.
+0:01–0:02: In one sharp motion they rip the July page off the wall calendar, revealing &quot;AUGUST&quot; printed beneath in bold letters. They freeze for a beat, staring at it.
+0:02–0:03: A second person (a roommate/friend) bursts into frame from the side doorway, already dancing, and pulls the user up out of the chair.
+0:03–0:04: Both break into the confident hype dance — synced arm pumps and hip sway, camera continuing its slow push-in.
+0:04–0:05: The dance snaps into a shared power pose — both fists raised, chins up, huge grins — and holds completely still as the push-in settles on them.
+
+Character:
+Preserve the person&#x27;s face, hair, skin tone and identity exactly from the source image throughout. Allowed motion for the user: sitting bored, ripping the calendar page, standing pulled up, dancing arm/hip movement, the final fist-raised pose. No other movement.
+
+Style:
+Casual, warm indoor sitcom-like energy — a tripod-locked shot with real handheld-feeling energy from the two people, natural daylight, unpolished authentic energy, not cinematic grading.
+
+Restrictions:
+- Do not change the person&#x27;s appearance, face, clothing, or identity at any point
+- The person stays in frame, recognizable and the visual focus for the whole video, even with a second person sharing the frame
+- The person never speaks, sings or mouths words — no lip-sync, this is a silent dance and reaction, energy only
+- No speech bubbles
+- The calendar page rip happens exactly once, revealing &quot;AUGUST&quot; clearly and legibly on the wall calendar the moment it happens — this is the single most important visual beat and must be unmistakable
+- The final synchronized power pose (both fists raised, chins up) must be clearly reached and held completely still as the last beat
+- No additional gestures, actions, or beats beyond those explicitly described above
+- No jump cuts — one continuous take from the bored sitting through to the final pose
+- The dance movements read as energetic and playful only, never suggestive
+- No extra people besides the user and the one roommate/friend</pre>
+        </details>
+      </div>
+    </div>
+  </section>
+</div>
+</body>
+</html>

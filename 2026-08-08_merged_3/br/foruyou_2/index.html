@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>#foruyou — Дождь из карточек · Video Ideas</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      background: #f4f4f5; color: #111; font-size: 14px; line-height: 1.5;
+    }
+    .page-header {
+      background: #fff; border-bottom: 1px solid #e4e4e7; position: sticky;
+      top: 0; z-index: 100; box-shadow: 0 1px 8px rgba(0,0,0,.05);
+    }
+    .header-inner {
+      max-width: 1100px; margin: 0 auto; padding: 14px 28px;
+      display: flex; align-items: center; gap: 20px;
+    }
+    .brand {
+      font-size: 18px; font-weight: 800; letter-spacing: -.5px; color: #111;
+      white-space: nowrap; user-select: none; text-decoration: none;
+    }
+    .brand-tik { color: #fe2c55; }
+    .brand-tok { color: #010101; }
+    .brand-dot { color: #d1d1d1; margin: 0 6px; font-weight: 300; }
+    .brand-cc  { color: #888; font-size: 12px; font-weight: 500; }
+    .header-text { flex: 1; min-width: 0; }
+    .page-title {
+      font-size: 15px; font-weight: 700; letter-spacing: -.2px;
+      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    }
+    .page-sub { font-size: 11.5px; color: #999; margin-top: 2px; }
+    .date-badge {
+      background: #fe2c55; color: #fff; font-weight: 700; font-size: 12px;
+      border-radius: 8px; padding: 6px 14px; line-height: 1.4;
+      text-align: center; white-space: nowrap; flex-shrink: 0;
+    }
+    .date-badge span { display: block; font-size: 10px; font-weight: 500; opacity: .8; }
+    .page-nav {
+      max-width: 1100px; margin: 0 auto; padding: 0 28px;
+      display: flex; gap: 2px; border-top: 1px solid #f0f0f0;
+    }
+    .nav-a {
+      text-decoration: none; color: #999; font-size: 12.5px; font-weight: 500;
+      padding: 9px 14px; border-bottom: 2px solid transparent;
+      transition: color .15s, border-color .15s;
+    }
+    .nav-a:hover { color: #fe2c55; }
+    .nav-a.active { color: #fe2c55; border-bottom-color: #fe2c55; }
+    .content { max-width: 1100px; margin: 0 auto; padding: 36px 28px 80px; }
+    .section { margin-bottom: 52px; }
+    .section-header { display: flex; align-items: baseline; gap: 10px; margin-bottom: 16px; }
+    .section-title { font-size: 19px; font-weight: 800; letter-spacing: -.4px; }
+    .section-badge {
+      font-size: 10.5px; font-weight: 600; color: #999; background: #ebebeb;
+      padding: 3px 8px; border-radius: 20px; text-transform: uppercase; letter-spacing: .4px;
+    }
+    @media (max-width: 768px) {
+      .header-inner { gap: 12px; padding: 12px 16px; }
+      .date-badge { display: none; }
+      .page-nav { padding: 0 16px; }
+      .content { padding: 24px 16px 60px; }
+    }
+
+
+    .idea-lead {
+      background: #fff; border-radius: 12px; padding: 36px 40px 32px;
+      box-shadow: 0 1px 4px rgba(0,0,0,.07), 0 0 0 1px rgba(0,0,0,.05);
+      margin-bottom: 40px;
+    }
+    .idea-hashtag { font-size: 13px; font-weight: 700; color: #fe2c55; margin-bottom: 8px; }
+    .idea-title { font-size: 26px; font-weight: 800; letter-spacing: -.6px; line-height: 1.25; margin-bottom: 16px; }
+    .idea-desc { font-size: 14px; color: #444; line-height: 1.75; max-width: 720px; }
+    .media-grid {
+      display: grid; grid-template-columns: auto 1fr; gap: 28px; align-items: start;
+    }
+    .video-multi {
+      display: flex; gap: 16px; flex-wrap: wrap; align-items: flex-start;
+    }
+    .video-item {
+      width: 200px; display: flex; flex-direction: column; gap: 8px; flex-shrink: 0;
+    }
+    .video-caption {
+      font-size: 11px; color: #999; line-height: 1.4; padding: 0 2px;
+    }
+    .video-player {
+      width: 100%; aspect-ratio: 9/16; object-fit: cover; border-radius: 12px;
+      display: block; box-shadow: 0 2px 16px rgba(0,0,0,.14);
+    }
+    .frame-img {
+      width: 100%; aspect-ratio: 9/16; object-fit: cover; border-radius: 12px;
+      display: block; box-shadow: 0 2px 16px rgba(0,0,0,.14);
+    }
+    .prompts-col { display: flex; flex-direction: column; gap: 12px; }
+    .prompt-block {
+      background: #fff; border-radius: 10px;
+      box-shadow: 0 1px 4px rgba(0,0,0,.07), 0 0 0 1px rgba(0,0,0,.05); overflow: hidden;
+    }
+    .prompt-block summary {
+      padding: 14px 18px; font-size: 13px; font-weight: 700; cursor: pointer;
+      user-select: none; list-style: none; display: flex; align-items: center; gap: 8px; color: #333;
+    }
+    .prompt-block summary::-webkit-details-marker { display: none; }
+    .prompt-block summary::before { content: '▶'; font-size: 8px; color: #bbb; transition: transform .15s; flex-shrink: 0; }
+    .prompt-block[open] summary::before { transform: rotate(90deg); }
+    .prompt-block summary:hover { color: #fe2c55; }
+    .prompt-block summary:hover::before { color: #fe2c55; }
+    .prompt-label { font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: .5px; color: #bbb; margin-left: auto; }
+    .prompt-text {
+      padding: 14px 18px 16px; font-family: 'SF Mono','Fira Code','Menlo',monospace;
+      font-size: 11.5px; line-height: 1.7; color: #555; background: #f9f9f9;
+      border-top: 1px solid #f0f0f0; white-space: pre-wrap; word-break: break-word;
+      max-height: 320px; overflow-y: auto;
+    }
+    @media (max-width: 900px) {
+      .media-grid { grid-template-columns: 1fr; }
+      .video-multi { justify-content: center; }
+      .idea-lead { padding: 24px 22px 22px; }
+    }
+    @media (max-width: 520px) { .idea-title { font-size: 22px; } }
+
+  </style>
+</head>
+<body>
+<div class="page-header">
+  <div class="header-inner">
+    <a class="brand" href="../../../">
+      <span class="brand-tik">Tik</span><span class="brand-tok">Tok</span>
+      <span class="brand-dot">·</span><span class="brand-cc">Video Ideas</span>
+    </a>
+    <div class="header-text">
+      <div class="page-title">#foruyou</div>
+      <div class="page-sub">Видео-идея · 8 августа 2026 · Выпуск merged_3</div>
+    </div>
+    <div class="date-badge">08.08.2026<span>Дата · Выпуск merged_3</span></div>
+  </div>
+  <nav class="page-nav">
+    <a href="../../../" class="nav-a">← Все отчёты</a>
+    <a href="../../#br" class="nav-a">← 8 авг 2026 · Выпуск merged_3</a>
+    <a href="#" class="nav-a active">#foruyou</a>
+  </nav>
+</div>
+<div class="content">
+  <div class="idea-lead">
+    <div class="idea-hashtag">#foruyou</div>
+    <h1 class="idea-title">Дождь из карточек</h1>
+    <p class="idea-desc">Вместо одинокой неподвижной фигуры перед стеной превью — пользователь и двое друзей в тесной ручной съёмке, будто снимают друг друга на телефон. Сверху, будто из ниоткуда, начинают падать светящиеся прямоугольные карточки — те же превью-миниатюры, что составляли стену в первом уровне, только теперь материализующиеся прямо в воздухе, как настоящее конфетти. Первая карточка приземляется в открытую ладонь одного из друзей — тот удивлённо смеётся. Вторая падает на плечо другого. Третья, самая яркая, приземляется прямо пользователю на грудь — и все трое одновременно вскидывают руки в шумном восторге, продолжая ловить падающие карточки. Регистр — шумный, тесный, почти хаотичный, а не тихое одинокое узнавание первого уровня.
+
+Визуальный якорь: те же светящиеся карточки-превью, что составляли неподвижную стену в первом уровне, — но здесь они физически материализуются в воздухе и падают дождём на пользователя и его друзей.</p>
+  </div>
+  <section class="section">
+    <div class="section-header">
+      <h2 class="section-title">Видео</h2>
+      <span class="section-badge">Пример генерации</span>
+    </div>
+    <div class="media-grid">
+      <div class="video-multi">
+        <div class="video-item"><video class="video-player" controls muted loop playsinline poster="https://temp-images.ws.pho.to/68598b3265db7e541d6e54a847f495eda792753a.png"><source src="https://temp-images.ws.pho.to/0724d31da1b6f45beec933bcdeb496ac0e4e34b1.mp4" type="video/mp4"></video>
+          <div class="video-caption">woman in her late 30s with straight blonde shoulder-length hair and cat-eye glasses</div>
+        </div>
+        <div class="video-item"><video class="video-player" controls muted loop playsinline poster="https://temp-images.ws.pho.to/8f0de061be861fe1e964211690b7521f8b63a9b7.png"><source src="https://temp-images.ws.pho.to/709a7929bbf9652aed2f6aba174b10514dd1ecc9.mp4" type="video/mp4"></video>
+          <div class="video-caption">man in his early 30s with short brown hair, blue eyes, and a short beard</div>
+        </div>
+      </div>
+      <div class="prompts-col">
+        <details class="prompt-block">
+          <summary>Промпт для первого кадра <span class="prompt-label">GPT Image 2</span></summary>
+          <pre class="prompt-text">Turn the photo of the person into a portrait of them pressed close with two blurred friends, all three looking upward together, vertical 9:16, chest-up framing, the person centered and clearly the sharpest, most legible face in the group.
+
+Pose &amp; composition: the person stands slightly forward of the other two, all three tilting their heads up as if watching something falling from above, hands half-raised as though ready to catch something. The person&#x27;s face stays large, sharp and centered; the friends at the frame&#x27;s edges are visibly softer and smaller.
+
+Attire: casual everyday clothing on everyone, nothing branded.
+
+Setting &amp; background: a plain dark room, almost featureless, so nothing competes with what falls through it. A few small glowing rectangular cards — miniature video-thumbnail shapes, no legible text or faces on them — hang frozen mid-air above the group as if just beginning to fall.
+
+Lighting: soft cool light spilling down from the falling cards themselves, catching upturned faces from above; a warm undertone kept on the person&#x27;s skin so they read as the warmest, most present figure.
+
+Colour grading: cool blue-white glow from the cards against a near-black room, warm skin tones as the accent.
+
+Camera &amp; lens: 24mm at f/2.4, slightly wide, a touch of handheld looseness rather than a clinical static frame.
+
+Skin texture: real skin, visible pores, no smoothing, especially on the person.
+
+Identity preservation: keep the person&#x27;s identity exactly as in the source photo — same age, face shape and proportions, skin tone and undertone, eye shape and eye colour, eyebrow shape, nose and jawline, and the exact hairstyle including its colour, parting, length and texture, plus any freckles, moles, scars or facial hair.
+
+Avoid: no legible text or logos on any card; no overlay graphics or captions added over the frame; no pasted-face or cutout look on any of the three; the two friends must stay clearly secondary — blurred, smaller, never sharper than the person.</pre>
+        </details>
+        <details class="prompt-block">
+          <summary>Промпт для видео <span class="prompt-label">Kling · Grok</span></summary>
+          <pre class="prompt-text">Create a short cinematic video based on the uploaded image. Vertical 9:16.
+The person and two friends stand close together in a plain dark room, chest-up, looking upward as small glowing rectangular cards begin falling from above.
+
+Camera and motion structure:
+Handheld throughout, one continuous take, visible sway among the group — never locked off.
+0:00–0:01: The three look up together, a few glowing cards already drifting down above them.
+0:01–0:02: The first card lands directly in a friend&#x27;s open palm; they laugh in surprise.
+0:02–0:03: A second card lands on the other friend&#x27;s shoulder, catching their attention.
+0:03–0:04: A third, brighter card lands directly on the person&#x27;s chest.
+0:04–0:05: All three throw their arms up together in noisy, silent-mouthed celebration, still reaching to catch more falling cards around them — the camera settling into a loose handheld drift over the group as the shower continues, the celebration carrying on rather than resolving to stillness.
+
+Character:
+Preserve the person&#x27;s face, hair, skin tone and identity exactly from the source image throughout. Allowed motion: looking up, arms raising to catch and celebrate. Nothing else.
+
+Key visual events:
+No single hero moment — a chain of three beats: the friend&#x27;s catch, the shoulder landing, then the card landing on the person, followed by the shared celebration. Each happens once, back to back, no reset.
+
+Style:
+Warm-cool contrast, chaotic handheld energy — glowing falling cards against a dark room, real physical catching and laughing. Joyful and a little messy, not the quiet solo stillness of a frozen wall.
+
+Restrictions:
+- Do not change the person&#x27;s appearance, face, clothing or identity at any point
+- The person stays in frame, recognizable and the visual focus for the whole video, even flanked by two friends
+- The person never speaks, sings or mouths words — all reaction is silent laughter and physical celebration only
+- No speech bubbles
+- No legible text or logos on any falling card at any point
+- Exactly 3 cards land in total, one per person, in the order described — no more, no fewer
+- No cuts or jump edits — one continuous handheld take from the first look-up to the final drift
+- No additional gestures, actions, or beats beyond those explicitly described above
+- No more than two friends clearly depicted beside the person; no violent or aggressive motion</pre>
+        </details>
+      </div>
+    </div>
+  </section>
+</div>
+</body>
+</html>

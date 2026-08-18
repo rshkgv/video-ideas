@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>#petal — La flor que responde · Video Ideas</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      background: #f4f4f5; color: #111; font-size: 14px; line-height: 1.5;
+    }
+    .page-header {
+      background: #fff; border-bottom: 1px solid #e4e4e7; position: sticky;
+      top: 0; z-index: 100; box-shadow: 0 1px 8px rgba(0,0,0,.05);
+    }
+    .header-inner {
+      max-width: 1100px; margin: 0 auto; padding: 14px 28px;
+      display: flex; align-items: center; gap: 20px;
+    }
+    .brand {
+      font-size: 18px; font-weight: 800; letter-spacing: -.5px; color: #111;
+      white-space: nowrap; user-select: none; text-decoration: none;
+    }
+    .brand-tik { color: #fe2c55; }
+    .brand-tok { color: #010101; }
+    .brand-dot { color: #d1d1d1; margin: 0 6px; font-weight: 300; }
+    .brand-cc  { color: #888; font-size: 12px; font-weight: 500; }
+    .header-text { flex: 1; min-width: 0; }
+    .page-title {
+      font-size: 15px; font-weight: 700; letter-spacing: -.2px;
+      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    }
+    .page-sub { font-size: 11.5px; color: #999; margin-top: 2px; }
+    .date-badge {
+      background: #fe2c55; color: #fff; font-weight: 700; font-size: 12px;
+      border-radius: 8px; padding: 6px 14px; line-height: 1.4;
+      text-align: center; white-space: nowrap; flex-shrink: 0;
+    }
+    .date-badge span { display: block; font-size: 10px; font-weight: 500; opacity: .8; }
+    .page-nav {
+      max-width: 1100px; margin: 0 auto; padding: 0 28px;
+      display: flex; gap: 2px; border-top: 1px solid #f0f0f0;
+    }
+    .nav-a {
+      text-decoration: none; color: #999; font-size: 12.5px; font-weight: 500;
+      padding: 9px 14px; border-bottom: 2px solid transparent;
+      transition: color .15s, border-color .15s;
+    }
+    .nav-a:hover { color: #fe2c55; }
+    .nav-a.active { color: #fe2c55; border-bottom-color: #fe2c55; }
+    .content { max-width: 1100px; margin: 0 auto; padding: 36px 28px 80px; }
+    .section { margin-bottom: 52px; }
+    .section-header { display: flex; align-items: baseline; gap: 10px; margin-bottom: 16px; }
+    .section-title { font-size: 19px; font-weight: 800; letter-spacing: -.4px; }
+    .section-badge {
+      font-size: 10.5px; font-weight: 600; color: #999; background: #ebebeb;
+      padding: 3px 8px; border-radius: 20px; text-transform: uppercase; letter-spacing: .4px;
+    }
+    @media (max-width: 768px) {
+      .header-inner { gap: 12px; padding: 12px 16px; }
+      .date-badge { display: none; }
+      .page-nav { padding: 0 16px; }
+      .content { padding: 24px 16px 60px; }
+    }
+
+
+    .idea-lead {
+      background: #fff; border-radius: 12px; padding: 36px 40px 32px;
+      box-shadow: 0 1px 4px rgba(0,0,0,.07), 0 0 0 1px rgba(0,0,0,.05);
+      margin-bottom: 40px;
+    }
+    .idea-hashtag { font-size: 13px; font-weight: 700; color: #fe2c55; margin-bottom: 8px; }
+    .idea-title { font-size: 26px; font-weight: 800; letter-spacing: -.6px; line-height: 1.25; margin-bottom: 16px; }
+    .idea-desc { font-size: 14px; color: #444; line-height: 1.75; max-width: 720px; }
+    .media-grid {
+      display: grid; grid-template-columns: auto 1fr; gap: 28px; align-items: start;
+    }
+    .video-multi {
+      display: flex; gap: 16px; flex-wrap: wrap; align-items: flex-start;
+    }
+    .video-item {
+      width: 200px; display: flex; flex-direction: column; gap: 8px; flex-shrink: 0;
+    }
+    .video-caption {
+      font-size: 11px; color: #999; line-height: 1.4; padding: 0 2px;
+    }
+    .video-player {
+      width: 100%; aspect-ratio: 9/16; object-fit: cover; border-radius: 12px;
+      display: block; box-shadow: 0 2px 16px rgba(0,0,0,.14);
+    }
+    .frame-img {
+      width: 100%; aspect-ratio: 9/16; object-fit: cover; border-radius: 12px;
+      display: block; box-shadow: 0 2px 16px rgba(0,0,0,.14);
+    }
+    .prompts-col { display: flex; flex-direction: column; gap: 12px; }
+    .prompt-block {
+      background: #fff; border-radius: 10px;
+      box-shadow: 0 1px 4px rgba(0,0,0,.07), 0 0 0 1px rgba(0,0,0,.05); overflow: hidden;
+    }
+    .prompt-block summary {
+      padding: 14px 18px; font-size: 13px; font-weight: 700; cursor: pointer;
+      user-select: none; list-style: none; display: flex; align-items: center; gap: 8px; color: #333;
+    }
+    .prompt-block summary::-webkit-details-marker { display: none; }
+    .prompt-block summary::before { content: '▶'; font-size: 8px; color: #bbb; transition: transform .15s; flex-shrink: 0; }
+    .prompt-block[open] summary::before { transform: rotate(90deg); }
+    .prompt-block summary:hover { color: #fe2c55; }
+    .prompt-block summary:hover::before { color: #fe2c55; }
+    .prompt-label { font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: .5px; color: #bbb; margin-left: auto; }
+    .prompt-text {
+      padding: 14px 18px 16px; font-family: 'SF Mono','Fira Code','Menlo',monospace;
+      font-size: 11.5px; line-height: 1.7; color: #555; background: #f9f9f9;
+      border-top: 1px solid #f0f0f0; white-space: pre-wrap; word-break: break-word;
+      max-height: 320px; overflow-y: auto;
+    }
+    @media (max-width: 900px) {
+      .media-grid { grid-template-columns: 1fr; }
+      .video-multi { justify-content: center; }
+      .idea-lead { padding: 24px 22px 22px; }
+    }
+    @media (max-width: 520px) { .idea-title { font-size: 22px; } }
+
+  </style>
+</head>
+<body>
+<div class="page-header">
+  <div class="header-inner">
+    <a class="brand" href="../../../">
+      <span class="brand-tik">Tik</span><span class="brand-tok">Tok</span>
+      <span class="brand-dot">·</span><span class="brand-cc">Video Ideas</span>
+    </a>
+    <div class="header-text">
+      <div class="page-title">#petal</div>
+      <div class="page-sub">Видео-идея · 8 августа 2026 · Выпуск merged_3</div>
+    </div>
+    <div class="date-badge">08.08.2026<span>Дата · Выпуск merged_3</span></div>
+  </div>
+  <nav class="page-nav">
+    <a href="../../../" class="nav-a">← Все отчёты</a>
+    <a href="../../#co" class="nav-a">← 8 авг 2026 · Выпуск merged_3</a>
+    <a href="#" class="nav-a active">#petal</a>
+  </nav>
+</div>
+<div class="content">
+  <div class="idea-lead">
+    <div class="idea-hashtag">#petal</div>
+    <h1 class="idea-title">La flor que responde</h1>
+    <p class="idea-desc">Пользователь держит телефон перед собой, экран хорошо виден в кадре: на нём — профиль в соцсети с именем &quot;Ariana Grande&quot; и строка поиска. Пользователь набирает в строке одно слово: &quot;petal&quot;. В момент, когда палец касается кнопки отправки, весь экран телефона захлёстывает крупный белый ромашковидный цветок, разворачиваясь лепесток за лепестком поверх профиля и результатов поиска. Пользователь на секунду замирает, глядя на экран, а затем расплывается в удивлённом, беззвучном смехе — реакция приходит не в момент цветка, а чуть позже, когда он уже осознал, что произошло.
+
+Визуальный якорь: экран телефона с профилем &quot;Ariana Grande&quot; и строкой поиска &quot;petal&quot;, разворачивающийся поверх экрана крупный белый ромашковидный цветочный оверлей.</p>
+  </div>
+  <section class="section">
+    <div class="section-header">
+      <h2 class="section-title">Видео</h2>
+      <span class="section-badge">Пример генерации</span>
+    </div>
+    <div class="media-grid">
+      <div class="video-multi">
+        <div class="video-item"><video class="video-player" controls muted loop playsinline poster="https://temp-images.ws.pho.to/ccc727f758f6ab1f0a8bbd6d3e783a8a903957e7.png"><source src="https://temp-images.ws.pho.to/efcfbf989a6ad983827f00c1d42f7a798af582c3.mp4" type="video/mp4"></video>
+          <div class="video-caption">woman in her late 30s with straight blonde shoulder-length hair and cat-eye glasses</div>
+        </div>
+        <div class="video-item"><video class="video-player" controls muted loop playsinline poster="https://temp-images.ws.pho.to/60c830db104165b28ba891b0e3ebc985d3495284.png"><source src="https://temp-images.ws.pho.to/db02b77356e9e8e6e9eae366f2c2b8abe6085880.mp4" type="video/mp4"></video>
+          <div class="video-caption">man in his early 30s with short brown hair, blue eyes, and a short beard</div>
+        </div>
+      </div>
+      <div class="prompts-col">
+        <details class="prompt-block">
+          <summary>Промпт для первого кадра <span class="prompt-label">GPT Image 2</span></summary>
+          <pre class="prompt-text">Turn the photo of the person into a portrait of them holding a smartphone up in front of their chest, vertical 9:16 composition, framed chest-up so the face reads large and clearly legible, the phone&#x27;s screen tilted just enough toward camera to be readable, held in both hands.
+
+Pose &amp; composition: sitting or standing, both hands holding the phone at chest height, screen angled toward camera, torso facing forward, head tilted slightly down toward the screen then about to lift toward the viewer.
+
+Expression: focused curiosity, on the edge of amusement — eyebrows slightly raised, lips just parting.
+
+Attire: casual, ordinary everyday clothes, nothing costume-like.
+
+Setting &amp; background: a plain, softly lit indoor room — a bedroom or living room — deliberately unremarkable so attention stays on the phone screen.
+
+On-screen content: the phone&#x27;s screen shows a social media profile page with the name &quot;Ariana Grande&quot; clearly visible near the top, and below it a search bar containing the partially typed word &quot;petal&quot; — the search has not yet been submitted, and no flower graphic is visible yet in this frame.
+
+Environmental atmosphere &amp; lighting: soft, even indoor lighting, with the phone screen&#x27;s own glow lighting the person&#x27;s face from below and in front, a cool white-blue cast mixing with the room&#x27;s warmer ambient light.
+
+Colour grading: neutral indoor tones with a cool screen-glow accent on the face.
+
+Materials &amp; texture: skin keeps natural pores and texture, no smoothing; the phone screen shows crisp, legible UI text and a faint realistic screen glare.
+
+Camera &amp; lens: 35mm at f/2.2, shallow depth of field keeping the person and the phone screen sharp and legible, the background softly blurred.
+
+Depth separation: person and phone screen sharp; background softly blurred.
+
+Identity preservation: keep the person&#x27;s identity exactly as in the source photo — same age, face shape and proportions, skin tone and undertone, eye shape and eye colour, eyebrow shape, nose and jawline, and the exact hairstyle including its colour, length and texture, plus any freckles, moles, scars or facial hair. Both hands holding the phone must show five fingers each in correct, natural anatomy.
+
+Avoid: over-smoothed skin, a pasted-face or cutout look, and no overlay graphics floating outside the phone screen itself — any on-screen text must sit legibly within the phone&#x27;s display only.</pre>
+        </details>
+        <details class="prompt-block">
+          <summary>Промпт для видео <span class="prompt-label">Kling · Grok</span></summary>
+          <pre class="prompt-text">Create a short cinematic video based on the uploaded image. Vertical 9:16.
+A softly lit indoor room. The person from the image holds a phone at chest height, screen visible, showing a profile page for &quot;Ariana Grande&quot; and a search bar with the word &quot;petal&quot; being typed.
+
+Camera and motion structure:
+Keep the overall shot static. No zoom, no camera movement, no cuts.
+FRAMES 0–35%: The person&#x27;s thumb finishes typing &quot;petal&quot; into the search bar, visible on the phone&#x27;s screen, then taps the search button.
+FRAMES 35–60%: The instant the tap lands, a large white daisy-like flower graphic blooms across the entire phone screen, petal by petal unfurling outward until it fully covers the profile and search results beneath it.
+FRAMES 60–85%: The person stares at the now flower-covered screen for a beat, expression still and processing.
+FRAMES 85–100%: A beat after the flower has fully finished blooming — not during it — the person breaks into a silent, delighted, surprised laugh, shoulders shaking slightly, eyes crinkling. That delayed laugh is the last thing the video shows.
+
+Character:
+Preserve the person&#x27;s face, hair, skin tone, and identity exactly from the source image throughout the entire video. Do not alter their appearance.
+Allowed motion: the typing gesture, the tap, the still stare, the delayed laugh. No standing up, no putting the phone down, no turning away from camera.
+
+Style:
+Flat, ordinary phone-video look with a crisp, legible screen insert — no cinematic grade beyond natural screen-glow lighting. Comedic, whimsical, warmly absurd.
+
+Restrictions:
+- Do not change the person&#x27;s appearance, face, clothing, or identity at any point
+- The person stays in frame, recognizable and the visual focus for the entire video, phone screen included in shot but never replacing them as the subject
+- No speaking, no singing, no lip-sync, no mouthing words — the laugh is silent, emotional reaction only
+- No speech bubbles
+- The &quot;Ariana Grande&quot; profile name and the &quot;petal&quot; search text are legible on the phone screen from the first frame and stay visible until the flower graphic covers them — they never appear anywhere outside the phone&#x27;s own screen
+- The flower graphic blooms exactly once, fully covering the screen, and once fully bloomed does not retract or re-bloom
+- The delighted laugh occurs only after the flower has fully finished blooming, never during the bloom itself
+- No reframing, cut, or change of angle — one continuous static shot from start to end
+- No additional gestures, actions, or beats beyond what is described above
+- No other people appear in the room</pre>
+        </details>
+      </div>
+    </div>
+  </section>
+</div>
+</body>
+</html>

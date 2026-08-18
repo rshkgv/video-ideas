@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>#nocontesta — El teléfono que nadie contesta · Video Ideas</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      background: #f4f4f5; color: #111; font-size: 14px; line-height: 1.5;
+    }
+    .page-header {
+      background: #fff; border-bottom: 1px solid #e4e4e7; position: sticky;
+      top: 0; z-index: 100; box-shadow: 0 1px 8px rgba(0,0,0,.05);
+    }
+    .header-inner {
+      max-width: 1100px; margin: 0 auto; padding: 14px 28px;
+      display: flex; align-items: center; gap: 20px;
+    }
+    .brand {
+      font-size: 18px; font-weight: 800; letter-spacing: -.5px; color: #111;
+      white-space: nowrap; user-select: none; text-decoration: none;
+    }
+    .brand-tik { color: #fe2c55; }
+    .brand-tok { color: #010101; }
+    .brand-dot { color: #d1d1d1; margin: 0 6px; font-weight: 300; }
+    .brand-cc  { color: #888; font-size: 12px; font-weight: 500; }
+    .header-text { flex: 1; min-width: 0; }
+    .page-title {
+      font-size: 15px; font-weight: 700; letter-spacing: -.2px;
+      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    }
+    .page-sub { font-size: 11.5px; color: #999; margin-top: 2px; }
+    .date-badge {
+      background: #fe2c55; color: #fff; font-weight: 700; font-size: 12px;
+      border-radius: 8px; padding: 6px 14px; line-height: 1.4;
+      text-align: center; white-space: nowrap; flex-shrink: 0;
+    }
+    .date-badge span { display: block; font-size: 10px; font-weight: 500; opacity: .8; }
+    .page-nav {
+      max-width: 1100px; margin: 0 auto; padding: 0 28px;
+      display: flex; gap: 2px; border-top: 1px solid #f0f0f0;
+    }
+    .nav-a {
+      text-decoration: none; color: #999; font-size: 12.5px; font-weight: 500;
+      padding: 9px 14px; border-bottom: 2px solid transparent;
+      transition: color .15s, border-color .15s;
+    }
+    .nav-a:hover { color: #fe2c55; }
+    .nav-a.active { color: #fe2c55; border-bottom-color: #fe2c55; }
+    .content { max-width: 1100px; margin: 0 auto; padding: 36px 28px 80px; }
+    .section { margin-bottom: 52px; }
+    .section-header { display: flex; align-items: baseline; gap: 10px; margin-bottom: 16px; }
+    .section-title { font-size: 19px; font-weight: 800; letter-spacing: -.4px; }
+    .section-badge {
+      font-size: 10.5px; font-weight: 600; color: #999; background: #ebebeb;
+      padding: 3px 8px; border-radius: 20px; text-transform: uppercase; letter-spacing: .4px;
+    }
+    @media (max-width: 768px) {
+      .header-inner { gap: 12px; padding: 12px 16px; }
+      .date-badge { display: none; }
+      .page-nav { padding: 0 16px; }
+      .content { padding: 24px 16px 60px; }
+    }
+
+
+    .idea-lead {
+      background: #fff; border-radius: 12px; padding: 36px 40px 32px;
+      box-shadow: 0 1px 4px rgba(0,0,0,.07), 0 0 0 1px rgba(0,0,0,.05);
+      margin-bottom: 40px;
+    }
+    .idea-hashtag { font-size: 13px; font-weight: 700; color: #fe2c55; margin-bottom: 8px; }
+    .idea-title { font-size: 26px; font-weight: 800; letter-spacing: -.6px; line-height: 1.25; margin-bottom: 16px; }
+    .idea-desc { font-size: 14px; color: #444; line-height: 1.75; max-width: 720px; }
+    .media-grid {
+      display: grid; grid-template-columns: auto 1fr; gap: 28px; align-items: start;
+    }
+    .video-multi {
+      display: flex; gap: 16px; flex-wrap: wrap; align-items: flex-start;
+    }
+    .video-item {
+      width: 200px; display: flex; flex-direction: column; gap: 8px; flex-shrink: 0;
+    }
+    .video-caption {
+      font-size: 11px; color: #999; line-height: 1.4; padding: 0 2px;
+    }
+    .video-player {
+      width: 100%; aspect-ratio: 9/16; object-fit: cover; border-radius: 12px;
+      display: block; box-shadow: 0 2px 16px rgba(0,0,0,.14);
+    }
+    .frame-img {
+      width: 100%; aspect-ratio: 9/16; object-fit: cover; border-radius: 12px;
+      display: block; box-shadow: 0 2px 16px rgba(0,0,0,.14);
+    }
+    .prompts-col { display: flex; flex-direction: column; gap: 12px; }
+    .prompt-block {
+      background: #fff; border-radius: 10px;
+      box-shadow: 0 1px 4px rgba(0,0,0,.07), 0 0 0 1px rgba(0,0,0,.05); overflow: hidden;
+    }
+    .prompt-block summary {
+      padding: 14px 18px; font-size: 13px; font-weight: 700; cursor: pointer;
+      user-select: none; list-style: none; display: flex; align-items: center; gap: 8px; color: #333;
+    }
+    .prompt-block summary::-webkit-details-marker { display: none; }
+    .prompt-block summary::before { content: '▶'; font-size: 8px; color: #bbb; transition: transform .15s; flex-shrink: 0; }
+    .prompt-block[open] summary::before { transform: rotate(90deg); }
+    .prompt-block summary:hover { color: #fe2c55; }
+    .prompt-block summary:hover::before { color: #fe2c55; }
+    .prompt-label { font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: .5px; color: #bbb; margin-left: auto; }
+    .prompt-text {
+      padding: 14px 18px 16px; font-family: 'SF Mono','Fira Code','Menlo',monospace;
+      font-size: 11.5px; line-height: 1.7; color: #555; background: #f9f9f9;
+      border-top: 1px solid #f0f0f0; white-space: pre-wrap; word-break: break-word;
+      max-height: 320px; overflow-y: auto;
+    }
+    @media (max-width: 900px) {
+      .media-grid { grid-template-columns: 1fr; }
+      .video-multi { justify-content: center; }
+      .idea-lead { padding: 24px 22px 22px; }
+    }
+    @media (max-width: 520px) { .idea-title { font-size: 22px; } }
+
+  </style>
+</head>
+<body>
+<div class="page-header">
+  <div class="header-inner">
+    <a class="brand" href="../../../">
+      <span class="brand-tik">Tik</span><span class="brand-tok">Tok</span>
+      <span class="brand-dot">·</span><span class="brand-cc">Video Ideas</span>
+    </a>
+    <div class="header-text">
+      <div class="page-title">#nocontesta</div>
+      <div class="page-sub">Видео-идея · 8 августа 2026 · Выпуск merged_3</div>
+    </div>
+    <div class="date-badge">08.08.2026<span>Дата · Выпуск merged_3</span></div>
+  </div>
+  <nav class="page-nav">
+    <a href="../../../" class="nav-a">← Все отчёты</a>
+    <a href="../../#co" class="nav-a">← 8 авг 2026 · Выпуск merged_3</a>
+    <a href="#" class="nav-a active">#nocontesta</a>
+  </nav>
+</div>
+<div class="content">
+  <div class="idea-lead">
+    <div class="idea-hashtag">#nocontesta</div>
+    <h1 class="idea-title">El teléfono que nadie contesta</h1>
+    <p class="idea-desc">Бесконечная тёмная пустота, расчерченная неоновой сеткой в духе ретро-визуализатора, но без города и пальм — просто уходящие вдаль ряды одинаковых неоновых телефонных будок, каждая из которых звонит собственным пульсирующим светом. На боку каждой будки выгравирована неоновая надпись &quot;No Contesta&quot; — то, чем на самом деле являются все эти будки: они никогда не отвечают. Пользователь стоит у ближайшей, держит трубку у уха, слушает гудок — спокойно, без тревоги — и вешает трубку обратно. В тот же миг будка рядом с ним гаснет и перестаёт звонить. Затем — следующая, дальше по ряду, и следующая за ней, одна за другой, звон гаснет по цепочке, уходя всё дальше в темноту. Пользователь не считает будки и не оборачивается — просто смотрит, как гаснет линия за линией. В финале камера отдаляется, открывая: бесчисленные ряды неоновых будок, теперь все погашенные и молчащие, до самого горизонта.
+
+Связь с трендом: буквальное значение названия трека — &quot;не отвечает&quot; — превращено в целый мир из молчащих телефонов; исполнитель или визуализатор напрямую не показаны, но сама идея тренда — то, что никогда не отвечает, — становится физическим пространством, а неоновая маркировка &quot;No Contesta&quot; остаётся частью этого мира, а не подписью поверх кадра.</p>
+  </div>
+  <section class="section">
+    <div class="section-header">
+      <h2 class="section-title">Видео</h2>
+      <span class="section-badge">Пример генерации</span>
+    </div>
+    <div class="media-grid">
+      <div class="video-multi">
+        <div class="video-item"><video class="video-player" controls muted loop playsinline poster="https://temp-images.ws.pho.to/d01fc5d5042bf1e1fdc4214a831351e79310b8bc.png"><source src="https://temp-images.ws.pho.to/632f9cd2a36cf379abf0336418c70ec2bad19dcf.mp4" type="video/mp4"></video>
+          <div class="video-caption">woman in her late 30s with straight blonde shoulder-length hair and cat-eye glasses</div>
+        </div>
+        <div class="video-item"><video class="video-player" controls muted loop playsinline poster="https://temp-images.ws.pho.to/487701a9fb1cd7168413901c7cebead4134913ec.png"><source src="https://temp-images.ws.pho.to/5c6ed4b20eebb3db38009cb1e7ecc2a7167f9531.mp4" type="video/mp4"></video>
+          <div class="video-caption">man in his early 30s with short brown hair, blue eyes, and a short beard</div>
+        </div>
+      </div>
+      <div class="prompts-col">
+        <details class="prompt-block">
+          <summary>Промпт для первого кадра <span class="prompt-label">GPT Image 2</span></summary>
+          <pre class="prompt-text">Turn the photo of the person into a portrait of them standing in an infinite dark void marked only by a faint neon grid on the ground, vertical 9:16 composition, framed chest-up so the face reads large and clearly legible, one hand holding an old-fashioned neon-outlined telephone receiver to their ear.
+
+Pose &amp; composition: standing beside the nearest of many identical neon telephone booths receding in rows into the darkness, one hand holding a glowing neon-outlined receiver to their ear, the other hand resting on the booth&#x27;s frame. Torso angled slightly toward the booth, head tilted faintly as if listening.
+
+Expression: calm, unbothered attentiveness — no anxiety, just quiet listening, as if the silence on the other end is expected.
+
+Attire: ordinary real-world clothes, unremarkable.
+
+Setting &amp; background: an infinite dark void, its only visible structure a faint glowing grid line on the ground receding to the horizon; rows of identical booth-shaped neon outlines — retro telephone booths rendered as thin glowing neon tubing — stand at intervals into the far distance, each pulsing gently with light. On the side of the nearest booth, small neon-tube lettering reads &quot;No Contesta,&quot; glowing the same colour as the booth&#x27;s outline.
+
+Environmental atmosphere &amp; lighting: the only light in the frame comes from the neon booth outlines and grid lines themselves — cool cyan and magenta — casting soft coloured light onto the person&#x27;s face and the receiver.
+
+Colour grading: near-total black background, cool cyan-magenta neon accents, natural warm skin tone as the only non-neon colour.
+
+Materials &amp; texture: the booths and receiver read as thin glowing neon tubing, faintly humming with light; skin keeps natural pores and texture, no smoothing.
+
+Camera &amp; lens: 40mm at f/2.2, shallow depth of field keeping the person and the nearest booth sharp, the receding rows of booths softly resolving into the dark distance.
+
+Depth separation: person and nearest booth sharp; receding rows of booths progressively softer and dimmer into the dark.
+
+Identity preservation: keep the person&#x27;s identity exactly as in the source photo — same age, face shape and proportions, skin tone and undertone, eye shape and eye colour, eyebrow shape, nose and jawline, and the exact hairstyle including its colour, length and texture, plus any freckles, moles, scars or facial hair. The hand holding the receiver must show five fingers in correct, natural anatomy.
+
+Avoid: over-smoothed skin, a pasted-face or cutout look, and no additional overlay graphics or captions beyond the &quot;No Contesta&quot; lettering already described as etched into the booth itself.</pre>
+        </details>
+        <details class="prompt-block">
+          <summary>Промпт для видео <span class="prompt-label">Kling · Grok</span></summary>
+          <pre class="prompt-text">Create a short cinematic video based on the uploaded image. Vertical 9:16.
+An infinite dark void lined with rows of identical glowing neon telephone booths, each marked &quot;No Contesta&quot; and pulsing with light. The person from the image stands chest-up at the nearest booth, receiver to their ear.
+
+Camera and motion structure:
+One continuous slow pull-back. No cuts, deliberately no single hero moment.
+FRAMES 0–40%: The person listens calmly to the receiver, the nearest booth pulsing steadily with its neon ring-light. Behind them, all the other booths in the receding rows keep pulsing too.
+FRAMES 40–65%: The person calmly hangs the receiver back onto the booth. The instant it settles, that nearest booth&#x27;s light goes dark and silent.
+FRAMES 65–100%: The pull-back continues, widening and rising slightly. In sequence, moving outward from the person along the rows, one booth after another goes dark and silent, the darkness spreading steadily outward like a wave, never skipping a booth, never reversing direction. By the end, every visible booth into the far distance has gone dark, the whole void now silent and unlit. The person remains still throughout, watching without turning away. That spreading, final silence is the last thing the video shows.
+
+Character:
+Preserve the person&#x27;s face, hair, skin tone and identity exactly from the source image. Motion is minimal — listening, the single hang-up gesture, then stillness. No walking, no reaching toward other booths.
+
+Style:
+Cool, minimal, hypnotic — neon tube glow against total darkness, natural film grain, slow unhurried camera work. Surreal, contemplative, quietly melancholic.
+
+Restrictions:
+- No identity changes to the person&#x27;s face, hair, or skin tone at any point
+- The person stays in frame, recognizable and the visual focus for the entire video, even as the pull-back widens — the face must remain legible until the final frame
+- No speaking, no singing, no lip-sync, no mouthing words — silent emotional reaction only
+- No speech bubbles
+- The &quot;No Contesta&quot; lettering on the nearest booth is present and legible on its own neon surface from the first frame and stays visible until that booth itself goes dark — it never forms or writes itself in on camera
+- The hang-up gesture happens exactly once — no repeats, no picking the receiver back up
+- The booths go dark in strict outward sequence, one at a time, never all at once and never in reverse
+- No cuts, no jump cuts, no camera direction reversal — one continuous pull-back
+- No additional gestures, actions, or beats beyond listening, the hang-up, and the stillness after
+- No other people appear anywhere in the void</pre>
+        </details>
+      </div>
+    </div>
+  </section>
+</div>
+</body>
+</html>

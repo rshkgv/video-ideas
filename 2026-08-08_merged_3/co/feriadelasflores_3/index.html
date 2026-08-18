@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>#feriadelasflores — La casa que se carga en la espalda · Video Ideas</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      background: #f4f4f5; color: #111; font-size: 14px; line-height: 1.5;
+    }
+    .page-header {
+      background: #fff; border-bottom: 1px solid #e4e4e7; position: sticky;
+      top: 0; z-index: 100; box-shadow: 0 1px 8px rgba(0,0,0,.05);
+    }
+    .header-inner {
+      max-width: 1100px; margin: 0 auto; padding: 14px 28px;
+      display: flex; align-items: center; gap: 20px;
+    }
+    .brand {
+      font-size: 18px; font-weight: 800; letter-spacing: -.5px; color: #111;
+      white-space: nowrap; user-select: none; text-decoration: none;
+    }
+    .brand-tik { color: #fe2c55; }
+    .brand-tok { color: #010101; }
+    .brand-dot { color: #d1d1d1; margin: 0 6px; font-weight: 300; }
+    .brand-cc  { color: #888; font-size: 12px; font-weight: 500; }
+    .header-text { flex: 1; min-width: 0; }
+    .page-title {
+      font-size: 15px; font-weight: 700; letter-spacing: -.2px;
+      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    }
+    .page-sub { font-size: 11.5px; color: #999; margin-top: 2px; }
+    .date-badge {
+      background: #fe2c55; color: #fff; font-weight: 700; font-size: 12px;
+      border-radius: 8px; padding: 6px 14px; line-height: 1.4;
+      text-align: center; white-space: nowrap; flex-shrink: 0;
+    }
+    .date-badge span { display: block; font-size: 10px; font-weight: 500; opacity: .8; }
+    .page-nav {
+      max-width: 1100px; margin: 0 auto; padding: 0 28px;
+      display: flex; gap: 2px; border-top: 1px solid #f0f0f0;
+    }
+    .nav-a {
+      text-decoration: none; color: #999; font-size: 12.5px; font-weight: 500;
+      padding: 9px 14px; border-bottom: 2px solid transparent;
+      transition: color .15s, border-color .15s;
+    }
+    .nav-a:hover { color: #fe2c55; }
+    .nav-a.active { color: #fe2c55; border-bottom-color: #fe2c55; }
+    .content { max-width: 1100px; margin: 0 auto; padding: 36px 28px 80px; }
+    .section { margin-bottom: 52px; }
+    .section-header { display: flex; align-items: baseline; gap: 10px; margin-bottom: 16px; }
+    .section-title { font-size: 19px; font-weight: 800; letter-spacing: -.4px; }
+    .section-badge {
+      font-size: 10.5px; font-weight: 600; color: #999; background: #ebebeb;
+      padding: 3px 8px; border-radius: 20px; text-transform: uppercase; letter-spacing: .4px;
+    }
+    @media (max-width: 768px) {
+      .header-inner { gap: 12px; padding: 12px 16px; }
+      .date-badge { display: none; }
+      .page-nav { padding: 0 16px; }
+      .content { padding: 24px 16px 60px; }
+    }
+
+
+    .idea-lead {
+      background: #fff; border-radius: 12px; padding: 36px 40px 32px;
+      box-shadow: 0 1px 4px rgba(0,0,0,.07), 0 0 0 1px rgba(0,0,0,.05);
+      margin-bottom: 40px;
+    }
+    .idea-hashtag { font-size: 13px; font-weight: 700; color: #fe2c55; margin-bottom: 8px; }
+    .idea-title { font-size: 26px; font-weight: 800; letter-spacing: -.6px; line-height: 1.25; margin-bottom: 16px; }
+    .idea-desc { font-size: 14px; color: #444; line-height: 1.75; max-width: 720px; }
+    .media-grid {
+      display: grid; grid-template-columns: auto 1fr; gap: 28px; align-items: start;
+    }
+    .video-multi {
+      display: flex; gap: 16px; flex-wrap: wrap; align-items: flex-start;
+    }
+    .video-item {
+      width: 200px; display: flex; flex-direction: column; gap: 8px; flex-shrink: 0;
+    }
+    .video-caption {
+      font-size: 11px; color: #999; line-height: 1.4; padding: 0 2px;
+    }
+    .video-player {
+      width: 100%; aspect-ratio: 9/16; object-fit: cover; border-radius: 12px;
+      display: block; box-shadow: 0 2px 16px rgba(0,0,0,.14);
+    }
+    .frame-img {
+      width: 100%; aspect-ratio: 9/16; object-fit: cover; border-radius: 12px;
+      display: block; box-shadow: 0 2px 16px rgba(0,0,0,.14);
+    }
+    .prompts-col { display: flex; flex-direction: column; gap: 12px; }
+    .prompt-block {
+      background: #fff; border-radius: 10px;
+      box-shadow: 0 1px 4px rgba(0,0,0,.07), 0 0 0 1px rgba(0,0,0,.05); overflow: hidden;
+    }
+    .prompt-block summary {
+      padding: 14px 18px; font-size: 13px; font-weight: 700; cursor: pointer;
+      user-select: none; list-style: none; display: flex; align-items: center; gap: 8px; color: #333;
+    }
+    .prompt-block summary::-webkit-details-marker { display: none; }
+    .prompt-block summary::before { content: '▶'; font-size: 8px; color: #bbb; transition: transform .15s; flex-shrink: 0; }
+    .prompt-block[open] summary::before { transform: rotate(90deg); }
+    .prompt-block summary:hover { color: #fe2c55; }
+    .prompt-block summary:hover::before { color: #fe2c55; }
+    .prompt-label { font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: .5px; color: #bbb; margin-left: auto; }
+    .prompt-text {
+      padding: 14px 18px 16px; font-family: 'SF Mono','Fira Code','Menlo',monospace;
+      font-size: 11.5px; line-height: 1.7; color: #555; background: #f9f9f9;
+      border-top: 1px solid #f0f0f0; white-space: pre-wrap; word-break: break-word;
+      max-height: 320px; overflow-y: auto;
+    }
+    @media (max-width: 900px) {
+      .media-grid { grid-template-columns: 1fr; }
+      .video-multi { justify-content: center; }
+      .idea-lead { padding: 24px 22px 22px; }
+    }
+    @media (max-width: 520px) { .idea-title { font-size: 22px; } }
+
+  </style>
+</head>
+<body>
+<div class="page-header">
+  <div class="header-inner">
+    <a class="brand" href="../../../">
+      <span class="brand-tik">Tik</span><span class="brand-tok">Tok</span>
+      <span class="brand-dot">·</span><span class="brand-cc">Video Ideas</span>
+    </a>
+    <div class="header-text">
+      <div class="page-title">#feriadelasflores</div>
+      <div class="page-sub">Видео-идея · 8 августа 2026 · Выпуск merged_3</div>
+    </div>
+    <div class="date-badge">08.08.2026<span>Дата · Выпуск merged_3</span></div>
+  </div>
+  <nav class="page-nav">
+    <a href="../../../" class="nav-a">← Все отчёты</a>
+    <a href="../../#co" class="nav-a">← 8 авг 2026 · Выпуск merged_3</a>
+    <a href="#" class="nav-a active">#feriadelasflores</a>
+  </nav>
+</div>
+<div class="content">
+  <div class="idea-lead">
+    <div class="idea-hashtag">#feriadelasflores</div>
+    <h1 class="idea-title">La casa que se carga en la espalda</h1>
+    <p class="idea-desc">Комната, чьи стены целиком сложены из настоящей silleta — деревянного каркаса-рамы, который силлетеро традиционно несут на спине, доверху набитого живыми цветами. Пользователь стоит в центре, спиной к пустому деревянному каркасу, надетому как рюкзак, — пока каркас совсем пуст. Он делает несколько медленных шагов вперёд сквозь комнату, и с каждым шагом каркас за его спиной наполняется цветами сам — не потому что он их кладёт, а потому что сама комната отдаёт ему цветы со стен, которые вокруг него редеют по мере его пути. Он не оборачивается ни разу. В финале он останавливается в центре опустевшей, безлистой комнаты — и только теперь становится виден истинный масштаб: за его спиной на раме высится целая гора живых цветов, взятых у самой комнаты.
+
+Связь с трендом: не сама сцена парада, а его материальная основа — silleta, деревянная рама с цветами, которую несут на спине, — и идея &quot;цветочной ноши&quot; (то, что несёт традиция) превращена в буквальный физический обмен между человеком и пространством, а не показана как декорация шествия.</p>
+  </div>
+  <section class="section">
+    <div class="section-header">
+      <h2 class="section-title">Видео</h2>
+      <span class="section-badge">Пример генерации</span>
+    </div>
+    <div class="media-grid">
+      <div class="video-multi">
+        <div class="video-item"><video class="video-player" controls muted loop playsinline poster="https://temp-images.ws.pho.to/fdcadbe72202533ee24ed75ab837055feac68250.png"><source src="https://temp-images.ws.pho.to/83243a95318f7cfe583525ca40ebd9ba42002f96.mp4" type="video/mp4"></video>
+          <div class="video-caption">man in his early 30s with short brown hair, blue eyes, and a short beard</div>
+        </div>
+        <div class="video-item"><video class="video-player" controls muted loop playsinline poster="https://temp-images.ws.pho.to/a456fdf5bd89834010be9e8a214e2bde0b11cd93.png"><source src="https://temp-images.ws.pho.to/e528a7f9efd844fbf3037761eeeeff6f9d4f3c43.mp4" type="video/mp4"></video>
+          <div class="video-caption">woman in her late 30s with straight blonde shoulder-length hair and cat-eye glasses</div>
+        </div>
+      </div>
+      <div class="prompts-col">
+        <details class="prompt-block">
+          <summary>Промпт для первого кадра <span class="prompt-label">GPT Image 2</span></summary>
+          <pre class="prompt-text">Turn the photo of the person into a portrait of them standing in the centre of a room whose every wall is built from densely packed fresh flowers, vertical 9:16 composition, framed from the waist up, facing three-quarters toward camera so the face reads large and clearly legible, an empty wooden frame strapped to their back like a backpack, its top edge visible rising just past their shoulders.
+
+Pose &amp; composition: standing upright, weight centred, shoulders drawn back slightly under the weight of the empty wooden frame strapped across their chest and shoulders like a silleta harness — a real, sturdy wooden lattice frame, presently bare. Their hands rest loosely at their sides, not touching the frame. Their gaze is calm, forward, toward camera.
+
+Expression: quiet readiness — a steady, grounded calm, not surprise or searching.
+
+Attire: simple, real clothes suited to the harness — a plain cotton shirt with the wooden straps crossing over the shoulders, sleeves rolled.
+
+Setting &amp; background: a room whose four walls, floor to ceiling, are entirely made of densely packed fresh flowers of every colour — pink, orange, yellow, purple, white — layered so tightly that no wall surface shows through, like an interior built out of a flower market&#x27;s entire stock. The floor beneath is bare wood, the only surface not covered in flowers.
+
+Environmental atmosphere &amp; lighting: soft, diffuse daylight with no visible source, evenly lighting every wall so the flowers&#x27; colours stay vivid and true, a faint sweet humidity in the air suggested by the density of petals.
+
+Colour grading: rich, saturated, full-spectrum floral colour against warm skin tones and the room&#x27;s bare wood floor.
+
+Materials &amp; texture: each flower reads with real petal texture — some fresh, some slightly open, layered densely enough to show individual blossoms up close and a solid wall of colour from a distance; the wooden frame on the back shows real grain and rope lashings, empty and bare.
+
+Camera &amp; lens: 40mm at f/2.5, straight-on framing, shallow depth of field keeping the person and the frame&#x27;s near edge sharp, the flower walls softly resolving into colour and texture behind.
+
+Depth separation: person and the wooden frame&#x27;s front edge sharp; the deep flower walls softly textured throughout, without becoming abstract blur.
+
+Identity preservation: keep the person&#x27;s identity exactly as in the source photo — same age, face shape and proportions, skin tone and undertone, eye shape and eye colour, eyebrow shape, nose and jawline, and the exact hairstyle including its colour, length and texture, plus any freckles, moles, scars or facial hair.
+
+Avoid: over-smoothed skin, a pasted-face or cutout look, plastic or artificial-looking flowers, and no overlay graphics or captions of any kind.</pre>
+        </details>
+        <details class="prompt-block">
+          <summary>Промпт для видео <span class="prompt-label">Kling · Grok</span></summary>
+          <pre class="prompt-text">Create a short cinematic video based on the uploaded image. Vertical 9:16.
+A room built entirely from dense walls of fresh flowers. The person from the image stands waist-up at its centre, an empty wooden silleta frame strapped to their back.
+
+Camera and motion structure:
+One continuous slow tracking shot from the front, following the person as they walk forward through the room. No cuts, no reveal beat.
+FRAMES 0–70%: The person takes several slow, steady steps directly toward camera, deeper into the flower-walled room. With each step, the flower walls passed on either side visibly thin — a patch of flowers lifting free from the wall and drifting backward, out of frame behind the person, toward where the empty frame rides on their back. The person never turns to look; their gaze and pace stay steady and forward.
+FRAMES 70–100%: The person comes to a stop, still facing camera. The tracking shot itself continues past them and around to the back, revealing the wooden frame now piled high with the flowers the walls gave up — a dense, towering mass of blossoms stacked above their shoulders. The person holds still, breathing steady under the new weight. The reveal of that scale, the frame now full behind them, is the last thing the video shows.
+
+Character:
+Preserve the person&#x27;s face, hair, skin tone and identity exactly from the source image throughout. Motion is limited to the slow forward walk and the final stop — no turning, no reaching back to touch the frame.
+
+Style:
+Quiet, painterly, dreamlike — real flower texture throughout, natural film grain, unhurried pacing. Tender and awed rather than surreal-dark; the register is a slow, grounded wonder.
+
+Restrictions:
+- No identity changes to the person&#x27;s face, hair, or skin tone at any point
+- The person stays in frame, recognizable and the visual focus for the entire video, including during the camera&#x27;s move around to reveal the frame
+- No speaking, no singing, no lip-sync, no mouthing words — silent emotional reaction only
+- No speech bubbles
+- No on-screen text, captions, plates, or lettering of any kind anywhere in the video
+- No cuts, no jump cuts, no repeated backtracking — one continuous forward walk and reveal
+- The person never turns their head to look at the frame or the walls behind them
+- No additional gestures, actions, or beats beyond the walk, the stop, and the camera&#x27;s own move to reveal the frame
+- The flowers only ever move from the walls to the frame — never fall to the floor, never disappear
+- No other people appear anywhere in the room</pre>
+        </details>
+      </div>
+    </div>
+  </section>
+</div>
+</body>
+</html>

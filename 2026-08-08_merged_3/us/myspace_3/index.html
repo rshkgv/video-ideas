@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>#myspace — Восемь огней в темноте · Video Ideas</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      background: #f4f4f5; color: #111; font-size: 14px; line-height: 1.5;
+    }
+    .page-header {
+      background: #fff; border-bottom: 1px solid #e4e4e7; position: sticky;
+      top: 0; z-index: 100; box-shadow: 0 1px 8px rgba(0,0,0,.05);
+    }
+    .header-inner {
+      max-width: 1100px; margin: 0 auto; padding: 14px 28px;
+      display: flex; align-items: center; gap: 20px;
+    }
+    .brand {
+      font-size: 18px; font-weight: 800; letter-spacing: -.5px; color: #111;
+      white-space: nowrap; user-select: none; text-decoration: none;
+    }
+    .brand-tik { color: #fe2c55; }
+    .brand-tok { color: #010101; }
+    .brand-dot { color: #d1d1d1; margin: 0 6px; font-weight: 300; }
+    .brand-cc  { color: #888; font-size: 12px; font-weight: 500; }
+    .header-text { flex: 1; min-width: 0; }
+    .page-title {
+      font-size: 15px; font-weight: 700; letter-spacing: -.2px;
+      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    }
+    .page-sub { font-size: 11.5px; color: #999; margin-top: 2px; }
+    .date-badge {
+      background: #fe2c55; color: #fff; font-weight: 700; font-size: 12px;
+      border-radius: 8px; padding: 6px 14px; line-height: 1.4;
+      text-align: center; white-space: nowrap; flex-shrink: 0;
+    }
+    .date-badge span { display: block; font-size: 10px; font-weight: 500; opacity: .8; }
+    .page-nav {
+      max-width: 1100px; margin: 0 auto; padding: 0 28px;
+      display: flex; gap: 2px; border-top: 1px solid #f0f0f0;
+    }
+    .nav-a {
+      text-decoration: none; color: #999; font-size: 12.5px; font-weight: 500;
+      padding: 9px 14px; border-bottom: 2px solid transparent;
+      transition: color .15s, border-color .15s;
+    }
+    .nav-a:hover { color: #fe2c55; }
+    .nav-a.active { color: #fe2c55; border-bottom-color: #fe2c55; }
+    .content { max-width: 1100px; margin: 0 auto; padding: 36px 28px 80px; }
+    .section { margin-bottom: 52px; }
+    .section-header { display: flex; align-items: baseline; gap: 10px; margin-bottom: 16px; }
+    .section-title { font-size: 19px; font-weight: 800; letter-spacing: -.4px; }
+    .section-badge {
+      font-size: 10.5px; font-weight: 600; color: #999; background: #ebebeb;
+      padding: 3px 8px; border-radius: 20px; text-transform: uppercase; letter-spacing: .4px;
+    }
+    @media (max-width: 768px) {
+      .header-inner { gap: 12px; padding: 12px 16px; }
+      .date-badge { display: none; }
+      .page-nav { padding: 0 16px; }
+      .content { padding: 24px 16px 60px; }
+    }
+
+
+    .idea-lead {
+      background: #fff; border-radius: 12px; padding: 36px 40px 32px;
+      box-shadow: 0 1px 4px rgba(0,0,0,.07), 0 0 0 1px rgba(0,0,0,.05);
+      margin-bottom: 40px;
+    }
+    .idea-hashtag { font-size: 13px; font-weight: 700; color: #fe2c55; margin-bottom: 8px; }
+    .idea-title { font-size: 26px; font-weight: 800; letter-spacing: -.6px; line-height: 1.25; margin-bottom: 16px; }
+    .idea-desc { font-size: 14px; color: #444; line-height: 1.75; max-width: 720px; }
+    .media-grid {
+      display: grid; grid-template-columns: auto 1fr; gap: 28px; align-items: start;
+    }
+    .video-multi {
+      display: flex; gap: 16px; flex-wrap: wrap; align-items: flex-start;
+    }
+    .video-item {
+      width: 200px; display: flex; flex-direction: column; gap: 8px; flex-shrink: 0;
+    }
+    .video-caption {
+      font-size: 11px; color: #999; line-height: 1.4; padding: 0 2px;
+    }
+    .video-player {
+      width: 100%; aspect-ratio: 9/16; object-fit: cover; border-radius: 12px;
+      display: block; box-shadow: 0 2px 16px rgba(0,0,0,.14);
+    }
+    .frame-img {
+      width: 100%; aspect-ratio: 9/16; object-fit: cover; border-radius: 12px;
+      display: block; box-shadow: 0 2px 16px rgba(0,0,0,.14);
+    }
+    .prompts-col { display: flex; flex-direction: column; gap: 12px; }
+    .prompt-block {
+      background: #fff; border-radius: 10px;
+      box-shadow: 0 1px 4px rgba(0,0,0,.07), 0 0 0 1px rgba(0,0,0,.05); overflow: hidden;
+    }
+    .prompt-block summary {
+      padding: 14px 18px; font-size: 13px; font-weight: 700; cursor: pointer;
+      user-select: none; list-style: none; display: flex; align-items: center; gap: 8px; color: #333;
+    }
+    .prompt-block summary::-webkit-details-marker { display: none; }
+    .prompt-block summary::before { content: '▶'; font-size: 8px; color: #bbb; transition: transform .15s; flex-shrink: 0; }
+    .prompt-block[open] summary::before { transform: rotate(90deg); }
+    .prompt-block summary:hover { color: #fe2c55; }
+    .prompt-block summary:hover::before { color: #fe2c55; }
+    .prompt-label { font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: .5px; color: #bbb; margin-left: auto; }
+    .prompt-text {
+      padding: 14px 18px 16px; font-family: 'SF Mono','Fira Code','Menlo',monospace;
+      font-size: 11.5px; line-height: 1.7; color: #555; background: #f9f9f9;
+      border-top: 1px solid #f0f0f0; white-space: pre-wrap; word-break: break-word;
+      max-height: 320px; overflow-y: auto;
+    }
+    @media (max-width: 900px) {
+      .media-grid { grid-template-columns: 1fr; }
+      .video-multi { justify-content: center; }
+      .idea-lead { padding: 24px 22px 22px; }
+    }
+    @media (max-width: 520px) { .idea-title { font-size: 22px; } }
+
+  </style>
+</head>
+<body>
+<div class="page-header">
+  <div class="header-inner">
+    <a class="brand" href="../../../">
+      <span class="brand-tik">Tik</span><span class="brand-tok">Tok</span>
+      <span class="brand-dot">·</span><span class="brand-cc">Video Ideas</span>
+    </a>
+    <div class="header-text">
+      <div class="page-title">#myspace</div>
+      <div class="page-sub">Видео-идея · 8 августа 2026 · Выпуск merged_3</div>
+    </div>
+    <div class="date-badge">08.08.2026<span>Дата · Выпуск merged_3</span></div>
+  </div>
+  <nav class="page-nav">
+    <a href="../../../" class="nav-a">← Все отчёты</a>
+    <a href="../../#us" class="nav-a">← 8 авг 2026 · Выпуск merged_3</a>
+    <a href="#" class="nav-a active">#myspace</a>
+  </nav>
+</div>
+<div class="content">
+  <div class="idea-lead">
+    <div class="idea-hashtag">#myspace</div>
+    <h1 class="idea-title">Восемь огней в темноте</h1>
+    <p class="idea-desc">Пользователь стоит в бескрайней тёмной пустоте, усеянной десятками маленьких светящихся квадратов — безликих цветных огоньков, каждый как воспоминание о когда-то добавленном человеке. Один за другим огоньки вдалеке начинают гаснуть и растворяться в темноте, пока их число не редеет — пока не остаётся всего восемь, ближе всего к пользователю, по-прежнему горящих. Пользователь не паникует и не грустит демонстративно — просто медленно поднимает руку к ближайшему из восьми огней. В момент касания оставшиеся восемь становятся теплее и ярче, а вся остальная темнота вокруг уже полностью беззвёздна — на лице пользователя проступает тихая, немного грустная, но тёплая полуулыбка.
+
+Связь с трендом: тема — тревожный подтекст под ностальгической радостью тренда, тот самый «а наберётся ли у меня вообще восемь друзей»; здесь это буквально показано как гаснущее поле огней, из которого остаётся ровно восемь — не пересказ конкретного видео, а придуманный мир для этого чувства.</p>
+  </div>
+  <section class="section">
+    <div class="section-header">
+      <h2 class="section-title">Видео</h2>
+      <span class="section-badge">Пример генерации</span>
+    </div>
+    <div class="media-grid">
+      <div class="video-multi">
+        <div class="video-item"><video class="video-player" controls muted loop playsinline poster="https://temp-images.ws.pho.to/9c74081fe67b02e222e5b4ab11608339e832ea0b.png"><source src="https://temp-images.ws.pho.to/73551a3e66f5164a509953fa447d5058451f33b2.mp4" type="video/mp4"></video>
+          <div class="video-caption">man in his early 30s with short brown hair, blue eyes, and a short beard</div>
+        </div>
+        <div class="video-item"><video class="video-player" controls muted loop playsinline poster="https://temp-images.ws.pho.to/275bbe528604ee77965875821297bfe50cf90595.png"><source src="https://temp-images.ws.pho.to/5b6762d7eebc3c44dd25fd1db84453f7ce07e1b7.mp4" type="video/mp4"></video>
+          <div class="video-caption">woman in her late 30s with straight blonde shoulder-length hair and cat-eye glasses</div>
+        </div>
+      </div>
+      <div class="prompts-col">
+        <details class="prompt-block">
+          <summary>Промпт для первого кадра <span class="prompt-label">GPT Image 2</span></summary>
+          <pre class="prompt-text">Turn the photo of the person into a portrait of them standing in a vast, dark, star-like void, framed from chest-up, face large and clearly legible, surrounded at a distance by dozens of small glowing coloured squares of light hanging in the darkness at varying depths. Vertical 9:16 composition.
+
+Pose &amp; composition: standing still, centred, one arm beginning to lift from their side toward chest height, chin slightly lowered, gaze directed toward a small, closer cluster of eight glowing squares nearest to them.
+
+Expression: quiet, wistful, unguarded — a faint, bittersweet softness at the eyes and mouth, someone taking private stock of what remains.
+
+Setting &amp; background: complete darkness but for the glowing squares — most scattered far and dim across the whole background like a distant field of tiny lights, with exactly eight brighter, closer squares arranged loosely near the person&#x27;s chest height, each a plain, unlabeled block of warm colour, none showing any face, image, or text.
+
+Lighting: the person is lit by a soft, warm key light seemingly cast by the nearest eight glowing squares, distinctly warmer than the cool, faint light of the distant field behind them.
+
+Colour grading: the distant field in cool, desaturated blues and greys; the eight near squares and the person&#x27;s skin in warm amber and gold, so the eye is drawn to the eight remaining lights.
+
+Materials &amp; texture: the squares read as soft, glowing light rather than hard screens — gentle bloom at their edges, nothing crisp or digital-looking.
+
+Camera &amp; lens: 50mm at f/2, shallow depth of field, the person and the near squares sharp, the distant field softly out of focus, fine film grain.
+
+Skin texture: real skin, visible pores, natural unevenness, no smoothing.
+
+Identity preservation: keep the person&#x27;s identity exactly as in the source photo — same age, face shape and proportions, skin tone and undertone, eye shape and colour, eyebrow shape, nose and jawline, and the exact hairstyle including its colour, parting, length and texture, plus any freckles, moles, scars or facial hair. Hands must be anatomically correct, five fingers each.
+
+Avoid: over-smoothed skin, a pasted-face or cutout look, any legible text, logo, or face inside any of the glowing squares, and no overlay graphics or captions of any kind laid over the frame itself.</pre>
+        </details>
+        <details class="prompt-block">
+          <summary>Промпт для видео <span class="prompt-label">Kling · Grok</span></summary>
+          <pre class="prompt-text">Create a short cinematic video based on the uploaded image. Vertical 9:16.
+A vast dark void scattered with glowing coloured squares of light. The person from the image stands chest-up at the centre, face clearly visible throughout, a closer cluster of eight squares near them.
+
+Camera and motion structure:
+Keep the overall shot static — no zoom, no pan, no camera movement of any kind, so the person stays the fixed centre while only the field of lights changes.
+FRAMES 0–50%: Scattered squares across the distant background fade out one by one, unhurried, the darkness slowly deepening as their number thins. The eight nearer squares remain steady and unaffected throughout this.
+FRAMES 50–80%: The last of the distant squares fades completely, leaving total darkness behind the person except for the eight nearer lights. The person slowly raises one hand toward the nearest of the eight.
+FRAMES 80–100%: As their fingers near it, all eight squares brighten and warm together in one gentle pulse of light, and the person&#x27;s expression softens into a quiet, bittersweet half-smile. They hold there, hand outstretched, in the warm glow of the eight remaining lights — that held warmth against the surrounding dark is the ending.
+
+Character:
+Preserve the person&#x27;s face, hair, skin tone and identity exactly from the source image throughout. Allowed motion: standing still, the single hand raise, the softening smile — nothing else.
+
+Style:
+Minimal, luminous void cinematography — cool and sparse in the distance, warm and intimate close to the person, quietly melancholic rather than triumphant.
+
+Restrictions:
+- Do not change the person&#x27;s face, hair, skin tone or identity at any point
+- The person stays in frame, recognizable and the visual focus for the whole video
+- The person never speaks, sings or mouths words — silent, wistful reaction only
+- No speech bubbles
+- No lettering, logos, or readable text of any kind appear anywhere in the frame or inside any glowing square
+- Exactly eight squares remain lit near the person at all times — no more, no fewer — while only the distant scattered squares fade
+- Camera stays completely static throughout — no zoom, no pan, no push-in
+- The distant squares must fade only once, gradually, with no flickering, flashing, or resets
+- No additional gestures, actions, or beats beyond those explicitly described above
+- No extra people added to the scene</pre>
+        </details>
+      </div>
+    </div>
+  </section>
+</div>
+</body>
+</html>

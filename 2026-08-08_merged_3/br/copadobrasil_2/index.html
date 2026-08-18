@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>#copadobrasil — Шарф из трибуны · Video Ideas</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      background: #f4f4f5; color: #111; font-size: 14px; line-height: 1.5;
+    }
+    .page-header {
+      background: #fff; border-bottom: 1px solid #e4e4e7; position: sticky;
+      top: 0; z-index: 100; box-shadow: 0 1px 8px rgba(0,0,0,.05);
+    }
+    .header-inner {
+      max-width: 1100px; margin: 0 auto; padding: 14px 28px;
+      display: flex; align-items: center; gap: 20px;
+    }
+    .brand {
+      font-size: 18px; font-weight: 800; letter-spacing: -.5px; color: #111;
+      white-space: nowrap; user-select: none; text-decoration: none;
+    }
+    .brand-tik { color: #fe2c55; }
+    .brand-tok { color: #010101; }
+    .brand-dot { color: #d1d1d1; margin: 0 6px; font-weight: 300; }
+    .brand-cc  { color: #888; font-size: 12px; font-weight: 500; }
+    .header-text { flex: 1; min-width: 0; }
+    .page-title {
+      font-size: 15px; font-weight: 700; letter-spacing: -.2px;
+      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    }
+    .page-sub { font-size: 11.5px; color: #999; margin-top: 2px; }
+    .date-badge {
+      background: #fe2c55; color: #fff; font-weight: 700; font-size: 12px;
+      border-radius: 8px; padding: 6px 14px; line-height: 1.4;
+      text-align: center; white-space: nowrap; flex-shrink: 0;
+    }
+    .date-badge span { display: block; font-size: 10px; font-weight: 500; opacity: .8; }
+    .page-nav {
+      max-width: 1100px; margin: 0 auto; padding: 0 28px;
+      display: flex; gap: 2px; border-top: 1px solid #f0f0f0;
+    }
+    .nav-a {
+      text-decoration: none; color: #999; font-size: 12.5px; font-weight: 500;
+      padding: 9px 14px; border-bottom: 2px solid transparent;
+      transition: color .15s, border-color .15s;
+    }
+    .nav-a:hover { color: #fe2c55; }
+    .nav-a.active { color: #fe2c55; border-bottom-color: #fe2c55; }
+    .content { max-width: 1100px; margin: 0 auto; padding: 36px 28px 80px; }
+    .section { margin-bottom: 52px; }
+    .section-header { display: flex; align-items: baseline; gap: 10px; margin-bottom: 16px; }
+    .section-title { font-size: 19px; font-weight: 800; letter-spacing: -.4px; }
+    .section-badge {
+      font-size: 10.5px; font-weight: 600; color: #999; background: #ebebeb;
+      padding: 3px 8px; border-radius: 20px; text-transform: uppercase; letter-spacing: .4px;
+    }
+    @media (max-width: 768px) {
+      .header-inner { gap: 12px; padding: 12px 16px; }
+      .date-badge { display: none; }
+      .page-nav { padding: 0 16px; }
+      .content { padding: 24px 16px 60px; }
+    }
+
+
+    .idea-lead {
+      background: #fff; border-radius: 12px; padding: 36px 40px 32px;
+      box-shadow: 0 1px 4px rgba(0,0,0,.07), 0 0 0 1px rgba(0,0,0,.05);
+      margin-bottom: 40px;
+    }
+    .idea-hashtag { font-size: 13px; font-weight: 700; color: #fe2c55; margin-bottom: 8px; }
+    .idea-title { font-size: 26px; font-weight: 800; letter-spacing: -.6px; line-height: 1.25; margin-bottom: 16px; }
+    .idea-desc { font-size: 14px; color: #444; line-height: 1.75; max-width: 720px; }
+    .media-grid {
+      display: grid; grid-template-columns: auto 1fr; gap: 28px; align-items: start;
+    }
+    .video-multi {
+      display: flex; gap: 16px; flex-wrap: wrap; align-items: flex-start;
+    }
+    .video-item {
+      width: 200px; display: flex; flex-direction: column; gap: 8px; flex-shrink: 0;
+    }
+    .video-caption {
+      font-size: 11px; color: #999; line-height: 1.4; padding: 0 2px;
+    }
+    .video-player {
+      width: 100%; aspect-ratio: 9/16; object-fit: cover; border-radius: 12px;
+      display: block; box-shadow: 0 2px 16px rgba(0,0,0,.14);
+    }
+    .frame-img {
+      width: 100%; aspect-ratio: 9/16; object-fit: cover; border-radius: 12px;
+      display: block; box-shadow: 0 2px 16px rgba(0,0,0,.14);
+    }
+    .prompts-col { display: flex; flex-direction: column; gap: 12px; }
+    .prompt-block {
+      background: #fff; border-radius: 10px;
+      box-shadow: 0 1px 4px rgba(0,0,0,.07), 0 0 0 1px rgba(0,0,0,.05); overflow: hidden;
+    }
+    .prompt-block summary {
+      padding: 14px 18px; font-size: 13px; font-weight: 700; cursor: pointer;
+      user-select: none; list-style: none; display: flex; align-items: center; gap: 8px; color: #333;
+    }
+    .prompt-block summary::-webkit-details-marker { display: none; }
+    .prompt-block summary::before { content: '▶'; font-size: 8px; color: #bbb; transition: transform .15s; flex-shrink: 0; }
+    .prompt-block[open] summary::before { transform: rotate(90deg); }
+    .prompt-block summary:hover { color: #fe2c55; }
+    .prompt-block summary:hover::before { color: #fe2c55; }
+    .prompt-label { font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: .5px; color: #bbb; margin-left: auto; }
+    .prompt-text {
+      padding: 14px 18px 16px; font-family: 'SF Mono','Fira Code','Menlo',monospace;
+      font-size: 11.5px; line-height: 1.7; color: #555; background: #f9f9f9;
+      border-top: 1px solid #f0f0f0; white-space: pre-wrap; word-break: break-word;
+      max-height: 320px; overflow-y: auto;
+    }
+    @media (max-width: 900px) {
+      .media-grid { grid-template-columns: 1fr; }
+      .video-multi { justify-content: center; }
+      .idea-lead { padding: 24px 22px 22px; }
+    }
+    @media (max-width: 520px) { .idea-title { font-size: 22px; } }
+
+  </style>
+</head>
+<body>
+<div class="page-header">
+  <div class="header-inner">
+    <a class="brand" href="../../../">
+      <span class="brand-tik">Tik</span><span class="brand-tok">Tok</span>
+      <span class="brand-dot">·</span><span class="brand-cc">Video Ideas</span>
+    </a>
+    <div class="header-text">
+      <div class="page-title">#copadobrasil</div>
+      <div class="page-sub">Видео-идея · 8 августа 2026 · Выпуск merged_3</div>
+    </div>
+    <div class="date-badge">08.08.2026<span>Дата · Выпуск merged_3</span></div>
+  </div>
+  <nav class="page-nav">
+    <a href="../../../" class="nav-a">← Все отчёты</a>
+    <a href="../../#br" class="nav-a">← 8 авг 2026 · Выпуск merged_3</a>
+    <a href="#" class="nav-a active">#copadobrasil</a>
+  </nav>
+</div>
+<div class="content">
+  <div class="idea-lead">
+    <div class="idea-hashtag">#copadobrasil</div>
+    <h1 class="idea-title">Шарф из трибуны</h1>
+    <p class="idea-desc">Вместо сплит-скрина пользователь стоит прямо на трибуне ночной арены, среди других болельщиков в тех же нейтральных бело-тёмных цветах, что и в первом уровне — но теперь камера дрожит в чьей-то руке, а не смотрит из домашней комнаты. Гол влетает где-то за кадром, слышен только рёв трибун, и вместо одного вскинутого кулака начинается цепочка: сосед хлопает пользователя по плечу, тот оборачивается, оба одновременно вскидывают руки — а шарф командных цветов вдруг оказывается у пользователя в руках, будто трибуна перекинула его через головы к нему. Регистр — шумный, почти хаотичный восторг ручной съёмки, а не собранная реакция первого уровня.
+
+Визуальный якорь: та же ночная арена под прожекторами и та же нейтральная бело-тёмная гамма, что и в сплит-скрин версии — но пользователь стоит внутри трибуны, а не комментирует со стороны, и шарф командных цветов материализуется у него в руках.</p>
+  </div>
+  <section class="section">
+    <div class="section-header">
+      <h2 class="section-title">Видео</h2>
+      <span class="section-badge">Пример генерации</span>
+    </div>
+    <div class="media-grid">
+      <div class="video-multi">
+        <div class="video-item"><video class="video-player" controls muted loop playsinline poster="https://temp-images.ws.pho.to/2b3b80d46cc7160389f56dfec7df8fb7708c78d1.png"><source src="https://temp-images.ws.pho.to/a347340de504dace73b5196e40a8b805b75403c5.mp4" type="video/mp4"></video>
+          <div class="video-caption">woman in her late 30s with straight blonde shoulder-length hair and cat-eye glasses</div>
+        </div>
+        <div class="video-item"><video class="video-player" controls muted loop playsinline poster="https://temp-images.ws.pho.to/30565d7bf06f6870e003bd47b11f53a362f6816e.png"><source src="https://temp-images.ws.pho.to/c87acf0a00e30a5333bbd69c40a9c1a3c75ca20a.mp4" type="video/mp4"></video>
+          <div class="video-caption">man in his early 30s with short brown hair, blue eyes, and a short beard</div>
+        </div>
+      </div>
+      <div class="prompts-col">
+        <details class="prompt-block">
+          <summary>Промпт для первого кадра <span class="prompt-label">GPT Image 2</span></summary>
+          <pre class="prompt-text">Turn the photo of the person into a portrait of them standing among fans in the stands of a floodlit stadium at night, vertical 9:16, chest-up framing, centered, face clearly legible.
+
+Pose &amp; composition: standing shoulder to shoulder with a blurred neighbour just entering frame at the edge, body angled slightly toward the pitch below, hands empty and loose, an expectant half-turned glance toward something happening off to the side.
+
+Attire: a plain, unbranded jacket in neutral dark tones, nothing with team crests or sponsor names.
+
+Setting &amp; background: packed stadium stands under bright floodlights, out-of-focus fans in a mix of plain white and dark-navy clothing waving arms, the edge of the green pitch visible far below, a haze of stadium light in the air.
+
+Lighting: harsh, bright floodlight from above and behind, rim-lighting the person&#x27;s shoulders and hair, a softer bounce keeping the face readable.
+
+Colour grading: high-contrast cool white and deep navy, skin tones the warm accent in the frame.
+
+Camera &amp; lens: 35mm at f/2.8, slight handheld tilt implied by an off-axis horizon, natural grain.
+
+Skin texture: real skin, visible pores, no smoothing.
+
+Identity preservation: keep the person&#x27;s identity exactly as in the source photo — same age, face shape and proportions, skin tone and undertone, eye shape and eye colour, eyebrow shape, nose and jawline, and the exact hairstyle including its colour, parting, length and texture, plus any freckles, moles, scars or facial hair.
+
+Avoid: no team crests, sponsor logos, or real player names anywhere in the frame; no overlay graphics or captions; no pasted-face or cutout look.</pre>
+        </details>
+        <details class="prompt-block">
+          <summary>Промпт для видео <span class="prompt-label">Kling · Grok</span></summary>
+          <pre class="prompt-text">Create a short cinematic video based on the uploaded image. Vertical 9:16.
+The scene is a packed stadium stand at night, floodlights bright, fans in plain white and dark-navy clothing around the person, the green pitch visible far below.
+
+Camera and motion structure:
+Handheld throughout, one continuous take, visible sway among the crowd — never locked off.
+0:00–0:01: The person stands watching the pitch, a distant roar rising from the crowd, a goal implied off-frame.
+0:01–0:02: A neighbour beside them claps a hand on their shoulder. The person turns, startled into a grin.
+0:02–0:03: Both throw their arms up together, the whole section around them surging upward in celebration.
+0:03–0:04: A team-coloured scarf comes flying through the crowd from somewhere above and lands directly in the person&#x27;s raised hands.
+0:04–0:05: The person pulls the scarf close to their chest, still cheering silently, camera settling into a slow drift over the surging stand around them — the celebration continues rather than resolving to stillness.
+
+Character:
+Preserve the person&#x27;s face, hair, skin tone and identity exactly from the source image throughout. Allowed motion: turning toward the neighbour, arms raised, catching and pulling in the scarf. Nothing else.
+
+Key visual events:
+No single hero moment — a chain of three beats: the shoulder tap, the shared arm-raise, and the scarf arriving in the person&#x27;s hands. Each happens once, back to back, with no reset.
+
+Style:
+Raw, chaotic handheld stadium energy — bright floodlights, close bodies, real crowd noise implied by motion. Joyful and messy, not the composed broadcast look of a split-screen reaction.
+
+Restrictions:
+- Do not change the person&#x27;s appearance, face, clothing or identity at any point
+- The person stays in frame, recognizable and the visual focus for the whole video, even surrounded by other fans
+- The person never speaks, sings or mouths words — all reaction is silent cheering and physical celebration only
+- No speech bubbles
+- No team crests, sponsor logos, or real player/club names visible anywhere in the frame — clothing stays plain white and plain dark navy only
+- The scarf must land directly in the person&#x27;s hands exactly once — it does not reappear or repeat
+- No cuts or jump edits — one continuous handheld take from the shoulder tap to the final drift
+- No additional gestures, actions, or beats beyond those explicitly described above
+- No on-screen text or captions of any kind, no lettering anywhere in the frame
+- No violent or aggressive actions in the crowd; no more than one neighbouring fan clearly depicted beside the person</pre>
+        </details>
+      </div>
+    </div>
+  </section>
+</div>
+</body>
+</html>

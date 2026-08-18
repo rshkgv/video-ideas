@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>#feriadelasflores — El vestido que florece · Video Ideas</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      background: #f4f4f5; color: #111; font-size: 14px; line-height: 1.5;
+    }
+    .page-header {
+      background: #fff; border-bottom: 1px solid #e4e4e7; position: sticky;
+      top: 0; z-index: 100; box-shadow: 0 1px 8px rgba(0,0,0,.05);
+    }
+    .header-inner {
+      max-width: 1100px; margin: 0 auto; padding: 14px 28px;
+      display: flex; align-items: center; gap: 20px;
+    }
+    .brand {
+      font-size: 18px; font-weight: 800; letter-spacing: -.5px; color: #111;
+      white-space: nowrap; user-select: none; text-decoration: none;
+    }
+    .brand-tik { color: #fe2c55; }
+    .brand-tok { color: #010101; }
+    .brand-dot { color: #d1d1d1; margin: 0 6px; font-weight: 300; }
+    .brand-cc  { color: #888; font-size: 12px; font-weight: 500; }
+    .header-text { flex: 1; min-width: 0; }
+    .page-title {
+      font-size: 15px; font-weight: 700; letter-spacing: -.2px;
+      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    }
+    .page-sub { font-size: 11.5px; color: #999; margin-top: 2px; }
+    .date-badge {
+      background: #fe2c55; color: #fff; font-weight: 700; font-size: 12px;
+      border-radius: 8px; padding: 6px 14px; line-height: 1.4;
+      text-align: center; white-space: nowrap; flex-shrink: 0;
+    }
+    .date-badge span { display: block; font-size: 10px; font-weight: 500; opacity: .8; }
+    .page-nav {
+      max-width: 1100px; margin: 0 auto; padding: 0 28px;
+      display: flex; gap: 2px; border-top: 1px solid #f0f0f0;
+    }
+    .nav-a {
+      text-decoration: none; color: #999; font-size: 12.5px; font-weight: 500;
+      padding: 9px 14px; border-bottom: 2px solid transparent;
+      transition: color .15s, border-color .15s;
+    }
+    .nav-a:hover { color: #fe2c55; }
+    .nav-a.active { color: #fe2c55; border-bottom-color: #fe2c55; }
+    .content { max-width: 1100px; margin: 0 auto; padding: 36px 28px 80px; }
+    .section { margin-bottom: 52px; }
+    .section-header { display: flex; align-items: baseline; gap: 10px; margin-bottom: 16px; }
+    .section-title { font-size: 19px; font-weight: 800; letter-spacing: -.4px; }
+    .section-badge {
+      font-size: 10.5px; font-weight: 600; color: #999; background: #ebebeb;
+      padding: 3px 8px; border-radius: 20px; text-transform: uppercase; letter-spacing: .4px;
+    }
+    @media (max-width: 768px) {
+      .header-inner { gap: 12px; padding: 12px 16px; }
+      .date-badge { display: none; }
+      .page-nav { padding: 0 16px; }
+      .content { padding: 24px 16px 60px; }
+    }
+
+
+    .idea-lead {
+      background: #fff; border-radius: 12px; padding: 36px 40px 32px;
+      box-shadow: 0 1px 4px rgba(0,0,0,.07), 0 0 0 1px rgba(0,0,0,.05);
+      margin-bottom: 40px;
+    }
+    .idea-hashtag { font-size: 13px; font-weight: 700; color: #fe2c55; margin-bottom: 8px; }
+    .idea-title { font-size: 26px; font-weight: 800; letter-spacing: -.6px; line-height: 1.25; margin-bottom: 16px; }
+    .idea-desc { font-size: 14px; color: #444; line-height: 1.75; max-width: 720px; }
+    .media-grid {
+      display: grid; grid-template-columns: auto 1fr; gap: 28px; align-items: start;
+    }
+    .video-multi {
+      display: flex; gap: 16px; flex-wrap: wrap; align-items: flex-start;
+    }
+    .video-item {
+      width: 200px; display: flex; flex-direction: column; gap: 8px; flex-shrink: 0;
+    }
+    .video-caption {
+      font-size: 11px; color: #999; line-height: 1.4; padding: 0 2px;
+    }
+    .video-player {
+      width: 100%; aspect-ratio: 9/16; object-fit: cover; border-radius: 12px;
+      display: block; box-shadow: 0 2px 16px rgba(0,0,0,.14);
+    }
+    .frame-img {
+      width: 100%; aspect-ratio: 9/16; object-fit: cover; border-radius: 12px;
+      display: block; box-shadow: 0 2px 16px rgba(0,0,0,.14);
+    }
+    .prompts-col { display: flex; flex-direction: column; gap: 12px; }
+    .prompt-block {
+      background: #fff; border-radius: 10px;
+      box-shadow: 0 1px 4px rgba(0,0,0,.07), 0 0 0 1px rgba(0,0,0,.05); overflow: hidden;
+    }
+    .prompt-block summary {
+      padding: 14px 18px; font-size: 13px; font-weight: 700; cursor: pointer;
+      user-select: none; list-style: none; display: flex; align-items: center; gap: 8px; color: #333;
+    }
+    .prompt-block summary::-webkit-details-marker { display: none; }
+    .prompt-block summary::before { content: '▶'; font-size: 8px; color: #bbb; transition: transform .15s; flex-shrink: 0; }
+    .prompt-block[open] summary::before { transform: rotate(90deg); }
+    .prompt-block summary:hover { color: #fe2c55; }
+    .prompt-block summary:hover::before { color: #fe2c55; }
+    .prompt-label { font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: .5px; color: #bbb; margin-left: auto; }
+    .prompt-text {
+      padding: 14px 18px 16px; font-family: 'SF Mono','Fira Code','Menlo',monospace;
+      font-size: 11.5px; line-height: 1.7; color: #555; background: #f9f9f9;
+      border-top: 1px solid #f0f0f0; white-space: pre-wrap; word-break: break-word;
+      max-height: 320px; overflow-y: auto;
+    }
+    @media (max-width: 900px) {
+      .media-grid { grid-template-columns: 1fr; }
+      .video-multi { justify-content: center; }
+      .idea-lead { padding: 24px 22px 22px; }
+    }
+    @media (max-width: 520px) { .idea-title { font-size: 22px; } }
+
+  </style>
+</head>
+<body>
+<div class="page-header">
+  <div class="header-inner">
+    <a class="brand" href="../../../">
+      <span class="brand-tik">Tik</span><span class="brand-tok">Tok</span>
+      <span class="brand-dot">·</span><span class="brand-cc">Video Ideas</span>
+    </a>
+    <div class="header-text">
+      <div class="page-title">#feriadelasflores</div>
+      <div class="page-sub">Видео-идея · 8 августа 2026 · Выпуск merged_3</div>
+    </div>
+    <div class="date-badge">08.08.2026<span>Дата · Выпуск merged_3</span></div>
+  </div>
+  <nav class="page-nav">
+    <a href="../../../" class="nav-a">← Все отчёты</a>
+    <a href="../../#co" class="nav-a">← 8 авг 2026 · Выпуск merged_3</a>
+    <a href="#" class="nav-a active">#feriadelasflores</a>
+  </nav>
+</div>
+<div class="content">
+  <div class="idea-lead">
+    <div class="idea-hashtag">#feriadelasflores</div>
+    <h1 class="idea-title">El vestido que florece</h1>
+    <p class="idea-desc">Вместо зрителя за барьером — пользователь сам в самом танце &quot;jala de abuelos&quot;, в синем рюшевом платье (или чёрном костюме), кружится в шеренге других танцоров прямо по мостовой парада. Камера идёт рядом на уровне тротуара, следуя за разворотами. С каждым полным оборотом на подоле или на плечах костюма распускается на один живой цветок больше — ткань буквально прорастает цветами по ходу танца, хотя в реальных видео тренда костюм остаётся неизменным. Это не одна кульминация, а нарастающая последовательность поворотов; в финале танцор делает последний оборот, и цветы на костюме перестают множиться — движение просто останавливается на пике цветения.
+
+Визуальный якорь: синее рюшевое платье танцора парада Feria de las Flores, кружащееся в шеренге на мостовой Медельина.</p>
+  </div>
+  <section class="section">
+    <div class="section-header">
+      <h2 class="section-title">Видео</h2>
+      <span class="section-badge">Пример генерации</span>
+    </div>
+    <div class="media-grid">
+      <div class="video-multi">
+        <div class="video-item"><video class="video-player" controls muted loop playsinline poster="https://temp-images.ws.pho.to/5c20a52784a8699b3b99f041be52be9978587f5f.png"><source src="https://temp-images.ws.pho.to/75d18e07c933e5c1e7b396a558a20525f04c0c8f.mp4" type="video/mp4"></video>
+          <div class="video-caption">woman in her late 30s with straight blonde shoulder-length hair and cat-eye glasses</div>
+        </div>
+        <div class="video-item"><video class="video-player" controls muted loop playsinline poster="https://temp-images.ws.pho.to/226c404eaa67dd8c79872b93b13cff91379ae8b0.png"><source src="https://temp-images.ws.pho.to/31ccecc05eb3cbcb6ab0719731538cb4a29001f0.mp4" type="video/mp4"></video>
+          <div class="video-caption">man in his early 30s with short brown hair, blue eyes, and a short beard</div>
+        </div>
+      </div>
+      <div class="prompts-col">
+        <details class="prompt-block">
+          <summary>Промпт для первого кадра <span class="prompt-label">GPT Image 2</span></summary>
+          <pre class="prompt-text">Turn the photo of the person into a portrait of them mid-spin in a traditional Feria de las Flores parade costume on a sunlit Medellín street, vertical 9:16 composition, framed from the waist up so the face reads large and clearly legible, the ruffled skirt or jacket hem visible flaring at the bottom of frame.
+
+Pose &amp; composition: caught mid-turn, torso twisted three-quarters, one arm extended out to the side with the ruffled sleeve or skirt fabric flaring from the motion, chin lifted, gaze bright and forward. A line of other dancers in matching traditional dress is visible softly blurred behind, mid-parade on the paved street.
+
+Expression: joyful exertion — bright open smile, eyes crinkled with the effort and delight of the spin.
+
+Attire: a traditional Feria de las Flores parade costume — for a woman, a vivid blue ruffled dress with tiered layers of fabric; for a man, a black suit with a fitted jacket — a handful of small fresh flowers already tucked into the fabric at the shoulder and hem, matching the parade&#x27;s traditional dress.
+
+Setting &amp; background: a paved parade street lined with spectators and barricades, blurred with motion; bright midday sun overhead.
+
+Environmental atmosphere &amp; lighting: strong, warm, direct sunlight, slight motion blur in the background from the spin, a few loose flower petals caught mid-air near the fabric.
+
+Colour grading: saturated blues, warm skin tones, bright daylight white balance.
+
+Materials &amp; texture: ruffled fabric shows real weight and movement, catching light on its folds; the tucked flowers show fresh petal texture; skin keeps natural pores and texture.
+
+Camera &amp; lens: 35mm at f/2.8, street level, a touch of motion blur on the flaring fabric edges while the face stays sharp.
+
+Depth separation: person and flaring fabric sharp; background dancers and crowd softly blurred.
+
+Identity preservation: keep the person&#x27;s identity exactly as in the source photo — same age, face shape and proportions, skin tone and undertone, eye shape and eye colour, eyebrow shape, nose and jawline, and the exact hairstyle including its colour, length and texture, plus any freckles, moles, scars or facial hair.
+
+Avoid: over-smoothed skin, a pasted-face or cutout look, and no overlay graphics or captions of any kind — no lettering anywhere in the frame.</pre>
+        </details>
+        <details class="prompt-block">
+          <summary>Промпт для видео <span class="prompt-label">Kling · Grok</span></summary>
+          <pre class="prompt-text">Create a short cinematic video based on the uploaded image. Vertical 9:16.
+A sunlit parade street in Medellín. The person from the image, waist-up, dances in a traditional Feria de las Flores costume already dotted with a few fresh flowers, spinning in a line of other dancers.
+
+Camera and motion structure:
+One continuous handheld tracking shot at walking pace alongside the person, matching their turns — never locked off.
+0:00–0:01: The person completes a first full turn, fabric flaring outward.
+0:01–0:02: A second full turn — as the fabric settles, one additional fresh flower is now visibly blooming on the hem or shoulder where there was none before.
+0:02–0:03: A third full turn — another new flower blooms on the fabric, the costume now visibly denser with blossoms than at the start.
+0:03–0:04: A fourth, final turn — one more flower blooms, the costume now thick with fresh flowers along its edges.
+0:04–0:05: The person completes the turn and comes to a stop facing the camera, breathing from the effort, the fully bloomed costume settled around them. No further flowers appear — the stillness, fully in bloom, is the last thing the video shows.
+
+Character:
+Preserve the person&#x27;s face, hair, skin tone and identity exactly from the source image throughout. Allowed motion: the four successive turns and the final stop. No walking beyond the spin&#x27;s own footwork, no other gestures.
+
+Atmosphere and detail:
+- The line of fellow dancers stays visible but softly blurred in the background, turning in the same rhythm
+- Sunlight stays constant and bright throughout — no lighting changes
+- Loose petals drift briefly from the fabric with each turn, then settle
+
+Style:
+Warm, kinetic parade cinematography, handheld with real footstep sway, fabric catching the light on every turn. Spectacular, joyful, a little magical without ever feeling like a special-effects reveal.
+
+Restrictions:
+- Do not change the person&#x27;s face, hair, skin tone or identity at any point
+- The person stays in frame, recognizable and the visual focus for the whole video
+- No speaking, no singing, no lip-sync, no mouthing words — silent emotional reaction only
+- No speech bubbles
+- Exactly four turns occur in total, each blooming exactly one new flower on the costume — no more, no fewer, and no repeats or resets
+- No cuts, no jump cuts — one continuous tracking shot alongside the person
+- No on-screen text, captions, or lettering of any kind
+- No additional gestures or actions beyond the four turns and the final stop
+- No other dancers or spectators cross between the person and the camera
+- The flowers bloom only on the costume&#x27;s fabric — never on the person&#x27;s skin, face, or hair</pre>
+        </details>
+      </div>
+    </div>
+  </section>
+</div>
+</body>
+</html>

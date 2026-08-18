@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>#petal — Взлом вместе · Video Ideas</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      background: #f4f4f5; color: #111; font-size: 14px; line-height: 1.5;
+    }
+    .page-header {
+      background: #fff; border-bottom: 1px solid #e4e4e7; position: sticky;
+      top: 0; z-index: 100; box-shadow: 0 1px 8px rgba(0,0,0,.05);
+    }
+    .header-inner {
+      max-width: 1100px; margin: 0 auto; padding: 14px 28px;
+      display: flex; align-items: center; gap: 20px;
+    }
+    .brand {
+      font-size: 18px; font-weight: 800; letter-spacing: -.5px; color: #111;
+      white-space: nowrap; user-select: none; text-decoration: none;
+    }
+    .brand-tik { color: #fe2c55; }
+    .brand-tok { color: #010101; }
+    .brand-dot { color: #d1d1d1; margin: 0 6px; font-weight: 300; }
+    .brand-cc  { color: #888; font-size: 12px; font-weight: 500; }
+    .header-text { flex: 1; min-width: 0; }
+    .page-title {
+      font-size: 15px; font-weight: 700; letter-spacing: -.2px;
+      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    }
+    .page-sub { font-size: 11.5px; color: #999; margin-top: 2px; }
+    .date-badge {
+      background: #fe2c55; color: #fff; font-weight: 700; font-size: 12px;
+      border-radius: 8px; padding: 6px 14px; line-height: 1.4;
+      text-align: center; white-space: nowrap; flex-shrink: 0;
+    }
+    .date-badge span { display: block; font-size: 10px; font-weight: 500; opacity: .8; }
+    .page-nav {
+      max-width: 1100px; margin: 0 auto; padding: 0 28px;
+      display: flex; gap: 2px; border-top: 1px solid #f0f0f0;
+    }
+    .nav-a {
+      text-decoration: none; color: #999; font-size: 12.5px; font-weight: 500;
+      padding: 9px 14px; border-bottom: 2px solid transparent;
+      transition: color .15s, border-color .15s;
+    }
+    .nav-a:hover { color: #fe2c55; }
+    .nav-a.active { color: #fe2c55; border-bottom-color: #fe2c55; }
+    .content { max-width: 1100px; margin: 0 auto; padding: 36px 28px 80px; }
+    .section { margin-bottom: 52px; }
+    .section-header { display: flex; align-items: baseline; gap: 10px; margin-bottom: 16px; }
+    .section-title { font-size: 19px; font-weight: 800; letter-spacing: -.4px; }
+    .section-badge {
+      font-size: 10.5px; font-weight: 600; color: #999; background: #ebebeb;
+      padding: 3px 8px; border-radius: 20px; text-transform: uppercase; letter-spacing: .4px;
+    }
+    @media (max-width: 768px) {
+      .header-inner { gap: 12px; padding: 12px 16px; }
+      .date-badge { display: none; }
+      .page-nav { padding: 0 16px; }
+      .content { padding: 24px 16px 60px; }
+    }
+
+
+    .idea-lead {
+      background: #fff; border-radius: 12px; padding: 36px 40px 32px;
+      box-shadow: 0 1px 4px rgba(0,0,0,.07), 0 0 0 1px rgba(0,0,0,.05);
+      margin-bottom: 40px;
+    }
+    .idea-hashtag { font-size: 13px; font-weight: 700; color: #fe2c55; margin-bottom: 8px; }
+    .idea-title { font-size: 26px; font-weight: 800; letter-spacing: -.6px; line-height: 1.25; margin-bottom: 16px; }
+    .idea-desc { font-size: 14px; color: #444; line-height: 1.75; max-width: 720px; }
+    .media-grid {
+      display: grid; grid-template-columns: auto 1fr; gap: 28px; align-items: start;
+    }
+    .video-multi {
+      display: flex; gap: 16px; flex-wrap: wrap; align-items: flex-start;
+    }
+    .video-item {
+      width: 200px; display: flex; flex-direction: column; gap: 8px; flex-shrink: 0;
+    }
+    .video-caption {
+      font-size: 11px; color: #999; line-height: 1.4; padding: 0 2px;
+    }
+    .video-player {
+      width: 100%; aspect-ratio: 9/16; object-fit: cover; border-radius: 12px;
+      display: block; box-shadow: 0 2px 16px rgba(0,0,0,.14);
+    }
+    .frame-img {
+      width: 100%; aspect-ratio: 9/16; object-fit: cover; border-radius: 12px;
+      display: block; box-shadow: 0 2px 16px rgba(0,0,0,.14);
+    }
+    .prompts-col { display: flex; flex-direction: column; gap: 12px; }
+    .prompt-block {
+      background: #fff; border-radius: 10px;
+      box-shadow: 0 1px 4px rgba(0,0,0,.07), 0 0 0 1px rgba(0,0,0,.05); overflow: hidden;
+    }
+    .prompt-block summary {
+      padding: 14px 18px; font-size: 13px; font-weight: 700; cursor: pointer;
+      user-select: none; list-style: none; display: flex; align-items: center; gap: 8px; color: #333;
+    }
+    .prompt-block summary::-webkit-details-marker { display: none; }
+    .prompt-block summary::before { content: '▶'; font-size: 8px; color: #bbb; transition: transform .15s; flex-shrink: 0; }
+    .prompt-block[open] summary::before { transform: rotate(90deg); }
+    .prompt-block summary:hover { color: #fe2c55; }
+    .prompt-block summary:hover::before { color: #fe2c55; }
+    .prompt-label { font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: .5px; color: #bbb; margin-left: auto; }
+    .prompt-text {
+      padding: 14px 18px 16px; font-family: 'SF Mono','Fira Code','Menlo',monospace;
+      font-size: 11.5px; line-height: 1.7; color: #555; background: #f9f9f9;
+      border-top: 1px solid #f0f0f0; white-space: pre-wrap; word-break: break-word;
+      max-height: 320px; overflow-y: auto;
+    }
+    @media (max-width: 900px) {
+      .media-grid { grid-template-columns: 1fr; }
+      .video-multi { justify-content: center; }
+      .idea-lead { padding: 24px 22px 22px; }
+    }
+    @media (max-width: 520px) { .idea-title { font-size: 22px; } }
+
+  </style>
+</head>
+<body>
+<div class="page-header">
+  <div class="header-inner">
+    <a class="brand" href="../../../">
+      <span class="brand-tik">Tik</span><span class="brand-tok">Tok</span>
+      <span class="brand-dot">·</span><span class="brand-cc">Video Ideas</span>
+    </a>
+    <div class="header-text">
+      <div class="page-title">#petal</div>
+      <div class="page-sub">Видео-идея · 8 августа 2026 · Выпуск merged_3</div>
+    </div>
+    <div class="date-badge">08.08.2026<span>Дата · Выпуск merged_3</span></div>
+  </div>
+  <nav class="page-nav">
+    <a href="../../../" class="nav-a">← Все отчёты</a>
+    <a href="../../#br" class="nav-a">← 8 авг 2026 · Выпуск merged_3</a>
+    <a href="#" class="nav-a active">#petal</a>
+  </nav>
+</div>
+<div class="content">
+  <div class="idea-lead">
+    <div class="idea-hashtag">#petal</div>
+    <h1 class="idea-title">Взлом вместе</h1>
+    <p class="idea-desc">Вместо одного пользователя, в одиночку смотрящего в экран, — трое друзей сгрудились вокруг телефона пользователя, локоть к локтю, камера уже не статичный экран-рекординг, а ручная, покачивающаяся, снятая как будто одним из них. На экране всё тот же профиль Ariana Grande под белым цветком «petal» и прогресс-бар «объединитесь, чтобы открыть видео» — но теперь каждый из троих по очереди тянется и тапает по бару, подгоняя друг друга. Когда бар заполняется на третьем тапе, вместо тихого свечения из динамика телефона с хлопком вылетает горсть настоящих белых лепестков и мягко оседает всем троим на волосы и плечи — они разражаются хохотом и удивлённо отряхиваются. Регистр — шумный, тесный, дружеский восторг, а не тихий личный трепет первого уровня.
+
+Визуальный якорь: тот же телефонный экран с профилем Ariana Grande под белым цветочным оверлеем «petal» и прогресс-баром разблокировки — но здесь настоящие белые лепестки физически вылетают из динамика телефона и оседают на пользователе и его друзьях.</p>
+  </div>
+  <section class="section">
+    <div class="section-header">
+      <h2 class="section-title">Видео</h2>
+      <span class="section-badge">Пример генерации</span>
+    </div>
+    <div class="media-grid">
+      <div class="video-multi">
+        <div class="video-item"><video class="video-player" controls muted loop playsinline poster="https://temp-images.ws.pho.to/b413ec58a949d74596fec25bed508f23de400cdb.png"><source src="https://temp-images.ws.pho.to/8b963051911248c094b2b9e576c0c52ae28ce5ca.mp4" type="video/mp4"></video>
+          <div class="video-caption">man in his early 30s with short brown hair, blue eyes, and a short beard</div>
+        </div>
+        <div class="video-item"><video class="video-player" controls muted loop playsinline poster="https://temp-images.ws.pho.to/d0bffbe2bf02be4e05f5f060b3aef3df13410ee3.png"><source src="https://temp-images.ws.pho.to/5b3d7dd7a52e04c717150ae3d258225d95ee7a66.mp4" type="video/mp4"></video>
+          <div class="video-caption">woman in her late 30s with straight blonde shoulder-length hair and cat-eye glasses</div>
+        </div>
+      </div>
+      <div class="prompts-col">
+        <details class="prompt-block">
+          <summary>Промпт для первого кадра <span class="prompt-label">GPT Image 2</span></summary>
+          <pre class="prompt-text">Turn the photo of the person into a portrait of them pressed shoulder to shoulder with two blurred friends, all three leaning in toward a smartphone held at chest height, vertical 9:16, chest-up framing, the person centered and clearly the sharpest, most legible face in the group.
+
+Pose &amp; composition: the person holds the phone, two friends&#x27; shoulders and the edges of their faces visible at the frame&#x27;s sides, slightly out of focus, all three heads tilted toward the screen. The person&#x27;s own face stays large, sharp and centered.
+
+Attire: casual home clothing on everyone, nothing branded.
+
+Setting &amp; background: a plain, softly lit bedroom, slightly more cluttered and lived-in than a solo shot — a hint of a poster corner, a lamp, out-of-focus shelf items. The phone screen shows Ariana Grande&#x27;s real, recognizable profile photo under a white flower overlay, a progress bar mid-fill, padlock icon at its end.
+
+Lighting: warm ambient room light on the group, a cooler blue-white glow from the phone screen lighting the undersides of their faces.
+
+Colour grading: warm domestic tones with the phone&#x27;s cool white-blue glow as a bright accent, the white flower graphic the single brightest point.
+
+Camera &amp; lens: 24mm at f/2.4, slightly wide, a touch of handheld softness at the frame edges rather than a clinical studio sharpness.
+
+Skin texture: real skin, visible pores, no smoothing, on the person especially.
+
+Identity preservation: keep the person&#x27;s identity exactly as in the source photo — same age, face shape and proportions, skin tone and undertone, eye shape and eye colour, eyebrow shape, nose and jawline, and the exact hairstyle including its colour, parting, length and texture, plus any freckles, moles, scars or facial hair. The person&#x27;s hand holding the phone must be anatomically correct: five fingers, natural grip.
+
+On-screen text/graphics: the phone screen shows Ariana Grande&#x27;s profile photo with the white flower overlay and progress bar with padlock icon, confined to the screen.
+
+Avoid: no overlay graphics or captions outside the phone screen; no pasted-face or cutout look on any of the three people; the two friends must stay clearly secondary — blurred, smaller in frame, never sharper than the person.</pre>
+        </details>
+        <details class="prompt-block">
+          <summary>Промпт для видео <span class="prompt-label">Kling · Grok</span></summary>
+          <pre class="prompt-text">Create a short cinematic video based on the uploaded image. Vertical 9:16.
+The person and two friends lean in together over a smartphone, chest-up, the screen showing Ariana Grande&#x27;s profile under a white flower overlay and an unlock progress bar.
+
+Camera and motion structure:
+Handheld throughout, one continuous take, visible sway as if held by one of the group — never locked off.
+0:00–0:01: The three lean in together, the person holding the phone at the centre, screen bar partway filled.
+0:01–0:02: A friend on one side reaches in and taps the screen; the bar advances.
+0:02–0:03: A friend on the other side reaches in and taps; the bar advances further, everyone grinning, urging each other on.
+0:03–0:04: The person themselves taps a third time — the bar fills completely, padlock snapping open.
+0:04–0:05: A soft burst of small real white petals flies out from the phone&#x27;s speaker grille and drifts down, landing on the hair and shoulders of all three; they burst into surprised, silent laughter, brushing petals off. The camera settles into a gentle handheld drift over the group as the petals continue settling — the celebration continuing is the ending, not a resolved stillness.
+
+Character:
+Preserve the person&#x27;s face, hair, skin tone and identity exactly from the source image throughout. Allowed motion: leaning in, one tap on the phone, laughing and brushing off petals. Nothing else.
+
+Key visual events:
+No single hero moment — a chain of three beats: each friend&#x27;s tap in turn, then the petal burst landing on all three. Each happens once, back to back, no reset.
+
+Style:
+Warm, chaotic, close-knit handheld energy — soft bedroom light, real petals catching it as they fall. Joyful and a little messy, not the quiet solo delight of a solo screen-check.
+
+Restrictions:
+- Do not change the person&#x27;s appearance, face, clothing or identity at any point
+- The person stays in frame, recognizable and the visual focus for the whole video, even flanked by two friends
+- The person never speaks, sings or mouths words — all reaction is silent laughter and physical delight only
+- No speech bubbles
+- Exactly 3 taps occur in total, one per person, before the bar completes — no more, no fewer
+- The petal burst from the phone&#x27;s speaker must be clearly visible and land on all three people — this is the single most important visual element of the shot
+- No cuts or jump edits — one continuous handheld take from the first lean-in to the final drift
+- No additional gestures, actions, or beats beyond those explicitly described above
+- No more than two friends clearly depicted beside the person; no violent or aggressive motion</pre>
+        </details>
+      </div>
+    </div>
+  </section>
+</div>
+</body>
+</html>
